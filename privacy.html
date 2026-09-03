@@ -3,78 +3,363 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RackUp — Privacy Policy</title>
+<title>RackUp Privacy Policy</title>
 <style>
   body { font-family: -apple-system, Segoe UI, Roboto, sans-serif; background:#0C3B2A; color:#F4F1E8; margin:0; }
   main { max-width: 720px; margin: 0 auto; padding: 48px 24px 96px; line-height: 1.6; }
   h1 { font-size: 2rem; } h2 { margin-top: 2.2em; color:#FFC66E; font-size:1.2rem; }
+  h3 { margin-top: 1.6em; margin-bottom: .3em; font-size: 1rem; }
   a { color:#FFC66E; }
   .muted { opacity:.75; font-size:.9rem; }
   .card { background:#10493466; border:1px solid #ffffff22; border-radius:12px; padding:16px 20px; }
+  nav { font-size:.9rem; opacity:.9; margin-bottom: 28px; }
+  code { background:#ffffff14; padding:1px 5px; border-radius:4px; font-size:.9em; }
+  ul { padding-left: 20px; }
+  li { margin-bottom: .5em; }
 </style>
 </head>
 <body>
 <main>
-  <h1>🎱 RackUp — Privacy Policy</h1>
-  <p class="muted">Effective date: 7 July 2026 · Applies to the RackUp Android app (<code>com.rackup.app</code>)</p>
+  <nav><a href="index.html">Home</a> · <a href="support.html">Support</a></nav>
 
-  <p>RackUp is a matchmaking app for billiards players in Greece. This page explains,
-  in plain language, what data the app handles and what your rights are.</p>
+  <h1>🎱 RackUp Privacy Policy</h1>
+  <p class="muted">Effective date: 4 September 2026 · Applies to the RackUp apps for Android
+  and iPhone (<code>com.rackup.app</code>)</p>
 
-  <h2>What we collect</h2>
+  <div class="card">
+    <p><strong>This version replaces the policy dated 7 July 2026.</strong> The old one covered
+    only the Android app and said the app collected no analytics. That was wrong. Both apps
+    include Firebase Analytics and Firebase Crashlytics, and this version says so, along with
+    everything else the apps actually store. Nothing about the app changed on 4 September 2026:
+    the policy was corrected to match the app.</p>
+  </div>
+
+  <p>RackUp is an app for billiards players in Greece who want to find an opponent for a real
+  game at a real venue. You post when and where you want to play, and another player takes the
+  table. This page explains, in plain language, what data the app handles, who can see it, and
+  what your rights are.</p>
+
+  <h2>Who is responsible for your data</h2>
+  <p>RackUp, Ioannina, Greece, is the data controller for the personal data described on this
+  page. You can reach us at
+  <a href="mailto:rackupbilliard@gmail.com">rackupbilliard@gmail.com</a> about anything on this
+  page, including any request about your rights.</p>
+
+  <h2>What we collect, and why</h2>
+
+  <h3>Your account</h3>
+  <p>To sign in you use an email address and a password, or Google (Android), or Sign in with
+  Apple (iPhone). Passwords are handled and stored by Google Firebase Authentication and we
+  never see them. If you sign in with Apple and choose to hide your address, we store the Apple
+  private relay address exactly as Apple gives it to us.</p>
+  <p>Your profile record holds your display name, your email address, the skill category you
+  choose for yourself (Pro down to E), a link to your profile photo if you have one, your
+  notification preferences, your language, and a pointer to your most recent venue check-in.
+  <strong>Only you can read your own profile record.</strong> We use it to run your account and
+  to show your name and category on the matches you post or join.</p>
+
+  <h3>Your profile photo (Android only)</h3>
+  <p>If you set a profile photo on Android, the image is resized on your device and uploaded to
+  Firebase Cloud Storage as <code>avatars/&lt;your user id&gt;.jpg</code>. Any signed in player
+  can view it, because it is shown next to your matches. The iPhone app has no photo picker at
+  all, so no photo can be uploaded from an iPhone, and a photo set on Android cannot be removed
+  from an iPhone.</p>
+
+  <h3>What you post and write</h3>
+  <p>The app is a noticeboard, so a lot of what it stores is content you create on purpose:</p>
   <ul>
-    <li><strong>Account data</strong>: your name, email address, and password (the password is
-        handled and stored by Google Firebase Authentication — we never see it), plus the
-        skill category you choose.</li>
-    <li><strong>Match posts</strong>: the availabilities you post or join — venue, game type,
-        date/time, your display name and skill category, and an optional note you write.</li>
+    <li><strong>Match posts and open challenges</strong>: the venue, city, game type, date and
+        time, and any free text note you write, together with your display name, skill category,
+        photo and reliability figure copied onto the post. <strong>Every signed in player can
+        read these.</strong> That is the point of the app.</li>
+    <li><strong>Join requests</strong>: when you ask to join someone's match, your name, category
+        and photo go to that host. Only you and the host can read the request.</li>
+    <li><strong>Results and disputes</strong>: the scores either player reports, whether the
+        other player confirmed or contested them, no show reports, and whether a no show was
+        contested. These sit on the match record and are readable by signed in players.</li>
+    <li><strong>Cancellations</strong>: the reason you pick and any note you add, on the match
+        record.</li>
+    <li><strong>Post match ratings</strong>: a one to five star rating and fixed tags you give
+        an opponent after a confirmed result. A rating is stored against the player it is about
+        and only that player, and you, can read it.</li>
+    <li><strong>Venue check-ins</strong>: if you check in at a venue, we store your user id and
+        the time. There is no coordinate and no location check, and since 27 August 2026 only
+        you can read your own check-ins. Check-in records written by older Android versions may
+        still contain your display name.</li>
+    <li><strong>Saved searches, starred venues and your weekly schedule</strong>: private to you.
+        Note that an enabled schedule slot posts a public match on your behalf at the time you
+        set.</li>
   </ul>
-  <p>That's all. No location tracking, no contacts, no advertising identifiers, no analytics
-  profiles, no data sold to anyone — ever.</p>
+  <p>Free text you type into a name, a match note, a challenge note, a cancellation note or the
+  feedback form is checked against a profanity list on your device before it is sent.</p>
+
+  <h3>Safety: reports and blocks</h3>
+  <p>If you report a player, we store your user id, their user id, the match in question and
+  what you wrote. Reports go into a collection that <strong>no app can ever read back</strong>.
+  Only we can read them, in the Firebase console, and we do so to act on abuse. If you block a
+  player, we store their user id in a private list of yours. Blocking is invisible to the person
+  blocked, and it simply hides their posts from your feed.</p>
+
+  <h3>Feedback</h3>
+  <p>The feedback form in Settings sends us your user id, the category you pick, your message,
+  the app version and build, and which platform you are on. Like reports, no app can read this
+  back.</p>
+
+  <h3>Notifications (Android only)</h3>
+  <p>On Android, we store a Firebase Cloud Messaging token for each of your devices, along with
+  your language, so we can send you push notifications about join requests, match updates,
+  reminders and saved search alerts. You control these with the switches in Settings and with
+  your device's notification permission. <strong>The iPhone app has no push notifications at
+  all</strong>, sends no device token, and contains no push framework.</p>
+
+  <h3>Crash diagnostics (both apps)</h3>
+  <p>Both apps include <strong>Firebase Crashlytics</strong>. When the app crashes or hits a
+  handled error, Crashlytics sends Google a report containing the crash, your device model, your
+  operating system version and the app version. We use it to find and fix bugs. <strong>We never
+  attach your account to a crash report.</strong> The app never calls Crashlytics' user id
+  function, so reports carry only Crashlytics' own installation identifier, which we cannot
+  match to a person.</p>
+
+  <h3>App usage analytics (both apps)</h3>
+  <p>Both apps include <strong>Firebase Analytics</strong>, and it is on by default. The old
+  version of this policy said the app had no analytics profiles. That was wrong, and correcting
+  it is the main reason this version exists.</p>
+  <p>We log twelve events about how the app is used: <code>match_posted</code>,
+  <code>join_requested</code>, <code>request_accepted</code>, <code>score_confirmed</code>,
+  <code>notifications_opened</code>, <code>notification_row_tapped</code>,
+  <code>saved_search_created</code>, <code>h2h_opened</code>, <code>h2h_rematch</code>,
+  <code>opponent_rated</code>, <code>reputation_opened</code> and <code>score_disputed</code>.
+  Between them they carry two pieces of detail, both on <code>match_posted</code>: the game type,
+  and whether the post was a "play now" post. No name, no email, no user id, no venue and no
+  free text is ever attached to an analytics event. Firebase Analytics also collects its own
+  standard measurements, such as app opens and sessions, and it derives approximate geography
+  from a masked IP address.</p>
+  <p><strong>Analytics is not linked to your account.</strong> The app never calls Analytics'
+  user id function, so Analytics keys on its own per installation identifier. One practical
+  consequence, stated honestly: because these records are not tied to your account, we cannot
+  pick out an individual person's analytics records, and there is no in-app switch to turn
+  analytics off. Uninstalling the app stops collection.</p>
+
+  <h3>Location</h3>
+  <p>On <strong>iPhone the app never touches location</strong>. It requests no location
+  permission, contains no location code and carries no location usage description.</p>
+  <p>On <strong>Android</strong> the app can ask for the optional coarse location permission for
+  one purpose: sorting the venue list by how near each venue is to you. That calculation happens
+  on your phone, against venue coordinates the app already has. <strong>Your position is never
+  sent to us and never stored anywhere.</strong> You can refuse the permission and the app works
+  normally, just without distance sorting. Checking in at a venue is on the honour system and is
+  not verified against your location.</p>
+
+  <h2>What we do not do</h2>
+  <ul>
+    <li><strong>No advertising.</strong> There is no ad SDK of any kind in either app.</li>
+    <li><strong>No advertising identifier.</strong> The Android app strips the
+        <code>AD_ID</code> permission that Firebase Analytics would otherwise pull in. The iPhone
+        app links the version of Firebase Analytics built without advertising ID support, shows
+        no App Tracking Transparency prompt, and does not read the IDFA.</li>
+    <li><strong>No tracking across other companies' apps or websites.</strong> There is no
+        attribution SDK, no data broker and no third-party analytics product beyond Google
+        Firebase.</li>
+    <li><strong>We do not sell your data</strong>, and we do not pass it to advertisers or data
+        brokers.</li>
+    <li><strong>No contacts, no health data, no payments.</strong> The app is free, has no
+        in-app purchases and reads nothing from your address book.</li>
+    <li><strong>No chat, no direct messages and no inbox.</strong> Nothing in the app is a
+        private channel between two players.</li>
+    <li><strong>No precise location</strong> on either platform.</li>
+  </ul>
 
   <h2>Who can see what</h2>
   <ul>
-    <li>Your <strong>email address is private</strong>: only you can access it.</li>
-    <li>Your <strong>display name and skill category</strong> appear on the matches you post or
-        join, visible to other signed-in players — that's the point of the app.</li>
+    <li><strong>Private to you</strong>: your email address, your profile record, your blocked
+        list, your saved searches, your starred venues, your weekly schedule, your activity feed,
+        the ratings you have received and your venue check-ins.</li>
+    <li><strong>Visible to every signed in player</strong>: your display name, your skill
+        category, your profile photo, your reliability figure and verified badge, and everything
+        on the matches and challenges you post or join, including your notes, scores, dispute
+        status and cancellation notes.</li>
+    <li><strong>Visible only to us</strong>: abuse reports and feedback messages.</li>
+    <li><strong>Nobody else.</strong> There is no public web profile and no part of the app is
+        readable without signing in.</li>
+  </ul>
+  <p>One consequence worth knowing: because match records pair a user id with a display name and
+  are readable by any signed in player, a user id that appears anywhere in the app can be
+  resolved to a display name by another player.</p>
+
+  <h2>Where your data is stored, and who processes it</h2>
+  <p>RackUp runs entirely on <strong>Google Firebase</strong>, on Google Cloud infrastructure.
+  Google acts as our service provider and processes this data on our instructions. The services
+  we use are:</p>
+  <ul>
+    <li><strong>Firebase Authentication</strong>: your sign-in identity and password.</li>
+    <li><strong>Cloud Firestore</strong>: everything described above that is stored as a record.</li>
+    <li><strong>Cloud Storage for Firebase</strong>: profile photos, uploaded from Android only.</li>
+    <li><strong>Cloud Functions</strong>: our server-side jobs, including notifications, saved
+        search alerts and the account erasure job. These run in Google's
+        <code>europe-west1</code> region.</li>
+    <li><strong>Firebase Crashlytics</strong>: crash and diagnostic reports.</li>
+    <li><strong>Firebase Analytics</strong>: the app usage events described above.</li>
+    <li><strong>Firebase Cloud Messaging</strong>: push notifications, on Android only.</li>
+  </ul>
+  <p>Our database, storage and server functions are configured to run in Google's European
+  regions. Crashlytics and Analytics are global Google services, so the diagnostic and usage data
+  they collect may be processed outside the European Economic Area under Google's own data
+  processing terms. Google's documentation for all of this is at
+  <a href="https://firebase.google.com/support/privacy">firebase.google.com/support/privacy</a>.</p>
+  <p>Data is encrypted in transit. Access from the apps is controlled by Firebase security rules
+  that enforce exactly the visibility described in the section above.</p>
+
+  <h2>Our lawful basis (GDPR Article 6)</h2>
+  <ul>
+    <li><strong>Performance of a contract</strong> (Article 6(1)(b)): creating and running your
+        account, publishing your match posts, handling join requests, recording results, and
+        everything else you need for the app to do its job.</li>
+    <li><strong>Legitimate interests</strong> (Article 6(1)(f)): keeping RackUp safe and working.
+        This covers abuse reports, blocking, no show and dispute records, the profanity filter,
+        crash diagnostics, and the app usage analytics described above. Our interest is in
+        running a service that is safe for players and does not crash; we have kept the data to
+        the minimum that serves it, and none of the analytics or crash data is tied to your
+        account. You can object to this processing at any time, at the address below.</li>
+    <li><strong>Consent</strong> (Article 6(1)(a)): push notifications on Android, which depend
+        on your device permission and on the switches in Settings, and the optional Android
+        location permission. You can withdraw either at any time in your device settings.</li>
   </ul>
 
-  <h2>Where it's stored</h2>
-  <p>Data is stored in Google Firebase (Authentication and Cloud Firestore) on Google Cloud
-  servers in Europe, protected by security rules that enforce the access described above.
-  See <a href="https://firebase.google.com/support/privacy">Firebase's privacy documentation</a>.</p>
+  <h2>How long we keep it</h2>
+  <ul>
+    <li><strong>Your account and everything attached to it</strong>: for as long as your account
+        exists. Delete your account and the erasure described below runs.</li>
+    <li><strong>Abuse reports</strong>: reports about you are kept as a safety record even after
+        you delete your account, because a moderation history that vanishes on request is not a
+        moderation history.</li>
+    <li><strong>Crash and analytics records</strong>: held by Google under the Firebase project's
+        own retention settings. They are not linked to your account, so they are not affected by
+        account deletion and we cannot single out an individual's records.</li>
+    <li><strong>Erasure records</strong>: when an account is erased we keep one small record
+        holding the user id, a status, timestamps and the names of the steps that ran. It holds
+        no name, no email, no photo and no message text. It is our evidence that the erasure
+        happened, and no app can read it.</li>
+  </ul>
 
   <h2 id="delete">Deleting your account</h2>
   <div class="card">
-    <p><strong>In the app</strong>: Profile → <em>Delete account</em>. This permanently removes
-    your account, your profile, and the matches you posted. Matches you had <em>joined</em> keep
-    your display name in their record; email us if you want that removed too.</p>
+    <p><strong>In the app</strong>: Profile → Settings → <em>Delete account</em> →
+    <em>Yes, delete everything</em>. If it has been a while since you signed in, Firebase will
+    ask you to sign out and sign back in first. If you signed in with Apple, the app also asks
+    Apple to revoke RackUp's access to your Apple Account.</p>
     <p><strong>Without the app</strong>: email
     <a href="mailto:rackupbilliard@gmail.com?subject=Account%20deletion%20request">rackupbilliard@gmail.com</a>
-    from your registered address with the subject "Account deletion request" and we'll delete
-    everything within 30 days.</p>
+    from your registered address with the subject "Account deletion request" and we will do it
+    for you.</p>
   </div>
 
+  <h3>What deletion removes</h3>
+  <p>Your sign-in account is deleted immediately. That automatically starts a server-side job
+  which removes:</p>
+  <ul>
+    <li>your profile record, and with it your name, email, category and photo link;</li>
+    <li>your profile photo file in Cloud Storage;</li>
+    <li>your notification tokens, notification preferences, activity feed, saved searches,
+        starred venues, weekly schedule and blocked list;</li>
+    <li>the ratings other players gave you;</li>
+    <li>every match and every challenge you posted, along with the requests other players made
+        to join them;</li>
+    <li>every join request and challenge claim you made on someone else's post;</li>
+    <li>your venue check-ins;</li>
+    <li>your feedback messages;</li>
+    <li>the abuse reports you filed about other people.</li>
+  </ul>
+  <p>The job normally finishes within moments. If a step fails, a scheduled task retries the
+  remaining steps every six hours until they are done.</p>
+
+  <h3>What survives deletion, and why</h3>
+  <p>We would rather be exact here than reassuring, so please read this part.</p>
+  <ul>
+    <li><strong>Matches you only joined stay on the host's record.</strong> The post belongs to
+        the other player, so we do not destroy it. It keeps the display name, category and user
+        id you had at the time. Your photo file is deleted, so the picture stops loading. If you
+        want your name removed from those records too, email us and we will do it.</li>
+    <li><strong>Ratings you wrote about other players stay</strong>, because they are the other
+        player's reputation and that player did not ask for anything. We sever the link to you:
+        the author field is overwritten with the fixed value <code>[erased]</code>, which is the
+        same value for everyone, so your ratings cannot be picked out or grouped afterwards.</li>
+    <li><strong>Open challenges you claimed but did not host</strong> stay, with your name and
+        id cleared, and the slot reopens.</li>
+    <li><strong>Abuse reports filed about you stay</strong>, as a safety record. No app can read
+        them.</li>
+    <li><strong>The erasure record</strong> described under retention stays.</li>
+    <li>Server logs may contain your user id for a bounded period.</li>
+  </ul>
+  <p>We do not claim that deleting your account erases every trace of you everywhere. The list
+  above is what remains.</p>
+
   <h2>Your rights (GDPR)</h2>
-  <p>You can request access to, correction of, or deletion of your personal data at any time
-  at <a href="mailto:rackupbilliard@gmail.com">rackupbilliard@gmail.com</a>. You also have the
-  right to lodge a complaint with the Hellenic Data Protection Authority (<a href="https://www.dpa.gr">dpa.gr</a>).</p>
+  <p>If you are in the EU or the EEA you have the following rights over your personal data, and
+  we will honour them all:</p>
+  <ul>
+    <li><strong>Access</strong>: ask us for a copy of the personal data we hold about you.</li>
+    <li><strong>Rectification</strong>: have inaccurate data corrected. You can edit your name,
+        category and photo in the app yourself.</li>
+    <li><strong>Erasure</strong>: have your data deleted, as described above.</li>
+    <li><strong>Portability</strong>: receive your data in a structured, machine readable format,
+        or have us send it to another controller where that is technically feasible.</li>
+    <li><strong>Objection</strong>: object to processing we carry out on the basis of legitimate
+        interests, including the analytics and crash reporting described above.</li>
+    <li><strong>Restriction</strong>: ask us to stop processing your data while a dispute about
+        it is resolved.</li>
+    <li><strong>Withdraw consent</strong>: turn off notifications or the Android location
+        permission at any time, without affecting anything we did before you did so.</li>
+  </ul>
+  <p>To exercise any of these, email
+  <a href="mailto:rackupbilliard@gmail.com">rackupbilliard@gmail.com</a> from the address on your
+  account. We reply within one month, as the GDPR requires. There is no charge.</p>
+  <p>If you are unhappy with how we have handled your data, you can complain to the Hellenic
+  Data Protection Authority at <a href="https://www.dpa.gr">dpa.gr</a>, or to the supervisory
+  authority in the EU country where you live.</p>
 
   <h2>Children</h2>
-  <p>RackUp is not directed at children under 13, and we do not knowingly collect their data.</p>
+  <p>RackUp is not directed at children. The app arranges meetings between adults at billiard
+  halls, and we do not knowingly collect data from children under 16. There is no age
+  verification in the app. If you believe a child has created an account, email us and we will
+  remove it.</p>
 
-  <h2>Changes</h2>
-  <p>If this policy changes, the new version will be published at this address with an updated
-  effective date.</p>
+  <h2>Security</h2>
+  <p>All traffic between the apps and Firebase is encrypted. What each account may read and
+  write is enforced by Firebase security rules on the server, not by the app, so a modified app
+  cannot reach data it is not entitled to. The Android app additionally verifies itself with
+  Firebase App Check. We are a small team and we do not pretend to be immune to every risk, but
+  if a breach affects your personal data we will notify the Hellenic Data Protection Authority
+  and, where the law requires it, you.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>If this policy changes, the new version is published at this address with a new effective
+  date, and we say at the top what changed. This version, dated 4 September 2026, supersedes the
+  version dated 7 July 2026 in full.</p>
 
   <h2>Σύνοψη στα Ελληνικά</h2>
-  <p>Το RackUp αποθηκεύει μόνο: όνομα, email, κατηγορία παίκτη και τις αναρτήσεις παιχνιδιών σου,
-  στο Google Firebase (Ευρώπη). Το email σου είναι ιδιωτικό· το όνομα και η κατηγορία σου
-  εμφανίζονται στα παιχνίδια που δημοσιεύεις. Δεν πουλάμε δεδομένα, δεν υπάρχουν διαφημίσεις,
-  δεν καταγράφουμε τοποθεσία. Διαγραφή λογαριασμού: μέσα από την εφαρμογή (Προφίλ → Διαγραφή
-  λογαριασμού) ή με email στο <a href="mailto:rackupbilliard@gmail.com">rackupbilliard@gmail.com</a>.</p>
+  <p>Το RackUp αποθηκεύει: όνομα, email, κατηγορία παίκτη, προαιρετική φωτογραφία προφίλ (μόνο
+  στο Android) και όσα δημοσιεύεις μέσα στην εφαρμογή, δηλαδή αγώνες, σημειώσεις, σκορ,
+  ακυρώσεις, βαθμολογίες αντιπάλων, check-in σε αίθουσες, αναφορές και σχόλια. Όλα βρίσκονται στο
+  Google Firebase (Authentication, Firestore, Cloud Storage, Cloud Functions στην Ευρώπη).</p>
+  <p>Το email σου είναι ιδιωτικό. Το όνομα, η κατηγορία και η φωτογραφία σου εμφανίζονται στους
+  αγώνες που δημοσιεύεις ή στους οποίους συμμετέχεις.</p>
+  <p>Και οι δύο εφαρμογές περιλαμβάνουν <strong>Firebase Crashlytics</strong> (αναφορές
+  σφαλμάτων) και <strong>Firebase Analytics</strong> (δώδεκα συμβάντα χρήσης). Κανένα από τα δύο
+  δεν συνδέεται με τον λογαριασμό σου: η εφαρμογή δεν στέλνει ποτέ το αναγνωριστικό χρήστη σε
+  αυτές τις υπηρεσίες.</p>
+  <p>Δεν υπάρχουν διαφημίσεις, ούτε διαφημιστικά αναγνωριστικά, ούτε παρακολούθηση σε εφαρμογές
+  άλλων εταιρειών. Δεν πουλάμε δεδομένα. Στο iPhone δεν υπάρχει καθόλου τοποθεσία και καθόλου
+  ειδοποιήσεις push. Στο Android η προαιρετική άδεια τοποθεσίας χρησιμεύει μόνο για την ταξινόμηση
+  των αιθουσών κατά απόσταση και <strong>η θέση σου δεν φεύγει ποτέ από τη συσκευή</strong>.</p>
+  <p>Διαγραφή λογαριασμού: μέσα από την εφαρμογή (Προφίλ → Ρυθμίσεις → Διαγραφή λογαριασμού) ή με
+  email στο <a href="mailto:rackupbilliard@gmail.com">rackupbilliard@gmail.com</a>. Διαβάστε
+  παραπάνω τι ακριβώς διαγράφεται και τι παραμένει.</p>
+  <p>Έχεις δικαίωμα πρόσβασης, διόρθωσης, διαγραφής, φορητότητας, εναντίωσης και περιορισμού,
+  καθώς και δικαίωμα καταγγελίας στην Αρχή Προστασίας Δεδομένων Προσωπικού Χαρακτήρα
+  (<a href="https://www.dpa.gr">dpa.gr</a>).</p>
 
-  <p class="muted">RackUp · Ioannina, Greece · rackupbilliard@gmail.com</p>
+  <p class="muted">RackUp · Ioannina, Greece · rackupbilliard@gmail.com<br>
+  <a href="support.html">Support</a> · <a href="index.html">Home</a></p>
 </main>
 </body>
 </html>
