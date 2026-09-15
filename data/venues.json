@@ -1,0 +1,457 @@
+[
+  {
+    "id": "venue-ath-king8",
+    "name": "King 8",
+    "city": "Athens",
+    "address": "Λεωφ. Πεντέλης 112-114, Βριλήσσια",
+    "sortOrder": 1
+  },
+  {
+    "id": "venue-ath-different",
+    "name": "Different Billiards Club",
+    "city": "Athens",
+    "address": "Στρατάρχου Παπάγου 32, Ζωγράφου",
+    "sortOrder": 2
+  },
+  {
+    "id": "venue-ath-luckyman",
+    "name": "Lucky Man Billiards",
+    "city": "Athens",
+    "address": "Αχαΐας 46 & Μενεμένη, Αμπελόκηποι",
+    "sortOrder": 3
+  },
+  {
+    "id": "venue-ath-mister100",
+    "name": "Mister 100 Club",
+    "city": "Athens",
+    "address": "Ηρ. Πολυτεχνείου 6, Καλλιθέα",
+    "sortOrder": 4
+  },
+  {
+    "id": "venue-ath-superbowl",
+    "name": "Super Bowl",
+    "city": "Athens",
+    "address": "Καναπιτσέρη 10, Άγ. Ιωάννης Ρέντης",
+    "sortOrder": 5
+  },
+  {
+    "id": "venue-ath-blanos",
+    "name": "Blanos Bowling & Billiards",
+    "city": "Athens",
+    "address": "Λεωφ. Ποσειδώνος 81 & Δούσμανη 3, Γλυφάδα",
+    "sortOrder": 6
+  },
+  {
+    "id": "venue-ath-gameon",
+    "name": "Game On Sports Cafe",
+    "city": "Athens",
+    "address": "Κων/νου Ωραιοπούλου 10, Ηράκλειο",
+    "sortOrder": 7
+  },
+  {
+    "id": "venue-ath-jolly",
+    "name": "Jolly Billiards Club",
+    "city": "Athens",
+    "address": "Ζακύνθου 47, Κυψέλη",
+    "sortOrder": 9
+  },
+  {
+    "id": "venue-ath-koralli",
+    "name": "Koralli Billiard Club",
+    "city": "Athens",
+    "address": "Δερβενακίων 56, Αγία Παρασκευή",
+    "sortOrder": 10
+  },
+  {
+    "id": "venue-ath-trisponto",
+    "name": "Trisponto Billiards Club",
+    "city": "Athens",
+    "address": "Πεντέλης 18, Μοσχάτο",
+    "sortOrder": 11
+  },
+  {
+    "id": "venue-ath-athensbc",
+    "name": "Athens Billiard Club",
+    "city": "Athens",
+    "address": "Αχαρνών 131, Αγ. Παντελεήμονας",
+    "sortOrder": 12
+  },
+  {
+    "id": "venue-ath-lacasa",
+    "name": "La Casa De Billar",
+    "city": "Athens",
+    "address": "Τεύθιδος 1, Περιστέρι",
+    "sortOrder": 13
+  },
+  {
+    "id": "venue-ath-lamorti",
+    "name": "L' Amorti Billiards",
+    "city": "Athens",
+    "address": "Ιωαννίνων 57 & Επιδαύρου, Κολωνός",
+    "sortOrder": 14
+  },
+  {
+    "id": "venue-ath-europe",
+    "name": "Europe Billiards",
+    "city": "Athens",
+    "address": "Λεωφ. Ελ. Βενιζέλου 160, Ηλιούπολη",
+    "sortOrder": 15
+  },
+  {
+    "id": "venue-ath-carom",
+    "name": "Carom Billiards Club",
+    "city": "Athens",
+    "address": "Ηρακλείτου 13, Ίλιον",
+    "sortOrder": 16
+  },
+  {
+    "id": "venue-ath-enjoy",
+    "name": "Enjoy Billiards Club",
+    "city": "Athens",
+    "address": "Νέας Ελβετίας 5, Βύρωνας",
+    "sortOrder": 17
+  },
+  {
+    "id": "venue-ath-lostcafe",
+    "name": "Lost Cafe",
+    "city": "Athens",
+    "address": "Κουντουριώτου 9, Περιστέρι",
+    "sortOrder": 18
+  },
+  {
+    "id": "venue-ath-masse",
+    "name": "Masse Billiards",
+    "city": "Athens",
+    "address": "Ενώπης 1, Βύρωνας",
+    "sortOrder": 19
+  },
+  {
+    "id": "venue-ath-optimus",
+    "name": "Optimus Billiard Cafe",
+    "city": "Athens",
+    "address": "Ελλησπόντου 26-28, Νίκαια",
+    "sortOrder": 20
+  },
+  {
+    "id": "venue-ath-vscafe",
+    "name": "VS Cafe Billiards",
+    "city": "Athens",
+    "address": "Λεωφ. Αγ. Δημητρίου 216, Άγιος Δημήτριος",
+    "sortOrder": 21
+  },
+  {
+    "id": "venue-ath-halloffame",
+    "name": "Hall of Fame Billiards Club",
+    "city": "Athens",
+    "address": "Καυταντζόγλου 10, Άνω Πατήσια",
+    "sortOrder": 22
+  },
+  {
+    "id": "venue-pir-makridis",
+    "name": "Makridis Club",
+    "city": "Athens",
+    "address": "Λουκά Ράλλη 123, Πειραιάς",
+    "sortOrder": 23
+  },
+  {
+    "id": "venue-ath-champion",
+    "name": "Champion Billiards Club",
+    "city": "Athens",
+    "address": "Κων/νου Παλαιολόγου 1, Νέα Σμύρνη",
+    "sortOrder": 24
+  },
+  {
+    "id": "venue-ath-roimat",
+    "name": "Roi Mat Billiards",
+    "city": "Athens",
+    "address": "Λευκωσίας 5, Πλατεία Αμερικής",
+    "sortOrder": 25
+  },
+  {
+    "id": "venue-ath-moulos",
+    "name": "Moulos Billiard Club",
+    "city": "Athens",
+    "address": "Ιαλέμου 48, Λαμπρινή",
+    "sortOrder": 26
+  },
+  {
+    "id": "venue-ath-dion",
+    "name": "Dion Billiards",
+    "city": "Athens",
+    "address": "Λεωφ. Βασ. Γεωργίου Β' 4, Χαλάνδρι",
+    "sortOrder": 27
+  },
+  {
+    "id": "venue-ath-presveia",
+    "name": "Presveia Billiards Club",
+    "city": "Athens",
+    "address": "Λεωφ. Κηφισίας 265, Κηφισιά",
+    "sortOrder": 28
+  },
+  {
+    "id": "venue-ath-bowlingkifisia",
+    "name": "Bowling Center Kifisia",
+    "city": "Athens",
+    "address": "Κολοκοτρώνη 1 & Λεβίδου, Κηφισιά",
+    "sortOrder": 29
+  },
+  {
+    "id": "venue-thes-login",
+    "name": "Login Billiards Club",
+    "city": "Thessaloniki",
+    "address": "Καμβουνίων 9, Συντριβάνι",
+    "sortOrder": 30
+  },
+  {
+    "id": "venue-thes-bcenter",
+    "name": "Billiard Center Thessaloniki",
+    "city": "Thessaloniki",
+    "address": "Βασ. Όλγας 123, Ανάληψη",
+    "sortOrder": 31
+  },
+  {
+    "id": "venue-thes-juris",
+    "name": "Cafe Juris Billiard & Bowling",
+    "city": "Thessaloniki",
+    "address": "Αλ. Παπαναστασίου 58",
+    "sortOrder": 32
+  },
+  {
+    "id": "venue-thes-tenpin",
+    "name": "Ten Pin",
+    "city": "Thessaloniki",
+    "address": "Μητρ. Καλλίδου 112, Καλαμαριά",
+    "sortOrder": 33
+  },
+  {
+    "id": "venue-thes-elpaso",
+    "name": "El Paso Billiards",
+    "city": "Thessaloniki",
+    "address": "Αγίου Δημητρίου 140",
+    "sortOrder": 34
+  },
+  {
+    "id": "venue-thes-pincity",
+    "name": "Pin City Bowling",
+    "city": "Thessaloniki",
+    "address": "17ης Νοεμβρίου 75, Πυλαία",
+    "sortOrder": 35
+  },
+  {
+    "id": "venue-pat-poolevard",
+    "name": "Poolevard Billiards Hall",
+    "city": "Patras",
+    "address": "Αγίου Ανδρέου 74",
+    "sortOrder": 40
+  },
+  {
+    "id": "venue-her-champion",
+    "name": "Champion Billiards Club",
+    "city": "Heraklion",
+    "address": "Καρίας 122, Νέα Αλικαρνασσός",
+    "sortOrder": 41
+  },
+  {
+    "id": "venue-her-king",
+    "name": "King Billiards",
+    "city": "Heraklion",
+    "address": "Γ. Γεωργιάδου & Κάσου 17",
+    "sortOrder": 42
+  },
+  {
+    "id": "venue-cha-frozen",
+    "name": "Frozen Cafe Billiards",
+    "city": "Chania",
+    "address": "Αναγνώστου Γογονή 15, Κουμπές",
+    "sortOrder": 43
+  },
+  {
+    "id": "venue-cha-aramis",
+    "name": "ARAMIS Billiard Club",
+    "city": "Chania",
+    "address": "Κισσάμου & Σαριδαντώνη 1, Νέα Χώρα",
+    "sortOrder": 44
+  },
+  {
+    "id": "venue-ret-billias",
+    "name": "Billia's Billiards Rethymno",
+    "city": "Rethymno",
+    "address": "Γερακάρη 150",
+    "sortOrder": 45
+  },
+  {
+    "id": "venue-ret-cyber",
+    "name": "CYBER Sports & Billiards",
+    "city": "Rethymno",
+    "address": "Πρεβελιδάκη 19 & Παρρέν Σιγανού",
+    "sortOrder": 46
+  },
+  {
+    "id": "venue-lar-mr8ball",
+    "name": "Mr.8ball",
+    "city": "Larissa",
+    "address": "23ης Οκτωβρίου 66-68",
+    "sortOrder": 47
+  },
+  {
+    "id": "venue-lar-ennea",
+    "name": "Ennea Billiards Sport Club",
+    "city": "Larissa",
+    "address": "Βόλου 1",
+    "sortOrder": 48
+  },
+  {
+    "id": "venue-vol-galaxy",
+    "name": "Galaxy Fun 'n Bowl",
+    "city": "Volos",
+    "address": "Γιαννιτσών 29",
+    "sortOrder": 49
+  },
+  {
+    "id": "venue-ioa-jouet",
+    "name": "Jouet Billiards Hall",
+    "city": "Ioannina",
+    "address": "Ανεξαρτησίας 101",
+    "sortOrder": 50
+  },
+  {
+    "id": "venue-chk-masters",
+    "name": "Master's Billiard Club",
+    "city": "Chalkida",
+    "address": "Περικλέους Σταύρου 10",
+    "sortOrder": 51
+  },
+  {
+    "id": "venue-chk-bowling",
+    "name": "Bowling Halkida",
+    "city": "Chalkida",
+    "address": "Αβάντων 46",
+    "sortOrder": 52
+  },
+  {
+    "id": "venue-rho-academy",
+    "name": "Academy Billiards Rhodes",
+    "city": "Rhodes",
+    "address": "Ι. Καποδιστρίου 37",
+    "sortOrder": 53
+  },
+  {
+    "id": "venue-kav-cityhall",
+    "name": "City Billiard Hall",
+    "city": "Kavala",
+    "address": "Ελ. Βενιζέλου 54",
+    "sortOrder": 54
+  },
+  {
+    "id": "venue-kal-top",
+    "name": "Top Billiards",
+    "city": "Kalamata",
+    "address": "Γιαννιτσών & Κουμουνδούρου 13",
+    "sortOrder": 55
+  },
+  {
+    "id": "venue-kor-kbc",
+    "name": "KBC Korinthos Bowling Center",
+    "city": "Korinthos",
+    "address": "Εθνικής Ανεξαρτησίας 22",
+    "sortOrder": 56
+  },
+  {
+    "id": "venue-spa-rolling",
+    "name": "Rolling Billiards & Coffee Bar",
+    "city": "Sparti",
+    "address": "Όθωνος Αμαλίας 104",
+    "sortOrder": 57
+  },
+  {
+    "id": "venue-sal-lapalma",
+    "name": "La Palma Billiards",
+    "city": "Salamina",
+    "address": "Λεωφ. Αιαντείου 9 & Αμμοχώστου 1, Παλούκια",
+    "sortOrder": 58
+  },
+  {
+    "id": "venue-kav-tifanys",
+    "name": "Tifany's Billiard Club",
+    "city": "Kavala",
+    "address": "Πάροδος Κωστή Παλαμά",
+    "sortOrder": 59
+  },
+  {
+    "id": "venue-ser-lavita",
+    "name": "La Vita Center",
+    "city": "Serres",
+    "address": "1ο χλμ Ε.Ο. Σερρών-Νιγρίτας",
+    "sortOrder": 60
+  },
+  {
+    "id": "venue-koz-baraz",
+    "name": "Μπαράζ Billiards",
+    "city": "Kozani",
+    "address": "Πλατεία Ελευθερίας 3",
+    "sortOrder": 61
+  },
+  {
+    "id": "venue-lar-pike",
+    "name": "Πικέ Sports Café",
+    "city": "Larissa",
+    "address": "Παπάγου 1Α, Γιάννουλη",
+    "sortOrder": 62
+  },
+  {
+    "id": "venue-lam-prince",
+    "name": "Prince of Pool",
+    "city": "Lamia",
+    "address": "Υψηλάντη 12",
+    "sortOrder": 63
+  },
+  {
+    "id": "venue-ker-cueclub",
+    "name": "Cue Club Corfu",
+    "city": "Corfu",
+    "address": "3ο χλμ Ε.Ο. Λευκίμμης, Κανάλι",
+    "sortOrder": 64
+  },
+  {
+    "id": "venue-pre-northwest",
+    "name": "North West Bowling",
+    "city": "Preveza",
+    "address": "Επαρχ. Οδός Πρέβεζας 24, Νικόπολη",
+    "sortOrder": 65
+  },
+  {
+    "id": "venue-arg-8ball",
+    "name": "8 Ball Billiard Club",
+    "city": "Argos",
+    "address": "Παπανικολάου 2 & Αγ. Κωνσταντίνου",
+    "sortOrder": 66
+  },
+  {
+    "id": "venue-naf-8ball",
+    "name": "Billiard Club 8 Ball",
+    "city": "Nafplio",
+    "address": "Αγίου Αδριανού 19",
+    "sortOrder": 67
+  },
+  {
+    "id": "venue-her-dynamic",
+    "name": "Dynamic Cafe Billiards",
+    "city": "Heraklion",
+    "address": "Δημητρίου Κοκότση 2",
+    "sortOrder": 68
+  },
+  {
+    "id": "venue-agn-billys",
+    "name": "Billy's Public House",
+    "city": "Agios Nikolaos",
+    "address": "Κ. Σφακιανάκη 17",
+    "sortOrder": 69
+  },
+  {
+    "id": "venue-chi-zoanos",
+    "name": "Chios Bowling Billiard Cafe",
+    "city": "Chios",
+    "address": "Λεωφ. Αιγαίου 120",
+    "sortOrder": 70
+  }
+]
