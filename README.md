@@ -34,6 +34,7 @@ Other modes:
 ```bash
 python tools/build_directory.py           # rebuild from the committed data/venues.json
 python tools/build_directory.py --check   # exit 1 if any generated page is out of date
+python -m unittest discover -s tools      # generator tests, standard library only
 ```
 
 Never edit a generated page by hand; the next run overwrites it. Change the
