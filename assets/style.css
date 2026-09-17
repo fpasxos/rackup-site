@@ -59,3 +59,6 @@ footer.site a { margin-right: 14px; display: inline-block; }
 .features h3 { margin: 0 0 4px; color: var(--gold); font-size: 1.05rem; }
 .features p { margin: 0; }
 .platforms p { margin: .6em 0; }
+
+.share .open-app { align-items: center; padding: 14px 28px; font-size: 1.2rem; cursor: pointer; }
+.share .note { margin: 8px 0 0; }

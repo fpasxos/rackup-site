@@ -11,6 +11,7 @@ Anything merged to `master` goes live, so treat a merge as publishing.
 | `mpiliardo/` | Greek hall directory: index plus one page per city | generator |
 | `en/billiards/` | The same directory in English | generator |
 | `sitemap.xml` | Every page on the site | generator |
+| `m/` | Landing page for match links shared from the app (`noindex`, not in the sitemap) | hand |
 | `assets/` | Shared stylesheet and the app icon | hand |
 | `data/venues.json` | Public copy of the venue directory | generator (`--import`) |
 | `tools/build_directory.py` | The generator | hand |
@@ -63,6 +64,29 @@ python -m http.server 8000
   `στον Βόλο`). The build stops and says so if one is missing, mirroring
   `GreekCity.kt` in the app.
 - **No en or em dashes** in any generated page. The build stops if one appears.
+
+## Match share links
+
+The Android app shares a match as `https://fpasxos.github.io/rackup-site/m/?id=<matchId>`.
+Chat apps turn that into a tappable link with a preview, which a `rackup://` link never
+got. `m/index.html` shows the preview tags and the store links; `m/open.js` checks the id
+(letters, digits, `_` and `-`, at most 128) and, on Android only, adds an **Open in
+RackUp** button pointing at
+`intent://match/<id>#Intent;scheme=rackup;package=com.rackup.app;S.browser_fallback_url=...;end`.
+
+- **The page must be live before any app build that shares these links**, or every
+  shared match opens a 404.
+- The button relies on the app's `rackup://match/{id}` intent filter. The app repo's
+  `LaunchIntentOpensOnceTest` parses the same intent string, so change both together.
+- The Google Play links carry `referrer=utm_source=share&utm_medium=match_link` so Play
+  attributes installs that came from a shared match. Nothing on the page sets a cookie
+  or loads a third party script, and its Content Security Policy only allows `open.js`.
+
+Run the tests with Node 18 or newer, no packages needed:
+
+```bash
+node --test tools/match_page.test.js
+```
 
 ## Search
 
