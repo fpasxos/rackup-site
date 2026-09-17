@@ -1,0 +1,6 @@
+# GitHub Pages builds this repo with Jekyll. Keep the build inputs off the site.
+exclude:
+  - README.md
+  - tools
+  - data
+  - .gitignore

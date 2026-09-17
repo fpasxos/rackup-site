@@ -3,35 +3,96 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RackUp, find your next billiards match</title>
-<style>
-  body { font-family: -apple-system, Segoe UI, Roboto, sans-serif; background:#0C3B2A; color:#F4F1E8; margin:0; }
-  main { max-width: 680px; margin: 0 auto; padding: 72px 24px 96px; text-align:center; line-height:1.6; }
-  h1 { font-size: 2.6rem; margin-bottom: .2em; }
-  .tag { color:#FFC66E; font-size:1.15rem; }
-  a { color:#FFC66E; }
-  .ball { font-size: 4rem; }
-  .help { margin-top: 40px; font-size:.95rem; }
-  footer { margin-top: 64px; opacity:.7; font-size:.9rem; }
-</style>
+<title>RackUp: find a billiards opponent in Greece</title>
+<meta name="description" content="RackUp is the billiards matchmaking app for Greece, on iPhone and Android. Post a table at a real hall, pick who plays and keep score.">
+<link rel="canonical" href="https://fpasxos.github.io/rackup-site/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RackUp">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="RackUp: find a billiards opponent in Greece">
+<meta property="og:description" content="Post when and where you want to play. Another player takes the table. On iPhone and Android.">
+<meta property="og:url" content="https://fpasxos.github.io/rackup-site/">
+<meta property="og:image" content="https://fpasxos.github.io/rackup-site/assets/icon-512.png">
+<meta name="theme-color" content="#0C3B2A">
+<link rel="icon" type="image/png" href="assets/icon-512.png">
+<link rel="apple-touch-icon" href="assets/icon-512.png">
+<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
+<header class="top">
+  <a class="brand" href="./">🎱 RackUp</a>
+  <nav>
+    <a href="en/billiards/">Halls by city</a>
+    <a href="support.html">Support</a>
+    <a href="mpiliardo/" hreflang="el" lang="el">Ελληνικά</a>
+  </nav>
+</header>
 <main>
-  <div class="ball">🎱</div>
-  <h1>RackUp</h1>
-  <p class="tag">Post when and where you want to play. Someone takes the challenge. Rack up.</p>
-  <p>The billiards matchmaking app for Greece. 8-Ball, 9-Ball and 10-Ball players
-  finding opponents at real venues, from Athens to Ioannina.</p>
-  <p><a href="https://play.google.com/store/apps/details?id=com.rackup.app">Get RackUp on Google Play</a><br>
-  <span class="tag" style="font-size:.95rem">An iPhone version is on the way.</span></p>
+  <section class="hero">
+    <div class="ball" aria-hidden="true">🎱</div>
+    <h1>RackUp</h1>
+    <p class="tag">Post when and where you want to play. Another player takes the table.</p>
+    <p>The billiards matchmaking app for Greece. 8-Ball, 9-Ball and 10-Ball players finding
+    opponents for real games at real halls.</p>
+    <div class="stores">
+      <a class="store" href="https://apps.apple.com/gr/app/rackup-find-an-opponent/id6800614202"><small>Download on the</small>App Store</a>
+      <a class="store" href="https://play.google.com/store/apps/details?id=com.rackup.app"><small>Get it on</small>Google Play</a>
+    </div>
+    <p class="stores-note">On iPhone and Android, in English and Greek.</p>
+  </section>
 
-  <p class="help">Need help, or want to report a player?<br>
-  Email <a href="mailto:rackupbilliard@gmail.com">rackupbilliard@gmail.com</a>,
-  or read the <a href="support.html">support page</a>.</p>
+  <section class="features">
+    <h2>What you can do</h2>
+    <ul>
+      <li>
+        <h3>See who is playing tonight</h3>
+        <p>Every open table in one feed, filtered by game, city, venue and level. Already at
+        the hall? Switch on Play Now and your table goes to the top with a LIVE badge.</p>
+      </li>
+      <li>
+        <h3>You pick who plays</h3>
+        <p>Players ask to join your table and you choose, so nobody gets double-booked. Or post
+        an open challenge for anyone inside your tier range. Every player carries a category
+        from Pro down to E, so you know what you are walking into.</p>
+      </li>
+      <li>
+        <h3>Keep score</h3>
+        <p>Report the result and your opponent confirms it. Then comes your win rate, your
+        streak, your head-to-head with every player you have faced, monthly leaderboards by
+        city and venue, six levels and fourteen badges.</p>
+      </li>
+      <li>
+        <h3>Play people who show up</h3>
+        <p>A verified check after five matches with no no-shows, a reputation built on who
+        actually turns up, and block and report from any match.</p>
+      </li>
+      <li>
+        <h3><span data-count="venues">65</span> halls in <span data-count="cities">25</span> cities</h3>
+        <p>A hand-researched directory of Greek billiard halls, with directions in the app.
+        <a href="en/billiards/">Browse the halls by city</a>, or
+        <a href="mpiliardo/" hreflang="el" lang="el">δες τις αίθουσες στα ελληνικά</a>.</p>
+      </li>
+    </ul>
+  </section>
 
-  <footer>
-    <a href="support.html">Support</a> · <a href="privacy.html">Privacy Policy</a> · rackupbilliard@gmail.com
-  </footer>
+  <section class="platforms">
+    <h2>iPhone and Android</h2>
+    <p>Everything above works on both. Sign in with Apple on iPhone, or with Google on Android,
+    or use an email address on either.</p>
+    <p>A few things are Android only: the venue map, sorting halls by distance, push
+    notifications, adding a match to your calendar, sharing a match, and a profile photo.</p>
+  </section>
+
+  <section>
+    <h2>Need help?</h2>
+    <p>Want to report a player, or found a hall we are missing? Email
+    <a href="mailto:rackupbilliard@gmail.com">rackupbilliard@gmail.com</a>, or read the
+    <a href="support.html">support page</a>.</p>
+  </section>
 </main>
+<footer class="site">
+  <p><a href="support.html">Support</a><a href="privacy.html">Privacy Policy</a><a href="mpiliardo/" hreflang="el" lang="el">Αίθουσες μπιλιάρδου</a><a href="mailto:rackupbilliard@gmail.com">rackupbilliard@gmail.com</a></p>
+  <p>RackUp · Ioannina, Greece</p>
+</footer>
 </body>
 </html>
