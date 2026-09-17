@@ -185,14 +185,14 @@ def stores(lang):
 
 
 def fit_description(head, areas, tail, label):
-    """Adds district names to a meta description while it stays short."""
+    """Adds district names to a meta description while it stays short. The label is plural, so never one."""
     chosen = []
     for area in areas:
         trial = f"{head} {label}: {', '.join(chosen + [area])}. {tail}"
         if len(trial) > DESCRIPTION_LIMIT:
             break
         chosen.append(area)
-    if not chosen:
+    if len(chosen) < 2:
         return f"{head} {tail}"
     return f"{head} {label}: {', '.join(chosen)}. {tail}"
 
@@ -284,7 +284,7 @@ def index_page(cities, lang):
     if lang == "el":
         title = "Αίθουσες μπιλιάρδου στην Ελλάδα ανά πόλη | RackUp"
         description = (f"Κατάλογος με {total} αίθουσες μπιλιάρδου σε {count} πόλεις της Ελλάδας: "
-                       f"{', '.join(top_names)} και άλλες. Δες διευθύνσεις και βρες αντίπαλο με το RackUp.")
+                       f"{', '.join(top_names)} και άλλες. Δες τις διευθύνσεις και βρες αντίπαλο με το RackUp.")
         body = f"""<h1>Αίθουσες μπιλιάρδου στην Ελλάδα</h1>
 <p class="lead">Ψάχνεις πού να παίξεις μπιλιάρδο; Εδώ θα βρεις {total} αίθουσες σε {count} πόλεις, με τη διεύθυνση της καθεμιάς. Τον κατάλογο τον φτιάξαμε στο χέρι για το RackUp, την εφαρμογή που σε φέρνει σε επαφή με άλλους παίκτες για παιχνίδι στην τσόχα.</p>
 <h2>Διάλεξε πόλη</h2>
@@ -363,7 +363,10 @@ def business(v):
 def city_page(city, halls, cities, lang):
     slug, name_el, in_el = CITIES[city]
     n = len(halls)
+    # One district among several halls reads as if every hall were there.
     areas = areas_of(halls)
+    if len(areas) < 2:
+        areas = []
     root = EL_ROOT if lang == "el" else EN_ROOT
     alt_root = EN_ROOT if lang == "el" else EL_ROOT
     path = f"{root}/{slug}/"
