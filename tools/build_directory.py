@@ -59,6 +59,7 @@ CITIES = {
     "Nafplio": ("nafplio", "Ναύπλιο", "στο Ναύπλιο"),
     "Agios Nikolaos": ("agios-nikolaos", "Άγιος Νικόλαος", "στον Άγιο Νικόλαο"),
     "Chios": ("chios", "Χίος", "στη Χίο"),
+    "Aigio": ("aigio", "Αίγιο", "στο Αίγιο"),
 }
 
 # Figure dash, en dash, em dash, horizontal bar. None may reach a page.
