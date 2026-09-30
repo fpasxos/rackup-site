@@ -12,6 +12,7 @@ Anything merged to `master` goes live, so treat a merge as publishing.
 | `en/billiards/` | The same directory in English | generator |
 | `sitemap.xml` | Every page on the site | generator |
 | `m/` | Landing page for match links shared from the app (`noindex`, not in the sitemap) | hand |
+| `go/` | Where printed QR codes point: sends phones to their app store with tagged links (`noindex`, not in the sitemap) | hand |
 | `assets/` | Shared stylesheet and the app icon | hand |
 | `data/venues.json` | Public copy of the venue directory | generator (`--import`) |
 | `tools/build_directory.py` | The generator | hand |
@@ -86,6 +87,26 @@ Run the tests with Node 18 or newer, no packages needed:
 
 ```bash
 node --test tools/match_page.test.js
+```
+
+## Store QR codes
+
+Printed QR codes point at `https://fpasxos.github.io/rackup-site/go/`, or
+`go/?h=<hall-slug>` for a hall's own code. `go/go.js` sends iPhones and iPads to
+the App Store and Android phones to Google Play, and shows the two store buttons
+everywhere else. A hall slug is lowercase letters, digits and single hyphens, at
+most 30 characters; anything else counts as the general code.
+
+- The Play links and the tagged App Store links must match what the app repo's
+  `store-assets/hall-links/hall_links.py` builds. `tools/go_page.test.js` pins
+  them as literals, so change both together.
+- `PROVIDER_TOKEN` in `go/go.js` is empty until the `pt` value from App Store
+  Connect is pasted in. Until then every App Store link is the plain
+  `https://apps.apple.com/gr/app/id6800614202`, with no campaign. Setting it
+  also changes the static App Store `href` in `go/index.html`; the test checks.
+
+```bash
+node --test tools/go_page.test.js
 ```
 
 ## Search
