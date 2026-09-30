@@ -69,6 +69,8 @@
     } else if (platform === "android") {
       loc.replace(play);
     } else {
+      // Nothing opens here, so "Opening the app store" gives way to "Get RackUp".
+      doc.getElementById("opening").hidden = true;
       doc.getElementById("desktop").hidden = false;
     }
   }

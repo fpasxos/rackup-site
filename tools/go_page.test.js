@@ -36,10 +36,11 @@ const UA = {
   windowsChrome: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
 };
 
+// Starts as go/index.html does: only the desktop block is hidden.
 function fakeDocument() {
   const elements = {};
-  for (const id of ["app-store", "google-play", "desktop"]) {
-    elements[id] = { hidden: true, attributes: {}, setAttribute(k, v) { this.attributes[k] = v; } };
+  for (const id of ["app-store", "google-play", "opening", "desktop"]) {
+    elements[id] = { hidden: id === "desktop", attributes: {}, setAttribute(k, v) { this.attributes[k] = v; } };
   }
   return { elements, getElementById: (id) => elements[id] };
 }
@@ -152,6 +153,7 @@ test("on iOS a hall code sets both buttons and goes to the App Store once", () =
     const { doc, loc, hrefs } = run(ua, touch, "?h=nax-galaxias");
     assert.deepEqual(hrefs, [page.appStoreUrl("nax-galaxias"), HALL_PLAY]);
     assert.deepEqual(loc.replaced, [page.appStoreUrl("nax-galaxias")]);
+    assert.equal(doc.elements.opening.hidden, false);
     assert.equal(doc.elements.desktop.hidden, true);
   }
 });
@@ -161,17 +163,32 @@ test("on Android a hall code sets both buttons and goes to Play once", () => {
     const { doc, loc, hrefs } = run(ua, 5, "?h=nax-galaxias");
     assert.deepEqual(hrefs, [page.appStoreUrl("nax-galaxias"), HALL_PLAY]);
     assert.deepEqual(loc.replaced, [HALL_PLAY]);
+    assert.equal(doc.elements.opening.hidden, false);
     assert.equal(doc.elements.desktop.hidden, true);
   }
 });
 
-test("elsewhere the buttons are set, the note shows and nothing redirects", () => {
+test("elsewhere the buttons are set, Get RackUp replaces the opening text and nothing redirects", () => {
   for (const [ua, touch] of [[UA.macSafari, 0], [UA.windowsChrome, 0]]) {
     const { doc, loc, hrefs } = run(ua, touch, "?h=nax-galaxias");
     assert.deepEqual(hrefs, [page.appStoreUrl("nax-galaxias"), HALL_PLAY]);
     assert.deepEqual(loc.replaced, []);
+    assert.equal(doc.elements.opening.hidden, true, "a desktop must not read Opening the app store");
     assert.equal(doc.elements.desktop.hidden, false);
   }
+});
+
+test("the opening text and the desktop heading sit in the blocks the script toggles", () => {
+  const block = (id) => html.match(new RegExp(`<div id="${id}"( hidden)?>([\\s\\S]*?)</div>`));
+  const opening = block("opening");
+  assert.equal(opening[1], undefined, "#opening must start visible");
+  assert.match(opening[2], /<h1>Ανοίγει το κατάστημα εφαρμογών…<\/h1>/);
+  assert.match(opening[2], /Αν δεν ανοίξει αυτόματα/);
+  const desktop = block("desktop");
+  assert.equal(desktop[1], " hidden", "#desktop must start hidden");
+  assert.match(desktop[2], /<h1>Κατέβασε το RackUp<\/h1>/);
+  assert.match(desktop[2], /<p class="tag" lang="en">Get RackUp<\/p>/);
+  assert.equal((html.match(/Ανοίγει το κατάστημα/g) || []).length, 1, "the opening heading appears outside #opening");
 });
 
 test("the general code and a hostile h both send phones to the general links", () => {
@@ -206,6 +223,9 @@ test("the Content Security Policy is the share page's", () => {
 
 test("the store buttons exist, the note starts hidden, and the static links are the general ones", () => {
   assert.match(html, /id="desktop"[^>]*\bhidden\b/);
+  for (const id of ["app-store", "google-play", "opening", "desktop"]) {
+    assert.equal((html.match(new RegExp(`id="${id}"`, "g")) || []).length, 1, id);
+  }
   const unescape = (s) => s.replace(/&amp;/g, "&");
   assert.equal(unescape(html.match(/id="app-store" href="([^"]+)"/)[1]), page.appStoreUrl(null));
   assert.equal(unescape(html.match(/id="google-play" href="([^"]+)"/)[1]), GENERAL_PLAY);
