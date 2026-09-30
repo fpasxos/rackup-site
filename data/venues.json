@@ -520,5 +520,76 @@
     "address": "Κανελλοπούλου 14",
     "sortOrder": 71,
     "phone": "+30 698 078 6292"
+  },
+  {
+    "id": "venue-ath-issa",
+    "name": "ISSA Workshop",
+    "city": "Athens",
+    "address": "Αντιφίλου 24, Ιλίσια",
+    "sortOrder": 72,
+    "phone": "+30 211 750 3360"
+  },
+  {
+    "id": "venue-nax-galaxias",
+    "name": "Galaxias Billiards",
+    "city": "Naxos",
+    "address": "Εξαρχοπούλου, Χώρα",
+    "sortOrder": 73,
+    "phone": "+30 698 301 0542"
+  },
+  {
+    "id": "venue-vol-break",
+    "name": "BREAK Billiards",
+    "city": "Volos",
+    "address": "Μακρυνίτσας 25",
+    "sortOrder": 74,
+    "phone": "+30 242 110 6338"
+  },
+  {
+    "id": "venue-ioa-break",
+    "name": "Break Bar & Billiards",
+    "city": "Ioannina",
+    "address": "Στοά Σάρκα, Πάροδος Πυρσινέλλα",
+    "sortOrder": 75,
+    "phone": "+30 265 102 2115"
+  },
+  {
+    "id": "venue-kor-legend",
+    "name": "Legend Billiards Cafe",
+    "city": "Korinthos",
+    "address": "Αγίου Νικολάου & Δερβενακίων 1",
+    "sortOrder": 76,
+    "phone": "+30 694 416 8990"
+  },
+  {
+    "id": "venue-ath-safe",
+    "name": "Safe Billiards",
+    "city": "Athens",
+    "address": "Φιλαδελφείας 57, Μενίδι",
+    "sortOrder": 77,
+    "phone": "+30 210 240 2250"
+  },
+  {
+    "id": "venue-ath-oldschool",
+    "name": "Oldschool",
+    "city": "Athens",
+    "address": "Σολωμού 13-15, Εξάρχεια",
+    "sortOrder": 78
+  },
+  {
+    "id": "venue-ath-grand",
+    "name": "Grand Cafe Billiards",
+    "city": "Athens",
+    "address": "Αγίου Νικολάου 102, Άγιοι Ανάργυροι",
+    "sortOrder": 79,
+    "phone": "+30 694 882 9950"
+  },
+  {
+    "id": "venue-vol-zen",
+    "name": "ZEN Billiard Center",
+    "city": "Volos",
+    "address": "Μελούνας 21, 1ος όροφος",
+    "sortOrder": 80,
+    "phone": "+30 242 140 9804"
   }
 ]
