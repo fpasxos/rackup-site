@@ -104,6 +104,13 @@ most 30 characters; anything else counts as the general code.
   Connect is pasted in. Until then every App Store link is the plain
   `https://apps.apple.com/gr/app/id6800614202`, with no campaign. Setting it
   also changes the static App Store `href` in `go/index.html`; the test checks.
+- Ads and social bios add a source, `go/?s=<source>&h=<campaign>`, so their
+  installs are not counted as hall scans. `s=meta` tags Play with
+  `utm_source=meta&utm_medium=paid`, `s=ig` with `instagram` and `social`,
+  `s=fb` with `facebook` and `social`; `h` is the campaign. Any other or repeated
+  `s` is ignored. Apple's `ct` becomes `<source>-<campaign>`, or just the
+  campaign when that would pass Apple's 30 character limit. These links are
+  built only here, not by `hall_links.py`.
 
 ```bash
 node --test tools/go_page.test.js

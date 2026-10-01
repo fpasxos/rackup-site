@@ -21,6 +21,15 @@ const PLAIN_APP_STORE = "https://apps.apple.com/gr/app/id6800614202";
 const HALL_APP_STORE = "https://apps.apple.com/app/apple-store/id6800614202?pt=12aB34&ct=nax-galaxias&mt=8";
 const GENERAL_APP_STORE = "https://apps.apple.com/app/apple-store/id6800614202?pt=12aB34&ct=general&mt=8";
 
+// Ad and bio links, built only on this site: s sets utm_source and utm_medium, h stays the campaign.
+const META_PLAY = "https://play.google.com/store/apps/details?id=com.rackup.app" +
+  "&referrer=utm_source%3Dmeta%26utm_medium%3Dpaid%26utm_campaign%3Dath-tonight";
+const IG_PLAY = "https://play.google.com/store/apps/details?id=com.rackup.app" +
+  "&referrer=utm_source%3Dinstagram%26utm_medium%3Dsocial%26utm_campaign%3Dbio";
+const FB_PLAY = "https://play.google.com/store/apps/details?id=com.rackup.app" +
+  "&referrer=utm_source%3Dfacebook%26utm_medium%3Dsocial%26utm_campaign%3Dpage";
+const META_APP_STORE = "https://apps.apple.com/app/apple-store/id6800614202?pt=12aB34&ct=meta-ath-tonight&mt=8";
+
 const UA = {
   iphoneSafari: "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1",
   iphoneChrome: "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/128.0.6613.98 Mobile/15E148 Safari/604.1",
@@ -198,6 +207,137 @@ test("the general code and a hostile h both send phones to the general links", (
     assert.deepEqual(ios.loc.replaced, [page.appStoreUrl(null)]);
     assert.deepEqual(ios.hrefs, [page.appStoreUrl(null), GENERAL_PLAY]);
   }
+});
+
+test("only meta, ig and fb are sources, and only when s appears once", () => {
+  for (const key of ["meta", "ig", "fb"]) {
+    assert.equal(page.sourceFrom(`?s=${key}`), key);
+    assert.equal(page.sourceFrom(`?s=${key}&h=ath-tonight&fbclid=IwAR0abc`), key);
+    assert.equal(page.isValidSource(key), true, key);
+  }
+  const rejected = [
+    "", "META", "Meta", "meta ", " meta", "instagram", "facebook", "google", "tiktok", "hall", "share", "qr",
+    "__proto__", "constructor", "toString", "hasOwnProperty", "valueOf", "meta&h=x", "meta-ig", "<script>"
+  ];
+  for (const s of rejected) {
+    assert.equal(page.sourceFrom(`?s=${encodeURIComponent(s)}`), null, `accepted ${JSON.stringify(s)}`);
+    assert.equal(page.isValidSource(s), false, `valid ${JSON.stringify(s)}`);
+  }
+  for (const search of ["", "?", undefined, "?S=meta", "?source=meta", "?s=meta&s=ig", "?s=meta&s=meta",
+    "?s=meta&s=", "?s", "?s=meta+"]) {
+    assert.equal(page.sourceFrom(search), null, `accepted ${search}`);
+  }
+  for (const value of [null, undefined, 1, {}, ["meta"]]) {
+    assert.equal(page.isValidSource(value), false, String(value));
+  }
+});
+
+test("a source sets utm_source and utm_medium, and h stays the campaign", () => {
+  assert.equal(page.playUrl("ath-tonight", "meta"), META_PLAY);
+  assert.equal(page.playUrl("bio", "ig"), IG_PLAY);
+  assert.equal(page.playUrl("page", "fb"), FB_PLAY);
+  const referrer = (url) => new URL(url).searchParams.get("referrer");
+  assert.equal(referrer(META_PLAY), "utm_source=meta&utm_medium=paid&utm_campaign=ath-tonight");
+  assert.equal(referrer(IG_PLAY), "utm_source=instagram&utm_medium=social&utm_campaign=bio");
+  assert.equal(referrer(FB_PLAY), "utm_source=facebook&utm_medium=social&utm_campaign=page");
+  assert.equal(referrer(page.playUrl(null, "meta")), "utm_source=meta&utm_medium=paid&utm_campaign=general");
+});
+
+test("no source leaves every hall QR link byte for byte as it was", () => {
+  for (const source of [null, undefined]) {
+    assert.equal(page.playUrl("nax-galaxias", source), HALL_PLAY);
+    assert.equal(page.playUrl(null, source), GENERAL_PLAY);
+    assert.equal(page.buildAppStoreUrl("nax-galaxias", "12aB34", source), HALL_APP_STORE);
+    assert.equal(page.buildAppStoreUrl(null, "12aB34", source), GENERAL_APP_STORE);
+    assert.equal(page.buildAppStoreUrl("nax-galaxias", "", source), PLAIN_APP_STORE);
+  }
+});
+
+test("with a provider token a source prefixes ct, and without one the link stays plain", () => {
+  assert.equal(page.buildAppStoreUrl("ath-tonight", "12aB34", "meta"), META_APP_STORE);
+  const ct = (hall, source) => new URL(page.buildAppStoreUrl(hall, "12aB34", source)).searchParams.get("ct");
+  assert.equal(ct("bio", "ig"), "ig-bio");
+  assert.equal(ct("page", "fb"), "fb-page");
+  assert.equal(ct(null, "meta"), "meta-general");
+  for (const source of ["meta", "ig", "fb"]) {
+    assert.equal(page.buildAppStoreUrl("ath-tonight", "", source), PLAIN_APP_STORE, source);
+    assert.equal(page.appStoreUrl("ath-tonight", source), page.buildAppStoreUrl("ath-tonight", page.PROVIDER_TOKEN, source));
+  }
+});
+
+test("a ct that would pass Apple's 30 characters drops the source, never the campaign", () => {
+  assert.equal(page.campaignToken("a".repeat(25), "meta"), "meta-" + "a".repeat(25));
+  assert.equal(page.campaignToken("a".repeat(26), "meta"), "a".repeat(26));
+  assert.equal(page.campaignToken("a".repeat(27), "ig"), "ig-" + "a".repeat(27));
+  assert.equal(page.campaignToken("a".repeat(28), "fb"), "a".repeat(28));
+  for (const source of ["meta", "ig", "fb", null]) {
+    for (let n = 1; n <= 30; n++) {
+      const token = page.campaignToken("a".repeat(n), source);
+      assert.ok(token.length <= 30, `${source} with ${n} gives ${token.length}`);
+      assert.ok(token.endsWith("a".repeat(n)), `${source} with ${n} lost the campaign`);
+    }
+  }
+  const long = "a".repeat(30);
+  assert.equal(new URL(page.buildAppStoreUrl(long, "12aB34", "meta")).searchParams.get("ct"), long);
+});
+
+test("the builders refuse a source outside the list instead of emitting it", () => {
+  for (const bad of ["", "META", "instagram", "__proto__", "constructor", "meta&x", 1]) {
+    assert.throws(() => page.playUrl("ath-tonight", bad), /invalid source/, String(bad));
+    assert.throws(() => page.buildAppStoreUrl("ath-tonight", "12aB34", bad), /invalid source/, String(bad));
+    assert.throws(() => page.buildAppStoreUrl("ath-tonight", "", bad), /invalid source/, String(bad));
+  }
+  assert.throws(() => page.playUrl("ath tonight", "meta"), /invalid hall slug/);
+});
+
+test("an ad link goes to the App Store on iOS and to Play on Android, with its source", () => {
+  const search = "?s=meta&h=ath-tonight&fbclid=IwAR0abc";
+  const apple = page.appStoreUrl("ath-tonight", "meta");
+  for (const [ua, touch] of [[UA.iphoneSafari, 5], [UA.instagramIos, 5], [UA.facebookIos, 5], [UA.ipadDesktopMode, 5]]) {
+    const { doc, loc, hrefs } = run(ua, touch, search);
+    assert.deepEqual(hrefs, [apple, META_PLAY]);
+    assert.deepEqual(loc.replaced, [apple]);
+    assert.equal(doc.elements.desktop.hidden, true);
+  }
+  for (const ua of [UA.androidChrome, UA.instagramAndroid, UA.facebookAndroid]) {
+    const { doc, loc, hrefs } = run(ua, 5, search);
+    assert.deepEqual(hrefs, [apple, META_PLAY]);
+    assert.deepEqual(loc.replaced, [META_PLAY]);
+    assert.equal(doc.elements.desktop.hidden, true);
+  }
+  const badCampaign = "?s=meta&h=" + encodeURIComponent("x\" onclick=\"alert(1)");
+  assert.deepEqual(run(UA.androidChrome, 5, badCampaign).loc.replaced, [page.playUrl(null, "meta")]);
+});
+
+test("on a desktop a bio link sets the buttons and redirects nowhere", () => {
+  for (const [search, hall, source, play] of [["?s=ig&h=bio", "bio", "ig", IG_PLAY], ["?s=fb&h=page", "page", "fb", FB_PLAY]]) {
+    for (const [ua, touch] of [[UA.macSafari, 0], [UA.windowsChrome, 0]]) {
+      const { doc, loc, hrefs } = run(ua, touch, search);
+      assert.deepEqual(hrefs, [page.appStoreUrl(hall, source), play]);
+      assert.deepEqual(loc.replaced, []);
+      assert.equal(doc.elements.opening.hidden, true);
+      assert.equal(doc.elements.desktop.hidden, false);
+    }
+  }
+});
+
+test("an unknown, repeated or empty s behaves exactly like the same link without it", () => {
+  const extras = ["s=google", "s=META", "s=", "s", "s=meta&s=ig", "s=ig&s=ig", "s=__proto__", "s=constructor", "S=meta"];
+  for (const base of ["?h=nax-galaxias", ""]) {
+    for (const extra of extras) {
+      const search = base ? `${base}&${extra}` : `?${extra}`;
+      assert.equal(page.sourceFrom(search), null, search);
+      for (const [ua, touch] of [[UA.iphoneSafari, 5], [UA.androidChrome, 5], [UA.windowsChrome, 0]]) {
+        const plain = run(ua, touch, base);
+        const tagged = run(ua, touch, search);
+        assert.deepEqual(tagged.hrefs, plain.hrefs, search);
+        assert.deepEqual(tagged.loc.replaced, plain.loc.replaced, search);
+        assert.equal(tagged.doc.elements.desktop.hidden, plain.doc.elements.desktop.hidden, search);
+      }
+    }
+  }
+  assert.deepEqual(run(UA.androidChrome, 5, "?s=google&h=nax-galaxias").loc.replaced, [HALL_PLAY]);
+  assert.deepEqual(run(UA.androidChrome, 5, "?s=google").loc.replaced, [GENERAL_PLAY]);
 });
 
 test("the page is noindex, previews well and loads no script but its own", () => {
