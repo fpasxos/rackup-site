@@ -23,10 +23,16 @@
   <nav><a href="index.html">Home</a> · <a href="support.html">Support</a></nav>
 
   <h1>🎱 RackUp Privacy Policy</h1>
-  <p class="muted">Effective date: 29 September 2026 · Applies to the RackUp apps for Android
+  <p class="muted">Effective date: 1 October 2026 · Applies to the RackUp apps for Android
   and iPhone (<code>com.rackup.app</code>)</p>
 
   <div class="card">
+    <p><strong>What changed on 1 October 2026.</strong> The iPhone app now has push
+    notifications too, from version 2.1.0. If you allow them, it stores a Firebase Cloud
+    Messaging token for your iPhone under your account, as the Android app already did, so we can
+    tell you about join requests, match updates, reminders and alerts from halls you starred. It
+    asks once, after you sign in and finish the welcome tour, and you can switch them off in
+    Settings or in your iPhone's settings. Nothing else about what we store has changed.</p>
     <p><strong>What changed on 29 September 2026.</strong> Deleting your account now also deletes
     the notifications in other players' activity feeds that name you, such as the one telling a
     host you asked to join their match. Until this change they stayed in the other player's feed
@@ -110,12 +116,15 @@
   the app version and build, and which platform you are on. Like reports, no app can read this
   back.</p>
 
-  <h3>Notifications (Android only)</h3>
-  <p>On Android, we store a Firebase Cloud Messaging token for each of your devices, along with
-  your language, so we can send you push notifications about join requests, match updates,
-  reminders and saved search alerts. You control these with the switches in Settings and with
-  your device's notification permission. <strong>The iPhone app has no push notifications at
-  all</strong>, sends no device token, and contains no push framework.</p>
+  <h3>Notifications</h3>
+  <p>We store a Firebase Cloud Messaging token for each of your devices, Android or iPhone, along
+  with your language, so we can send you push notifications about join requests, match updates,
+  reminders, saved search alerts and, for halls you starred, new games and check-ins there. You
+  control these with the switches in Settings and with your device's notification permission.
+  The iPhone app asks for that permission once, after you sign in and finish the welcome tour,
+  and stores a token only if you allow it; its notifications are delivered through Apple's Push
+  Notification service. Signing out removes the token for that device, and deleting your
+  account removes all of them.</p>
 
   <h3>Crash diagnostics (both apps)</h3>
   <p>Both apps include <strong>Firebase Crashlytics</strong>. When the app crashes or hits a
@@ -204,7 +213,8 @@
         <code>europe-west1</code> region.</li>
     <li><strong>Firebase Crashlytics</strong>: crash and diagnostic reports.</li>
     <li><strong>Firebase Analytics</strong>: the app usage events described above.</li>
-    <li><strong>Firebase Cloud Messaging</strong>: push notifications, on Android only.</li>
+    <li><strong>Firebase Cloud Messaging</strong>: push notifications on both apps. On iPhone,
+        Firebase passes them to Apple's Push Notification service, which delivers them.</li>
   </ul>
   <p>Our database, storage and server functions are configured to run in Google's European
   regions. Crashlytics and Analytics are global Google services, so the diagnostic and usage data
@@ -225,7 +235,7 @@
         running a service that is safe for players and does not crash; we have kept the data to
         the minimum that serves it, and none of the analytics or crash data is tied to your
         account. You can object to this processing at any time, at the address below.</li>
-    <li><strong>Consent</strong> (Article 6(1)(a)): push notifications on Android, which depend
+    <li><strong>Consent</strong> (Article 6(1)(a)): push notifications on both apps, which depend
         on your device permission and on the switches in Settings, and the optional Android
         location permission. You can withdraw either at any time in your device settings.</li>
   </ul>
@@ -340,8 +350,9 @@
 
   <h2>Changes to this policy</h2>
   <p>If this policy changes, the new version is published at this address with a new effective
-  date, and we say at the top what changed. This version, dated 29 September 2026, supersedes the
-  version dated 4 September 2026, which superseded the version dated 7 July 2026 in full.</p>
+  date, and we say at the top what changed. This version, dated 1 October 2026, supersedes the
+  version dated 29 September 2026. That one superseded the version dated 4 September 2026, which
+  superseded the version dated 7 July 2026 in full.</p>
 
   <h2>Σύνοψη στα Ελληνικά</h2>
   <p>Το RackUp αποθηκεύει: όνομα, email, κατηγορία παίκτη, προαιρετική φωτογραφία προφίλ (μόνο
@@ -355,8 +366,10 @@
   δεν συνδέεται με τον λογαριασμό σου: η εφαρμογή δεν στέλνει ποτέ το αναγνωριστικό χρήστη σε
   αυτές τις υπηρεσίες.</p>
   <p>Δεν υπάρχουν διαφημίσεις, ούτε διαφημιστικά αναγνωριστικά, ούτε παρακολούθηση σε εφαρμογές
-  άλλων εταιρειών. Δεν πουλάμε δεδομένα. Στο iPhone δεν υπάρχει καθόλου τοποθεσία και καθόλου
-  ειδοποιήσεις push. Στο Android η προαιρετική άδεια τοποθεσίας χρησιμεύει μόνο για την ταξινόμηση
+  άλλων εταιρειών. Δεν πουλάμε δεδομένα. Στο iPhone δεν υπάρχει καθόλου τοποθεσία.
+  Από την έκδοση 2.1.0 υπάρχουν ειδοποιήσεις push και στο iPhone: αν τις επιτρέψεις, κρατάμε στον
+  λογαριασμό σου ένα αναγνωριστικό ειδοποιήσεων για τη συσκευή, μόνο για να σου τις στέλνουμε, και
+  μπορείς να τις κλείσεις από τις Ρυθμίσεις της εφαρμογής ή του iPhone. Στο Android η προαιρετική άδεια τοποθεσίας χρησιμεύει μόνο για την ταξινόμηση
   των αιθουσών κατά απόσταση και <strong>η θέση σου δεν φεύγει ποτέ από τη συσκευή</strong>.</p>
   <p>Διαγραφή λογαριασμού: μέσα από την εφαρμογή (Προφίλ → Ρυθμίσεις → Διαγραφή λογαριασμού) ή με
   email στο <a href="mailto:rackupbilliard@gmail.com">rackupbilliard@gmail.com</a>. Μαζί με τον
