@@ -11,7 +11,7 @@
     "id": "venue-ath-different",
     "name": "Different Billiards Club",
     "city": "Athens",
-    "address": "Στρατάρχου Παπάγου 32, Ζωγράφου",
+    "address": "Στρατάρχου Παπάγου 30-32, Ζωγράφου",
     "sortOrder": 2,
     "phone": "+30 210 779 8623"
   },
@@ -58,7 +58,7 @@
     "id": "venue-ath-jolly",
     "name": "Jolly Billiards Club",
     "city": "Athens",
-    "address": "Ζακύνθου 47, Κυψέλη",
+    "address": "Ζακύνθου 47 & Αιγίνης 75, Κυψέλη",
     "sortOrder": 9,
     "phone": "+30 694 657 7963"
   },
@@ -90,9 +90,9 @@
     "id": "venue-ath-lacasa",
     "name": "La Casa De Billar",
     "city": "Athens",
-    "address": "Τεύθιδος 1, Περιστέρι",
+    "address": "Τευθίδος 1, Περιστέρι",
     "sortOrder": 13,
-    "phone": "+30 210 574 4003"
+    "phone": "+30 210 573 4711"
   },
   {
     "id": "venue-ath-lamorti",
@@ -138,7 +138,7 @@
     "id": "venue-ath-masse",
     "name": "Masse Billiards",
     "city": "Athens",
-    "address": "Ενόπης 2, Βύρωνας",
+    "address": "Ενόπης 2 & Φορμίωνος, Βύρωνας",
     "sortOrder": 19,
     "phone": "+30 210 764 1690"
   },
@@ -147,7 +147,8 @@
     "name": "Optimus Billiard Cafe",
     "city": "Athens",
     "address": "Ελλησπόντου 26-28, Νίκαια",
-    "sortOrder": 20
+    "sortOrder": 20,
+    "phone": "+30 210 492 0405"
   },
   {
     "id": "venue-ath-vscafe",
@@ -155,7 +156,7 @@
     "city": "Athens",
     "address": "Λεωφ. Αγ. Δημητρίου 216, Άγιος Δημήτριος",
     "sortOrder": 21,
-    "phone": "+30 210 937 0882"
+    "phone": "+30 210 937 0880"
   },
   {
     "id": "venue-ath-halloffame",
@@ -439,8 +440,9 @@
     "id": "venue-koz-baraz",
     "name": "Μπαράζ Billiards",
     "city": "Kozani",
-    "address": "Πλατεία Ελευθερίας 3",
-    "sortOrder": 61
+    "address": "Επισκόπου Βενιαμίν 12",
+    "sortOrder": 61,
+    "phone": "+30 694 789 0880"
   },
   {
     "id": "venue-lar-pike",
@@ -468,16 +470,17 @@
   },
   {
     "id": "venue-pre-northwest",
-    "name": "North West Bowling",
+    "name": "Bowling Preveza",
     "city": "Preveza",
     "address": "Επαρχ. Οδός Πρέβεζας 24, Νικόπολη",
-    "sortOrder": 65
+    "sortOrder": 65,
+    "phone": "+30 268 208 9727"
   },
   {
     "id": "venue-arg-8ball",
     "name": "8 Ball Billiard Club",
     "city": "Argos",
-    "address": "Παπανικολάου 2 & Αγ. Κωνσταντίνου",
+    "address": "Παπανικολάου 2",
     "sortOrder": 66,
     "phone": "+30 275 110 2159"
   },
@@ -588,7 +591,7 @@
     "id": "venue-vol-zen",
     "name": "ZEN Billiard Center",
     "city": "Volos",
-    "address": "Μελούνας 21, 1ος όροφος",
+    "address": "Μελούνας 21 & Φερών, 1ος όροφος",
     "sortOrder": 80,
     "phone": "+30 242 140 9804"
   }
