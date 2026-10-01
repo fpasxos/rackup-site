@@ -594,5 +594,13 @@
     "address": "Μελούνας 21 & Φερών, 1ος όροφος",
     "sortOrder": 80,
     "phone": "+30 242 140 9804"
+  },
+  {
+    "id": "venue-koz-mancave",
+    "name": "ManCave",
+    "city": "Kozani",
+    "address": "Κ. Δρίζη 2, 5ος όροφος",
+    "sortOrder": 81,
+    "phone": "+30 697 922 6655"
   }
 ]
