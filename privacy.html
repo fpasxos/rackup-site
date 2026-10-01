@@ -27,16 +27,20 @@
   and iPhone (<code>com.rackup.app</code>)</p>
 
   <div class="card">
-    <p><strong>What changed on 2 October 2026.</strong> These are corrections, and nothing about
-    the apps changed. The version dated 1 October 2026 got three things wrong about the apps as
-    they are, version 2.1.0. It said we log twelve analytics events and attach no venue to any of
-    them: we log 23, and two of them carry the id of a billiard hall. It said no part of the app
-    is readable without signing in. That is true of everything personal in our database, but
-    anyone who has the link to your profile photo can open the photo without signing in, and for
-    reading, our security rules check for a sign-in, not for an account. And it never mentioned
-    your looking-for-a-game post or the list of players you follow. Both are now in the section on
-    who can see what, and in the list of what deletion removes, along with other players' follows
-    of you.</p>
+    <p><strong>What changed on 2 October 2026.</strong> Mostly corrections: the apps did not
+    change. The version dated 1 October 2026 got several things wrong about the apps as they are,
+    version 2.1.0. It said we log twelve analytics events and attach no venue to any of them: we
+    log 23, and two of them carry the id of a billiard hall. It said no part of the app is
+    readable without signing in. That is true of everything personal in our database, but anyone
+    who has the link to your profile photo can open the photo without signing in, and for
+    reading, our security rules check for a sign-in, not for an account. It also left things out:
+    your looking-for-a-game post, the players you follow, the city, usual hall, games and app
+    version on your profile record, and what a notification token is stored with. All of these
+    are now described, and the list of what deletion removes now includes your follows, other
+    players' follows of you and your looking-for-a-game post. One thing is new: since 1 October
+    2026 our server keeps a <strong>player card</strong> for each player, ahead of version 2.2.0
+    of the apps, which is the first to show it. It is described below, and deleting your account
+    deletes it.</p>
     <p><strong>What changed on 1 October 2026.</strong> The iPhone app now has push
     notifications too, from version 2.1.0. If you allow them, it stores a Firebase Cloud
     Messaging token for your iPhone under your account, as the Android app already did, so we can
@@ -74,10 +78,13 @@
   never see them. If you sign in with Apple and choose to hide your address, we store the Apple
   private relay address exactly as Apple gives it to us.</p>
   <p>Your profile record holds your display name, your email address, the skill category you
-  choose for yourself (Pro down to E), a link to your profile photo if you have one, your
-  notification preferences, your language, and a pointer to your most recent venue check-in.
-  <strong>Only you can read your own profile record.</strong> We use it to run your account and
-  to show your name and category on the matches you post or join.</p>
+  choose for yourself (Pro down to E), your city, your usual hall and the games you play if you
+  gave them, a link to your profile photo if you have one, your notification preferences, your
+  language, which version of the app you last used and on which platform, and a pointer to your
+  most recent venue check-in. <strong>Only you can read your own profile record.</strong> We use
+  it to run your account, to show your name and category on the matches you post or join, and
+  to build your player card, described below. The app version also tells us how many players
+  have updated.</p>
 
   <h3>Your profile photo (Android only)</h3>
   <p>If you set a profile photo on Android, the image is resized on your device and uploaded to
@@ -85,6 +92,20 @@
   can view it, because it is shown next to your matches. The iPhone app has no photo picker at
   all, so no photo can be uploaded from an iPhone, and a photo set on Android cannot be removed
   from an iPhone.</p>
+
+  <h3>Your player card</h3>
+  <p>Since 1 October 2026 our server also keeps a player card for each player with an account.
+  Version 2.2.0 of the apps is the first to show cards and to let players find each other by
+  name; no earlier version displays them. The card is a separate record,
+  <code>playerCards/&lt;your user id&gt;</code>, which only our server writes, copying from your
+  profile: your display name, your skill category, your city, your usual hall, the link to your
+  profile photo and the games you play. For search it also holds the beginnings of each word of
+  your name, in Greek and in Greeklish, without accents, and whether you can be found, which is
+  yes unless you turn off <em>Show me in player search</em> in Settings from version 2.2.0. It
+  also holds a yes or no for whether your app is new enough to receive direct challenges, worked
+  out from your app version; the version itself is not copied. <strong>Your card never holds your
+  email address, your language, your notification settings or your push tokens.</strong> Any
+  player with an account can read it.</p>
 
   <h3>What you post and write</h3>
   <p>The app is a noticeboard, so a lot of what it stores is content you create on purpose:</p>
@@ -107,6 +128,14 @@
         the time. There is no coordinate and no location check, and since 27 August 2026 only
         you can read your own check-ins. Check-in records written by older Android versions may
         still contain your display name.</li>
+    <li><strong>Looking for a game</strong>: if you say you are looking for a game, we store a
+        post with the game, the day, the part of the day and either a hall or just your city,
+        together with your display name, skill category and photo. Every signed in player can
+        read it. You can have one at a time. It is deleted when you withdraw it, and otherwise
+        automatically, normally within two hours after that part of the day has ended.</li>
+    <li><strong>Players you follow</strong>: if you follow a player, we store whom you follow
+        and when. Only you can read your list, and the player you follow is not told. When they
+        post a new open match, you get an entry in your activity feed and a push.</li>
     <li><strong>Saved searches, starred venues and your weekly schedule</strong>: private to you.
         Note that an enabled schedule slot posts a public match on your behalf at the time you
         set.</li>
@@ -128,8 +157,10 @@
 
   <h3>Notifications</h3>
   <p>We store a Firebase Cloud Messaging token for each of your devices, Android or iPhone, along
-  with your language, so we can send you push notifications about join requests, match updates,
-  reminders, saved search alerts and, for halls you starred, new games and check-ins there. You
+  with your language, the platform, the app version and build, and the time it was last updated,
+  so we can send you push notifications about join requests, match updates, reminders, saved
+  search alerts, new games from players you follow and, for halls you starred, new games and
+  check-ins there. You
   control these with the switches in Settings and with your device's notification permission.
   The iPhone app asks for that permission once, after you sign in and finish the welcome tour,
   and stores a token only if you allow it; its notifications are delivered through Apple's Push
@@ -223,10 +254,10 @@
     <li><strong>Visible to every signed in player</strong>: your display name, your skill
         category, your profile photo, your reliability figure and verified badge, everything
         on the matches and challenges you post or join, including your notes, scores, dispute
-        status and cancellation notes, and your looking-for-a-game post, which shows your name,
-        category and photo with the game, the hall or just the city, the day and the part of the
-        day. That post is deleted when you withdraw it, and otherwise automatically, normally
-        within two hours after that part of the day has ended.</li>
+        status and cancellation notes, and your looking-for-a-game post.</li>
+    <li><strong>Visible to every player with an account</strong>: your player card, described
+        above, with your display name, skill category, city, usual hall, profile photo and the
+        games you play. Version 2.2.0 of the apps is the first to show it.</li>
     <li><strong>Visible only to us</strong>: abuse reports and feedback messages.</li>
     <li><strong>Nobody without a sign-in, with one exception.</strong> There is no public web
         profile, and the apps have no guest mode, so you cannot look around in either app
@@ -234,7 +265,7 @@
         settings record that tells each app the oldest version we still support, which holds no
         personal data. The exception is your profile photo: its link carries its own access key,
         so anyone who has the link can open the photo without signing in. That link is copied
-        onto your posts, which every signed in player can read.</li>
+        onto your posts, which every signed in player can read, and onto your player card.</li>
   </ul>
   <p>For reading, our security rules check that a request is signed in, not that it comes from an
   account. Firebase also offers a guest sign-in, which it calls anonymous sign-in. The apps do
@@ -316,7 +347,9 @@
   <p>Your sign-in account is deleted immediately. That automatically starts a server-side job
   which removes:</p>
   <ul>
-    <li>your profile record, and with it your name, email, category and photo link;</li>
+    <li>your profile record, and with it your name, email, category, city, usual hall, games
+        and photo link;</li>
+    <li>your player card;</li>
     <li>your profile photo file in Cloud Storage;</li>
     <li>your notification tokens, notification preferences, activity feed, saved searches,
         starred venues, weekly schedule and blocked list;</li>
@@ -402,14 +435,17 @@
   in full.</p>
 
   <h2>Σύνοψη στα Ελληνικά</h2>
-  <p>Το RackUp αποθηκεύει: όνομα, email, κατηγορία παίκτη, προαιρετική φωτογραφία προφίλ (μόνο
-  στο Android) και όσα δημοσιεύεις μέσα στην εφαρμογή, δηλαδή αγώνες, σημειώσεις, σκορ,
-  ακυρώσεις, βαθμολογίες αντιπάλων, check-in σε αίθουσες, αναφορές και σχόλια. Όλα βρίσκονται στο
+  <p>Το RackUp αποθηκεύει: όνομα, email, κατηγορία παίκτη, πόλη, αίθουσα όπου παίζεις συνήθως,
+  τι παίζεις, προαιρετική φωτογραφία προφίλ (μόνο στο Android) και όσα δημοσιεύεις μέσα στην
+  εφαρμογή, δηλαδή αγώνες, σημειώσεις, σκορ, ακυρώσεις, δηλώσεις ότι ψάχνεις παιχνίδι, ποιους
+  ακολουθείς, βαθμολογίες αντιπάλων, check-in σε αίθουσες, αναφορές και σχόλια. Όλα βρίσκονται στο
   Google Firebase (Authentication, Firestore, Cloud Storage, Cloud Functions στην Ευρώπη).</p>
   <p>Το email σου είναι ιδιωτικό. Το όνομα, η κατηγορία και η φωτογραφία σου εμφανίζονται στους
   αγώνες που δημοσιεύεις ή στους οποίους συμμετέχεις, και όταν δηλώνεις ότι ψάχνεις παιχνίδι.
   Τα βλέπουν μόνο όσοι έχουν συνδεθεί στην εφαρμογή, με μία εξαίρεση: όποιος έχει τον σύνδεσμο
-  της φωτογραφίας σου μπορεί να την ανοίξει και χωρίς σύνδεση.</p>
+  της φωτογραφίας σου μπορεί να την ανοίξει και χωρίς σύνδεση. Από 1 Οκτωβρίου 2026 κρατάμε και
+  μια κάρτα παίκτη με το όνομα, την κατηγορία, την πόλη, την αίθουσα, τη φωτογραφία σου και τι
+  παίζεις, που τη βλέπουν όσοι έχουν λογαριασμό. Η έκδοση 2.2.0 είναι η πρώτη που τη δείχνει.</p>
   <p>Και οι δύο εφαρμογές περιλαμβάνουν <strong>Firebase Crashlytics</strong> (αναφορές
   σφαλμάτων) και <strong>Firebase Analytics</strong> (23 συμβάντα χρήσης, όπως η δημοσίευση
   αγώνα ή το check-in σε αίθουσα). Αυτά τα δύο συμβάντα καταγράφουν και ποια αίθουσα αφορούν.
