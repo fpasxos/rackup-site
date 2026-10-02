@@ -8,8 +8,8 @@ path on `getrackup.com`, so links already in the app and on QR codes keep workin
 
 | Path | What it is | Edited by |
 |---|---|---|
-| `index.html` | English home page | hand, except the two `data-count` spans |
-| `support.html`, `privacy.html` | Support and privacy policy (store listings link here, so keep the URLs) | hand |
+| `index.html` | English home page | hand, except the two `data-count` spans and the store links |
+| `support.html`, `privacy.html` | Support and privacy policy (store listings link here, so keep the URLs) | hand, except the store links in `support.html` |
 | `mpiliardo/` | Greek hall directory: index plus one page per city | generator |
 | `en/billiards/` | The same directory in English | generator |
 | `sitemap.xml` | Every page on the site | generator |
@@ -31,7 +31,8 @@ python tools/build_directory.py --import ../rackup/data/venues-backup.json
 
 That refreshes `data/venues.json`, rewrites every page under `mpiliardo/` and
 `en/billiards/`, rewrites `sitemap.xml`, updates the hall and city counts on the
-home page, and removes the folder of any city that no longer has a hall. Review
+home page, tags the store links on `index.html` and `support.html`, and removes
+the folder of any city that no longer has a hall. Review
 the diff, commit, and open a pull request.
 
 Other modes:
@@ -68,6 +69,25 @@ python -m http.server 8000
   `στον Βόλο`). The build stops and says so if one is missing, mirroring
   `GreekCity.kt` in the app.
 - **No en or em dashes** in any generated page. The build stops if one appears.
+
+## Store links on the site
+
+Every Google Play link on the home page, the support page and the directory
+carries a Play referrer, so installs from the site show up by page:
+`&referrer=utm_source%3Dwebsite%26utm_medium%3Dorganic%26utm_campaign%3D<campaign>`.
+The campaign comes from the page path: `home`, `support`, `el-directory`,
+`en-directory`, `el-<city-slug>` and `en-<city-slug>`, lowercase letters, digits
+and single hyphens, at most 26 characters. The generator writes all of them,
+including the two links in the hand-written `index.html` and `support.html`
+(`HAND_PAGES` in the script); a new hand-written page with store links goes there
+too, or the tests fail. Nothing runs on the page: Play reads the referrer.
+
+The App Store links stay plain until RackUp has a provider token. Then
+`PROVIDER_TOKEN` in `tools/build_directory.py` takes the same `pt` as `go/go.js`
+(a test keeps the two equal), a rebuild gives every page
+`ct=web-<campaign>`, and the `web-` tells site installs apart from hall QR scans
+in App Analytics. `tools/match_page.test.js` checks that the share page's App
+Store link matches the home page's, so adjust it in the same change.
 
 ## Match share links
 

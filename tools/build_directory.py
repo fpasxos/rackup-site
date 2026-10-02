@@ -22,6 +22,15 @@ HOME = ROOT / "index.html"
 BASE_URL = "https://getrackup.com"
 APP_STORE = "https://apps.apple.com/gr/app/rackup-find-an-opponent/id6800614202"
 PLAY_STORE = "https://play.google.com/store/apps/details?id=com.rackup.app"
+APP_STORE_ID = "6800614202"
+# The pt from App Store Connect, the same value as PROVIDER_TOKEN in go/go.js. While it is
+# empty the App Store links stay plain; once set, every page's link carries ct=web-<campaign>.
+PROVIDER_TOKEN = ""
+# A page's campaign: lowercase letters, digits and single hyphens. "web-" plus 26 is Apple's 30.
+CAMPAIGN = re.compile(r"[a-z0-9]+(-[a-z0-9]+)*")
+CAMPAIGN_MAX = 26
+# Hand-written pages whose store links the build tags too: file -> site path.
+HAND_PAGES = {"index.html": "", "support.html": "support.html"}
 EMAIL = "rackupbilliard@gmail.com"
 EL_ROOT = "mpiliardo"
 EN_ROOT = "en/billiards"
@@ -172,15 +181,45 @@ def jsonld(data):
     return text.replace("</", "<\\/")
 
 
-def stores(lang):
+def campaign_for(path):
+    """A page's campaign from its site path: home, support, el-directory, el-athens, en-athens."""
+    for root, lang in ((EL_ROOT, "el"), (EN_ROOT, "en")):
+        if path.startswith(f"{root}/"):
+            campaign = f"{lang}-{path[len(root) + 1:].strip('/') or 'directory'}"
+            break
+    else:
+        campaign = re.sub(r"\.html$", "", path) or "home"
+    if len(campaign) > CAMPAIGN_MAX or not CAMPAIGN.fullmatch(campaign):
+        sys.exit(f"{path!r} gives campaign {campaign!r}: use a-z, 0-9 and single hyphens, "
+                 f"at most {CAMPAIGN_MAX} characters")
+    return campaign
+
+
+def play_url(campaign):
+    """Play hands the referrer to the app on first open, so site installs show by page."""
+    return (f"{PLAY_STORE}&referrer=utm_source%3Dwebsite%26utm_medium%3Dorganic"
+            f"%26utm_campaign%3D{campaign}")
+
+
+def app_store_url(campaign, token=None):
+    """Plain until PROVIDER_TOKEN is set. Apple has no source field, so web- marks site installs."""
+    token = PROVIDER_TOKEN if token is None else token
+    if not token:
+        return APP_STORE
+    if not re.fullmatch(r"[A-Za-z0-9]+", token):
+        sys.exit("PROVIDER_TOKEN must be letters and digits only")
+    return f"https://apps.apple.com/app/apple-store/id{APP_STORE_ID}?pt={token}&ct=web-{campaign}&mt=8"
+
+
+def stores(lang, campaign):
     if lang == "el":
         apple, google, note = ("Λήψη από το", "Διαθέσιμο στο", "Για iPhone και Android.")
     else:
         apple, google, note = ("Download on the", "Get it on", "For iPhone and Android.")
     return (
         '<div class="stores">\n'
-        f'  <a class="store" href="{APP_STORE}"><small>{apple}</small>App Store</a>\n'
-        f'  <a class="store" href="{PLAY_STORE}"><small>{google}</small>Google Play</a>\n'
+        f'  <a class="store" href="{esc(app_store_url(campaign))}"><small>{apple}</small>App Store</a>\n'
+        f'  <a class="store" href="{esc(play_url(campaign))}"><small>{google}</small>Google Play</a>\n'
         "</div>\n"
         f'<p class="stores-note">{note}</p>'
     )
@@ -268,6 +307,7 @@ def index_page(cities, lang):
     total = sum(len(h) for h in cities.values())
     count = len(cities)
     root = EL_ROOT if lang == "el" else EN_ROOT
+    campaign = campaign_for(f"{root}/")
     items, list_data = [], []
     for position, city in enumerate(city_order(cities, lang), start=1):
         slug, name_el, in_el = CITIES[city]
@@ -296,7 +336,7 @@ def index_page(cities, lang):
 <section class="cta">
 <h2>Βρες αντίπαλο στο RackUp</h2>
 <p>Ανέβασε αίθουσα, παιχνίδι (8άρα, 9άρα ή 10άρα) και ώρα, και δες ποιος θα πιάσει το τραπέζι. Ή ζήτα να μπεις σε τραπέζι που άνοιξε κάποιος άλλος. Κάθε παίκτης έχει κατηγορία, από Pro μέχρι E, για να ξέρεις τι σε περιμένει.</p>
-{stores("el")}
+{stores("el", campaign)}
 </section>
 <p class="note">Λείπει η αίθουσά σου ή βρήκες κάποιο λάθος; Γράψε μας στο <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>"""
         list_name = "Αίθουσες μπιλιάρδου στην Ελλάδα ανά πόλη"
@@ -313,7 +353,7 @@ def index_page(cities, lang):
 <section class="cta">
 <h2>Find an opponent on RackUp</h2>
 <p>Post the hall, the game (8-Ball, 9-Ball or 10-Ball) and the time, and see who takes the table. Or ask to join a table someone else has posted. Every player carries a category from Pro down to E, so you know what you are walking into.</p>
-{stores("en")}
+{stores("en", campaign)}
 </section>
 <p class="note">Is your hall missing, or did you spot a mistake? Email us at <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>"""
         list_name = "Billiard halls in Greece by city"
@@ -372,6 +412,7 @@ def city_page(city, halls, cities, lang):
     root = EL_ROOT if lang == "el" else EN_ROOT
     alt_root = EN_ROOT if lang == "el" else EL_ROOT
     path = f"{root}/{slug}/"
+    campaign = campaign_for(path)
     hall_list = "\n".join(hall_item(v, lang) for v in halls)
     others = sorted((c for c in cities if c != city),
                     key=lambda c: fold(CITIES[c][1] if lang == "el" else c))
@@ -397,7 +438,7 @@ def city_page(city, halls, cities, lang):
 <section class="cta">
 <h2>Θες αντίπαλο {esc(in_el)};</h2>
 <p>Ανέβασε στο RackUp αίθουσα, παιχνίδι (8άρα, 9άρα ή 10άρα) και ώρα, και δες ποιος θα πιάσει το τραπέζι. Ή ζήτα να μπεις σε τραπέζι που άνοιξε κάποιος άλλος.</p>
-{stores("el")}
+{stores("el", campaign)}
 </section>
 <p class="note">Ο κατάλογος είναι φτιαγμένος στο χέρι και κάτι μπορεί να έχει αλλάξει. Λείπει η αίθουσά σου ή βρήκες κάποιο λάθος; Γράψε μας στο <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
 <nav class="other" aria-label="Άλλες πόλεις">
@@ -425,7 +466,7 @@ def city_page(city, halls, cities, lang):
 <section class="cta">
 <h2>Looking for an opponent in {esc(city)}?</h2>
 <p>Post the hall, the game (8-Ball, 9-Ball or 10-Ball) and the time on RackUp, and see who takes the table. Or ask to join a table someone else has posted.</p>
-{stores("en")}
+{stores("en", campaign)}
 </section>
 <p class="note">The directory is researched by hand, so something may have changed. Is your hall missing, or did you spot a mistake? Email us at <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
 <nav class="other" aria-label="Other cities">
@@ -459,9 +500,8 @@ def sitemap(cities):
             f"{entries}\n</urlset>\n")
 
 
-def home_with_counts(cities):
-    """index.html is hand-written; only its two data-count spans are ours."""
-    text = HOME.read_text(encoding="utf-8")
+def home_with_counts(text, cities):
+    """index.html is hand-written; only its two data-count spans and its store links are ours."""
     counts = {"venues": sum(len(h) for h in cities.values()), "cities": len(cities)}
     for key, value in counts.items():
         text, found = re.subn(rf'(<span data-count="{key}">)\d+(</span>)', rf"\g<1>{value}\g<2>", text)
@@ -470,9 +510,26 @@ def home_with_counts(cities):
     return text
 
 
+def with_store_links(name, text):
+    """Tags every store href on a hand-written page with that page's campaign."""
+    campaign = campaign_for(HAND_PAGES[name])
+    play = f'href="{esc(play_url(campaign))}"'
+    apple = f'href="{esc(app_store_url(campaign))}"'
+    text, plays = re.subn(r'href="https://play\.google\.com/[^"]*"', lambda _: play, text)
+    text, apples = re.subn(r'href="https://apps\.apple\.com/[^"]*"', lambda _: apple, text)
+    if not plays or not apples:
+        sys.exit(f"{name} has no store links to tag; drop it from HAND_PAGES if that is intended")
+    return text
+
+
 def render():
     cities = group_by_city(load_venues())
-    files = {HOME: home_with_counts(cities), ROOT / "sitemap.xml": sitemap(cities)}
+    files = {ROOT / "sitemap.xml": sitemap(cities)}
+    for name in HAND_PAGES:
+        text = (ROOT / name).read_text(encoding="utf-8")
+        if ROOT / name == HOME:
+            text = home_with_counts(text, cities)
+        files[ROOT / name] = with_store_links(name, text)
     for lang, root in (("el", EL_ROOT), ("en", EN_ROOT)):
         files[ROOT / root / "index.html"] = index_page(cities, lang)
         for city, halls in cities.items():
@@ -525,8 +582,9 @@ def main():
         shutil.rmtree(folder)
         print(f"removed {folder.relative_to(ROOT)}")
     cities = group_by_city(load_venues())
-    print(f"Wrote {len(files) - 2} directory pages for {sum(map(len, cities.values()))} halls "
-          f"in {len(cities)} cities, plus sitemap.xml and the counts in index.html")
+    print(f"Wrote {len(files) - 1 - len(HAND_PAGES)} directory pages for {sum(map(len, cities.values()))} halls "
+          f"in {len(cities)} cities, plus sitemap.xml, the counts in index.html and the store links "
+          f"in {' and '.join(HAND_PAGES)}")
 
 
 if __name__ == "__main__":
