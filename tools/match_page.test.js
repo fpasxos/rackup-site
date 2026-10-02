@@ -124,8 +124,10 @@ test("the static store links match the script and the home page", () => {
   const unescape = (s) => s.replace(/&amp;/g, "&");
   const playHref = unescape(html.match(/id="google-play" href="([^"]+)"/)[1]);
   assert.equal(playHref, page.PLAY_URL);
-  const appStoreHref = html.match(/id="app-store" href="([^"]+)"/)[1];
-  assert.ok(read("index.html").includes(`href="${appStoreHref}"`), "App Store link differs from index.html");
+  const appStoreHref = unescape(html.match(/id="app-store" href="([^"]+)"/)[1]);
+  // Share installs carry ct=share under the same pt as go/go.js, mirroring the Play referrer.
+  const token = read("go/go.js").match(/var PROVIDER_TOKEN = "([^"]*)"/)[1];
+  assert.equal(appStoreHref, `https://apps.apple.com/app/apple-store/id6800614202?pt=${token}&ct=share&mt=8`);
 });
 
 test("the page stays out of the sitemap, is published, and has no en or em dash", () => {

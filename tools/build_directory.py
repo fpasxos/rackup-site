@@ -25,7 +25,7 @@ PLAY_STORE = "https://play.google.com/store/apps/details?id=com.rackup.app"
 APP_STORE_ID = "6800614202"
 # The pt from App Store Connect, the same value as PROVIDER_TOKEN in go/go.js. While it is
 # empty the App Store links stay plain; once set, every page's link carries ct=web-<campaign>.
-PROVIDER_TOKEN = ""
+PROVIDER_TOKEN = "129299799"
 # A page's campaign: lowercase letters, digits and single hyphens. "web-" plus 26 is Apple's 30.
 CAMPAIGN = re.compile(r"[a-z0-9]+(-[a-z0-9]+)*")
 CAMPAIGN_MAX = 26
