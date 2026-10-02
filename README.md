@@ -90,8 +90,24 @@ that way; `tools/test_site.py` fails on the old green and gold palette.
   structured data. The venue data licence rules in the app repo's `CLAUDE.md`
   are the reason.
 - **Nothing that is not in the data.** A phone or website appears only when the
-  venue record has one. `LocalBusiness` structured data carries only name,
-  address, city, and phone or website when present.
+  venue record has one, and copy promises phones only when every hall in the
+  city has one. Each hall's structured data is a `SportsActivityLocation` (a
+  `LocalBusiness` type) with only name, address, city, and phone or website
+  when present; its `@id` is the hall's anchor on the Greek city page, the
+  same in both languages.
+- **Titles at most 60 characters, descriptions at most 155** (`TITLE_LIMIT`,
+  `DESCRIPTION_LIMIT`). A one-hall title drops `| RackUp` before it passes 60;
+  districts join a description only while it fits. `tools/test_directory_seo.py`
+  checks every directory page, and that no two descriptions are the same.
+- **Pool is «αμερικάνικο» in Greek, never «πουλ»**; carom is «γαλλικό»
+  (τρίσποντο, μονόσποντο). The tests fail on «πουλ» on any Greek directory page.
+- **Heads are frozen** in `tools/fixtures/directory-head.json`. Before
+  re-capturing it after a deliberate change, run the tests: a copy change fails
+  only `test_directory_pages_keep_their_seo_and_anchors`, while a moved canonical
+  URL, hreflang alternate or hall anchor also fails
+  `test_copy_changes_never_move_a_url_an_alternate_or_an_anchor` (as a venue
+  import that adds or removes halls does, by design). Then
+  `python tools/test_directory_design.py --capture` and read the diff.
 - **A new city needs a line in `CITIES`** at the top of the script: its URL slug,
   Greek name and the Greek "in the city" phrase (`στη Θεσσαλονίκη`,
   `στον Βόλο`). The build stops and says so if one is missing, mirroring
