@@ -201,5 +201,46 @@ class MeaningTest(unittest.TestCase):
             parser.feed(text)
             self.assertEqual(parser.found, [], f"{rel}: Greek read with an English voice")
 
+
+def ld_nodes(text):
+    nodes = []
+    for block in re.findall(r'<script type="application/ld\+json">(.*?)</script>', text, re.S):
+        data = json.loads(block)
+        nodes += data.get("@graph", [data])
+    return nodes
+
+
+class SearchTest(unittest.TestCase):
+
+    def test_robots_txt_allows_crawling_and_names_the_sitemap(self):
+        text = (b.ROOT / "robots.txt").read_text(encoding="utf-8")
+        self.assertIn("Sitemap: https://getrackup.com/sitemap.xml", text)
+        self.assertNotRegex(text, r"(?m)^Disallow:\s*/\s*$", "the whole site would be hidden")
+
+    def test_every_indexable_page_has_a_canonical_and_a_description(self):
+        for rel, text in published(".html"):
+            if 'content="noindex"' in text:
+                continue
+            self.assertRegex(text, r'<link rel="canonical" href="https://getrackup\.com/[^"]*">', rel)
+            description = re.search(r'<meta name="description" content="([^"]+)">', text)
+            self.assertIsNotNone(description, f"{rel} has no meta description")
+
+    def test_homes_lead_with_the_search_words(self):
+        for page, word in (("index.html", "μπιλιάρδο"), ("en/index.html", "billiards")):
+            text = (b.ROOT / page).read_text(encoding="utf-8")
+            self.assertIn(word, re.search(r"<h1>(.*?)</h1>", text, re.S).group(1), page)
+            title = re.search(r"<title>(.*?)</title>", text).group(1)
+            self.assertIn(word, title, page)
+            self.assertTrue(title.endswith("| RackUp"), f"{page}: brand goes last")
+            self.assertLessEqual(len(title), 60, page)
+
+    def test_root_names_the_brand_the_site_and_the_app(self):
+        nodes = {n["@type"]: n for n in ld_nodes((b.ROOT / "index.html").read_text(encoding="utf-8"))}
+        self.assertEqual(nodes["Organization"]["@id"], "https://getrackup.com/#org")
+        self.assertEqual(nodes["WebSite"]["url"], "https://getrackup.com/")
+        self.assertEqual(nodes["MobileApplication"]["@id"], "https://getrackup.com/#app")
+        en = {n["@type"]: n for n in ld_nodes((b.ROOT / "en/index.html").read_text(encoding="utf-8"))}
+        self.assertEqual(en["MobileApplication"]["@id"], "https://getrackup.com/#app", "one app, not two")
+
 if __name__ == "__main__":
     unittest.main()
