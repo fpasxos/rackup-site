@@ -348,6 +348,8 @@ test("the page is noindex, previews well and loads no script but its own", () =>
     assert.match(html, new RegExp(`<meta property="${property}" content="[^"]+">`), property);
   }
   assert.match(html, /<meta property="og:url" content="https:\/\/getrackup\.com\/go\/">/);
+  assert.match(html, /<meta property="og:image" content="https:\/\/getrackup\.com\/assets\/og-card\.png">/);
+  assert.match(html, /<meta name="twitter:card" content="summary_large_image">/);
   const image = html.match(/property="og:image" content="https:\/\/getrackup\.com\/([^"]+)"/)[1];
   assert.ok(fs.existsSync(path.join(ROOT, image)), `og:image ${image} is not in the repo`);
   const scripts = [...html.matchAll(/<script\b[^>]*>/g)].map((m) => m[0]);
@@ -355,10 +357,17 @@ test("the page is noindex, previews well and loads no script but its own", () =>
   assert.doesNotMatch(html, /<img\b|<iframe\b|gtag|googletagmanager|analytics/i);
 });
 
-test("the Content Security Policy is the share page's", () => {
+test("the Content Security Policy is the share page's, and lets the site's own fonts load", () => {
   const csp = (source) => source.match(/http-equiv="Content-Security-Policy" content="([^"]+)"/)[1];
+  assert.equal(csp(html), "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; " +
+    "font-src 'self'; base-uri 'none'; form-action 'none'");
   assert.equal(csp(html), csp(read("m/index.html")));
   assert.match(csp(html), /script-src 'self'/);
+});
+
+test("the page is styled by the site stylesheet and nothing else", () => {
+  const sheets = [...html.matchAll(/<link\b[^>]*rel="stylesheet"[^>]*>/g)].map((m) => m[0]);
+  assert.deepEqual(sheets, ['<link rel="stylesheet" href="../assets/site.css">']);
 });
 
 test("the store buttons exist, the note starts hidden, and the static links are the general ones", () => {

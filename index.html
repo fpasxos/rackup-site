@@ -1,98 +1,230 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="el">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RackUp: find a billiards opponent in Greece</title>
-<meta name="description" content="RackUp is the billiards matchmaking app for Greece, on iPhone and Android. Post a table at a real hall, pick who plays and keep score.">
+<title>Βρες αντίπαλο για μπιλιάρδο σε όλη την Ελλάδα | RackUp</title>
+<meta name="description" content="Το RackUp σε φέρνει σε επαφή με παίκτες μπιλιάρδου για παιχνίδι σε πραγματικές αίθουσες. Αμερικάνικο και γαλλικό. Δωρεάν για iPhone και Android.">
 <link rel="canonical" href="https://getrackup.com/">
+<link rel="alternate" hreflang="el" href="https://getrackup.com/">
+<link rel="alternate" hreflang="en" href="https://getrackup.com/en/">
+<link rel="alternate" hreflang="x-default" href="https://getrackup.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="RackUp">
-<meta property="og:locale" content="en_GB">
-<meta property="og:title" content="RackUp: find a billiards opponent in Greece">
-<meta property="og:description" content="Post when and where you want to play. Another player takes the table. On iPhone and Android.">
+<meta property="og:locale" content="el_GR">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:title" content="RackUp: βρες αντίπαλο για μπιλιάρδο">
+<meta property="og:description" content="Δημοσίευσε πότε και πού θέλεις να παίξεις. Ένας παίκτης παίρνει το τραπέζι. Δωρεάν για iPhone και Android.">
 <meta property="og:url" content="https://getrackup.com/">
-<meta property="og:image" content="https://getrackup.com/assets/icon-512.png">
-<meta name="theme-color" content="#0C3B2A">
+<meta property="og:image" content="https://getrackup.com/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="RackUp: Βρες αντίπαλο. Παίξε απόψε.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0E1512">
 <link rel="icon" type="image/png" href="assets/icon-512.png">
 <link rel="apple-touch-icon" href="assets/icon-512.png">
-<link rel="stylesheet" href="assets/style.css">
+<link rel="preload" href="assets/fonts/commissioner-greek.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://getrackup.com/#org","name":"RackUp","url":"https://getrackup.com/","logo":{"@type":"ImageObject","url":"https://getrackup.com/assets/icon-512.png","width":512,"height":512},"email":"rackupbilliard@gmail.com","sameAs":["https://www.instagram.com/rackupbilliard/","https://www.facebook.com/profile.php?id=61595160743542"],"address":{"@type":"PostalAddress","addressLocality":"Ιωάννινα","addressCountry":"GR"}},{"@type":"WebSite","@id":"https://getrackup.com/#website","name":"RackUp","alternateName":["RackUp Μπιλιάρδο","getrackup.com"],"url":"https://getrackup.com/","inLanguage":["el","en"],"publisher":{"@id":"https://getrackup.com/#org"}},{"@type":"MobileApplication","@id":"https://getrackup.com/#app","name":"RackUp","alternateName":"RackUp Μπιλιάρδο","url":"https://getrackup.com/","description":"Δωρεάν εφαρμογή για να βρίσκεις αντίπαλο για μπιλιάρδο σε πραγματικές αίθουσες στην Ελλάδα. Αμερικάνικο (8-Ball, 9-Ball, 10-Ball) και γαλλικό (τρίσποντο, μονόσποντο).","image":"https://getrackup.com/assets/icon-512.png","screenshot":["https://getrackup.com/assets/img/el-venue-720.webp"],"operatingSystem":"iOS, Android","applicationCategory":"SportsApplication","inLanguage":["el","en"],"countriesSupported":"GR","isAccessibleForFree":true,"publisher":{"@id":"https://getrackup.com/#org"},"sameAs":["https://apps.apple.com/gr/app/id6800614202","https://play.google.com/store/apps/details?id=com.rackup.app"],"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Είναι δωρεάν;","acceptedAnswer":{"@type":"Answer","text":"Ναι. Το RackUp είναι δωρεάν, χωρίς διαφημίσεις και χωρίς αγορές μέσα στην εφαρμογή."}},{"@type":"Question","name":"Ποια παιχνίδια υποστηρίζει;","acceptedAnswer":{"@type":"Answer","text":"Αμερικάνικο: 8-Ball, 9-Ball και 10-Ball. Γαλλικό: τρίσποντο και μονόσποντο. Κάθε δημοσίευση είναι για ένα παιχνίδι, γιατί παίζονται σε διαφορετικά τραπέζια."}},{"@type":"Question","name":"Σε ποιες πόλεις υπάρχει;","acceptedAnswer":{"@type":"Answer","text":"Σε όλη την Ελλάδα, από την Αθήνα και τη Θεσσαλονίκη μέχρι την Κρήτη και τα νησιά. Ο κατάλογος των αιθουσών είναι φτιαγμένος στο χέρι και μεγαλώνει συνέχεια."}},{"@type":"Question","name":"Υπάρχει για iPhone και Android;","acceptedAnswer":{"@type":"Answer","text":"Ναι, και για τα δύο, στα ελληνικά και στα αγγλικά. Στο iPhone συνδέεσαι με Apple, στο Android με Google, και σε όποιο από τα δύο με email."}},{"@type":"Question","name":"Πώς βρίσκω αντίπαλο;","acceptedAnswer":{"@type":"Answer","text":"Δημοσίευσε πότε και πού θέλεις να παίξεις και διάλεξε ποιον θα παίξεις από όσους ζητήσουν να μπουν. Ή δες στη ροή ποιος παίζει απόψε και ζήτα να μπεις εσύ στο τραπέζι του."}}]}]}</script>
 </head>
 <body>
-<header class="top">
-  <a class="brand" href="./">🎱 RackUp</a>
-  <nav>
-    <a href="en/billiards/">Halls by city</a>
-    <a href="support.html">Support</a>
-    <a href="mpiliardo/" hreflang="el" lang="el">Ελληνικά</a>
-  </nav>
+<a class="skip-link" href="#main">Μετάβαση στο περιεχόμενο</a>
+<header class="site-header">
+  <div class="container nav">
+    <a class="wordmark" href="./"><span class="ball b8" aria-hidden="true"><span class="n">8</span></span><span class="wm">RACK<span>UP</span></span></a>
+    <nav class="nav-links" aria-label="Κύριο μενού">
+      <a class="nav-text" href="mpiliardo/">Αίθουσες</a>
+      <a class="nav-text" href="#how">Πώς δουλεύει</a>
+      <a class="nav-text" href="support.html#el">Βοήθεια</a>
+      <a class="lang" href="en/" hreflang="en" lang="en">EN</a>
+      <a class="btn btn-primary btn-sm" href="#download">Κατέβασέ το</a>
+    </nav>
+  </div>
 </header>
-<main>
-  <section class="hero">
-    <div class="ball" aria-hidden="true">🎱</div>
-    <h1>RackUp</h1>
-    <p class="tag">Post when and where you want to play. Another player takes the table.</p>
-    <p>The billiards matchmaking app for Greece. 8-Ball, 9-Ball and 10-Ball players finding
-    opponents for real games at real halls.</p>
-    <div class="stores">
-      <a class="store" href="https://apps.apple.com/app/apple-store/id6800614202?pt=129299799&amp;ct=web-home&amp;mt=8"><small>Download on the</small>App Store</a>
-      <a class="store" href="https://play.google.com/store/apps/details?id=com.rackup.app&amp;referrer=utm_source%3Dwebsite%26utm_medium%3Dorganic%26utm_campaign%3Dhome"><small>Get it on</small>Google Play</a>
+<main id="main">
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow"><span class="live-dot" aria-hidden="true"></span><span><span data-count="venues">76</span> αίθουσες σε <span data-count="cities">27</span> πόλεις</span></span>
+        <h1>Βρες αντίπαλο για μπιλιάρδο. <span class="hl">Παίξε απόψε.</span></h1>
+        <p class="lead">Δημοσίευσε πότε και πού θέλεις να παίξεις. Ένας παίκτης ζητά το τραπέζι κι εσύ διαλέγεις ποιος θα παίξει. Αμερικάνικο και γαλλικό, σε πραγματικές αίθουσες.</p>
+<div class="stores">
+  <a class="btn btn-primary btn-store" href="https://apps.apple.com/app/apple-store/id6800614202?pt=129299799&amp;ct=web-home&amp;mt=8"><svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8 1.5 0 1.9.8 3.2.8 1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8-.1 0-2.5-1-2.5-3.9zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z"/></svg><span><small>Λήψη από το</small>App Store</span></a>
+  <a class="btn btn-ghost btn-store" href="https://play.google.com/store/apps/details?id=com.rackup.app&amp;referrer=utm_source%3Dwebsite%26utm_medium%3Dorganic%26utm_campaign%3Dhome"><svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.8v18.4c0 .6.6 1 1.1.7l16-9.2c.5-.3.5-1.1 0-1.4l-16-9.2C4.6 1.8 4 2.2 4 2.8z"/></svg><span><small>Διαθέσιμο στο</small>Google Play</span></a>
+</div>
+        <ul class="trust">
+          <li>Δωρεάν</li>
+          <li>Χωρίς διαφημίσεις</li>
+          <li>iPhone και Android</li>
+        </ul>
+      </div>
+      <div class="stage">
+        <div class="phone phone-back"><img src="assets/img/el-welcome-360.webp" srcset="assets/img/el-welcome-360.webp 360w, assets/img/el-welcome-720.webp 720w" sizes="(min-width: 980px) 270px, 58vw" width="360" height="783" loading="lazy" alt="Η οθόνη υποδοχής του RackUp με τις μπάλες του αμερικάνικου και του γαλλικού"></div>
+        <div class="phone phone-front"><img src="assets/img/el-venue-360.webp" srcset="assets/img/el-venue-360.webp 360w, assets/img/el-venue-720.webp 720w" sizes="(min-width: 980px) 270px, 58vw" width="360" height="783" fetchpriority="high" alt="Μια αίθουσα στο RackUp, με τα τραπέζια της και το κουμπί για να δημοσιεύσεις ματς εκεί"></div>
+        <div class="toast toast-1" aria-hidden="true"><span class="toast-icon">8</span><div><b>Νέο αίτημα για το τραπέζι σου</b><span>8-Ball · απόψε 21:00</span></div></div>
+        <div class="toast toast-2" aria-hidden="true"><span class="toast-icon good">&#10003;</span><div><b>Το ματς κλείστηκε</b><span>Καλή παρτίδα</span></div></div>
+        <span class="ball b9 float-ball" aria-hidden="true"><span class="n">9</span></span>
+      </div>
     </div>
-    <p class="stores-note">On iPhone and Android, in English and Greek.</p>
-  </section>
+    <div class="strip">
+      <ul class="chips" aria-label="Παιχνίδια">
+        <li class="chip"><span class="ball b8" aria-hidden="true"><span class="n">8</span></span>8-Ball</li>
+        <li class="chip"><span class="ball b9" aria-hidden="true"><span class="n">9</span></span>9-Ball</li>
+        <li class="chip"><span class="ball b10" aria-hidden="true"><span class="n">10</span></span>10-Ball</li>
+        <li class="chip"><span class="ball cr" aria-hidden="true"></span>Τρίσποντο</li>
+        <li class="chip"><span class="ball cy" aria-hidden="true"></span>Μονόσποντο</li>
+      </ul>
+      <div class="stats">
+        <div class="stat"><b><span data-count="venues">76</span></b><span>αίθουσες</span></div>
+        <div class="stat"><b><span data-count="cities">27</span></b><span>πόλεις</span></div>
+        <div class="stat"><b>0 €</b><span>δωρεάν</span></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <section class="features">
-    <h2>What you can do</h2>
-    <ul>
-      <li>
-        <h3>See who is playing tonight</h3>
-        <p>Every open table in one feed, filtered by game, city, venue and level. Already at
-        the hall? Switch on Play Now and your table goes to the top with a LIVE badge.</p>
-      </li>
-      <li>
-        <h3>You pick who plays</h3>
-        <p>Players ask to join your table and you choose, so nobody gets double-booked. Or post
-        an open challenge for anyone inside your tier range. Every player carries a category
-        from Pro down to E, so you know what you are walking into.</p>
-      </li>
-      <li>
-        <h3>Keep score</h3>
-        <p>Report the result and your opponent confirms it. Then comes your win rate, your
-        streak, your head-to-head with every player you have faced, monthly leaderboards by
-        city and venue, six levels and fourteen badges.</p>
-      </li>
-      <li>
-        <h3>Play people who show up</h3>
-        <p>A verified check after five matches with no no-shows, a reputation built on who
-        actually turns up, and block and report from any match.</p>
-      </li>
-      <li>
-        <h3><span data-count="venues">76</span> halls in <span data-count="cities">27</span> cities</h3>
-        <p>A hand-researched directory of Greek billiard halls, with directions in the app.
-        <a href="en/billiards/">Browse the halls by city</a>, or
-        <a href="mpiliardo/" hreflang="el" lang="el">δες τις αίθουσες στα ελληνικά</a>.</p>
-      </li>
-    </ul>
-  </section>
+<section class="section" id="how">
+  <div class="container">
+    <div class="section-head">
+      <h2>Από τη δημοσίευση στην τσόχα, σε τρία βήματα</h2>
+    </div>
+    <ol class="steps">
+      <li class="step"><span class="step-n" aria-hidden="true">01</span><h3>Δημοσίευσε το τραπέζι</h3><p>Αίθουσα, παιχνίδι, μέρα και ώρα. Η δημοσίευσή σου φαίνεται αμέσως στη ροή των παικτών.</p></li>
+      <li class="step"><span class="step-n" aria-hidden="true">02</span><h3>Διάλεξε αντίπαλο</h3><p>Οι παίκτες ζητούν να μπουν κι εσύ αποφασίζεις ποιος παίζει. Κάθε παίκτης έχει κατηγορία, από Pro έως E.</p></li>
+      <li class="step"><span class="step-n" aria-hidden="true">03</span><h3>Παίξε και κράτα σκορ</h3><p>Δηλώνεις το αποτέλεσμα κι ο αντίπαλος το επιβεβαιώνει. Νίκες, σερί και κατάταξη ανεβαίνουν μόνα τους.</p></li>
+    </ol>
+  </div>
+</section>
 
-  <section class="platforms">
-    <h2>iPhone and Android</h2>
-    <p>Everything above works on both. Sign in with Apple on iPhone, or with Google on Android,
-    or use an email address on either.</p>
-    <p>A few things are Android only: the venue map, sorting halls by distance, push
-    notifications, adding a match to your calendar, sharing a match, and a profile photo.</p>
-  </section>
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Όλα όσα χρειάζεσαι για το επόμενο ματς</h2>
+      <p class="lead">Το RackUp κανονίζει το παιχνίδι. Το παιχνίδι γίνεται στην αίθουσα, σε πραγματικό τραπέζι.</p>
+    </div>
+    <div class="bento">
+      <article class="tile tile-wide">
+        <span class="tag">Ροή</span>
+        <h3>Δες ποιος παίζει απόψε</h3>
+        <p>Όλα τα ανοιχτά τραπέζια σε μία ροή, με φίλτρα για παιχνίδι, πόλη, αίθουσα και επίπεδο. Είσαι ήδη στην αίθουσα; Πες το και το τραπέζι σου ανεβαίνει πρώτο με σήμα LIVE.</p>
+        <ul class="mini-feed" aria-hidden="true">
+          <li><span class="ball b8"><span class="n">8</span></span><div><b>8-Ball · Αθήνα</b><span class="when">απόψε 21:00</span></div><span class="live">LIVE</span></li>
+          <li><span class="ball cr"></span><div><b>Τρίσποντο · Θεσσαλονίκη</b><span class="when">αύριο 19:30</span></div></li>
+          <li><span class="ball b9"><span class="n">9</span></span><div><b>9-Ball · Πάτρα</b><span class="when">Σάββατο 18:00</span></div></li>
+        </ul>
+      </article>
+      <article class="tile">
+        <div class="balls" aria-hidden="true"><span class="ball b8"><span class="n">8</span></span><span class="ball cr"></span><span class="ball cy"></span></div>
+        <h3>Αμερικάνικο και γαλλικό</h3>
+        <p>8-Ball, 9-Ball και 10-Ball, αλλά και τρίσποντο και μονόσποντο στις αίθουσες με τραπέζια γαλλικού.</p>
+      </article>
+      <article class="tile">
+        <span class="tag">Εσύ αποφασίζεις</span>
+        <h3>Διαλέγεις αντίπαλο</h3>
+        <p>Κανείς δεν κλείνεται διπλά. Ή άνοιξε πρόκληση για όποιον είναι στο επίπεδό σου.</p>
+      </article>
+      <article class="tile">
+        <span class="tag">Στατιστικά</span>
+        <h3>Κράτα σκορ</h3>
+        <p>Ποσοστό νικών, σερί, το ιστορικό σου με κάθε αντίπαλο, μηνιαίες κατατάξεις ανά πόλη και αίθουσα, έξι επίπεδα και δεκατέσσερα σήματα.</p>
+      </article>
+      <article class="tile">
+        <span class="tag">Αξιοπιστία</span>
+        <h3>Παίκτες που έρχονται</h3>
+        <p>Σήμα επιβεβαίωσης μετά από πέντε ματς χωρίς απουσία, φήμη που χτίζεται από όσους εμφανίζονται, αποκλεισμός και αναφορά από κάθε ματς.</p>
+      </article>
+    </div>
+  </div>
+</section>
 
-  <section>
-    <h2>Need help?</h2>
-    <p>Want to report a player, or found a hall we are missing? Email
-    <a href="mailto:rackupbilliard@gmail.com">rackupbilliard@gmail.com</a>, or read the
-    <a href="support.html">support page</a>.</p>
-  </section>
+<section class="section halls-section" id="halls">
+  <svg class="rack-bg" viewBox="0 0 640 420" aria-hidden="true"><path d="M330 32L572 388H88Z"/><circle class="on" cx="330" cy="92" r="34"/><circle cx="294" cy="153" r="34"/><circle cx="366" cy="153" r="34"/><circle cx="259" cy="215" r="34"/><circle cx="330" cy="215" r="34"/><circle cx="401" cy="215" r="34"/><circle cx="224" cy="276" r="34"/><circle cx="294" cy="276" r="34"/><circle cx="366" cy="276" r="34"/><circle cx="436" cy="276" r="34"/><circle cx="188" cy="338" r="34"/><circle cx="259" cy="338" r="34"/><circle cx="330" cy="338" r="34"/><circle cx="401" cy="338" r="34"/><circle cx="472" cy="338" r="34"/></svg>
+  <div class="container">
+    <div class="section-head">
+      <h2><span data-count="venues">76</span> αίθουσες σε <span data-count="cities">27</span> πόλεις</h2>
+      <p class="lead">Ένας κατάλογος αιθουσών μπιλιάρδου φτιαγμένος στο χέρι, με τη διεύθυνση της καθεμιάς. Διάλεξε πόλη.</p>
+    </div>
+<!-- city-grid -->
+<ul class="city-grid">
+  <li><a href="mpiliardo/athens/"><span class="city">Αθήνα</span> <span class="count">32 αίθουσες</span></a></li>
+  <li><a href="mpiliardo/thessaloniki/"><span class="city">Θεσσαλονίκη</span> <span class="count">6 αίθουσες</span></a></li>
+  <li><a href="mpiliardo/volos/"><span class="city">Βόλος</span> <span class="count">3 αίθουσες</span></a></li>
+  <li><a href="mpiliardo/heraklion/"><span class="city">Ηράκλειο</span> <span class="count">3 αίθουσες</span></a></li>
+  <li><a href="mpiliardo/larissa/"><span class="city">Λάρισα</span> <span class="count">3 αίθουσες</span></a></li>
+  <li><a href="mpiliardo/ioannina/"><span class="city">Ιωάννινα</span> <span class="count">2 αίθουσες</span></a></li>
+  <li><a href="mpiliardo/kavala/"><span class="city">Καβάλα</span> <span class="count">2 αίθουσες</span></a></li>
+  <li><a href="mpiliardo/kozani/"><span class="city">Κοζάνη</span> <span class="count">2 αίθουσες</span></a></li>
+  <li><a href="mpiliardo/korinthos/"><span class="city">Κόρινθος</span> <span class="count">2 αίθουσες</span></a></li>
+  <li><a href="mpiliardo/rethymno/"><span class="city">Ρέθυμνο</span> <span class="count">2 αίθουσες</span></a></li>
+  <li><a href="mpiliardo/chalkida/"><span class="city">Χαλκίδα</span> <span class="count">2 αίθουσες</span></a></li>
+  <li><a href="mpiliardo/chania/"><span class="city">Χανιά</span> <span class="count">2 αίθουσες</span></a></li>
+  <li><a href="mpiliardo/agios-nikolaos/"><span class="city">Άγιος Νικόλαος</span> <span class="count">1 αίθουσα</span></a></li>
+  <li><a href="mpiliardo/aigio/"><span class="city">Αίγιο</span> <span class="count">1 αίθουσα</span></a></li>
+  <li><a href="mpiliardo/argos/"><span class="city">Άργος</span> <span class="count">1 αίθουσα</span></a></li>
+  <li><a href="mpiliardo/kalamata/"><span class="city">Καλαμάτα</span> <span class="count">1 αίθουσα</span></a></li>
+  <li><a href="mpiliardo/corfu/"><span class="city">Κέρκυρα</span> <span class="count">1 αίθουσα</span></a></li>
+  <li><a href="mpiliardo/lamia/"><span class="city">Λαμία</span> <span class="count">1 αίθουσα</span></a></li>
+  <li><a href="mpiliardo/naxos/"><span class="city">Νάξος</span> <span class="count">1 αίθουσα</span></a></li>
+  <li><a href="mpiliardo/nafplio/"><span class="city">Ναύπλιο</span> <span class="count">1 αίθουσα</span></a></li>
+  <li><a href="mpiliardo/patras/"><span class="city">Πάτρα</span> <span class="count">1 αίθουσα</span></a></li>
+  <li><a href="mpiliardo/preveza/"><span class="city">Πρέβεζα</span> <span class="count">1 αίθουσα</span></a></li>
+  <li><a href="mpiliardo/rhodes/"><span class="city">Ρόδος</span> <span class="count">1 αίθουσα</span></a></li>
+  <li><a href="mpiliardo/salamina/"><span class="city">Σαλαμίνα</span> <span class="count">1 αίθουσα</span></a></li>
+  <li><a href="mpiliardo/serres/"><span class="city">Σέρρες</span> <span class="count">1 αίθουσα</span></a></li>
+  <li><a href="mpiliardo/sparti/"><span class="city">Σπάρτη</span> <span class="count">1 αίθουσα</span></a></li>
+  <li><a href="mpiliardo/chios/"><span class="city">Χίος</span> <span class="count">1 αίθουσα</span></a></li>
+</ul>
+<!-- /city-grid -->
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-head center">
+      <h2>Συχνές ερωτήσεις</h2>
+    </div>
+    <div class="faq">
+      <details><summary>Είναι δωρεάν;</summary><p>Ναι. Το RackUp είναι δωρεάν, χωρίς διαφημίσεις και χωρίς αγορές μέσα στην εφαρμογή.</p></details>
+      <details><summary>Ποια παιχνίδια υποστηρίζει;</summary><p>Αμερικάνικο: 8-Ball, 9-Ball και 10-Ball. Γαλλικό: τρίσποντο και μονόσποντο. Κάθε δημοσίευση είναι για ένα παιχνίδι, γιατί παίζονται σε διαφορετικά τραπέζια.</p></details>
+      <details><summary>Σε ποιες πόλεις υπάρχει;</summary><p>Σε όλη την Ελλάδα, από την Αθήνα και τη Θεσσαλονίκη μέχρι την Κρήτη και τα νησιά. Ο κατάλογος των αιθουσών είναι φτιαγμένος στο χέρι και μεγαλώνει συνέχεια.</p></details>
+      <details><summary>Υπάρχει για iPhone και Android;</summary><p>Ναι, και για τα δύο, στα ελληνικά και στα αγγλικά. Στο iPhone συνδέεσαι με Apple, στο Android με Google, και σε όποιο από τα δύο με email.</p></details>
+      <details><summary>Πώς βρίσκω αντίπαλο;</summary><p>Δημοσίευσε πότε και πού θέλεις να παίξεις και διάλεξε ποιον θα παίξεις από όσους ζητήσουν να μπουν. Ή δες στη ροή ποιος παίζει απόψε και ζήτα να μπεις εσύ στο τραπέζι του.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="download">
+  <div class="container">
+    <div class="cta-band">
+      <div class="balls" aria-hidden="true"><span class="ball b8"><span class="n">8</span></span><span class="ball b9"><span class="n">9</span></span><span class="ball b10"><span class="n">10</span></span><span class="ball cw"></span></div>
+      <h2>Το επόμενο ματς σου σε περιμένει</h2>
+      <p>Κατέβασε το RackUp και βρες με ποιον θα παίξεις απόψε. Δωρεάν για iPhone και Android.</p>
+<div class="stores">
+  <a class="btn btn-primary btn-store" href="https://apps.apple.com/app/apple-store/id6800614202?pt=129299799&amp;ct=web-home&amp;mt=8"><svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8 1.5 0 1.9.8 3.2.8 1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8-.1 0-2.5-1-2.5-3.9zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z"/></svg><span><small>Λήψη από το</small>App Store</span></a>
+  <a class="btn btn-ghost btn-store" href="https://play.google.com/store/apps/details?id=com.rackup.app&amp;referrer=utm_source%3Dwebsite%26utm_medium%3Dorganic%26utm_campaign%3Dhome"><svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.8v18.4c0 .6.6 1 1.1.7l16-9.2c.5-.3.5-1.1 0-1.4l-16-9.2C4.6 1.8 4 2.2 4 2.8z"/></svg><span><small>Διαθέσιμο στο</small>Google Play</span></a>
+</div>
+    </div>
+  </div>
+</section>
+
 </main>
-<footer class="site">
-  <p><a href="support.html">Support</a><a href="privacy.html">Privacy Policy</a><a href="mpiliardo/" hreflang="el" lang="el">Αίθουσες μπιλιάρδου</a><a href="mailto:rackupbilliard@gmail.com">rackupbilliard@gmail.com</a></p>
-  <p>RackUp · Ioannina, Greece</p>
+<footer class="site-footer">
+  <div class="container foot">
+    <div>
+      <a class="wordmark" href="./"><span class="ball b8" aria-hidden="true"><span class="n">8</span></span><span class="wm">RACK<span>UP</span></span></a>
+      <p>Βρες αντίπαλο για μπιλιάρδο. Αμερικάνικο και γαλλικό, σε όλη την Ελλάδα.</p>
+      <p>RackUp · Ιωάννινα</p>
+    </div>
+    <nav aria-label="Σύνδεσμοι">
+      <a href="mpiliardo/">Αίθουσες μπιλιάρδου</a>
+      <a href="support.html#el">Υποστήριξη</a>
+      <a href="privacy.html#el">Απόρρητο</a>
+      <a href="mailto:rackupbilliard@gmail.com">rackupbilliard@gmail.com</a>
+    </nav>
+  </div>
 </footer>
 </body>
 </html>

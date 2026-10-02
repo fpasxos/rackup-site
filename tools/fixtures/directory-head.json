@@ -1,0 +1,1328 @@
+{
+ "en/billiards/agios-nikolaos/index.html": {
+  "title": "<title>Billiards in Agios Nikolaos: Billy's Public House | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Billiards in Agios Nikolaos: Billy's Public House, Κ. Σφακιανάκη 17, phone +30 697 024 0215. Find an opponent with the free RackUp app.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/en/billiards/agios-nikolaos/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/agios-nikolaos/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/agios-nikolaos/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/agios-nikolaos/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"en_GB\">",
+   "<meta property=\"og:title\" content=\"Billiards in Agios Nikolaos: Billy's Public House | RackUp\">",
+   "<meta property=\"og:description\" content=\"Billiards in Agios Nikolaos: Billy's Public House, Κ. Σφακιανάκη 17, phone +30 697 024 0215. Find an opponent with the free RackUp app.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/en/billiards/agios-nikolaos/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/en/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Billiard halls\",\"item\":\"https://getrackup.com/en/billiards/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Agios Nikolaos\",\"item\":\"https://getrackup.com/en/billiards/agios-nikolaos/\"}]},{\"@type\":\"ItemList\",\"name\":\"Billiards in Agios Nikolaos\",\"numberOfItems\":1,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/agios-nikolaos/#venue-agn-billys\",\"name\":\"Billy's Public House\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Κ. Σφακιανάκη 17\",\"addressLocality\":\"Άγιος Νικόλαος\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 697 024 0215\"}}]}]}",
+  "venues": [
+   "venue-agn-billys"
+  ]
+ },
+ "en/billiards/aigio/index.html": {
+  "title": "<title>Billiards in Aigio: White Rhino Pool House | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Billiards in Aigio: White Rhino Pool House, Κανελλοπούλου 14, phone +30 698 078 6292. Find an opponent with the free RackUp app.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/en/billiards/aigio/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/aigio/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/aigio/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/aigio/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"en_GB\">",
+   "<meta property=\"og:title\" content=\"Billiards in Aigio: White Rhino Pool House | RackUp\">",
+   "<meta property=\"og:description\" content=\"Billiards in Aigio: White Rhino Pool House, Κανελλοπούλου 14, phone +30 698 078 6292. Find an opponent with the free RackUp app.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/en/billiards/aigio/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/en/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Billiard halls\",\"item\":\"https://getrackup.com/en/billiards/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Aigio\",\"item\":\"https://getrackup.com/en/billiards/aigio/\"}]},{\"@type\":\"ItemList\",\"name\":\"Billiards in Aigio\",\"numberOfItems\":1,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/aigio/#venue-aig-whiterhino\",\"name\":\"White Rhino Pool House\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Κανελλοπούλου 14\",\"addressLocality\":\"Αίγιο\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 698 078 6292\"}}]}]}",
+  "venues": [
+   "venue-aig-whiterhino"
+  ]
+ },
+ "en/billiards/argos/index.html": {
+  "title": "<title>Billiards in Argos: 8 Ball Billiard Club | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Billiards in Argos: 8 Ball Billiard Club, Παπανικολάου 2, phone +30 275 110 2159. Find an opponent with the free RackUp app.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/en/billiards/argos/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/argos/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/argos/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/argos/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"en_GB\">",
+   "<meta property=\"og:title\" content=\"Billiards in Argos: 8 Ball Billiard Club | RackUp\">",
+   "<meta property=\"og:description\" content=\"Billiards in Argos: 8 Ball Billiard Club, Παπανικολάου 2, phone +30 275 110 2159. Find an opponent with the free RackUp app.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/en/billiards/argos/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/en/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Billiard halls\",\"item\":\"https://getrackup.com/en/billiards/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Argos\",\"item\":\"https://getrackup.com/en/billiards/argos/\"}]},{\"@type\":\"ItemList\",\"name\":\"Billiards in Argos\",\"numberOfItems\":1,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/argos/#venue-arg-8ball\",\"name\":\"8 Ball Billiard Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Παπανικολάου 2\",\"addressLocality\":\"Άργος\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 275 110 2159\"}}]}]}",
+  "venues": [
+   "venue-arg-8ball"
+  ]
+ },
+ "en/billiards/athens/index.html": {
+  "title": "<title>Pool and billiards in Athens: 32 halls | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Billiards in Athens: 32 halls with addresses. Areas: Βριλήσσια, Ζωγράφου, Αμπελόκηποι, Καλλιθέα. Find an opponent with the free RackUp app.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/en/billiards/athens/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/athens/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/athens/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/athens/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"en_GB\">",
+   "<meta property=\"og:title\" content=\"Pool and billiards in Athens: 32 halls | RackUp\">",
+   "<meta property=\"og:description\" content=\"Billiards in Athens: 32 halls with addresses. Areas: Βριλήσσια, Ζωγράφου, Αμπελόκηποι, Καλλιθέα. Find an opponent with the free RackUp app.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/en/billiards/athens/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/en/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Billiard halls\",\"item\":\"https://getrackup.com/en/billiards/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Athens\",\"item\":\"https://getrackup.com/en/billiards/athens/\"}]},{\"@type\":\"ItemList\",\"name\":\"Billiards in Athens\",\"numberOfItems\":32,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-king8\",\"name\":\"King 8\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Λεωφ. Πεντέλης 112-114, Βριλήσσια\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 694 455 5733\"}},{\"@type\":\"ListItem\",\"position\":2,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-different\",\"name\":\"Different Billiards Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Στρατάρχου Παπάγου 30-32, Ζωγράφου\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 779 8623\"}},{\"@type\":\"ListItem\",\"position\":3,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-luckyman\",\"name\":\"Lucky Man Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Αχαΐας 46 & Μενεμένη, Αμπελόκηποι\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 692 5477\"}},{\"@type\":\"ListItem\",\"position\":4,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-mister100\",\"name\":\"Mister 100 Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Ηρ. Πολυτεχνείου 6, Καλλιθέα\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 921 5392\"}},{\"@type\":\"ListItem\",\"position\":5,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-superbowl\",\"name\":\"Super Bowl\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Καναπιτσέρη 10, Άγ. Ιωάννης Ρέντης\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 561 3678\"}},{\"@type\":\"ListItem\",\"position\":6,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-blanos\",\"name\":\"Blanos Bowling & Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Λεωφ. Ποσειδώνος 81 & Δούσμανη 3, Γλυφάδα\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 898 0159\"}},{\"@type\":\"ListItem\",\"position\":7,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-gameon\",\"name\":\"Game On Sports Cafe\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Κων/νου Ωραιοπούλου 10, Ηράκλειο\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"}}},{\"@type\":\"ListItem\",\"position\":8,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-jolly\",\"name\":\"Jolly Billiards Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Ζακύνθου 47 & Αιγίνης 75, Κυψέλη\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 694 657 7963\"}},{\"@type\":\"ListItem\",\"position\":9,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-koralli\",\"name\":\"Koralli Billiard Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Δερβενακίων 56, Αγία Παρασκευή\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 601 2838\"}},{\"@type\":\"ListItem\",\"position\":10,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-trisponto\",\"name\":\"Trisponto Billiards Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Πειραιώς 24, Μοσχάτο\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 482 3870\"}},{\"@type\":\"ListItem\",\"position\":11,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-athensbc\",\"name\":\"Athens Billiard Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Αχαρνών 131, Αγ. Παντελεήμονας\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 694 434 0659\"}},{\"@type\":\"ListItem\",\"position\":12,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-lacasa\",\"name\":\"La Casa De Billar\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Τευθίδος 1, Περιστέρι\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 573 4711\"}},{\"@type\":\"ListItem\",\"position\":13,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-lamorti\",\"name\":\"L' Amorti Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Ιωαννίνων 57 & Επιδαύρου, Κολωνός\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 512 4580\"}},{\"@type\":\"ListItem\",\"position\":14,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-europe\",\"name\":\"Europe Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Λεωφ. Ελ. Βενιζέλου 160, Ηλιούπολη\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 993 5174\"}},{\"@type\":\"ListItem\",\"position\":15,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-carom\",\"name\":\"Carom Billiards Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Ηρακλείτου 13, Ίλιον\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 506 1452\"}},{\"@type\":\"ListItem\",\"position\":16,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-enjoy\",\"name\":\"Enjoy Billiards Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Νέας Ελβετίας 5, Βύρωνας\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 764 9074\"}},{\"@type\":\"ListItem\",\"position\":17,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-lostcafe\",\"name\":\"Lost Cafe\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Κουντουριώτου 9, Περιστέρι\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 574 8673\"}},{\"@type\":\"ListItem\",\"position\":18,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-masse\",\"name\":\"Masse Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Ενόπης 2 & Φορμίωνος, Βύρωνας\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 764 1690\"}},{\"@type\":\"ListItem\",\"position\":19,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-optimus\",\"name\":\"Optimus Billiard Cafe\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Ελλησπόντου 26-28, Νίκαια\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 492 0405\"}},{\"@type\":\"ListItem\",\"position\":20,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-vscafe\",\"name\":\"VS Cafe Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Λεωφ. Αγ. Δημητρίου 216, Άγιος Δημήτριος\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 937 0880\"}},{\"@type\":\"ListItem\",\"position\":21,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-halloffame\",\"name\":\"Hall of Fame Billiards Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Καυταντζόγλου 10, Άνω Πατήσια\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 698 031 3798\"}},{\"@type\":\"ListItem\",\"position\":22,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-pir-makridis\",\"name\":\"Makridis Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Λουκά Ράλλη 123, Πειραιάς\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 417 7508\"}},{\"@type\":\"ListItem\",\"position\":23,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-champion\",\"name\":\"Champion Billiards Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Κων/νου Παλαιολόγου 1, Νέα Σμύρνη\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 932 8777\"}},{\"@type\":\"ListItem\",\"position\":24,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-roimat\",\"name\":\"Roi Mat Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Λευκωσίας 5, Πλατεία Αμερικής\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 861 3722\"}},{\"@type\":\"ListItem\",\"position\":25,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-moulos\",\"name\":\"Moulos Billiard Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Ιαλέμου 48, Λαμπρινή\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 292 1712\"}},{\"@type\":\"ListItem\",\"position\":26,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-dion\",\"name\":\"Dion Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Λεωφ. Βασ. Γεωργίου Β' 4, Χαλάνδρι\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 683 0005\"}},{\"@type\":\"ListItem\",\"position\":27,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-presveia\",\"name\":\"Presveia Billiards Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Λεωφ. Κηφισίας 265, Κηφισιά\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 623 0155\"}},{\"@type\":\"ListItem\",\"position\":28,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-bowlingkifisia\",\"name\":\"Bowling Center Kifisia\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Κολοκοτρώνη 1 & Λεβίδου, Κηφισιά\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 808 4662\"}},{\"@type\":\"ListItem\",\"position\":29,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-issa\",\"name\":\"ISSA Workshop\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Αντιφίλου 24, Ιλίσια\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 211 750 3360\"}},{\"@type\":\"ListItem\",\"position\":30,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-safe\",\"name\":\"Safe Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Φιλαδελφείας 57, Μενίδι\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 240 2250\"}},{\"@type\":\"ListItem\",\"position\":31,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-oldschool\",\"name\":\"Oldschool\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Σολωμού 13-15, Εξάρχεια\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"}}},{\"@type\":\"ListItem\",\"position\":32,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-grand\",\"name\":\"Grand Cafe Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Αγίου Νικολάου 102, Άγιοι Ανάργυροι\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 694 882 9950\"}}]}]}",
+  "venues": [
+   "venue-ath-athensbc",
+   "venue-ath-blanos",
+   "venue-ath-bowlingkifisia",
+   "venue-ath-carom",
+   "venue-ath-champion",
+   "venue-ath-different",
+   "venue-ath-dion",
+   "venue-ath-enjoy",
+   "venue-ath-europe",
+   "venue-ath-gameon",
+   "venue-ath-grand",
+   "venue-ath-halloffame",
+   "venue-ath-issa",
+   "venue-ath-jolly",
+   "venue-ath-king8",
+   "venue-ath-koralli",
+   "venue-ath-lacasa",
+   "venue-ath-lamorti",
+   "venue-ath-lostcafe",
+   "venue-ath-luckyman",
+   "venue-ath-masse",
+   "venue-ath-mister100",
+   "venue-ath-moulos",
+   "venue-ath-oldschool",
+   "venue-ath-optimus",
+   "venue-ath-presveia",
+   "venue-ath-roimat",
+   "venue-ath-safe",
+   "venue-ath-superbowl",
+   "venue-ath-trisponto",
+   "venue-ath-vscafe",
+   "venue-pir-makridis"
+  ]
+ },
+ "en/billiards/chalkida/index.html": {
+  "title": "<title>Pool and billiards in Chalkida: 2 halls | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Billiards in Chalkida: 2 halls with addresses and phone numbers. Find an opponent with the free RackUp app.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/en/billiards/chalkida/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/chalkida/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/chalkida/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/chalkida/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"en_GB\">",
+   "<meta property=\"og:title\" content=\"Pool and billiards in Chalkida: 2 halls | RackUp\">",
+   "<meta property=\"og:description\" content=\"Billiards in Chalkida: 2 halls with addresses and phone numbers. Find an opponent with the free RackUp app.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/en/billiards/chalkida/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/en/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Billiard halls\",\"item\":\"https://getrackup.com/en/billiards/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Chalkida\",\"item\":\"https://getrackup.com/en/billiards/chalkida/\"}]},{\"@type\":\"ItemList\",\"name\":\"Billiards in Chalkida\",\"numberOfItems\":2,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/chalkida/#venue-chk-masters\",\"name\":\"Master's Billiard Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Περικλέους Σταύρου 10\",\"addressLocality\":\"Χαλκίδα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 222 102 4050\"}},{\"@type\":\"ListItem\",\"position\":2,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/chalkida/#venue-chk-bowling\",\"name\":\"Bowling Halkida\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Αβάντων 46\",\"addressLocality\":\"Χαλκίδα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 222 108 1663\"}}]}]}",
+  "venues": [
+   "venue-chk-bowling",
+   "venue-chk-masters"
+  ]
+ },
+ "en/billiards/chania/index.html": {
+  "title": "<title>Pool and billiards in Chania: 2 halls | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Billiards in Chania: 2 halls with addresses and phone numbers. Areas: Κουμπές, Νέα Χώρα. Find an opponent with the free RackUp app.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/en/billiards/chania/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/chania/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/chania/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/chania/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"en_GB\">",
+   "<meta property=\"og:title\" content=\"Pool and billiards in Chania: 2 halls | RackUp\">",
+   "<meta property=\"og:description\" content=\"Billiards in Chania: 2 halls with addresses and phone numbers. Areas: Κουμπές, Νέα Χώρα. Find an opponent with the free RackUp app.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/en/billiards/chania/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/en/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Billiard halls\",\"item\":\"https://getrackup.com/en/billiards/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Chania\",\"item\":\"https://getrackup.com/en/billiards/chania/\"}]},{\"@type\":\"ItemList\",\"name\":\"Billiards in Chania\",\"numberOfItems\":2,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/chania/#venue-cha-frozen\",\"name\":\"Frozen Cafe Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Αναγνώστου Γογονή 15, Κουμπές\",\"addressLocality\":\"Χανιά\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 282 108 6858\"}},{\"@type\":\"ListItem\",\"position\":2,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/chania/#venue-cha-aramis\",\"name\":\"ARAMIS Billiard Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Κισσάμου & Σαριδαντώνη 1, Νέα Χώρα\",\"addressLocality\":\"Χανιά\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 697 599 3307\"}}]}]}",
+  "venues": [
+   "venue-cha-aramis",
+   "venue-cha-frozen"
+  ]
+ },
+ "en/billiards/chios/index.html": {
+  "title": "<title>Billiards in Chios: Chios Bowling Billiard Cafe | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Billiards in Chios: Chios Bowling Billiard Cafe, Λεωφ. Αιγαίου 120, phone +30 227 102 8517. Find an opponent with the free RackUp app.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/en/billiards/chios/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/chios/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/chios/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/chios/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"en_GB\">",
+   "<meta property=\"og:title\" content=\"Billiards in Chios: Chios Bowling Billiard Cafe | RackUp\">",
+   "<meta property=\"og:description\" content=\"Billiards in Chios: Chios Bowling Billiard Cafe, Λεωφ. Αιγαίου 120, phone +30 227 102 8517. Find an opponent with the free RackUp app.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/en/billiards/chios/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/en/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Billiard halls\",\"item\":\"https://getrackup.com/en/billiards/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Chios\",\"item\":\"https://getrackup.com/en/billiards/chios/\"}]},{\"@type\":\"ItemList\",\"name\":\"Billiards in Chios\",\"numberOfItems\":1,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/chios/#venue-chi-zoanos\",\"name\":\"Chios Bowling Billiard Cafe\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Λεωφ. Αιγαίου 120\",\"addressLocality\":\"Χίος\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 227 102 8517\"}}]}]}",
+  "venues": [
+   "venue-chi-zoanos"
+  ]
+ },
+ "en/billiards/corfu/index.html": {
+  "title": "<title>Billiards in Corfu: Cue Club Corfu | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Billiards in Corfu: Cue Club Corfu, 3ο χλμ Ε.Ο. Λευκίμμης, Κανάλι, phone +30 266 103 6654. Find an opponent with the free RackUp app.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/en/billiards/corfu/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/corfu/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/corfu/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/corfu/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"en_GB\">",
+   "<meta property=\"og:title\" content=\"Billiards in Corfu: Cue Club Corfu | RackUp\">",
+   "<meta property=\"og:description\" content=\"Billiards in Corfu: Cue Club Corfu, 3ο χλμ Ε.Ο. Λευκίμμης, Κανάλι, phone +30 266 103 6654. Find an opponent with the free RackUp app.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/en/billiards/corfu/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/en/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Billiard halls\",\"item\":\"https://getrackup.com/en/billiards/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Corfu\",\"item\":\"https://getrackup.com/en/billiards/corfu/\"}]},{\"@type\":\"ItemList\",\"name\":\"Billiards in Corfu\",\"numberOfItems\":1,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/corfu/#venue-ker-cueclub\",\"name\":\"Cue Club Corfu\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"3ο χλμ Ε.Ο. Λευκίμμης, Κανάλι\",\"addressLocality\":\"Κέρκυρα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 266 103 6654\"}}]}]}",
+  "venues": [
+   "venue-ker-cueclub"
+  ]
+ },
+ "en/billiards/heraklion/index.html": {
+  "title": "<title>Pool and billiards in Heraklion: 3 halls | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Billiards in Heraklion: 3 halls with addresses and phone numbers. Find an opponent with the free RackUp app.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/en/billiards/heraklion/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/heraklion/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/heraklion/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/heraklion/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"en_GB\">",
+   "<meta property=\"og:title\" content=\"Pool and billiards in Heraklion: 3 halls | RackUp\">",
+   "<meta property=\"og:description\" content=\"Billiards in Heraklion: 3 halls with addresses and phone numbers. Find an opponent with the free RackUp app.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/en/billiards/heraklion/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/en/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Billiard halls\",\"item\":\"https://getrackup.com/en/billiards/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Heraklion\",\"item\":\"https://getrackup.com/en/billiards/heraklion/\"}]},{\"@type\":\"ItemList\",\"name\":\"Billiards in Heraklion\",\"numberOfItems\":3,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/heraklion/#venue-her-champion\",\"name\":\"Champion Billiards Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Καρίας 122, Νέα Αλικαρνασσός\",\"addressLocality\":\"Ηράκλειο\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 281 030 0601\"}},{\"@type\":\"ListItem\",\"position\":2,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/heraklion/#venue-her-king\",\"name\":\"King Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Γ. Γεωργιάδου & Κάσου 17\",\"addressLocality\":\"Ηράκλειο\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 281 028 7782\"}},{\"@type\":\"ListItem\",\"position\":3,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/heraklion/#venue-her-dynamic\",\"name\":\"Dynamic Cafe Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Δημητρίου Κοκότση 2\",\"addressLocality\":\"Ηράκλειο\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 281 030 1313\"}}]}]}",
+  "venues": [
+   "venue-her-champion",
+   "venue-her-dynamic",
+   "venue-her-king"
+  ]
+ },
+ "en/billiards/index.html": {
+  "title": "<title>Billiard halls in Greece by city | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"A directory of 76 billiard halls in 27 Greek cities: Athens, Thessaloniki, Heraklion, Larissa and more. See the addresses and find an opponent with RackUp.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/en/billiards/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"en_GB\">",
+   "<meta property=\"og:title\" content=\"Billiard halls in Greece by city | RackUp\">",
+   "<meta property=\"og:description\" content=\"A directory of 76 billiard halls in 27 Greek cities: Athens, Thessaloniki, Heraklion, Larissa and more. See the addresses and find an opponent with RackUp.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/en/billiards/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/en/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Billiard halls\",\"item\":\"https://getrackup.com/en/billiards/\"}]},{\"@type\":\"ItemList\",\"name\":\"Billiard halls in Greece by city\",\"numberOfItems\":27,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Billiards in Athens\",\"url\":\"https://getrackup.com/en/billiards/athens/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Billiards in Thessaloniki\",\"url\":\"https://getrackup.com/en/billiards/thessaloniki/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Billiards in Heraklion\",\"url\":\"https://getrackup.com/en/billiards/heraklion/\"},{\"@type\":\"ListItem\",\"position\":4,\"name\":\"Billiards in Larissa\",\"url\":\"https://getrackup.com/en/billiards/larissa/\"},{\"@type\":\"ListItem\",\"position\":5,\"name\":\"Billiards in Volos\",\"url\":\"https://getrackup.com/en/billiards/volos/\"},{\"@type\":\"ListItem\",\"position\":6,\"name\":\"Billiards in Chalkida\",\"url\":\"https://getrackup.com/en/billiards/chalkida/\"},{\"@type\":\"ListItem\",\"position\":7,\"name\":\"Billiards in Chania\",\"url\":\"https://getrackup.com/en/billiards/chania/\"},{\"@type\":\"ListItem\",\"position\":8,\"name\":\"Billiards in Ioannina\",\"url\":\"https://getrackup.com/en/billiards/ioannina/\"},{\"@type\":\"ListItem\",\"position\":9,\"name\":\"Billiards in Kavala\",\"url\":\"https://getrackup.com/en/billiards/kavala/\"},{\"@type\":\"ListItem\",\"position\":10,\"name\":\"Billiards in Korinthos\",\"url\":\"https://getrackup.com/en/billiards/korinthos/\"},{\"@type\":\"ListItem\",\"position\":11,\"name\":\"Billiards in Kozani\",\"url\":\"https://getrackup.com/en/billiards/kozani/\"},{\"@type\":\"ListItem\",\"position\":12,\"name\":\"Billiards in Rethymno\",\"url\":\"https://getrackup.com/en/billiards/rethymno/\"},{\"@type\":\"ListItem\",\"position\":13,\"name\":\"Billiards in Agios Nikolaos\",\"url\":\"https://getrackup.com/en/billiards/agios-nikolaos/\"},{\"@type\":\"ListItem\",\"position\":14,\"name\":\"Billiards in Aigio\",\"url\":\"https://getrackup.com/en/billiards/aigio/\"},{\"@type\":\"ListItem\",\"position\":15,\"name\":\"Billiards in Argos\",\"url\":\"https://getrackup.com/en/billiards/argos/\"},{\"@type\":\"ListItem\",\"position\":16,\"name\":\"Billiards in Chios\",\"url\":\"https://getrackup.com/en/billiards/chios/\"},{\"@type\":\"ListItem\",\"position\":17,\"name\":\"Billiards in Corfu\",\"url\":\"https://getrackup.com/en/billiards/corfu/\"},{\"@type\":\"ListItem\",\"position\":18,\"name\":\"Billiards in Kalamata\",\"url\":\"https://getrackup.com/en/billiards/kalamata/\"},{\"@type\":\"ListItem\",\"position\":19,\"name\":\"Billiards in Lamia\",\"url\":\"https://getrackup.com/en/billiards/lamia/\"},{\"@type\":\"ListItem\",\"position\":20,\"name\":\"Billiards in Nafplio\",\"url\":\"https://getrackup.com/en/billiards/nafplio/\"},{\"@type\":\"ListItem\",\"position\":21,\"name\":\"Billiards in Naxos\",\"url\":\"https://getrackup.com/en/billiards/naxos/\"},{\"@type\":\"ListItem\",\"position\":22,\"name\":\"Billiards in Patras\",\"url\":\"https://getrackup.com/en/billiards/patras/\"},{\"@type\":\"ListItem\",\"position\":23,\"name\":\"Billiards in Preveza\",\"url\":\"https://getrackup.com/en/billiards/preveza/\"},{\"@type\":\"ListItem\",\"position\":24,\"name\":\"Billiards in Rhodes\",\"url\":\"https://getrackup.com/en/billiards/rhodes/\"},{\"@type\":\"ListItem\",\"position\":25,\"name\":\"Billiards in Salamina\",\"url\":\"https://getrackup.com/en/billiards/salamina/\"},{\"@type\":\"ListItem\",\"position\":26,\"name\":\"Billiards in Serres\",\"url\":\"https://getrackup.com/en/billiards/serres/\"},{\"@type\":\"ListItem\",\"position\":27,\"name\":\"Billiards in Sparti\",\"url\":\"https://getrackup.com/en/billiards/sparti/\"}]}]}",
+  "venues": []
+ },
+ "en/billiards/ioannina/index.html": {
+  "title": "<title>Pool and billiards in Ioannina: 2 halls | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Billiards in Ioannina: 2 halls with addresses and phone numbers. Find an opponent with the free RackUp app.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/en/billiards/ioannina/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/ioannina/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/ioannina/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/ioannina/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"en_GB\">",
+   "<meta property=\"og:title\" content=\"Pool and billiards in Ioannina: 2 halls | RackUp\">",
+   "<meta property=\"og:description\" content=\"Billiards in Ioannina: 2 halls with addresses and phone numbers. Find an opponent with the free RackUp app.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/en/billiards/ioannina/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/en/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Billiard halls\",\"item\":\"https://getrackup.com/en/billiards/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Ioannina\",\"item\":\"https://getrackup.com/en/billiards/ioannina/\"}]},{\"@type\":\"ItemList\",\"name\":\"Billiards in Ioannina\",\"numberOfItems\":2,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/ioannina/#venue-ioa-jouet\",\"name\":\"Jouet Billiards Hall\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Ανεξαρτησίας 101\",\"addressLocality\":\"Ιωάννινα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 265 103 3215\"}},{\"@type\":\"ListItem\",\"position\":2,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/ioannina/#venue-ioa-break\",\"name\":\"Break Bar & Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Στοά Σάρκα, Πάροδος Πυρσινέλλα\",\"addressLocality\":\"Ιωάννινα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 265 102 2115\"}}]}]}",
+  "venues": [
+   "venue-ioa-break",
+   "venue-ioa-jouet"
+  ]
+ },
+ "en/billiards/kalamata/index.html": {
+  "title": "<title>Billiards in Kalamata: Top Billiards | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Billiards in Kalamata: Top Billiards, Γιαννιτσών &amp; Κουμουνδούρου 13, phone +30 272 111 0315. Find an opponent with the free RackUp app.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/en/billiards/kalamata/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/kalamata/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/kalamata/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/kalamata/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"en_GB\">",
+   "<meta property=\"og:title\" content=\"Billiards in Kalamata: Top Billiards | RackUp\">",
+   "<meta property=\"og:description\" content=\"Billiards in Kalamata: Top Billiards, Γιαννιτσών &amp; Κουμουνδούρου 13, phone +30 272 111 0315. Find an opponent with the free RackUp app.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/en/billiards/kalamata/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/en/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Billiard halls\",\"item\":\"https://getrackup.com/en/billiards/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Kalamata\",\"item\":\"https://getrackup.com/en/billiards/kalamata/\"}]},{\"@type\":\"ItemList\",\"name\":\"Billiards in Kalamata\",\"numberOfItems\":1,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/kalamata/#venue-kal-top\",\"name\":\"Top Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Γιαννιτσών & Κουμουνδούρου 13\",\"addressLocality\":\"Καλαμάτα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 272 111 0315\"}}]}]}",
+  "venues": [
+   "venue-kal-top"
+  ]
+ },
+ "en/billiards/kavala/index.html": {
+  "title": "<title>Pool and billiards in Kavala: 2 halls | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Billiards in Kavala: 2 halls with addresses. Find an opponent with the free RackUp app.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/en/billiards/kavala/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/kavala/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/kavala/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/kavala/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"en_GB\">",
+   "<meta property=\"og:title\" content=\"Pool and billiards in Kavala: 2 halls | RackUp\">",
+   "<meta property=\"og:description\" content=\"Billiards in Kavala: 2 halls with addresses. Find an opponent with the free RackUp app.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/en/billiards/kavala/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/en/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Billiard halls\",\"item\":\"https://getrackup.com/en/billiards/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Kavala\",\"item\":\"https://getrackup.com/en/billiards/kavala/\"}]},{\"@type\":\"ItemList\",\"name\":\"Billiards in Kavala\",\"numberOfItems\":2,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/kavala/#venue-kav-cityhall\",\"name\":\"City Billiard Hall\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Ελ. Βενιζέλου 54\",\"addressLocality\":\"Καβάλα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 251 021 1960\"}},{\"@type\":\"ListItem\",\"position\":2,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/kavala/#venue-kav-tifanys\",\"name\":\"Tifany's Billiard Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Πάροδος Κωστή Παλαμά\",\"addressLocality\":\"Καβάλα\",\"addressCountry\":\"GR\"}}}]}]}",
+  "venues": [
+   "venue-kav-cityhall",
+   "venue-kav-tifanys"
+  ]
+ },
+ "en/billiards/korinthos/index.html": {
+  "title": "<title>Pool and billiards in Korinthos: 2 halls | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Billiards in Korinthos: 2 halls with addresses and phone numbers. Find an opponent with the free RackUp app.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/en/billiards/korinthos/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/korinthos/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/korinthos/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/korinthos/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"en_GB\">",
+   "<meta property=\"og:title\" content=\"Pool and billiards in Korinthos: 2 halls | RackUp\">",
+   "<meta property=\"og:description\" content=\"Billiards in Korinthos: 2 halls with addresses and phone numbers. Find an opponent with the free RackUp app.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/en/billiards/korinthos/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/en/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Billiard halls\",\"item\":\"https://getrackup.com/en/billiards/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Korinthos\",\"item\":\"https://getrackup.com/en/billiards/korinthos/\"}]},{\"@type\":\"ItemList\",\"name\":\"Billiards in Korinthos\",\"numberOfItems\":2,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/korinthos/#venue-kor-kbc\",\"name\":\"KBC Korinthos Bowling Center\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Εθνικής Ανεξαρτησίας 22\",\"addressLocality\":\"Κόρινθος\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 274 107 3001\"}},{\"@type\":\"ListItem\",\"position\":2,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/korinthos/#venue-kor-legend\",\"name\":\"Legend Billiards Cafe\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Αγίου Νικολάου & Δερβενακίων 1\",\"addressLocality\":\"Κόρινθος\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 694 416 8990\"}}]}]}",
+  "venues": [
+   "venue-kor-kbc",
+   "venue-kor-legend"
+  ]
+ },
+ "en/billiards/kozani/index.html": {
+  "title": "<title>Pool and billiards in Kozani: 2 halls | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Billiards in Kozani: 2 halls with addresses and phone numbers. Find an opponent with the free RackUp app.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/en/billiards/kozani/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/kozani/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/kozani/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/kozani/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"en_GB\">",
+   "<meta property=\"og:title\" content=\"Pool and billiards in Kozani: 2 halls | RackUp\">",
+   "<meta property=\"og:description\" content=\"Billiards in Kozani: 2 halls with addresses and phone numbers. Find an opponent with the free RackUp app.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/en/billiards/kozani/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/en/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Billiard halls\",\"item\":\"https://getrackup.com/en/billiards/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Kozani\",\"item\":\"https://getrackup.com/en/billiards/kozani/\"}]},{\"@type\":\"ItemList\",\"name\":\"Billiards in Kozani\",\"numberOfItems\":2,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/kozani/#venue-koz-baraz\",\"name\":\"Μπαράζ Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Επισκόπου Βενιαμίν 12\",\"addressLocality\":\"Κοζάνη\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 694 789 0880\"}},{\"@type\":\"ListItem\",\"position\":2,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/kozani/#venue-koz-mancave\",\"name\":\"ManCave\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Κ. Δρίζη 2, 5ος όροφος\",\"addressLocality\":\"Κοζάνη\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 697 922 6655\"}}]}]}",
+  "venues": [
+   "venue-koz-baraz",
+   "venue-koz-mancave"
+  ]
+ },
+ "en/billiards/lamia/index.html": {
+  "title": "<title>Billiards in Lamia: Prince of Pool | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Billiards in Lamia: Prince of Pool, Υψηλάντη 12, phone +30 223 103 2938. Find an opponent with the free RackUp app.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/en/billiards/lamia/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/lamia/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/lamia/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/lamia/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"en_GB\">",
+   "<meta property=\"og:title\" content=\"Billiards in Lamia: Prince of Pool | RackUp\">",
+   "<meta property=\"og:description\" content=\"Billiards in Lamia: Prince of Pool, Υψηλάντη 12, phone +30 223 103 2938. Find an opponent with the free RackUp app.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/en/billiards/lamia/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/en/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Billiard halls\",\"item\":\"https://getrackup.com/en/billiards/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Lamia\",\"item\":\"https://getrackup.com/en/billiards/lamia/\"}]},{\"@type\":\"ItemList\",\"name\":\"Billiards in Lamia\",\"numberOfItems\":1,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/lamia/#venue-lam-prince\",\"name\":\"Prince of Pool\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Υψηλάντη 12\",\"addressLocality\":\"Λαμία\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 223 103 2938\"}}]}]}",
+  "venues": [
+   "venue-lam-prince"
+  ]
+ },
+ "en/billiards/larissa/index.html": {
+  "title": "<title>Pool and billiards in Larissa: 3 halls | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Billiards in Larissa: 3 halls with addresses. Find an opponent with the free RackUp app.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/en/billiards/larissa/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/larissa/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/larissa/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/larissa/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"en_GB\">",
+   "<meta property=\"og:title\" content=\"Pool and billiards in Larissa: 3 halls | RackUp\">",
+   "<meta property=\"og:description\" content=\"Billiards in Larissa: 3 halls with addresses. Find an opponent with the free RackUp app.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/en/billiards/larissa/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/en/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Billiard halls\",\"item\":\"https://getrackup.com/en/billiards/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Larissa\",\"item\":\"https://getrackup.com/en/billiards/larissa/\"}]},{\"@type\":\"ItemList\",\"name\":\"Billiards in Larissa\",\"numberOfItems\":3,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/larissa/#venue-lar-mr8ball\",\"name\":\"Mr.8ball\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"23ης Οκτωβρίου 66-68\",\"addressLocality\":\"Λάρισα\",\"addressCountry\":\"GR\"}}},{\"@type\":\"ListItem\",\"position\":2,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/larissa/#venue-lar-ennea\",\"name\":\"Ennea Billiards Sport Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Βόλου 1\",\"addressLocality\":\"Λάρισα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 241 400 5409\"}},{\"@type\":\"ListItem\",\"position\":3,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/larissa/#venue-lar-pike\",\"name\":\"Πικέ Sports Café\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Παπάγου 1Α, Γιάννουλη\",\"addressLocality\":\"Λάρισα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 249 559 3444\"}}]}]}",
+  "venues": [
+   "venue-lar-ennea",
+   "venue-lar-mr8ball",
+   "venue-lar-pike"
+  ]
+ },
+ "en/billiards/nafplio/index.html": {
+  "title": "<title>Billiards in Nafplio: Billiard Club 8 Ball | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Billiards in Nafplio: Billiard Club 8 Ball, Αγίου Αδριανού 19, phone +30 275 202 1816. Find an opponent with the free RackUp app.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/en/billiards/nafplio/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/nafplio/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/nafplio/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/nafplio/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"en_GB\">",
+   "<meta property=\"og:title\" content=\"Billiards in Nafplio: Billiard Club 8 Ball | RackUp\">",
+   "<meta property=\"og:description\" content=\"Billiards in Nafplio: Billiard Club 8 Ball, Αγίου Αδριανού 19, phone +30 275 202 1816. Find an opponent with the free RackUp app.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/en/billiards/nafplio/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/en/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Billiard halls\",\"item\":\"https://getrackup.com/en/billiards/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Nafplio\",\"item\":\"https://getrackup.com/en/billiards/nafplio/\"}]},{\"@type\":\"ItemList\",\"name\":\"Billiards in Nafplio\",\"numberOfItems\":1,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/nafplio/#venue-naf-8ball\",\"name\":\"Billiard Club 8 Ball\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Αγίου Αδριανού 19\",\"addressLocality\":\"Ναύπλιο\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 275 202 1816\"}}]}]}",
+  "venues": [
+   "venue-naf-8ball"
+  ]
+ },
+ "en/billiards/naxos/index.html": {
+  "title": "<title>Billiards in Naxos: Galaxias Billiards | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Billiards in Naxos: Galaxias Billiards, Εξαρχοπούλου, Χώρα, phone +30 698 301 0542. Find an opponent with the free RackUp app.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/en/billiards/naxos/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/naxos/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/naxos/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/naxos/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"en_GB\">",
+   "<meta property=\"og:title\" content=\"Billiards in Naxos: Galaxias Billiards | RackUp\">",
+   "<meta property=\"og:description\" content=\"Billiards in Naxos: Galaxias Billiards, Εξαρχοπούλου, Χώρα, phone +30 698 301 0542. Find an opponent with the free RackUp app.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/en/billiards/naxos/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/en/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Billiard halls\",\"item\":\"https://getrackup.com/en/billiards/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Naxos\",\"item\":\"https://getrackup.com/en/billiards/naxos/\"}]},{\"@type\":\"ItemList\",\"name\":\"Billiards in Naxos\",\"numberOfItems\":1,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/naxos/#venue-nax-galaxias\",\"name\":\"Galaxias Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Εξαρχοπούλου, Χώρα\",\"addressLocality\":\"Νάξος\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 698 301 0542\"}}]}]}",
+  "venues": [
+   "venue-nax-galaxias"
+  ]
+ },
+ "en/billiards/patras/index.html": {
+  "title": "<title>Billiards in Patras: Poolevard Billiards Hall | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Billiards in Patras: Poolevard Billiards Hall, Αγίου Ανδρέου 74, phone +30 261 027 4174. Find an opponent with the free RackUp app.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/en/billiards/patras/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/patras/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/patras/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/patras/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"en_GB\">",
+   "<meta property=\"og:title\" content=\"Billiards in Patras: Poolevard Billiards Hall | RackUp\">",
+   "<meta property=\"og:description\" content=\"Billiards in Patras: Poolevard Billiards Hall, Αγίου Ανδρέου 74, phone +30 261 027 4174. Find an opponent with the free RackUp app.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/en/billiards/patras/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/en/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Billiard halls\",\"item\":\"https://getrackup.com/en/billiards/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Patras\",\"item\":\"https://getrackup.com/en/billiards/patras/\"}]},{\"@type\":\"ItemList\",\"name\":\"Billiards in Patras\",\"numberOfItems\":1,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/patras/#venue-pat-poolevard\",\"name\":\"Poolevard Billiards Hall\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Αγίου Ανδρέου 74\",\"addressLocality\":\"Πάτρα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 261 027 4174\"}}]}]}",
+  "venues": [
+   "venue-pat-poolevard"
+  ]
+ },
+ "en/billiards/preveza/index.html": {
+  "title": "<title>Billiards in Preveza: Bowling Preveza | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Billiards in Preveza: Bowling Preveza, Επαρχ. Οδός Πρέβεζας 24, Νικόπολη, phone +30 268 208 9727. Find an opponent with the free RackUp app.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/en/billiards/preveza/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/preveza/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/preveza/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/preveza/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"en_GB\">",
+   "<meta property=\"og:title\" content=\"Billiards in Preveza: Bowling Preveza | RackUp\">",
+   "<meta property=\"og:description\" content=\"Billiards in Preveza: Bowling Preveza, Επαρχ. Οδός Πρέβεζας 24, Νικόπολη, phone +30 268 208 9727. Find an opponent with the free RackUp app.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/en/billiards/preveza/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/en/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Billiard halls\",\"item\":\"https://getrackup.com/en/billiards/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Preveza\",\"item\":\"https://getrackup.com/en/billiards/preveza/\"}]},{\"@type\":\"ItemList\",\"name\":\"Billiards in Preveza\",\"numberOfItems\":1,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/preveza/#venue-pre-northwest\",\"name\":\"Bowling Preveza\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Επαρχ. Οδός Πρέβεζας 24, Νικόπολη\",\"addressLocality\":\"Πρέβεζα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 268 208 9727\"}}]}]}",
+  "venues": [
+   "venue-pre-northwest"
+  ]
+ },
+ "en/billiards/rethymno/index.html": {
+  "title": "<title>Pool and billiards in Rethymno: 2 halls | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Billiards in Rethymno: 2 halls with addresses and phone numbers. Find an opponent with the free RackUp app.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/en/billiards/rethymno/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/rethymno/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/rethymno/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/rethymno/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"en_GB\">",
+   "<meta property=\"og:title\" content=\"Pool and billiards in Rethymno: 2 halls | RackUp\">",
+   "<meta property=\"og:description\" content=\"Billiards in Rethymno: 2 halls with addresses and phone numbers. Find an opponent with the free RackUp app.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/en/billiards/rethymno/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/en/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Billiard halls\",\"item\":\"https://getrackup.com/en/billiards/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Rethymno\",\"item\":\"https://getrackup.com/en/billiards/rethymno/\"}]},{\"@type\":\"ItemList\",\"name\":\"Billiards in Rethymno\",\"numberOfItems\":2,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/rethymno/#venue-ret-billias\",\"name\":\"Billia's Billiards Rethymno\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Γερακάρη 150\",\"addressLocality\":\"Ρέθυμνο\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 283 103 6100\"}},{\"@type\":\"ListItem\",\"position\":2,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/rethymno/#venue-ret-cyber\",\"name\":\"CYBER Sports & Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Πρεβελιδάκη 19 & Παρρέν Σιγανού\",\"addressLocality\":\"Ρέθυμνο\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 283 110 0143\"}}]}]}",
+  "venues": [
+   "venue-ret-billias",
+   "venue-ret-cyber"
+  ]
+ },
+ "en/billiards/rhodes/index.html": {
+  "title": "<title>Billiards in Rhodes: Academy Billiards Rhodes | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Billiards in Rhodes: Academy Billiards Rhodes, Ι. Καποδιστρίου 37, phone +30 224 107 7123. Find an opponent with the free RackUp app.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/en/billiards/rhodes/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/rhodes/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/rhodes/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/rhodes/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"en_GB\">",
+   "<meta property=\"og:title\" content=\"Billiards in Rhodes: Academy Billiards Rhodes | RackUp\">",
+   "<meta property=\"og:description\" content=\"Billiards in Rhodes: Academy Billiards Rhodes, Ι. Καποδιστρίου 37, phone +30 224 107 7123. Find an opponent with the free RackUp app.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/en/billiards/rhodes/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/en/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Billiard halls\",\"item\":\"https://getrackup.com/en/billiards/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Rhodes\",\"item\":\"https://getrackup.com/en/billiards/rhodes/\"}]},{\"@type\":\"ItemList\",\"name\":\"Billiards in Rhodes\",\"numberOfItems\":1,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/rhodes/#venue-rho-academy\",\"name\":\"Academy Billiards Rhodes\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Ι. Καποδιστρίου 37\",\"addressLocality\":\"Ρόδος\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 224 107 7123\"}}]}]}",
+  "venues": [
+   "venue-rho-academy"
+  ]
+ },
+ "en/billiards/salamina/index.html": {
+  "title": "<title>Billiards in Salamina: La Palma Billiards | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Billiards in Salamina: La Palma Billiards, Λεωφ. Αιαντείου 9 &amp; Αμμοχώστου 1, Παλούκια, phone +30 210 464 4030. Find an opponent with the free RackUp app.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/en/billiards/salamina/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/salamina/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/salamina/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/salamina/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"en_GB\">",
+   "<meta property=\"og:title\" content=\"Billiards in Salamina: La Palma Billiards | RackUp\">",
+   "<meta property=\"og:description\" content=\"Billiards in Salamina: La Palma Billiards, Λεωφ. Αιαντείου 9 &amp; Αμμοχώστου 1, Παλούκια, phone +30 210 464 4030. Find an opponent with the free RackUp app.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/en/billiards/salamina/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/en/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Billiard halls\",\"item\":\"https://getrackup.com/en/billiards/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Salamina\",\"item\":\"https://getrackup.com/en/billiards/salamina/\"}]},{\"@type\":\"ItemList\",\"name\":\"Billiards in Salamina\",\"numberOfItems\":1,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/salamina/#venue-sal-lapalma\",\"name\":\"La Palma Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Λεωφ. Αιαντείου 9 & Αμμοχώστου 1, Παλούκια\",\"addressLocality\":\"Σαλαμίνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 464 4030\"}}]}]}",
+  "venues": [
+   "venue-sal-lapalma"
+  ]
+ },
+ "en/billiards/serres/index.html": {
+  "title": "<title>Billiards in Serres: La Vita Center | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Billiards in Serres: La Vita Center, 1ο χλμ Ε.Ο. Σερρών-Νιγρίτας, phone +30 232 103 9606. Find an opponent with the free RackUp app.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/en/billiards/serres/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/serres/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/serres/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/serres/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"en_GB\">",
+   "<meta property=\"og:title\" content=\"Billiards in Serres: La Vita Center | RackUp\">",
+   "<meta property=\"og:description\" content=\"Billiards in Serres: La Vita Center, 1ο χλμ Ε.Ο. Σερρών-Νιγρίτας, phone +30 232 103 9606. Find an opponent with the free RackUp app.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/en/billiards/serres/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/en/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Billiard halls\",\"item\":\"https://getrackup.com/en/billiards/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Serres\",\"item\":\"https://getrackup.com/en/billiards/serres/\"}]},{\"@type\":\"ItemList\",\"name\":\"Billiards in Serres\",\"numberOfItems\":1,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/serres/#venue-ser-lavita\",\"name\":\"La Vita Center\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"1ο χλμ Ε.Ο. Σερρών-Νιγρίτας\",\"addressLocality\":\"Σέρρες\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 232 103 9606\"}}]}]}",
+  "venues": [
+   "venue-ser-lavita"
+  ]
+ },
+ "en/billiards/sparti/index.html": {
+  "title": "<title>Billiards in Sparti: Rolling Billiards &amp; Coffee Bar | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Billiards in Sparti: Rolling Billiards &amp; Coffee Bar, Όθωνος Αμαλίας 104, phone +30 273 102 0888. Find an opponent with the free RackUp app.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/en/billiards/sparti/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/sparti/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/sparti/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/sparti/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"en_GB\">",
+   "<meta property=\"og:title\" content=\"Billiards in Sparti: Rolling Billiards &amp; Coffee Bar | RackUp\">",
+   "<meta property=\"og:description\" content=\"Billiards in Sparti: Rolling Billiards &amp; Coffee Bar, Όθωνος Αμαλίας 104, phone +30 273 102 0888. Find an opponent with the free RackUp app.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/en/billiards/sparti/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/en/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Billiard halls\",\"item\":\"https://getrackup.com/en/billiards/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Sparti\",\"item\":\"https://getrackup.com/en/billiards/sparti/\"}]},{\"@type\":\"ItemList\",\"name\":\"Billiards in Sparti\",\"numberOfItems\":1,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/sparti/#venue-spa-rolling\",\"name\":\"Rolling Billiards & Coffee Bar\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Όθωνος Αμαλίας 104\",\"addressLocality\":\"Σπάρτη\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 273 102 0888\"}}]}]}",
+  "venues": [
+   "venue-spa-rolling"
+  ]
+ },
+ "en/billiards/thessaloniki/index.html": {
+  "title": "<title>Pool and billiards in Thessaloniki: 6 halls | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Billiards in Thessaloniki: 6 halls with addresses and phone numbers. Areas: Συντριβάνι, Ανάληψη, Καλαμαριά. Find an opponent with the free RackUp app.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/en/billiards/thessaloniki/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/thessaloniki/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/thessaloniki/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/thessaloniki/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"en_GB\">",
+   "<meta property=\"og:title\" content=\"Pool and billiards in Thessaloniki: 6 halls | RackUp\">",
+   "<meta property=\"og:description\" content=\"Billiards in Thessaloniki: 6 halls with addresses and phone numbers. Areas: Συντριβάνι, Ανάληψη, Καλαμαριά. Find an opponent with the free RackUp app.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/en/billiards/thessaloniki/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/en/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Billiard halls\",\"item\":\"https://getrackup.com/en/billiards/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Thessaloniki\",\"item\":\"https://getrackup.com/en/billiards/thessaloniki/\"}]},{\"@type\":\"ItemList\",\"name\":\"Billiards in Thessaloniki\",\"numberOfItems\":6,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/thessaloniki/#venue-thes-login\",\"name\":\"Login Billiards Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Καμβουνίων 9, Συντριβάνι\",\"addressLocality\":\"Θεσσαλονίκη\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 231 027 9279\"}},{\"@type\":\"ListItem\",\"position\":2,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/thessaloniki/#venue-thes-bcenter\",\"name\":\"Billiard Center Thessaloniki\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Βασ. Όλγας 123, Ανάληψη\",\"addressLocality\":\"Θεσσαλονίκη\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 231 086 3700\"}},{\"@type\":\"ListItem\",\"position\":3,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/thessaloniki/#venue-thes-juris\",\"name\":\"Cafe Juris Billiard & Bowling\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Αλ. Παπαναστασίου 58\",\"addressLocality\":\"Θεσσαλονίκη\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 231 094 8666\"}},{\"@type\":\"ListItem\",\"position\":4,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/thessaloniki/#venue-thes-tenpin\",\"name\":\"Ten Pin\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Μητρ. Καλλίδου 112, Καλαμαριά\",\"addressLocality\":\"Θεσσαλονίκη\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 231 042 1411\"}},{\"@type\":\"ListItem\",\"position\":5,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/thessaloniki/#venue-thes-elpaso\",\"name\":\"El Paso Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Αγίου Δημητρίου 140\",\"addressLocality\":\"Θεσσαλονίκη\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 694 612 1795\"}},{\"@type\":\"ListItem\",\"position\":6,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/thessaloniki/#venue-thes-pincity\",\"name\":\"Pin City Bowling\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"17ης Νοεμβρίου 75, Πυλαία\",\"addressLocality\":\"Θεσσαλονίκη\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 231 046 3572\"}}]}]}",
+  "venues": [
+   "venue-thes-bcenter",
+   "venue-thes-elpaso",
+   "venue-thes-juris",
+   "venue-thes-login",
+   "venue-thes-pincity",
+   "venue-thes-tenpin"
+  ]
+ },
+ "en/billiards/volos/index.html": {
+  "title": "<title>Pool and billiards in Volos: 3 halls | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Billiards in Volos: 3 halls with addresses and phone numbers. Find an opponent with the free RackUp app.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/en/billiards/volos/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/volos/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/volos/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/volos/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"en_GB\">",
+   "<meta property=\"og:title\" content=\"Pool and billiards in Volos: 3 halls | RackUp\">",
+   "<meta property=\"og:description\" content=\"Billiards in Volos: 3 halls with addresses and phone numbers. Find an opponent with the free RackUp app.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/en/billiards/volos/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/en/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Billiard halls\",\"item\":\"https://getrackup.com/en/billiards/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Volos\",\"item\":\"https://getrackup.com/en/billiards/volos/\"}]},{\"@type\":\"ItemList\",\"name\":\"Billiards in Volos\",\"numberOfItems\":3,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/volos/#venue-vol-galaxy\",\"name\":\"Galaxy Fun 'n Bowl\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Γιαννιτσών 29\",\"addressLocality\":\"Βόλος\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 242 110 2080\"}},{\"@type\":\"ListItem\",\"position\":2,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/volos/#venue-vol-break\",\"name\":\"BREAK Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Μακρυνίτσας 25\",\"addressLocality\":\"Βόλος\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 242 110 6338\"}},{\"@type\":\"ListItem\",\"position\":3,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/volos/#venue-vol-zen\",\"name\":\"ZEN Billiard Center\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Μελούνας 21 & Φερών, 1ος όροφος\",\"addressLocality\":\"Βόλος\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 242 140 9804\"}}]}]}",
+  "venues": [
+   "venue-vol-break",
+   "venue-vol-galaxy",
+   "venue-vol-zen"
+  ]
+ },
+ "mpiliardo/agios-nikolaos/index.html": {
+  "title": "<title>Μπιλιάρδο στον Άγιο Νικόλαο: Billy's Public House | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Μπιλιάρδο στον Άγιο Νικόλαο: Billy's Public House, Κ. Σφακιανάκη 17, τηλ. +30 697 024 0215. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/mpiliardo/agios-nikolaos/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/agios-nikolaos/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/agios-nikolaos/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/agios-nikolaos/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"el_GR\">",
+   "<meta property=\"og:title\" content=\"Μπιλιάρδο στον Άγιο Νικόλαο: Billy's Public House | RackUp\">",
+   "<meta property=\"og:description\" content=\"Μπιλιάρδο στον Άγιο Νικόλαο: Billy's Public House, Κ. Σφακιανάκη 17, τηλ. +30 697 024 0215. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/mpiliardo/agios-nikolaos/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Αίθουσες μπιλιάρδου\",\"item\":\"https://getrackup.com/mpiliardo/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Άγιος Νικόλαος\",\"item\":\"https://getrackup.com/mpiliardo/agios-nikolaos/\"}]},{\"@type\":\"ItemList\",\"name\":\"Μπιλιάρδο στον Άγιο Νικόλαο\",\"numberOfItems\":1,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/agios-nikolaos/#venue-agn-billys\",\"name\":\"Billy's Public House\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Κ. Σφακιανάκη 17\",\"addressLocality\":\"Άγιος Νικόλαος\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 697 024 0215\"}}]}]}",
+  "venues": [
+   "venue-agn-billys"
+  ]
+ },
+ "mpiliardo/aigio/index.html": {
+  "title": "<title>Μπιλιάρδο στο Αίγιο: White Rhino Pool House | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Μπιλιάρδο στο Αίγιο: White Rhino Pool House, Κανελλοπούλου 14, τηλ. +30 698 078 6292. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/mpiliardo/aigio/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/aigio/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/aigio/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/aigio/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"el_GR\">",
+   "<meta property=\"og:title\" content=\"Μπιλιάρδο στο Αίγιο: White Rhino Pool House | RackUp\">",
+   "<meta property=\"og:description\" content=\"Μπιλιάρδο στο Αίγιο: White Rhino Pool House, Κανελλοπούλου 14, τηλ. +30 698 078 6292. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/mpiliardo/aigio/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Αίθουσες μπιλιάρδου\",\"item\":\"https://getrackup.com/mpiliardo/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Αίγιο\",\"item\":\"https://getrackup.com/mpiliardo/aigio/\"}]},{\"@type\":\"ItemList\",\"name\":\"Μπιλιάρδο στο Αίγιο\",\"numberOfItems\":1,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/aigio/#venue-aig-whiterhino\",\"name\":\"White Rhino Pool House\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Κανελλοπούλου 14\",\"addressLocality\":\"Αίγιο\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 698 078 6292\"}}]}]}",
+  "venues": [
+   "venue-aig-whiterhino"
+  ]
+ },
+ "mpiliardo/argos/index.html": {
+  "title": "<title>Μπιλιάρδο στο Άργος: 8 Ball Billiard Club | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Μπιλιάρδο στο Άργος: 8 Ball Billiard Club, Παπανικολάου 2, τηλ. +30 275 110 2159. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/mpiliardo/argos/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/argos/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/argos/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/argos/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"el_GR\">",
+   "<meta property=\"og:title\" content=\"Μπιλιάρδο στο Άργος: 8 Ball Billiard Club | RackUp\">",
+   "<meta property=\"og:description\" content=\"Μπιλιάρδο στο Άργος: 8 Ball Billiard Club, Παπανικολάου 2, τηλ. +30 275 110 2159. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/mpiliardo/argos/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Αίθουσες μπιλιάρδου\",\"item\":\"https://getrackup.com/mpiliardo/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Άργος\",\"item\":\"https://getrackup.com/mpiliardo/argos/\"}]},{\"@type\":\"ItemList\",\"name\":\"Μπιλιάρδο στο Άργος\",\"numberOfItems\":1,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/argos/#venue-arg-8ball\",\"name\":\"8 Ball Billiard Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Παπανικολάου 2\",\"addressLocality\":\"Άργος\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 275 110 2159\"}}]}]}",
+  "venues": [
+   "venue-arg-8ball"
+  ]
+ },
+ "mpiliardo/athens/index.html": {
+  "title": "<title>Μπιλιάρδο στην Αθήνα: 32 αίθουσες μπιλιάρδου | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Μπιλιάρδο στην Αθήνα: 32 αίθουσες με διευθύνσεις. Περιοχές: Βριλήσσια, Ζωγράφου, Αμπελόκηποι, Καλλιθέα. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/mpiliardo/athens/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/athens/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/athens/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/athens/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"el_GR\">",
+   "<meta property=\"og:title\" content=\"Μπιλιάρδο στην Αθήνα: 32 αίθουσες μπιλιάρδου | RackUp\">",
+   "<meta property=\"og:description\" content=\"Μπιλιάρδο στην Αθήνα: 32 αίθουσες με διευθύνσεις. Περιοχές: Βριλήσσια, Ζωγράφου, Αμπελόκηποι, Καλλιθέα. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/mpiliardo/athens/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Αίθουσες μπιλιάρδου\",\"item\":\"https://getrackup.com/mpiliardo/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Αθήνα\",\"item\":\"https://getrackup.com/mpiliardo/athens/\"}]},{\"@type\":\"ItemList\",\"name\":\"Μπιλιάρδο στην Αθήνα\",\"numberOfItems\":32,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-king8\",\"name\":\"King 8\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Λεωφ. Πεντέλης 112-114, Βριλήσσια\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 694 455 5733\"}},{\"@type\":\"ListItem\",\"position\":2,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-different\",\"name\":\"Different Billiards Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Στρατάρχου Παπάγου 30-32, Ζωγράφου\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 779 8623\"}},{\"@type\":\"ListItem\",\"position\":3,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-luckyman\",\"name\":\"Lucky Man Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Αχαΐας 46 & Μενεμένη, Αμπελόκηποι\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 692 5477\"}},{\"@type\":\"ListItem\",\"position\":4,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-mister100\",\"name\":\"Mister 100 Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Ηρ. Πολυτεχνείου 6, Καλλιθέα\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 921 5392\"}},{\"@type\":\"ListItem\",\"position\":5,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-superbowl\",\"name\":\"Super Bowl\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Καναπιτσέρη 10, Άγ. Ιωάννης Ρέντης\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 561 3678\"}},{\"@type\":\"ListItem\",\"position\":6,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-blanos\",\"name\":\"Blanos Bowling & Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Λεωφ. Ποσειδώνος 81 & Δούσμανη 3, Γλυφάδα\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 898 0159\"}},{\"@type\":\"ListItem\",\"position\":7,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-gameon\",\"name\":\"Game On Sports Cafe\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Κων/νου Ωραιοπούλου 10, Ηράκλειο\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"}}},{\"@type\":\"ListItem\",\"position\":8,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-jolly\",\"name\":\"Jolly Billiards Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Ζακύνθου 47 & Αιγίνης 75, Κυψέλη\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 694 657 7963\"}},{\"@type\":\"ListItem\",\"position\":9,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-koralli\",\"name\":\"Koralli Billiard Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Δερβενακίων 56, Αγία Παρασκευή\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 601 2838\"}},{\"@type\":\"ListItem\",\"position\":10,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-trisponto\",\"name\":\"Trisponto Billiards Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Πειραιώς 24, Μοσχάτο\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 482 3870\"}},{\"@type\":\"ListItem\",\"position\":11,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-athensbc\",\"name\":\"Athens Billiard Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Αχαρνών 131, Αγ. Παντελεήμονας\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 694 434 0659\"}},{\"@type\":\"ListItem\",\"position\":12,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-lacasa\",\"name\":\"La Casa De Billar\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Τευθίδος 1, Περιστέρι\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 573 4711\"}},{\"@type\":\"ListItem\",\"position\":13,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-lamorti\",\"name\":\"L' Amorti Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Ιωαννίνων 57 & Επιδαύρου, Κολωνός\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 512 4580\"}},{\"@type\":\"ListItem\",\"position\":14,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-europe\",\"name\":\"Europe Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Λεωφ. Ελ. Βενιζέλου 160, Ηλιούπολη\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 993 5174\"}},{\"@type\":\"ListItem\",\"position\":15,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-carom\",\"name\":\"Carom Billiards Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Ηρακλείτου 13, Ίλιον\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 506 1452\"}},{\"@type\":\"ListItem\",\"position\":16,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-enjoy\",\"name\":\"Enjoy Billiards Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Νέας Ελβετίας 5, Βύρωνας\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 764 9074\"}},{\"@type\":\"ListItem\",\"position\":17,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-lostcafe\",\"name\":\"Lost Cafe\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Κουντουριώτου 9, Περιστέρι\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 574 8673\"}},{\"@type\":\"ListItem\",\"position\":18,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-masse\",\"name\":\"Masse Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Ενόπης 2 & Φορμίωνος, Βύρωνας\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 764 1690\"}},{\"@type\":\"ListItem\",\"position\":19,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-optimus\",\"name\":\"Optimus Billiard Cafe\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Ελλησπόντου 26-28, Νίκαια\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 492 0405\"}},{\"@type\":\"ListItem\",\"position\":20,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-vscafe\",\"name\":\"VS Cafe Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Λεωφ. Αγ. Δημητρίου 216, Άγιος Δημήτριος\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 937 0880\"}},{\"@type\":\"ListItem\",\"position\":21,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-halloffame\",\"name\":\"Hall of Fame Billiards Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Καυταντζόγλου 10, Άνω Πατήσια\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 698 031 3798\"}},{\"@type\":\"ListItem\",\"position\":22,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-pir-makridis\",\"name\":\"Makridis Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Λουκά Ράλλη 123, Πειραιάς\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 417 7508\"}},{\"@type\":\"ListItem\",\"position\":23,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-champion\",\"name\":\"Champion Billiards Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Κων/νου Παλαιολόγου 1, Νέα Σμύρνη\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 932 8777\"}},{\"@type\":\"ListItem\",\"position\":24,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-roimat\",\"name\":\"Roi Mat Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Λευκωσίας 5, Πλατεία Αμερικής\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 861 3722\"}},{\"@type\":\"ListItem\",\"position\":25,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-moulos\",\"name\":\"Moulos Billiard Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Ιαλέμου 48, Λαμπρινή\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 292 1712\"}},{\"@type\":\"ListItem\",\"position\":26,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-dion\",\"name\":\"Dion Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Λεωφ. Βασ. Γεωργίου Β' 4, Χαλάνδρι\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 683 0005\"}},{\"@type\":\"ListItem\",\"position\":27,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-presveia\",\"name\":\"Presveia Billiards Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Λεωφ. Κηφισίας 265, Κηφισιά\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 623 0155\"}},{\"@type\":\"ListItem\",\"position\":28,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-bowlingkifisia\",\"name\":\"Bowling Center Kifisia\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Κολοκοτρώνη 1 & Λεβίδου, Κηφισιά\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 808 4662\"}},{\"@type\":\"ListItem\",\"position\":29,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-issa\",\"name\":\"ISSA Workshop\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Αντιφίλου 24, Ιλίσια\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 211 750 3360\"}},{\"@type\":\"ListItem\",\"position\":30,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-safe\",\"name\":\"Safe Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Φιλαδελφείας 57, Μενίδι\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 240 2250\"}},{\"@type\":\"ListItem\",\"position\":31,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-oldschool\",\"name\":\"Oldschool\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Σολωμού 13-15, Εξάρχεια\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"}}},{\"@type\":\"ListItem\",\"position\":32,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/athens/#venue-ath-grand\",\"name\":\"Grand Cafe Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Αγίου Νικολάου 102, Άγιοι Ανάργυροι\",\"addressLocality\":\"Αθήνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 694 882 9950\"}}]}]}",
+  "venues": [
+   "venue-ath-athensbc",
+   "venue-ath-blanos",
+   "venue-ath-bowlingkifisia",
+   "venue-ath-carom",
+   "venue-ath-champion",
+   "venue-ath-different",
+   "venue-ath-dion",
+   "venue-ath-enjoy",
+   "venue-ath-europe",
+   "venue-ath-gameon",
+   "venue-ath-grand",
+   "venue-ath-halloffame",
+   "venue-ath-issa",
+   "venue-ath-jolly",
+   "venue-ath-king8",
+   "venue-ath-koralli",
+   "venue-ath-lacasa",
+   "venue-ath-lamorti",
+   "venue-ath-lostcafe",
+   "venue-ath-luckyman",
+   "venue-ath-masse",
+   "venue-ath-mister100",
+   "venue-ath-moulos",
+   "venue-ath-oldschool",
+   "venue-ath-optimus",
+   "venue-ath-presveia",
+   "venue-ath-roimat",
+   "venue-ath-safe",
+   "venue-ath-superbowl",
+   "venue-ath-trisponto",
+   "venue-ath-vscafe",
+   "venue-pir-makridis"
+  ]
+ },
+ "mpiliardo/chalkida/index.html": {
+  "title": "<title>Μπιλιάρδο στη Χαλκίδα: 2 αίθουσες μπιλιάρδου | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Μπιλιάρδο στη Χαλκίδα: 2 αίθουσες με διευθύνσεις και τηλέφωνα. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/mpiliardo/chalkida/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/chalkida/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/chalkida/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/chalkida/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"el_GR\">",
+   "<meta property=\"og:title\" content=\"Μπιλιάρδο στη Χαλκίδα: 2 αίθουσες μπιλιάρδου | RackUp\">",
+   "<meta property=\"og:description\" content=\"Μπιλιάρδο στη Χαλκίδα: 2 αίθουσες με διευθύνσεις και τηλέφωνα. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/mpiliardo/chalkida/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Αίθουσες μπιλιάρδου\",\"item\":\"https://getrackup.com/mpiliardo/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Χαλκίδα\",\"item\":\"https://getrackup.com/mpiliardo/chalkida/\"}]},{\"@type\":\"ItemList\",\"name\":\"Μπιλιάρδο στη Χαλκίδα\",\"numberOfItems\":2,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/chalkida/#venue-chk-masters\",\"name\":\"Master's Billiard Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Περικλέους Σταύρου 10\",\"addressLocality\":\"Χαλκίδα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 222 102 4050\"}},{\"@type\":\"ListItem\",\"position\":2,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/chalkida/#venue-chk-bowling\",\"name\":\"Bowling Halkida\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Αβάντων 46\",\"addressLocality\":\"Χαλκίδα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 222 108 1663\"}}]}]}",
+  "venues": [
+   "venue-chk-bowling",
+   "venue-chk-masters"
+  ]
+ },
+ "mpiliardo/chania/index.html": {
+  "title": "<title>Μπιλιάρδο στα Χανιά: 2 αίθουσες μπιλιάρδου | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Μπιλιάρδο στα Χανιά: 2 αίθουσες με διευθύνσεις και τηλέφωνα. Περιοχές: Κουμπές, Νέα Χώρα. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/mpiliardo/chania/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/chania/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/chania/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/chania/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"el_GR\">",
+   "<meta property=\"og:title\" content=\"Μπιλιάρδο στα Χανιά: 2 αίθουσες μπιλιάρδου | RackUp\">",
+   "<meta property=\"og:description\" content=\"Μπιλιάρδο στα Χανιά: 2 αίθουσες με διευθύνσεις και τηλέφωνα. Περιοχές: Κουμπές, Νέα Χώρα. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/mpiliardo/chania/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Αίθουσες μπιλιάρδου\",\"item\":\"https://getrackup.com/mpiliardo/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Χανιά\",\"item\":\"https://getrackup.com/mpiliardo/chania/\"}]},{\"@type\":\"ItemList\",\"name\":\"Μπιλιάρδο στα Χανιά\",\"numberOfItems\":2,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/chania/#venue-cha-frozen\",\"name\":\"Frozen Cafe Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Αναγνώστου Γογονή 15, Κουμπές\",\"addressLocality\":\"Χανιά\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 282 108 6858\"}},{\"@type\":\"ListItem\",\"position\":2,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/chania/#venue-cha-aramis\",\"name\":\"ARAMIS Billiard Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Κισσάμου & Σαριδαντώνη 1, Νέα Χώρα\",\"addressLocality\":\"Χανιά\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 697 599 3307\"}}]}]}",
+  "venues": [
+   "venue-cha-aramis",
+   "venue-cha-frozen"
+  ]
+ },
+ "mpiliardo/chios/index.html": {
+  "title": "<title>Μπιλιάρδο στη Χίο: Chios Bowling Billiard Cafe | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Μπιλιάρδο στη Χίο: Chios Bowling Billiard Cafe, Λεωφ. Αιγαίου 120, τηλ. +30 227 102 8517. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/mpiliardo/chios/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/chios/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/chios/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/chios/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"el_GR\">",
+   "<meta property=\"og:title\" content=\"Μπιλιάρδο στη Χίο: Chios Bowling Billiard Cafe | RackUp\">",
+   "<meta property=\"og:description\" content=\"Μπιλιάρδο στη Χίο: Chios Bowling Billiard Cafe, Λεωφ. Αιγαίου 120, τηλ. +30 227 102 8517. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/mpiliardo/chios/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Αίθουσες μπιλιάρδου\",\"item\":\"https://getrackup.com/mpiliardo/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Χίος\",\"item\":\"https://getrackup.com/mpiliardo/chios/\"}]},{\"@type\":\"ItemList\",\"name\":\"Μπιλιάρδο στη Χίο\",\"numberOfItems\":1,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/chios/#venue-chi-zoanos\",\"name\":\"Chios Bowling Billiard Cafe\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Λεωφ. Αιγαίου 120\",\"addressLocality\":\"Χίος\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 227 102 8517\"}}]}]}",
+  "venues": [
+   "venue-chi-zoanos"
+  ]
+ },
+ "mpiliardo/corfu/index.html": {
+  "title": "<title>Μπιλιάρδο στην Κέρκυρα: Cue Club Corfu | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Μπιλιάρδο στην Κέρκυρα: Cue Club Corfu, 3ο χλμ Ε.Ο. Λευκίμμης, Κανάλι, τηλ. +30 266 103 6654. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/mpiliardo/corfu/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/corfu/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/corfu/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/corfu/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"el_GR\">",
+   "<meta property=\"og:title\" content=\"Μπιλιάρδο στην Κέρκυρα: Cue Club Corfu | RackUp\">",
+   "<meta property=\"og:description\" content=\"Μπιλιάρδο στην Κέρκυρα: Cue Club Corfu, 3ο χλμ Ε.Ο. Λευκίμμης, Κανάλι, τηλ. +30 266 103 6654. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/mpiliardo/corfu/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Αίθουσες μπιλιάρδου\",\"item\":\"https://getrackup.com/mpiliardo/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Κέρκυρα\",\"item\":\"https://getrackup.com/mpiliardo/corfu/\"}]},{\"@type\":\"ItemList\",\"name\":\"Μπιλιάρδο στην Κέρκυρα\",\"numberOfItems\":1,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/corfu/#venue-ker-cueclub\",\"name\":\"Cue Club Corfu\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"3ο χλμ Ε.Ο. Λευκίμμης, Κανάλι\",\"addressLocality\":\"Κέρκυρα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 266 103 6654\"}}]}]}",
+  "venues": [
+   "venue-ker-cueclub"
+  ]
+ },
+ "mpiliardo/heraklion/index.html": {
+  "title": "<title>Μπιλιάρδο στο Ηράκλειο: 3 αίθουσες μπιλιάρδου | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Μπιλιάρδο στο Ηράκλειο: 3 αίθουσες με διευθύνσεις και τηλέφωνα. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/mpiliardo/heraklion/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/heraklion/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/heraklion/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/heraklion/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"el_GR\">",
+   "<meta property=\"og:title\" content=\"Μπιλιάρδο στο Ηράκλειο: 3 αίθουσες μπιλιάρδου | RackUp\">",
+   "<meta property=\"og:description\" content=\"Μπιλιάρδο στο Ηράκλειο: 3 αίθουσες με διευθύνσεις και τηλέφωνα. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/mpiliardo/heraklion/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Αίθουσες μπιλιάρδου\",\"item\":\"https://getrackup.com/mpiliardo/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Ηράκλειο\",\"item\":\"https://getrackup.com/mpiliardo/heraklion/\"}]},{\"@type\":\"ItemList\",\"name\":\"Μπιλιάρδο στο Ηράκλειο\",\"numberOfItems\":3,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/heraklion/#venue-her-champion\",\"name\":\"Champion Billiards Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Καρίας 122, Νέα Αλικαρνασσός\",\"addressLocality\":\"Ηράκλειο\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 281 030 0601\"}},{\"@type\":\"ListItem\",\"position\":2,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/heraklion/#venue-her-king\",\"name\":\"King Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Γ. Γεωργιάδου & Κάσου 17\",\"addressLocality\":\"Ηράκλειο\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 281 028 7782\"}},{\"@type\":\"ListItem\",\"position\":3,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/heraklion/#venue-her-dynamic\",\"name\":\"Dynamic Cafe Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Δημητρίου Κοκότση 2\",\"addressLocality\":\"Ηράκλειο\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 281 030 1313\"}}]}]}",
+  "venues": [
+   "venue-her-champion",
+   "venue-her-dynamic",
+   "venue-her-king"
+  ]
+ },
+ "mpiliardo/index.html": {
+  "title": "<title>Αίθουσες μπιλιάρδου στην Ελλάδα ανά πόλη | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Κατάλογος με 76 αίθουσες μπιλιάρδου σε 27 πόλεις της Ελλάδας: Αθήνα, Θεσσαλονίκη, Βόλος και άλλες. Δες τις διευθύνσεις και βρες αντίπαλο με το RackUp.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/mpiliardo/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"el_GR\">",
+   "<meta property=\"og:title\" content=\"Αίθουσες μπιλιάρδου στην Ελλάδα ανά πόλη | RackUp\">",
+   "<meta property=\"og:description\" content=\"Κατάλογος με 76 αίθουσες μπιλιάρδου σε 27 πόλεις της Ελλάδας: Αθήνα, Θεσσαλονίκη, Βόλος και άλλες. Δες τις διευθύνσεις και βρες αντίπαλο με το RackUp.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/mpiliardo/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Αίθουσες μπιλιάρδου\",\"item\":\"https://getrackup.com/mpiliardo/\"}]},{\"@type\":\"ItemList\",\"name\":\"Αίθουσες μπιλιάρδου στην Ελλάδα ανά πόλη\",\"numberOfItems\":27,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Μπιλιάρδο στην Αθήνα\",\"url\":\"https://getrackup.com/mpiliardo/athens/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Μπιλιάρδο στη Θεσσαλονίκη\",\"url\":\"https://getrackup.com/mpiliardo/thessaloniki/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Μπιλιάρδο στον Βόλο\",\"url\":\"https://getrackup.com/mpiliardo/volos/\"},{\"@type\":\"ListItem\",\"position\":4,\"name\":\"Μπιλιάρδο στο Ηράκλειο\",\"url\":\"https://getrackup.com/mpiliardo/heraklion/\"},{\"@type\":\"ListItem\",\"position\":5,\"name\":\"Μπιλιάρδο στη Λάρισα\",\"url\":\"https://getrackup.com/mpiliardo/larissa/\"},{\"@type\":\"ListItem\",\"position\":6,\"name\":\"Μπιλιάρδο στα Ιωάννινα\",\"url\":\"https://getrackup.com/mpiliardo/ioannina/\"},{\"@type\":\"ListItem\",\"position\":7,\"name\":\"Μπιλιάρδο στην Καβάλα\",\"url\":\"https://getrackup.com/mpiliardo/kavala/\"},{\"@type\":\"ListItem\",\"position\":8,\"name\":\"Μπιλιάρδο στην Κοζάνη\",\"url\":\"https://getrackup.com/mpiliardo/kozani/\"},{\"@type\":\"ListItem\",\"position\":9,\"name\":\"Μπιλιάρδο στην Κόρινθο\",\"url\":\"https://getrackup.com/mpiliardo/korinthos/\"},{\"@type\":\"ListItem\",\"position\":10,\"name\":\"Μπιλιάρδο στο Ρέθυμνο\",\"url\":\"https://getrackup.com/mpiliardo/rethymno/\"},{\"@type\":\"ListItem\",\"position\":11,\"name\":\"Μπιλιάρδο στη Χαλκίδα\",\"url\":\"https://getrackup.com/mpiliardo/chalkida/\"},{\"@type\":\"ListItem\",\"position\":12,\"name\":\"Μπιλιάρδο στα Χανιά\",\"url\":\"https://getrackup.com/mpiliardo/chania/\"},{\"@type\":\"ListItem\",\"position\":13,\"name\":\"Μπιλιάρδο στον Άγιο Νικόλαο\",\"url\":\"https://getrackup.com/mpiliardo/agios-nikolaos/\"},{\"@type\":\"ListItem\",\"position\":14,\"name\":\"Μπιλιάρδο στο Αίγιο\",\"url\":\"https://getrackup.com/mpiliardo/aigio/\"},{\"@type\":\"ListItem\",\"position\":15,\"name\":\"Μπιλιάρδο στο Άργος\",\"url\":\"https://getrackup.com/mpiliardo/argos/\"},{\"@type\":\"ListItem\",\"position\":16,\"name\":\"Μπιλιάρδο στην Καλαμάτα\",\"url\":\"https://getrackup.com/mpiliardo/kalamata/\"},{\"@type\":\"ListItem\",\"position\":17,\"name\":\"Μπιλιάρδο στην Κέρκυρα\",\"url\":\"https://getrackup.com/mpiliardo/corfu/\"},{\"@type\":\"ListItem\",\"position\":18,\"name\":\"Μπιλιάρδο στη Λαμία\",\"url\":\"https://getrackup.com/mpiliardo/lamia/\"},{\"@type\":\"ListItem\",\"position\":19,\"name\":\"Μπιλιάρδο στη Νάξο\",\"url\":\"https://getrackup.com/mpiliardo/naxos/\"},{\"@type\":\"ListItem\",\"position\":20,\"name\":\"Μπιλιάρδο στο Ναύπλιο\",\"url\":\"https://getrackup.com/mpiliardo/nafplio/\"},{\"@type\":\"ListItem\",\"position\":21,\"name\":\"Μπιλιάρδο στην Πάτρα\",\"url\":\"https://getrackup.com/mpiliardo/patras/\"},{\"@type\":\"ListItem\",\"position\":22,\"name\":\"Μπιλιάρδο στην Πρέβεζα\",\"url\":\"https://getrackup.com/mpiliardo/preveza/\"},{\"@type\":\"ListItem\",\"position\":23,\"name\":\"Μπιλιάρδο στη Ρόδο\",\"url\":\"https://getrackup.com/mpiliardo/rhodes/\"},{\"@type\":\"ListItem\",\"position\":24,\"name\":\"Μπιλιάρδο στη Σαλαμίνα\",\"url\":\"https://getrackup.com/mpiliardo/salamina/\"},{\"@type\":\"ListItem\",\"position\":25,\"name\":\"Μπιλιάρδο στις Σέρρες\",\"url\":\"https://getrackup.com/mpiliardo/serres/\"},{\"@type\":\"ListItem\",\"position\":26,\"name\":\"Μπιλιάρδο στη Σπάρτη\",\"url\":\"https://getrackup.com/mpiliardo/sparti/\"},{\"@type\":\"ListItem\",\"position\":27,\"name\":\"Μπιλιάρδο στη Χίο\",\"url\":\"https://getrackup.com/mpiliardo/chios/\"}]}]}",
+  "venues": []
+ },
+ "mpiliardo/ioannina/index.html": {
+  "title": "<title>Μπιλιάρδο στα Ιωάννινα: 2 αίθουσες μπιλιάρδου | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Μπιλιάρδο στα Ιωάννινα: 2 αίθουσες με διευθύνσεις και τηλέφωνα. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/mpiliardo/ioannina/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/ioannina/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/ioannina/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/ioannina/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"el_GR\">",
+   "<meta property=\"og:title\" content=\"Μπιλιάρδο στα Ιωάννινα: 2 αίθουσες μπιλιάρδου | RackUp\">",
+   "<meta property=\"og:description\" content=\"Μπιλιάρδο στα Ιωάννινα: 2 αίθουσες με διευθύνσεις και τηλέφωνα. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/mpiliardo/ioannina/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Αίθουσες μπιλιάρδου\",\"item\":\"https://getrackup.com/mpiliardo/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Ιωάννινα\",\"item\":\"https://getrackup.com/mpiliardo/ioannina/\"}]},{\"@type\":\"ItemList\",\"name\":\"Μπιλιάρδο στα Ιωάννινα\",\"numberOfItems\":2,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/ioannina/#venue-ioa-jouet\",\"name\":\"Jouet Billiards Hall\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Ανεξαρτησίας 101\",\"addressLocality\":\"Ιωάννινα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 265 103 3215\"}},{\"@type\":\"ListItem\",\"position\":2,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/ioannina/#venue-ioa-break\",\"name\":\"Break Bar & Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Στοά Σάρκα, Πάροδος Πυρσινέλλα\",\"addressLocality\":\"Ιωάννινα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 265 102 2115\"}}]}]}",
+  "venues": [
+   "venue-ioa-break",
+   "venue-ioa-jouet"
+  ]
+ },
+ "mpiliardo/kalamata/index.html": {
+  "title": "<title>Μπιλιάρδο στην Καλαμάτα: Top Billiards | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Μπιλιάρδο στην Καλαμάτα: Top Billiards, Γιαννιτσών &amp; Κουμουνδούρου 13, τηλ. +30 272 111 0315. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/mpiliardo/kalamata/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/kalamata/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/kalamata/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/kalamata/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"el_GR\">",
+   "<meta property=\"og:title\" content=\"Μπιλιάρδο στην Καλαμάτα: Top Billiards | RackUp\">",
+   "<meta property=\"og:description\" content=\"Μπιλιάρδο στην Καλαμάτα: Top Billiards, Γιαννιτσών &amp; Κουμουνδούρου 13, τηλ. +30 272 111 0315. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/mpiliardo/kalamata/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Αίθουσες μπιλιάρδου\",\"item\":\"https://getrackup.com/mpiliardo/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Καλαμάτα\",\"item\":\"https://getrackup.com/mpiliardo/kalamata/\"}]},{\"@type\":\"ItemList\",\"name\":\"Μπιλιάρδο στην Καλαμάτα\",\"numberOfItems\":1,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/kalamata/#venue-kal-top\",\"name\":\"Top Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Γιαννιτσών & Κουμουνδούρου 13\",\"addressLocality\":\"Καλαμάτα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 272 111 0315\"}}]}]}",
+  "venues": [
+   "venue-kal-top"
+  ]
+ },
+ "mpiliardo/kavala/index.html": {
+  "title": "<title>Μπιλιάρδο στην Καβάλα: 2 αίθουσες μπιλιάρδου | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Μπιλιάρδο στην Καβάλα: 2 αίθουσες με διευθύνσεις. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/mpiliardo/kavala/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/kavala/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/kavala/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/kavala/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"el_GR\">",
+   "<meta property=\"og:title\" content=\"Μπιλιάρδο στην Καβάλα: 2 αίθουσες μπιλιάρδου | RackUp\">",
+   "<meta property=\"og:description\" content=\"Μπιλιάρδο στην Καβάλα: 2 αίθουσες με διευθύνσεις. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/mpiliardo/kavala/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Αίθουσες μπιλιάρδου\",\"item\":\"https://getrackup.com/mpiliardo/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Καβάλα\",\"item\":\"https://getrackup.com/mpiliardo/kavala/\"}]},{\"@type\":\"ItemList\",\"name\":\"Μπιλιάρδο στην Καβάλα\",\"numberOfItems\":2,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/kavala/#venue-kav-cityhall\",\"name\":\"City Billiard Hall\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Ελ. Βενιζέλου 54\",\"addressLocality\":\"Καβάλα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 251 021 1960\"}},{\"@type\":\"ListItem\",\"position\":2,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/kavala/#venue-kav-tifanys\",\"name\":\"Tifany's Billiard Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Πάροδος Κωστή Παλαμά\",\"addressLocality\":\"Καβάλα\",\"addressCountry\":\"GR\"}}}]}]}",
+  "venues": [
+   "venue-kav-cityhall",
+   "venue-kav-tifanys"
+  ]
+ },
+ "mpiliardo/korinthos/index.html": {
+  "title": "<title>Μπιλιάρδο στην Κόρινθο: 2 αίθουσες μπιλιάρδου | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Μπιλιάρδο στην Κόρινθο: 2 αίθουσες με διευθύνσεις και τηλέφωνα. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/mpiliardo/korinthos/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/korinthos/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/korinthos/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/korinthos/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"el_GR\">",
+   "<meta property=\"og:title\" content=\"Μπιλιάρδο στην Κόρινθο: 2 αίθουσες μπιλιάρδου | RackUp\">",
+   "<meta property=\"og:description\" content=\"Μπιλιάρδο στην Κόρινθο: 2 αίθουσες με διευθύνσεις και τηλέφωνα. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/mpiliardo/korinthos/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Αίθουσες μπιλιάρδου\",\"item\":\"https://getrackup.com/mpiliardo/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Κόρινθος\",\"item\":\"https://getrackup.com/mpiliardo/korinthos/\"}]},{\"@type\":\"ItemList\",\"name\":\"Μπιλιάρδο στην Κόρινθο\",\"numberOfItems\":2,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/korinthos/#venue-kor-kbc\",\"name\":\"KBC Korinthos Bowling Center\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Εθνικής Ανεξαρτησίας 22\",\"addressLocality\":\"Κόρινθος\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 274 107 3001\"}},{\"@type\":\"ListItem\",\"position\":2,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/korinthos/#venue-kor-legend\",\"name\":\"Legend Billiards Cafe\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Αγίου Νικολάου & Δερβενακίων 1\",\"addressLocality\":\"Κόρινθος\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 694 416 8990\"}}]}]}",
+  "venues": [
+   "venue-kor-kbc",
+   "venue-kor-legend"
+  ]
+ },
+ "mpiliardo/kozani/index.html": {
+  "title": "<title>Μπιλιάρδο στην Κοζάνη: 2 αίθουσες μπιλιάρδου | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Μπιλιάρδο στην Κοζάνη: 2 αίθουσες με διευθύνσεις και τηλέφωνα. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/mpiliardo/kozani/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/kozani/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/kozani/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/kozani/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"el_GR\">",
+   "<meta property=\"og:title\" content=\"Μπιλιάρδο στην Κοζάνη: 2 αίθουσες μπιλιάρδου | RackUp\">",
+   "<meta property=\"og:description\" content=\"Μπιλιάρδο στην Κοζάνη: 2 αίθουσες με διευθύνσεις και τηλέφωνα. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/mpiliardo/kozani/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Αίθουσες μπιλιάρδου\",\"item\":\"https://getrackup.com/mpiliardo/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Κοζάνη\",\"item\":\"https://getrackup.com/mpiliardo/kozani/\"}]},{\"@type\":\"ItemList\",\"name\":\"Μπιλιάρδο στην Κοζάνη\",\"numberOfItems\":2,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/kozani/#venue-koz-baraz\",\"name\":\"Μπαράζ Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Επισκόπου Βενιαμίν 12\",\"addressLocality\":\"Κοζάνη\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 694 789 0880\"}},{\"@type\":\"ListItem\",\"position\":2,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/kozani/#venue-koz-mancave\",\"name\":\"ManCave\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Κ. Δρίζη 2, 5ος όροφος\",\"addressLocality\":\"Κοζάνη\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 697 922 6655\"}}]}]}",
+  "venues": [
+   "venue-koz-baraz",
+   "venue-koz-mancave"
+  ]
+ },
+ "mpiliardo/lamia/index.html": {
+  "title": "<title>Μπιλιάρδο στη Λαμία: Prince of Pool | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Μπιλιάρδο στη Λαμία: Prince of Pool, Υψηλάντη 12, τηλ. +30 223 103 2938. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/mpiliardo/lamia/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/lamia/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/lamia/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/lamia/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"el_GR\">",
+   "<meta property=\"og:title\" content=\"Μπιλιάρδο στη Λαμία: Prince of Pool | RackUp\">",
+   "<meta property=\"og:description\" content=\"Μπιλιάρδο στη Λαμία: Prince of Pool, Υψηλάντη 12, τηλ. +30 223 103 2938. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/mpiliardo/lamia/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Αίθουσες μπιλιάρδου\",\"item\":\"https://getrackup.com/mpiliardo/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Λαμία\",\"item\":\"https://getrackup.com/mpiliardo/lamia/\"}]},{\"@type\":\"ItemList\",\"name\":\"Μπιλιάρδο στη Λαμία\",\"numberOfItems\":1,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/lamia/#venue-lam-prince\",\"name\":\"Prince of Pool\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Υψηλάντη 12\",\"addressLocality\":\"Λαμία\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 223 103 2938\"}}]}]}",
+  "venues": [
+   "venue-lam-prince"
+  ]
+ },
+ "mpiliardo/larissa/index.html": {
+  "title": "<title>Μπιλιάρδο στη Λάρισα: 3 αίθουσες μπιλιάρδου | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Μπιλιάρδο στη Λάρισα: 3 αίθουσες με διευθύνσεις. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/mpiliardo/larissa/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/larissa/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/larissa/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/larissa/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"el_GR\">",
+   "<meta property=\"og:title\" content=\"Μπιλιάρδο στη Λάρισα: 3 αίθουσες μπιλιάρδου | RackUp\">",
+   "<meta property=\"og:description\" content=\"Μπιλιάρδο στη Λάρισα: 3 αίθουσες με διευθύνσεις. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/mpiliardo/larissa/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Αίθουσες μπιλιάρδου\",\"item\":\"https://getrackup.com/mpiliardo/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Λάρισα\",\"item\":\"https://getrackup.com/mpiliardo/larissa/\"}]},{\"@type\":\"ItemList\",\"name\":\"Μπιλιάρδο στη Λάρισα\",\"numberOfItems\":3,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/larissa/#venue-lar-mr8ball\",\"name\":\"Mr.8ball\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"23ης Οκτωβρίου 66-68\",\"addressLocality\":\"Λάρισα\",\"addressCountry\":\"GR\"}}},{\"@type\":\"ListItem\",\"position\":2,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/larissa/#venue-lar-ennea\",\"name\":\"Ennea Billiards Sport Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Βόλου 1\",\"addressLocality\":\"Λάρισα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 241 400 5409\"}},{\"@type\":\"ListItem\",\"position\":3,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/larissa/#venue-lar-pike\",\"name\":\"Πικέ Sports Café\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Παπάγου 1Α, Γιάννουλη\",\"addressLocality\":\"Λάρισα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 249 559 3444\"}}]}]}",
+  "venues": [
+   "venue-lar-ennea",
+   "venue-lar-mr8ball",
+   "venue-lar-pike"
+  ]
+ },
+ "mpiliardo/nafplio/index.html": {
+  "title": "<title>Μπιλιάρδο στο Ναύπλιο: Billiard Club 8 Ball | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Μπιλιάρδο στο Ναύπλιο: Billiard Club 8 Ball, Αγίου Αδριανού 19, τηλ. +30 275 202 1816. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/mpiliardo/nafplio/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/nafplio/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/nafplio/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/nafplio/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"el_GR\">",
+   "<meta property=\"og:title\" content=\"Μπιλιάρδο στο Ναύπλιο: Billiard Club 8 Ball | RackUp\">",
+   "<meta property=\"og:description\" content=\"Μπιλιάρδο στο Ναύπλιο: Billiard Club 8 Ball, Αγίου Αδριανού 19, τηλ. +30 275 202 1816. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/mpiliardo/nafplio/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Αίθουσες μπιλιάρδου\",\"item\":\"https://getrackup.com/mpiliardo/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Ναύπλιο\",\"item\":\"https://getrackup.com/mpiliardo/nafplio/\"}]},{\"@type\":\"ItemList\",\"name\":\"Μπιλιάρδο στο Ναύπλιο\",\"numberOfItems\":1,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/nafplio/#venue-naf-8ball\",\"name\":\"Billiard Club 8 Ball\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Αγίου Αδριανού 19\",\"addressLocality\":\"Ναύπλιο\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 275 202 1816\"}}]}]}",
+  "venues": [
+   "venue-naf-8ball"
+  ]
+ },
+ "mpiliardo/naxos/index.html": {
+  "title": "<title>Μπιλιάρδο στη Νάξο: Galaxias Billiards | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Μπιλιάρδο στη Νάξο: Galaxias Billiards, Εξαρχοπούλου, Χώρα, τηλ. +30 698 301 0542. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/mpiliardo/naxos/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/naxos/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/naxos/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/naxos/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"el_GR\">",
+   "<meta property=\"og:title\" content=\"Μπιλιάρδο στη Νάξο: Galaxias Billiards | RackUp\">",
+   "<meta property=\"og:description\" content=\"Μπιλιάρδο στη Νάξο: Galaxias Billiards, Εξαρχοπούλου, Χώρα, τηλ. +30 698 301 0542. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/mpiliardo/naxos/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Αίθουσες μπιλιάρδου\",\"item\":\"https://getrackup.com/mpiliardo/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Νάξος\",\"item\":\"https://getrackup.com/mpiliardo/naxos/\"}]},{\"@type\":\"ItemList\",\"name\":\"Μπιλιάρδο στη Νάξο\",\"numberOfItems\":1,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/naxos/#venue-nax-galaxias\",\"name\":\"Galaxias Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Εξαρχοπούλου, Χώρα\",\"addressLocality\":\"Νάξος\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 698 301 0542\"}}]}]}",
+  "venues": [
+   "venue-nax-galaxias"
+  ]
+ },
+ "mpiliardo/patras/index.html": {
+  "title": "<title>Μπιλιάρδο στην Πάτρα: Poolevard Billiards Hall | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Μπιλιάρδο στην Πάτρα: Poolevard Billiards Hall, Αγίου Ανδρέου 74, τηλ. +30 261 027 4174. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/mpiliardo/patras/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/patras/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/patras/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/patras/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"el_GR\">",
+   "<meta property=\"og:title\" content=\"Μπιλιάρδο στην Πάτρα: Poolevard Billiards Hall | RackUp\">",
+   "<meta property=\"og:description\" content=\"Μπιλιάρδο στην Πάτρα: Poolevard Billiards Hall, Αγίου Ανδρέου 74, τηλ. +30 261 027 4174. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/mpiliardo/patras/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Αίθουσες μπιλιάρδου\",\"item\":\"https://getrackup.com/mpiliardo/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Πάτρα\",\"item\":\"https://getrackup.com/mpiliardo/patras/\"}]},{\"@type\":\"ItemList\",\"name\":\"Μπιλιάρδο στην Πάτρα\",\"numberOfItems\":1,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/patras/#venue-pat-poolevard\",\"name\":\"Poolevard Billiards Hall\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Αγίου Ανδρέου 74\",\"addressLocality\":\"Πάτρα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 261 027 4174\"}}]}]}",
+  "venues": [
+   "venue-pat-poolevard"
+  ]
+ },
+ "mpiliardo/preveza/index.html": {
+  "title": "<title>Μπιλιάρδο στην Πρέβεζα: Bowling Preveza | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Μπιλιάρδο στην Πρέβεζα: Bowling Preveza, Επαρχ. Οδός Πρέβεζας 24, Νικόπολη, τηλ. +30 268 208 9727. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/mpiliardo/preveza/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/preveza/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/preveza/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/preveza/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"el_GR\">",
+   "<meta property=\"og:title\" content=\"Μπιλιάρδο στην Πρέβεζα: Bowling Preveza | RackUp\">",
+   "<meta property=\"og:description\" content=\"Μπιλιάρδο στην Πρέβεζα: Bowling Preveza, Επαρχ. Οδός Πρέβεζας 24, Νικόπολη, τηλ. +30 268 208 9727. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/mpiliardo/preveza/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Αίθουσες μπιλιάρδου\",\"item\":\"https://getrackup.com/mpiliardo/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Πρέβεζα\",\"item\":\"https://getrackup.com/mpiliardo/preveza/\"}]},{\"@type\":\"ItemList\",\"name\":\"Μπιλιάρδο στην Πρέβεζα\",\"numberOfItems\":1,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/preveza/#venue-pre-northwest\",\"name\":\"Bowling Preveza\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Επαρχ. Οδός Πρέβεζας 24, Νικόπολη\",\"addressLocality\":\"Πρέβεζα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 268 208 9727\"}}]}]}",
+  "venues": [
+   "venue-pre-northwest"
+  ]
+ },
+ "mpiliardo/rethymno/index.html": {
+  "title": "<title>Μπιλιάρδο στο Ρέθυμνο: 2 αίθουσες μπιλιάρδου | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Μπιλιάρδο στο Ρέθυμνο: 2 αίθουσες με διευθύνσεις και τηλέφωνα. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/mpiliardo/rethymno/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/rethymno/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/rethymno/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/rethymno/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"el_GR\">",
+   "<meta property=\"og:title\" content=\"Μπιλιάρδο στο Ρέθυμνο: 2 αίθουσες μπιλιάρδου | RackUp\">",
+   "<meta property=\"og:description\" content=\"Μπιλιάρδο στο Ρέθυμνο: 2 αίθουσες με διευθύνσεις και τηλέφωνα. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/mpiliardo/rethymno/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Αίθουσες μπιλιάρδου\",\"item\":\"https://getrackup.com/mpiliardo/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Ρέθυμνο\",\"item\":\"https://getrackup.com/mpiliardo/rethymno/\"}]},{\"@type\":\"ItemList\",\"name\":\"Μπιλιάρδο στο Ρέθυμνο\",\"numberOfItems\":2,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/rethymno/#venue-ret-billias\",\"name\":\"Billia's Billiards Rethymno\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Γερακάρη 150\",\"addressLocality\":\"Ρέθυμνο\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 283 103 6100\"}},{\"@type\":\"ListItem\",\"position\":2,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/rethymno/#venue-ret-cyber\",\"name\":\"CYBER Sports & Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Πρεβελιδάκη 19 & Παρρέν Σιγανού\",\"addressLocality\":\"Ρέθυμνο\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 283 110 0143\"}}]}]}",
+  "venues": [
+   "venue-ret-billias",
+   "venue-ret-cyber"
+  ]
+ },
+ "mpiliardo/rhodes/index.html": {
+  "title": "<title>Μπιλιάρδο στη Ρόδο: Academy Billiards Rhodes | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Μπιλιάρδο στη Ρόδο: Academy Billiards Rhodes, Ι. Καποδιστρίου 37, τηλ. +30 224 107 7123. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/mpiliardo/rhodes/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/rhodes/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/rhodes/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/rhodes/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"el_GR\">",
+   "<meta property=\"og:title\" content=\"Μπιλιάρδο στη Ρόδο: Academy Billiards Rhodes | RackUp\">",
+   "<meta property=\"og:description\" content=\"Μπιλιάρδο στη Ρόδο: Academy Billiards Rhodes, Ι. Καποδιστρίου 37, τηλ. +30 224 107 7123. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/mpiliardo/rhodes/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Αίθουσες μπιλιάρδου\",\"item\":\"https://getrackup.com/mpiliardo/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Ρόδος\",\"item\":\"https://getrackup.com/mpiliardo/rhodes/\"}]},{\"@type\":\"ItemList\",\"name\":\"Μπιλιάρδο στη Ρόδο\",\"numberOfItems\":1,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/rhodes/#venue-rho-academy\",\"name\":\"Academy Billiards Rhodes\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Ι. Καποδιστρίου 37\",\"addressLocality\":\"Ρόδος\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 224 107 7123\"}}]}]}",
+  "venues": [
+   "venue-rho-academy"
+  ]
+ },
+ "mpiliardo/salamina/index.html": {
+  "title": "<title>Μπιλιάρδο στη Σαλαμίνα: La Palma Billiards | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Μπιλιάρδο στη Σαλαμίνα: La Palma Billiards, Λεωφ. Αιαντείου 9 &amp; Αμμοχώστου 1, Παλούκια, τηλ. +30 210 464 4030. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/mpiliardo/salamina/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/salamina/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/salamina/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/salamina/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"el_GR\">",
+   "<meta property=\"og:title\" content=\"Μπιλιάρδο στη Σαλαμίνα: La Palma Billiards | RackUp\">",
+   "<meta property=\"og:description\" content=\"Μπιλιάρδο στη Σαλαμίνα: La Palma Billiards, Λεωφ. Αιαντείου 9 &amp; Αμμοχώστου 1, Παλούκια, τηλ. +30 210 464 4030. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/mpiliardo/salamina/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Αίθουσες μπιλιάρδου\",\"item\":\"https://getrackup.com/mpiliardo/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Σαλαμίνα\",\"item\":\"https://getrackup.com/mpiliardo/salamina/\"}]},{\"@type\":\"ItemList\",\"name\":\"Μπιλιάρδο στη Σαλαμίνα\",\"numberOfItems\":1,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/salamina/#venue-sal-lapalma\",\"name\":\"La Palma Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Λεωφ. Αιαντείου 9 & Αμμοχώστου 1, Παλούκια\",\"addressLocality\":\"Σαλαμίνα\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 210 464 4030\"}}]}]}",
+  "venues": [
+   "venue-sal-lapalma"
+  ]
+ },
+ "mpiliardo/serres/index.html": {
+  "title": "<title>Μπιλιάρδο στις Σέρρες: La Vita Center | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Μπιλιάρδο στις Σέρρες: La Vita Center, 1ο χλμ Ε.Ο. Σερρών-Νιγρίτας, τηλ. +30 232 103 9606. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/mpiliardo/serres/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/serres/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/serres/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/serres/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"el_GR\">",
+   "<meta property=\"og:title\" content=\"Μπιλιάρδο στις Σέρρες: La Vita Center | RackUp\">",
+   "<meta property=\"og:description\" content=\"Μπιλιάρδο στις Σέρρες: La Vita Center, 1ο χλμ Ε.Ο. Σερρών-Νιγρίτας, τηλ. +30 232 103 9606. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/mpiliardo/serres/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Αίθουσες μπιλιάρδου\",\"item\":\"https://getrackup.com/mpiliardo/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Σέρρες\",\"item\":\"https://getrackup.com/mpiliardo/serres/\"}]},{\"@type\":\"ItemList\",\"name\":\"Μπιλιάρδο στις Σέρρες\",\"numberOfItems\":1,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/serres/#venue-ser-lavita\",\"name\":\"La Vita Center\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"1ο χλμ Ε.Ο. Σερρών-Νιγρίτας\",\"addressLocality\":\"Σέρρες\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 232 103 9606\"}}]}]}",
+  "venues": [
+   "venue-ser-lavita"
+  ]
+ },
+ "mpiliardo/sparti/index.html": {
+  "title": "<title>Μπιλιάρδο στη Σπάρτη: Rolling Billiards &amp; Coffee Bar</title>",
+  "description": "<meta name=\"description\" content=\"Μπιλιάρδο στη Σπάρτη: Rolling Billiards &amp; Coffee Bar, Όθωνος Αμαλίας 104, τηλ. +30 273 102 0888. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/mpiliardo/sparti/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/sparti/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/sparti/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/sparti/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"el_GR\">",
+   "<meta property=\"og:title\" content=\"Μπιλιάρδο στη Σπάρτη: Rolling Billiards &amp; Coffee Bar\">",
+   "<meta property=\"og:description\" content=\"Μπιλιάρδο στη Σπάρτη: Rolling Billiards &amp; Coffee Bar, Όθωνος Αμαλίας 104, τηλ. +30 273 102 0888. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/mpiliardo/sparti/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Αίθουσες μπιλιάρδου\",\"item\":\"https://getrackup.com/mpiliardo/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Σπάρτη\",\"item\":\"https://getrackup.com/mpiliardo/sparti/\"}]},{\"@type\":\"ItemList\",\"name\":\"Μπιλιάρδο στη Σπάρτη\",\"numberOfItems\":1,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/sparti/#venue-spa-rolling\",\"name\":\"Rolling Billiards & Coffee Bar\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Όθωνος Αμαλίας 104\",\"addressLocality\":\"Σπάρτη\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 273 102 0888\"}}]}]}",
+  "venues": [
+   "venue-spa-rolling"
+  ]
+ },
+ "mpiliardo/thessaloniki/index.html": {
+  "title": "<title>Μπιλιάρδο στη Θεσσαλονίκη: 6 αίθουσες μπιλιάρδου | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Μπιλιάρδο στη Θεσσαλονίκη: 6 αίθουσες με διευθύνσεις και τηλέφωνα. Περιοχές: Συντριβάνι, Ανάληψη, Καλαμαριά, Πυλαία. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/mpiliardo/thessaloniki/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/thessaloniki/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/thessaloniki/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/thessaloniki/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"el_GR\">",
+   "<meta property=\"og:title\" content=\"Μπιλιάρδο στη Θεσσαλονίκη: 6 αίθουσες μπιλιάρδου | RackUp\">",
+   "<meta property=\"og:description\" content=\"Μπιλιάρδο στη Θεσσαλονίκη: 6 αίθουσες με διευθύνσεις και τηλέφωνα. Περιοχές: Συντριβάνι, Ανάληψη, Καλαμαριά, Πυλαία. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/mpiliardo/thessaloniki/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Αίθουσες μπιλιάρδου\",\"item\":\"https://getrackup.com/mpiliardo/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Θεσσαλονίκη\",\"item\":\"https://getrackup.com/mpiliardo/thessaloniki/\"}]},{\"@type\":\"ItemList\",\"name\":\"Μπιλιάρδο στη Θεσσαλονίκη\",\"numberOfItems\":6,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/thessaloniki/#venue-thes-login\",\"name\":\"Login Billiards Club\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Καμβουνίων 9, Συντριβάνι\",\"addressLocality\":\"Θεσσαλονίκη\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 231 027 9279\"}},{\"@type\":\"ListItem\",\"position\":2,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/thessaloniki/#venue-thes-bcenter\",\"name\":\"Billiard Center Thessaloniki\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Βασ. Όλγας 123, Ανάληψη\",\"addressLocality\":\"Θεσσαλονίκη\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 231 086 3700\"}},{\"@type\":\"ListItem\",\"position\":3,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/thessaloniki/#venue-thes-juris\",\"name\":\"Cafe Juris Billiard & Bowling\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Αλ. Παπαναστασίου 58\",\"addressLocality\":\"Θεσσαλονίκη\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 231 094 8666\"}},{\"@type\":\"ListItem\",\"position\":4,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/thessaloniki/#venue-thes-tenpin\",\"name\":\"Ten Pin\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Μητρ. Καλλίδου 112, Καλαμαριά\",\"addressLocality\":\"Θεσσαλονίκη\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 231 042 1411\"}},{\"@type\":\"ListItem\",\"position\":5,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/thessaloniki/#venue-thes-elpaso\",\"name\":\"El Paso Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Αγίου Δημητρίου 140\",\"addressLocality\":\"Θεσσαλονίκη\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 694 612 1795\"}},{\"@type\":\"ListItem\",\"position\":6,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/thessaloniki/#venue-thes-pincity\",\"name\":\"Pin City Bowling\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"17ης Νοεμβρίου 75, Πυλαία\",\"addressLocality\":\"Θεσσαλονίκη\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 231 046 3572\"}}]}]}",
+  "venues": [
+   "venue-thes-bcenter",
+   "venue-thes-elpaso",
+   "venue-thes-juris",
+   "venue-thes-login",
+   "venue-thes-pincity",
+   "venue-thes-tenpin"
+  ]
+ },
+ "mpiliardo/volos/index.html": {
+  "title": "<title>Μπιλιάρδο στον Βόλο: 3 αίθουσες μπιλιάρδου | RackUp</title>",
+  "description": "<meta name=\"description\" content=\"Μπιλιάρδο στον Βόλο: 3 αίθουσες με διευθύνσεις και τηλέφωνα. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+  "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/mpiliardo/volos/\">",
+  "alternates": [
+   "<link rel=\"alternate\" hreflang=\"el\" href=\"https://getrackup.com/mpiliardo/volos/\">",
+   "<link rel=\"alternate\" hreflang=\"en\" href=\"https://getrackup.com/en/billiards/volos/\">",
+   "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://getrackup.com/mpiliardo/volos/\">"
+  ],
+  "og": [
+   "<meta property=\"og:type\" content=\"website\">",
+   "<meta property=\"og:site_name\" content=\"RackUp\">",
+   "<meta property=\"og:locale\" content=\"el_GR\">",
+   "<meta property=\"og:title\" content=\"Μπιλιάρδο στον Βόλο: 3 αίθουσες μπιλιάρδου | RackUp\">",
+   "<meta property=\"og:description\" content=\"Μπιλιάρδο στον Βόλο: 3 αίθουσες με διευθύνσεις και τηλέφωνα. Βρες αντίπαλο με το δωρεάν RackUp.\">",
+   "<meta property=\"og:url\" content=\"https://getrackup.com/mpiliardo/volos/\">"
+  ],
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Αίθουσες μπιλιάρδου\",\"item\":\"https://getrackup.com/mpiliardo/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Βόλος\",\"item\":\"https://getrackup.com/mpiliardo/volos/\"}]},{\"@type\":\"ItemList\",\"name\":\"Μπιλιάρδο στον Βόλο\",\"numberOfItems\":3,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/volos/#venue-vol-galaxy\",\"name\":\"Galaxy Fun 'n Bowl\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Γιαννιτσών 29\",\"addressLocality\":\"Βόλος\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 242 110 2080\"}},{\"@type\":\"ListItem\",\"position\":2,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/volos/#venue-vol-break\",\"name\":\"BREAK Billiards\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Μακρυνίτσας 25\",\"addressLocality\":\"Βόλος\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 242 110 6338\"}},{\"@type\":\"ListItem\",\"position\":3,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/volos/#venue-vol-zen\",\"name\":\"ZEN Billiard Center\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Μελούνας 21 & Φερών, 1ος όροφος\",\"addressLocality\":\"Βόλος\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 242 140 9804\"}}]}]}",
+  "venues": [
+   "venue-vol-break",
+   "venue-vol-galaxy",
+   "venue-vol-zen"
+  ]
+ }
+}
