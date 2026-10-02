@@ -76,7 +76,10 @@ CITIES = {
 
 # Figure dash, en dash, em dash, horizontal bar. None may reach a page.
 DASHES = re.compile("[" + "".join(map(chr, (0x2012, 0x2013, 0x2014, 0x2015))) + "]")
-DESCRIPTION_LIMIT = 170
+# What search results show before cutting a title or a description short.
+TITLE_LIMIT = 60
+DESCRIPTION_LIMIT = 155
+TAIL = {"el": "Βρες αντίπαλο με το δωρεάν RackUp.", "en": "Find an opponent with the free RackUp app."}
 # Greek letters, so Greek names on English pages can carry lang="el" for screen readers.
 GREEK_TEXT = re.compile("[Ͱ-Ͽἀ-῿]")
 
@@ -180,6 +183,13 @@ def url(path):
     return f"{BASE_URL}/{path}"
 
 
+def breadcrumb_list(crumbs):
+    """The visible crumbs as (name, absolute URL) pairs, the page itself last."""
+    return {"@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": i, "name": name, "item": link}
+        for i, (name, link) in enumerate(crumbs, start=1)]}
+
+
 def jsonld(data):
     text = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
     return text.replace("</", "<\\/")
@@ -252,6 +262,24 @@ def cta_card(lang, heading, text, campaign, root):
 </div>
 <div class="phone"><img src="{shot}-360.webp" srcset="{shot}-360.webp 360w, {shot}-720.webp 720w" sizes="180px" width="360" height="783" loading="lazy" alt="{alt}"></div>
 </section>"""
+
+
+def first_fit(limit, *candidates):
+    """The first candidate within the limit; the last one when none is."""
+    return next((c for c in candidates if len(c) <= limit), candidates[-1])
+
+
+def card_copy(lang, name_app):
+    """The download card's pitch. Pool is "αμερικάνικο" in Greek, never "πουλ"."""
+    if lang == "el":
+        return (f"Ανέβασε{' στο RackUp' if name_app else ''} αίθουσα, παιχνίδι και ώρα: αμερικάνικο "
+                "(8-Ball, 9-Ball, 10-Ball) ή γαλλικό (τρίσποντο, μονόσποντο) στις αίθουσες με τραπέζια γαλλικού. "
+                "Δες ποιος θα πιάσει το τραπέζι ή ζήτα να μπεις σε τραπέζι που άνοιξε κάποιος άλλος. "
+                "Στη ροή φιλτράρεις ανά πόλη, και κάθε μήνα βγαίνει κατάταξη ανά πόλη και αίθουσα.")
+    return (f"Post the hall, the game and the time{' on RackUp' if name_app else ''}: pool (8-Ball, 9-Ball, "
+            "10-Ball), or carom (3-cushion, 1-cushion) at halls with carom tables. See who takes the table, "
+            "or ask to join a table someone else opened. The feed filters by city, and every month there is "
+            "a ranking by city and hall.")
 
 
 def fit_description(head, areas, tail, label):
@@ -407,15 +435,14 @@ def index_page(cities, lang):
             "name": f"Μπιλιάρδο {in_el}" if lang == "el" else f"Billiards in {city}",
             "url": url(f"{root}/{slug}/"),
         })
-    top_names = [CITIES[c][1] if lang == "el" else c for c in city_order(cities, lang)[:4]]
+    names = [CITIES[c][1] if lang == "el" else c for c in city_order(cities, lang)]
+    tops = [", ".join(names[:k]) for k in range(4, 0, -1)]
     if lang == "el":
         title = "Αίθουσες μπιλιάρδου στην Ελλάδα ανά πόλη | RackUp"
-        description = (f"Κατάλογος με {total} αίθουσες μπιλιάρδου σε {count} πόλεις της Ελλάδας: "
-                       f"{', '.join(top_names)} και άλλες. Δες τις διευθύνσεις και βρες αντίπαλο με το RackUp.")
-        pitch = cta_card("el", "Βρες αντίπαλο στο RackUp",
-                         "Ανέβασε αίθουσα, παιχνίδι (8άρα, 9άρα ή 10άρα) και ώρα, και δες ποιος θα πιάσει το "
-                         "τραπέζι. Ή ζήτα να μπεις σε τραπέζι που άνοιξε κάποιος άλλος. Κάθε παίκτης έχει "
-                         "κατηγορία, από Pro μέχρι E, για να ξέρεις τι σε περιμένει.", campaign, prefix)
+        description = first_fit(DESCRIPTION_LIMIT, *(
+            f"Κατάλογος με {total} αίθουσες μπιλιάρδου σε {count} πόλεις της Ελλάδας: "
+            f"{top} και άλλες. Δες τις διευθύνσεις και βρες αντίπαλο με το RackUp." for top in tops))
+        pitch = cta_card("el", "Βρες αντίπαλο στο RackUp", card_copy("el", False), campaign, prefix)
         body = f"""<section class="page-hero">
 <div class="container">
 <p class="crumbs"><a href="{prefix}">RackUp</a> › Αίθουσες μπιλιάρδου</p>
@@ -434,12 +461,10 @@ def index_page(cities, lang):
         list_name = "Αίθουσες μπιλιάρδου στην Ελλάδα ανά πόλη"
     else:
         title = "Billiard halls in Greece by city | RackUp"
-        description = (f"A directory of {total} billiard halls in {count} Greek cities: "
-                       f"{', '.join(top_names)} and more. See the addresses and find an opponent with RackUp.")
-        pitch = cta_card("en", "Find an opponent on RackUp",
-                         "Post the hall, the game (8-Ball, 9-Ball or 10-Ball) and the time, and see who takes the "
-                         "table. Or ask to join a table someone else has posted. Every player carries a category "
-                         "from Pro down to E, so you know what you are walking into.", campaign, prefix)
+        description = first_fit(DESCRIPTION_LIMIT, *(
+            f"A directory of {total} billiard halls in {count} Greek cities: "
+            f"{top} and more. See the addresses and find an opponent with RackUp." for top in tops))
+        pitch = cta_card("en", "Find an opponent on RackUp", card_copy("en", False), campaign, prefix)
         body = f"""<section class="page-hero">
 <div class="container">
 <p class="crumbs"><a href="{prefix}en/">RackUp</a> › Billiard halls</p>
@@ -457,8 +482,12 @@ def index_page(cities, lang):
 </div>"""
         list_name = "Billiard halls in Greece by city"
     alt_root = EN_ROOT if lang == "el" else EL_ROOT
-    data = {"@context": "https://schema.org", "@type": "ItemList", "name": list_name,
-            "numberOfItems": count, "itemListElement": list_data}
+    crumbs = [("RackUp", url("" if lang == "el" else "en/")),
+              ("Αίθουσες μπιλιάρδου" if lang == "el" else "Billiard halls", url(f"{root}/"))]
+    data = {"@context": "https://schema.org", "@graph": [
+        breadcrumb_list(crumbs),
+        {"@type": "ItemList", "name": list_name, "numberOfItems": count, "itemListElement": list_data},
+    ]}
     return page(lang=lang, title=title, description=description, path=f"{root}/",
                 alt_path=f"{alt_root}/", depth=depth, body=body, data=data)
 
@@ -484,10 +513,54 @@ def hall_item(v, lang):
     return "\n".join(parts)
 
 
+def places(areas, halls, lang):
+    """Up to four districts, closed with "elsewhere" unless they hold every hall."""
+    shown = areas[:4]
+    wrap = esc if lang == "el" else (lambda a: f'<span lang="el">{esc(a)}</span>')
+    words = [wrap(a) for a in shown]
+    if any(area_of(v["address"]) not in shown for v in halls):
+        words.append("αλλού" if lang == "el" else "elsewhere")
+    if len(words) < 2:
+        return "".join(words)
+    joiner = " και " if lang == "el" else " and "
+    return ", ".join(words[:-1]) + joiner + words[-1]
+
+
+def city_lead(city, halls, areas, lang):
+    """Opens with the city's name and says what the page lists, from the data alone."""
+    _, name_el, in_el = CITIES[city]
+    first = halls[0]
+    area = area_of(first["address"])
+    every_phone = all(v.get("phone") for v in halls)
+    if lang == "el":
+        if len(halls) == 1:
+            where = f" ({esc(area)})" if area else ""
+            return (f"{esc(name_el)}: ο κατάλογος του RackUp έχει μία αίθουσα μπιλιάρδου, το {esc(first['name'])}"
+                    f'{where}. Ξέρεις κι άλλα μπιλιάρδα {esc(in_el)}; <a href="mailto:{EMAIL}">Γράψε μας</a>.')
+        found = f", σε {places(areas, halls, 'el')}" if areas else ""
+        contact = "τις διευθύνσεις και τα τηλέφωνά τους" if every_phone else "τις διευθύνσεις τους"
+        return (f"{esc(name_el)}: {len(halls)} αίθουσες μπιλιάρδου στον κατάλογο του RackUp{found}. "
+                f"Παρακάτω θα βρεις τα μπιλιάρδα με {contact}.")
+    city_name = f'{esc(city)} (<span lang="el">{esc(name_el)}</span>)'
+    if len(halls) == 1:
+        name = esc(first["name"])
+        if GREEK_TEXT.search(first["name"]):
+            name = f'<span lang="el">{name}</span>'
+        where = f' (<span lang="el">{esc(area)}</span>)' if area else ""
+        return (f"{city_name}: RackUp's directory lists one billiard hall, {name}{where}. "
+                f'Know another billiard hall in {esc(city)}? <a href="mailto:{EMAIL}">Email us</a>.')
+    found = f", in {places(areas, halls, 'en')}" if areas else ""
+    contact = "its address and phone number" if every_phone else "its address"
+    return (f"{city_name}: RackUp's directory lists {len(halls)} billiard halls{found}. "
+            f"Below, each hall comes with {contact}.")
+
+
 def business(v):
-    """LocalBusiness from the fields the directory holds, and nothing more."""
+    """A SportsActivityLocation (a LocalBusiness) from the directory's fields, and nothing more.
+    The @id is the hall's anchor on the Greek page, so both languages describe one place."""
     item = {
-        "@type": "LocalBusiness",
+        "@type": "SportsActivityLocation",
+        "@id": url(f"{EL_ROOT}/{CITIES[v['city']][0]}/#{v['id']}"),
         "name": v["name"],
         "address": {
             "@type": "PostalAddress",
@@ -519,23 +592,24 @@ def city_page(city, halls, cities, lang):
     hall_list = "\n".join(hall_item(v, lang) for v in halls)
     others = sorted((c for c in cities if c != city),
                     key=lambda c: fold(CITIES[c][1] if lang == "el" else c))
+    every_phone = all(v.get("phone") for v in halls)
+    first = halls[0]
     if lang == "el":
         heading = f"Μπιλιάρδο {in_el}"
         if n == 1:
-            title = f"{heading}: {halls[0]['name']} | RackUp"
-            description = f"{heading}: {halls[0]['name']}, {halls[0]['address']}. Βρες αντίπαλο με το RackUp."
+            title = first_fit(TITLE_LIMIT, f"{heading}: {first['name']} | RackUp", f"{heading}: {first['name']}",
+                              f"{heading}: {plural_el(n)} μπιλιάρδου | RackUp")
+            hall_line = f"{heading}: {first['name']}, {first['address']}"
+            phone = f", τηλ. {first['phone']}" if first.get("phone") else ""
+            description = first_fit(DESCRIPTION_LIMIT, f"{hall_line}{phone}. {TAIL['el']}", f"{hall_line}. {TAIL['el']}")
         else:
-            title = f"{heading}: {plural_el(n)} | RackUp"
-            description = fit_description(f"{heading}: δες {n} αίθουσες και τις διευθύνσεις τους.",
-                                          areas, "Βρες αντίπαλο με το RackUp.", "Περιοχές")
-        lead = f"{plural_el(n)} μπιλιάρδου {in_el}."
-        if areas and n > 1:
-            lead += f" Περιοχές: {esc(', '.join(areas))}."
+            title = f"{heading}: {plural_el(n)} μπιλιάρδου | RackUp"
+            contact = "διευθύνσεις και τηλέφωνα" if every_phone else "διευθύνσεις"
+            description = fit_description(f"{heading}: {n} αίθουσες με {contact}.", areas, TAIL["el"], "Περιοχές")
+        lead = city_lead(city, halls, areas, lang)
         other_links = " ".join(f'<li><a class="chip" href="../{CITIES[c][0]}/">{esc(CITIES[c][1])}</a></li>'
                                for c in others)
-        pitch = cta_card("el", f"Θες αντίπαλο {esc(in_el)};",
-                         "Ανέβασε στο RackUp αίθουσα, παιχνίδι (8άρα, 9άρα ή 10άρα) και ώρα, και δες ποιος θα "
-                         "πιάσει το τραπέζι. Ή ζήτα να μπεις σε τραπέζι που άνοιξε κάποιος άλλος.", campaign, prefix)
+        pitch = cta_card("el", f"Θες αντίπαλο {esc(in_el)};", card_copy("el", True), campaign, prefix)
         body = f"""<section class="page-hero">
 <div class="container">
 <p class="crumbs"><a href="../../">RackUp</a> › <a href="../">Αίθουσες μπιλιάρδου</a> › {esc(name_el)}</p>
@@ -558,17 +632,18 @@ def city_page(city, halls, cities, lang):
     else:
         heading = f"Billiards in {city}"
         if n == 1:
-            title = f"{heading}: {halls[0]['name']} | RackUp"
-            description = f"{heading}: {halls[0]['name']}, {halls[0]['address']}. Find an opponent with RackUp."
+            title = first_fit(TITLE_LIMIT, f"{heading}: {first['name']} | RackUp", f"{heading}: {first['name']}",
+                              f"Pool and billiards in {city}: {plural_en(n)} | RackUp")
+            hall_line = f"{heading}: {first['name']}, {first['address']}"
+            phone = f", phone {first['phone']}" if first.get("phone") else ""
+            description = first_fit(DESCRIPTION_LIMIT, f"{hall_line}{phone}. {TAIL['en']}", f"{hall_line}. {TAIL['en']}")
         else:
-            title = f"{heading}: {plural_en(n)} | RackUp"
-            description = (f"{heading}: see {n} billiard halls and their addresses, "
-                           f"from a hand-researched directory. Find an opponent with RackUp.")
-        lead = f"{plural_en(n).replace('hall', 'billiard hall')} in {esc(city)} (<span lang='el'>{esc(name_el)}</span>)."
+            title = f"Pool and billiards in {city}: {plural_en(n)} | RackUp"
+            contact = "addresses and phone numbers" if every_phone else "addresses"
+            description = fit_description(f"{heading}: {n} halls with {contact}.", areas, TAIL["en"], "Areas")
+        lead = city_lead(city, halls, areas, lang)
         other_links = " ".join(f'<li><a class="chip" href="../{CITIES[c][0]}/">{esc(c)}</a></li>' for c in others)
-        pitch = cta_card("en", f"Looking for an opponent in {esc(city)}?",
-                         "Post the hall, the game (8-Ball, 9-Ball or 10-Ball) and the time on RackUp, and see who "
-                         "takes the table. Or ask to join a table someone else has posted.", campaign, prefix)
+        pitch = cta_card("en", f"Looking for an opponent in {esc(city)}?", card_copy("en", True), campaign, prefix)
         body = f"""<section class="page-hero">
 <div class="container">
 <p class="crumbs"><a href="../../../en/">RackUp</a> › <a href="../">Billiard halls</a> › {esc(city)}</p>
@@ -587,13 +662,11 @@ def city_page(city, halls, cities, lang):
 <ul class="chips">{other_links}</ul>
 </nav>
 </div>"""
-        crumbs = [("RackUp", url("")), ("Billiard halls", url(f"{root}/")), (city, url(path))]
+        crumbs = [("RackUp", url("en/")), ("Billiard halls", url(f"{root}/")), (city, url(path))]
     data = {
         "@context": "https://schema.org",
         "@graph": [
-            {"@type": "BreadcrumbList", "itemListElement": [
-                {"@type": "ListItem", "position": i, "name": name, "item": link}
-                for i, (name, link) in enumerate(crumbs, start=1)]},
+            breadcrumb_list(crumbs),
             {"@type": "ItemList", "name": heading, "numberOfItems": n, "itemListElement": [
                 {"@type": "ListItem", "position": i, "item": business(v)}
                 for i, v in enumerate(halls, start=1)]},
