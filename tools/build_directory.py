@@ -29,7 +29,7 @@ PROVIDER_TOKEN = ""
 CAMPAIGN = re.compile(r"[a-z0-9]+(-[a-z0-9]+)*")
 CAMPAIGN_MAX = 26
 # Hand-written pages whose store links the build tags too: file -> site path.
-HAND_PAGES = {"index.html": "", "en/index.html": "en/", "support.html": "support.html"}
+HAND_PAGES = {"index.html": "", "en/index.html": "en/", "support.html": "support.html", "404.html": "404.html"}
 # The two homes: each carries the counts and the city grid, in its own language.
 HOMES = {"index.html": "el", "en/index.html": "en"}
 GRID_START, GRID_END = "<!-- city-grid -->", "<!-- /city-grid -->"
