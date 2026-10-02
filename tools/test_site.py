@@ -67,6 +67,13 @@ class StylesheetTest(unittest.TestCase):
             if "-latin.woff2" in face:
                 self.assertIn("U+2190-2193", face.replace(" ", ""), "Profile → Settings needs the arrow")
 
+    def test_phone_tap_targets_and_wrapping(self):
+        text = css()
+        for selector in (r"\.nav-links a", r"\.btn-sm", r"\.foot nav a", r"\.other \.chip", r"\.wordmark"):
+            self.assertRegex(text, selector + r"\s*{[^}]*min-height\s*:\s*44px", f"{selector} is under 44 px to tap")
+        self.assertRegex(text, r"\.prose code,\s*\.prose a\s*{[^}]*overflow-wrap\s*:\s*anywhere", "long code runs off a zoomed phone")
+        self.assertRegex(text, r"@media \(max-width:479px\)\s*{\s*\.city-grid\s*{[^}]*repeat\(2", "27 cities in one column on a phone")
+
     def test_stylesheet_carries_the_app_palette(self):
         text = css().upper()
         for colour in PALETTE:

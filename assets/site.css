@@ -252,6 +252,45 @@ a.chip:hover{border-color:var(--accent)}
   .bento{grid-template-columns:repeat(3,1fr)}
   .rack-bg{right:-60px;top:20px;width:640px}
 }
+
+/* Phone comfort: 44 px tap targets, readable sizes, wrapping when zoomed. Measured at 280 to 844 px. */
+html{overflow-wrap:break-word}
+.prose code,.prose a{overflow-wrap:anywhere}
+.wordmark{min-height:44px}
+.nav-links a{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px}
+.btn-sm{min-height:44px}
+.crumbs a{display:inline-block;padding:13px 0;margin:-13px 0}
+.contact a,.prose .card .addr a{display:inline-block;padding:12px 0;margin:-12px 0}
+.other .chip{min-height:44px;padding:9px 16px}
+.foot nav{gap:8px 24px}
+.foot nav a{display:inline-flex;align-items:center;min-height:44px}
+.btn-store small{font-size:.75rem;opacity:.85}
+.live{font-size:.75rem}
+.contact,.note,.share-card .note{font-size:1rem}
+.toast .toast-icon{color:var(--on-accent);font-size:.95rem}
+.faq summary::after{content:"+";content:"+" / ""}
+@media (max-width:479px){
+  .city-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .city-grid a{padding:12px 14px}
+}
+@media (max-width:379px){
+  .float-ball{--s:56px;bottom:0}
+  .cta-band{padding:44px 16px}
+  .cta-band .balls .ball{--s:46px}
+}
+@media (min-width:600px) and (max-width:979px){
+  .stage{width:min(100%,560px);margin-left:auto;margin-right:auto}
+}
+@media (orientation:landscape) and (max-height:500px){
+  h1{font-size:clamp(2.25rem,6vw,3.25rem)}
+}
+.section[id]{scroll-margin-top:calc(var(--header) - 24px)}
+@media (max-width:319px){
+  .nav .wordmark .ball{display:none}
+}
+@media (min-width:760px){
+  .nav-links .nav-text{display:inline-flex}
+}
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important}
 }
