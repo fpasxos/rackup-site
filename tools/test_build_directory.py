@@ -87,7 +87,9 @@ class BuildDirectoryTest(unittest.TestCase):
         tagged = set()
         for rel, text in published(".html"):
             links = store_hrefs(text, "play.google.com")
-            bare = re.findall(r"https?://play\.google\.com/", text)
+            # Structured data names the listing (sameAs) but is never a link anyone taps.
+            visible = re.sub(r'<script type="application/ld\+json">.*?</script>', "", text, flags=re.S)
+            bare = re.findall(r"https?://play\.google\.com/", visible)
             self.assertEqual(len(bare), len(links), f"{rel} has a Play URL outside an https href")
             for link in links:
                 query = parse_qs(urlsplit(link).query)
