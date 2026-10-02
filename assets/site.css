@@ -161,7 +161,7 @@ a.chip:hover{border-color:var(--accent)}
 .crumbs{font-size:.88rem;color:var(--muted);margin:0 0 14px}
 .crumbs a{color:var(--ink2);text-decoration:none}
 .crumbs a:hover{color:var(--accent)}
-.halls{display:grid;gap:12px;margin:24px 0 0;padding:0;list-style:none}
+.halls{display:grid;gap:12px;margin:24px 0 0;padding:0;list-style:none;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr))}
 .hall{border:1px solid var(--outline);border-radius:var(--radius-lg);padding:20px 22px;background:linear-gradient(180deg,var(--surface),var(--surface-low))}
 .hall:target{border-color:var(--accent);box-shadow:0 0 0 3px var(--lime-wash)}
 .hall h2{font-size:1.2rem;margin:0 0 4px}
@@ -170,10 +170,11 @@ a.chip:hover{border-color:var(--accent)}
 .contact{color:var(--muted);font-size:.92rem}
 .other{margin-top:40px}
 .other h2{font-size:1.2rem}
+.other .chip{padding:7px 15px}
 .note{color:var(--muted);font-size:.92rem}
-.cta-card{display:grid;gap:24px;align-items:center;margin:48px 0 8px;padding:28px;border-radius:28px;border:1px solid var(--outline);background:radial-gradient(420px 260px at 90% 50%,rgba(198,242,78,.16),transparent 70%),var(--surface-low);overflow:hidden}
+.cta-card{display:grid;gap:24px;align-items:center;margin:48px 0 24px;padding:28px;border-radius:28px;border:1px solid var(--outline);background:radial-gradient(420px 260px at 90% 50%,rgba(198,242,78,.16),transparent 70%),var(--surface-low);overflow:hidden}
 .cta-card h2{font-size:1.6rem}
-.cta-card p{color:var(--ink2)}
+.cta-card p{color:var(--ink2);max-width:60ch}
 .cta-card .phone{position:relative;--pw:180px;margin:0 auto;transform:rotate(-4deg)}
 
 /* Long-form pages */
