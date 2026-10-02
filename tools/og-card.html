@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1200">
+<title>RackUp social card</title>
+<!-- Source of assets/og-card.png (1200x630). Fonts need http: serve the repo root, render with
+     headless Edge at --window-size=1200,630, then run python tools/make_images.py --og-card. -->
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+/* site.css gives its Greek faces a weight range unlike their Latin siblings, so Chrome never
+   loads them. Own families with one shared range per family keep this card in Commissioner. */
+@font-face{font-family:"Card Display";src:url("../assets/fonts/space-grotesk-latin.woff2") format("woff2");font-weight:300 800;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Card Display";src:url("../assets/fonts/commissioner-greek.woff2") format("woff2");font-weight:300 800;unicode-range:U+0370-03FF,U+1F00-1FFF}
+@font-face{font-family:"Card Text";src:url("../assets/fonts/hanken-grotesk-latin.woff2") format("woff2");font-weight:100 900;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Card Text";src:url("../assets/fonts/commissioner-greek.woff2") format("woff2");font-weight:100 900;unicode-range:U+0370-03FF,U+1F00-1FFF}
+:root{--display:"Card Display",system-ui,sans-serif;--text:"Card Text",system-ui,sans-serif}
+html,body{width:1200px;height:630px;overflow:hidden}
+.og{position:relative;width:1200px;height:630px;overflow:hidden;isolation:isolate}
+.og::before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(560px 470px at 76% 56%,rgba(198,242,78,.3),transparent 70%),radial-gradient(760px 520px at 0% 115%,rgba(44,201,192,.09),transparent 70%)}
+.og::after{content:"";position:absolute;inset:0;z-index:-1;background-image:radial-gradient(rgba(234,242,237,.07) 1px,transparent 1px);background-size:22px 22px;-webkit-mask-image:linear-gradient(180deg,#000,transparent 92%);mask-image:linear-gradient(180deg,#000,transparent 92%)}
+.copy{position:absolute;left:76px;top:64px;bottom:60px;width:640px;display:flex;flex-direction:column}
+.og .wordmark{font-size:2.1rem;gap:14px}
+.og .wordmark .ball{--s:44px}
+.og h1{font-size:90px;margin:auto 0 22px;letter-spacing:-.035em;line-height:.98}
+.og h1 .hl{white-space:nowrap}
+.og .line{font:500 27px/1.35 var(--text);color:var(--ink2);margin:0 0 auto}
+.foot{display:flex;align-items:center;gap:22px}
+.og .balls{gap:10px}
+.og .balls .ball{--s:50px}
+.url{font:600 26px/1 var(--display);color:var(--ink);letter-spacing:-.01em;padding:13px 22px;border-radius:999px;background:var(--lime-wash);border:1px solid var(--lime-line)}
+.og .phone{--pw:292px;right:118px;top:62px;transform:rotate(-5deg)}
+</style>
+</head>
+<body>
+<div class="og">
+  <div class="copy">
+    <span class="wordmark"><span class="ball b8" aria-hidden="true"><span class="n">8</span></span><span class="wm">RACK<span>UP</span></span></span>
+    <h1>Βρες αντίπαλο. <span class="hl">Παίξε απόψε.</span></h1>
+    <p class="line">Αμερικάνικο και γαλλικό<br>σε 76 αίθουσες σε 27 πόλεις</p>
+    <div class="foot">
+      <div class="balls">
+        <span class="ball b8" aria-hidden="true"><span class="n">8</span></span>
+        <span class="ball b9" aria-hidden="true"><span class="n">9</span></span>
+        <span class="ball b10" aria-hidden="true"><span class="n">10</span></span>
+      </div>
+      <span class="url">getrackup.com</span>
+    </div>
+  </div>
+  <div class="phone"><img src="../assets/img/el-venue-720.webp" alt="" width="720" height="1566"></div>
+</div>
+</body>
+</html>
