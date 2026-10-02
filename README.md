@@ -80,7 +80,7 @@ that way; `tools/test_site.py` fails on the old green and gold palette.
   declare the same `font-weight` range, or Chrome never uses the Greek one.
   `python tools/make_fonts.py` rebuilds the subsets (needs `pip install fonttools brotli`).
 - **Images.** `python tools/make_images.py` rebuilds the WebP screenshots from the
-  app repo's store screenshots (never `1-venues.png`, its hall count is stale) and,
+  app repo's store screenshots (not `1-venues.png`, its hall count goes stale) and,
   with `--og-card`, optimises the social card rendered from `tools/og-card.html`.
 - **Checking a phone layout.** Headless Edge will not lay out narrower than 484 px,
   so load pages into a same-origin iframe of the width you want and compare
