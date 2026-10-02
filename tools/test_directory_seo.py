@@ -7,6 +7,7 @@ import re
 import sys
 import unittest
 from pathlib import Path
+from urllib.parse import urljoin
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import build_directory as b  # noqa: E402
@@ -177,6 +178,68 @@ class LeadTest(unittest.TestCase):
                 self.assertEqual(len(re.findall(r"\bμπιλιάρδα\b", visible_text(text))), 1, city)
             else:
                 self.assertTrue(lead.startswith(f'{city} (<span lang="el">{name_el}</span>): '), lead)
+
+
+def structured(text):
+    return json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', text, re.S).group(1))
+
+
+def node(data, kind):
+    found = [n for n in data["@graph"] if n["@type"] == kind]
+    if len(found) != 1:
+        raise AssertionError(f"expected one {kind}, found {len(found)}")
+    return found[0]
+
+
+def visible_crumbs(text):
+    """(name, URL) for each crumb as shown, resolved against the canonical URL; the last is the page."""
+    canonical = re.search(r'<link rel="canonical" href="([^"]*)">', text).group(1)
+    crumbs = []
+    for part in re.search(r'<p class="crumbs">(.*?)</p>', text, re.S).group(1).split(" › "):
+        link = re.fullmatch(r'<a href="([^"]*)">(.*)</a>', part)
+        crumbs.append((strip_tags(link.group(2)), urljoin(canonical, link.group(1))) if link
+                      else (strip_tags(part), canonical))
+    return crumbs
+
+
+class StructuredDataTest(unittest.TestCase):
+
+    def test_breadcrumbs_in_json_ld_match_the_visible_ones(self):
+        for rel, text in directory_pages().items():
+            with self.subTest(page=rel):
+                trail = node(structured(text), "BreadcrumbList")["itemListElement"]
+                self.assertEqual([(c["name"], c["item"]) for c in trail], visible_crumbs(text))
+                self.assertEqual([c["position"] for c in trail], list(range(1, len(trail) + 1)))
+                home = f"{b.BASE_URL}/" if is_greek(rel) else f"{b.BASE_URL}/en/"
+                self.assertEqual(trail[0]["item"], home)
+                index = rel in (f"{b.EL_ROOT}/index.html", f"{b.EN_ROOT}/index.html")
+                self.assertEqual(len(trail), 2 if index else 3)
+
+    def test_index_pages_keep_their_city_list(self):
+        cities = b.group_by_city(b.load_venues())
+        for rel in (f"{b.EL_ROOT}/index.html", f"{b.EN_ROOT}/index.html"):
+            listing = node(structured(directory_pages()[rel]), "ItemList")
+            self.assertEqual(listing["numberOfItems"], len(cities), rel)
+            self.assertEqual(len(listing["itemListElement"]), len(cities), rel)
+
+    def test_halls_are_sports_venues_with_one_id_in_both_languages(self):
+        cities = b.group_by_city(b.load_venues())
+        for city, halls in cities.items():
+            slug = b.CITIES[city][0]
+            greek = b.city_page(city, halls, cities, "el")
+            ids = {}
+            for lang in ("el", "en"):
+                items = [li["item"] for li in node(structured(b.city_page(city, halls, cities, lang)),
+                                                   "ItemList")["itemListElement"]]
+                ids[lang] = [item["@id"] for item in items]
+                for v, item in zip(halls, items):
+                    self.assertEqual(item["@type"], "SportsActivityLocation")
+                    self.assertEqual(item["@id"], f"{b.BASE_URL}/{b.EL_ROOT}/{slug}/#{v['id']}")
+                    self.assertLessEqual(set(item), {"@type", "@id", "name", "address", "telephone", "url"})
+                    self.assertEqual("telephone" in item, bool(v.get("phone")), v["id"])
+                    self.assertEqual("url" in item, bool(v.get("website")), v["id"])
+                    self.assertIn(f'id="{v["id"]}"', greek, "the @id must point at an anchor on the Greek page")
+            self.assertEqual(ids["el"], ids["en"], city)
 
 
 class DownloadCardTest(unittest.TestCase):

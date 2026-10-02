@@ -183,6 +183,13 @@ def url(path):
     return f"{BASE_URL}/{path}"
 
 
+def breadcrumb_list(crumbs):
+    """The visible crumbs as (name, absolute URL) pairs, the page itself last."""
+    return {"@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": i, "name": name, "item": link}
+        for i, (name, link) in enumerate(crumbs, start=1)]}
+
+
 def jsonld(data):
     text = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
     return text.replace("</", "<\\/")
@@ -475,8 +482,12 @@ def index_page(cities, lang):
 </div>"""
         list_name = "Billiard halls in Greece by city"
     alt_root = EN_ROOT if lang == "el" else EL_ROOT
-    data = {"@context": "https://schema.org", "@type": "ItemList", "name": list_name,
-            "numberOfItems": count, "itemListElement": list_data}
+    crumbs = [("RackUp", url("" if lang == "el" else "en/")),
+              ("Αίθουσες μπιλιάρδου" if lang == "el" else "Billiard halls", url(f"{root}/"))]
+    data = {"@context": "https://schema.org", "@graph": [
+        breadcrumb_list(crumbs),
+        {"@type": "ItemList", "name": list_name, "numberOfItems": count, "itemListElement": list_data},
+    ]}
     return page(lang=lang, title=title, description=description, path=f"{root}/",
                 alt_path=f"{alt_root}/", depth=depth, body=body, data=data)
 
@@ -545,9 +556,11 @@ def city_lead(city, halls, areas, lang):
 
 
 def business(v):
-    """LocalBusiness from the fields the directory holds, and nothing more."""
+    """A SportsActivityLocation (a LocalBusiness) from the directory's fields, and nothing more.
+    The @id is the hall's anchor on the Greek page, so both languages describe one place."""
     item = {
-        "@type": "LocalBusiness",
+        "@type": "SportsActivityLocation",
+        "@id": url(f"{EL_ROOT}/{CITIES[v['city']][0]}/#{v['id']}"),
         "name": v["name"],
         "address": {
             "@type": "PostalAddress",
@@ -649,13 +662,11 @@ def city_page(city, halls, cities, lang):
 <ul class="chips">{other_links}</ul>
 </nav>
 </div>"""
-        crumbs = [("RackUp", url("")), ("Billiard halls", url(f"{root}/")), (city, url(path))]
+        crumbs = [("RackUp", url("en/")), ("Billiard halls", url(f"{root}/")), (city, url(path))]
     data = {
         "@context": "https://schema.org",
         "@graph": [
-            {"@type": "BreadcrumbList", "itemListElement": [
-                {"@type": "ListItem", "position": i, "name": name, "item": link}
-                for i, (name, link) in enumerate(crumbs, start=1)]},
+            breadcrumb_list(crumbs),
             {"@type": "ItemList", "name": heading, "numberOfItems": n, "itemListElement": [
                 {"@type": "ListItem", "position": i, "item": business(v)}
                 for i, v in enumerate(halls, start=1)]},
