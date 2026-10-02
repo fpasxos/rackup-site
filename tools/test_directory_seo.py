@@ -127,6 +127,58 @@ class TitleAndDescriptionTest(unittest.TestCase):
                          f"Billiards in Naxos: Galaxias, Odos 1, Chora. {TAIL_EN}")
 
 
+class LeadTest(unittest.TestCase):
+    WRITE_EL = f'<a href="mailto:{b.EMAIL}">Γράψε μας</a>'
+    WRITE_EN = f'<a href="mailto:{b.EMAIL}">Email us</a>'
+
+    def lead(self, city, halls, lang):
+        return re.search(r'<p class="lead">(.*?)</p>', b.city_page(city, halls, {}, lang), re.S).group(1)
+
+    def test_one_hall_lead_names_the_hall_and_its_district(self):
+        naxos = [hall("venue-n", "Εξαρχοπούλου, Χώρα", "+30 698", city="Naxos", name="Galaxias Billiards")]
+        self.assertEqual(self.lead("Naxos", naxos, "el"),
+                         "Νάξος: ο κατάλογος του RackUp έχει μία αίθουσα μπιλιάρδου, το Galaxias Billiards (Χώρα). "
+                         f"Ξέρεις κι άλλα μπιλιάρδα στη Νάξο; {self.WRITE_EL}.")
+        self.assertEqual(self.lead("Naxos", naxos, "en"),
+                         'Naxos (<span lang="el">Νάξος</span>): RackUp\'s directory lists one billiard hall, '
+                         'Galaxias Billiards (<span lang="el">Χώρα</span>). '
+                         f"Know another billiard hall in Naxos? {self.WRITE_EN}.")
+        patras = [hall("venue-p", "Αγίου Ανδρέου 74", city="Patras", name="Πικέ Hall")]
+        self.assertEqual(self.lead("Patras", patras, "el"),
+                         "Πάτρα: ο κατάλογος του RackUp έχει μία αίθουσα μπιλιάρδου, το Πικέ Hall. "
+                         f"Ξέρεις κι άλλα μπιλιάρδα στην Πάτρα; {self.WRITE_EL}.")
+        self.assertEqual(self.lead("Patras", patras, "en"),
+                         'Patras (<span lang="el">Πάτρα</span>): RackUp\'s directory lists one billiard hall, '
+                         f'<span lang="el">Πικέ Hall</span>. Know another billiard hall in Patras? {self.WRITE_EN}.')
+
+    def test_lead_lists_up_to_four_districts_and_says_when_halls_lie_elsewhere(self):
+        covered = [hall("a", "Odos 1, Kalamaria", "+30 1"), hall("b", "Odos 2, Pylaia", "+30 2")]
+        self.assertEqual(self.lead("Larissa", covered, "el"),
+                         "Λάρισα: 2 αίθουσες μπιλιάρδου στον κατάλογο του RackUp, σε Kalamaria και Pylaia. "
+                         "Παρακάτω θα βρεις τα μπιλιάρδα με τις διευθύνσεις και τα τηλέφωνά τους.")
+        self.assertEqual(self.lead("Larissa", covered, "en"),
+                         'Larissa (<span lang="el">Λάρισα</span>): RackUp\'s directory lists 2 billiard halls, in '
+                         '<span lang="el">Kalamaria</span> and <span lang="el">Pylaia</span>. '
+                         "Below, each hall comes with its address and phone number.")
+        unplaced = covered + [hall("c", "Odos 3")]
+        self.assertIn("σε Kalamaria, Pylaia και αλλού.", self.lead("Larissa", unplaced, "el"))
+        self.assertIn('<span lang="el">Pylaia</span> and elsewhere.', self.lead("Larissa", unplaced, "en"))
+        many = [hall(f"h{i}", f"Odos {i}, {area}") for i, area in enumerate(("Ano", "Kato", "Mesa", "Exo", "Pano"))]
+        self.assertIn("σε Ano, Kato, Mesa, Exo και αλλού. Παρακάτω θα βρεις τα μπιλιάρδα με τις "
+                      "διευθύνσεις τους.", self.lead("Larissa", many, "el"))
+        self.assertIn("Below, each hall comes with its address.", self.lead("Larissa", many, "en"))
+
+    def test_every_city_page_opens_with_the_city_and_says_mpiliarda_once(self):
+        for city, _, lang, text in city_pages():
+            name_el = b.CITIES[city][1]
+            lead = re.search(r'<p class="lead">(.*?)</p>', text, re.S).group(1)
+            if lang == "el":
+                self.assertTrue(lead.startswith(f"{name_el}: "), lead)
+                self.assertEqual(len(re.findall(r"\bμπιλιάρδα\b", visible_text(text))), 1, city)
+            else:
+                self.assertTrue(lead.startswith(f'{city} (<span lang="el">{name_el}</span>): '), lead)
+
+
 class DownloadCardTest(unittest.TestCase):
 
     def test_card_names_pool_and_carom_and_how_the_app_finds_a_game(self):

@@ -71,12 +71,14 @@ class BuildDirectoryTest(unittest.TestCase):
         halls = [hall("a", "Odos 1"), hall("b", "Odos 2"), hall("c", "Papagou 1A, Giannouli")]
         text = b.city_page("Larissa", halls, {"Larissa": halls}, "el")
         self.assertNotIn("Περιοχ", text)
-        self.assertIn('<p class="lead">3 αίθουσες μπιλιάρδου στη Λάρισα.</p>', text)
+        self.assertIn('<p class="lead">Λάρισα: 3 αίθουσες μπιλιάρδου στον κατάλογο του RackUp. '
+                      'Παρακάτω θα βρεις τα μπιλιάρδα με τις διευθύνσεις τους.</p>', text)
 
     def test_two_or_more_districts_are_listed(self):
         halls = [hall("a", "Odos 1, Kalamaria"), hall("b", "Odos 2, Pylaia")]
         text = b.city_page("Larissa", halls, {"Larissa": halls}, "el")
-        self.assertIn('<p class="lead">2 αίθουσες μπιλιάρδου στη Λάρισα. Περιοχές: Kalamaria, Pylaia.</p>', text)
+        self.assertIn('<p class="lead">Λάρισα: 2 αίθουσες μπιλιάρδου στον κατάλογο του RackUp, σε Kalamaria και '
+                      'Pylaia. Παρακάτω θα βρεις τα μπιλιάρδα με τις διευθύνσεις τους.</p>', text)
 
     def test_no_page_carries_a_map_or_a_coordinate(self):
         for path, text in b.render().items():

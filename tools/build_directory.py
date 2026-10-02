@@ -502,6 +502,48 @@ def hall_item(v, lang):
     return "\n".join(parts)
 
 
+def places(areas, halls, lang):
+    """Up to four districts, closed with "elsewhere" unless they hold every hall."""
+    shown = areas[:4]
+    wrap = esc if lang == "el" else (lambda a: f'<span lang="el">{esc(a)}</span>')
+    words = [wrap(a) for a in shown]
+    if any(area_of(v["address"]) not in shown for v in halls):
+        words.append("αλλού" if lang == "el" else "elsewhere")
+    if len(words) < 2:
+        return "".join(words)
+    joiner = " και " if lang == "el" else " and "
+    return ", ".join(words[:-1]) + joiner + words[-1]
+
+
+def city_lead(city, halls, areas, lang):
+    """Opens with the city's name and says what the page lists, from the data alone."""
+    _, name_el, in_el = CITIES[city]
+    first = halls[0]
+    area = area_of(first["address"])
+    every_phone = all(v.get("phone") for v in halls)
+    if lang == "el":
+        if len(halls) == 1:
+            where = f" ({esc(area)})" if area else ""
+            return (f"{esc(name_el)}: ο κατάλογος του RackUp έχει μία αίθουσα μπιλιάρδου, το {esc(first['name'])}"
+                    f'{where}. Ξέρεις κι άλλα μπιλιάρδα {esc(in_el)}; <a href="mailto:{EMAIL}">Γράψε μας</a>.')
+        found = f", σε {places(areas, halls, 'el')}" if areas else ""
+        contact = "τις διευθύνσεις και τα τηλέφωνά τους" if every_phone else "τις διευθύνσεις τους"
+        return (f"{esc(name_el)}: {len(halls)} αίθουσες μπιλιάρδου στον κατάλογο του RackUp{found}. "
+                f"Παρακάτω θα βρεις τα μπιλιάρδα με {contact}.")
+    city_name = f'{esc(city)} (<span lang="el">{esc(name_el)}</span>)'
+    if len(halls) == 1:
+        name = esc(first["name"])
+        if GREEK_TEXT.search(first["name"]):
+            name = f'<span lang="el">{name}</span>'
+        where = f' (<span lang="el">{esc(area)}</span>)' if area else ""
+        return (f"{city_name}: RackUp's directory lists one billiard hall, {name}{where}. "
+                f'Know another billiard hall in {esc(city)}? <a href="mailto:{EMAIL}">Email us</a>.')
+    found = f", in {places(areas, halls, 'en')}" if areas else ""
+    contact = "its address and phone number" if every_phone else "its address"
+    return (f"{city_name}: RackUp's directory lists {len(halls)} billiard halls{found}. "
+            f"Below, each hall comes with {contact}.")
+
+
 def business(v):
     """LocalBusiness from the fields the directory holds, and nothing more."""
     item = {
@@ -551,9 +593,7 @@ def city_page(city, halls, cities, lang):
             title = f"{heading}: {plural_el(n)} μπιλιάρδου | RackUp"
             contact = "διευθύνσεις και τηλέφωνα" if every_phone else "διευθύνσεις"
             description = fit_description(f"{heading}: {n} αίθουσες με {contact}.", areas, TAIL["el"], "Περιοχές")
-        lead = f"{plural_el(n)} μπιλιάρδου {in_el}."
-        if areas and n > 1:
-            lead += f" Περιοχές: {esc(', '.join(areas))}."
+        lead = city_lead(city, halls, areas, lang)
         other_links = " ".join(f'<li><a class="chip" href="../{CITIES[c][0]}/">{esc(CITIES[c][1])}</a></li>'
                                for c in others)
         pitch = cta_card("el", f"Θες αντίπαλο {esc(in_el)};", card_copy("el", True), campaign, prefix)
@@ -588,7 +628,7 @@ def city_page(city, halls, cities, lang):
             title = f"Pool and billiards in {city}: {plural_en(n)} | RackUp"
             contact = "addresses and phone numbers" if every_phone else "addresses"
             description = fit_description(f"{heading}: {n} halls with {contact}.", areas, TAIL["en"], "Areas")
-        lead = f"{plural_en(n).replace('hall', 'billiard hall')} in {esc(city)} (<span lang='el'>{esc(name_el)}</span>)."
+        lead = city_lead(city, halls, areas, lang)
         other_links = " ".join(f'<li><a class="chip" href="../{CITIES[c][0]}/">{esc(c)}</a></li>' for c in others)
         pitch = cta_card("en", f"Looking for an opponent in {esc(city)}?", card_copy("en", True), campaign, prefix)
         body = f"""<section class="page-hero">
