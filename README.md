@@ -1,8 +1,10 @@
 # rackup-site
 
 The public website for RackUp, served by GitHub Pages from `master` at
-<https://fpasxos.github.io/rackup-site/>. Plain HTML and CSS, no framework.
+<https://getrackup.com/>. Plain HTML and CSS, no framework.
 Anything merged to `master` goes live, so treat a merge as publishing.
+The old `https://fpasxos.github.io/rackup-site/` addresses redirect to the same
+path on `getrackup.com`, so links already in the app and on QR codes keep working.
 
 | Path | What it is | Edited by |
 |---|---|---|
@@ -14,6 +16,7 @@ Anything merged to `master` goes live, so treat a merge as publishing.
 | `m/` | Landing page for match links shared from the app (`noindex`, not in the sitemap) | hand |
 | `go/` | Where printed QR codes point: sends phones to their app store with tagged links (`noindex`, not in the sitemap) | hand |
 | `assets/` | Shared stylesheet and the app icon | hand |
+| `CNAME` | The custom domain, `getrackup.com`, that GitHub Pages serves the site on | hand |
 | `data/venues.json` | Public copy of the venue directory | generator (`--import`) |
 | `tools/build_directory.py` | The generator | hand |
 
@@ -68,7 +71,8 @@ python -m http.server 8000
 
 ## Match share links
 
-The Android app shares a match as `https://fpasxos.github.io/rackup-site/m/?id=<matchId>`.
+The Android app shares a match as `https://getrackup.com/m/?id=<matchId>` (builds that
+still use the old github.io address reach the same page through the redirect).
 Chat apps turn that into a tappable link with a preview, which a `rackup://` link never
 got. `m/index.html` shows the preview tags and the store links; `m/open.js` checks the id
 (letters, digits, `_` and `-`, at most 128) and, on Android only, adds an **Open in
@@ -91,8 +95,9 @@ node --test tools/match_page.test.js
 
 ## Store QR codes
 
-Printed QR codes point at `https://fpasxos.github.io/rackup-site/go/`, or
-`go/?h=<hall-slug>` for a hall's own code. `go/go.js` sends iPhones and iPads to
+Printed QR codes point at `https://getrackup.com/go/`, or
+`go/?h=<hall-slug>` for a hall's own code (codes made before the move use the old
+github.io address and arrive through the redirect). `go/go.js` sends iPhones and iPads to
 the App Store and Android phones to Google Play, and shows the two store buttons
 everywhere else. A hall slug is lowercase letters, digits and single hyphens, at
 most 30 characters; anything else counts as the general code.
@@ -118,7 +123,7 @@ node --test tools/go_page.test.js
 
 ## Search
 
-`robots.txt` is only read at the root of a host, which for a project site is
-`fpasxos.github.io`, not this repo. Submit `sitemap.xml` in Google Search
-Console instead, under a URL-prefix property for
-`https://fpasxos.github.io/rackup-site/`.
+Submit `https://getrackup.com/sitemap.xml` in Google Search Console, under a
+Domain property for `getrackup.com` or a URL-prefix property for
+`https://getrackup.com/`. With its own host the site could now carry a
+`robots.txt` at the repo root; there is none yet.

@@ -19,7 +19,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data" / "venues.json"
 HOME = ROOT / "index.html"
-BASE_URL = "https://fpasxos.github.io/rackup-site"
+BASE_URL = "https://getrackup.com"
 APP_STORE = "https://apps.apple.com/gr/app/rackup-find-an-opponent/id6800614202"
 PLAY_STORE = "https://play.google.com/store/apps/details?id=com.rackup.app"
 EMAIL = "rackupbilliard@gmail.com"

@@ -347,8 +347,8 @@ test("the page is noindex, previews well and loads no script but its own", () =>
   for (const property of ["og:title", "og:description", "og:image", "og:url"]) {
     assert.match(html, new RegExp(`<meta property="${property}" content="[^"]+">`), property);
   }
-  assert.match(html, /<meta property="og:url" content="https:\/\/fpasxos\.github\.io\/rackup-site\/go\/">/);
-  const image = html.match(/property="og:image" content="https:\/\/fpasxos\.github\.io\/rackup-site\/([^"]+)"/)[1];
+  assert.match(html, /<meta property="og:url" content="https:\/\/getrackup\.com\/go\/">/);
+  const image = html.match(/property="og:image" content="https:\/\/getrackup\.com\/([^"]+)"/)[1];
   assert.ok(fs.existsSync(path.join(ROOT, image)), `og:image ${image} is not in the repo`);
   const scripts = [...html.matchAll(/<script\b[^>]*>/g)].map((m) => m[0]);
   assert.deepEqual(scripts, ['<script src="go.js" defer>']);
