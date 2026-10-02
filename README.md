@@ -22,7 +22,13 @@ path on `getrackup.com`, so links already in the app and on QR codes keep workin
 | `assets/img/`, `assets/og-card.png` | App screenshots as WebP, and the 1200x630 social card | `tools/make_images.py` |
 | `CNAME` | The custom domain, `getrackup.com`, that GitHub Pages serves the site on | hand |
 | `data/venues.json` | Public copy of the venue directory | generator (`--import`) |
+| `0a9442a5613cbbd088b30f789f206e74.txt` | The IndexNow key, which proves to Bing and others that the site is ours | never; see below |
 | `tools/build_directory.py` | The generator | hand |
+| `tools/indexnow.py` | Tells IndexNow engines the site changed | hand |
+
+The privacy policy's words are frozen in `tools/fixtures/privacy-text.txt`, so no
+edit to `privacy.html` can change the policy by accident. After a deliberate policy
+change, refresh it in the same commit with `python tools/test_pages_support.py --capture`.
 
 ## Regenerating the hall directory
 
@@ -193,9 +199,20 @@ and `FACEBOOK` in `tools/build_directory.py`, the hand pages by hand. The home's
 `MobileApplication`. Plain links only, never an embed, a share widget or a pixel.
 `tools/test_social_links.py` checks every page and the structured data.
 
-## Search
+## Telling search engines
 
-Submit `https://getrackup.com/sitemap.xml` in Google Search Console, under a
-Domain property for `getrackup.com` or a URL-prefix property for
-`https://getrackup.com/`. With its own host the site could now carry a
-`robots.txt` at the repo root; there is none yet.
+- **Google.** Search Console is set up under the rackupbilliard account, and
+  `https://getrackup.com/sitemap.xml` was submitted there on 2026-10-02.
+  `robots.txt` names the sitemap too.
+- **Bing, Yandex and the other IndexNow engines**, no account needed. After a
+  deploy, once GitHub Pages has finished publishing:
+
+  ```bash
+  python tools/indexnow.py --send
+  ```
+
+  That posts every URL in `sitemap.xml` (or only the URLs you pass) and prints the
+  HTTP status: 200 or 202 is good, 403 means the key file is not live. Without
+  `--send` it only prints the payload. The key file at the repo root must stay
+  there byte for byte and out of `_config.yml`'s `exclude`; `tools/test_indexnow.py`
+  checks both.

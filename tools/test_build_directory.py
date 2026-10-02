@@ -166,6 +166,13 @@ class BuildDirectoryTest(unittest.TestCase):
         with self.assertRaises(SystemExit):
             b.home_with_city_grid("<p>no markers here</p>", cities, "el")
 
+    def test_summary_names_both_homes(self):
+        cities = b.group_by_city(b.load_venues())
+        line = b.summary(b.render(), cities)
+        self.assertIn(f"for {sum(map(len, cities.values()))} halls in {len(cities)} cities", line)
+        self.assertIn("the counts and city grid on both homes", line)
+        self.assertNotIn("counts in index.html", line, "the English home gets them too")
+
     def test_no_page_tracks_visitors_or_loads_from_another_host(self):
         for rel, text in published(".html"):
             for tag in re.findall(r"<script\b[^>]*>", text):

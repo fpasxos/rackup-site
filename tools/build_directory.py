@@ -771,6 +771,12 @@ def stale_generated_dirs(files):
     return stale
 
 
+def summary(files, cities):
+    return (f"Wrote {len(files) - 1 - len(HAND_PAGES)} directory pages for {sum(map(len, cities.values()))} halls "
+            f"in {len(cities)} cities, plus sitemap.xml, the counts and city grid on both homes and the store links "
+            f"in {' and '.join(HAND_PAGES)}")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--import", dest="source", metavar="PATH",
@@ -797,10 +803,7 @@ def main():
     for folder in stale:
         shutil.rmtree(folder)
         print(f"removed {folder.relative_to(ROOT)}")
-    cities = group_by_city(load_venues())
-    print(f"Wrote {len(files) - 1 - len(HAND_PAGES)} directory pages for {sum(map(len, cities.values()))} halls "
-          f"in {len(cities)} cities, plus sitemap.xml, the counts in index.html and the store links "
-          f"in {' and '.join(HAND_PAGES)}")
+    print(summary(files, group_by_city(load_venues())))
 
 
 if __name__ == "__main__":
