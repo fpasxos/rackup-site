@@ -211,6 +211,15 @@ def app_store_url(campaign, token=None):
     return f"https://apps.apple.com/app/apple-store/id{APP_STORE_ID}?pt={token}&ct=web-{campaign}&mt=8"
 
 
+APPLE_GLYPH = ('<svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 '
+               '2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 '
+               '7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8 1.5 0 1.9.8 3.2.8 1.3 0 2.2-1.2 3-2.4.9-1.4 '
+               '1.3-2.7 1.3-2.8-.1 0-2.5-1-2.5-3.9zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 '
+               '2.9 1 .1 2.1-.6 2.8-1.4z"/></svg>')
+PLAY_GLYPH = ('<svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.8v18.4c0 .6.6 1 1.1.7l16-9.2'
+              'c.5-.3.5-1.1 0-1.4l-16-9.2C4.6 1.8 4 2.2 4 2.8z"/></svg>')
+
+
 def stores(lang, campaign):
     if lang == "el":
         apple, google, note = ("Λήψη από το", "Διαθέσιμο στο", "Για iPhone και Android.")
@@ -218,11 +227,27 @@ def stores(lang, campaign):
         apple, google, note = ("Download on the", "Get it on", "For iPhone and Android.")
     return (
         '<div class="stores">\n'
-        f'  <a class="store" href="{esc(app_store_url(campaign))}"><small>{apple}</small>App Store</a>\n'
-        f'  <a class="store" href="{esc(play_url(campaign))}"><small>{google}</small>Google Play</a>\n'
+        f'  <a class="btn btn-primary btn-store" href="{esc(app_store_url(campaign))}">{APPLE_GLYPH}'
+        f'<span><small>{apple}</small>App Store</span></a>\n'
+        f'  <a class="btn btn-ghost btn-store" href="{esc(play_url(campaign))}">{PLAY_GLYPH}'
+        f'<span><small>{google}</small>Google Play</span></a>\n'
         "</div>\n"
         f'<p class="stores-note">{note}</p>'
     )
+
+
+def cta_card(lang, heading, text, campaign, root):
+    """The download card: the page's pitch and store buttons beside the app's welcome screen."""
+    shot = f"{root}assets/img/{lang}-welcome"
+    alt = "Η οθόνη υποδοχής του RackUp" if lang == "el" else "The RackUp welcome screen"
+    return f"""<section class="cta-card">
+<div>
+<h2>{heading}</h2>
+<p>{text}</p>
+{stores(lang, campaign)}
+</div>
+<div class="phone"><img src="{shot}-360.webp" srcset="{shot}-360.webp 360w, {shot}-720.webp 720w" sizes="180px" width="360" height="783" loading="lazy" alt="{alt}"></div>
+</section>"""
 
 
 def fit_description(head, areas, tail, label):
@@ -238,19 +263,81 @@ def fit_description(head, areas, tail, label):
     return f"{head} {label}: {', '.join(chosen)}. {tail}"
 
 
+# The site's shared header and footer, as on the hand-written pages. {root} reaches the site
+# root, {home} and {dir} are the page language's home and directory, {alt} is this page in
+# the other language.
+WORDMARK = ('<a class="wordmark" href="{home}"><span class="ball b8" aria-hidden="true"><span class="n">8</span>'
+            '</span><span class="wm">RACK<span>UP</span></span></a>')
+HEADER = {
+    "el": f"""<a class="skip-link" href="#main">Μετάβαση στο περιεχόμενο</a>
+<header class="site-header">
+  <div class="container nav">
+    {WORDMARK}
+    <nav class="nav-links" aria-label="Κύριο μενού">
+      <a class="nav-text" href="{{dir}}">Αίθουσες</a>
+      <a class="nav-text" href="{{home}}#how">Πώς δουλεύει</a>
+      <a class="nav-text" href="{{root}}support.html">Βοήθεια</a>
+      <a class="lang" href="{{alt}}" hreflang="en" lang="en">EN</a>
+      <a class="btn btn-primary btn-sm" href="{{home}}#download">Κατέβασέ το</a>
+    </nav>
+  </div>
+</header>""",
+    "en": f"""<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container nav">
+    {WORDMARK}
+    <nav class="nav-links" aria-label="Main">
+      <a class="nav-text" href="{{dir}}">Halls</a>
+      <a class="nav-text" href="{{home}}#how">How it works</a>
+      <a class="nav-text" href="{{root}}support.html">Help</a>
+      <a class="lang" href="{{alt}}" hreflang="el" lang="el">ΕΛ</a>
+      <a class="btn btn-primary btn-sm" href="{{home}}#download">Get the app</a>
+    </nav>
+  </div>
+</header>""",
+}
+FOOTER = {
+    "el": f"""<footer class="site-footer">
+  <div class="container foot">
+    <div>
+      {WORDMARK}
+      <p>Βρες αντίπαλο για μπιλιάρδο. Αμερικάνικο και γαλλικό, σε όλη την Ελλάδα.</p>
+      <p>RackUp · Ιωάννινα</p>
+    </div>
+    <nav aria-label="Σύνδεσμοι">
+      <a href="{{root}}{EL_ROOT}/">Αίθουσες μπιλιάρδου</a>
+      <a href="{{root}}support.html">Υποστήριξη</a>
+      <a href="{{root}}privacy.html">Απόρρητο</a>
+      <a href="mailto:{EMAIL}">{EMAIL}</a>
+    </nav>
+  </div>
+</footer>""",
+    "en": f"""<footer class="site-footer">
+  <div class="container foot">
+    <div>
+      {WORDMARK}
+      <p>Find a billiards opponent. Pool and carom, across Greece.</p>
+      <p>RackUp · Ioannina, Greece</p>
+    </div>
+    <nav aria-label="Links">
+      <a href="{{root}}{EN_ROOT}/">Billiard halls</a>
+      <a href="{{root}}support.html">Support</a>
+      <a href="{{root}}privacy.html">Privacy Policy</a>
+      <a href="mailto:{EMAIL}">{EMAIL}</a>
+    </nav>
+  </div>
+</footer>""",
+}
+# The face the first paint needs: Greek pages are set in Commissioner, English ones in Space Grotesk.
+PRELOAD_FONT = {"el": "commissioner-greek.woff2", "en": "space-grotesk-latin.woff2"}
+
+
 def page(*, lang, title, description, path, alt_path, depth, body, data):
     prefix = "../" * depth
     el_path, en_path = (path, alt_path) if lang == "el" else (alt_path, path)
-    if lang == "el":
-        locale, dir_label, dir_href, alt_label, alt_lang = ("el_GR", "Αίθουσες", EL_ROOT, "English", "en")
-        footer_links = (f'<a href="{prefix}support.html">Υποστήριξη</a>'
-                        f'<a href="{prefix}privacy.html">Απόρρητο</a>')
-        footer_place = "RackUp · Ιωάννινα"
-    else:
-        locale, dir_label, dir_href, alt_label, alt_lang = ("en_GB", "Halls", EN_ROOT, "Ελληνικά", "el")
-        footer_links = (f'<a href="{prefix}support.html">Support</a>'
-                        f'<a href="{prefix}privacy.html">Privacy Policy</a>')
-        footer_place = "RackUp · Ioannina, Greece"
+    locale = "el_GR" if lang == "el" else "en_GB"
+    links = {"root": prefix, "home": prefix if lang == "el" else f"{prefix}en/",
+             "dir": f"{prefix}{EL_ROOT if lang == 'el' else EN_ROOT}/", "alt": f"{prefix}{alt_path}"}
     return f"""<!DOCTYPE html>
 {MARKER}
 <html lang="{lang}">
@@ -269,28 +356,20 @@ def page(*, lang, title, description, path, alt_path, depth, body, data):
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(description)}">
 <meta property="og:url" content="{url(path)}">
-<meta property="og:image" content="{url('assets/icon-512.png')}">
-<meta name="theme-color" content="#0C3B2A">
+<meta property="og:image" content="{url('assets/og-card.png')}">
+<meta name="theme-color" content="#0E1512">
 <link rel="icon" type="image/png" href="{prefix}assets/icon-512.png">
 <link rel="apple-touch-icon" href="{prefix}assets/icon-512.png">
-<link rel="stylesheet" href="{prefix}assets/style.css">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="{prefix}assets/fonts/{PRELOAD_FONT[lang]}">
+<link rel="stylesheet" href="{prefix}assets/site.css">
 <script type="application/ld+json">{jsonld(data)}</script>
 </head>
 <body>
-<header class="top">
-  <a class="brand" href="{prefix}">🎱 RackUp</a>
-  <nav>
-    <a href="{prefix}{dir_href}/">{dir_label}</a>
-    <a href="{prefix}{alt_path}" hreflang="{alt_lang}" lang="{alt_lang}">{alt_label}</a>
-  </nav>
-</header>
-<main>
+{HEADER[lang].format(**links)}
+<main id="main">
 {body}
 </main>
-<footer class="site">
-  <p>{footer_links}<a href="mailto:{EMAIL}">{EMAIL}</a></p>
-  <p>{footer_place}</p>
-</footer>
+{FOOTER[lang].format(**links)}
 </body>
 </html>
 """
@@ -308,13 +387,15 @@ def index_page(cities, lang):
     count = len(cities)
     root = EL_ROOT if lang == "el" else EN_ROOT
     campaign = campaign_for(f"{root}/")
+    depth = root.count("/") + 1
+    prefix = "../" * depth
     items, list_data = [], []
     for position, city in enumerate(city_order(cities, lang), start=1):
         slug, name_el, in_el = CITIES[city]
         name = name_el if lang == "el" else city
         n = len(cities[city])
         label = plural_el(n) if lang == "el" else plural_en(n)
-        items.append(f'  <li><a href="{slug}/"><span>{esc(name)}</span>'
+        items.append(f'  <li><a href="{slug}/"><span class="city">{esc(name)}</span>'
                      f' <span class="count">{label}</span></a></li>')
         list_data.append({
             "@type": "ListItem",
@@ -327,41 +408,55 @@ def index_page(cities, lang):
         title = "Αίθουσες μπιλιάρδου στην Ελλάδα ανά πόλη | RackUp"
         description = (f"Κατάλογος με {total} αίθουσες μπιλιάρδου σε {count} πόλεις της Ελλάδας: "
                        f"{', '.join(top_names)} και άλλες. Δες τις διευθύνσεις και βρες αντίπαλο με το RackUp.")
-        body = f"""<h1>Αίθουσες μπιλιάρδου στην Ελλάδα</h1>
+        pitch = cta_card("el", "Βρες αντίπαλο στο RackUp",
+                         "Ανέβασε αίθουσα, παιχνίδι (8άρα, 9άρα ή 10άρα) και ώρα, και δες ποιος θα πιάσει το "
+                         "τραπέζι. Ή ζήτα να μπεις σε τραπέζι που άνοιξε κάποιος άλλος. Κάθε παίκτης έχει "
+                         "κατηγορία, από Pro μέχρι E, για να ξέρεις τι σε περιμένει.", campaign, prefix)
+        body = f"""<section class="page-hero">
+<div class="container">
+<p class="crumbs"><a href="{prefix}">RackUp</a> › Αίθουσες μπιλιάρδου</p>
+<h1>Αίθουσες μπιλιάρδου στην Ελλάδα</h1>
 <p class="lead">Ψάχνεις πού να παίξεις μπιλιάρδο; Εδώ θα βρεις {total} αίθουσες σε {count} πόλεις, με τη διεύθυνση της καθεμιάς. Τον κατάλογο τον φτιάξαμε στο χέρι για το RackUp, την εφαρμογή που σε φέρνει σε επαφή με άλλους παίκτες για παιχνίδι στην τσόχα.</p>
+</div>
+</section>
+<div class="container">
 <h2>Διάλεξε πόλη</h2>
-<ul class="cities">
+<ul class="city-grid">
 {chr(10).join(items)}
 </ul>
-<section class="cta">
-<h2>Βρες αντίπαλο στο RackUp</h2>
-<p>Ανέβασε αίθουσα, παιχνίδι (8άρα, 9άρα ή 10άρα) και ώρα, και δες ποιος θα πιάσει το τραπέζι. Ή ζήτα να μπεις σε τραπέζι που άνοιξε κάποιος άλλος. Κάθε παίκτης έχει κατηγορία, από Pro μέχρι E, για να ξέρεις τι σε περιμένει.</p>
-{stores("el", campaign)}
-</section>
-<p class="note">Λείπει η αίθουσά σου ή βρήκες κάποιο λάθος; Γράψε μας στο <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>"""
+{pitch}
+<p class="note">Λείπει η αίθουσά σου ή βρήκες κάποιο λάθος; Γράψε μας στο <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
+</div>"""
         list_name = "Αίθουσες μπιλιάρδου στην Ελλάδα ανά πόλη"
     else:
         title = "Billiard halls in Greece by city | RackUp"
         description = (f"A directory of {total} billiard halls in {count} Greek cities: "
                        f"{', '.join(top_names)} and more. See the addresses and find an opponent with RackUp.")
-        body = f"""<h1>Billiard halls in Greece</h1>
+        pitch = cta_card("en", "Find an opponent on RackUp",
+                         "Post the hall, the game (8-Ball, 9-Ball or 10-Ball) and the time, and see who takes the "
+                         "table. Or ask to join a table someone else has posted. Every player carries a category "
+                         "from Pro down to E, so you know what you are walking into.", campaign, prefix)
+        body = f"""<section class="page-hero">
+<div class="container">
+<p class="crumbs"><a href="{prefix}">RackUp</a> › Billiard halls</p>
+<h1>Billiard halls in Greece</h1>
 <p class="lead">Looking for somewhere to play billiards? Here are {total} halls in {count} cities, each with its address. We researched the directory by hand for RackUp, the app that puts you in touch with other players for a game on a real table.</p>
+</div>
+</section>
+<div class="container">
 <h2>Pick a city</h2>
-<ul class="cities">
+<ul class="city-grid">
 {chr(10).join(items)}
 </ul>
-<section class="cta">
-<h2>Find an opponent on RackUp</h2>
-<p>Post the hall, the game (8-Ball, 9-Ball or 10-Ball) and the time, and see who takes the table. Or ask to join a table someone else has posted. Every player carries a category from Pro down to E, so you know what you are walking into.</p>
-{stores("en", campaign)}
-</section>
-<p class="note">Is your hall missing, or did you spot a mistake? Email us at <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>"""
+{pitch}
+<p class="note">Is your hall missing, or did you spot a mistake? Email us at <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
+</div>"""
         list_name = "Billiard halls in Greece by city"
     alt_root = EN_ROOT if lang == "el" else EL_ROOT
     data = {"@context": "https://schema.org", "@type": "ItemList", "name": list_name,
             "numberOfItems": count, "itemListElement": list_data}
     return page(lang=lang, title=title, description=description, path=f"{root}/",
-                alt_path=f"{alt_root}/", depth=root.count("/") + 1, body=body, data=data)
+                alt_path=f"{alt_root}/", depth=depth, body=body, data=data)
 
 
 def hall_item(v, lang):
@@ -413,6 +508,8 @@ def city_page(city, halls, cities, lang):
     alt_root = EN_ROOT if lang == "el" else EL_ROOT
     path = f"{root}/{slug}/"
     campaign = campaign_for(path)
+    depth = root.count("/") + 2
+    prefix = "../" * depth
     hall_list = "\n".join(hall_item(v, lang) for v in halls)
     others = sorted((c for c in cities if c != city),
                     key=lambda c: fold(CITIES[c][1] if lang == "el" else c))
@@ -428,23 +525,29 @@ def city_page(city, halls, cities, lang):
         lead = f"{plural_el(n)} μπιλιάρδου {in_el}."
         if areas and n > 1:
             lead += f" Περιοχές: {esc(', '.join(areas))}."
-        other_links = " ".join(f'<li><a href="../{CITIES[c][0]}/">{esc(CITIES[c][1])}</a></li>' for c in others)
-        body = f"""<p class="crumbs"><a href="../../">RackUp</a> › <a href="../">Αίθουσες μπιλιάρδου</a> › {esc(name_el)}</p>
+        other_links = " ".join(f'<li><a class="chip" href="../{CITIES[c][0]}/">{esc(CITIES[c][1])}</a></li>'
+                               for c in others)
+        pitch = cta_card("el", f"Θες αντίπαλο {esc(in_el)};",
+                         "Ανέβασε στο RackUp αίθουσα, παιχνίδι (8άρα, 9άρα ή 10άρα) και ώρα, και δες ποιος θα "
+                         "πιάσει το τραπέζι. Ή ζήτα να μπεις σε τραπέζι που άνοιξε κάποιος άλλος.", campaign, prefix)
+        body = f"""<section class="page-hero">
+<div class="container">
+<p class="crumbs"><a href="../../">RackUp</a> › <a href="../">Αίθουσες μπιλιάρδου</a> › {esc(name_el)}</p>
 <h1>{esc(heading)}</h1>
 <p class="lead">{lead}</p>
+</div>
+</section>
+<div class="container">
 <ul class="halls">
 {hall_list}
 </ul>
-<section class="cta">
-<h2>Θες αντίπαλο {esc(in_el)};</h2>
-<p>Ανέβασε στο RackUp αίθουσα, παιχνίδι (8άρα, 9άρα ή 10άρα) και ώρα, και δες ποιος θα πιάσει το τραπέζι. Ή ζήτα να μπεις σε τραπέζι που άνοιξε κάποιος άλλος.</p>
-{stores("el", campaign)}
-</section>
+{pitch}
 <p class="note">Ο κατάλογος είναι φτιαγμένος στο χέρι και κάτι μπορεί να έχει αλλάξει. Λείπει η αίθουσά σου ή βρήκες κάποιο λάθος; Γράψε μας στο <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
 <nav class="other" aria-label="Άλλες πόλεις">
 <h2>Άλλες πόλεις</h2>
-<ul>{other_links}</ul>
-</nav>"""
+<ul class="chips">{other_links}</ul>
+</nav>
+</div>"""
         crumbs = [("RackUp", url("")), ("Αίθουσες μπιλιάρδου", url(f"{root}/")), (name_el, url(path))]
     else:
         heading = f"Billiards in {city}"
@@ -456,23 +559,28 @@ def city_page(city, halls, cities, lang):
             description = (f"{heading}: see {n} billiard halls and their addresses, "
                            f"from a hand-researched directory. Find an opponent with RackUp.")
         lead = f"{plural_en(n).replace('hall', 'billiard hall')} in {esc(city)} ({esc(name_el)})."
-        other_links = " ".join(f'<li><a href="../{CITIES[c][0]}/">{esc(c)}</a></li>' for c in others)
-        body = f"""<p class="crumbs"><a href="../../../">RackUp</a> › <a href="../">Billiard halls</a> › {esc(city)}</p>
+        other_links = " ".join(f'<li><a class="chip" href="../{CITIES[c][0]}/">{esc(c)}</a></li>' for c in others)
+        pitch = cta_card("en", f"Looking for an opponent in {esc(city)}?",
+                         "Post the hall, the game (8-Ball, 9-Ball or 10-Ball) and the time on RackUp, and see who "
+                         "takes the table. Or ask to join a table someone else has posted.", campaign, prefix)
+        body = f"""<section class="page-hero">
+<div class="container">
+<p class="crumbs"><a href="../../../">RackUp</a> › <a href="../">Billiard halls</a> › {esc(city)}</p>
 <h1>{esc(heading)}</h1>
 <p class="lead">{lead}</p>
+</div>
+</section>
+<div class="container">
 <ul class="halls">
 {hall_list}
 </ul>
-<section class="cta">
-<h2>Looking for an opponent in {esc(city)}?</h2>
-<p>Post the hall, the game (8-Ball, 9-Ball or 10-Ball) and the time on RackUp, and see who takes the table. Or ask to join a table someone else has posted.</p>
-{stores("en", campaign)}
-</section>
+{pitch}
 <p class="note">The directory is researched by hand, so something may have changed. Is your hall missing, or did you spot a mistake? Email us at <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
 <nav class="other" aria-label="Other cities">
 <h2>Other cities</h2>
-<ul>{other_links}</ul>
-</nav>"""
+<ul class="chips">{other_links}</ul>
+</nav>
+</div>"""
         crumbs = [("RackUp", url("")), ("Billiard halls", url(f"{root}/")), (city, url(path))]
     data = {
         "@context": "https://schema.org",
@@ -486,7 +594,7 @@ def city_page(city, halls, cities, lang):
         ],
     }
     return page(lang=lang, title=title, description=description, path=path,
-                alt_path=f"{alt_root}/{slug}/", depth=root.count("/") + 2, body=body, data=data)
+                alt_path=f"{alt_root}/{slug}/", depth=depth, body=body, data=data)
 
 
 def sitemap(cities):
