@@ -1,6 +1,7 @@
 """Site-wide guards for the Felt and Neon design. Python 3.8+, no packages:
 python -m unittest discover -s tools
 """
+import json
 import re
 import sys
 import unittest
@@ -39,6 +40,9 @@ class StylesheetTest(unittest.TestCase):
             for span in GREEK_RANGES:
                 self.assertIn(span, greek[0].replace(" ", ""), f"{family} Greek face misses {span}")
             latin = [f for f in mine if f not in greek][0]
+            weight = lambda face: re.search(r"font-weight\s*:\s*([^;}]+)", face).group(1).strip()
+            # Chrome only merges faces with identical descriptors, so a different weight hides Greek.
+            self.assertEqual(weight(greek[0]), weight(latin), f"{family}: Greek and Latin faces differ in font-weight")
             self.assertRegex(latin, r"(space-grotesk|hanken-grotesk)-latin\.woff2", family)
             self.assertIn("font-display:swap", latin.replace(" ", ""))
         for ref in re.findall(r"url\(\s*['\"]?([^'\")]+)", css()):
@@ -62,6 +66,36 @@ class StylesheetTest(unittest.TestCase):
             self.assertNotIn(colour, text, colour)
         self.assertLess(CSS.stat().st_size, 25 * 1024)
 
+
+
+def head_links(text):
+    return dict(re.findall(r'<link rel="alternate" hreflang="([^"]+)" href="([^"]+)">', text))
+
+
+class PagesTest(unittest.TestCase):
+
+    def test_homes_are_an_hreflang_pair(self):
+        pair = {"index.html": ("el", "https://getrackup.com/"), "en/index.html": ("en", "https://getrackup.com/en/")}
+        for page, (lang, canonical) in pair.items():
+            text = (b.ROOT / page).read_text(encoding="utf-8")
+            self.assertIn(f'<html lang="{lang}">', text, page)
+            self.assertIn(f'<link rel="canonical" href="{canonical}">', text, page)
+            self.assertEqual(head_links(text), {"el": "https://getrackup.com/", "en": "https://getrackup.com/en/",
+                                                "x-default": "https://getrackup.com/"}, page)
+
+    def test_every_image_has_alt_and_size(self):
+        for rel, text in published(".html"):
+            for tag in re.findall(r"<img\b[^>]*>", text):
+                for attr in ("alt", "width", "height"):
+                    self.assertRegex(tag, rf'\s{attr}="[^"]+"', f"{rel}: {tag}")
+
+    def test_faq_jsonld_matches_visible_faq(self):
+        for page in ("index.html", "en/index.html"):
+            text = (b.ROOT / page).read_text(encoding="utf-8")
+            data = json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', text, re.S).group(1))
+            faq = [n for n in data["@graph"] if n["@type"] == "FAQPage"][0]["mainEntity"]
+            seen = re.findall(r"<details><summary>(.*?)</summary><p>(.*?)</p></details>", text)
+            self.assertEqual([(q["name"], q["acceptedAnswer"]["text"]) for q in faq], seen, page)
 
 if __name__ == "__main__":
     unittest.main()
