@@ -16,6 +16,9 @@ OG_CARD = ROOT / "assets" / "og-card.png"
 LANGS = {"el": "el", "en": "en-GB"}
 SCREENS = {"venue": "4-venue.png", "create": "2-create.png", "welcome": "5-welcome.png"}
 WIDTHS = (360, 720)
+# Boxes painted over in the source, in source pixels: the 2.1.0 Greek tagline says "πουλ",
+# a word the site no longer uses. Drop this once 2.2.0 screenshots replace the sources.
+MASKS = {("el", "welcome"): (330, 1420, 990, 1550)}
 
 
 def build(source):
@@ -24,6 +27,9 @@ def build(source):
         for screen, name in SCREENS.items():
             with Image.open(source / folder / name) as shot:
                 shot = shot.convert("RGB")
+                box = MASKS.get((lang, screen))
+                if box:
+                    shot.paste(shot.getpixel((box[0] - 20, box[1])), box)
                 # 1x height rounded up so 2x is exactly double; srcset pairs stay true density pairs.
                 one_x = math.ceil(WIDTHS[0] * shot.height / shot.width)
                 for width in WIDTHS:
@@ -35,10 +41,11 @@ def build(source):
 
 def optimise_og_card():
     # Lossless only: a 256-colour palette bands the glow and the 9 and 10 balls.
-    with Image.open(OG_CARD) as card:
-        card = card.convert("RGB")
-    card.save(OG_CARD, "PNG", optimize=True)
-    print(f"{OG_CARD.relative_to(ROOT)}  {card.width}x{card.height}  {OG_CARD.stat().st_size:,} bytes")
+    for path in (OG_CARD, OG_CARD.with_name("og-card-en.png")):
+        with Image.open(path) as card:
+            card = card.convert("RGB")
+        card.save(path, "PNG", optimize=True)
+        print(f"{path.relative_to(ROOT)}  {card.width}x{card.height}  {path.stat().st_size:,} bytes")
 
 
 if __name__ == "__main__":

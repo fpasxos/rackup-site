@@ -3,6 +3,7 @@ python -m unittest discover -s tools
 """
 import json
 import re
+from html.parser import HTMLParser
 import sys
 import unittest
 from pathlib import Path
@@ -148,6 +149,57 @@ class SiteWideTest(unittest.TestCase):
             self.assertIn('<footer class="site-footer">', text, rel)
             self.assertIn('<main id="main"', text, rel)
             self.assertIn('class="skip-link" href="#main"', text, rel)
+
+
+GREEK = re.compile(r"[Ͱ-Ͽἀ-῿]")
+VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source", "track", "wbr"}
+
+
+class GreekOutsideGreek(HTMLParser):
+    """Collects visible Greek text whose nearest lang is not el."""
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.stack, self.found, self.skip = [("root", "")], [], 0
+
+    def handle_starttag(self, tag, attrs):
+        if tag in ("head", "script", "style"):
+            self.skip += 1
+        if tag not in VOID:
+            self.stack.append((tag, dict(attrs).get("lang", self.stack[-1][1])))
+
+    def handle_endtag(self, tag):
+        if tag in ("head", "script", "style"):
+            self.skip -= 1
+        while len(self.stack) > 1:
+            if self.stack.pop()[0] == tag:
+                break
+
+    def handle_data(self, data):
+        if not self.skip and GREEK.search(data) and self.stack[-1][1] != "el":
+            self.found.append(data.strip()[:40])
+
+
+class MeaningTest(unittest.TestCase):
+
+    def test_download_button_stays_on_pages_that_have_store_links(self):
+        for rel, text in published(".html"):
+            pill = re.search(r'<a class="btn btn-primary btn-sm" href="([^"]+)">', text).group(1)
+            if "play.google.com" not in text:
+                self.assertTrue(pill.endswith("#download"), rel)
+                continue
+            self.assertEqual(pill, "#download", f"{rel}: installs from this page would count as the home's")
+            after = text.split('id="download"', 1)
+            self.assertEqual(len(after), 2, f"{rel} has no #download block")
+            self.assertIn("play.google.com", after[1][:6000], f"{rel}: #download holds no store link")
+
+    def test_greek_text_inside_english_pages_is_marked_greek(self):
+        for rel, text in published(".html"):
+            if '<html lang="en">' not in text:
+                continue
+            parser = GreekOutsideGreek()
+            parser.feed(text)
+            self.assertEqual(parser.found, [], f"{rel}: Greek read with an English voice")
 
 if __name__ == "__main__":
     unittest.main()

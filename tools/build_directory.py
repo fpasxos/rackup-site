@@ -77,6 +77,8 @@ CITIES = {
 # Figure dash, en dash, em dash, horizontal bar. None may reach a page.
 DASHES = re.compile("[" + "".join(map(chr, (0x2012, 0x2013, 0x2014, 0x2015))) + "]")
 DESCRIPTION_LIMIT = 170
+# Greek letters, so Greek names on English pages can carry lang="el" for screen readers.
+GREEK_TEXT = re.compile("[Ͱ-Ͽἀ-῿]")
 
 
 def esc(text):
@@ -242,7 +244,7 @@ def cta_card(lang, heading, text, campaign, root):
     """The download card: the page's pitch and store buttons beside the app's welcome screen."""
     shot = f"{root}assets/img/{lang}-welcome"
     alt = "Η οθόνη υποδοχής του RackUp" if lang == "el" else "The RackUp welcome screen"
-    return f"""<section class="cta-card">
+    return f"""<section class="cta-card" id="download">
 <div>
 <h2>{heading}</h2>
 <p>{text}</p>
@@ -280,7 +282,7 @@ HEADER = {
       <a class="nav-text" href="{{home}}#how">Πώς δουλεύει</a>
       <a class="nav-text" href="{{root}}support.html">Βοήθεια</a>
       <a class="lang" href="{{alt}}" hreflang="en" lang="en">EN</a>
-      <a class="btn btn-primary btn-sm" href="{{home}}#download">Κατέβασέ το</a>
+      <a class="btn btn-primary btn-sm" href="#download">Κατέβασέ το</a>
     </nav>
   </div>
 </header>""",
@@ -293,7 +295,7 @@ HEADER = {
       <a class="nav-text" href="{{home}}#how">How it works</a>
       <a class="nav-text" href="{{root}}support.html">Help</a>
       <a class="lang" href="{{alt}}" hreflang="el" lang="el">ΕΛ</a>
-      <a class="btn btn-primary btn-sm" href="{{home}}#download">Get the app</a>
+      <a class="btn btn-primary btn-sm" href="#download">Get the app</a>
     </nav>
   </div>
 </header>""",
@@ -358,7 +360,7 @@ def page(*, lang, title, description, path, alt_path, depth, body, data):
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(description)}">
 <meta property="og:url" content="{url(path)}">
-<meta property="og:image" content="{url('assets/og-card.png')}">
+<meta property="og:image" content="{url('assets/og-card.png' if lang == 'el' else 'assets/og-card-en.png')}">
 <meta name="theme-color" content="#0E1512">
 <link rel="icon" type="image/png" href="{prefix}assets/icon-512.png">
 <link rel="apple-touch-icon" href="{prefix}assets/icon-512.png">
@@ -440,7 +442,7 @@ def index_page(cities, lang):
                          "from Pro down to E, so you know what you are walking into.", campaign, prefix)
         body = f"""<section class="page-hero">
 <div class="container">
-<p class="crumbs"><a href="{prefix}">RackUp</a> › Billiard halls</p>
+<p class="crumbs"><a href="{prefix}en/">RackUp</a> › Billiard halls</p>
 <h1>Billiard halls in Greece</h1>
 <p class="lead">Looking for somewhere to play billiards? Here are {total} halls in {count} cities, each with its address. We researched the directory by hand for RackUp, the app that puts you in touch with other players for a game on a real table.</p>
 </div>
@@ -462,9 +464,11 @@ def index_page(cities, lang):
 
 
 def hall_item(v, lang):
+    addr_lang = "" if lang == "el" else ' lang="el"'
+    name_lang = ' lang="el"' if lang == "en" and GREEK_TEXT.search(v["name"]) else ""
     parts = [f'<li class="hall" id="{esc(v["id"])}">',
-             f'  <h2>{esc(v["name"])}</h2>',
-             f'  <p class="addr">{esc(v["address"])}</p>']
+             f'  <h2{name_lang}>{esc(v["name"])}</h2>',
+             f'  <p class="addr"{addr_lang}>{esc(v["address"])}</p>']
     phone = v.get("phone")
     if phone:
         label = "Τηλέφωνο" if lang == "el" else "Phone"
@@ -560,14 +564,14 @@ def city_page(city, halls, cities, lang):
             title = f"{heading}: {plural_en(n)} | RackUp"
             description = (f"{heading}: see {n} billiard halls and their addresses, "
                            f"from a hand-researched directory. Find an opponent with RackUp.")
-        lead = f"{plural_en(n).replace('hall', 'billiard hall')} in {esc(city)} ({esc(name_el)})."
+        lead = f"{plural_en(n).replace('hall', 'billiard hall')} in {esc(city)} (<span lang='el'>{esc(name_el)}</span>)."
         other_links = " ".join(f'<li><a class="chip" href="../{CITIES[c][0]}/">{esc(c)}</a></li>' for c in others)
         pitch = cta_card("en", f"Looking for an opponent in {esc(city)}?",
                          "Post the hall, the game (8-Ball, 9-Ball or 10-Ball) and the time on RackUp, and see who "
                          "takes the table. Or ask to join a table someone else has posted.", campaign, prefix)
         body = f"""<section class="page-hero">
 <div class="container">
-<p class="crumbs"><a href="../../../">RackUp</a> › <a href="../">Billiard halls</a> › {esc(city)}</p>
+<p class="crumbs"><a href="../../../en/">RackUp</a> › <a href="../">Billiard halls</a> › {esc(city)}</p>
 <h1>{esc(heading)}</h1>
 <p class="lead">{lead}</p>
 </div>

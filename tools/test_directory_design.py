@@ -78,7 +78,8 @@ class DirectoryDesignTest(unittest.TestCase):
     def test_directory_pages_share_the_social_card(self):
         for rel, text in directory_pages().items():
             with self.subTest(page=rel):
-                self.assertIn(f'<meta property="og:image" content="{SOCIAL_CARD}">', text)
+                card = SOCIAL_CARD.replace("og-card.png", "og-card-en.png") if rel.startswith("en/") else SOCIAL_CARD
+                self.assertIn(f'<meta property="og:image" content="{card}">', text, "English pages preview in English")
                 self.assertIn('<meta name="theme-color" content="#0E1512">', text)
                 self.assertNotIn("\N{BILLIARDS}", text, "the brand is the CSS 8-ball, not an emoji")
 

@@ -53,10 +53,11 @@ class ImagesTest(unittest.TestCase):
                 width, _ = webp_size(data)
                 self.assertIn(width, (360, 720), path.name)
                 self.assertEqual(width, int(path.stem.rsplit("-", 1)[1]), "width disagrees with the name")
-        self.assertTrue(OG_CARD.is_file(), "missing assets/og-card.png")
-        data = OG_CARD.read_bytes()
-        self.assertEqual(png_size(data), (1200, 630))
-        self.assertLess(len(data), OG_MAX, f"og-card.png is {len(data)} bytes")
+        for card in (OG_CARD, OG_CARD.with_name("og-card-en.png")):
+            self.assertTrue(card.is_file(), f"missing assets/{card.name}")
+            data = card.read_bytes()
+            self.assertEqual(png_size(data), (1200, 630), card.name)
+            self.assertLess(len(data), OG_MAX, f"{card.name} is {len(data)} bytes")
 
 
 if __name__ == "__main__":

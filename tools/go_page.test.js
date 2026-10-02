@@ -348,6 +348,8 @@ test("the page is noindex, previews well and loads no script but its own", () =>
     assert.match(html, new RegExp(`<meta property="${property}" content="[^"]+">`), property);
   }
   assert.match(html, /<meta property="og:url" content="https:\/\/getrackup\.com\/go\/">/);
+  assert.match(html, /<meta property="og:image" content="https:\/\/getrackup\.com\/assets\/og-card\.png">/);
+  assert.match(html, /<meta name="twitter:card" content="summary_large_image">/);
   const image = html.match(/property="og:image" content="https:\/\/getrackup\.com\/([^"]+)"/)[1];
   assert.ok(fs.existsSync(path.join(ROOT, image)), `og:image ${image} is not in the repo`);
   const scripts = [...html.matchAll(/<script\b[^>]*>/g)].map((m) => m[0]);
