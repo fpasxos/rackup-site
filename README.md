@@ -8,14 +8,18 @@ path on `getrackup.com`, so links already in the app and on QR codes keep workin
 
 | Path | What it is | Edited by |
 |---|---|---|
-| `index.html` | English home page | hand, except the two `data-count` spans and the store links |
+| `index.html` | Greek home page, served at `/` | hand, except the `data-count` spans, the city grid and the store links |
+| `en/index.html` | English home page, served at `/en/` | hand, likewise |
+| `404.html` | Bilingual page GitHub Pages serves for any missing path (root-relative links only) | hand, except the store links |
 | `support.html`, `privacy.html` | Support and privacy policy (store listings link here, so keep the URLs) | hand, except the store links in `support.html` |
 | `mpiliardo/` | Greek hall directory: index plus one page per city | generator |
 | `en/billiards/` | The same directory in English | generator |
 | `sitemap.xml` | Every page on the site | generator |
 | `m/` | Landing page for match links shared from the app (`noindex`, not in the sitemap) | hand |
 | `go/` | Where printed QR codes point: sends phones to their app store with tagged links (`noindex`, not in the sitemap) | hand |
-| `assets/` | Shared stylesheet and the app icon | hand |
+| `assets/site.css` | The one stylesheet: the app's Felt and Neon tokens and every component | hand |
+| `assets/fonts/` | Self-hosted Space Grotesk, Hanken Grotesk (Latin) and Commissioner (Greek), with their OFL licences | `tools/make_fonts.py` |
+| `assets/img/`, `assets/og-card.png` | App screenshots as WebP, and the 1200x630 social card | `tools/make_images.py` |
 | `CNAME` | The custom domain, `getrackup.com`, that GitHub Pages serves the site on | hand |
 | `data/venues.json` | Public copy of the venue directory | generator (`--import`) |
 | `tools/build_directory.py` | The generator | hand |
@@ -31,7 +35,8 @@ python tools/build_directory.py --import ../rackup/data/venues-backup.json
 
 That refreshes `data/venues.json`, rewrites every page under `mpiliardo/` and
 `en/billiards/`, rewrites `sitemap.xml`, updates the hall and city counts on the
-home page, tags the store links on `index.html` and `support.html`, and removes
+home pages, fills the city grid on both homes, tags the store links on the hand
+pages (`HAND_PAGES`), and removes
 the folder of any city that no longer has a hall. Review
 the diff, commit, and open a pull request.
 
@@ -40,7 +45,13 @@ Other modes:
 ```bash
 python tools/build_directory.py           # rebuild from the committed data/venues.json
 python tools/build_directory.py --check   # exit 1 if any generated page is out of date
-python -m unittest discover -s tools      # generator tests, standard library only
+python -m unittest discover -s tools      # generator and site tests, standard library only
+```
+
+The full check, run before every commit:
+
+```bash
+python tools/build_directory.py --check && python -m unittest discover -s tools && node --test tools/go_page.test.js && node --test tools/match_page.test.js
 ```
 
 Never edit a generated page by hand; the next run overwrites it. Change the
@@ -51,6 +62,23 @@ To preview locally, serve the repo root and open `http://localhost:8000/`:
 ```bash
 python -m http.server 8000
 ```
+
+## Design
+
+The site wears the app's "Felt and Neon" design: the colours in `assets/site.css`
+are the tokens from `RackUpColors.kt`, one neon lime accent, dark only. Keep it
+that way; `tools/test_site.py` fails on the old green and gold palette.
+
+- **Fonts.** The app's fonts have no Greek, so Commissioner supplies Greek inside
+  the same two families through `unicode-range`. Both faces of a family must
+  declare the same `font-weight` range, or Chrome never uses the Greek one.
+  `python tools/make_fonts.py` rebuilds the subsets (needs `pip install fonttools brotli`).
+- **Images.** `python tools/make_images.py` rebuilds the WebP screenshots from the
+  app repo's store screenshots (never `1-venues.png`, its hall count is stale) and,
+  with `--og-card`, optimises the social card rendered from `tools/og-card.html`.
+- **Checking a phone layout.** Headless Edge will not lay out narrower than 484 px,
+  so load pages into a same-origin iframe of the width you want and compare
+  `scrollWidth` with `clientWidth`.
 
 ## Rules the generator enforces
 

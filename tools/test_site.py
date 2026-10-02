@@ -105,5 +105,49 @@ class PagesTest(unittest.TestCase):
             seen = re.findall(r"<details><summary>(.*?)</summary><p>(.*?)</p></details>", text)
             self.assertEqual([(q["name"], q["acceptedAnswer"]["text"]) for q in faq], seen, page)
 
+
+def depth_prefix(rel):
+    return "../" * rel.count("/")
+
+
+def resolves(rel, ref):
+    target = ref.split("#", 1)[0].split("?", 1)[0]
+    if not target:
+        return True
+    base = b.ROOT if target.startswith("/") else (b.ROOT / rel).parent
+    path = (base / target.lstrip("/")).resolve()
+    return path.is_file() or (path / "index.html").is_file()
+
+
+class SiteWideTest(unittest.TestCase):
+
+    def test_one_stylesheet_everywhere(self):
+        for rel, text in published(".html"):
+            sheets = re.findall(r'<link rel="stylesheet" href="([^"]+)">', text)
+            want = "/assets/site.css" if rel == "404.html" else depth_prefix(rel) + "assets/site.css"
+            self.assertEqual(sheets, [want], rel)
+
+    def test_old_palette_is_gone(self):
+        for rel, text in published(".html", ".css", ".js"):
+            for colour in OLD_PALETTE:
+                self.assertNotIn(colour.lower(), text.lower(), f"{rel} still uses {colour}")
+
+    def test_internal_links_resolve(self):
+        for rel, text in published(".html"):
+            for ref in re.findall(r'\s(?:href|src)="([^"]+)"', text):
+                if re.match(r"(?i)[a-z][a-z0-9+.-]*:|//", ref):
+                    continue
+                self.assertTrue(resolves(rel, ref), f"{rel} links to missing {ref}")
+            for srcset in re.findall(r'\ssrcset="([^"]+)"', text):
+                for ref in (part.split()[0] for part in srcset.split(",")):
+                    self.assertTrue(resolves(rel, ref), f"{rel} srcset names missing {ref}")
+
+    def test_every_page_has_the_shared_header_and_footer(self):
+        for rel, text in published(".html"):
+            self.assertIn('<header class="site-header">', text, rel)
+            self.assertIn('<footer class="site-footer">', text, rel)
+            self.assertIn('<main id="main"', text, rel)
+            self.assertIn('class="skip-link" href="#main"', text, rel)
+
 if __name__ == "__main__":
     unittest.main()

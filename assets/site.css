@@ -220,6 +220,13 @@ a.chip:hover{border-color:var(--accent)}
 .foot a:hover{color:var(--accent)}
 .foot p{margin:0}
 
+@media (max-width:379px){
+  .nav{gap:10px}
+  .nav-links{gap:12px}
+  .wordmark{font-size:1.1rem;gap:8px}
+  .wordmark .ball{--s:26px}
+  .btn-sm{padding:8px 13px;font-size:.85rem}
+}
 @media (min-width:600px){
   .container{padding:0 32px}
   .stage{margin:12px 0 0}
