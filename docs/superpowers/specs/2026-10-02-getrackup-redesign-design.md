@@ -69,7 +69,7 @@ One stylesheet, `assets/site.css`, replaces `assets/style.css` and the privacy p
 - **Accessibility:** WCAG AA contrast (lime on `#0E1512` and ink2 on surfaces both pass), visible
   lime focus rings, skip link, `lang` on every mixed-language span, alt text in the page's language.
 
-**Fonts:** `assets/fonts/` holds four woff2 files, subset with fonttools: Space Grotesk and
+**Fonts:** `assets/fonts/` holds three woff2 files, subset with fonttools: Space Grotesk and
 Hanken Grotesk (Latin and Latin Extended), Commissioner (Greek and Greek Extended, used for
 both roles). Two families are declared, `RackUp Display` and `RackUp Text`, each with a Latin
 face and a Greek face split by `unicode-range`, `font-display: swap`. The Greek display face is
