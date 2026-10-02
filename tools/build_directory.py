@@ -30,7 +30,7 @@ PROVIDER_TOKEN = ""
 CAMPAIGN = re.compile(r"[a-z0-9]+(-[a-z0-9]+)*")
 CAMPAIGN_MAX = 26
 # Hand-written pages whose store links the build tags too: file -> site path.
-HAND_PAGES = {"index.html": "", "support.html": "support.html"}
+HAND_PAGES = {"index.html": "", "support.html": "support.html", "404.html": "404.html"}
 EMAIL = "rackupbilliard@gmail.com"
 EL_ROOT = "mpiliardo"
 EN_ROOT = "en/billiards"
