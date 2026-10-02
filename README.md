@@ -185,6 +185,14 @@ most 30 characters; anything else counts as the general code.
 node --test tools/go_page.test.js
 ```
 
+## Social profiles
+
+Every footer links RackUp on Instagram and Facebook: the generator from `INSTAGRAM`
+and `FACEBOOK` in `tools/build_directory.py`, the hand pages by hand. The home's
+`Organization` lists both in `sameAs`; the store listings stay on the
+`MobileApplication`. Plain links only, never an embed, a share widget or a pixel.
+`tools/test_social_links.py` checks every page and the structured data.
+
 ## Search
 
 Submit `https://getrackup.com/sitemap.xml` in Google Search Console, under a
