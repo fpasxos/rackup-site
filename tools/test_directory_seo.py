@@ -42,6 +42,24 @@ def city_pages():
             yield city, halls, lang, b.city_page(city, halls, cities, lang)
 
 
+def strip_tags(fragment):
+    return " ".join(html.unescape(re.sub(r"<[^>]+>", " ", fragment)).split())
+
+
+def visible_text(text):
+    """What a reader sees: the body, without scripts or tags."""
+    body = re.search(r"<body>(.*)</body>", text, re.S).group(1)
+    return strip_tags(re.sub(r"<script\b.*?</script>", " ", body, flags=re.S))
+
+
+def card_text(text):
+    return strip_tags(re.search(r'<section class="cta-card" id="download">(.*?)</section>', text, re.S).group(1))
+
+
+def is_greek(rel):
+    return rel.startswith(f"{b.EL_ROOT}/")
+
+
 def title(text):
     return html.unescape(re.search(r"<title>(.*?)</title>", text).group(1))
 
@@ -107,6 +125,33 @@ class TitleAndDescriptionTest(unittest.TestCase):
                          f"Billiards in Naxos: Galaxias, Odos 1, Chora, phone +30 698. {TAIL_EN}")
         self.assertEqual(description(b.city_page("Naxos", without, {}, "en")),
                          f"Billiards in Naxos: Galaxias, Odos 1, Chora. {TAIL_EN}")
+
+
+class DownloadCardTest(unittest.TestCase):
+
+    def test_card_names_pool_and_carom_and_how_the_app_finds_a_game(self):
+        greek = ("αμερικάνικο (8-Ball, 9-Ball, 10-Ball)", "γαλλικό (τρίσποντο, μονόσποντο)",
+                 "στις αίθουσες με τραπέζια γαλλικού", "ζήτα να μπεις σε τραπέζι που άνοιξε κάποιος άλλος",
+                 "Στη ροή φιλτράρεις ανά πόλη", "κατάταξη ανά πόλη και αίθουσα")
+        english = ("pool (8-Ball, 9-Ball, 10-Ball)", "carom (3-cushion, 1-cushion)", "at halls with carom tables",
+                   "ask to join a table someone else opened", "The feed filters by city",
+                   "a ranking by city and hall")
+        for rel, text in directory_pages().items():
+            card = card_text(text)
+            for phrase in greek if is_greek(rel) else english:
+                self.assertIn(phrase, card, rel)
+            self.assertNotIn("8άρα", card, rel)
+
+    def test_greek_pages_say_amerikaniko_and_never_poul(self):
+        poul = re.compile(r"\bπουλ\b", re.I)
+        for rel, text in directory_pages().items():
+            seen = visible_text(text)
+            if is_greek(rel):
+                self.assertIn("αμερικάνικο", seen, rel)
+                self.assertIn("γαλλικό", seen, rel)
+                self.assertNotRegex(seen, poul, rel)
+            else:
+                self.assertIn("carom", seen, rel)
 
 
 if __name__ == "__main__":

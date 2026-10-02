@@ -262,6 +262,19 @@ def first_fit(limit, *candidates):
     return next((c for c in candidates if len(c) <= limit), candidates[-1])
 
 
+def card_copy(lang, name_app):
+    """The download card's pitch. Pool is "αμερικάνικο" in Greek, never "πουλ"."""
+    if lang == "el":
+        return (f"Ανέβασε{' στο RackUp' if name_app else ''} αίθουσα, παιχνίδι και ώρα: αμερικάνικο "
+                "(8-Ball, 9-Ball, 10-Ball) ή γαλλικό (τρίσποντο, μονόσποντο) στις αίθουσες με τραπέζια γαλλικού. "
+                "Δες ποιος θα πιάσει το τραπέζι ή ζήτα να μπεις σε τραπέζι που άνοιξε κάποιος άλλος. "
+                "Στη ροή φιλτράρεις ανά πόλη, και κάθε μήνα βγαίνει κατάταξη ανά πόλη και αίθουσα.")
+    return (f"Post the hall, the game and the time{' on RackUp' if name_app else ''}: pool (8-Ball, 9-Ball, "
+            "10-Ball), or carom (3-cushion, 1-cushion) at halls with carom tables. See who takes the table, "
+            "or ask to join a table someone else opened. The feed filters by city, and every month there is "
+            "a ranking by city and hall.")
+
+
 def fit_description(head, areas, tail, label):
     """Adds district names to a meta description while it stays short. The label is plural, so never one."""
     chosen = []
@@ -422,10 +435,7 @@ def index_page(cities, lang):
         description = first_fit(DESCRIPTION_LIMIT, *(
             f"Κατάλογος με {total} αίθουσες μπιλιάρδου σε {count} πόλεις της Ελλάδας: "
             f"{top} και άλλες. Δες τις διευθύνσεις και βρες αντίπαλο με το RackUp." for top in tops))
-        pitch = cta_card("el", "Βρες αντίπαλο στο RackUp",
-                         "Ανέβασε αίθουσα, παιχνίδι (8άρα, 9άρα ή 10άρα) και ώρα, και δες ποιος θα πιάσει το "
-                         "τραπέζι. Ή ζήτα να μπεις σε τραπέζι που άνοιξε κάποιος άλλος. Κάθε παίκτης έχει "
-                         "κατηγορία, από Pro μέχρι E, για να ξέρεις τι σε περιμένει.", campaign, prefix)
+        pitch = cta_card("el", "Βρες αντίπαλο στο RackUp", card_copy("el", False), campaign, prefix)
         body = f"""<section class="page-hero">
 <div class="container">
 <p class="crumbs"><a href="{prefix}">RackUp</a> › Αίθουσες μπιλιάρδου</p>
@@ -447,10 +457,7 @@ def index_page(cities, lang):
         description = first_fit(DESCRIPTION_LIMIT, *(
             f"A directory of {total} billiard halls in {count} Greek cities: "
             f"{top} and more. See the addresses and find an opponent with RackUp." for top in tops))
-        pitch = cta_card("en", "Find an opponent on RackUp",
-                         "Post the hall, the game (8-Ball, 9-Ball or 10-Ball) and the time, and see who takes the "
-                         "table. Or ask to join a table someone else has posted. Every player carries a category "
-                         "from Pro down to E, so you know what you are walking into.", campaign, prefix)
+        pitch = cta_card("en", "Find an opponent on RackUp", card_copy("en", False), campaign, prefix)
         body = f"""<section class="page-hero">
 <div class="container">
 <p class="crumbs"><a href="{prefix}en/">RackUp</a> › Billiard halls</p>
@@ -549,9 +556,7 @@ def city_page(city, halls, cities, lang):
             lead += f" Περιοχές: {esc(', '.join(areas))}."
         other_links = " ".join(f'<li><a class="chip" href="../{CITIES[c][0]}/">{esc(CITIES[c][1])}</a></li>'
                                for c in others)
-        pitch = cta_card("el", f"Θες αντίπαλο {esc(in_el)};",
-                         "Ανέβασε στο RackUp αίθουσα, παιχνίδι (8άρα, 9άρα ή 10άρα) και ώρα, και δες ποιος θα "
-                         "πιάσει το τραπέζι. Ή ζήτα να μπεις σε τραπέζι που άνοιξε κάποιος άλλος.", campaign, prefix)
+        pitch = cta_card("el", f"Θες αντίπαλο {esc(in_el)};", card_copy("el", True), campaign, prefix)
         body = f"""<section class="page-hero">
 <div class="container">
 <p class="crumbs"><a href="../../">RackUp</a> › <a href="../">Αίθουσες μπιλιάρδου</a> › {esc(name_el)}</p>
@@ -585,9 +590,7 @@ def city_page(city, halls, cities, lang):
             description = fit_description(f"{heading}: {n} halls with {contact}.", areas, TAIL["en"], "Areas")
         lead = f"{plural_en(n).replace('hall', 'billiard hall')} in {esc(city)} (<span lang='el'>{esc(name_el)}</span>)."
         other_links = " ".join(f'<li><a class="chip" href="../{CITIES[c][0]}/">{esc(c)}</a></li>' for c in others)
-        pitch = cta_card("en", f"Looking for an opponent in {esc(city)}?",
-                         "Post the hall, the game (8-Ball, 9-Ball or 10-Ball) and the time on RackUp, and see who "
-                         "takes the table. Or ask to join a table someone else has posted.", campaign, prefix)
+        pitch = cta_card("en", f"Looking for an opponent in {esc(city)}?", card_copy("en", True), campaign, prefix)
         body = f"""<section class="page-hero">
 <div class="container">
 <p class="crumbs"><a href="../../../en/">RackUp</a> › <a href="../">Billiard halls</a> › {esc(city)}</p>
