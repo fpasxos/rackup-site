@@ -2,9 +2,10 @@
 Python 3.8+, no packages: python -m unittest discover -s tools
 """
 import html
+import json
 import re
-import subprocess
 import sys
+import textwrap
 import unittest
 from pathlib import Path
 
@@ -12,15 +13,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import build_directory as b  # noqa: E402
 from test_build_directory import published  # noqa: E402
 
-# origin/master before the redesign: the policy text Apple and Google accepted.
-BASELINE = "210b04f"
-BILLIARDS_EMOJI = "\U0001F3B1"
+# Frozen from 210b04f, the policy Apple and Google accepted, so a shallow clone runs these too.
+# After a deliberate policy change, refresh the text: python tools/test_pages_support.py --capture
+FIXTURES = Path(__file__).resolve().parent / "fixtures"
+POLICY_TEXT = FIXTURES / "privacy-text.txt"
+PAGE_IDS = FIXTURES / "support-privacy-ids.json"
 GREEK_JUMP = '<p lang="el"><a href="#el">Στα Ελληνικά</a></p>'
-
-
-def at_baseline(name):
-    return subprocess.run(["git", "show", f"{BASELINE}:{name}"], cwd=b.ROOT,
-                          capture_output=True, check=True).stdout.decode("utf-8")
 
 
 def current(name):
@@ -43,15 +41,29 @@ def ids(page):
     return set(re.findall(r'\bid="([^"]+)"', page))
 
 
+def policy_words(page):
+    """The policy's words; the jump link to the Greek summary is navigation, not policy."""
+    return visible_text(main_html(page).replace(GREEK_JUMP, "", 1)).split()
+
+
+def frozen_ids(name):
+    return set(json.loads(PAGE_IDS.read_text(encoding="utf-8"))[name])
+
+
+def capture():
+    text = textwrap.fill(" ".join(policy_words(current("privacy.html"))), width=100,
+                         break_long_words=False, break_on_hyphens=False)
+    with open(POLICY_TEXT, "w", encoding="utf-8", newline="\n") as out:
+        out.write(text + "\n")
+    print(f"Captured the policy text into {POLICY_TEXT.relative_to(b.ROOT).as_posix()}")
+
+
 class SupportAndPrivacyTest(unittest.TestCase):
 
     def test_privacy_text_is_unchanged(self):
-        # Only navigation differs from the baseline: the old in-page nav and the H1 emoji leave,
-        # the jump link to the Greek summary arrives. Every word of the policy must match.
-        old = main_html(at_baseline("privacy.html"))
-        old = re.sub(r"<nav>.*?</nav>", "", old, count=1, flags=re.S).replace(BILLIARDS_EMOJI, "")
-        new = main_html(current("privacy.html")).replace(GREEK_JUMP, "", 1)
-        was, now = visible_text(old).split(), visible_text(new).split()
+        # Every word of the policy must match the frozen text; only navigation may change around it.
+        was = POLICY_TEXT.read_text(encoding="utf-8").split()
+        now = policy_words(current("privacy.html"))
         self.assertIn("Deleting", was, "baseline did not load")
         if now != was:
             at = next((i for i, (x, y) in enumerate(zip(was, now)) if x != y), min(len(was), len(now)))
@@ -60,12 +72,12 @@ class SupportAndPrivacyTest(unittest.TestCase):
                       f"now {' '.join(now[near])!r}")
 
     def test_support_keeps_its_ids(self):
-        missing = ids(at_baseline("support.html")) - ids(current("support.html"))
+        missing = frozen_ids("support.html") - ids(current("support.html"))
         self.assertEqual(missing, set(), "support.html lost anchors other sites may link to")
 
     def test_privacy_keeps_its_ids(self):
         # support.html links privacy.html#delete, so the policy's anchors are pinned too.
-        old = ids(at_baseline("privacy.html"))
+        old = frozen_ids("privacy.html")
         self.assertIn("delete", old)
         self.assertEqual(old - ids(current("privacy.html")), set())
 
@@ -75,4 +87,7 @@ class SupportAndPrivacyTest(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    if sys.argv[1:] == ["--capture"]:
+        capture()
+    else:
+        unittest.main()
