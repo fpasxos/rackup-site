@@ -48,18 +48,18 @@ p{margin:0 0 1em}
 .wordmark .ball{--s:30px}
 .nav-links{display:flex;align-items:center;gap:20px;font-weight:500;font-size:.95rem}
 .nav-links a{color:var(--ink2);text-decoration:none}
-.nav-links a:hover{color:var(--ink)}
+@media (hover:hover){.nav-links a:hover{color:var(--ink)}}
 .nav-links .nav-text{display:none}
 .nav-links .lang{font-weight:600;letter-spacing:.04em}
 .nav-links .btn{color:var(--on-accent);white-space:nowrap}
 
 /* Buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 22px;border-radius:999px;font:600 1rem/1.1 var(--text);text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:transform .15s ease,background-color .15s ease,border-color .15s ease}
-.btn:hover{transform:translateY(-1px)}
+@media (hover:hover){.btn:hover{transform:translateY(-1px)}}
 .btn-primary{background:var(--accent);color:var(--on-accent)}
-.btn-primary:hover{background:#d4f76f}
+@media (hover:hover){.btn-primary:hover{background:#d4f76f}}
 .btn-ghost{border-color:rgba(234,242,237,.26);color:var(--ink)}
-.btn-ghost:hover{border-color:var(--accent)}
+@media (hover:hover){.btn-ghost:hover{border-color:var(--accent)}}
 .btn-sm{min-height:40px;padding:9px 18px;font-size:.9rem}
 .actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:24px 0 8px}
 .stores{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 18px}
@@ -67,7 +67,7 @@ p{margin:0 0 1em}
 .btn-store small{display:block;font-size:.72rem;font-weight:500;opacity:.78;margin-bottom:2px}
 .btn-store .glyph{width:24px;height:24px;flex:none;fill:currentColor}
 .trust{display:flex;flex-wrap:wrap;gap:8px 18px;margin:0;padding:0;list-style:none;color:var(--muted);font-size:.9rem;font-weight:500}
-.trust li::before{content:"\2713";color:var(--accent);margin-right:6px}
+.trust li::before{content:"\2713";content:"\2713" / "";color:var(--accent);margin-right:6px}
 
 /* Balls, drawn in CSS like the app's Ball component */
 .ball{--s:56px;width:var(--s);height:var(--s);border-radius:50%;position:relative;flex:none;display:inline-block;box-shadow:inset calc(var(--s)*-.1) calc(var(--s)*-.13) calc(var(--s)*.22) rgba(0,0,0,.45),0 calc(var(--s)*.15) calc(var(--s)*.35) rgba(0,0,0,.4)}
@@ -107,7 +107,7 @@ p{margin:0 0 1em}
 .strip{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;border-top:1px solid var(--outline);padding:24px 0 28px;margin-top:8px}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
 .chip{display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 7px;border-radius:999px;background:var(--surface);border:1px solid var(--outline);font-weight:600;font-size:.9rem;color:var(--ink);text-decoration:none}
-a.chip:hover{border-color:var(--accent)}
+@media (hover:hover){a.chip:hover{border-color:var(--accent)}}
 .chip .ball{--s:24px}
 .stats{display:flex;gap:32px;margin:0}
 .stat b{display:block;font:700 1.9rem/1 var(--display);letter-spacing:-.02em}
@@ -143,7 +143,7 @@ a.chip:hover{border-color:var(--accent)}
 .rack-bg path{fill:none;stroke:var(--lime-line);stroke-width:2;stroke-linejoin:round}
 .city-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin:0;padding:0;list-style:none}
 .city-grid a{display:flex;flex-direction:column;gap:2px;padding:14px 16px;border-radius:var(--radius);background:rgba(24,34,28,.85);border:1px solid var(--outline);color:var(--ink);text-decoration:none;transition:border-color .15s ease,transform .15s ease}
-.city-grid a:hover{border-color:var(--accent);transform:translateY(-2px)}
+@media (hover:hover){.city-grid a:hover{border-color:var(--accent);transform:translateY(-2px)}}
 .city{font-weight:600}
 .count{color:var(--accent);font-size:.85rem;font-weight:500}
 
@@ -168,7 +168,7 @@ a.chip:hover{border-color:var(--accent)}
 .page-hero .lead{max-width:60ch}
 .crumbs{font-size:.88rem;color:var(--muted);margin:0 0 14px}
 .crumbs a{color:var(--ink2);text-decoration:none}
-.crumbs a:hover{color:var(--accent)}
+@media (hover:hover){.crumbs a:hover{color:var(--accent)}}
 .halls{display:grid;gap:12px;margin:24px 0 0;padding:0;list-style:none;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr))}
 .hall{border:1px solid var(--outline);border-radius:var(--radius-lg);padding:20px 22px;background:linear-gradient(180deg,var(--surface),var(--surface-low))}
 .hall:target{border-color:var(--accent);box-shadow:0 0 0 3px var(--lime-wash)}
@@ -217,7 +217,7 @@ a.chip:hover{border-color:var(--accent)}
 .foot{display:grid;gap:22px}
 .foot nav{display:flex;flex-wrap:wrap;gap:8px 20px}
 .foot a{color:var(--ink2);text-decoration:none}
-.foot a:hover{color:var(--accent)}
+@media (hover:hover){.foot a:hover{color:var(--accent)}}
 .foot p{margin:0}
 
 @media (max-width:379px){

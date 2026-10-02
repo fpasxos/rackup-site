@@ -7,10 +7,11 @@ from html.parser import HTMLParser
 import sys
 import unittest
 from pathlib import Path
+from urllib.parse import urljoin, urlsplit
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import build_directory as b  # noqa: E402
-from test_build_directory import published  # noqa: E402
+from test_build_directory import published, site_path  # noqa: E402
 
 CSS = b.ROOT / "assets" / "site.css"
 PALETTE = ("#0E1512", "#18221C", "#131C17", "#1E2A23", "#EAF2ED", "#B4C3BA", "#8A9C90", "#5E7268",
@@ -28,7 +29,51 @@ def font_faces(text):
     return re.findall(r"@font-face\s*{([^}]*)}", text)
 
 
+def style_rules(text):
+    """(enclosing at-rules, selector, declarations) for every style rule, in source order."""
+    text = re.sub(r"/\*.*?\*/", "", text, flags=re.S)
+    rules, opened, start = [], [], 0
+    for brace in re.finditer(r"[{}]", text):
+        if brace.group() == "{":
+            opened.append(" ".join(text[start:brace.start()].split()))
+        else:
+            prelude = opened.pop()
+            if not prelude.startswith("@"):
+                rules.append((tuple(opened), prelude, text[start:brace.start()]))
+        start = brace.end()
+    return rules
+
+
+PLAIN_GLYPH = r"""^("[^"]+"|'[^']+')$"""
+SILENT_GLYPH = r"""^("[^"]+"|'[^']+')\s*/\s*(""|'')$"""
+HOVER_MEDIA = r"@media\s*\(\s*hover\s*:\s*hover\s*\)"
+
+
 class StylesheetTest(unittest.TestCase):
+
+    def test_glyphs_drawn_in_css_have_empty_alt_text(self):
+        # Screen readers announce a pseudo-element's glyph unless content gives it alt text: "x" / "".
+        values = {}
+        for _, selectors, body in style_rules(css()):
+            content = [v.strip() for v in re.findall(r"(?:^|;)\s*content\s*:\s*([^;]+)", body)]
+            for selector in (" ".join(s.split()) for s in selectors.split(",")):
+                if content and re.search(r"::?(before|after)$", selector):
+                    values.setdefault(selector, []).append(content)
+        glyphs = {sel: rules for sel, rules in values.items()
+                  if any(re.match(r"""^("[^"]|'[^'])""", v) for rule in rules for v in rule)}
+        self.assertLessEqual({".trust li::before", ".faq summary::after"}, set(glyphs), "the walk found no glyphs")
+        for selector, rules in glyphs.items():
+            last = rules[-1]
+            self.assertRegex(last[-1], SILENT_GLYPH, f"{selector}: screen readers read the glyph aloud")
+            self.assertRegex(last[0], PLAIN_GLYPH, f"{selector}: browsers without alt text need the plain glyph first")
+
+    def test_hover_styles_apply_only_where_a_pointer_hovers(self):
+        # A tap on iOS leaves :hover on until the next tap, so a card or button would stay lifted.
+        hovers = [(at, selector) for at, selector, _ in style_rules(css()) if ":hover" in selector]
+        self.assertGreater(len(hovers), 0, "the walk found no hover rules")
+        for at, selector in hovers:
+            self.assertTrue(any(re.fullmatch(HOVER_MEDIA, rule) for rule in at),
+                            f"{selector} is outside @media (hover:hover) and sticks on phones")
 
     def test_greek_and_latin_faces_cover_their_scripts(self):
         faces = font_faces(css())
@@ -156,6 +201,59 @@ class SiteWideTest(unittest.TestCase):
             self.assertIn('<footer class="site-footer">', text, rel)
             self.assertIn('<main id="main"', text, rel)
             self.assertIn('class="skip-link" href="#main"', text, rel)
+
+    def test_header_and_footer_are_the_same_on_every_page_of_a_language(self):
+        homes = {lang: home for home, lang in b.HOMES.items()}
+        pages = dict(published(".html"))
+        for rel, text in pages.items():
+            lang = re.search(r'<html lang="([^"]+)">', text).group(1)
+            for part in ("header", "footer"):
+                with self.subTest(page=rel, part=part):
+                    mine, home = chrome(rel, text, part), chrome(homes[lang], pages[homes[lang]], part)
+                    if mine != home:
+                        at = next((i for i, (x, y) in enumerate(zip(mine, home)) if x != y), min(len(mine), len(home)))
+                        self.fail(f"{rel}: the {part} drifted from {homes[lang]}: "
+                                  f"{mine[max(at - 2, 0):at + 1]} where the home has {home[max(at - 2, 0):at + 1]}")
+
+
+def chrome_href(page_url, href, classes):
+    """The site path a header or footer link opens, so ../support.html and /support.html compare equal."""
+    if "lang" in classes.split():
+        return "(this page in the other language)"
+    target = urlsplit(urljoin(page_url, href))
+    # The download pill opens this page's own store block, or the home's when the page has none.
+    return "#download" if target.fragment == "download" else target.geturl()
+
+
+class Chrome(HTMLParser):
+    """Tags, attributes and text of a header or footer, with every href resolved."""
+
+    def __init__(self, page_url):
+        super().__init__(convert_charrefs=True)
+        self.page_url, self.items = page_url, []
+
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        if "href" in attrs:
+            attrs["href"] = chrome_href(self.page_url, attrs["href"], attrs.get("class") or "")
+        self.items.append((tag, sorted(attrs.items())))
+
+    def handle_endtag(self, tag):
+        self.items.append(("/" + tag,))
+
+    def handle_data(self, data):
+        if data.strip():
+            self.items.append(" ".join(data.split()))
+
+
+def chrome(rel, text, part):
+    found = re.findall(rf'<{part} class="site-{part}">.*?</{part}>', text, re.S)
+    if len(found) != 1:
+        raise AssertionError(f"{rel}: expected one site {part}, found {len(found)}")
+    parser = Chrome(f"{b.BASE_URL}/{site_path(rel)}")
+    parser.feed(found[0])
+    parser.close()
+    return parser.items
 
 
 GREEK = re.compile(r"[Ͱ-Ͽἀ-῿]")
