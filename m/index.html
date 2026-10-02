@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
 <meta name="robots" content="noindex">
 <title>Ένα ματς μπιλιάρδου σε περιμένει | RackUp</title>
@@ -25,28 +25,38 @@
 <meta name="twitter:title" content="Ένα ματς μπιλιάρδου σε περιμένει | RackUp">
 <meta name="twitter:description" content="Δες το ματς στο RackUp και ζήτα να παίξεις. Join a billiards game on RackUp.">
 <meta name="twitter:image" content="https://getrackup.com/assets/icon-512.png">
-<meta name="theme-color" content="#0C3B2A">
+<meta name="theme-color" content="#0E1512">
 <link rel="icon" type="image/png" href="../assets/icon-512.png">
 <link rel="apple-touch-icon" href="../assets/icon-512.png">
-<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../assets/site.css">
 <script src="open.js" defer></script>
 </head>
 <body>
-<header class="top">
-  <a class="brand" href="../">🎱 RackUp</a>
-  <nav>
-    <a href="../mpiliardo/">Αίθουσες</a>
-    <a href="../support.html" lang="en">Support</a>
-  </nav>
+<a class="skip-link" href="#main">Μετάβαση στο περιεχόμενο</a>
+<header class="site-header">
+  <div class="container nav">
+    <a class="wordmark" href="../"><span class="ball b8" aria-hidden="true"><span class="n">8</span></span><span class="wm">RACK<span>UP</span></span></a>
+    <nav class="nav-links" aria-label="Κύριο μενού">
+      <a class="nav-text" href="../mpiliardo/">Αίθουσες</a>
+      <a class="nav-text" href="../#how">Πώς δουλεύει</a>
+      <a class="nav-text" href="../support.html">Βοήθεια</a>
+      <a class="lang" href="../en/" hreflang="en" lang="en">EN</a>
+      <a class="btn btn-primary btn-sm" href="../#download">Κατέβασέ το</a>
+    </nav>
+  </div>
 </header>
-<main>
-  <section class="hero share">
-    <div class="ball" aria-hidden="true">🎱</div>
+<main id="main" class="container">
+  <section class="share-card">
+    <div class="balls">
+      <span class="ball b8" aria-hidden="true"><span class="n">8</span></span>
+      <span class="ball b9" aria-hidden="true"><span class="n">9</span></span>
+      <span class="ball b10" aria-hidden="true"><span class="n">10</span></span>
+    </div>
     <h1>Ένα ματς μπιλιάρδου σε περιμένει</h1>
     <p class="tag" lang="en">A billiards game is waiting for you</p>
 
     <div id="android" hidden>
-      <p><a id="open-app" class="store open-app">Άνοιξε το ματς στο RackUp<small lang="en">Open the game in RackUp</small></a></p>
+      <p><a id="open-app" class="btn btn-primary open-app"><span>Άνοιξε το ματς στο RackUp<small lang="en">Open the game in RackUp</small></span></a></p>
       <p class="note">Αν δεν έχεις την εφαρμογή, θα ανοίξει το Google Play.<br>
       <span lang="en">No app yet? Google Play opens instead.</span></p>
     </div>
@@ -58,15 +68,26 @@
     <p>Βρες αντίπαλο και τραπέζι σε αίθουσες μπιλιάρδου σε όλη την Ελλάδα.<br>
     <span lang="en">Get RackUp and find an opponent and a table at billiard halls across Greece.</span></p>
     <div class="stores">
-      <a class="store" id="app-store" href="https://apps.apple.com/gr/app/rackup-find-an-opponent/id6800614202"><small>Λήψη από το</small>App Store</a>
-      <a class="store" id="google-play" href="https://play.google.com/store/apps/details?id=com.rackup.app&amp;referrer=utm_source%3Dshare%26utm_medium%3Dmatch_link"><small>Διαθέσιμο στο</small>Google Play</a>
+      <a class="btn btn-primary btn-store" id="app-store" href="https://apps.apple.com/gr/app/rackup-find-an-opponent/id6800614202"><svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8 1.5 0 1.9.8 3.2.8 1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8-.1 0-2.5-1-2.5-3.9zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z"/></svg><span><small>Λήψη από το</small>App Store</span></a>
+      <a class="btn btn-ghost btn-store" id="google-play" href="https://play.google.com/store/apps/details?id=com.rackup.app&amp;referrer=utm_source%3Dshare%26utm_medium%3Dmatch_link"><svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.8v18.4c0 .6.6 1 1.1.7l16-9.2c.5-.3.5-1.1 0-1.4l-16-9.2C4.6 1.8 4 2.2 4 2.8z"/></svg><span><small>Διαθέσιμο στο</small>Google Play</span></a>
     </div>
     <p class="stores-note">Για iPhone και Android. <span lang="en">On iPhone and Android.</span></p>
   </section>
 </main>
-<footer class="site">
-  <p><a href="../support.html">Υποστήριξη</a><a href="../privacy.html">Απόρρητο</a><a href="mailto:rackupbilliard@gmail.com">rackupbilliard@gmail.com</a></p>
-  <p>RackUp · Ιωάννινα</p>
+<footer class="site-footer">
+  <div class="container foot">
+    <div>
+      <a class="wordmark" href="../"><span class="ball b8" aria-hidden="true"><span class="n">8</span></span><span class="wm">RACK<span>UP</span></span></a>
+      <p>Βρες αντίπαλο για μπιλιάρδο. Αμερικάνικο και γαλλικό, σε όλη την Ελλάδα.</p>
+      <p>RackUp · Ιωάννινα</p>
+    </div>
+    <nav aria-label="Σύνδεσμοι">
+      <a href="../mpiliardo/">Αίθουσες μπιλιάρδου</a>
+      <a href="../support.html">Υποστήριξη</a>
+      <a href="../privacy.html">Απόρρητο</a>
+      <a href="mailto:rackupbilliard@gmail.com">rackupbilliard@gmail.com</a>
+    </nav>
+  </div>
 </footer>
 </body>
 </html>

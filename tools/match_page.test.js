@@ -113,6 +113,17 @@ test("the page is noindex, previews well and loads no script but its own", () =>
   assert.match(html, /script-src 'self'/);
 });
 
+test("the Content Security Policy allows only this site, fonts included", () => {
+  const csp = html.match(/http-equiv="Content-Security-Policy" content="([^"]+)"/)[1];
+  assert.equal(csp, "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; " +
+    "font-src 'self'; base-uri 'none'; form-action 'none'");
+});
+
+test("the page is styled by the site stylesheet and nothing else", () => {
+  const sheets = [...html.matchAll(/<link\b[^>]*rel="stylesheet"[^>]*>/g)].map((m) => m[0]);
+  assert.deepEqual(sheets, ['<link rel="stylesheet" href="../assets/site.css">']);
+});
+
 test("every element the script touches exists and starts hidden", () => {
   for (const id of ["android", "bad-link"]) {
     assert.match(html, new RegExp(`id="${id}"[^>]*\\bhidden\\b`), id);
