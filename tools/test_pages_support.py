@@ -15,6 +15,7 @@ from test_build_directory import published  # noqa: E402
 # origin/master before the redesign: the policy text Apple and Google accepted.
 BASELINE = "210b04f"
 BILLIARDS_EMOJI = "\U0001F3B1"
+GREEK_JUMP = '<p lang="el"><a href="#el">Στα Ελληνικά</a></p>'
 
 
 def at_baseline(name):
@@ -45,12 +46,11 @@ def ids(page):
 class SupportAndPrivacyTest(unittest.TestCase):
 
     def test_privacy_text_is_unchanged(self):
-        # The restyle moves two things out of <main>, so only they leave the baseline: the old
-        # in-page nav (Home, Support), which the shared header replaces, and the decorative
-        # billiards emoji in the H1. Every other word must match.
+        # Only navigation differs from the baseline: the old in-page nav and the H1 emoji leave,
+        # the jump link to the Greek summary arrives. Every word of the policy must match.
         old = main_html(at_baseline("privacy.html"))
         old = re.sub(r"<nav>.*?</nav>", "", old, count=1, flags=re.S).replace(BILLIARDS_EMOJI, "")
-        new = main_html(current("privacy.html"))
+        new = main_html(current("privacy.html")).replace(GREEK_JUMP, "", 1)
         was, now = visible_text(old).split(), visible_text(new).split()
         self.assertIn("Deleting", was, "baseline did not load")
         if now != was:

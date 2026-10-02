@@ -200,6 +200,18 @@ class MeaningTest(unittest.TestCase):
             self.assertEqual(len(after), 2, f"{rel} has no #download block")
             self.assertIn("play.google.com", after[1][:6000], f"{rel}: #download holds no store link")
 
+    def test_greek_help_links_land_on_the_greek_section(self):
+        for page in ("support.html", "privacy.html"):
+            text = (b.ROOT / page).read_text(encoding="utf-8")
+            self.assertIn('id="el"', text, page)
+            self.assertIn('<a class="lang" href="#el"', text, f"{page}: ΕΛ should jump to the Greek section")
+            self.assertIn('<a href="#el">Στα Ελληνικά</a>', text, page)
+        for rel, text in published(".html"):
+            if '<html lang="el">' not in text:
+                continue
+            for href in re.findall(r'href="([^"]*(?:support|privacy)\.html[^"]*)"', text):
+                self.assertTrue(href.endswith("#el"), f"{rel}: {href} opens the English text")
+
     def test_greek_text_inside_english_pages_is_marked_greek(self):
         for rel, text in published(".html"):
             if '<html lang="en">' not in text:

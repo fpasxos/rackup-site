@@ -280,7 +280,7 @@ HEADER = {
     <nav class="nav-links" aria-label="Κύριο μενού">
       <a class="nav-text" href="{{dir}}">Αίθουσες</a>
       <a class="nav-text" href="{{home}}#how">Πώς δουλεύει</a>
-      <a class="nav-text" href="{{root}}support.html">Βοήθεια</a>
+      <a class="nav-text" href="{{root}}support.html#el">Βοήθεια</a>
       <a class="lang" href="{{alt}}" hreflang="en" lang="en">EN</a>
       <a class="btn btn-primary btn-sm" href="#download">Κατέβασέ το</a>
     </nav>
@@ -310,8 +310,8 @@ FOOTER = {
     </div>
     <nav aria-label="Σύνδεσμοι">
       <a href="{{root}}{EL_ROOT}/">Αίθουσες μπιλιάρδου</a>
-      <a href="{{root}}support.html">Υποστήριξη</a>
-      <a href="{{root}}privacy.html">Απόρρητο</a>
+      <a href="{{root}}support.html#el">Υποστήριξη</a>
+      <a href="{{root}}privacy.html#el">Απόρρητο</a>
       <a href="mailto:{EMAIL}">{EMAIL}</a>
     </nav>
   </div>
