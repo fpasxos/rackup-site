@@ -76,7 +76,10 @@ CITIES = {
 
 # Figure dash, en dash, em dash, horizontal bar. None may reach a page.
 DASHES = re.compile("[" + "".join(map(chr, (0x2012, 0x2013, 0x2014, 0x2015))) + "]")
-DESCRIPTION_LIMIT = 170
+# What search results show before cutting a title or a description short.
+TITLE_LIMIT = 60
+DESCRIPTION_LIMIT = 155
+TAIL = {"el": "Βρες αντίπαλο με το δωρεάν RackUp.", "en": "Find an opponent with the free RackUp app."}
 # Greek letters, so Greek names on English pages can carry lang="el" for screen readers.
 GREEK_TEXT = re.compile("[Ͱ-Ͽἀ-῿]")
 
@@ -254,6 +257,11 @@ def cta_card(lang, heading, text, campaign, root):
 </section>"""
 
 
+def first_fit(limit, *candidates):
+    """The first candidate within the limit; the last one when none is."""
+    return next((c for c in candidates if len(c) <= limit), candidates[-1])
+
+
 def fit_description(head, areas, tail, label):
     """Adds district names to a meta description while it stays short. The label is plural, so never one."""
     chosen = []
@@ -407,11 +415,13 @@ def index_page(cities, lang):
             "name": f"Μπιλιάρδο {in_el}" if lang == "el" else f"Billiards in {city}",
             "url": url(f"{root}/{slug}/"),
         })
-    top_names = [CITIES[c][1] if lang == "el" else c for c in city_order(cities, lang)[:4]]
+    names = [CITIES[c][1] if lang == "el" else c for c in city_order(cities, lang)]
+    tops = [", ".join(names[:k]) for k in range(4, 0, -1)]
     if lang == "el":
         title = "Αίθουσες μπιλιάρδου στην Ελλάδα ανά πόλη | RackUp"
-        description = (f"Κατάλογος με {total} αίθουσες μπιλιάρδου σε {count} πόλεις της Ελλάδας: "
-                       f"{', '.join(top_names)} και άλλες. Δες τις διευθύνσεις και βρες αντίπαλο με το RackUp.")
+        description = first_fit(DESCRIPTION_LIMIT, *(
+            f"Κατάλογος με {total} αίθουσες μπιλιάρδου σε {count} πόλεις της Ελλάδας: "
+            f"{top} και άλλες. Δες τις διευθύνσεις και βρες αντίπαλο με το RackUp." for top in tops))
         pitch = cta_card("el", "Βρες αντίπαλο στο RackUp",
                          "Ανέβασε αίθουσα, παιχνίδι (8άρα, 9άρα ή 10άρα) και ώρα, και δες ποιος θα πιάσει το "
                          "τραπέζι. Ή ζήτα να μπεις σε τραπέζι που άνοιξε κάποιος άλλος. Κάθε παίκτης έχει "
@@ -434,8 +444,9 @@ def index_page(cities, lang):
         list_name = "Αίθουσες μπιλιάρδου στην Ελλάδα ανά πόλη"
     else:
         title = "Billiard halls in Greece by city | RackUp"
-        description = (f"A directory of {total} billiard halls in {count} Greek cities: "
-                       f"{', '.join(top_names)} and more. See the addresses and find an opponent with RackUp.")
+        description = first_fit(DESCRIPTION_LIMIT, *(
+            f"A directory of {total} billiard halls in {count} Greek cities: "
+            f"{top} and more. See the addresses and find an opponent with RackUp." for top in tops))
         pitch = cta_card("en", "Find an opponent on RackUp",
                          "Post the hall, the game (8-Ball, 9-Ball or 10-Ball) and the time, and see who takes the "
                          "table. Or ask to join a table someone else has posted. Every player carries a category "
@@ -519,15 +530,20 @@ def city_page(city, halls, cities, lang):
     hall_list = "\n".join(hall_item(v, lang) for v in halls)
     others = sorted((c for c in cities if c != city),
                     key=lambda c: fold(CITIES[c][1] if lang == "el" else c))
+    every_phone = all(v.get("phone") for v in halls)
+    first = halls[0]
     if lang == "el":
         heading = f"Μπιλιάρδο {in_el}"
         if n == 1:
-            title = f"{heading}: {halls[0]['name']} | RackUp"
-            description = f"{heading}: {halls[0]['name']}, {halls[0]['address']}. Βρες αντίπαλο με το RackUp."
+            title = first_fit(TITLE_LIMIT, f"{heading}: {first['name']} | RackUp", f"{heading}: {first['name']}",
+                              f"{heading}: {plural_el(n)} μπιλιάρδου | RackUp")
+            hall_line = f"{heading}: {first['name']}, {first['address']}"
+            phone = f", τηλ. {first['phone']}" if first.get("phone") else ""
+            description = first_fit(DESCRIPTION_LIMIT, f"{hall_line}{phone}. {TAIL['el']}", f"{hall_line}. {TAIL['el']}")
         else:
-            title = f"{heading}: {plural_el(n)} | RackUp"
-            description = fit_description(f"{heading}: δες {n} αίθουσες και τις διευθύνσεις τους.",
-                                          areas, "Βρες αντίπαλο με το RackUp.", "Περιοχές")
+            title = f"{heading}: {plural_el(n)} μπιλιάρδου | RackUp"
+            contact = "διευθύνσεις και τηλέφωνα" if every_phone else "διευθύνσεις"
+            description = fit_description(f"{heading}: {n} αίθουσες με {contact}.", areas, TAIL["el"], "Περιοχές")
         lead = f"{plural_el(n)} μπιλιάρδου {in_el}."
         if areas and n > 1:
             lead += f" Περιοχές: {esc(', '.join(areas))}."
@@ -558,12 +574,15 @@ def city_page(city, halls, cities, lang):
     else:
         heading = f"Billiards in {city}"
         if n == 1:
-            title = f"{heading}: {halls[0]['name']} | RackUp"
-            description = f"{heading}: {halls[0]['name']}, {halls[0]['address']}. Find an opponent with RackUp."
+            title = first_fit(TITLE_LIMIT, f"{heading}: {first['name']} | RackUp", f"{heading}: {first['name']}",
+                              f"Pool and billiards in {city}: {plural_en(n)} | RackUp")
+            hall_line = f"{heading}: {first['name']}, {first['address']}"
+            phone = f", phone {first['phone']}" if first.get("phone") else ""
+            description = first_fit(DESCRIPTION_LIMIT, f"{hall_line}{phone}. {TAIL['en']}", f"{hall_line}. {TAIL['en']}")
         else:
-            title = f"{heading}: {plural_en(n)} | RackUp"
-            description = (f"{heading}: see {n} billiard halls and their addresses, "
-                           f"from a hand-researched directory. Find an opponent with RackUp.")
+            title = f"Pool and billiards in {city}: {plural_en(n)} | RackUp"
+            contact = "addresses and phone numbers" if every_phone else "addresses"
+            description = fit_description(f"{heading}: {n} halls with {contact}.", areas, TAIL["en"], "Areas")
         lead = f"{plural_en(n).replace('hall', 'billiard hall')} in {esc(city)} (<span lang='el'>{esc(name_el)}</span>)."
         other_links = " ".join(f'<li><a class="chip" href="../{CITIES[c][0]}/">{esc(c)}</a></li>' for c in others)
         pitch = cta_card("en", f"Looking for an opponent in {esc(city)}?",
