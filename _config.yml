@@ -3,4 +3,5 @@ exclude:
   - README.md
   - tools
   - data
+  - docs
   - .gitignore
