@@ -18,7 +18,6 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data" / "venues.json"
-HOME = ROOT / "index.html"
 BASE_URL = "https://getrackup.com"
 APP_STORE = "https://apps.apple.com/gr/app/rackup-find-an-opponent/id6800614202"
 PLAY_STORE = "https://play.google.com/store/apps/details?id=com.rackup.app"
@@ -30,7 +29,10 @@ PROVIDER_TOKEN = ""
 CAMPAIGN = re.compile(r"[a-z0-9]+(-[a-z0-9]+)*")
 CAMPAIGN_MAX = 26
 # Hand-written pages whose store links the build tags too: file -> site path.
-HAND_PAGES = {"index.html": "", "support.html": "support.html"}
+HAND_PAGES = {"index.html": "", "en/index.html": "en/", "support.html": "support.html"}
+# The two homes: each carries the counts and the city grid, in its own language.
+HOMES = {"index.html": "el", "en/index.html": "en"}
+GRID_START, GRID_END = "<!-- city-grid -->", "<!-- /city-grid -->"
 EMAIL = "rackupbilliard@gmail.com"
 EL_ROOT = "mpiliardo"
 EN_ROOT = "en/billiards"
@@ -188,7 +190,7 @@ def campaign_for(path):
             campaign = f"{lang}-{path[len(root) + 1:].strip('/') or 'directory'}"
             break
     else:
-        campaign = re.sub(r"\.html$", "", path) or "home"
+        campaign = {"en/": "en-home"}.get(path) or re.sub(r"\.html$", "", path) or "home"
     if len(campaign) > CAMPAIGN_MAX or not CAMPAIGN.fullmatch(campaign):
         sys.exit(f"{path!r} gives campaign {campaign!r}: use a-z, 0-9 and single hyphens, "
                  f"at most {CAMPAIGN_MAX} characters")
@@ -490,7 +492,7 @@ def city_page(city, halls, cities, lang):
 
 
 def sitemap(cities):
-    paths = ["", "support.html", "privacy.html", f"{EL_ROOT}/", f"{EN_ROOT}/"]
+    paths = ["", "en/", "support.html", "privacy.html", f"{EL_ROOT}/", f"{EN_ROOT}/"]
     for city in city_order(cities, "el"):
         slug = CITIES[city][0]
         paths += [f"{EL_ROOT}/{slug}/", f"{EN_ROOT}/{slug}/"]
@@ -501,13 +503,34 @@ def sitemap(cities):
 
 
 def home_with_counts(text, cities):
-    """index.html is hand-written; only its two data-count spans and its store links are ours."""
+    """The homes are hand-written; only their data-count spans, city grid and store links are ours."""
     counts = {"venues": sum(len(h) for h in cities.values()), "cities": len(cities)}
     for key, value in counts.items():
         text, found = re.subn(rf'(<span data-count="{key}">)\d+(</span>)', rf"\g<1>{value}\g<2>", text)
         if not found:
-            sys.exit(f'index.html has no <span data-count="{key}"> to update')
+            sys.exit(f'a home page has no <span data-count="{key}"> to update')
     return text
+
+
+def city_grid(cities, lang):
+    """Every city and its hall count, linked relative to the home of that language."""
+    root = EL_ROOT if lang == "el" else EN_ROOT[len("en/"):]
+    items = []
+    for city in city_order(cities, lang):
+        slug, name_el, _ = CITIES[city]
+        n = len(cities[city])
+        label = plural_el(n) if lang == "el" else plural_en(n)
+        name = name_el if lang == "el" else city
+        items.append(f'  <li><a href="{root}/{slug}/"><span class="city">{esc(name)}</span>'
+                     f' <span class="count">{label}</span></a></li>')
+    return '<ul class="city-grid">\n' + "\n".join(items) + "\n</ul>"
+
+
+def home_with_city_grid(text, cities, lang):
+    start, end = text.find(GRID_START), text.find(GRID_END)
+    if start < 0 or end < start:
+        sys.exit(f"a home page has no {GRID_START} ... {GRID_END} block for the city grid")
+    return text[:start + len(GRID_START)] + "\n" + city_grid(cities, lang) + "\n" + text[end:]
 
 
 def with_store_links(name, text):
@@ -527,8 +550,8 @@ def render():
     files = {ROOT / "sitemap.xml": sitemap(cities)}
     for name in HAND_PAGES:
         text = (ROOT / name).read_text(encoding="utf-8")
-        if ROOT / name == HOME:
-            text = home_with_counts(text, cities)
+        if name in HOMES:
+            text = home_with_city_grid(home_with_counts(text, cities), cities, HOMES[name])
         files[ROOT / name] = with_store_links(name, text)
     for lang, root in (("el", EL_ROOT), ("en", EN_ROOT)):
         files[ROOT / root / "index.html"] = index_page(cities, lang)

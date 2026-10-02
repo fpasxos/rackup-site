@@ -137,6 +137,31 @@ class BuildDirectoryTest(unittest.TestCase):
                 checked.add(rel)
         self.assertEqual(checked, rendered_pages())
 
+    def test_english_home_has_its_own_campaign(self):
+        self.assertEqual(b.campaign_for("en/"), "en-home")
+        self.assertEqual(b.campaign_for(""), "home")
+
+    def test_both_homes_get_counts_and_the_city_grid(self):
+        cities = b.group_by_city(b.load_venues())
+        total, count = sum(len(h) for h in cities.values()), len(cities)
+        files = b.render()
+        for home, (lang, root) in {"index.html": ("el", "mpiliardo"), "en/index.html": ("en", "en/billiards")}.items():
+            text = files[b.ROOT / home]
+            self.assertIn(f'<span data-count="venues">{total}</span>', text, home)
+            self.assertIn(f'<span data-count="cities">{count}</span>', text, home)
+            grid = re.search(r"<!-- city-grid -->(.*?)<!-- /city-grid -->", text, re.S).group(1)
+            hrefs = re.findall(r'<a href="([^"]+)"', grid)
+            self.assertEqual(len(hrefs), count, home)
+            for href in hrefs:
+                page = (b.ROOT / home).parent / href / "index.html"
+                self.assertIn(page.resolve(), {p.resolve() for p in files}, f"{home} links {href}")
+                self.assertTrue(page.resolve().as_posix().startswith((b.ROOT / root).resolve().as_posix()), href)
+
+    def test_home_without_city_grid_markers_is_refused(self):
+        cities = b.group_by_city(b.load_venues())
+        with self.assertRaises(SystemExit):
+            b.home_with_city_grid("<p>no markers here</p>", cities, "el")
+
     def test_no_page_tracks_visitors_or_loads_from_another_host(self):
         for rel, text in published(".html"):
             for tag in re.findall(r"<script\b[^>]*>", text):
