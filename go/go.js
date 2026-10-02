@@ -5,7 +5,7 @@
 
   var APP_STORE_ID = "6800614202";
   // The pt value from App Store Connect, App Analytics, Campaigns. Empty means untagged links.
-  var PROVIDER_TOKEN = "";
+  var PROVIDER_TOKEN = "129299799";
   var GENERAL = "general";
   // A hall slug as hall_links.py derives it, at most 30 characters for Apple's ct.
   var HALL = /^[a-z0-9]+(-[a-z0-9]+)*$/;
