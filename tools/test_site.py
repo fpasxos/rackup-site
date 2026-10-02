@@ -58,6 +58,14 @@ class StylesheetTest(unittest.TestCase):
         self.assertIsNotNone(block, "no reduced-motion block")
         self.assertRegex(block.group(1), r"animation\s*:\s*none")
 
+    def test_muted_text_stays_muted_inside_prose(self):
+        self.assertRegex(css(), r"\.prose \.muted\s*{[^}]*color\s*:\s*var\(--muted\)")
+
+    def test_latin_faces_cover_arrows(self):
+        for face in font_faces(css()):
+            if "-latin.woff2" in face:
+                self.assertIn("U+2190-2193", face.replace(" ", ""), "Profile → Settings needs the arrow")
+
     def test_stylesheet_carries_the_app_palette(self):
         text = css().upper()
         for colour in PALETTE:
