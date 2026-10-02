@@ -17,7 +17,7 @@ import build_directory as b  # noqa: E402
 # Pages that tag Play with their own source: match shares (m/), QR codes and ads (go/).
 OWN_SOURCE = {"m/index.html", "go/index.html"}
 # _config.yml keeps these off the site.
-UNPUBLISHED = {".git", "tools", "data"}
+UNPUBLISHED = {".git", "tools", "data", "docs", ".superpowers"}
 # Not a scheme and not protocol relative, so the browser stays on this site.
 LOCAL = r"(?![a-zA-Z][a-zA-Z0-9+.-]*:|//)"
 
