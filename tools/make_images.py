@@ -1,7 +1,7 @@
 """Rebuilds assets/img from the iOS store screenshots in the sibling rackup repo. Dev only:
 pip install Pillow && python tools/make_images.py [path/to/ios-screenshots]
 After rendering tools/og-card.html to assets/og-card.png: python tools/make_images.py --og-card
-Never add 1-venues.png: it shows a stale hall count.
+1-venues.png is left out: its hall count is a snapshot that goes stale as halls are added.
 """
 import math
 import sys
@@ -16,9 +16,6 @@ OG_CARD = ROOT / "assets" / "og-card.png"
 LANGS = {"el": "el", "en": "en-GB"}
 SCREENS = {"venue": "4-venue.png", "create": "2-create.png", "welcome": "5-welcome.png"}
 WIDTHS = (360, 720)
-# Boxes painted over in the source, in source pixels: the 2.1.0 Greek tagline says "πουλ",
-# a word the site no longer uses. Drop this once 2.2.0 screenshots replace the sources.
-MASKS = {("el", "welcome"): (330, 1420, 990, 1550)}
 
 
 def build(source):
@@ -27,9 +24,6 @@ def build(source):
         for screen, name in SCREENS.items():
             with Image.open(source / folder / name) as shot:
                 shot = shot.convert("RGB")
-                box = MASKS.get((lang, screen))
-                if box:
-                    shot.paste(shot.getpixel((box[0] - 20, box[1])), box)
                 # 1x height rounded up so 2x is exactly double; srcset pairs stay true density pairs.
                 one_x = math.ceil(WIDTHS[0] * shot.height / shot.width)
                 for width in WIDTHS:
