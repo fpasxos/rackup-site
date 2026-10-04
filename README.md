@@ -145,7 +145,9 @@ link without a storefront falls back to the US store on the web, which answers 4
 on a computer (an iPhone opens the App Store app either way). The tagged form is
 `https://apps.apple.com/gr/app/apple-store/id6800614202?pt=<pt>&ct=<campaign>&mt=8`;
 Apple redirects it to the listing and keeps `pt` and `ct`. The tests fail on any
-published page or script that carries an App Store URL without `/gr/`.
+published file (page, script, `sitemap.xml`, `robots.txt`) that names the App Store
+host in any other way, and on a new file that gains an App Store link without
+being listed in `HAND_PAGES` or in the test.
 
 ## Match share links
 
