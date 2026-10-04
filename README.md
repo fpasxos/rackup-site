@@ -139,6 +139,14 @@ The App Store links stay plain until RackUp has a provider token. Then
 in App Analytics. `tools/match_page.test.js` checks that the share page's App
 Store link matches the home page's, so adjust it in the same change.
 
+Every App Store link, plain or tagged, names the Greek storefront:
+`https://apps.apple.com/gr/app/...`. RackUp is only in the Greek App Store, and a
+link without a storefront falls back to the US store on the web, which answers 404
+on a computer (an iPhone opens the App Store app either way). The tagged form is
+`https://apps.apple.com/gr/app/apple-store/id6800614202?pt=<pt>&ct=<campaign>&mt=8`;
+Apple redirects it to the listing and keeps `pt` and `ct`. The tests fail on any
+published page or script that carries an App Store URL without `/gr/`.
+
 ## Match share links
 
 The Android app shares a match as `https://getrackup.com/m/?id=<matchId>` (builds that

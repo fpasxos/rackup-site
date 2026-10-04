@@ -18,8 +18,8 @@ const HALL_PLAY = "https://play.google.com/store/apps/details?id=com.rackup.app"
 const GENERAL_PLAY = "https://play.google.com/store/apps/details?id=com.rackup.app" +
   "&referrer=utm_source%3Dshare%26utm_medium%3Dqr%26utm_campaign%3Dgeneral";
 const PLAIN_APP_STORE = "https://apps.apple.com/gr/app/id6800614202";
-const HALL_APP_STORE = "https://apps.apple.com/app/apple-store/id6800614202?pt=12aB34&ct=nax-galaxias&mt=8";
-const GENERAL_APP_STORE = "https://apps.apple.com/app/apple-store/id6800614202?pt=12aB34&ct=general&mt=8";
+const HALL_APP_STORE = "https://apps.apple.com/gr/app/apple-store/id6800614202?pt=12aB34&ct=nax-galaxias&mt=8";
+const GENERAL_APP_STORE = "https://apps.apple.com/gr/app/apple-store/id6800614202?pt=12aB34&ct=general&mt=8";
 
 // Ad and bio links, built only on this site: s sets utm_source and utm_medium, h stays the campaign.
 const META_PLAY = "https://play.google.com/store/apps/details?id=com.rackup.app" +
@@ -28,7 +28,7 @@ const IG_PLAY = "https://play.google.com/store/apps/details?id=com.rackup.app" +
   "&referrer=utm_source%3Dinstagram%26utm_medium%3Dsocial%26utm_campaign%3Dbio";
 const FB_PLAY = "https://play.google.com/store/apps/details?id=com.rackup.app" +
   "&referrer=utm_source%3Dfacebook%26utm_medium%3Dsocial%26utm_campaign%3Dpage";
-const META_APP_STORE = "https://apps.apple.com/app/apple-store/id6800614202?pt=12aB34&ct=meta-ath-tonight&mt=8";
+const META_APP_STORE = "https://apps.apple.com/gr/app/apple-store/id6800614202?pt=12aB34&ct=meta-ath-tonight&mt=8";
 
 const UA = {
   iphoneSafari: "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1",
@@ -114,6 +114,25 @@ test("with a provider token the App Store links carry pt, ct and mt", () => {
   assert.equal(page.buildAppStoreUrl("nax-galaxias", "12aB34"), HALL_APP_STORE);
   assert.equal(page.buildAppStoreUrl(null, "12aB34"), GENERAL_APP_STORE);
   assert.equal(page.buildAppStoreUrl("a".repeat(30), "12aB34").match(/ct=([^&]*)/)[1].length, 30);
+});
+
+// Without /gr/ the web falls back to the US store, which has no RackUp: a 404 on a computer.
+test("every App Store link names the Greek storefront, tagged or plain", () => {
+  const greek = "apps.apple.com/gr/app/";
+  for (const token of ["", "12aB34", page.PROVIDER_TOKEN]) {
+    for (const hall of [null, "nax-galaxias", "a".repeat(30)]) {
+      for (const source of [null, undefined, "meta", "ig", "fb"]) {
+        const url = page.buildAppStoreUrl(hall, token, source);
+        assert.ok(url.startsWith("https://" + greek), `${url} names no storefront`);
+      }
+    }
+  }
+  const everywhere = /apps\.apple\.com[^\s"'<>]*/g;
+  for (const file of ["go/go.js", "go/index.html"]) {
+    const found = read(file).match(everywhere) || [];
+    assert.ok(found.length > 0, `${file} has no App Store link`);
+    for (const url of found) assert.ok(url.startsWith(greek), `${file}: ${url} names no storefront`);
+  }
 });
 
 test("the builders refuse a bad hall or token instead of emitting it", () => {

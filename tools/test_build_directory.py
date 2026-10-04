@@ -20,6 +20,8 @@ OWN_SOURCE = {"m/index.html", "go/index.html"}
 UNPUBLISHED = {".git", "tools", "data", "docs", ".superpowers"}
 # Not a scheme and not protocol relative, so the browser stays on this site.
 LOCAL = r"(?![a-zA-Z][a-zA-Z0-9+.-]*:|//)"
+# Every App Store URL on the site starts like this: the host, then the only storefront with RackUp.
+GREEK_APP_STORE = "https://apps.apple.com/gr/app/"
 
 
 def hall(vid, address, city="Larissa"):
@@ -129,7 +131,7 @@ class BuildDirectoryTest(unittest.TestCase):
                          "paste the pt into go/go.js and tools/build_directory.py together")
         self.assertEqual(b.app_store_url("el-athens", ""), b.APP_STORE)
         self.assertEqual(b.app_store_url("el-athens", "12aB34"),
-                         "https://apps.apple.com/app/apple-store/id6800614202?pt=12aB34&ct=web-el-athens&mt=8")
+                         "https://apps.apple.com/gr/app/apple-store/id6800614202?pt=12aB34&ct=web-el-athens&mt=8")
         with self.assertRaises(SystemExit):
             b.app_store_url("home", "12aB&ct=x")
         checked = set()
@@ -140,6 +142,18 @@ class BuildDirectoryTest(unittest.TestCase):
                 self.assertEqual(link, b.app_store_url(b.campaign_for(site_path(rel))), rel)
                 checked.add(rel)
         self.assertEqual(checked, rendered_pages())
+
+    def test_every_app_store_url_names_the_greek_storefront(self):
+        # RackUp is only in the Greek App Store: without /gr/ the web falls back to the US
+        # store and answers 404 on a computer. Hrefs, JSON-LD and script literals all count.
+        for built in (b.APP_STORE, b.app_store_url("home", ""), b.app_store_url("home", "12aB34")):
+            self.assertTrue(built.startswith(GREEK_APP_STORE), f"the build writes {built}")
+        seen = set()
+        for rel, text in published(".html", ".js"):
+            for found in re.findall(r"""(?:https?:)?//(?:apps|itunes)\.apple\.com[^\s"'<>]*""", text):
+                self.assertTrue(found.startswith(GREEK_APP_STORE), f"{rel}: {found} names no storefront")
+                seen.add(rel)
+        self.assertEqual(seen, rendered_pages() | OWN_SOURCE | {"go/go.js"}, "the walk missed a page with a store link")
 
     def test_english_home_has_its_own_campaign(self):
         self.assertEqual(b.campaign_for("en/"), "en-home")

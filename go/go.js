@@ -68,13 +68,13 @@
     return tagged.length <= HALL_MAX ? tagged : campaign;
   }
 
-  // RackUp is only in the Greek store, so the plain link needs /gr/ or it 404s on the web.
+  // RackUp is only in the Greek store, so both forms need /gr/ or they 404 on a computer.
   function buildAppStoreUrl(hall, token, source) {
     checkHall(hall);
     checkSource(source);
     if (!token) return "https://apps.apple.com/gr/app/id" + APP_STORE_ID;
     if (!TOKEN.test(token)) throw new Error("invalid provider token");
-    return "https://apps.apple.com/app/apple-store/id" + APP_STORE_ID + "?pt=" + token +
+    return "https://apps.apple.com/gr/app/apple-store/id" + APP_STORE_ID + "?pt=" + token +
       "&ct=" + campaignToken(hall, source) + "&mt=8";
   }
 
