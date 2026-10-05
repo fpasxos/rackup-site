@@ -99,6 +99,11 @@ def fold(text):
     return "".join(c for c in decomposed if not unicodedata.combining(c)).lower()
 
 
+def alphabetical_key(name):
+    """The app's A to Z for halls: letters, digits and spaces only, final sigma folded."""
+    return "".join(c for c in fold(name).replace("ς", "σ") if c.isalnum() or c == " ")
+
+
 def plural_el(n):
     return f"{n} αίθουσα" if n == 1 else f"{n} αίθουσες"
 
@@ -155,7 +160,8 @@ def group_by_city(venues):
     for v in venues:
         cities.setdefault(v["city"], []).append(v)
     for halls in cities.values():
-        halls.sort(key=lambda v: (v.get("sortOrder", 10**9), v["id"]))
+        # A to Z, so no hall leads a page for the number it was given.
+        halls.sort(key=lambda v: (alphabetical_key(v["name"]), v["id"]))
     return cities
 
 

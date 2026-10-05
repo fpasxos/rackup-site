@@ -602,5 +602,12 @@
     "address": "Κ. Δρίζη 2, 5ος όροφος",
     "sortOrder": 81,
     "phone": "+30 697 922 6655"
+  },
+  {
+    "id": "venue-ath-halloffame2",
+    "name": "Hall of Fame 2",
+    "city": "Athens",
+    "address": "Μεσολογγίου 28, Γαλάτσι",
+    "sortOrder": 82
   }
 ]
