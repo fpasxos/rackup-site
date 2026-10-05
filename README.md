@@ -122,22 +122,35 @@ that way; `tools/test_site.py` fails on the old green and gold palette.
 
 ## Store links on the site
 
-Every Google Play link on the home page, the support page and the directory
-carries a Play referrer, so installs from the site show up by page:
+Every Google Play link on the two homes, the support page, the 404 page and the
+directory carries a Play referrer, so installs from the site show up by page:
 `&referrer=utm_source%3Dwebsite%26utm_medium%3Dorganic%26utm_campaign%3D<campaign>`.
-The campaign comes from the page path: `home`, `support`, `el-directory`,
-`en-directory`, `el-<city-slug>` and `en-<city-slug>`, lowercase letters, digits
-and single hyphens, at most 26 characters. The generator writes all of them,
-including the two links in the hand-written `index.html` and `support.html`
-(`HAND_PAGES` in the script); a new hand-written page with store links goes there
-too, or the tests fail. Nothing runs on the page: Play reads the referrer.
+The campaign comes from the page path: `home`, `en-home`, `support`, `404`,
+`el-directory`, `en-directory`, `el-<city-slug>` and `en-<city-slug>`, lowercase
+letters, digits and single hyphens, at most 26 characters. The generator writes
+all of them, including the links on the hand-written pages in `HAND_PAGES` (both
+homes, `support.html` and `404.html`); a new hand-written page with store links
+goes there too, or the tests fail. Nothing runs on the page: Play reads the referrer.
 
-The App Store links stay plain until RackUp has a provider token. Then
-`PROVIDER_TOKEN` in `tools/build_directory.py` takes the same `pt` as `go/go.js`
-(a test keeps the two equal), a rebuild gives every page
-`ct=web-<campaign>`, and the `web-` tells site installs apart from hall QR scans
-in App Analytics. `tools/match_page.test.js` checks that the share page's App
-Store link matches the home page's, so adjust it in the same change.
+The App Store links carry Apple's campaign tags the same way. `PROVIDER_TOKEN` in
+`tools/build_directory.py` is the `pt` from App Store Connect, `129299799`, the
+same value as in `go/go.js` (a test keeps the two equal), and every page's link
+carries `ct=web-<campaign>` with the campaign above. The `web-` tells site
+installs apart from QR scans and ad links in App Analytics. The share page has no
+builder: the static link in `m/index.html` carries `ct=share` under the same `pt`,
+and `tools/match_page.test.js` reads the token from `go/go.js`, so a new token
+fails that test until the link changes too.
+
+Every App Store URL names the Greek storefront, `https://apps.apple.com/gr/app/...`:
+the tagged links, and the plain one in the homes' structured data (`sameAs`).
+RackUp is only in the Greek App Store, and a link without a storefront falls back
+to the US store on the web, which answers 404 on a computer (an iPhone opens the
+App Store app either way). The tagged form is
+`https://apps.apple.com/gr/app/apple-store/id6800614202?pt=<pt>&ct=<campaign>&mt=8`;
+Apple redirects it to the listing and keeps `pt` and `ct`. The tests fail on any
+published file (page, script, `sitemap.xml`, `robots.txt`) that names the App Store
+host in any other way, and on a new file that gains an App Store link without
+being listed in `HAND_PAGES` or in the test.
 
 ## Match share links
 
@@ -175,10 +188,13 @@ most 30 characters; anything else counts as the general code.
 - The Play links and the tagged App Store links must match what the app repo's
   `store-assets/hall-links/hall_links.py` builds. `tools/go_page.test.js` pins
   them as literals, so change both together.
-- `PROVIDER_TOKEN` in `go/go.js` is empty until the `pt` value from App Store
-  Connect is pasted in. Until then every App Store link is the plain
-  `https://apps.apple.com/gr/app/id6800614202`, with no campaign. Setting it
-  also changes the static App Store `href` in `go/index.html`; the test checks.
+- `PROVIDER_TOKEN` in `go/go.js` holds the `pt` from App Store Connect,
+  `129299799`, so every App Store link built here carries a campaign: the hall
+  slug, or `general` for the general code (ad and bio links, below, add a
+  source). An empty token would fall back to the plain
+  `https://apps.apple.com/gr/app/id6800614202`. A new token goes into
+  `tools/build_directory.py` too (then rebuild) and into the static App Store
+  `href` in `go/index.html` and `m/index.html`; the tests check all of them.
 - Ads and social bios add a source, `go/?s=<source>&h=<campaign>`, so their
   installs are not counted as hall scans. `s=meta` tags Play with
   `utm_source=meta&utm_medium=paid`, `s=ig` with `instagram` and `social`,

@@ -17,24 +17,39 @@ import build_directory as b  # noqa: E402
 # Pages that tag Play with their own source: match shares (m/), QR codes and ads (go/).
 OWN_SOURCE = {"m/index.html", "go/index.html"}
 # _config.yml keeps these off the site.
-UNPUBLISHED = {".git", "tools", "data", "docs", ".superpowers"}
+UNPUBLISHED = {".git", "tools", "data", "docs", ".superpowers", "README.md", ".gitignore"}
 # Not a scheme and not protocol relative, so the browser stays on this site.
 LOCAL = r"(?![a-zA-Z][a-zA-Z0-9+.-]*:|//)"
+# Every App Store URL on the site starts like this: the host, then the only storefront with RackUp.
+GREEK_APP_STORE = "https://apps.apple.com/gr/app/"
 
 
 def hall(vid, address, city="Larissa"):
     return {"id": vid, "name": vid.title(), "city": city, "address": address, "sortOrder": 1}
 
 
-def published(*suffixes):
-    """Every file GitHub Pages serves with one of these suffixes, as (repo path, text)."""
+def published_files():
+    """Every file GitHub Pages serves, as (repo path, file)."""
     for folder, dirs, names in os.walk(b.ROOT):
         if Path(folder) == b.ROOT:
             dirs[:] = [d for d in dirs if d not in UNPUBLISHED]
+            names = [n for n in names if n not in UNPUBLISHED]
         for name in sorted(names):
-            if Path(name).suffix in suffixes:
-                f = Path(folder, name)
-                yield f.relative_to(b.ROOT).as_posix(), f.read_text(encoding="utf-8")
+            f = Path(folder, name)
+            yield f.relative_to(b.ROOT).as_posix(), f
+
+
+def published(*suffixes):
+    """Every file GitHub Pages serves with one of these suffixes, as (repo path, text)."""
+    for rel, f in published_files():
+        if f.suffix in suffixes:
+            yield rel, f.read_text(encoding="utf-8")
+
+
+def app_store_urls(text):
+    """App Store URLs however they are written: any case, any or no scheme, JSON's \\/ for /."""
+    return re.findall(r"""(?i)(?:https?:)?(?://)?(?:apps|itunes)\.apple\.com[^\s"'<>]*""",
+                      text.replace("\\/", "/"))
 
 
 def site_path(rel):
@@ -129,7 +144,7 @@ class BuildDirectoryTest(unittest.TestCase):
                          "paste the pt into go/go.js and tools/build_directory.py together")
         self.assertEqual(b.app_store_url("el-athens", ""), b.APP_STORE)
         self.assertEqual(b.app_store_url("el-athens", "12aB34"),
-                         "https://apps.apple.com/app/apple-store/id6800614202?pt=12aB34&ct=web-el-athens&mt=8")
+                         "https://apps.apple.com/gr/app/apple-store/id6800614202?pt=12aB34&ct=web-el-athens&mt=8")
         with self.assertRaises(SystemExit):
             b.app_store_url("home", "12aB&ct=x")
         checked = set()
@@ -140,6 +155,30 @@ class BuildDirectoryTest(unittest.TestCase):
                 self.assertEqual(link, b.app_store_url(b.campaign_for(site_path(rel))), rel)
                 checked.add(rel)
         self.assertEqual(checked, rendered_pages())
+
+    def test_every_app_store_url_names_the_greek_storefront(self):
+        # RackUp is only in the Greek App Store: without /gr/ the web falls back to the US
+        # store and answers 404 on a computer. Every published file counts, not only pages.
+        for built in (b.APP_STORE, b.app_store_url("home", ""), b.app_store_url("home", "12aB34")):
+            self.assertTrue(built.startswith(GREEK_APP_STORE), f"the build writes {built}")
+        seen = set()
+        for rel, f in published_files():
+            # Images and fonts decode to noise, which holds no URL.
+            for found in app_store_urls(f.read_bytes().decode("utf-8", "replace")):
+                self.assertTrue(found.startswith(GREEK_APP_STORE),
+                                f"{rel}: {found} does not start with {GREEK_APP_STORE}")
+                seen.add(rel)
+        self.assertEqual(seen, rendered_pages() | OWN_SOURCE | {"go/go.js"},
+                         "the files with App Store links changed: add the page to HAND_PAGES or to this list")
+
+    def test_the_storefront_guard_reads_a_url_however_it_is_written(self):
+        escaped = r'{"sameAs":["https:\/\/apps.apple.com\/gr\/app\/id6800614202"]}'
+        self.assertEqual(app_store_urls(escaped), ["https://apps.apple.com/gr/app/id6800614202"])
+        for bad in (r"https:\/\/apps.apple.com\/app\/id6800614202", "https://Apps.Apple.com/app/id6800614202",
+                    "//apps.apple.com/gr/app/id6800614202", "http://itunes.apple.com/gr/app/id6800614202",
+                    "apps.apple.com/gr/app/id6800614202", "https%3A%2F%2Fapps.apple.com%2Fgr%2Fapp%2Fid6800614202"):
+            (found,) = app_store_urls(f'<a href="{bad}">')
+            self.assertFalse(found.startswith(GREEK_APP_STORE), bad)
 
     def test_english_home_has_its_own_campaign(self):
         self.assertEqual(b.campaign_for("en/"), "en-home")

@@ -139,7 +139,11 @@ test("the static store links match the script and the home page", () => {
   const appStoreHref = unescape(html.match(/id="app-store" href="([^"]+)"/)[1]);
   // Share installs carry ct=share under the same pt as go/go.js, mirroring the Play referrer.
   const token = read("go/go.js").match(/var PROVIDER_TOKEN = "([^"]*)"/)[1];
-  assert.equal(appStoreHref, `https://apps.apple.com/app/apple-store/id6800614202?pt=${token}&ct=share&mt=8`);
+  // /gr/ is the only storefront with RackUp; without it the link is a 404 on a computer.
+  assert.equal(appStoreHref, `https://apps.apple.com/gr/app/apple-store/id6800614202?pt=${token}&ct=share&mt=8`);
+  for (const url of html.match(/apps\.apple\.com[^\s"'<>]*/g)) {
+    assert.ok(url.startsWith("apps.apple.com/gr/app/"), `${url} names no storefront`);
+  }
 });
 
 test("the page stays out of the sitemap, is published, and has no en or em dash", () => {

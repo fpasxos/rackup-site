@@ -226,7 +226,8 @@ def app_store_url(campaign, token=None):
         return APP_STORE
     if not re.fullmatch(r"[A-Za-z0-9]+", token):
         sys.exit("PROVIDER_TOKEN must be letters and digits only")
-    return f"https://apps.apple.com/app/apple-store/id{APP_STORE_ID}?pt={token}&ct=web-{campaign}&mt=8"
+    # /gr/ is the only storefront with RackUp; without it the link is a 404 on a computer.
+    return f"https://apps.apple.com/gr/app/apple-store/id{APP_STORE_ID}?pt={token}&ct=web-{campaign}&mt=8"
 
 
 APPLE_GLYPH = ('<svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 '

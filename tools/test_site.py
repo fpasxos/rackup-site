@@ -298,6 +298,15 @@ class MeaningTest(unittest.TestCase):
             self.assertEqual(len(after), 2, f"{rel} has no #download block")
             self.assertIn("play.google.com", after[1][:6000], f"{rel}: #download holds no store link")
 
+    def test_homes_count_titles_and_badges_as_the_app_does(self):
+        # In the app the level is a number with no top; what comes in six is the title,
+        # and the fourteen badges are called παράσημα.
+        for page, claim in (("index.html", "έξι τίτλοι και δεκατέσσερα παράσημα"),
+                            ("en/index.html", "six titles and fourteen badges")):
+            self.assertIn(claim, (b.ROOT / page).read_text(encoding="utf-8"), page)
+        for rel, text in published(".html"):
+            self.assertNotRegex(text, r"(?i)έξι επίπεδα|δεκατέσσερα σήματα|six levels", rel)
+
     def test_greek_help_links_land_on_the_greek_section(self):
         for page in ("support.html", "privacy.html"):
             text = (b.ROOT / page).read_text(encoding="utf-8")
