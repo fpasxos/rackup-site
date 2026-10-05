@@ -205,6 +205,14 @@ class BuildDirectoryTest(unittest.TestCase):
         with self.assertRaises(SystemExit):
             b.home_with_city_grid("<p>no markers here</p>", cities, "el")
 
+    def test_a_city_page_lists_its_halls_a_to_z_whatever_their_sort_order(self):
+        names = ["King 8", "L' Amorti", "athens billiard club", "Ώρα", "Ωμέγα", "Cue Club"]
+        venues = [{"id": f"venue-ath-{i}", "name": n, "city": "Athens", "address": "Οδός 1", "sortOrder": i}
+                  for i, n in enumerate(names)]
+        listed = [v["name"] for v in b.group_by_city(venues)["Athens"]]
+        # No case, accents or punctuation, Latin before Greek: the app's order without a position.
+        self.assertEqual(listed, ["athens billiard club", "Cue Club", "King 8", "L' Amorti", "Ωμέγα", "Ώρα"])
+
     def test_summary_names_both_homes(self):
         cities = b.group_by_city(b.load_venues())
         line = b.summary(b.render(), cities)
