@@ -307,6 +307,20 @@ class MeaningTest(unittest.TestCase):
         for rel, text in published(".html"):
             self.assertNotRegex(text, r"(?i)έξι επίπεδα|δεκατέσσερα σήματα|six levels", rel)
 
+    def test_pro_to_e_is_a_category_as_in_the_app(self):
+        # Since app 2.2.1 Pro to E is a category everywhere; a level is only the numbered one.
+        for page, claim in (("index.html", "αίθουσα και κατηγορία"),
+                            ("en/index.html", "venue and category")):
+            self.assertIn(claim, (b.ROOT / page).read_text(encoding="utf-8"), page)
+        for rel, text in published(".html"):
+            self.assertNotRegex(text, r"(?i)αίθουσα και επίπεδο|στο επίπεδό σου|venue and level|at your level", rel)
+
+    def test_support_knows_quick_messages_and_iphone_photos(self):
+        # App 2.2.0 brought preset quick messages and the photo picker on iPhone.
+        text = (b.ROOT / "support.html").read_text(encoding="utf-8")
+        self.assertIn("quick messages", text)
+        self.assertNotRegex(text, r"(?i)no direct messages|no photo picker|on Android only")
+
     def test_greek_help_links_land_on_the_greek_section(self):
         for page in ("support.html", "privacy.html"):
             text = (b.ROOT / page).read_text(encoding="utf-8")
