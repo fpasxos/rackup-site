@@ -609,5 +609,245 @@
     "city": "Athens",
     "address": "Μεσολογγίου 28, Γαλάτσι",
     "sortOrder": 82
+  },
+  {
+    "id": "venue-ath-strike",
+    "name": "Strike Bowling",
+    "city": "Athens",
+    "address": "Λεωφ. Αθηνών 336, Χαϊδάρι",
+    "sortOrder": 83,
+    "phone": "+30 210 532 3306"
+  },
+  {
+    "id": "venue-ath-royalbowling",
+    "name": "Royal Bowling",
+    "city": "Athens",
+    "address": "Τευθίδος 7, Περιστέρι",
+    "sortOrder": 84,
+    "phone": "+30 210 578 5900"
+  },
+  {
+    "id": "venue-ath-cosmos",
+    "name": "Cosmos Bowling",
+    "city": "Athens",
+    "address": "Λεωφ. Θηβών 226 & Παρνασσού, Άγιος Ιωάννης Ρέντης",
+    "sortOrder": 85,
+    "phone": "+30 210 425 7201"
+  },
+  {
+    "id": "venue-ath-bluered",
+    "name": "Blue Red Bowling Center",
+    "city": "Athens",
+    "address": "Λεωφ. Βουλιαγμένης 270, Άγιος Δημήτριος",
+    "sortOrder": 86,
+    "phone": "+30 210 976 2325"
+  },
+  {
+    "id": "venue-ath-tetris",
+    "name": "Tetris Billiards Club",
+    "city": "Athens",
+    "address": "Σολωμού 12, Πέραμα",
+    "sortOrder": 87,
+    "phone": "+30 698 593 0839"
+  },
+  {
+    "id": "venue-rho-hotshot",
+    "name": "Hot Shot",
+    "city": "Rhodes",
+    "address": "Σινώπης & Περγάμου",
+    "sortOrder": 88,
+    "phone": "+30 224 103 4068"
+  },
+  {
+    "id": "venue-pyr-ballroom",
+    "name": "The Ball Room",
+    "city": "Pyrgos",
+    "address": "Μαθιού 1",
+    "sortOrder": 89,
+    "phone": "+30 698 374 7755"
+  },
+  {
+    "id": "venue-xan-mrgame",
+    "name": "Mr. Game",
+    "city": "Xanthi",
+    "address": "Κονίτσης 8",
+    "sortOrder": 90,
+    "phone": "+30 254 107 6111"
+  },
+  {
+    "id": "venue-kom-funky",
+    "name": "Funky Activity Bar",
+    "city": "Komotini",
+    "address": "Νικολάου Ζωίδου 52-54",
+    "sortOrder": 91,
+    "phone": "+30 253 107 0007"
+  },
+  {
+    "id": "venue-nmo-revanche",
+    "name": "Revanche Sports Cafe",
+    "city": "Nea Moudania",
+    "address": "Αγίου Γεωργίου 24",
+    "sortOrder": 92,
+    "phone": "+30 694 497 0749"
+  },
+  {
+    "id": "venue-ath-bekos",
+    "name": "Bekos Sports Cafe",
+    "city": "Athens",
+    "address": "Λάμπρου Κατσώνη 6Β, Ασπρόπυργος",
+    "sortOrder": 93,
+    "phone": "+30 210 557 9991"
+  },
+  {
+    "id": "venue-kat-efkarpidis",
+    "name": "Πολυχώρος Ευκαρπίδη",
+    "city": "Katerini",
+    "address": "25ης Μαρτίου 28",
+    "sortOrder": 94,
+    "phone": "+30 235 103 4551"
+  },
+  {
+    "id": "venue-thes-blu",
+    "name": "BLU Cafe & More",
+    "city": "Thessaloniki",
+    "address": "Κυρίμη 10, Αμπελόκηποι",
+    "sortOrder": 95,
+    "phone": "+30 690 647 6176"
+  },
+  {
+    "id": "venue-meg-snooker1997",
+    "name": "Snooker Club 1997",
+    "city": "Megara",
+    "address": "Σπύρου Καραγιώργου 2",
+    "sortOrder": 96,
+    "phone": "+30 698 280 8110"
+  },
+  {
+    "id": "venue-ath-sportspark",
+    "name": "SportsPark",
+    "city": "Athens",
+    "address": "1ο χλμ Λεωφ. Πικερμίου-Σπάτων, Σπάτα",
+    "sortOrder": 97,
+    "phone": "+30 210 663 3704"
+  },
+  {
+    "id": "venue-ath-ballywood",
+    "name": "Ballywood",
+    "city": "Athens",
+    "address": "Περικλέους 9, Νέα Χαλκηδόνα",
+    "sortOrder": 98,
+    "phone": "+30 212 106 4191"
+  },
+  {
+    "id": "venue-ath-metropolitan",
+    "name": "Metropolitan Bowling Center",
+    "city": "Athens",
+    "address": "Λεωφ. Πατησίων 122",
+    "sortOrder": 99,
+    "phone": "+30 210 674 6333"
+  },
+  {
+    "id": "venue-ath-extreme",
+    "name": "Extreme Net Cafe",
+    "city": "Athens",
+    "address": "Αναπαύσεως 20, Βριλήσσια",
+    "sortOrder": 100,
+    "phone": "+30 210 803 5333"
+  },
+  {
+    "id": "venue-ioa-nineball",
+    "name": "Nine Ball Cafe",
+    "city": "Ioannina",
+    "address": "Σπύρου Λάμπρου 34",
+    "sortOrder": 101,
+    "phone": "+30 265 102 5868"
+  },
+  {
+    "id": "venue-pto-clockwork",
+    "name": "The Clockwork",
+    "city": "Ptolemaida",
+    "address": "Πάροδος Αδαμοπούλου-Παυλίδη",
+    "sortOrder": 102,
+    "phone": "+30 246 305 3681"
+  },
+  {
+    "id": "venue-kef-vamos",
+    "name": "Vamos NetGames",
+    "city": "Kefalonia",
+    "address": "Ανδρέα Λασκαράτου 11, Ληξούρι",
+    "sortOrder": 103,
+    "phone": "+30 267 109 3715"
+  },
+  {
+    "id": "venue-zak-bowlmover",
+    "name": "Bowl 'M Over",
+    "city": "Zakynthos",
+    "address": "Τσιλιβί, Πλάνος",
+    "sortOrder": 104,
+    "phone": "+30 269 502 5142"
+  },
+  {
+    "id": "venue-her-bowlingcenter",
+    "name": "Iraklio Bowling Center",
+    "city": "Heraklion",
+    "address": "Λεωφ. Ικάρου 11 & Εθνικής Αντιστάσεως",
+    "sortOrder": 105,
+    "phone": "+30 281 034 4414"
+  },
+  {
+    "id": "venue-rho-bowlinghall",
+    "name": "Bowling Hall",
+    "city": "Rhodes",
+    "address": "Νικολάου Μαυρή 4",
+    "sortOrder": 106,
+    "phone": "+30 224 103 9852"
+  },
+  {
+    "id": "venue-ska-cuecafe",
+    "name": "CUE&CAFE",
+    "city": "Skala",
+    "address": "Θαλή Κουτούπη, Σκάλα Λακωνίας",
+    "sortOrder": 107,
+    "phone": "+30 273 502 9309"
+  },
+  {
+    "id": "venue-ver-bowlingcity",
+    "name": "Bowling City Club",
+    "city": "Veria",
+    "address": "Βέροια",
+    "sortOrder": 108,
+    "phone": "+30 233 102 6999"
+  },
+  {
+    "id": "venue-pat-arena",
+    "name": "Arena Sports Center",
+    "city": "Patras",
+    "address": "Πέλοπος 26",
+    "sortOrder": 109,
+    "phone": "+30 261 064 0582"
+  },
+  {
+    "id": "venue-agr-fireball",
+    "name": "Fireball Billiards",
+    "city": "Agrinio",
+    "address": "Χρήστου Σαλάκου 6",
+    "sortOrder": 110,
+    "phone": "+30 264 102 6903"
+  },
+  {
+    "id": "venue-kal-newpost",
+    "name": "The New Post",
+    "city": "Kalamata",
+    "address": "Ιατροπούλου 6",
+    "sortOrder": 111,
+    "phone": "+30 272 109 9555"
+  },
+  {
+    "id": "venue-kos-tenpin",
+    "name": "Ten Pin Bowling BO",
+    "city": "Kos",
+    "address": "Κως",
+    "sortOrder": 112,
+    "phone": "+30 224 202 9132"
   }
 ]
