@@ -46,8 +46,8 @@
     category and photo on a match or a looking-for-a-game post, and its hall, game and time, can
     now be seen by guests as well as by players. What a host wrote in a note cannot: the apps
     show notes only to players with an account. Neither can your player card. A guest can report
-    a player, and the report carries the guest identifier. The apps log one more analytics event,
-    when someone chooses to look around. We do not yet delete guest identifiers
+    a player or send us feedback, and either carries the guest identifier. The apps log one more
+    analytics event, when someone chooses to look around. We do not yet delete guest identifiers
     automatically. All of this is described below, under <em>Looking around as a guest</em>.</p>
     <p><strong>What changed on 5 October 2026.</strong> The apps did not change and collect
     nothing new, but we use what they collect for a purpose this policy should have described
@@ -160,8 +160,9 @@
   <p>We keep no profile record, no player card and no notification token for a guest. A guest
   can report a player from a match page, from a looking-for-a-game post or from a challenge in
   Discover. The report is stored as described under <em>Safety: reports and blocks</em>, with
-  the guest identifier where an account's report carries its user id. The feedback form in
-  Settings is not open to a guest; email us instead. When you choose to
+  the guest identifier where an account's report carries its user id. A guest can also send us
+  feedback from the app. It is stored as described under <em>Feedback</em>, with the guest
+  identifier where an account's feedback carries its user id. When you choose to
   look around, Firebase Analytics records the event <code>guest_browse_started</code>, with no
   detail, and from then on it records a guest's use of the app as it does a player's, described
   under app usage analytics below, keyed on its own per installation identifier, not on the
@@ -645,9 +646,11 @@
   βλέπεις τα ανοιχτά ματς, τις σελίδες τους και τις αίθουσες, αλλά όχι τις σημειώσεις των
   διοργανωτών. Στη σελίδα ενός ματς, αντί για τη σημείωση, βλέπεις «Η σημείωση του διοργανωτή
   είναι για παίκτες με λογαριασμό». Για να δημοσιεύσεις, να ζητήσεις να μπεις σε ματς, να
-  αποκλείσεις παίκτη ή να λαμβάνεις ειδοποιήσεις χρειάζεσαι λογαριασμό. Μπορείς όμως να κάνεις αναφορά για έναν παίκτη
-  από τη σελίδα ενός ματς, από μια δήλωση ότι ψάχνει παιχνίδι ή από μια πρόκληση, και η αναφορά
-  κρατά το αναγνωριστικό επισκέπτη στη θέση του αναγνωριστικού χρήστη. Για τον επισκέπτη δεν
+  αποκλείσεις παίκτη ή να λαμβάνεις ειδοποιήσεις χρειάζεσαι λογαριασμό. Μπορείς όμως να κάνεις
+  αναφορά για έναν παίκτη από τη σελίδα ενός ματς, από μια δήλωση ότι ψάχνει παιχνίδι ή από μια
+  πρόκληση, και η αναφορά κρατά το αναγνωριστικό επισκέπτη στη θέση του αναγνωριστικού χρήστη.
+  Μπορείς επίσης να μας στείλεις σχόλια από την εφαρμογή, που κρατούν κι αυτά το αναγνωριστικό
+  επισκέπτη στη θέση του αναγνωριστικού χρήστη. Για τον επισκέπτη δεν
   κρατάμε προφίλ, κάρτα παίκτη ούτε αναγνωριστικό ειδοποιήσεων. Το Firebase Analytics καταγράφει
   ότι διάλεξες να ρίξεις μια ματιά, χωρίς καμία άλλη λεπτομέρεια. Όταν φτιάξεις λογαριασμό, αυτός
   έχει δικό του αναγνωριστικό. Το αναγνωριστικό επισκέπτη μένει στο Firebase Authentication μέχρι
