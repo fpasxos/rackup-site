@@ -42,10 +42,12 @@
     <p><strong>What changed on 6 October 2026.</strong> The apps now let you <strong>look
     around before you create an account</strong>, with <em>Look around first</em> on the welcome
     screen. A guest gets a random guest identifier from Firebase Authentication, with no name,
-    email or profile, and can see the open games, match pages and halls. That means everything
-    on a match or a looking-for-a-game post, including your name, category and photo, can now be
-    seen by guests as well as by players. Your player card cannot. The apps log one more analytics
-    event, when someone chooses to look around. We do not yet delete guest identifiers
+    email or profile, and can see the open games, match pages and halls. That means your name,
+    category and photo on a match or a looking-for-a-game post, and its hall, game and time, can
+    now be seen by guests as well as by players. What a host wrote in a note cannot: the apps
+    show notes only to players with an account. Neither can your player card. A guest can report
+    a player, and the report carries the guest identifier. The apps log one more analytics event,
+    when someone chooses to look around. We do not yet delete guest identifiers
     automatically. All of this is described below, under <em>Looking around as a guest</em>.</p>
     <p><strong>What changed on 5 October 2026.</strong> The apps did not change and collect
     nothing new, but we use what they collect for a purpose this policy should have described
@@ -142,15 +144,24 @@
   and no profile. Firebase Authentication keeps it, with when it was created and when it was
   last used. The app needs it because our database lets only signed in sessions read.</p>
   <p>As a guest you can see the open games in Discover, match pages, looking-for-a-game posts
-  and the halls with their open games. You cannot open player cards or search for players.
-  Wherever this policy says that every signed in player can read something, a guest can read it
-  too, except player cards. Posting, asking to join, following, starring a hall, checking in,
-  saving a search, challenging a player and notifications all need an account, and the app asks
-  you to create one instead. Our security rules also stop a guest from creating a profile,
-  uploading a photo, posting a match or a challenge, or checking in.</p>
-  <p>We keep no profile record, no player card and no notification token for a guest. Our
-  security rules still let a guest session send us feedback or a report, and one sent that way
-  carries the guest identifier where an account's would carry its user id. When you choose to
+  and the halls with their open games, with each player's name, category and photo, and the
+  hall, game and time. You cannot see what a host wrote: the app shows the note on a match or a
+  challenge, and the note on a cancelled match, only to players with an account. On a match page
+  a guest sees the line "The host's note is for players with an account" instead, and the reason
+  a match was cancelled stays visible. The note is also left out of a guest's Add to calendar
+  entry. The app does this, not our security rules: the rules let any signed in session, a
+  guest's included, read a whole match record, note included. You cannot open player cards or search
+  for players. Apart from notes and player cards, a guest sees everything this policy says every
+  signed in player can read. Posting, asking to join, following, blocking, starring a
+  hall, checking in, saving a search, challenging a player and notifications all need an
+  account, and the app asks you to create one instead. Our security rules also stop a guest
+  from creating a profile, uploading a photo, posting a match or a challenge, or checking
+  in.</p>
+  <p>We keep no profile record, no player card and no notification token for a guest. A guest
+  can report a player from a match page, from a looking-for-a-game post or from a challenge in
+  Discover. The report is stored as described under <em>Safety: reports and blocks</em>, with
+  the guest identifier where an account's report carries its user id. The feedback form in
+  Settings is not open to a guest; email us instead. When you choose to
   look around, Firebase Analytics records the event <code>guest_browse_started</code>, with no
   detail, and from then on it records a guest's use of the app as it does a player's, described
   under app usage analytics below, keyed on its own per installation identifier, not on the
@@ -202,7 +213,9 @@
     <li><strong>Match posts and open challenges</strong>: the venue, city, game type, date and
         time, and any free text note you write, together with your display name, skill category,
         photo and reliability figure copied onto the post. <strong>Every signed in player can
-        read these, and so can a guest.</strong> That is the point of the app.</li>
+        read these.</strong> That is the point of the app. A guest sees them too, but not your
+        note, which the app shows only to players with an account; our security rules would
+        still let a guest session read it.</li>
     <li><strong>Direct challenges</strong>: when you challenge one player by name, we store both
         players' user ids, display names, categories, photo links and verified badges, the game
         type, the hall (its id, name, city and time zone), the date and time you propose, any
@@ -390,11 +403,15 @@
         above, with your display name, skill category, city, usual hall, profile photo and the
         games you play. Unless you turn off <em>Show me in player search</em>, they can also find
         you by name, and players with the same usual hall see you among its regulars.</li>
-    <li><strong>Visible to every signed in player, guests included</strong>: your display name,
-        your skill category, your profile photo, your reliability figure and verified badge,
-        everything on the matches and open challenges you post or join, including your notes,
-        scores, dispute status and cancellation notes, and your looking-for-a-game post. A guest
-        is someone looking around in the app without an account, as described above.</li>
+    <li><strong>Visible to every signed in player</strong>: your display name, your skill
+        category, your profile photo, your reliability figure and verified badge, everything on
+        the matches and open challenges you post or join, including your notes, scores, dispute
+        status and cancellation notes, and your looking-for-a-game post. <strong>Guests see all
+        of this except the notes</strong>: the app shows a match or challenge note, and a
+        cancellation note, only to players with an account. Our security rules would still let a
+        guest session read a note, as they let any signed in session read a whole match record.
+        A guest is someone looking around in the app without an account, as described
+        above.</li>
     <li><strong>Visible only to us</strong>: abuse reports and feedback messages.</li>
     <li><strong>Nobody without a sign-in, with one exception.</strong> There is no public web
         profile. Looking around as a guest still signs in, anonymously, as described above. With
@@ -406,8 +423,8 @@
   </ul>
   <p>For reading, our security rules check that a request is signed in, not that it comes from an
   account. A guest session is signed in that way, so it may read what every signed in player can
-  read, listed above, except player cards, and nothing that is private to you or visible only to
-  us.</p>
+  read, listed above, notes included, except player cards, and nothing that is private to you or
+  visible only to us. The app itself shows a guest no notes.</p>
   <p>One consequence worth knowing: because match records pair a user id with a display name and
   are readable by any signed in player or guest, a user id that appears anywhere in the app can be
   resolved to a display name by another player or by a guest. A player with an account can also
@@ -617,12 +634,20 @@
   έχουν συνδεθεί στην εφαρμογή, με μία εξαίρεση: όποιος έχει τον σύνδεσμο της φωτογραφίας σου
   μπορεί να την ανοίξει και χωρίς σύνδεση. Τα ματς σου και τις δηλώσεις σου ότι ψάχνεις
   παιχνίδι, μαζί με το όνομα, την κατηγορία και τη φωτογραφία σου, τα βλέπουν και οι επισκέπτες,
-  δηλαδή όσοι ρίχνουν μια ματιά στην εφαρμογή χωρίς λογαριασμό. Την κάρτα σου δεν τη βλέπουν.</p>
+  δηλαδή όσοι ρίχνουν μια ματιά στην εφαρμογή χωρίς λογαριασμό. Την κάρτα σου δεν τη βλέπουν,
+  ούτε όσα γράφεις σε σημείωση: η εφαρμογή δείχνει τη σημείωση ενός ματς ή μιας πρόκλησης, και τη
+  σημείωση μιας ακύρωσης, μόνο σε παίκτες με λογαριασμό. Αυτό το κάνει η εφαρμογή, όχι οι κανόνες
+  ασφαλείας της βάσης μας, που επιτρέπουν σε κάθε συνδεδεμένο χρήστη, και στον επισκέπτη, να
+  διαβάσει ολόκληρο το ματς, μαζί με τη σημείωση.</p>
   <p>Μπορείς να ρίξεις μια ματιά στην εφαρμογή πριν φτιάξεις λογαριασμό, με το «Ρίξε πρώτα μια
   ματιά» στην πρώτη οθόνη. Τότε η εφαρμογή συνδέεται ανώνυμα στο Firebase Authentication και
   παίρνει ένα τυχαίο αναγνωριστικό επισκέπτη, χωρίς όνομα, email, κωδικό ή προφίλ. Ως επισκέπτης
-  βλέπεις τα ανοιχτά ματς, τις σελίδες τους και τις αίθουσες. Για να δημοσιεύσεις, να ζητήσεις
-  να μπεις σε ματς ή να λαμβάνεις ειδοποιήσεις χρειάζεσαι λογαριασμό. Για τον επισκέπτη δεν
+  βλέπεις τα ανοιχτά ματς, τις σελίδες τους και τις αίθουσες, αλλά όχι τις σημειώσεις των
+  διοργανωτών. Στη σελίδα ενός ματς, αντί για τη σημείωση, βλέπεις «Η σημείωση του διοργανωτή
+  είναι για παίκτες με λογαριασμό». Για να δημοσιεύσεις, να ζητήσεις να μπεις σε ματς, να
+  αποκλείσεις παίκτη ή να λαμβάνεις ειδοποιήσεις χρειάζεσαι λογαριασμό. Μπορείς όμως να κάνεις αναφορά για έναν παίκτη
+  από τη σελίδα ενός ματς, από μια δήλωση ότι ψάχνει παιχνίδι ή από μια πρόκληση, και η αναφορά
+  κρατά το αναγνωριστικό επισκέπτη στη θέση του αναγνωριστικού χρήστη. Για τον επισκέπτη δεν
   κρατάμε προφίλ, κάρτα παίκτη ούτε αναγνωριστικό ειδοποιήσεων. Το Firebase Analytics καταγράφει
   ότι διάλεξες να ρίξεις μια ματιά, χωρίς καμία άλλη λεπτομέρεια. Όταν φτιάξεις λογαριασμό, αυτός
   έχει δικό του αναγνωριστικό. Το αναγνωριστικό επισκέπτη μένει στο Firebase Authentication μέχρι
