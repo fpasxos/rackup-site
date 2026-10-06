@@ -76,6 +76,19 @@ CITIES = {
     "Chios": ("chios", "Χίος", "στη Χίο"),
     "Aigio": ("aigio", "Αίγιο", "στο Αίγιο"),
     "Naxos": ("naxos", "Νάξος", "στη Νάξο"),
+    "Megara": ("megara", "Μέγαρα", "στα Μέγαρα"),
+    "Pyrgos": ("pyrgos", "Πύργος", "στον Πύργο"),
+    "Ptolemaida": ("ptolemaida", "Πτολεμαΐδα", "στην Πτολεμαΐδα"),
+    "Katerini": ("katerini", "Κατερίνη", "στην Κατερίνη"),
+    "Xanthi": ("xanthi", "Ξάνθη", "στην Ξάνθη"),
+    "Komotini": ("komotini", "Κομοτηνή", "στην Κομοτηνή"),
+    "Nea Moudania": ("nea-moudania", "Νέα Μουδανιά", "στα Νέα Μουδανιά"),
+    "Kefalonia": ("kefalonia", "Κεφαλονιά", "στην Κεφαλονιά"),
+    "Zakynthos": ("zakynthos", "Ζάκυνθος", "στη Ζάκυνθο"),
+    "Agrinio": ("agrinio", "Αγρίνιο", "στο Αγρίνιο"),
+    "Skala": ("skala", "Σκάλα", "στη Σκάλα"),
+    "Veria": ("veroia", "Βέροια", "στη Βέροια"),
+    "Kos": ("kos", "Κως", "στην Κω"),
 }
 
 # Figure dash, en dash, em dash, horizontal bar. None may reach a page.
