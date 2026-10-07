@@ -1,5 +1,5 @@
-RackUp Privacy Policy Effective date: 6 October 2026 · Applies to the RackUp apps for Android and
-iPhone (com.rackup.app) What changed on 6 October 2026. From version 2.3.0 of the apps, you can look
+RackUp Privacy Policy Effective date: 7 October 2026 · Applies to the RackUp apps for Android and
+iPhone (com.rackup.app) What changed on 7 October 2026. From version 2.3.0 of the apps, you can look
 around before you create an account, with Look around first on the welcome screen. Earlier versions
 have no guest mode. A guest gets a random guest identifier from Firebase Authentication, with no
 name, email or profile, and can see the open games, match pages and halls. So from version 2.3.0,
@@ -383,7 +383,7 @@ with Firebase App Check. We are a small team and we do not pretend to be immune 
 if a breach affects your personal data we will notify the Hellenic Data Protection Authority and,
 where the law requires it, you. Changes to this policy If this policy changes, the new version is
 published at this address with a new effective date, and we say at the top what changed. This
-version, dated 6 October 2026, adds looking around as a guest, from version 2.3.0 of the apps, and
+version, dated 7 October 2026, adds looking around as a guest, from version 2.3.0 of the apps, and
 supersedes the version dated 5 October 2026, which added how we measure which of our social media
 posts, ads and posters bring new players and superseded the version dated 2 October 2026. That one
 described version 2.2.0 of the apps and replaced an earlier version of the same day that held only
