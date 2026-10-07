@@ -20,6 +20,10 @@
   <url><loc>https://getrackup.com/en/billiards/larissa/</loc></url>
   <url><loc>https://getrackup.com/mpiliardo/rhodes/</loc></url>
   <url><loc>https://getrackup.com/en/billiards/rhodes/</loc></url>
+  <url><loc>https://getrackup.com/mpiliardo/agrinio/</loc></url>
+  <url><loc>https://getrackup.com/en/billiards/agrinio/</loc></url>
+  <url><loc>https://getrackup.com/mpiliardo/veroia/</loc></url>
+  <url><loc>https://getrackup.com/en/billiards/veroia/</loc></url>
   <url><loc>https://getrackup.com/mpiliardo/kavala/</loc></url>
   <url><loc>https://getrackup.com/en/billiards/kavala/</loc></url>
   <url><loc>https://getrackup.com/mpiliardo/kalamata/</loc></url>
@@ -38,14 +42,10 @@
   <url><loc>https://getrackup.com/en/billiards/chania/</loc></url>
   <url><loc>https://getrackup.com/mpiliardo/agios-nikolaos/</loc></url>
   <url><loc>https://getrackup.com/en/billiards/agios-nikolaos/</loc></url>
-  <url><loc>https://getrackup.com/mpiliardo/agrinio/</loc></url>
-  <url><loc>https://getrackup.com/en/billiards/agrinio/</loc></url>
   <url><loc>https://getrackup.com/mpiliardo/aigio/</loc></url>
   <url><loc>https://getrackup.com/en/billiards/aigio/</loc></url>
   <url><loc>https://getrackup.com/mpiliardo/argos/</loc></url>
   <url><loc>https://getrackup.com/en/billiards/argos/</loc></url>
-  <url><loc>https://getrackup.com/mpiliardo/veroia/</loc></url>
-  <url><loc>https://getrackup.com/en/billiards/veroia/</loc></url>
   <url><loc>https://getrackup.com/mpiliardo/zakynthos/</loc></url>
   <url><loc>https://getrackup.com/en/billiards/zakynthos/</loc></url>
   <url><loc>https://getrackup.com/mpiliardo/katerini/</loc></url>
@@ -60,6 +60,8 @@
   <url><loc>https://getrackup.com/en/billiards/kos/</loc></url>
   <url><loc>https://getrackup.com/mpiliardo/lamia/</loc></url>
   <url><loc>https://getrackup.com/en/billiards/lamia/</loc></url>
+  <url><loc>https://getrackup.com/mpiliardo/leros/</loc></url>
+  <url><loc>https://getrackup.com/en/billiards/leros/</loc></url>
   <url><loc>https://getrackup.com/mpiliardo/megara/</loc></url>
   <url><loc>https://getrackup.com/en/billiards/megara/</loc></url>
   <url><loc>https://getrackup.com/mpiliardo/naxos/</loc></url>
@@ -78,6 +80,8 @@
   <url><loc>https://getrackup.com/en/billiards/pyrgos/</loc></url>
   <url><loc>https://getrackup.com/mpiliardo/salamina/</loc></url>
   <url><loc>https://getrackup.com/en/billiards/salamina/</loc></url>
+  <url><loc>https://getrackup.com/mpiliardo/saronida/</loc></url>
+  <url><loc>https://getrackup.com/en/billiards/saronida/</loc></url>
   <url><loc>https://getrackup.com/mpiliardo/serres/</loc></url>
   <url><loc>https://getrackup.com/en/billiards/serres/</loc></url>
   <url><loc>https://getrackup.com/mpiliardo/skala/</loc></url>

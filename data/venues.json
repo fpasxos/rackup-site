@@ -814,7 +814,7 @@
     "id": "venue-ver-bowlingcity",
     "name": "Bowling City Club",
     "city": "Veria",
-    "address": "Βέροια",
+    "address": "2ο χλμ. Βέροιας - Σελίου",
     "sortOrder": 108,
     "phone": "+30 233 102 6999"
   },
@@ -846,8 +846,56 @@
     "id": "venue-kos-tenpin",
     "name": "Ten Pin Bowling BO",
     "city": "Kos",
-    "address": "Κως",
+    "address": "Εθνικής Αντιστάσεως 5",
     "sortOrder": 112,
     "phone": "+30 224 202 9132"
+  },
+  {
+    "id": "venue-ath-bnb",
+    "name": "Bits and Bytes Aigaleo",
+    "city": "Athens",
+    "address": "Χρυσοστόμου Σμύρνης 8, 1ος όροφος, Αιγάλεω",
+    "sortOrder": 113,
+    "phone": "+30 210 590 0155"
+  },
+  {
+    "id": "venue-ath-giovanni",
+    "name": "Billiards Club Giovanni",
+    "city": "Athens",
+    "address": "Μακρυγιάννη 98, Πετρούπολη",
+    "sortOrder": 114,
+    "phone": "+30 210 501 6233"
+  },
+  {
+    "id": "venue-sar-matchpoint",
+    "name": "MatchPoint Sports Cafe",
+    "city": "Saronida",
+    "address": "Λεωφ. Σαρωνίδος 70",
+    "sortOrder": 115,
+    "phone": "+30 698 710 0176"
+  },
+  {
+    "id": "venue-agr-billiardshall",
+    "name": "Billiards Hall",
+    "city": "Agrinio",
+    "address": "Ζέρβα 14",
+    "sortOrder": 116,
+    "phone": "+30 694 287 9057"
+  },
+  {
+    "id": "venue-ler-crescendo",
+    "name": "Crescendo Bowling",
+    "city": "Leros",
+    "address": "Άγκυρα, Λέρος",
+    "sortOrder": 117,
+    "phone": "+30 224 702 2104"
+  },
+  {
+    "id": "venue-ver-galaxygames",
+    "name": "Galaxy Games",
+    "city": "Veria",
+    "address": "Κωττουνίου 8",
+    "sortOrder": 118,
+    "phone": "+30 233 112 2019"
   }
 ]

@@ -89,6 +89,8 @@ CITIES = {
     "Skala": ("skala", "Σκάλα", "στη Σκάλα"),
     "Veria": ("veroia", "Βέροια", "στη Βέροια"),
     "Kos": ("kos", "Κως", "στην Κω"),
+    "Saronida": ("saronida", "Σαρωνίδα", "στη Σαρωνίδα"),
+    "Leros": ("leros", "Λέρος", "στη Λέρο"),
 }
 
 # Figure dash, en dash, em dash, horizontal bar. None may reach a page.
