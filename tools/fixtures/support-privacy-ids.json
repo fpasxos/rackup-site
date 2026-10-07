@@ -1,6 +1,7 @@
 {
  "privacy.html": [
-  "delete"
+  "delete",
+  "guest"
  ],
  "support.html": []
 }
