@@ -69,15 +69,15 @@
   }
 
   // Every link names a storefront, or it falls back to the US store and 404s on a computer. A slug
-  // that starts with a country prefix (Cypriot halls and campaigns: cy-) opens that country's store.
-  var STOREFRONT_PREFIXES = [["cy-", "cy"]];
+  // that starts with an open country's code and a hyphen (cy-...) opens that country's store; Greek
+  // slugs have no prefix. Mirrors data/countries.json in the app repo: a new country is one entry.
+  var STOREFRONTS = { cy: "cy" };
   var DEFAULT_STOREFRONT = "gr";
 
   function storefrontOf(hall) {
-    for (var i = 0; i < STOREFRONT_PREFIXES.length; i++) {
-      if (hall !== null && hall.indexOf(STOREFRONT_PREFIXES[i][0]) === 0) return STOREFRONT_PREFIXES[i][1];
-    }
-    return DEFAULT_STOREFRONT;
+    var dash = hall === null ? -1 : hall.indexOf("-");
+    var code = dash > 0 ? hall.slice(0, dash) : null;
+    return code !== null && Object.prototype.hasOwnProperty.call(STOREFRONTS, code) ? STOREFRONTS[code] : DEFAULT_STOREFRONT;
   }
 
   function buildAppStoreUrl(hall, token, source) {
@@ -131,6 +131,7 @@
     sourceFrom: sourceFrom,
     playUrl: playUrl,
     campaignToken: campaignToken,
+    STOREFRONTS: STOREFRONTS,
     storefrontOf: storefrontOf,
     buildAppStoreUrl: buildAppStoreUrl,
     appStoreUrl: appStoreUrl,
