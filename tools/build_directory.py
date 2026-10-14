@@ -359,7 +359,7 @@ FOOTER = {
   <div class="container foot">
     <div>
       {WORDMARK}
-      <p>Βρες αντίπαλο για μπιλιάρδο. Αμερικάνικο και γαλλικό, σε όλη την Ελλάδα.</p>
+      <p>Βρες αντίπαλο για μπιλιάρδο. Αμερικάνικο και γαλλικό, σε πραγματικά τραπέζια.</p>
       <p>RackUp · Ιωάννινα</p>
     </div>
     <nav aria-label="Σύνδεσμοι">
@@ -376,7 +376,7 @@ FOOTER = {
   <div class="container foot">
     <div>
       {WORDMARK}
-      <p>Find a billiards opponent. Pool and carom, across Greece.</p>
+      <p>Find a billiards opponent. Pool and carom, on real tables.</p>
       <p>RackUp · Ioannina, Greece</p>
     </div>
     <nav aria-label="Links">
