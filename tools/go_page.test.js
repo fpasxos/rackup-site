@@ -116,23 +116,53 @@ test("with a provider token the App Store links carry pt, ct and mt", () => {
   assert.equal(page.buildAppStoreUrl("a".repeat(30), "12aB34").match(/ct=([^&]*)/)[1].length, 30);
 });
 
-// Without /gr/ the web falls back to the US store, which has no RackUp: a 404 on a computer.
-test("every App Store link names the Greek storefront, tagged or plain", () => {
+// Without a storefront the web falls back to the US store, which has no RackUp: a 404 on a computer.
+test("every App Store link names the Greek storefront unless its slug is Cypriot", () => {
   const greek = "apps.apple.com/gr/app/";
   for (const token of ["", "12aB34", page.PROVIDER_TOKEN]) {
-    for (const hall of [null, "nax-galaxias", "a".repeat(30)]) {
+    for (const hall of [null, "nax-galaxias", "a".repeat(30), "cy", "cyprus-pool", "lefkosia-cy"]) {
       for (const source of [null, undefined, "meta", "ig", "fb"]) {
         const url = page.buildAppStoreUrl(hall, token, source);
         assert.ok(url.startsWith("https://" + greek), `${url} names no storefront`);
       }
     }
   }
-  const everywhere = /apps\.apple\.com[^\s"'<>]*/g;
-  for (const file of ["go/go.js", "go/index.html"]) {
-    const found = read(file).match(everywhere) || [];
-    assert.ok(found.length > 0, `${file} has no App Store link`);
-    for (const url of found) assert.ok(url.startsWith(greek), `${file}: ${url} names no storefront`);
+  const literal = /apps\.apple\.com\/[a-z]{2}\/app\/[^\s"'<>]*/g;
+  const html = read("go/index.html").match(/apps\.apple\.com[^\s"'<>]*/g) || [];
+  assert.ok(html.length > 0, "go/index.html has no App Store link");
+  for (const url of html) assert.ok(url.startsWith(greek), `go/index.html: ${url} names no storefront`);
+  assert.equal(read("go/go.js").match(literal), null, "go/go.js builds its links, it holds none");
+});
+
+test("a slug that starts with cy- opens the Cypriot storefront, with its ct and source", () => {
+  assert.equal(page.storefrontOf("cy-lefkosia-room9"), "cy");
+  for (const hall of [null, "nax-galaxias", "cy", "cyprus-pool", "lefkosia-cy", "cyy-x"]) {
+    assert.equal(page.storefrontOf(hall), "gr", String(hall));
   }
+  assert.equal(page.buildAppStoreUrl("cy-lefkosia-room9", ""), "https://apps.apple.com/cy/app/id6800614202");
+  assert.equal(page.buildAppStoreUrl("cy-lefkosia-room9", "12aB34"),
+    "https://apps.apple.com/cy/app/apple-store/id6800614202?pt=12aB34&ct=cy-lefkosia-room9&mt=8");
+  assert.equal(page.buildAppStoreUrl("cy-lefkosia", "12aB34", "meta"),
+    "https://apps.apple.com/cy/app/apple-store/id6800614202?pt=12aB34&ct=meta-cy-lefkosia&mt=8");
+  // Play has no storefront in its links: a Cypriot slug changes only the campaign.
+  assert.equal(page.playUrl("cy-lefkosia", "meta"), "https://play.google.com/store/apps/details?id=com.rackup.app" +
+    "&referrer=utm_source%3Dmeta%26utm_medium%3Dpaid%26utm_campaign%3Dcy-lefkosia");
+});
+
+test("a Cypriot ad link opens the Cypriot App Store on iOS and Play on Android", () => {
+  const search = "?s=meta&h=cy-lefkosia&fbclid=IwAR0abc";
+  const apple = "https://apps.apple.com/cy/app/apple-store/id6800614202?pt=" + page.PROVIDER_TOKEN +
+    "&ct=meta-cy-lefkosia&mt=8";
+  const play = page.playUrl("cy-lefkosia", "meta");
+  for (const [ua, touch] of [[UA.iphoneSafari, 5], [UA.facebookIos, 5], [UA.instagramIos, 5]]) {
+    const { loc, hrefs } = run(ua, touch, search);
+    assert.deepEqual(hrefs, [apple, play]);
+    assert.deepEqual(loc.replaced, [apple]);
+  }
+  for (const ua of [UA.androidChrome, UA.facebookAndroid]) {
+    assert.deepEqual(run(ua, 5, search).loc.replaced, [play]);
+  }
+  assert.deepEqual(run(UA.windowsChrome, 0, search).hrefs, [apple, play]);
 });
 
 test("the builders refuse a bad hall or token instead of emitting it", () => {
