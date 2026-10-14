@@ -49,7 +49,9 @@
     version 2.3.3 the apps show a guest only those copies. Our security rules still let a guest
     session read a whole match or challenge record, note included, if it asks our database
     directly. The <em>Security</em> section now says so, and this page will change again when the
-    rules stop it.</p>
+    rules stop it. We also now say what the policy left out: the time your app last refreshed its
+    notification token, which we already stored, also counts, with the app version and only as
+    totals, how many recently active players have updated.</p>
     <p><strong>What changed on 7 October 2026.</strong> From version 2.3.0 of the apps, you can
     <strong>look around before you create an account</strong>, with <em>Look around first</em>
     on the welcome screen. Earlier versions have no guest mode. A guest gets a random guest
@@ -143,7 +145,10 @@
   you can read your own profile record.</strong> We use it to run your account, to show your name
   and category on the matches you post or join, to build your player card, described below, and
   to keep the games, halls, leaderboards and notifications you get to your own country. The app
-  version also tells us how many players have updated. Week by week, we count how many players
+  version also tells us how many players have updated: together with the time your app last
+  refreshed its notification token, described under <em>Notifications</em>, it lets us count, as
+  totals, how many of the players who opened the app recently run each version. Week by week,
+  we count how many players
   signed up, by city and platform, and how many of them, in their first week, posted a match or
   a challenge, asked to join a match, claimed or accepted a challenge, or said they were looking
   for a game. We look only at those totals, never at a single player, to judge our social media
@@ -311,7 +316,7 @@
   <h3>Notifications</h3>
   <p>We store a Firebase Cloud Messaging token for each of your devices, Android or iPhone, along
   with your language, the platform, the app version and build, and the time it was last updated,
-  so we can send you push notifications about join requests, match updates, direct challenges,
+  which the app refreshes each time it starts, so we can send you push notifications about join requests, match updates, direct challenges,
   quick messages, reminders, saved search alerts, new games from players you follow and, for
   halls you starred, new games and check-ins there. You control these with the switches in
   Settings and with your device's notification permission. The iPhone app asks for that
@@ -505,7 +510,8 @@
         and finding out which of our social media posts, ads and posters bring new players.
         This covers abuse reports, blocking, no show and dispute records, the profanity filter,
         crash diagnostics, the app usage analytics described above, including where installs
-        come from, and the weekly sign-up counts described with your profile record. Our
+        come from, and the weekly sign-up counts and update counts described with your profile
+        record. Our
         interest is in running a service that is safe for players and does not crash, and in
         spending our advertising budget where it brings new players. We have kept the data to
         the minimum that serves it, and measuring our posts and ads collects nothing extra.
@@ -743,8 +749,11 @@
   <p>Δεν υπάρχουν διαφημίσεις μέσα στις εφαρμογές, ούτε διαφημιστικά αναγνωριστικά, ούτε
   παρακολούθηση σε εφαρμογές άλλων εταιρειών. Δεν πουλάμε δεδομένα. Από την έκδοση 2.1.0
   υπάρχουν ειδοποιήσεις push και στο iPhone: αν τις επιτρέψεις, κρατάμε στον λογαριασμό σου
-  ένα αναγνωριστικό ειδοποιήσεων για τη συσκευή, μόνο για να σου τις στέλνουμε, και μπορείς να
-  τις κλείσεις από τις Ρυθμίσεις της εφαρμογής ή του iPhone. Και στις δύο εφαρμογές
+  ένα αναγνωριστικό ειδοποιήσεων για τη συσκευή, για να σου τις στέλνουμε, και μπορείς να
+  τις κλείσεις από τις Ρυθμίσεις της εφαρμογής ή του iPhone. Η εφαρμογή το ανανεώνει κάθε φορά
+  που ανοίγει, και η ώρα της ανανέωσης, μαζί με την έκδοση της εφαρμογής, μας δείχνει επίσης,
+  μόνο ως συνολικούς αριθμούς, πόσοι από όσους άνοιξαν πρόσφατα την εφαρμογή την έχουν
+  ενημερώσει. Και στις δύο εφαρμογές
   (στο iPhone από την έκδοση 2.2.0), αν το επιτρέψεις, η κατά προσέγγιση τοποθεσία σου χρησιμεύει
   μόνο για να βλέπεις πρώτα τις αίθουσες και τα ματς της πόλης σου, και <strong>η θέση σου δεν
   φεύγει ποτέ από τη συσκευή</strong>.</p>
