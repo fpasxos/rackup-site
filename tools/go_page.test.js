@@ -134,11 +134,19 @@ test("every App Store link names the Greek storefront unless its slug is Cypriot
   assert.equal(read("go/go.js").match(literal), null, "go/go.js builds its links, it holds none");
 });
 
-test("a slug that starts with cy- opens the Cypriot storefront, with its ct and source", () => {
-  assert.equal(page.storefrontOf("cy-lefkosia-room9"), "cy");
-  for (const hall of [null, "nax-galaxias", "cy", "cyprus-pool", "lefkosia-cy", "cyy-x"]) {
+test("a slug that starts with an open country code opens that storefront, with its ct and source", () => {
+  assert.deepEqual(Object.keys(page.STOREFRONTS), ["cy"], "Cyprus is the only country besides Greece");
+  for (const [code, store] of Object.entries(page.STOREFRONTS)) {
+    assert.match(code, /^[a-z]{2}$/);
+    assert.equal(page.storefrontOf(`${code}-some-hall`), store);
+    assert.equal(page.buildAppStoreUrl(`${code}-some-hall`, ""), `https://apps.apple.com/${store}/app/id6800614202`);
+  }
+  // A code that is not open, a code with no hyphen, and inherited object keys all stay Greek.
+  for (const hall of [null, "nax-galaxias", "cy", "cyprus-pool", "lefkosia-cy", "cyy-x", "de-berlin",
+    "constructor-x", "tostring-x", "proto-x"]) {
     assert.equal(page.storefrontOf(hall), "gr", String(hall));
   }
+  assert.equal(page.storefrontOf("cy-lefkosia-room9"), "cy");
   assert.equal(page.buildAppStoreUrl("cy-lefkosia-room9", ""), "https://apps.apple.com/cy/app/id6800614202");
   assert.equal(page.buildAppStoreUrl("cy-lefkosia-room9", "12aB34"),
     "https://apps.apple.com/cy/app/apple-store/id6800614202?pt=12aB34&ct=cy-lefkosia-room9&mt=8");
