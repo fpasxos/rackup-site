@@ -44,8 +44,8 @@
     last refreshed its notification token, which we already stored, also lets us count, as
     totals, how many recently active players have updated. The city you choose for your profile
     is approximate location, linked to your account, and we now name the halls we keep because
-    you chose them. Discover opens on the city worked out from your approximate location, so a
-    search you save without changing its city keeps that city. And the Android app stores its
+    you chose them. A search you save from Discover keeps the city it opened on, which can be
+    the one worked out from your approximate location. And the Android app stores its
     notification token whether or not you allow notifications.</p>
     <p><strong>What changed on 7 October 2026.</strong> From version 2.3.0 of the apps, you can
     <strong>look around before you create an account</strong>, with <em>Look around first</em>
@@ -387,17 +387,17 @@
   games with your starred halls first, then your city, then everything else, nearest first, and
   it opens Discover on that city. <strong>Your position is never sent to us and never stored
   anywhere.</strong> The city worked out from it orders what you see and is never written to your
-  profile or to any post. Discover also opens on that city, so if you save a search without
-  changing its city, the saved search keeps it, as it keeps any city you pick. If you say no,
-  nothing else
-  changes: the lists put the city on your profile first instead, and the app works normally.
+  profile or to any post. If you save a search from Discover without changing its city, the
+  saved search keeps that city. If you say no, nothing else changes: the lists put the city on your
+  profile first instead, and the app works normally.
   Checking in at a venue is on the honour system and is not verified against your location.</p>
   <p>The location we keep is what you give us. The city you choose for your profile, which
   sign-up asks for, is on your profile record and your player card, described above, and the
   weekly sign-up counts are taken by city. We count it as approximate location, linked to your
-  account. We also keep the halls you name yourself: your usual hall, your check-ins, and the hall
-  or city of your posts, challenges, looking-for-a-game posts, saved searches and schedule, each
-  described above. Your phone's own position still never leaves it.</p>
+  account. We also keep the halls you name yourself: your usual hall, the halls you starred, which
+  also sign your device up for their notifications, your check-ins, and the hall or city of your
+  posts, challenges, looking-for-a-game posts, saved searches and schedule, each described above.
+  Your phone's own position still never leaves it.</p>
 
   <h2>What we do not do</h2>
   <ul>
@@ -491,7 +491,8 @@
   <ul>
     <li><strong>Performance of a contract</strong> (Article 6(1)(b)): creating and running your
         account, publishing your match posts, handling join requests, recording results, and
-        everything else you need for the app to do its job. From version 2.3.0, before you have
+        everything else you need for the app to do its job, including storing each device's
+        notification token, which notifications need. From version 2.3.0, before you have
         an account, the same basis covers the guest identifier that lets you look around, which
         you ask for when you tap <em>Look around first</em>.</li>
     <li><strong>Legitimate interests</strong> (Article 6(1)(f)): keeping RackUp safe and working,
@@ -503,12 +504,14 @@
         crash, in knowing when enough players have updated to release a change, and in spending
         our advertising budget where it brings new players. We have kept the data to
         the minimum that serves it, and measuring our posts and ads collects nothing extra.
-        None of the analytics or crash data is tied to your account. The weekly sign-up counts
-        and the update counts do come from account records and their
-        notification tokens, but as with install sources we look only at the totals,
-        never at a single player. You can object to this processing at any time, at the address
+        Nothing that Firebase Analytics or Crashlytics collects is tied to your account. The app
+        version stored with your profile record and your notification tokens is, and the weekly
+        sign-up counts and the update counts come from those records, but as with install
+        sources we look only at the totals, never at a single player. You can object to this
+        processing at any time, at the address
         below.</li>
-    <li><strong>Consent</strong> (Article 6(1)(a)): push notifications on both apps, which depend
+    <li><strong>Consent</strong> (Article 6(1)(a)): receiving push notifications on both apps,
+        which depend
         on your device permission and on the switches in Settings, and the optional approximate
         location permission on both apps. You can withdraw either at any time in your device
         settings.</li>
@@ -645,8 +648,10 @@
   <p>If this policy changes, the new version is published at this address with a new effective
   date, and we say at the top what changed. This version, dated XX October 2026, says what the
   notification token's refresh time is also used for, that the city on your profile is
-  approximate location, which halls we keep, and that a saved search can keep a city suggested
-  from your position, and supersedes the version dated 7 October 2026, which added looking around
+  approximate location, which halls we keep, that a saved search can keep a city suggested
+  from your position, and that the Android app stores its notification token whether or not
+  notifications are allowed, and supersedes the version dated 7 October 2026, which added looking
+  around
   as a guest, from version 2.3.0 of the apps, and superseded the version dated 5 October 2026,
   which added how we measure which of our social media posts, ads and posters
   bring new players and superseded the version dated 2 October 2026. That one described version
@@ -725,18 +730,22 @@
   υπάρχουν ειδοποιήσεις push και στο iPhone: αν τις επιτρέψεις, κρατάμε στον λογαριασμό σου
   ένα αναγνωριστικό ειδοποιήσεων για τη συσκευή, για να σου τις στέλνουμε, και μπορείς να
   τις κλείσεις από τις Ρυθμίσεις της εφαρμογής ή του iPhone. Στο Android η εφαρμογή κρατά το
-  αναγνωριστικό είτε επιτρέψεις τις ειδοποιήσεις είτε όχι. Σε Android και iPhone, η εφαρμογή
-  ανανεώνει αυτό το αναγνωριστικό κάθε φορά που ανοίγει, και η ώρα της ανανέωσης, μαζί με την
-  έκδοση της εφαρμογής, μας δείχνει επίσης, μόνο ως συνολικούς αριθμούς, πόσοι από όσους άνοιξαν
-  πρόσφατα την εφαρμογή την έχουν ενημερώσει. Νομική βάση και γι' αυτό είναι το έννομο συμφέρον
-  μας, και μπορείς να αντιταχθείς όποτε θέλεις. Και στις δύο εφαρμογές
+  αναγνωριστικό ακόμη κι αν δεν επιτρέψεις τις ειδοποιήσεις, και τι θα λαμβάνεις το ορίζουν οι
+  διακόπτες στις Ρυθμίσεις και η άδεια της συσκευής. Σε Android και iPhone, η εφαρμογή ενημερώνει
+  αυτό το αναγνωριστικό σε κάθε εκκίνηση. Η ώρα της τελευταίας ενημέρωσης, μαζί με την έκδοση της
+  εφαρμογής, μας δείχνει, μόνο ως συνολικούς αριθμούς, πόσοι από όσους άνοιξαν πρόσφατα την
+  εφαρμογή την έχουν ενημερώσει, ώστε να ξέρουμε πότε μπορούμε να βγάλουμε μια αλλαγή. Νομική
+  βάση και γι' αυτό είναι το έννομο συμφέρον μας, και μπορείς να αντιταχθείς όποτε θέλεις. Και
+  στις δύο εφαρμογές
   (στο iPhone από την έκδοση 2.2.0), αν το επιτρέψεις, η κατά προσέγγιση τοποθεσία σου χρησιμεύει
   μόνο για να βλέπεις πρώτα τις αίθουσες και τα ματς της πόλης σου, και <strong>η θέση σου δεν
-  φεύγει ποτέ από τη συσκευή</strong>. Κρατάμε την πόλη που διαλέγεις για το προφίλ σου, που τη
-  θεωρούμε κατά προσέγγιση τοποθεσία, συνδεδεμένη με τον λογαριασμό σου. Κρατάμε επίσης τις
-  αίθουσες που δηλώνεις εσύ: την αίθουσα όπου παίζεις συνήθως, τα check-in σου και τις αίθουσες
-  των ματς, των προκλήσεων και των αναζητήσεών σου. Αν αποθηκεύσεις μια αναζήτηση, κρατάμε την
-  πόλη του φίλτρου της, ακόμη κι αν την πρότεινε η εφαρμογή από τη θέση σου.</p>
+  φεύγει ποτέ από τη συσκευή</strong>. Η τοποθεσία που κρατάμε είναι αυτή που μας δίνεις εσύ.
+  Την πόλη που διαλέγεις για το προφίλ σου την κρατάμε ως κατά προσέγγιση τοποθεσία, συνδεδεμένη
+  με τον λογαριασμό σου. Κρατάμε επίσης τις αίθουσες που δηλώνεις: την αίθουσα όπου παίζεις
+  συνήθως, τις αγαπημένες σου αίθουσες, τα check-in σου, και την αίθουσα ή την πόλη των ματς,
+  των προκλήσεων, των δηλώσεων ότι ψάχνεις παιχνίδι, των αποθηκευμένων αναζητήσεων και του
+  εβδομαδιαίου προγράμματός σου. Αν αποθηκεύσεις μια αναζήτηση, κρατάμε την πόλη του φίλτρου
+  της, ακόμη κι αν την πρότεινε η εφαρμογή από τη θέση σου.</p>
   <p>Διαγραφή λογαριασμού: μέσα από την εφαρμογή (Προφίλ → Ρυθμίσεις → Διαγραφή λογαριασμού) ή με
   email στο <a href="mailto:rackupbilliard@gmail.com">rackupbilliard@gmail.com</a>. Μαζί με τον
   λογαριασμό σου διαγράφονται η κάρτα παίκτη σου, οι προσωπικές προκλήσεις και τα γρήγορα

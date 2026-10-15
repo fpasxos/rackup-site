@@ -86,6 +86,41 @@ class SupportAndPrivacyTest(unittest.TestCase):
         self.assertEqual(offenders, [], "site.css is the only stylesheet")
 
 
+MONTHS = ("January", "February", "March", "April", "May", "June", "July", "August",
+          "September", "October", "November", "December")
+
+
+def is_real_date(text):
+    parts = text.split()
+    return (len(parts) == 3 and parts[0].isdigit() and 1 <= int(parts[0]) <= 31
+            and parts[1] in MONTHS and parts[2].isdigit() and len(parts[2]) == 4)
+
+
+def policy_dates(page):
+    """The effective date, the newest change note's date and "This version, dated"."""
+    text = visible_text(main_html(page))
+    effective = re.search(r"Effective date: (.+?) ·", text)
+    newest = re.search(r"What changed on (.+?)\.", text)
+    this_version = re.search(r"This version, dated (.+?),", text)
+    return [m.group(1) if m else None for m in (effective, newest, this_version)]
+
+
+class PolicyDateTest(unittest.TestCase):
+
+    def test_the_policy_carries_one_real_date(self):
+        # Merging publishes: a draft's placeholder date must be set to the merge day first.
+        dates = policy_dates(current("privacy.html"))
+        self.assertTrue(all(d and is_real_date(d) for d in dates), f"set the policy date: {dates}")
+        self.assertEqual(len(set(dates)), 1, f"the three dates differ: {dates}")
+
+    def test_the_date_check_rejects_a_placeholder(self):
+        self.assertFalse(is_real_date("XX October 2026"))
+        self.assertTrue(is_real_date("16 October 2026"))
+        page = ('<main><p>Effective date: 9 May 2027 · x</p><p>What changed on 9 May 2027. y</p>'
+                '<p>This version, dated 9 May 2027, z</p></main>')
+        self.assertEqual(["9 May 2027"] * 3, policy_dates(page))
+
+
 if __name__ == "__main__":
     if sys.argv[1:] == ["--capture"]:
         capture()
