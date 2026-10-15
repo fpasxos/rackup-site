@@ -1,5 +1,5 @@
-RackUp Privacy Policy Effective date: XX October 2026 · Applies to the RackUp apps for Android and
-iPhone (com.rackup.app) What changed on XX October 2026. The apps did not change and collect nothing
+RackUp Privacy Policy Effective date: 15 October 2026 · Applies to the RackUp apps for Android and
+iPhone (com.rackup.app) What changed on 15 October 2026. The apps did not change and collect nothing
 new, but this policy left out four things that are true today. The time your app last refreshed its
 notification token, which we already stored, also lets us count, as totals, how many recently active
 players have updated. The city you choose for your profile is approximate location, linked to your
@@ -422,7 +422,7 @@ with Firebase App Check. We are a small team and we do not pretend to be immune 
 if a breach affects your personal data we will notify the Hellenic Data Protection Authority and,
 where the law requires it, you. Changes to this policy If this policy changes, the new version is
 published at this address with a new effective date, and we say at the top what changed. This
-version, dated XX October 2026, says what the notification token's refresh time is also used for,
+version, dated 15 October 2026, says what the notification token's refresh time is also used for,
 that the city on your profile is approximate location, which halls we keep, that a saved search can
 keep a city suggested from your position, that the Android app stores its notification token whether
 or not notifications are allowed, that the token and your notifications rest on our contract with
