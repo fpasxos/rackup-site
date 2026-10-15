@@ -90,10 +90,20 @@ MONTHS = ("January", "February", "March", "April", "May", "June", "July", "Augus
           "September", "October", "November", "December")
 
 
+def as_date(text):
+    """The calendar date in "16 October 2026", or None for a placeholder or an impossible day."""
+    import datetime
+    parts = (text or "").split()
+    if len(parts) != 3 or not parts[0].isdigit() or parts[1] not in MONTHS or not parts[2].isdigit():
+        return None
+    try:
+        return datetime.date(int(parts[2]), MONTHS.index(parts[1]) + 1, int(parts[0]))
+    except ValueError:
+        return None
+
+
 def is_real_date(text):
-    parts = text.split()
-    return (len(parts) == 3 and parts[0].isdigit() and 1 <= int(parts[0]) <= 31
-            and parts[1] in MONTHS and parts[2].isdigit() and len(parts[2]) == 4)
+    return as_date(text) is not None
 
 
 def policy_dates(page):
@@ -105,20 +115,41 @@ def policy_dates(page):
     return [m.group(1) if m else None for m in (effective, newest, this_version)]
 
 
+def superseded_date(page):
+    """The date of the version this one supersedes, or None when it replaces one of the same day."""
+    found = re.search(r"This version, dated .+?, .*?supersedes the version dated (.+?),",
+                      visible_text(main_html(page)))
+    return found.group(1) if found else None
+
+
+def placeholders(page):
+    return re.findall(r"\b[A-Z]{2} (?:%s) \d{4}" % "|".join(MONTHS), visible_text(main_html(page)))
+
+
 class PolicyDateTest(unittest.TestCase):
 
     def test_the_policy_carries_one_real_date(self):
         # Merging publishes: a draft's placeholder date must be set to the merge day first.
-        dates = policy_dates(current("privacy.html"))
-        self.assertTrue(all(d and is_real_date(d) for d in dates), f"set the policy date: {dates}")
+        page = current("privacy.html")
+        self.assertEqual([], placeholders(page), "set every placeholder date")
+        dates = policy_dates(page)
+        self.assertTrue(all(is_real_date(d) for d in dates), f"set the policy date: {dates}")
         self.assertEqual(len(set(dates)), 1, f"the three dates differ: {dates}")
+        older = superseded_date(page)
+        if older is not None:
+            self.assertTrue(is_real_date(older), f"the superseded date is not a date: {older}")
+            self.assertGreater(as_date(dates[0]), as_date(older), "the new version predates the old")
 
     def test_the_date_check_rejects_a_placeholder(self):
         self.assertFalse(is_real_date("XX October 2026"))
+        self.assertFalse(is_real_date("31 February 2026"))
         self.assertTrue(is_real_date("16 October 2026"))
         page = ('<main><p>Effective date: 9 May 2027 · x</p><p>What changed on 9 May 2027. y</p>'
-                '<p>This version, dated 9 May 2027, z</p></main>')
+                '<p>This version, dated 9 May 2027, adds a, and supersedes the version dated '
+                '7 October 2026, which b. Earlier: XX October 2026.</p></main>')
         self.assertEqual(["9 May 2027"] * 3, policy_dates(page))
+        self.assertEqual("7 October 2026", superseded_date(page))
+        self.assertEqual(["XX October 2026"], placeholders(page))
 
 
 if __name__ == "__main__":
