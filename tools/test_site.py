@@ -387,18 +387,21 @@ class SearchTest(unittest.TestCase):
 # and the support desk's own calendar ("a Greek public holiday").
 COUNTRY = re.compile(r"Greece|Ελλάδ|ΕΛΛΑΔ|(?<!in )\bGreek\b(?!,?\s+(?:Greeklish|and\s+English|or\s+in\s+English)"
                      r"|\s+public\s+holiday)")
-ADDRESS = "Ioannina, Greece"
-# They list one country's halls and say which; the homes' FAQ answers "Which cities?" the same way.
+# The contact line on support.html and privacy.html gives the full postal address.
+CONTACT = "RackUp · Ioannina, Greece · rackupbilliard@gmail.com"
+# They list one country's halls and say which.
 NAMES_ITS_COUNTRY = {"mpiliardo/index.html", "en/billiards/index.html"}
+# Legal text: the controller's address and Greece's data protection authority.
+LEGAL = "privacy.html"
 
 
 class CountryTest(unittest.TestCase):
-    """Cyprus opens next: copy that describes the app names no country, only the address may."""
+    """Cyprus opens next: no page names a country, but where that is the point."""
 
-    def test_footers_name_no_country_but_the_address(self):
+    def test_footers_name_no_country(self):
         for rel, text in published(".html"):
             footer = re.search(r'<footer class="site-footer">.*?</footer>', text, re.S).group(0)
-            self.assertNotRegex(footer.replace(ADDRESS, ""), COUNTRY, rel)
+            self.assertNotRegex(footer, COUNTRY, rel)
 
     def test_titles_descriptions_and_the_app_name_no_country(self):
         for rel, text in published(".html"):
@@ -411,10 +414,19 @@ class CountryTest(unittest.TestCase):
             for line in said:
                 self.assertNotRegex(line, COUNTRY, rel)
 
-    def test_support_404_go_and_match_pages_name_no_country_but_the_address(self):
-        for page in ("support.html", "404.html", "go/index.html", "m/index.html"):
-            text = (b.ROOT / page).read_text(encoding="utf-8")
-            self.assertNotRegex(text.replace(ADDRESS, ""), COUNTRY, page)
+    def test_no_page_names_a_country_but_the_directory_indexes_and_the_legal_text(self):
+        """Every published page, visible text and JSON-LD alike: the homes' FAQ slipped through
+        when only titles, descriptions and footers were read."""
+        checked = 0
+        for rel, text in published(".html"):
+            if rel in NAMES_ITS_COUNTRY:
+                continue
+            if rel == LEGAL:
+                text = re.search(r'<footer class="site-footer">.*?</footer>', text, re.S).group(0)
+            with self.subTest(page=rel):
+                self.assertNotRegex(text.replace(CONTACT, ""), COUNTRY)
+            checked += 1
+        self.assertGreater(checked, 80, "too few pages read")
 
     def test_social_cards_name_no_country(self):
         for name in ("og-card.html", "og-card-en.html"):
