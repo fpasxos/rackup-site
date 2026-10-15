@@ -20,8 +20,11 @@ OWN_SOURCE = {"m/index.html", "go/index.html"}
 UNPUBLISHED = {".git", "tools", "data", "docs", ".superpowers", "README.md", ".gitignore"}
 # Not a scheme and not protocol relative, so the browser stays on this site.
 LOCAL = r"(?![a-zA-Z][a-zA-Z0-9+.-]*:|//)"
-# Every App Store URL on the site starts like this: the host, then the only storefront with RackUp.
+# Every App Store URL on the site starts like this: the host, then the Greek storefront.
 GREEK_APP_STORE = "https://apps.apple.com/gr/app/"
+# The one exception: go.js picks a storefront per hall slug in this one expression, and
+# go_page.test.js pins which slug opens which store.
+GO_STORE_BASE = '"https://apps.apple.com/" + storefrontOf(hall) + "/app/"'
 
 
 def hall(vid, address, city="Larissa"):
@@ -157,19 +160,44 @@ class BuildDirectoryTest(unittest.TestCase):
         self.assertEqual(checked, rendered_pages())
 
     def test_every_app_store_url_names_the_greek_storefront(self):
-        # RackUp is only in the Greek App Store: without /gr/ the web falls back to the US
-        # store and answers 404 on a computer. Every published file counts, not only pages.
+        # Without a storefront the web falls back to the US store and answers 404 on a computer.
+        # Every published file counts, not only pages; only go.js may pick another open country's.
         for built in (b.APP_STORE, b.app_store_url("home", ""), b.app_store_url("home", "12aB34")):
             self.assertTrue(built.startswith(GREEK_APP_STORE), f"the build writes {built}")
         seen = set()
         for rel, f in published_files():
             # Images and fonts decode to noise, which holds no URL.
-            for found in app_store_urls(f.read_bytes().decode("utf-8", "replace")):
+            text = f.read_bytes().decode("utf-8", "replace")
+            if rel == "go/go.js":
+                text = self.go_store_base_checked(text)
+            for found in app_store_urls(text):
                 self.assertTrue(found.startswith(GREEK_APP_STORE),
                                 f"{rel}: {found} does not start with {GREEK_APP_STORE}")
                 seen.add(rel)
         self.assertEqual(seen, rendered_pages() | OWN_SOURCE | {"go/go.js"},
                          "the files with App Store links changed: add the page to HAND_PAGES or to this list")
+
+    def go_store_base_checked(self, text):
+        """go.js with its one storefront expression read as Greek, once its storefront map checks out."""
+        self.assertEqual(1, text.count(GO_STORE_BASE), "go.js builds every App Store URL in one expression")
+        self.assertIn('var DEFAULT_STOREFRONT = "gr";', text, "a slug with no country prefix opens the Greek store")
+        stores = re.search(r"var STOREFRONTS = \{([^}]*)\};", text)
+        self.assertIsNotNone(stores, "go.js has no STOREFRONTS map")
+        for code, store in re.findall(r"""(\w+)\s*:\s*["']([^"']*)["']""", stores.group(1)):
+            self.assertRegex(store, r"^[a-z]{2}$", f"slug prefix {code} opens no storefront: {store!r}")
+        return text.replace(GO_STORE_BASE, f'"{GREEK_APP_STORE}"')
+
+    def test_the_go_storefront_exception_is_that_one_expression(self):
+        good = (f'var STOREFRONTS = {{ cy: "cy" }};\nvar DEFAULT_STOREFRONT = "gr";\n'
+                f"var store = {GO_STORE_BASE};\n")
+        self.assertNotIn("apps.apple.com/\"", self.go_store_base_checked(good))
+        for bad in (good + f"var again = {GO_STORE_BASE};\n",
+                    good.replace(GO_STORE_BASE, '"https://apps.apple.com/" + code + "/app/"'),
+                    good.replace('DEFAULT_STOREFRONT = "gr"', 'DEFAULT_STOREFRONT = "us"'),
+                    good.replace('cy: "cy"', 'cy: ""'),
+                    good.replace("var STOREFRONTS = { cy: \"cy\" };\n", "")):
+            with self.subTest(bad=bad), self.assertRaises(AssertionError):
+                self.go_store_base_checked(bad)
 
     def test_the_storefront_guard_reads_a_url_however_it_is_written(self):
         escaped = r'{"sameAs":["https:\/\/apps.apple.com\/gr\/app\/id6800614202"]}'
