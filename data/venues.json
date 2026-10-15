@@ -897,5 +897,21 @@
     "address": "Κωττουνίου 8",
     "sortOrder": 118,
     "phone": "+30 233 112 2019"
+  },
+  {
+    "id": "venue-ath-flash",
+    "name": "Flash Coffee & Billiard",
+    "city": "Athens",
+    "address": "Λ. Δημοκρατίας 59, Άγιοι Ανάργυροι",
+    "sortOrder": 119,
+    "phone": "+30 210 261 1695"
+  },
+  {
+    "id": "venue-ath-symbol",
+    "name": "Symbol Sports Cafe",
+    "city": "Athens",
+    "address": "Μυριοφύτου 66, Αμφιάλη, Κερατσίνι",
+    "sortOrder": 120,
+    "phone": "+30 210 432 0761"
   }
 ]
