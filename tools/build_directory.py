@@ -377,7 +377,7 @@ FOOTER = {
     <div>
       {WORDMARK}
       <p>Find a billiards opponent. Pool and carom, on real tables.</p>
-      <p>RackUp · Ioannina, Greece</p>
+      <p>RackUp · Ioannina</p>
     </div>
     <nav aria-label="Links">
       <a href="{{root}}{EN_ROOT}/">Billiard halls</a>
