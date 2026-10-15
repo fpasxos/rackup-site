@@ -383,7 +383,8 @@ class SearchTest(unittest.TestCase):
         self.assertEqual(en["MobileApplication"]["@id"], "https://getrackup.com/#app", "one app, not two")
 
 
-COUNTRY = re.compile(r"Greece|Ελλάδ")
+# "Greek" alone is also a language ("Write in Greek or in English"), so only as a place.
+COUNTRY = re.compile(r"Greece|Ελλάδ|ΕΛΛΑΔ|\bGreek (?:billiard|cit(?:y|ies)|halls?|rooms?|players?|clubs?|venues?)")
 ADDRESS = "Ioannina, Greece"
 # They list one country's halls and say which; the homes' FAQ answers "Which cities?" the same way.
 NAMES_ITS_COUNTRY = {"mpiliardo/index.html", "en/billiards/index.html"}
@@ -416,6 +417,12 @@ class CountryTest(unittest.TestCase):
     def test_social_cards_name_no_country(self):
         for name in ("og-card.html", "og-card-en.html"):
             self.assertNotRegex((b.ROOT / "tools" / name).read_text(encoding="utf-8"), COUNTRY, name)
+
+    def test_the_check_catches_the_place_and_spares_the_language(self):
+        for place in ("across Greece", "σε όλη την Ελλάδα", "ΣΕ ΟΛΗ ΤΗΝ ΕΛΛΑΔΑ", "42 Greek cities", "Greek billiard rooms"):
+            self.assertRegex(place, COUNTRY)
+        for language in ("Write in Greek or in English", "in Greek, Greeklish and English", "a Greek public holiday"):
+            self.assertNotRegex(language, COUNTRY)
 
 if __name__ == "__main__":
     unittest.main()
