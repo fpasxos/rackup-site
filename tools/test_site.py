@@ -383,20 +383,28 @@ class SearchTest(unittest.TestCase):
         self.assertEqual(en["MobileApplication"]["@id"], "https://getrackup.com/#app", "one app, not two")
 
 
-# "Greek" alone is also a language ("Write in Greek or in English"), so only as a place.
-COUNTRY = re.compile(r"Greece|Ελλάδ|ΕΛΛΑΔ|\bGreek (?:billiard|cit(?:y|ies)|halls?|rooms?|players?|clubs?|venues?)")
-ADDRESS = "Ioannina, Greece"
-# They list one country's halls and say which; the homes' FAQ answers "Which cities?" the same way.
+# Any "Greek" counts except the language ("in Greek", "Greek, Greeklish", "Greek and English")
+# and the support desk's own calendar ("a Greek public holiday").
+COUNTRY = re.compile(r"Greece|Ελλάδ|ΕΛΛΑΔ|(?<!in )\bGreek\b(?!,?\s+(?:Greeklish|and\s+English|or\s+in\s+English)"
+                     r"|\s+public\s+holiday)")
+# They list one country's halls and say which.
 NAMES_ITS_COUNTRY = {"mpiliardo/index.html", "en/billiards/index.html"}
+# Exact strings that may name the country, only on the page that carries each: the postal
+# contact line and the data controller's address. Each must still occur, so none goes stale.
+CONTACT = "RackUp · Ioannina, Greece · rackupbilliard@gmail.com"
+ALLOWED = {
+    "support.html": (CONTACT,),
+    "privacy.html": (CONTACT, "RackUp, Ioannina, Greece, is the data controller"),
+}
 
 
 class CountryTest(unittest.TestCase):
-    """Cyprus opens next: copy that describes the app names no country, only the address may."""
+    """Cyprus opens next: no page names a country, but where that is the point."""
 
-    def test_footers_name_no_country_but_the_address(self):
+    def test_footers_name_no_country(self):
         for rel, text in published(".html"):
             footer = re.search(r'<footer class="site-footer">.*?</footer>', text, re.S).group(0)
-            self.assertNotRegex(footer.replace(ADDRESS, ""), COUNTRY, rel)
+            self.assertNotRegex(footer, COUNTRY, rel)
 
     def test_titles_descriptions_and_the_app_name_no_country(self):
         for rel, text in published(".html"):
@@ -409,17 +417,30 @@ class CountryTest(unittest.TestCase):
             for line in said:
                 self.assertNotRegex(line, COUNTRY, rel)
 
-    def test_support_404_go_and_match_pages_name_no_country_but_the_address(self):
-        for page in ("support.html", "404.html", "go/index.html", "m/index.html"):
-            text = (b.ROOT / page).read_text(encoding="utf-8")
-            self.assertNotRegex(text.replace(ADDRESS, ""), COUNTRY, page)
+    def test_no_page_names_a_country_but_the_directory_indexes_and_the_allowed_lines(self):
+        """Every published page, whole: head, visible text and JSON-LD alike. The homes' FAQ
+        slipped through when only titles, descriptions and footers were read."""
+        checked = 0
+        for rel, text in published(".html"):
+            if rel in NAMES_ITS_COUNTRY:
+                continue
+            with self.subTest(page=rel):
+                for allowed in ALLOWED.get(rel, ()):
+                    self.assertIn(allowed, text, "the allowance is stale: delete it from ALLOWED")
+                    text = text.replace(allowed, "")
+                self.assertEqual([], [" ".join(text[max(0, m.start() - 50):m.end() + 30].split())
+                                      for m in COUNTRY.finditer(text)])
+            checked += 1
+        self.assertGreater(checked, 80, "too few pages read")
+        self.assertLessEqual(set(ALLOWED), {rel for rel, _ in published(".html")}, "an allowance names no page")
 
     def test_social_cards_name_no_country(self):
         for name in ("og-card.html", "og-card-en.html"):
             self.assertNotRegex((b.ROOT / "tools" / name).read_text(encoding="utf-8"), COUNTRY, name)
 
     def test_the_check_catches_the_place_and_spares_the_language(self):
-        for place in ("across Greece", "σε όλη την Ελλάδα", "ΣΕ ΟΛΗ ΤΗΝ ΕΛΛΑΔΑ", "42 Greek cities", "Greek billiard rooms"):
+        for place in ("across Greece", "σε όλη την Ελλάδα", "ΣΕ ΟΛΗ ΤΗΝ ΕΛΛΑΔΑ", "42 Greek cities", "Greek billiard rooms",
+                      "the Greek emergency number 112", "42 Greek\n    cities"):
             self.assertRegex(place, COUNTRY)
         for language in ("Write in Greek or in English", "in Greek, Greeklish and English", "a Greek public holiday"):
             self.assertNotRegex(language, COUNTRY)

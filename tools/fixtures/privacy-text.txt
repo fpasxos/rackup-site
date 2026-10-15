@@ -1,5 +1,5 @@
-RackUp Privacy Policy Effective date: YY October 2026 · Applies to the RackUp apps for Android and
-iPhone (com.rackup.app) What changed on YY October 2026. Two things, ahead of version 2.3.3 of the
+RackUp Privacy Policy Effective date: 16 October 2026 · Applies to the RackUp apps for Android and
+iPhone (com.rackup.app) What changed on 16 October 2026. Two things, ahead of version 2.3.3 of the
 apps. First, your profile record and your player card now hold your country as well as your city,
 and so does what you post or save: matches, open and direct challenges, looking-for-a-game posts,
 saved searches and your weekly schedule. The country is the one your city or hall is in; a saved
@@ -9,7 +9,7 @@ Second, our server now keeps copies of open games for guests, without the host's
 version 2.3.3 the apps show a guest only those copies. Our security rules still let a guest session
 read a whole match or challenge record, note included, if it asks our database directly. The
 Security section now says so, and this page will change again when the rules stop it. What changed
-on XX October 2026. The apps did not change and collect nothing new, but this policy left out four
+on 15 October 2026. The apps did not change and collect nothing new, but this policy left out four
 things that are true today. The time your app last refreshed its notification token, which we
 already stored, also lets us count, as totals, how many recently active players have updated. The
 city you choose for your profile is approximate location, linked to your account, and we now name
@@ -461,9 +461,9 @@ additionally verifies itself with Firebase App Check. We are a small team and we
 be immune to every risk, but if a breach affects your personal data we will notify the Hellenic Data
 Protection Authority and, where the law requires it, you. Changes to this policy If this policy
 changes, the new version is published at this address with a new effective date, and we say at the
-top what changed. This version, dated YY October 2026, adds the country on your profile record, your
+top what changed. This version, dated 16 October 2026, adds the country on your profile record, your
 player card and what you post or save, and the copies of open games kept for guests, ahead of
-version 2.3.3 of the apps, and supersedes the version dated XX October 2026, which said what the
+version 2.3.3 of the apps, and supersedes the version dated 15 October 2026, which said what the
 notification token's refresh time is also used for, that the city on your profile is approximate
 location, which halls we keep, that a saved search can keep a city suggested from your position,
 that the Android app stores its notification token whether or not notifications are allowed, that
