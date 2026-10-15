@@ -321,11 +321,22 @@ def fit_description(head, areas, tail, label):
     return f"{head} {label}: {', '.join(chosen)}. {tail}"
 
 
+# The logo's mark, as the app repo's store-assets/logo/rackup-mark.svg draws it: a rounded
+# frame round a 10-ball rack, the 10 in lime. The hand-written pages carry the same markup.
+MARK_FRAME = ("M53.71 7.8L78.31 50.408A15.6 15.6 0 0 1 64.8 73.808L15.6 73.808A15.6 15.6 0 0 1 2.09 50.408"
+              "L26.69 7.8A15.6 15.6 0 0 1 53.71 7.8ZM49.033 10.5A10.2 10.2 0 0 0 31.367 10.5L6.767 53.108"
+              "A10.2 10.2 0 0 0 15.6 68.408L64.8 68.408A10.2 10.2 0 0 0 73.633 53.108Z")
+MARK_BALLS = ((40.2, 15.6), (32, 29.803), (48.4, 29.803), (23.8, 44.006), (56.6, 44.006),
+              (15.6, 58.208), (32, 58.208), (48.4, 58.208), (64.8, 58.208))
+MARK = ('<svg class="mark" viewBox="0 0 80.4 73.808" aria-hidden="true" focusable="false">'
+        f'<path fill="#C6F24E" fill-rule="evenodd" d="{MARK_FRAME}"/><g fill="#EAF2ED">'
+        + "".join(f'<circle cx="{x:g}" cy="{y:g}" r="7.2"/>' for x, y in MARK_BALLS)
+        + '</g><circle cx="40.2" cy="44.006" r="7.2" fill="#C6F24E"/></svg>')
+
 # The site's shared header and footer, as on the hand-written pages. {root} reaches the site
 # root, {home} and {dir} are the page language's home and directory, {alt} is this page in
 # the other language.
-WORDMARK = ('<a class="wordmark" href="{home}"><span class="ball b8" aria-hidden="true"><span class="n">8</span>'
-            '</span><span class="wm">RACK<span>UP</span></span></a>')
+WORDMARK = '<a class="wordmark" href="{home}">' + MARK + '<span class="wm">RACK<span>UP</span></span></a>'
 HEADER = {
     "el": f"""<a class="skip-link" href="#main">Μετάβαση στο περιεχόμενο</a>
 <header class="site-header">
@@ -420,8 +431,9 @@ def page(*, lang, title, description, path, alt_path, depth, body, data):
 <meta property="og:url" content="{url(path)}">
 <meta property="og:image" content="{url('assets/og-card.png' if lang == 'el' else 'assets/og-card-en.png')}">
 <meta name="theme-color" content="#0E1512">
-<link rel="icon" type="image/png" href="{prefix}assets/icon-512.png">
-<link rel="apple-touch-icon" href="{prefix}assets/icon-512.png">
+<link rel="icon" href="{prefix}favicon.ico" sizes="32x32">
+<link rel="icon" href="{prefix}assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="{prefix}assets/apple-touch-icon.png">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="{prefix}assets/fonts/{PRELOAD_FONT[lang]}">
 <link rel="stylesheet" href="{prefix}assets/site.css">
 <script type="application/ld+json">{jsonld(data)}</script>

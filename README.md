@@ -20,6 +20,7 @@ path on `getrackup.com`, so links already in the app and on QR codes keep workin
 | `assets/site.css` | The one stylesheet: the app's Felt and Neon tokens and every component | hand |
 | `assets/fonts/` | Self-hosted Space Grotesk, Hanken Grotesk (Latin) and Commissioner (Greek), with their OFL licences | `tools/make_fonts.py` |
 | `assets/img/`, `assets/og-card.png` | App screenshots as WebP, and the 1200x630 social card | `tools/make_images.py` |
+| `favicon.ico`, `assets/favicon.svg`, `assets/apple-touch-icon.png`, `assets/icon-512.png` | The logo as browsers, phones and the structured data take it. Masters and rules: `store-assets/logo/` in the app repo. The wordmark's mark is `MARK` in the generator, copied into each hand page; `tools/test_logo.py` checks both | hand |
 | `CNAME` | The custom domain, `getrackup.com`, that GitHub Pages serves the site on | hand |
 | `data/venues.json` | Public copy of the venue directory | generator (`--import`) |
 | `0a9442a5613cbbd088b30f789f206e74.txt` | The IndexNow key, which proves to Bing and others that the site is ours | never; see below |

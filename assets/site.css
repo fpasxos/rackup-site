@@ -45,7 +45,7 @@ p{margin:0 0 1em}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:var(--header)}
 .wordmark{display:inline-flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font:700 1.25rem/1 var(--display);letter-spacing:-.02em}
 .wm span{color:var(--accent)}
-.wordmark .ball{--s:30px}
+.wordmark .mark{height:28px;width:auto;flex:none}
 .nav-links{display:flex;align-items:center;gap:20px;font-weight:500;font-size:.95rem}
 .nav-links a{color:var(--ink2);text-decoration:none}
 @media (hover:hover){.nav-links a:hover{color:var(--ink)}}
@@ -224,7 +224,7 @@ p{margin:0 0 1em}
   .nav{gap:10px}
   .nav-links{gap:12px}
   .wordmark{font-size:1.1rem;gap:8px}
-  .wordmark .ball{--s:26px}
+  .wordmark .mark{height:24px}
   .btn-sm{padding:8px 13px;font-size:.85rem}
 }
 @media (min-width:600px){
@@ -286,7 +286,7 @@ html{overflow-wrap:break-word}
 }
 .section[id]{scroll-margin-top:calc(var(--header) - 24px)}
 @media (max-width:319px){
-  .nav .wordmark .ball{display:none}
+  .nav .wordmark .mark{display:none}
 }
 @media (min-width:760px){
   .nav-links .nav-text{display:inline-flex}
