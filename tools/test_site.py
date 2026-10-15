@@ -387,12 +387,15 @@ class SearchTest(unittest.TestCase):
 # and the support desk's own calendar ("a Greek public holiday").
 COUNTRY = re.compile(r"Greece|Ελλάδ|ΕΛΛΑΔ|(?<!in )\bGreek\b(?!,?\s+(?:Greeklish|and\s+English|or\s+in\s+English)"
                      r"|\s+public\s+holiday)")
-# The contact line on support.html and privacy.html gives the full postal address.
-CONTACT = "RackUp · Ioannina, Greece · rackupbilliard@gmail.com"
 # They list one country's halls and say which.
 NAMES_ITS_COUNTRY = {"mpiliardo/index.html", "en/billiards/index.html"}
-# Legal text: the controller's address and Greece's data protection authority.
-LEGAL = "privacy.html"
+# Exact strings that may name the country, only on the page that carries each: the postal
+# contact line and the data controller's address. Each must still occur, so none goes stale.
+CONTACT = "RackUp · Ioannina, Greece · rackupbilliard@gmail.com"
+ALLOWED = {
+    "support.html": (CONTACT,),
+    "privacy.html": (CONTACT, "RackUp, Ioannina, Greece, is the data controller"),
+}
 
 
 class CountryTest(unittest.TestCase):
@@ -414,19 +417,22 @@ class CountryTest(unittest.TestCase):
             for line in said:
                 self.assertNotRegex(line, COUNTRY, rel)
 
-    def test_no_page_names_a_country_but_the_directory_indexes_and_the_legal_text(self):
-        """Every published page, visible text and JSON-LD alike: the homes' FAQ slipped through
-        when only titles, descriptions and footers were read."""
+    def test_no_page_names_a_country_but_the_directory_indexes_and_the_allowed_lines(self):
+        """Every published page, whole: head, visible text and JSON-LD alike. The homes' FAQ
+        slipped through when only titles, descriptions and footers were read."""
         checked = 0
         for rel, text in published(".html"):
             if rel in NAMES_ITS_COUNTRY:
                 continue
-            if rel == LEGAL:
-                text = re.search(r'<footer class="site-footer">.*?</footer>', text, re.S).group(0)
             with self.subTest(page=rel):
-                self.assertNotRegex(text.replace(CONTACT, ""), COUNTRY)
+                for allowed in ALLOWED.get(rel, ()):
+                    self.assertIn(allowed, text, "the allowance is stale: delete it from ALLOWED")
+                    text = text.replace(allowed, "")
+                self.assertEqual([], [" ".join(text[max(0, m.start() - 50):m.end() + 30].split())
+                                      for m in COUNTRY.finditer(text)])
             checked += 1
         self.assertGreater(checked, 80, "too few pages read")
+        self.assertLessEqual(set(ALLOWED), {rel for rel, _ in published(".html")}, "an allowance names no page")
 
     def test_social_cards_name_no_country(self):
         for name in ("og-card.html", "og-card-en.html"):
