@@ -5,6 +5,7 @@ import re
 import struct
 import sys
 import unittest
+import xml.etree.ElementTree as ET
 from pathlib import Path
 from urllib.parse import urljoin
 
@@ -13,6 +14,7 @@ import build_directory as b  # noqa: E402
 from test_build_directory import published, rendered_pages  # noqa: E402
 from test_social_links import HAND  # noqa: E402
 
+SVG = "{http://www.w3.org/2000/svg}"
 ICONS = (('rel="icon"', "favicon.ico", 'sizes="32x32"'),
          ('rel="icon"', "assets/favicon.svg", 'type="image/svg+xml"'),
          ('rel="apple-touch-icon"', "assets/apple-touch-icon.png", None))
@@ -51,11 +53,25 @@ class LogoTest(unittest.TestCase):
         count = struct.unpack("<H", ico[4:6])[0]
         sizes = {ico[6 + 16 * i] or 256 for i in range(count)}
         self.assertIn(32, sizes, "the head promises a 32 px favicon")
+
+    def test_the_svg_favicon_is_the_mark_on_an_opaque_tile(self):
+        """Transparent, the light scheme's ink rack all but vanished on a dark tab strip."""
         svg = (b.ROOT / "assets" / "favicon.svg").read_text(encoding="utf-8")
-        self.assertIn("<svg", svg)
+        root = ET.fromstring(svg)
+        self.assertEqual(root.get("viewBox"), "0 0 100 100")
+        tile = root[0]
+        self.assertEqual(tile.tag, SVG + "rect", "the first shape is the tile behind everything")
+        self.assertEqual((tile.get("width"), tile.get("height"), tile.get("fill")), ("100", "100", "#0E1512"))
+        self.assertIsNone(tile.get("opacity") or tile.get("fill-opacity"))
+        self.assertNotIn("prefers-color-scheme", svg, "one look in every scheme, as favicon.ico has")
+        inner = re.fullmatch(r"<svg[^>]*>(.*)</svg>", b.MARK).group(1)
+        self.assertIn(inner, svg, "the favicon's rack is not the wordmark's MARK")
 
     def test_every_wordmark_draws_the_rack_and_no_8_ball(self):
-        for rel, text in published(".html"):
+        # The social cards' sources too: assets/og-card*.png are rendered from them.
+        templates = [(f"tools/{name}", (b.ROOT / "tools" / name).read_text(encoding="utf-8"))
+                     for name in ("og-card.html", "og-card-en.html")]
+        for rel, text in list(published(".html")) + templates:
             marks = re.findall(r'<(?:a|span) class="wordmark"[^>]*>(.*?)<span class="wm">', text, re.S)
             with self.subTest(page=rel):
                 self.assertTrue(marks, f"{rel}: no wordmark")
