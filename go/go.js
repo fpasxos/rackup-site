@@ -68,13 +68,25 @@
     return tagged.length <= HALL_MAX ? tagged : campaign;
   }
 
-  // RackUp is only in the Greek store, so both forms need /gr/ or they 404 on a computer.
+  // Every link names a storefront, or it falls back to the US store and 404s on a computer. A slug
+  // that starts with an open country's code and a hyphen (cy-...) opens that country's store; Greek
+  // slugs have no prefix. Mirrors data/countries.json in the app repo: a new country is one entry.
+  var STOREFRONTS = { cy: "cy" };
+  var DEFAULT_STOREFRONT = "gr";
+
+  function storefrontOf(hall) {
+    var dash = hall === null ? -1 : hall.indexOf("-");
+    var code = dash > 0 ? hall.slice(0, dash) : null;
+    return code !== null && Object.prototype.hasOwnProperty.call(STOREFRONTS, code) ? STOREFRONTS[code] : DEFAULT_STOREFRONT;
+  }
+
   function buildAppStoreUrl(hall, token, source) {
     checkHall(hall);
     checkSource(source);
-    if (!token) return "https://apps.apple.com/gr/app/id" + APP_STORE_ID;
+    var store = "https://apps.apple.com/" + storefrontOf(hall) + "/app/";
+    if (!token) return store + "id" + APP_STORE_ID;
     if (!TOKEN.test(token)) throw new Error("invalid provider token");
-    return "https://apps.apple.com/gr/app/apple-store/id" + APP_STORE_ID + "?pt=" + token +
+    return store + "apple-store/id" + APP_STORE_ID + "?pt=" + token +
       "&ct=" + campaignToken(hall, source) + "&mt=8";
   }
 
@@ -119,6 +131,8 @@
     sourceFrom: sourceFrom,
     playUrl: playUrl,
     campaignToken: campaignToken,
+    STOREFRONTS: STOREFRONTS,
+    storefrontOf: storefrontOf,
     buildAppStoreUrl: buildAppStoreUrl,
     appStoreUrl: appStoreUrl,
     platformOf: platformOf,

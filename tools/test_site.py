@@ -382,5 +382,47 @@ class SearchTest(unittest.TestCase):
         en = {n["@type"]: n for n in ld_nodes((b.ROOT / "en/index.html").read_text(encoding="utf-8"))}
         self.assertEqual(en["MobileApplication"]["@id"], "https://getrackup.com/#app", "one app, not two")
 
+
+# "Greek" alone is also a language ("Write in Greek or in English"), so only as a place.
+COUNTRY = re.compile(r"Greece|Ελλάδ|ΕΛΛΑΔ|\bGreek (?:billiard|cit(?:y|ies)|halls?|rooms?|players?|clubs?|venues?)")
+ADDRESS = "Ioannina, Greece"
+# They list one country's halls and say which; the homes' FAQ answers "Which cities?" the same way.
+NAMES_ITS_COUNTRY = {"mpiliardo/index.html", "en/billiards/index.html"}
+
+
+class CountryTest(unittest.TestCase):
+    """Cyprus opens next: copy that describes the app names no country, only the address may."""
+
+    def test_footers_name_no_country_but_the_address(self):
+        for rel, text in published(".html"):
+            footer = re.search(r'<footer class="site-footer">.*?</footer>', text, re.S).group(0)
+            self.assertNotRegex(footer.replace(ADDRESS, ""), COUNTRY, rel)
+
+    def test_titles_descriptions_and_the_app_name_no_country(self):
+        for rel, text in published(".html"):
+            if rel in NAMES_ITS_COUNTRY:
+                continue
+            said = re.findall(r"<title>(.*?)</title>", text)
+            said += re.findall(r'<meta (?:name|property)="(?:description|og:title|og:description|'
+                               r'twitter:title|twitter:description)" content="([^"]*)"', text)
+            said += [n.get("description", "") for n in ld_nodes(text) if n.get("@type") == "MobileApplication"]
+            for line in said:
+                self.assertNotRegex(line, COUNTRY, rel)
+
+    def test_support_404_go_and_match_pages_name_no_country_but_the_address(self):
+        for page in ("support.html", "404.html", "go/index.html", "m/index.html"):
+            text = (b.ROOT / page).read_text(encoding="utf-8")
+            self.assertNotRegex(text.replace(ADDRESS, ""), COUNTRY, page)
+
+    def test_social_cards_name_no_country(self):
+        for name in ("og-card.html", "og-card-en.html"):
+            self.assertNotRegex((b.ROOT / "tools" / name).read_text(encoding="utf-8"), COUNTRY, name)
+
+    def test_the_check_catches_the_place_and_spares_the_language(self):
+        for place in ("across Greece", "σε όλη την Ελλάδα", "ΣΕ ΟΛΗ ΤΗΝ ΕΛΛΑΔΑ", "42 Greek cities", "Greek billiard rooms"):
+            self.assertRegex(place, COUNTRY)
+        for language in ("Write in Greek or in English", "in Greek, Greeklish and English", "a Greek public holiday"):
+            self.assertNotRegex(language, COUNTRY)
+
 if __name__ == "__main__":
     unittest.main()
