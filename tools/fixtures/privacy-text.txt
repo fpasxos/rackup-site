@@ -63,9 +63,9 @@ policy dated 7 July 2026. The old one covered only the Android app and said the 
 analytics. That was wrong. Both apps include Firebase Analytics and Firebase Crashlytics, and the
 policy says so, along with everything else the apps actually store. Nothing about the app changed on
 4 September 2026: the policy was corrected to match the app. RackUp is an app for billiards players
-in Greece who want to find an opponent for a real game at a real venue. You post when and where you
-want to play, and another player takes the table. This page explains, in plain language, what data
-the app handles, who can see it, and what your rights are. Who is responsible for your data RackUp,
+who want to find an opponent for a real game at a real venue. You post when and where you want to
+play, and another player takes the table. This page explains, in plain language, what data the app
+handles, who can see it, and what your rights are. Who is responsible for your data RackUp,
 Ioannina, Greece, is the data controller for the personal data described on this page. You can reach
 us at rackupbilliard@gmail.com about anything on this page, including any request about your rights.
 What we collect, and why Your account To sign in you use an email address and a password, or Google
