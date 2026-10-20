@@ -29,6 +29,40 @@ const IG_PLAY = "https://play.google.com/store/apps/details?id=com.rackup.app" +
 const FB_PLAY = "https://play.google.com/store/apps/details?id=com.rackup.app" +
   "&referrer=utm_source%3Dfacebook%26utm_medium%3Dsocial%26utm_campaign%3Dpage";
 const META_APP_STORE = "https://apps.apple.com/gr/app/apple-store/id6800614202?pt=12aB34&ct=meta-ath-tonight&mt=8";
+// A Meta ad also passes its placement, as utm_content after the campaign.
+const META_REELS_PLAY = "https://play.google.com/store/apps/details?id=com.rackup.app" +
+  "&referrer=utm_source%3Dmeta%26utm_medium%3Dpaid%26utm_campaign%3Dhalls%26utm_content%3Dig_reels";
+
+// Every live ad adds p={{site_source_name}}&pl={{placement}}. These are the names Meta's docs and
+// the 20 Oct link check give, Others being Meta's catch-all, and the tag each becomes.
+const PLACEMENTS = [
+  ["fb", "Facebook_Mobile_Feed", "fb_mobile_feed"],
+  ["fb", "Facebook_Desktop_Feed", "fb_desktop_feed"],
+  ["fb", "Facebook_Mobile_Reels", "fb_mobile_reels"],
+  ["fb", "Facebook_Stories", "fb_stories"],
+  ["fb", "Facebook_Right_Column", "fb_right_column"],
+  ["fb", "Facebook_Instream_Video", "fb_instream_video"],
+  ["fb", "Facebook_Marketplace", "fb_marketplace"],
+  ["fb", "Facebook_Instant_Articles", "fb_instant_articles"],
+  ["fb", "Others", "fb_others"],
+  ["ig", "Instagram_Feed", "ig_feed"],
+  ["ig", "Instagram_Reels", "ig_reels"],
+  ["ig", "Instagram_Stories", "ig_stories"],
+  ["ig", "Instagram_Explore", "ig_explore"],
+  ["ig", "Others", "ig_others"],
+  ["msg", "Messenger_Inbox", "msg_inbox"],
+  ["msg", "Messenger_Stories", "msg_stories"],
+  ["an", "an", "an"]
+];
+// The ad set also served on the Facebook profile feed and in Instagram search, under names no
+// source confirms. Any name in Meta's shape gets through the same way.
+const MAYBE_PLACEMENTS = [
+  ["fb", "Facebook_Profile_Feed", "fb_profile_feed"],
+  ["ig", "Instagram_Search_Results", "ig_search_results"],
+  ["ig", "Instagram_Explore_Grid_Home", "ig_explore_grid_home"],
+  ["ig", "Instagram_Profile_Feed", "ig_profile_feed"]
+];
+const FBCLID = "IwZXh0bgNhZW0BMABhZGlkAasample_aem_Ab-12_cd";
 
 const UA = {
   iphoneSafari: "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1",
@@ -395,6 +429,185 @@ test("an unknown, repeated or empty s behaves exactly like the same link without
   }
   assert.deepEqual(run(UA.androidChrome, 5, "?s=google&h=nax-galaxias").loc.replaced, [HALL_PLAY]);
   assert.deepEqual(run(UA.androidChrome, 5, "?s=google").loc.replaced, [GENERAL_PLAY]);
+});
+
+test("every placement Meta sends becomes one lowercase tag of at most 40 characters", () => {
+  for (const [p, pl, tag] of [...PLACEMENTS, ...MAYBE_PLACEMENTS]) {
+    const search = `?s=meta&h=halls&p=${p}&pl=${pl}&fbclid=${FBCLID}`;
+    assert.equal(page.placementFrom(search), tag, search);
+    assert.match(tag, /^[a-z0-9_]+$/);
+    assert.ok(tag.length <= page.PLACEMENT_MAX, tag);
+    assert.equal(page.isValidPlacement(tag), true, tag);
+  }
+  assert.equal(page.PLACEMENT_MAX, 40);
+  // Meta's names arrive percent encoded or not, in any order among the other parameters.
+  assert.equal(page.placementFrom("?pl=Instagram%5FReels&fbclid=x&p=ig&s=meta&h=halls"), "ig_reels");
+  assert.equal(page.placementFrom("?p=IG&pl=INSTAGRAM_REELS"), "ig_reels");
+  // p that pl already starts with is not doubled, and a pl of another platform keeps its word.
+  assert.equal(page.placementFrom("?p=fb&pl=fb_feed"), "fb_feed");
+  assert.equal(page.placementFrom("?p=an&pl=an_classic"), "an_classic");
+  assert.equal(page.placementFrom("?p=ig&pl=Facebook_Mobile_Feed"), "ig_facebook_mobile_feed");
+  assert.equal(page.placementFrom("?p=th&pl=Threads_Feed"), "th_threads_feed");
+});
+
+test("a missing, repeated or unexpanded p or pl leaves only the other, or nothing", () => {
+  const cases = [
+    ["?p=fb", "fb"],
+    ["?pl=Instagram_Reels", "instagram_reels"],
+    ["?p=fb&p=ig&pl=Instagram_Reels", "instagram_reels"],
+    ["?p=ig&pl=Instagram_Reels&pl=Facebook_Stories", "ig"],
+    ["?p=ig&pl=Instagram_Reels&pl=Instagram_Reels", "ig"],
+    ["?p=fb&pl=%7B%7Bplacement%7D%7D", "fb"],
+    ["?p=%7B%7Bsite_source_name%7D%7D&pl=Facebook_Stories", "facebook_stories"],
+    ["?p=%7B%7Bsite_source_name%7D%7D&pl=%7B%7Bplacement%7D%7D", null],
+    ["?p={{site_source_name}}&pl={{placement}}", null],
+    ["?p=&pl=", null],
+    ["?p&pl", null],
+    ["?P=fb&PL=Instagram_Reels", null],
+    ["?placement=Instagram_Reels&site_source_name=ig", null],
+    ["?s=meta&h=halls&fbclid=" + FBCLID, null],
+    ["", null],
+    ["?", null],
+    [undefined, null]
+  ];
+  for (const [search, tag] of cases) assert.equal(page.placementFrom(search), tag, String(search));
+});
+
+test("the sanitizer keeps Meta's names and drops anything else whole, never repairing it", () => {
+  for (const [raw, tag] of [["Facebook_Mobile_Feed", "facebook_mobile_feed"], ["Others", "others"],
+    ["an", "an"], ["a1_B2", "a1_b2"], ["A".repeat(40), "a".repeat(40)]]) {
+    assert.equal(page.placementFrom(`?pl=${encodeURIComponent(raw)}`), tag, raw);
+  }
+  const dropped = [
+    "", "_", "__", "_fb", "fb_", "fb__feed", "Facebook Mobile Feed", "Facebook-Mobile-Feed",
+    "facebook.mobile.feed", "fb/feed", "fb:feed", "fb&utm_source=evil", "fb%26utm_source%3Devil",
+    "fb=feed", "fb#feed", "{{placement}}", "[placement]", "<script>", "javascript:alert(1)",
+    "\"fb\"", "fb'", "Ροή", "Ελληνικά", "Kelvin", "ſtories", "fb\n", "fb\t", "fb ",
+    " fb", "fb\u0000", "a".repeat(41), "IwAR0abc-def", FBCLID
+  ];
+  for (const raw of dropped) {
+    for (const key of ["p", "pl"]) {
+      assert.equal(page.placementFrom(`?${key}=${encodeURIComponent(raw)}`), null, `${key} kept ${JSON.stringify(raw)}`);
+    }
+    assert.equal(page.placementFrom(`?p=fb&pl=${encodeURIComponent(raw)}`), "fb", `pl ${JSON.stringify(raw)}`);
+  }
+  for (const raw of ["?pl=Facebook+Mobile+Feed", "?pl=Facebook%20Mobile%20Feed", "?pl=%", "?pl=fb%", "?pl=%E2%80%94"]) {
+    assert.equal(page.placementFrom(raw), null, raw);
+  }
+  // Each part may be 40 characters, and so may the tag joined from both, or there is none.
+  assert.equal(page.placementFrom(`?p=${"a".repeat(19)}&pl=${"b".repeat(20)}`), `${"a".repeat(19)}_${"b".repeat(20)}`);
+  assert.equal(page.placementFrom(`?p=${"a".repeat(20)}&pl=${"b".repeat(20)}`), null);
+  assert.equal(page.placementFrom(`?p=fb&pl=Facebook_${"x".repeat(31)}`), `fb_${"x".repeat(31)}`);
+  assert.equal(page.placementFrom(`?p=fb&pl=Facebook_${"x".repeat(32)}`), "fb");
+});
+
+test("isValidPlacement accepts only the sanitized form", () => {
+  for (const ok of ["fb_mobile_feed", "ig_reels", "an", "others", "a1_b2", "a".repeat(40)]) {
+    assert.equal(page.isValidPlacement(ok), true, ok);
+  }
+  for (const bad of ["Fb_feed", "IG_REELS", "fb-feed", "fb feed", "", "_", "fb_", "_fb", "fb__feed",
+    "a".repeat(41), "fb%26x", null, undefined, 1, {}, ["fb"]]) {
+    assert.equal(page.isValidPlacement(bad), false, String(bad));
+  }
+});
+
+test("a Meta ad link carries its placement to Play as utm_content, after the campaign", () => {
+  assert.equal(page.playUrl("halls", "meta", "ig_reels"), META_REELS_PLAY);
+  const referrer = new URL(META_REELS_PLAY).searchParams.get("referrer");
+  assert.equal(referrer, "utm_source=meta&utm_medium=paid&utm_campaign=halls&utm_content=ig_reels");
+  assert.deepEqual([...new URLSearchParams(referrer).keys()], ["utm_source", "utm_medium", "utm_campaign", "utm_content"]);
+  assert.equal(page.playUrl("ath-tonight", "meta", null), META_PLAY);
+  assert.equal(page.playUrl("ath-tonight", "meta", undefined), META_PLAY);
+  assert.equal(page.playUrl("ath-tonight", "meta"), META_PLAY);
+});
+
+test("on every phone and placement, Play gets the placement and the App Store link does not change", () => {
+  const ios = [[UA.iphoneSafari, 5], [UA.facebookIos, 5], [UA.instagramIos, 5], [UA.ipadDesktopMode, 5]];
+  const android = [[UA.androidChrome, 5], [UA.facebookAndroid, 5], [UA.instagramAndroid, 5], [UA.samsungInternet, 5]];
+  const desktop = [[UA.windowsChrome, 0], [UA.macSafari, 0]];
+  for (const slug of ["halls", "ath-tonight", "look-around", "how-it-works-reel", "cy-lefkosia"]) {
+    for (const [p, pl, tag] of PLACEMENTS) {
+      const search = `?s=meta&h=${slug}&p=${p}&pl=${pl}&fbclid=${FBCLID}`;
+      const apple = page.appStoreUrl(slug, "meta");
+      const play = page.playUrl(slug, "meta", tag);
+      assert.equal(new URLSearchParams(new URL(play).searchParams.get("referrer")).get("utm_content"), tag);
+      assert.deepEqual(run(UA.iphoneSafari, 5, search).hrefs[0], run(UA.iphoneSafari, 5, `?s=meta&h=${slug}`).hrefs[0]);
+      for (const [ua, touch] of ios) {
+        const { loc, hrefs } = run(ua, touch, search);
+        assert.deepEqual(hrefs, [apple, play], search);
+        assert.deepEqual(loc.replaced, [apple], search);
+      }
+      for (const [ua, touch] of android) {
+        const { loc, hrefs } = run(ua, touch, search);
+        assert.deepEqual(hrefs, [apple, play], search);
+        assert.deepEqual(loc.replaced, [play], search);
+      }
+      for (const [ua, touch] of desktop) {
+        const { doc, loc, hrefs } = run(ua, touch, search);
+        assert.deepEqual(hrefs, [apple, play], search);
+        assert.deepEqual(loc.replaced, [], search);
+        assert.equal(doc.elements.desktop.hidden, false);
+      }
+    }
+  }
+});
+
+test("no utm_content without p and pl, and none on bio, page, hall or unknown links", () => {
+  // The paused carom and find-opponent ads have no URL parameters at all.
+  for (const search of ["?s=meta&h=ath-tonight&fbclid=IwAR0abc", "?s=meta&h=carom", "?s=meta&h=find-opponent"]) {
+    const { hrefs, loc } = run(UA.androidChrome, 5, search);
+    assert.ok(!hrefs[1].includes("utm_content"), search);
+    assert.ok(!loc.replaced[0].includes("utm_content"), search);
+  }
+  assert.deepEqual(run(UA.androidChrome, 5, "?s=meta&h=ath-tonight&fbclid=IwAR0abc").loc.replaced, [META_PLAY]);
+  const unchanged = [
+    ["?s=ig&h=bio&p=ig&pl=Instagram_Feed", IG_PLAY],
+    ["?s=fb&h=page&p=fb&pl=Facebook_Mobile_Feed", FB_PLAY],
+    ["?h=nax-galaxias&p=fb&pl=Facebook_Mobile_Feed", HALL_PLAY],
+    ["?p=fb&pl=Facebook_Mobile_Feed", GENERAL_PLAY],
+    ["?s=google&h=nax-galaxias&p=fb&pl=Facebook_Mobile_Feed", HALL_PLAY],
+    ["?s=meta&s=meta&h=nax-galaxias&p=fb&pl=Facebook_Mobile_Feed", HALL_PLAY],
+    ["?s=META&h=nax-galaxias&p=fb&pl=Facebook_Mobile_Feed", HALL_PLAY]
+  ];
+  for (const [search, play] of unchanged) {
+    for (const [ua, touch] of [[UA.androidChrome, 5], [UA.facebookAndroid, 5], [UA.windowsChrome, 0]]) {
+      assert.equal(run(ua, touch, search).hrefs[1], play, search);
+    }
+    assert.deepEqual(run(UA.androidChrome, 5, search).loc.replaced, [play], search);
+  }
+});
+
+test("fbclid and every other parameter stay off both store links", () => {
+  const extras = `&fbclid=${FBCLID}&utm_source=evil&utm_content=evil&gclid=G123evil&ad_id=120250102144070467` +
+    "&campaign_id=999evil&_ga=1.2.3evil&user=evil";
+  const search = "?s=meta&h=halls&p=ig&pl=Instagram_Reels" + extras;
+  for (const [ua, touch] of [[UA.iphoneSafari, 5], [UA.instagramIos, 5], [UA.instagramAndroid, 5],
+    [UA.androidChrome, 5], [UA.windowsChrome, 0]]) {
+    const { loc, hrefs } = run(ua, touch, search);
+    assert.deepEqual(hrefs, [page.appStoreUrl("halls", "meta"), META_REELS_PLAY]);
+    for (const url of [...hrefs, ...loc.replaced]) {
+      for (const leak of ["fbclid", "IwZX", "evil", "gclid", "120250102144070467", "_ga", "aem"]) {
+        assert.ok(!url.includes(leak), `${url} carries ${leak}`);
+      }
+    }
+  }
+  // A pl that tries to add its own tags is dropped, and the referrer keeps one of each.
+  for (const pl of ["Instagram_Reels&utm_source=evil", "Instagram_Reels%26utm_source%3Devil", "x&utm_campaign=evil"]) {
+    const play = run(UA.androidChrome, 5, `?s=meta&h=halls&p=ig&pl=${encodeURIComponent(pl)}`).loc.replaced[0];
+    const referrer = new URLSearchParams(new URL(play).searchParams.get("referrer"));
+    assert.deepEqual([...referrer.entries()], [["utm_source", "meta"], ["utm_medium", "paid"],
+      ["utm_campaign", "halls"], ["utm_content", "ig"]], pl);
+  }
+});
+
+test("the builders refuse a bad placement, or a placement on a link that is not Meta's", () => {
+  for (const bad of ["Instagram_Reels", "ig reels", "ig-reels", "", "_", "a".repeat(41), "fb_feed%26x", 1, {}]) {
+    assert.throws(() => page.playUrl("halls", "meta", bad), /invalid placement/, String(bad));
+  }
+  for (const [hall, source] of [["bio", "ig"], ["page", "fb"], ["nax-galaxias", null], [null, undefined]]) {
+    assert.throws(() => page.playUrl(hall, source, "fb_feed"), /a placement needs s=meta/, String(source));
+  }
+  assert.throws(() => page.playUrl("halls", "META", "fb_feed"), /invalid source/);
 });
 
 test("the page is noindex, previews well and loads no script but its own", () => {

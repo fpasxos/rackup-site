@@ -204,6 +204,13 @@ most 30 characters; anything else counts as the general code.
   `s` is ignored. Apple's `ct` becomes `<source>-<campaign>`, or just the
   campaign when that would pass Apple's 30 character limit. These links are
   built only here, not by `hall_links.py`.
+- Meta's ads add `p={{site_source_name}}&pl={{placement}}`. For `s=meta` only,
+  the two become Play's `utm_content`, with the platform written once:
+  `fb_mobile_feed`, `ig_reels`, `ig_stories`, `fb_others`. Each part is
+  lowercased and kept only if it is letters, digits and single underscores; the
+  tag is at most 40 characters, or there is none. Nothing else in the address is
+  read, `fbclid` included. Apple's `ct` stays one per ad: a placement would split
+  its counts under Apple's threshold of 5.
 
 ```bash
 node --test tools/go_page.test.js
