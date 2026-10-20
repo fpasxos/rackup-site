@@ -913,5 +913,13 @@
     "address": "Μυριοφύτου 66, Αμφιάλη, Κερατσίνι",
     "sortOrder": 120,
     "phone": "+30 210 432 0761"
+  },
+  {
+    "id": "venue-ath-battlenet",
+    "name": "Battlenet 3D Palaio Faliro",
+    "city": "Athens",
+    "address": "Αλκυόνης 25, Παλαιό Φάληρο",
+    "sortOrder": 121,
+    "phone": "+30 210 984 6650"
   }
 ]
