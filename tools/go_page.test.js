@@ -152,7 +152,7 @@ test("with a provider token the App Store links carry pt, ct and mt", () => {
 });
 
 // Without a storefront the web falls back to the US store, which has no RackUp: a 404 on a computer.
-test("every App Store link names the Greek storefront unless its slug is Cypriot", () => {
+test("every App Store link names the Greek storefront unless its country's App Store sells RackUp", () => {
   const greek = "apps.apple.com/gr/app/";
   for (const token of ["", "12aB34", page.PROVIDER_TOKEN]) {
     for (const hall of [null, "nax-galaxias", "a".repeat(30), "cy", "cyprus-pool", "lefkosia-cy"]) {
@@ -169,32 +169,33 @@ test("every App Store link names the Greek storefront unless its slug is Cypriot
   assert.equal(read("go/go.js").match(literal), null, "go/go.js builds its links, it holds none");
 });
 
-test("a slug that starts with an open country code opens that storefront, with its ct and source", () => {
-  assert.deepEqual(Object.keys(page.STOREFRONTS), ["cy"], "Cyprus is the only country besides Greece");
-  for (const [code, store] of Object.entries(page.STOREFRONTS)) {
-    assert.match(code, /^[a-z]{2}$/);
-    assert.equal(page.storefrontOf(`${code}-some-hall`), store);
-    assert.equal(page.buildAppStoreUrl(`${code}-some-hall`, ""), `https://apps.apple.com/${store}/app/id6800614202`);
+test("only a country whose App Store sells RackUp is listed, and its slugs open that storefront", () => {
+  // The app repo's data/countries.json has Cyprus with appStoreOpen false: /cy/ says "not available".
+  assert.deepEqual(Object.keys(page.STOREFRONTS), [], "a country is listed only once its App Store sells RackUp");
+  page.STOREFRONTS.zz = "zz";
+  try {
+    assert.equal(page.storefrontOf("zz-some-hall"), "zz");
+    assert.equal(page.buildAppStoreUrl("zz-some-hall", ""), "https://apps.apple.com/zz/app/id6800614202");
+    assert.equal(page.buildAppStoreUrl("zz-some-hall", "12aB34", "meta"),
+      "https://apps.apple.com/zz/app/apple-store/id6800614202?pt=12aB34&ct=meta-zz-some-hall&mt=8");
+  } finally {
+    delete page.STOREFRONTS.zz;
   }
-  // A code that is not open, a code with no hyphen, and inherited object keys all stay Greek.
-  for (const hall of [null, "nax-galaxias", "cy", "cyprus-pool", "lefkosia-cy", "cyy-x", "de-berlin",
-    "constructor-x", "tostring-x", "proto-x"]) {
+  // An unlisted code, a code with no hyphen, and inherited object keys all stay Greek.
+  for (const hall of [null, "nax-galaxias", "cy", "cy-lefkosia-room9", "cyprus-pool", "lefkosia-cy", "cyy-x",
+    "de-berlin", "constructor-x", "tostring-x", "proto-x"]) {
     assert.equal(page.storefrontOf(hall), "gr", String(hall));
   }
-  assert.equal(page.storefrontOf("cy-lefkosia-room9"), "cy");
-  assert.equal(page.buildAppStoreUrl("cy-lefkosia-room9", ""), "https://apps.apple.com/cy/app/id6800614202");
   assert.equal(page.buildAppStoreUrl("cy-lefkosia-room9", "12aB34"),
-    "https://apps.apple.com/cy/app/apple-store/id6800614202?pt=12aB34&ct=cy-lefkosia-room9&mt=8");
-  assert.equal(page.buildAppStoreUrl("cy-lefkosia", "12aB34", "meta"),
-    "https://apps.apple.com/cy/app/apple-store/id6800614202?pt=12aB34&ct=meta-cy-lefkosia&mt=8");
+    "https://apps.apple.com/gr/app/apple-store/id6800614202?pt=12aB34&ct=cy-lefkosia-room9&mt=8");
   // Play has no storefront in its links: a Cypriot slug changes only the campaign.
   assert.equal(page.playUrl("cy-lefkosia", "meta"), "https://play.google.com/store/apps/details?id=com.rackup.app" +
     "&referrer=utm_source%3Dmeta%26utm_medium%3Dpaid%26utm_campaign%3Dcy-lefkosia");
 });
 
-test("a Cypriot ad link opens the Cypriot App Store on iOS and Play on Android", () => {
+test("a Cypriot ad link opens the Greek App Store until Cyprus's sells RackUp, and Play on Android", () => {
   const search = "?s=meta&h=cy-lefkosia&fbclid=IwAR0abc";
-  const apple = "https://apps.apple.com/cy/app/apple-store/id6800614202?pt=" + page.PROVIDER_TOKEN +
+  const apple = "https://apps.apple.com/gr/app/apple-store/id6800614202?pt=" + page.PROVIDER_TOKEN +
     "&ct=meta-cy-lefkosia&mt=8";
   const play = page.playUrl("cy-lefkosia", "meta");
   for (const [ua, touch] of [[UA.iphoneSafari, 5], [UA.facebookIos, 5], [UA.instagramIos, 5]]) {
