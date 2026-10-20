@@ -1,30 +1,33 @@
-RackUp Privacy Policy Effective date: 20 October 2026 · Applies to the RackUp apps for Android and
-iPhone (com.rackup.app) What changed on 20 October 2026. On Android, the tags of our Facebook and
-Instagram ad links now also say where the ad was shown, for example in the Facebook feed or in
-Instagram Reels. What changed on 16 October 2026. Two things, ahead of version 2.3.3 of the apps.
-First, your profile record and your player card now hold your country as well as your city, and so
-does what you post or save: matches, open and direct challenges, looking-for-a-game posts, saved
-searches and your weekly schedule. The country is the one your city or hall is in; a saved search
-with neither takes the country on your profile. It keeps each country's games, halls, leaderboards
-and most notifications to that country, and nothing you see in the apps changes. Second, our server
-now keeps copies of open games for guests, without the host's note, and from version 2.3.3 the apps
-show a guest only those copies. Our security rules still let a guest session read a whole match or
-challenge record, note included, if it asks our database directly. The Security section now says so,
-and this page will change again when the rules stop it. What changed on 15 October 2026. The apps
-did not change and collect nothing new, but this policy left out four things that are true today.
-The time your app last refreshed its notification token, which we already stored, also lets us
-count, as totals, how many recently active players have updated. The city you choose for your
-profile is approximate location, linked to your account, and we now name the halls we keep because
-you chose them. A search you save from Discover keeps the city it opened on, which can be the one
-worked out from your approximate location. And the Android app stores its notification token whether
-or not you allow notifications. We also now say that storing that token and sending the
-notifications you leave on rest on our contract with you, that the app version kept with your
-account is linked to it, that the Android app's map is Google Maps, which, if you allowed location,
-loads the map around you, and that we count, as totals, whether games find a player. What changed on
-7 October 2026. From version 2.3.0 of the apps, you can look around before you create an account,
-with Look around first on the welcome screen. Earlier versions have no guest mode. A guest gets a
-random guest identifier from Firebase Authentication, with no name, email or profile, and can see
-the open games, match pages and halls. So from version 2.3.0, your name, category and photo on a
+RackUp Privacy Policy Effective date: 21 October 2026 · Applies to the RackUp apps for Android and
+iPhone (com.rackup.app) What changed on 21 October 2026. Ahead of version 2.4.0 of the apps, we say
+how the app picks the country whose games a guest sees and the country sign-up suggests: on Android
+from the mobile network, the SIM card or the phone's language, on iPhone from your Region setting.
+The app sends none of these to us. What changed on 20 October 2026. On Android, the tags of our
+Facebook and Instagram ad links now also say where the ad was shown, for example in the Facebook
+feed or in Instagram Reels. What changed on 16 October 2026. Two things, ahead of version 2.3.3 of
+the apps. First, your profile record and your player card now hold your country as well as your
+city, and so does what you post or save: matches, open and direct challenges, looking-for-a-game
+posts, saved searches and your weekly schedule. The country is the one your city or hall is in; a
+saved search with neither takes the country on your profile. It keeps each country's games, halls,
+leaderboards and most notifications to that country, and nothing you see in the apps changes.
+Second, our server now keeps copies of open games for guests, without the host's note, and from
+version 2.3.3 the apps show a guest only those copies. Our security rules still let a guest session
+read a whole match or challenge record, note included, if it asks our database directly. The
+Security section now says so, and this page will change again when the rules stop it. What changed
+on 15 October 2026. The apps did not change and collect nothing new, but this policy left out four
+things that are true today. The time your app last refreshed its notification token, which we
+already stored, also lets us count, as totals, how many recently active players have updated. The
+city you choose for your profile is approximate location, linked to your account, and we now name
+the halls we keep because you chose them. A search you save from Discover keeps the city it opened
+on, which can be the one worked out from your approximate location. And the Android app stores its
+notification token whether or not you allow notifications. We also now say that storing that token
+and sending the notifications you leave on rest on our contract with you, that the app version kept
+with your account is linked to it, that the Android app's map is Google Maps, which, if you allowed
+location, loads the map around you, and that we count, as totals, whether games find a player. What
+changed on 7 October 2026. From version 2.3.0 of the apps, you can look around before you create an
+account, with Look around first on the welcome screen. Earlier versions have no guest mode. A guest
+gets a random guest identifier from Firebase Authentication, with no name, email or profile, and can
+see the open games, match pages and halls. So from version 2.3.0, your name, category and photo on a
 match or a looking-for-a-game post, and its hall, game and time, can be seen by guests as well as by
 players. What a host wrote in a note cannot: the apps show notes only to players with an account.
 Neither can your player card. A guest can report a player or send us feedback, and either carries
@@ -298,10 +301,15 @@ The city worked out from your position orders what you see and is never written 
 to any post. If you save a search from Discover without changing its city, the saved search keeps
 that city. If you say no, nothing else changes: the lists put the city on your profile first
 instead, and the app works normally. Checking in at a venue is on the honour system and is not
-verified against your location. The location linked to your account is what you give us. The city
-you choose for your profile, which sign-up asks for, and the country it is in are on your profile
-record and your player card, described above, and the weekly sign-up counts are taken by city. We
-count them as approximate location, linked to your account. We also keep the halls you name
+verified against your location. From version 2.4.0 of the apps, to choose which country's games a
+guest sees and which country sign-up suggests, the Android app looks at the country of the mobile
+network the phone is on, else of its SIM card, else of the phone's language; the iPhone app uses
+your Region setting. None of this needs a permission. The app does not send us the network, SIM or
+language it reads: a guest's app only asks our database for that country's games, and your profile
+keeps only the country you confirm. The location linked to your account is what you give us. The
+city you choose for your profile, which sign-up asks for, and the country it is in are on your
+profile record and your player card, described above, and the weekly sign-up counts are taken by
+city. We count them as approximate location, linked to your account. We also keep the halls you name
 yourself: your usual hall, the halls you starred, which bring you their notifications (on Android by
 signing your device up with Firebase Cloud Messaging, on iPhone through your account), your
 check-ins, and the hall or city of your posts, challenges, looking-for-a-game posts, saved searches
@@ -465,24 +473,26 @@ additionally verifies itself with Firebase App Check. We are a small team and we
 be immune to every risk, but if a breach affects your personal data we will notify the Hellenic Data
 Protection Authority and, where the law requires it, you. Changes to this policy If this policy
 changes, the new version is published at this address with a new effective date, and we say at the
-top what changed. This version, dated 20 October 2026, adds that the tags of our Facebook and
-Instagram ad links say where the ad was shown, and supersedes the version dated 16 October 2026,
-which added the country on your profile record, your player card and what you post or save, and the
-copies of open games kept for guests, ahead of version 2.3.3 of the apps, and superseded the version
-dated 15 October 2026, which said what the notification token's refresh time is also used for, that
-the city on your profile is approximate location, which halls we keep, that a saved search can keep
-a city suggested from your position, that the Android app stores its notification token whether or
-not notifications are allowed, that the token and your notifications rest on our contract with you,
-that the app version kept with your account is linked to it, that the Android map is Google Maps and
-that we count whether games fill, and superseded the version dated 7 October 2026, which added
-looking around as a guest, from version 2.3.0 of the apps, and superseded the version dated 5
-October 2026, which added how we measure which of our social media posts, ads and posters bring new
-players and superseded the version dated 2 October 2026. That one described version 2.2.0 of the
-apps and replaced an earlier version of the same day that held only the corrections described at the
-top. Both superseded the version dated 1 October 2026, which superseded the version dated 29
-September 2026. That one superseded the version dated 4 September 2026, which superseded the version
-dated 7 July 2026 in full. Σύνοψη στα Ελληνικά Το RackUp αποθηκεύει: όνομα, email, κατηγορία παίκτη,
-χώρα και πόλη, αίθουσα όπου παίζεις συνήθως, τι παίζεις, προαιρετική φωτογραφία προφίλ και όσα
+top what changed. This version, dated 21 October 2026, adds how the apps pick the country whose
+games a guest sees and the country sign-up suggests, ahead of version 2.4.0, and supersedes the
+version dated 20 October 2026, which added that the tags of our Facebook and Instagram ad links say
+where the ad was shown, and superseded the version dated 16 October 2026, which added the country on
+your profile record, your player card and what you post or save, and the copies of open games kept
+for guests, ahead of version 2.3.3 of the apps, and superseded the version dated 15 October 2026,
+which said what the notification token's refresh time is also used for, that the city on your
+profile is approximate location, which halls we keep, that a saved search can keep a city suggested
+from your position, that the Android app stores its notification token whether or not notifications
+are allowed, that the token and your notifications rest on our contract with you, that the app
+version kept with your account is linked to it, that the Android map is Google Maps and that we
+count whether games fill, and superseded the version dated 7 October 2026, which added looking
+around as a guest, from version 2.3.0 of the apps, and superseded the version dated 5 October 2026,
+which added how we measure which of our social media posts, ads and posters bring new players and
+superseded the version dated 2 October 2026. That one described version 2.2.0 of the apps and
+replaced an earlier version of the same day that held only the corrections described at the top.
+Both superseded the version dated 1 October 2026, which superseded the version dated 29 September
+2026. That one superseded the version dated 4 September 2026, which superseded the version dated 7
+July 2026 in full. Σύνοψη στα Ελληνικά Το RackUp αποθηκεύει: όνομα, email, κατηγορία παίκτη, χώρα
+και πόλη, αίθουσα όπου παίζεις συνήθως, τι παίζεις, προαιρετική φωτογραφία προφίλ και όσα
 δημοσιεύεις ή στέλνεις μέσα στην εφαρμογή, δηλαδή ματς, προσωπικές προκλήσεις, σημειώσεις, σκορ,
 ακυρώσεις, δηλώσεις ότι ψάχνεις παιχνίδι, ποιους ακολουθείς, γρήγορα μηνύματα, βαθμολογίες
 αντιπάλων, check-in σε αίθουσες, αναφορές και σχόλια. Η χώρα είναι εκείνη της πόλης ή της αίθουσας
@@ -574,19 +584,24 @@ Instagram, σε μια διαφήμιση, σε κωδικό QR πάνω σε α
 της πόλης σου, και η εφαρμογή δεν μας στέλνει ποτέ τη θέση σου. Στο Android, αν επιτρέψεις την
 τοποθεσία, ο χάρτης των αιθουσών ανοίγει στην περιοχή σου, οπότε το Google Maps φορτώνει τον χάρτη
 γύρω σου. Το άνοιγμα του χάρτη στέλνει στη Google τη διεύθυνση IP της συσκευής και την περιοχή που
-βλέπεις. Η τοποθεσία που συνδέεται με τον λογαριασμό σου είναι αυτή που μας δίνεις εσύ. Την πόλη που
-διαλέγεις για το προφίλ σου και τη χώρα της τις κρατάμε ως κατά προσέγγιση τοποθεσία, συνδεδεμένη με
-τον λογαριασμό σου. Κρατάμε επίσης τις αίθουσες που δηλώνεις: την αίθουσα όπου παίζεις συνήθως, τις
-αγαπημένες σου αίθουσες, που σου φέρνουν και τις ειδοποιήσεις τους, τα check-in σου, και την αίθουσα
-ή την πόλη των ματς, των προκλήσεων, των δηλώσεων ότι ψάχνεις παιχνίδι, των αποθηκευμένων
-αναζητήσεων και του εβδομαδιαίου προγράμματός σου. Ένα check-in ισχύει 3 ώρες και ο διακομιστής μας
-το σβήνει μέσα σε περίπου δύο ώρες μετά. Αν αποθηκεύσεις μια αναζήτηση, κρατάμε την πόλη του φίλτρου
-της, ακόμη κι αν την πρότεινε η εφαρμογή από τη θέση σου. Διαγραφή λογαριασμού: μέσα από την
-εφαρμογή (Προφίλ → Ρυθμίσεις → Διαγραφή λογαριασμού) ή με email στο rackupbilliard@gmail.com. Μαζί
-με τον λογαριασμό σου διαγράφονται η κάρτα παίκτη σου, οι προσωπικές προκλήσεις και τα γρήγορα
-μηνύματα που έστειλες ή έλαβες, και οι ειδοποιήσεις στη ροή δραστηριότητας άλλων παικτών που
-αναφέρουν το όνομά σου. Διάβασε παραπάνω τι ακριβώς διαγράφεται και τι παραμένει. Έχεις δικαίωμα
-πρόσβασης, διόρθωσης, διαγραφής, φορητότητας, εναντίωσης και περιορισμού, δικαίωμα να ανακαλέσεις
-όποτε θέλεις τη συγκατάθεσή σου για την τοποθεσία, καθώς και δικαίωμα καταγγελίας στην Αρχή
-Προστασίας Δεδομένων Προσωπικού Χαρακτήρα (dpa.gr). RackUp · Ioannina, Greece ·
-rackupbilliard@gmail.com Support · Home
+βλέπεις. Από την έκδοση 2.4.0, για να διαλέξει ποιας χώρας τα ματς βλέπει ένας επισκέπτης και ποια
+χώρα προτείνει η εγγραφή, στο Android η εφαρμογή κοιτάζει τη χώρα του δικτύου κινητής τηλεφωνίας
+όπου είναι συνδεδεμένο το τηλέφωνο, αλλιώς της κάρτας SIM του, αλλιώς της γλώσσας του, και στο
+iPhone τη ρύθμιση «Περιοχή». Τίποτα από αυτά δεν χρειάζεται άδεια. Η εφαρμογή δεν μας στέλνει το
+δίκτυο, την κάρτα SIM ή τη γλώσσα που διαβάζει: η εφαρμογή ενός επισκέπτη ζητά από τη βάση μας μόνο
+τα ματς εκείνης της χώρας, και το προφίλ σου κρατά μόνο τη χώρα που επιβεβαιώνεις. Η τοποθεσία που
+συνδέεται με τον λογαριασμό σου είναι αυτή που μας δίνεις εσύ. Την πόλη που διαλέγεις για το προφίλ
+σου και τη χώρα της τις κρατάμε ως κατά προσέγγιση τοποθεσία, συνδεδεμένη με τον λογαριασμό σου.
+Κρατάμε επίσης τις αίθουσες που δηλώνεις: την αίθουσα όπου παίζεις συνήθως, τις αγαπημένες σου
+αίθουσες, που σου φέρνουν και τις ειδοποιήσεις τους, τα check-in σου, και την αίθουσα ή την πόλη των
+ματς, των προκλήσεων, των δηλώσεων ότι ψάχνεις παιχνίδι, των αποθηκευμένων αναζητήσεων και του
+εβδομαδιαίου προγράμματός σου. Ένα check-in ισχύει 3 ώρες και ο διακομιστής μας το σβήνει μέσα σε
+περίπου δύο ώρες μετά. Αν αποθηκεύσεις μια αναζήτηση, κρατάμε την πόλη του φίλτρου της, ακόμη κι αν
+την πρότεινε η εφαρμογή από τη θέση σου. Διαγραφή λογαριασμού: μέσα από την εφαρμογή (Προφίλ →
+Ρυθμίσεις → Διαγραφή λογαριασμού) ή με email στο rackupbilliard@gmail.com. Μαζί με τον λογαριασμό
+σου διαγράφονται η κάρτα παίκτη σου, οι προσωπικές προκλήσεις και τα γρήγορα μηνύματα που έστειλες ή
+έλαβες, και οι ειδοποιήσεις στη ροή δραστηριότητας άλλων παικτών που αναφέρουν το όνομά σου. Διάβασε
+παραπάνω τι ακριβώς διαγράφεται και τι παραμένει. Έχεις δικαίωμα πρόσβασης, διόρθωσης, διαγραφής,
+φορητότητας, εναντίωσης και περιορισμού, δικαίωμα να ανακαλέσεις όποτε θέλεις τη συγκατάθεσή σου για
+την τοποθεσία, καθώς και δικαίωμα καταγγελίας στην Αρχή Προστασίας Δεδομένων Προσωπικού Χαρακτήρα
+(dpa.gr). RackUp · Ioannina, Greece · rackupbilliard@gmail.com Support · Home
