@@ -51,6 +51,7 @@ const PLACEMENTS = [
   ["ig", "Instagram_Explore", "ig_explore"],
   ["ig", "Others", "ig_others"],
   ["msg", "Messenger_Inbox", "msg_inbox"],
+  ["msg", "Messenger_Home", "msg_home"],
   ["msg", "Messenger_Stories", "msg_stories"],
   ["an", "an", "an"]
 ];
