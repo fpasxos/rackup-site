@@ -95,6 +95,7 @@ CITIES = {
     "Kos": ("kos", "Κως", "στην Κω"),
     "Saronida": ("saronida", "Σαρωνίδα", "στη Σαρωνίδα"),
     "Leros": ("leros", "Λέρος", "στη Λέρο"),
+    "Alexandroupoli": ("alexandroupoli", "Αλεξανδρούπολη", "στην Αλεξανδρούπολη"),
 }
 
 # Figure dash, en dash, em dash, horizontal bar. None may reach a page.

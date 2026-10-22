@@ -948,5 +948,13 @@
     "address": "Αλκυόνης 25, Παλαιό Φάληρο",
     "sortOrder": 121,
     "phone": "+30 210 984 6650"
+  },
+  {
+    "id": "venue-axd-pingpong",
+    "name": "Ping Pong Gaming Station",
+    "city": "Alexandroupoli",
+    "address": "Βενιζέλου 65 & Κομνηνών",
+    "sortOrder": 122,
+    "phone": "+30 255 108 1697"
   }
 ]
