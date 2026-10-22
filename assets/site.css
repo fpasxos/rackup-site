@@ -172,8 +172,19 @@ p{margin:0 0 1em}
 .halls{display:grid;gap:12px;margin:24px 0 0;padding:0;list-style:none;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr))}
 .hall{border:1px solid var(--outline);border-radius:var(--radius-lg);padding:20px 22px;background:linear-gradient(180deg,var(--surface),var(--surface-low))}
 .hall:target{border-color:var(--accent);box-shadow:0 0 0 3px var(--lime-wash)}
-.hall h2{font-size:1.2rem;margin:0 0 4px}
+.hall h2,.hall h3{font-size:1.2rem;margin:0 0 4px}
 .hall p{margin:0}
+.hall h3 a{display:inline-block;padding:10px 0;margin:-10px 0;color:var(--ink);text-decoration:none}
+@media (hover:hover){.hall h3 a:hover{color:var(--accent)}}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.page-hero .tags{margin:0 0 8px}
+.hall .tags{margin-top:12px}
+.hall .chip{font-size:.85rem;padding:4px 12px 4px 5px}
+.hall .chip .ball{--s:20px}
+.chip-link{min-height:44px;padding:9px 16px 9px 9px}
+.carom-city{margin-top:40px}
+.carom-city .more{margin:12px 0 0}
+.more a{display:inline-block;padding:12px 0;margin:-12px 0}
 .addr{color:var(--ink2)}
 .contact{color:var(--muted);font-size:.92rem}
 .other{margin-top:40px}

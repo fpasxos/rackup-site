@@ -126,11 +126,13 @@ class BuildDirectoryTest(unittest.TestCase):
     def test_campaigns_come_from_the_path_and_are_unique_and_valid(self):
         expected = {"": "home", "support.html": "support", "mpiliardo/": "el-directory",
                     "en/billiards/": "en-directory", "mpiliardo/athens/": "el-athens",
-                    "en/billiards/athens/": "en-athens", "mpiliardo/agios-nikolaos/": "el-agios-nikolaos"}
+                    "en/billiards/athens/": "en-athens", "mpiliardo/agios-nikolaos/": "el-agios-nikolaos",
+                    "galliko-mpiliardo/": "el-carom", "en/carom-billiards/": "en-carom"}
         for path, campaign in expected.items():
             self.assertEqual(b.campaign_for(path), campaign, path)
         campaigns = [b.campaign_for(site_path(rel)) for rel in sorted(rendered_pages())]
-        self.assertEqual(len(campaigns), 2 * len(b.group_by_city(b.load_venues())) + 2 + len(b.HAND_PAGES))
+        self.assertEqual(len(campaigns),
+                         2 * len(b.group_by_city(b.load_venues())) + 2 + len(b.CAROM) + len(b.HAND_PAGES))
         self.assertEqual(len(set(campaigns)), len(campaigns), "two pages share a campaign")
         for campaign in campaigns:
             self.assertRegex(campaign, r"^[a-z0-9]+(-[a-z0-9]+)*$")

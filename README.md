@@ -14,6 +14,7 @@ path on `getrackup.com`, so links already in the app and on QR codes keep workin
 | `support.html`, `privacy.html` | Support and privacy policy (store listings link here, so keep the URLs) | hand, except the store links in `support.html` |
 | `mpiliardo/` | Greek hall directory: index plus one page per city | generator |
 | `en/billiards/` | The same directory in English | generator |
+| `galliko-mpiliardo/`, `en/carom-billiards/` | Carom page: every hall known to have carom tables, by city, with the count where known | generator |
 | `sitemap.xml` | Every page on the site | generator |
 | `m/` | Landing page for match links shared from the app (`noindex`, not in the sitemap) | hand |
 | `go/` | Where printed QR codes point: sends phones to their app store with tagged links (`noindex`, not in the sitemap) | hand |
@@ -41,7 +42,7 @@ python tools/build_directory.py --import ../rackup/data/venues-backup.json
 ```
 
 That refreshes `data/venues.json`, rewrites every page under `mpiliardo/` and
-`en/billiards/`, rewrites `sitemap.xml`, updates the hall and city counts on the
+`en/billiards/` and the two carom pages, rewrites `sitemap.xml`, updates the hall and city counts on the
 home pages, fills the city grid on both homes, tags the store links on the hand
 pages (`HAND_PAGES`), and removes
 the folder of any city that no longer has a hall. Review
@@ -90,10 +91,12 @@ that way; `tools/test_site.py` fails on the old green and gold palette.
 
 ## Rules the generator enforces
 
-- **Only name, city, address, sort order, phone and website leave the app
-  repo.** This repo is public, so `--import` drops coordinates, prices, hours,
+- **Only name, city, address, sort order, phone, website and carom leave the
+  app repo.** This repo is public, so `--import` drops coordinates, prices, hours,
   amenities and every other field, and the build refuses a `data/venues.json`
-  that contains them.
+  that contains them. Carom leaves only as a fact the site shows: `caromTables`
+  of 1 or more, or `hasCarom: true` (known to have carom, count unknown), the
+  app's `Venue.offersCarom`. A count of 0 or an unknown stays in the app repo.
 - **No maps.** No embeds, no Google Maps links and no coordinates in pages or
   structured data. The venue data licence rules in the app repo's `CLAUDE.md`
   are the reason.
@@ -103,6 +106,12 @@ that way; `tools/test_site.py` fails on the old green and gold palette.
   `LocalBusiness` type) with only name, address, city, and phone or website
   when present; its `@id` is the hall's anchor on the Greek city page, the
   same in both languages.
+- **Carom only where the data says so.** A hall card carries a carom chip, the
+  carom page lists it and its city page links the carom page only when the
+  hall offers carom; the chip gives the table count only when `caromTables` is
+  stored. The carom page links each hall to its anchor on its city page and
+  carries no hall anchor of its own. `tools/test_carom.py` checks all of it.
+  carom.gr is a lead for research, never a source the site names.
 - **Titles at most 60 characters, descriptions at most 155** (`TITLE_LIMIT`,
   `DESCRIPTION_LIMIT`). A one-hall title drops `| RackUp` before it passes 60;
   districts join a description only while it fits. `tools/test_directory_seo.py`
@@ -128,7 +137,8 @@ Every Google Play link on the two homes, the support page, the 404 page and the
 directory carries a Play referrer, so installs from the site show up by page:
 `&referrer=utm_source%3Dwebsite%26utm_medium%3Dorganic%26utm_campaign%3D<campaign>`.
 The campaign comes from the page path: `home`, `en-home`, `support`, `404`,
-`el-directory`, `en-directory`, `el-<city-slug>` and `en-<city-slug>`, lowercase
+`el-directory`, `en-directory`, `el-<city-slug>`, `en-<city-slug>`, and
+`el-carom` and `en-carom` for the carom pages, lowercase
 letters, digits and single hyphens, at most 26 characters. The generator writes
 all of them, including the links on the hand-written pages in `HAND_PAGES` (both
 homes, `support.html` and `404.html`); a new hand-written page with store links
