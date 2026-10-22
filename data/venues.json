@@ -37,7 +37,8 @@
     "city": "Athens",
     "address": "Καναπιτσέρη 10, Άγ. Ιωάννης Ρέντης",
     "sortOrder": 5,
-    "phone": "+30 210 561 3678"
+    "phone": "+30 210 561 3678",
+    "hasCarom": true
   },
   {
     "id": "venue-ath-blanos",
@@ -68,7 +69,8 @@
     "city": "Athens",
     "address": "Δερβενακίων 56, Αγία Παρασκευή",
     "sortOrder": 10,
-    "phone": "+30 210 601 2838"
+    "phone": "+30 210 601 2838",
+    "caromTables": 4
   },
   {
     "id": "venue-ath-trisponto",
@@ -76,7 +78,8 @@
     "city": "Athens",
     "address": "Πειραιώς 24, Μοσχάτο",
     "sortOrder": 11,
-    "phone": "+30 210 482 3870"
+    "phone": "+30 210 482 3870",
+    "hasCarom": true
   },
   {
     "id": "venue-ath-athensbc",
@@ -84,7 +87,8 @@
     "city": "Athens",
     "address": "Αχαρνών 131, Αγ. Παντελεήμονας",
     "sortOrder": 12,
-    "phone": "+30 694 434 0659"
+    "phone": "+30 694 434 0659",
+    "hasCarom": true
   },
   {
     "id": "venue-ath-lacasa",
@@ -92,7 +96,8 @@
     "city": "Athens",
     "address": "Τευθίδος 1, Περιστέρι",
     "sortOrder": 13,
-    "phone": "+30 210 573 4711"
+    "phone": "+30 210 573 4711",
+    "hasCarom": true
   },
   {
     "id": "venue-ath-lamorti",
@@ -100,7 +105,8 @@
     "city": "Athens",
     "address": "Ιωαννίνων 57 & Επιδαύρου, Κολωνός",
     "sortOrder": 14,
-    "phone": "+30 210 512 4580"
+    "phone": "+30 210 512 4580",
+    "caromTables": 4
   },
   {
     "id": "venue-ath-europe",
@@ -124,7 +130,8 @@
     "city": "Athens",
     "address": "Νέας Ελβετίας 5, Βύρωνας",
     "sortOrder": 17,
-    "phone": "+30 210 764 9074"
+    "phone": "+30 210 764 9074",
+    "hasCarom": true
   },
   {
     "id": "venue-ath-lostcafe",
@@ -148,7 +155,8 @@
     "city": "Athens",
     "address": "Ελλησπόντου 26-28, Νίκαια",
     "sortOrder": 20,
-    "phone": "+30 210 492 0405"
+    "phone": "+30 210 492 0405",
+    "hasCarom": true
   },
   {
     "id": "venue-ath-vscafe",
@@ -156,7 +164,8 @@
     "city": "Athens",
     "address": "Λεωφ. Αγ. Δημητρίου 216, Άγιος Δημήτριος",
     "sortOrder": 21,
-    "phone": "+30 210 937 0880"
+    "phone": "+30 210 937 0880",
+    "hasCarom": true
   },
   {
     "id": "venue-ath-halloffame",
@@ -172,7 +181,8 @@
     "city": "Athens",
     "address": "Λουκά Ράλλη 123, Πειραιάς",
     "sortOrder": 23,
-    "phone": "+30 210 417 7508"
+    "phone": "+30 210 417 7508",
+    "hasCarom": true
   },
   {
     "id": "venue-ath-champion",
@@ -212,7 +222,8 @@
     "city": "Athens",
     "address": "Λεωφ. Κηφισίας 265, Κηφισιά",
     "sortOrder": 28,
-    "phone": "+30 210 623 0155"
+    "phone": "+30 210 623 0155",
+    "hasCarom": true
   },
   {
     "id": "venue-ath-bowlingkifisia",
@@ -236,7 +247,8 @@
     "city": "Thessaloniki",
     "address": "Βασ. Όλγας 123, Ανάληψη",
     "sortOrder": 31,
-    "phone": "+30 231 086 3700"
+    "phone": "+30 231 086 3700",
+    "hasCarom": true
   },
   {
     "id": "venue-thes-juris",
@@ -252,7 +264,8 @@
     "city": "Thessaloniki",
     "address": "Μητρ. Καλλίδου 112, Καλαμαριά",
     "sortOrder": 33,
-    "phone": "+30 231 042 1411"
+    "phone": "+30 231 042 1411",
+    "hasCarom": true
   },
   {
     "id": "venue-thes-elpaso",
@@ -284,7 +297,8 @@
     "city": "Heraklion",
     "address": "Καρίας 122, Νέα Αλικαρνασσός",
     "sortOrder": 41,
-    "phone": "+30 281 030 0601"
+    "phone": "+30 281 030 0601",
+    "caromTables": 1
   },
   {
     "id": "venue-her-king",
@@ -308,7 +322,8 @@
     "city": "Chania",
     "address": "Κισσάμου & Σαριδαντώνη 1, Νέα Χώρα",
     "sortOrder": 44,
-    "phone": "+30 697 599 3307"
+    "phone": "+30 697 599 3307",
+    "caromTables": 1
   },
   {
     "id": "venue-ret-billias",
@@ -316,7 +331,8 @@
     "city": "Rethymno",
     "address": "Γερακάρη 150",
     "sortOrder": 45,
-    "phone": "+30 283 103 6100"
+    "phone": "+30 283 103 6100",
+    "hasCarom": true
   },
   {
     "id": "venue-ret-cyber",
@@ -363,7 +379,8 @@
     "city": "Chalkida",
     "address": "Περικλέους Σταύρου 10",
     "sortOrder": 51,
-    "phone": "+30 222 102 4050"
+    "phone": "+30 222 102 4050",
+    "hasCarom": true
   },
   {
     "id": "venue-chk-bowling",
@@ -379,7 +396,8 @@
     "city": "Rhodes",
     "address": "Ι. Καποδιστρίου 37",
     "sortOrder": 53,
-    "phone": "+30 224 107 7123"
+    "phone": "+30 224 107 7123",
+    "caromTables": 1
   },
   {
     "id": "venue-kav-cityhall",
@@ -395,7 +413,8 @@
     "city": "Kalamata",
     "address": "Γιαννιτσών & Κουμουνδούρου 13",
     "sortOrder": 55,
-    "phone": "+30 272 111 0315"
+    "phone": "+30 272 111 0315",
+    "caromTables": 1
   },
   {
     "id": "venue-kor-kbc",
@@ -442,7 +461,8 @@
     "city": "Kozani",
     "address": "Επισκόπου Βενιαμίν 12",
     "sortOrder": 61,
-    "phone": "+30 694 789 0880"
+    "phone": "+30 694 789 0880",
+    "hasCarom": true
   },
   {
     "id": "venue-lar-pike",
@@ -450,7 +470,8 @@
     "city": "Larissa",
     "address": "Παπάγου 1Α, Γιάννουλη",
     "sortOrder": 62,
-    "phone": "+30 249 559 3444"
+    "phone": "+30 249 559 3444",
+    "hasCarom": true
   },
   {
     "id": "venue-lam-prince",
@@ -466,7 +487,8 @@
     "city": "Corfu",
     "address": "3ο χλμ Ε.Ο. Λευκίμμης, Κανάλι",
     "sortOrder": 64,
-    "phone": "+30 266 103 6654"
+    "phone": "+30 266 103 6654",
+    "hasCarom": true
   },
   {
     "id": "venue-pre-northwest",
@@ -514,7 +536,8 @@
     "city": "Chios",
     "address": "Λεωφ. Αιγαίου 120",
     "sortOrder": 70,
-    "phone": "+30 227 102 8517"
+    "phone": "+30 227 102 8517",
+    "hasCarom": true
   },
   {
     "id": "venue-aig-whiterhino",
@@ -522,7 +545,8 @@
     "city": "Aigio",
     "address": "Κανελλοπούλου 14",
     "sortOrder": 71,
-    "phone": "+30 698 078 6292"
+    "phone": "+30 698 078 6292",
+    "caromTables": 1
   },
   {
     "id": "venue-ath-issa",
@@ -593,7 +617,8 @@
     "city": "Volos",
     "address": "Μελούνας 21 & Φερών, 1ος όροφος",
     "sortOrder": 80,
-    "phone": "+30 242 140 9804"
+    "phone": "+30 242 140 9804",
+    "caromTables": 2
   },
   {
     "id": "venue-koz-mancave",
@@ -616,7 +641,8 @@
     "city": "Athens",
     "address": "Λεωφ. Αθηνών 336, Χαϊδάρι",
     "sortOrder": 83,
-    "phone": "+30 210 532 3306"
+    "phone": "+30 210 532 3306",
+    "caromTables": 1
   },
   {
     "id": "venue-ath-royalbowling",
@@ -696,7 +722,8 @@
     "city": "Athens",
     "address": "Λάμπρου Κατσώνη 6Β, Ασπρόπυργος",
     "sortOrder": 93,
-    "phone": "+30 210 557 9991"
+    "phone": "+30 210 557 9991",
+    "hasCarom": true
   },
   {
     "id": "venue-kat-efkarpidis",
