@@ -1,5 +1,8 @@
-RackUp Privacy Policy Effective date: 21 October 2026 · Applies to the RackUp apps for Android and
-iPhone (com.rackup.app) What changed on 21 October 2026. Ahead of version 2.4.0 of the apps, we say
+RackUp Privacy Policy Effective date: XX October 2026 · Applies to the RackUp apps for Android and
+iPhone (com.rackup.app) What changed on XX October 2026. Nothing about what the apps collect or how
+we use it has changed. Under Your rights, we now name the supervisory authority for players who live
+in Cyprus, the Office of the Commissioner for Personal Data Protection, as well as the Hellenic Data
+Protection Authority. What changed on 21 October 2026. Ahead of version 2.4.0 of the apps, we say
 how the app picks the country whose games a guest sees and the country sign-up suggests: on Android
 from the mobile network, the SIM card or the phone's language, on iPhone from your Region setting.
 The app sends none of these to us. What changed on 20 October 2026. On Android, the tags of our
@@ -457,14 +460,16 @@ location permission, on either app, at any time, without affecting anything we d
 so. You can also turn notifications off at any time, in Settings or in your device's settings. To
 exercise any of these, email rackupbilliard@gmail.com from the address on your account. We reply
 within one month, as the GDPR requires. There is no charge. If you are unhappy with how we have
-handled your data, you can complain to the Hellenic Data Protection Authority at dpa.gr, or to the
-supervisory authority in the EU country where you live. Children RackUp is not directed at children.
-The app arranges meetings between adults at billiard halls, and we do not knowingly collect data
-from children under 16. There is no age verification in the app. If you believe a child has created
-an account, email us and we will remove it. Security All traffic between the apps and Firebase is
-encrypted. What each account may read and write is enforced by Firebase security rules on the
-server, not by the app, so a modified app cannot reach data it is not entitled to. There is one
-exception, which we are closing: our rules let a guest session read a whole match or challenge
+handled your data, you can complain to the supervisory authority in the EU country where you live.
+In Greece that is the Hellenic Data Protection Authority, at dpa.gr, and in Cyprus the Office of the
+Commissioner for Personal Data Protection, at gov.cy/dataprotection. Wherever you live, you can also
+complain to the Hellenic authority, which oversees RackUp. Children RackUp is not directed at
+children. The app arranges meetings between adults at billiard halls, and we do not knowingly
+collect data from children under 16. There is no age verification in the app. If you believe a child
+has created an account, email us and we will remove it. Security All traffic between the apps and
+Firebase is encrypted. What each account may read and write is enforced by Firebase security rules
+on the server, not by the app, so a modified app cannot reach data it is not entitled to. There is
+one exception, which we are closing: our rules let a guest session read a whole match or challenge
 record, the host's note included, although no version of the apps shows a guest a note (see Looking
 around as a guest). From version 2.3.3 the apps show guests open games only from the copies
 described there, which never hold a note. We will close the exception in our rules once guests have
@@ -473,26 +478,27 @@ additionally verifies itself with Firebase App Check. We are a small team and we
 be immune to every risk, but if a breach affects your personal data we will notify the Hellenic Data
 Protection Authority and, where the law requires it, you. Changes to this policy If this policy
 changes, the new version is published at this address with a new effective date, and we say at the
-top what changed. This version, dated 21 October 2026, adds how the apps pick the country whose
-games a guest sees and the country sign-up suggests, ahead of version 2.4.0, and supersedes the
-version dated 20 October 2026, which added that the tags of our Facebook and Instagram ad links say
-where the ad was shown, and superseded the version dated 16 October 2026, which added the country on
-your profile record, your player card and what you post or save, and the copies of open games kept
-for guests, ahead of version 2.3.3 of the apps, and superseded the version dated 15 October 2026,
-which said what the notification token's refresh time is also used for, that the city on your
-profile is approximate location, which halls we keep, that a saved search can keep a city suggested
-from your position, that the Android app stores its notification token whether or not notifications
-are allowed, that the token and your notifications rest on our contract with you, that the app
-version kept with your account is linked to it, that the Android map is Google Maps and that we
-count whether games fill, and superseded the version dated 7 October 2026, which added looking
-around as a guest, from version 2.3.0 of the apps, and superseded the version dated 5 October 2026,
-which added how we measure which of our social media posts, ads and posters bring new players and
-superseded the version dated 2 October 2026. That one described version 2.2.0 of the apps and
-replaced an earlier version of the same day that held only the corrections described at the top.
-Both superseded the version dated 1 October 2026, which superseded the version dated 29 September
-2026. That one superseded the version dated 4 September 2026, which superseded the version dated 7
-July 2026 in full. Σύνοψη στα Ελληνικά Το RackUp αποθηκεύει: όνομα, email, κατηγορία παίκτη, χώρα
-και πόλη, αίθουσα όπου παίζεις συνήθως, τι παίζεις, προαιρετική φωτογραφία προφίλ και όσα
+top what changed. This version, dated XX October 2026, names the supervisory authority for players
+who live in Cyprus, and supersedes the version dated 21 October 2026, which added how the apps pick
+the country whose games a guest sees and the country sign-up suggests, ahead of version 2.4.0, and
+superseded the version dated 20 October 2026, which added that the tags of our Facebook and
+Instagram ad links say where the ad was shown, and superseded the version dated 16 October 2026,
+which added the country on your profile record, your player card and what you post or save, and the
+copies of open games kept for guests, ahead of version 2.3.3 of the apps, and superseded the version
+dated 15 October 2026, which said what the notification token's refresh time is also used for, that
+the city on your profile is approximate location, which halls we keep, that a saved search can keep
+a city suggested from your position, that the Android app stores its notification token whether or
+not notifications are allowed, that the token and your notifications rest on our contract with you,
+that the app version kept with your account is linked to it, that the Android map is Google Maps and
+that we count whether games fill, and superseded the version dated 7 October 2026, which added
+looking around as a guest, from version 2.3.0 of the apps, and superseded the version dated 5
+October 2026, which added how we measure which of our social media posts, ads and posters bring new
+players and superseded the version dated 2 October 2026. That one described version 2.2.0 of the
+apps and replaced an earlier version of the same day that held only the corrections described at the
+top. Both superseded the version dated 1 October 2026, which superseded the version dated 29
+September 2026. That one superseded the version dated 4 September 2026, which superseded the version
+dated 7 July 2026 in full. Σύνοψη στα Ελληνικά Το RackUp αποθηκεύει: όνομα, email, κατηγορία παίκτη,
+χώρα και πόλη, αίθουσα όπου παίζεις συνήθως, τι παίζεις, προαιρετική φωτογραφία προφίλ και όσα
 δημοσιεύεις ή στέλνεις μέσα στην εφαρμογή, δηλαδή ματς, προσωπικές προκλήσεις, σημειώσεις, σκορ,
 ακυρώσεις, δηλώσεις ότι ψάχνεις παιχνίδι, ποιους ακολουθείς, γρήγορα μηνύματα, βαθμολογίες
 αντιπάλων, check-in σε αίθουσες, αναφορές και σχόλια. Η χώρα είναι εκείνη της πόλης ή της αίθουσας
@@ -603,5 +609,8 @@ iPhone τη ρύθμιση «Περιοχή». Τίποτα από αυτά δε
 έλαβες, και οι ειδοποιήσεις στη ροή δραστηριότητας άλλων παικτών που αναφέρουν το όνομά σου. Διάβασε
 παραπάνω τι ακριβώς διαγράφεται και τι παραμένει. Έχεις δικαίωμα πρόσβασης, διόρθωσης, διαγραφής,
 φορητότητας, εναντίωσης και περιορισμού, δικαίωμα να ανακαλέσεις όποτε θέλεις τη συγκατάθεσή σου για
-την τοποθεσία, καθώς και δικαίωμα καταγγελίας στην Αρχή Προστασίας Δεδομένων Προσωπικού Χαρακτήρα
-(dpa.gr). RackUp · Ioannina, Greece · rackupbilliard@gmail.com Support · Home
+την τοποθεσία, καθώς και δικαίωμα καταγγελίας στην εποπτική αρχή της χώρας της ΕΕ όπου μένεις. Στην
+Ελλάδα είναι η Αρχή Προστασίας Δεδομένων Προσωπικού Χαρακτήρα (dpa.gr) και στην Κύπρο το Γραφείο
+Επιτρόπου Προστασίας Δεδομένων Προσωπικού Χαρακτήρα (gov.cy/dataprotection). Όπου κι αν μένεις,
+μπορείς να κάνεις καταγγελία και στην ελληνική Αρχή, που εποπτεύει το RackUp. RackUp · Ioannina,
+Greece · rackupbilliard@gmail.com Support · Home
