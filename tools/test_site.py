@@ -398,11 +398,14 @@ COUNTRY = re.compile(r"Greece|Ελλάδ|ΕΛΛΑΔ|(?<!in )\bGreek\b(?!,?\s+(?:
 # They list one country's halls and say which.
 NAMES_ITS_COUNTRY = {"mpiliardo/index.html", "en/billiards/index.html"}
 # Exact strings that may name the country, only on the page that carries each: the postal
-# contact line and the data controller's address. Each must still occur, so none goes stale.
+# contact line, the data controller's address and which authority a player in Greece complains
+# to. Each must still occur, so none goes stale.
 CONTACT = "RackUp · Ioannina, Greece · rackupbilliard@gmail.com"
 ALLOWED = {
     "support.html": (CONTACT,),
-    "privacy.html": (CONTACT, "RackUp, Ioannina, Greece, is the data controller"),
+    "privacy.html": (CONTACT, "RackUp, Ioannina, Greece, is the data controller",
+                     "In Greece that is the Hellenic Data Protection Authority",
+                     "Στην Ελλάδα είναι η Αρχή Προστασίας Δεδομένων Προσωπικού Χαρακτήρα"),
 }
 
 
