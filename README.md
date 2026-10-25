@@ -18,6 +18,7 @@ path on `getrackup.com`, so links already in the app and on QR codes keep workin
 | `sitemap.xml` | Every page on the site | generator |
 | `m/` | Landing page for match links shared from the app (`noindex`, not in the sitemap) | hand |
 | `go/` | Where printed QR codes point: sends phones to their app store with tagged links (`noindex`, not in the sitemap) | hand |
+| `media/social/` | JPEGs and MP4s that Instagram fetches by URL for posts the RackUp publisher sends out at their scheduled times (linked from nothing, not in the sitemap; `tools/test_social_media.py` checks their format). Safe to remove once those posts are out | copied from the publisher's media folder |
 | `assets/site.css` | The one stylesheet: the app's Felt and Neon tokens and every component | hand |
 | `assets/fonts/` | Self-hosted Space Grotesk, Hanken Grotesk (Latin) and Commissioner (Greek), with their OFL licences | `tools/make_fonts.py` |
 | `assets/img/`, `assets/og-card.png` | App screenshots as WebP, and the 1200x630 social card | `tools/make_images.py` |
