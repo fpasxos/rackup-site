@@ -315,6 +315,14 @@ class MeaningTest(unittest.TestCase):
         for rel, text in published(".html"):
             self.assertNotRegex(text, r"(?i)αίθουσα και επίπεδο|στο επίπεδό σου|venue and level|at your level", rel)
 
+    def test_homes_offer_casual_beside_pro_to_e_as_the_app_does(self):
+        # Since app 2.4.0 a player in no league picks «Χόμπι» (Casual), which sits off the Pro to E ladder.
+        for page, claim in (("index.html", "από Pro έως E, ή «Χόμπι» αν δεν παίζει σε πρωτάθλημα."),
+                            ("en/index.html", "from Pro down to E, or Casual if they don't play in a league.")):
+            self.assertIn(claim, (b.ROOT / page).read_text(encoding="utf-8"), page)
+        for rel, text in published(".html"):
+            self.assertNotRegex(text, r"από Pro έως E\.|from Pro down to E\.", f"{rel}: Casual is a category too")
+
     def test_support_knows_quick_messages_and_iphone_photos(self):
         # App 2.2.0 brought preset quick messages and the photo picker on iPhone.
         text = (b.ROOT / "support.html").read_text(encoding="utf-8")
