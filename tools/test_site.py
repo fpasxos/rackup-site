@@ -117,7 +117,7 @@ class StylesheetTest(unittest.TestCase):
         for selector in (r"\.nav-links a", r"\.btn-sm", r"\.foot nav a", r"\.other \.chip", r"\.wordmark"):
             self.assertRegex(text, selector + r"\s*{[^}]*min-height\s*:\s*44px", f"{selector} is under 44 px to tap")
         self.assertRegex(text, r"\.prose code,\s*\.prose a\s*{[^}]*overflow-wrap\s*:\s*anywhere", "long code runs off a zoomed phone")
-        self.assertRegex(text, r"@media \(max-width:479px\)\s*{\s*\.city-grid\s*{[^}]*repeat\(2", "27 cities in one column on a phone")
+        self.assertRegex(text, r"@media \(max-width:479px\)\s*{\s*\.city-grid\s*{[^}]*repeat\(2", "every city in one long column on a phone")
 
     def test_stylesheet_carries_the_app_palette(self):
         text = css().upper()
