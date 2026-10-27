@@ -1,7 +1,9 @@
 """Tests for tools/build_directory.py. Python 3.8+, no packages:
 python -m unittest discover -s tools
 """
+import contextlib
 import html
+import io
 import json
 import os
 import re
@@ -9,6 +11,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 from urllib.parse import parse_qs, urlsplit
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -29,6 +32,39 @@ GO_STORE_BASE = '"https://apps.apple.com/" + storefrontOf(hall) + "/app/"'
 
 def hall(vid, address, city="Larissa"):
     return {"id": vid, "name": vid.title(), "city": city, "address": address, "sortOrder": 1}
+
+
+# The app repo's data/countries.json, cut to what --import reads.
+COUNTRIES = [{"code": "GR", "fallback": True, "open": True}, {"code": "CY", "open": False}]
+# A made-up hall of a closed country, in a city CITIES does not have.
+NICOSIA = {"id": "venue-cy-nic-test", "name": "Test Hall", "city": "Nicosia", "country": "CY",
+           "address": "Odos 1", "sortOrder": 900}
+
+
+def app_data(folder, backup, countries=COUNTRIES):
+    """The app repo's data/ in small: the backup with countries.json beside it. Returns the backup."""
+    Path(folder).mkdir(parents=True, exist_ok=True)
+    Path(folder, "countries.json").write_text(json.dumps(countries), encoding="utf-8")
+    source = Path(folder, "venues-backup.json")
+    source.write_text(json.dumps(backup), encoding="utf-8")
+    return source
+
+
+def imported(backup, countries=COUNTRIES):
+    """The data/venues.json text that --import makes of this backup."""
+    with tempfile.TemporaryDirectory() as tmp:
+        return b.import_backup(app_data(tmp, backup, countries))
+
+
+def generate(*args):
+    """The generator's command line with these arguments: its exit code and what it printed."""
+    out = io.StringIO()
+    with mock.patch.object(sys, "argv", ["build_directory.py", *args]), contextlib.redirect_stdout(out):
+        try:
+            b.main()
+        except SystemExit as stop:
+            return stop.code, out.getvalue()
+    return 0, out.getvalue()
 
 
 def published_files():
@@ -78,10 +114,7 @@ class BuildDirectoryTest(unittest.TestCase):
         backup = [{"id": "v1", "name": "Club — One", "city": "Volos", "address": "Odos 1",
                    "sortOrder": 3, "latitude": 39.3, "longitude": 22.9, "hours": "10-2",
                    "pricePerHourEuros": 6, "amenities": ["bar"], "tables": 8, "phone": ""}]
-        with tempfile.TemporaryDirectory() as tmp:
-            source = Path(tmp, "venues-backup.json")
-            source.write_text(json.dumps(backup), encoding="utf-8")
-            (record,) = json.loads(b.import_backup(source))
+        (record,) = json.loads(imported(backup))
         self.assertEqual(record, {"id": "v1", "name": "Club - One", "city": "Volos",
                                   "address": "Odos 1", "sortOrder": 3})
 
@@ -270,6 +303,43 @@ class BuildDirectoryTest(unittest.TestCase):
             for tracker in (r"gtag\(", r"googletagmanager", r"google-analytics\.com", r"fbq\(", r"connect\.facebook\.net",
                             r"plausible\.io", r"matomo", r"hotjar", r"clarity\.ms", r"cloudflareinsights", r"segment\.com"):
                 self.assertNotRegex(text, tracker, f"{rel} mentions {tracker}")
+
+
+class ImportCountryTest(unittest.TestCase):
+    """--import lists only the halls of open countries, and writes nothing until the build passes."""
+
+    def setUp(self):
+        self.committed = b.DATA.read_text(encoding="utf-8")
+        # The committed halls as the app's backup holds them, country included, and a Cypriot one.
+        self.backup = [dict(v, country="GR") for v in json.loads(self.committed)] + [dict(NICOSIA)]
+
+    def test_a_closed_countrys_halls_are_skipped_and_the_import_runs_clean(self):
+        self.assertEqual(imported(self.backup), self.committed)
+        with tempfile.TemporaryDirectory() as tmp:
+            code, printed = generate("--import", str(app_data(tmp, self.backup)), "--check")
+        self.assertEqual((code, printed), (0, ""), "the import would change data/venues.json or a page")
+
+    def test_an_open_countrys_unknown_city_stops_the_import_before_it_writes(self):
+        cyprus_open = [dict(c, open=True) for c in COUNTRIES]
+        with tempfile.TemporaryDirectory() as tmp:
+            site, source = Path(tmp, "site"), app_data(Path(tmp, "app"), self.backup, cyprus_open)
+            data = site / "data" / "venues.json"
+            data.parent.mkdir(parents=True)
+            data.write_text(self.committed, encoding="utf-8")
+            # ROOT too, so nothing this run writes can reach the real site.
+            with mock.patch.multiple(b, ROOT=site, DATA=data):
+                code, _ = generate("--import", str(source))
+            self.assertIn("venue-cy-nic-test: unknown city 'Nicosia'", str(code))
+            self.assertEqual(data.read_text(encoding="utf-8"), self.committed, "a stopped import wrote the data")
+
+    def test_a_check_with_an_import_writes_nothing_and_reports_the_data(self):
+        self.backup[-2]["sortOrder"] += 1  # changes data/venues.json and no page
+        before = b.DATA.read_bytes()
+        self.addCleanup(b.DATA.write_bytes, before)
+        with tempfile.TemporaryDirectory() as tmp:
+            code, printed = generate("--import", str(app_data(tmp, self.backup)), "--check")
+        self.assertEqual(b.DATA.read_bytes(), before, "--check wrote data/venues.json")
+        self.assertEqual((code, printed), (1, f"out of date: {Path('data', 'venues.json')}\n"))
 
 
 if __name__ == "__main__":
