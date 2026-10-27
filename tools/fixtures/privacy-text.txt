@@ -1,5 +1,5 @@
-RackUp Privacy Policy Effective date: XX October 2026 · Applies to the RackUp apps for Android and
-iPhone (com.rackup.app) What changed on XX October 2026. Three things, ahead of version 2.4.2 of the
+RackUp Privacy Policy Effective date: 27 October 2026 · Applies to the RackUp apps for Android and
+iPhone (com.rackup.app) What changed on 27 October 2026. Three things, ahead of version 2.4.2 of the
 apps. First, under Location: if you have already allowed location and you are in another country
 where RackUp is open, the app may also use it on your phone to offer you a visit there, and for this
 your position still never leaves your phone. Second, in the same section: if you are signed in and
@@ -487,7 +487,7 @@ additionally verifies itself with Firebase App Check. We are a small team and we
 be immune to every risk, but if a breach affects your personal data we will notify the Hellenic Data
 Protection Authority and, where the law requires it, you. Changes to this policy If this policy
 changes, the new version is published at this address with a new effective date, and we say at the
-top what changed. This version, dated XX October 2026, adds that from version 2.4.2 the app may also
+top what changed. This version, dated 27 October 2026, adds that from version 2.4.2 the app may also
 use location you have already allowed to offer you a visit to another country where RackUp is open,
 and your phone's region to ask whether you play there, names the supervisory authority for players
 who live in Cyprus, and supersedes the version dated 21 October 2026, which added how the apps pick
