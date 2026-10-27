@@ -12,7 +12,7 @@ from urllib.parse import urljoin, urlsplit
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import build_directory as b  # noqa: E402
-from test_build_directory import published, site_path  # noqa: E402
+from test_build_directory import imported, published, site_path  # noqa: E402
 from test_directory_seo import description, node, structured, title, visible_crumbs, visible_text  # noqa: E402
 
 PAGES = {"el": "galliko-mpiliardo/index.html", "en": "en/carom-billiards/index.html"}
@@ -38,10 +38,7 @@ class CaromImportTest(unittest.TestCase):
         backup = [hall("a", caromTables=4), hall("b", caromTables=0), hall("c", hasCarom=True),
                   hall("d", hasCarom=False), hall("e", caromTables=True), hall("f", caromTables="2"),
                   hall("g", caromTables=2, hasCarom=True), hall("h", caromTables=None)]
-        with tempfile.TemporaryDirectory() as tmp:
-            source = Path(tmp, "venues-backup.json")
-            source.write_text(json.dumps(backup), encoding="utf-8")
-            records = {r["id"]: r for r in json.loads(b.import_backup(source))}
+        records = {r["id"]: r for r in json.loads(imported(backup))}
         carom = {vid: {k: r[k] for k in b.CAROM_FIELDS if k in r} for vid, r in records.items()}
         self.assertEqual(carom, {"a": {"caromTables": 4}, "b": {}, "c": {"hasCarom": True}, "d": {}, "e": {},
                                  "f": {}, "g": {"caromTables": 2, "hasCarom": True}, "h": {}})

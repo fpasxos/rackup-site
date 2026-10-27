@@ -159,10 +159,25 @@ def offers_carom(v):
     return carom_tables(v) is not None or v.get("hasCarom") is True
 
 
+def open_countries(source):
+    """From the app repo's countries.json beside the backup: the open countries' codes, and the
+    fallback's, the country of a hall that names none, as the app reads it."""
+    path = Path(source).with_name("countries.json")
+    if not path.is_file():
+        sys.exit(f"no countries.json beside {source}: --import takes the app repo's data/venues-backup.json")
+    countries = json.loads(path.read_text(encoding="utf-8"))
+    fallback = next(c["code"] for c in countries if c.get("fallback"))
+    return {c["code"] for c in countries if c.get("open") is True}, fallback
+
+
 def import_backup(source):
     raw = json.loads(Path(source).read_text(encoding="utf-8"))
+    open_codes, fallback = open_countries(source)
     records = []
     for venue in raw:
+        # A closed country's halls stay in the app repo until it opens.
+        if (venue.get("country") or fallback) not in open_codes:
+            continue
         record = {}
         for field in PUBLIC_FIELDS:
             value = venue.get(field)
@@ -178,8 +193,9 @@ def import_backup(source):
     return json.dumps(records, ensure_ascii=False, indent=2) + "\n"
 
 
-def load_venues():
-    venues = json.loads(DATA.read_text(encoding="utf-8"))
+def load_venues(text=None):
+    """The checked halls of data/venues.json, or of an import's text before anything is written."""
+    venues = json.loads(DATA.read_text(encoding="utf-8") if text is None else text)
     errors, seen = [], set()
     for v in venues:
         vid = v.get("id", "?")
@@ -201,7 +217,8 @@ def load_venues():
             if field in v and not is_carom_fact(field, v[field]):
                 errors.append(f"{vid}: {field} must be a count of 1 or more, or true; leave it out otherwise")
     if errors:
-        sys.exit("data/venues.json is invalid:\n  " + "\n  ".join(errors))
+        what = "data/venues.json is invalid" if text is None else "the import is invalid; data/venues.json is unchanged"
+        sys.exit(f"{what}:\n  " + "\n  ".join(errors))
     return venues
 
 
@@ -962,8 +979,8 @@ def with_store_links(name, text):
     return text
 
 
-def render():
-    cities = group_by_city(load_venues())
+def render(data=None):
+    cities = group_by_city(load_venues(data))
     files = {ROOT / "sitemap.xml": sitemap(cities)}
     for name in HAND_PAGES:
         text = (ROOT / name).read_text(encoding="utf-8")
@@ -1011,22 +1028,22 @@ def main():
     parser.add_argument("--check", action="store_true", help="exit 1 if any page is out of date")
     args = parser.parse_args()
 
-    if args.source:
-        DATA.parent.mkdir(parents=True, exist_ok=True)
-        DATA.write_text(import_backup(args.source), encoding="utf-8", newline="\n")
-        print(f"Imported {args.source} into {DATA.relative_to(ROOT)}")
-
-    files = render()
+    # An import is checked like every page and written with them, so a stopped build writes nothing.
+    data = import_backup(args.source) if args.source else None
+    files = render(data)
     stale = stale_generated_dirs(files)
+    outputs = files if data is None else {DATA: data, **files}
     if args.check:
-        outdated = [p for p, t in files.items() if not p.is_file() or p.read_text(encoding="utf-8") != t]
+        outdated = [p for p, t in outputs.items() if not p.is_file() or p.read_text(encoding="utf-8") != t]
         for p in outdated + stale:
             print(f"out of date: {p.relative_to(ROOT)}")
         sys.exit(1 if outdated or stale else 0)
 
-    for path, text in files.items():
+    for path, text in outputs.items():
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(text, encoding="utf-8", newline="\n")
+    if data is not None:
+        print(f"Imported {args.source} into {DATA.relative_to(ROOT)}")
     for folder in stale:
         shutil.rmtree(folder)
         print(f"removed {folder.relative_to(ROOT)}")

@@ -47,7 +47,11 @@ That refreshes `data/venues.json`, rewrites every page under `mpiliardo/` and
 home pages, fills the city grid on both homes, tags the store links on the hand
 pages (`HAND_PAGES`), and removes
 the folder of any city that no longer has a hall. Review
-the diff, commit, and open a pull request.
+the diff, commit, and open a pull request. The import reads `countries.json`
+beside the backup, the app repo's `data/countries.json`, and nothing is written
+until every check passes, so an import that stops leaves the checkout as it was.
+With `--check` it writes nothing and names `data/venues.json` with the pages it
+would change.
 
 Other modes:
 
@@ -98,6 +102,11 @@ that way; `tools/test_site.py` fails on the old green and gold palette.
   that contains them. Carom leaves only as a fact the site shows: `caromTables`
   of 1 or more, or `hasCarom: true` (known to have carom, count unknown), the
   app's `Venue.offersCarom`. A count of 0 or an unknown stays in the app repo.
+- **Only the halls of open countries leave the app repo.** `--import` skips every
+  hall whose `country` is not `open: true` in `countries.json` (a hall that names
+  no country is in the fallback country, as the app reads it), so a closed
+  country's halls wait there until it opens. Then its cities need lines in
+  `CITIES`, and the build stops on each one that lacks it.
 - **No maps.** No embeds, no Google Maps links and no coordinates in pages or
   structured data. The venue data licence rules in the app repo's `CLAUDE.md`
   are the reason.
