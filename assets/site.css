@@ -146,6 +146,7 @@ p{margin:0 0 1em}
 @media (hover:hover){.city-grid a:hover{border-color:var(--accent);transform:translateY(-2px)}}
 .city{font-weight:600}
 .count{color:var(--accent);font-size:.85rem;font-weight:500}
+.country+.country{margin-top:32px}
 
 /* FAQ */
 .faq{max-width:760px;margin:0 auto}

@@ -395,7 +395,7 @@ class SearchTest(unittest.TestCase):
 # and the support desk's own calendar ("a Greek public holiday").
 COUNTRY = re.compile(r"Greece|Ελλάδ|ΕΛΛΑΔ|(?<!in )\bGreek\b(?!,?\s+(?:Greeklish|and\s+English|or\s+in\s+English)"
                      r"|\s+public\s+holiday)")
-# They list one country's halls and say which.
+# They list each country's halls under its name.
 NAMES_ITS_COUNTRY = {"mpiliardo/index.html", "en/billiards/index.html"}
 # Exact strings that may name the country, only on the page that carries each: the postal
 # contact line, the data controller's address and which authority a player in Greece complains
@@ -410,7 +410,7 @@ ALLOWED = {
 
 
 class CountryTest(unittest.TestCase):
-    """Cyprus opens next: no page names a country, but where that is the point."""
+    """Halls in more than one country: no page names a country, but where that is the point."""
 
     def test_footers_name_no_country(self):
         for rel, text in published(".html"):

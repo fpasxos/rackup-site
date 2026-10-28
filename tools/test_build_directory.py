@@ -30,15 +30,16 @@ GREEK_APP_STORE = "https://apps.apple.com/gr/app/"
 GO_STORE_BASE = '"https://apps.apple.com/" + storefrontOf(hall) + "/app/"'
 
 
-def hall(vid, address, city="Larissa"):
-    return {"id": vid, "name": vid.title(), "city": city, "address": address, "sortOrder": 1}
+def hall(vid, address, city="Larissa", country="GR"):
+    return {"id": vid, "name": vid.title(), "city": city, "country": country, "address": address, "sortOrder": 1}
 
 
 # The app repo's data/countries.json, cut to what --import reads.
-COUNTRIES = [{"code": "GR", "fallback": True, "open": True}, {"code": "CY", "open": False}]
+COUNTRIES = [{"code": "GR", "fallback": True, "open": True}, {"code": "CY", "open": True},
+             {"code": "DE", "open": False}]
 # A made-up hall of a closed country, in a city CITIES does not have.
-NICOSIA = {"id": "venue-cy-nic-test", "name": "Test Hall", "city": "Nicosia", "country": "CY",
-           "address": "Odos 1", "sortOrder": 900}
+BERLIN = {"id": "venue-de-ber-test", "name": "Test Hall", "city": "Berlin", "country": "DE",
+          "address": "Teststrasse 1", "sortOrder": 900}
 
 
 def app_data(folder, backup, countries=COUNTRIES):
@@ -115,8 +116,14 @@ class BuildDirectoryTest(unittest.TestCase):
                    "sortOrder": 3, "latitude": 39.3, "longitude": 22.9, "hours": "10-2",
                    "pricePerHourEuros": 6, "amenities": ["bar"], "tables": 8, "phone": ""}]
         (record,) = json.loads(imported(backup))
-        self.assertEqual(record, {"id": "v1", "name": "Club - One", "city": "Volos",
+        # A hall that names no country is in the fallback country, as the app reads it.
+        self.assertEqual(record, {"id": "v1", "name": "Club - One", "city": "Volos", "country": "GR",
                                   "address": "Odos 1", "sortOrder": 3})
+
+    def test_import_keeps_each_halls_own_country(self):
+        backup = [dict(hall("venue-cy-nic-a", "Odos 1", "Nicosia", "CY"), sortOrder=2), hall("venue-b", "Odos 2")]
+        self.assertEqual([(r["id"], r["country"]) for r in json.loads(imported(backup))],
+                         [("venue-b", "GR"), ("venue-cy-nic-a", "CY")])
 
     def test_one_district_among_several_halls_is_not_listed(self):
         halls = [hall("a", "Odos 1"), hall("b", "Odos 2"), hall("c", "Papagou 1A, Giannouli")]
@@ -310,8 +317,8 @@ class ImportCountryTest(unittest.TestCase):
 
     def setUp(self):
         self.committed = b.DATA.read_text(encoding="utf-8")
-        # The committed halls as the app's backup holds them, country included, and a Cypriot one.
-        self.backup = [dict(v, country="GR") for v in json.loads(self.committed)] + [dict(NICOSIA)]
+        # The committed halls as the app's backup holds them, country included, and one of a closed country.
+        self.backup = [dict(v) for v in json.loads(self.committed)] + [dict(BERLIN)]
 
     def test_a_closed_countrys_halls_are_skipped_and_the_import_runs_clean(self):
         self.assertEqual(imported(self.backup), self.committed)
@@ -320,16 +327,17 @@ class ImportCountryTest(unittest.TestCase):
         self.assertEqual((code, printed), (0, ""), "the import would change data/venues.json or a page")
 
     def test_an_open_countrys_unknown_city_stops_the_import_before_it_writes(self):
-        cyprus_open = [dict(c, open=True) for c in COUNTRIES]
+        all_open = [dict(c, open=True) for c in COUNTRIES]
         with tempfile.TemporaryDirectory() as tmp:
-            site, source = Path(tmp, "site"), app_data(Path(tmp, "app"), self.backup, cyprus_open)
+            site, source = Path(tmp, "site"), app_data(Path(tmp, "app"), self.backup, all_open)
             data = site / "data" / "venues.json"
             data.parent.mkdir(parents=True)
             data.write_text(self.committed, encoding="utf-8")
             # ROOT too, so nothing this run writes can reach the real site.
             with mock.patch.multiple(b, ROOT=site, DATA=data):
                 code, _ = generate("--import", str(source))
-            self.assertIn("venue-cy-nic-test: unknown city 'Nicosia'", str(code))
+            self.assertIn("venue-de-ber-test: unknown city 'Berlin'", str(code))
+            self.assertIn("venue-de-ber-test: unknown country 'DE'", str(code))
             self.assertEqual(data.read_text(encoding="utf-8"), self.committed, "a stopped import wrote the data")
 
     def test_a_check_with_an_import_writes_nothing_and_reports_the_data(self):
@@ -340,6 +348,111 @@ class ImportCountryTest(unittest.TestCase):
             code, printed = generate("--import", str(app_data(tmp, self.backup)), "--check")
         self.assertEqual(b.DATA.read_bytes(), before, "--check wrote data/venues.json")
         self.assertEqual((code, printed), (1, f"out of date: {Path('data', 'venues.json')}\n"))
+
+
+def graph(text):
+    """The nodes of a page's JSON-LD."""
+    return json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', text, re.S).group(1))["@graph"]
+
+
+class CountryPagesTest(unittest.TestCase):
+    """Each country's halls: their own city pages, a heading on the directory, their country in the data."""
+
+    @staticmethod
+    def two_countries():
+        """Two Greek cities and two Cypriot ones, as group_by_city returns them. One hall has carom."""
+        return b.group_by_city([dict(hall("venue-ath-a", "Odos 1", "Athens"), caromTables=2),
+                                hall("venue-ath-b", "Odos 2", "Athens"), hall("venue-lar-a", "Odos 3"),
+                                hall("venue-cy-nic-a", "Odos 4", "Nicosia", "CY"),
+                                hall("venue-cy-lim-a", "Odos 5", "Limassol", "CY")])
+
+    def test_every_hall_names_a_known_country_and_every_city_has_one(self):
+        country_of_city = {}
+        for v in b.load_venues():
+            self.assertIn(v["country"], b.COUNTRIES, v["id"])
+            self.assertEqual(country_of_city.setdefault(v["city"], v["country"]), v["country"], v["id"])
+
+    def test_the_build_refuses_a_hall_with_no_known_country_or_a_city_in_two(self):
+        cases = {"venue-x: unknown country None": [hall("venue-x", "Odos 1", country=None)],
+                 "venue-x: unknown country 'XX'": [hall("venue-x", "Odos 1", country="XX")],
+                 "venue-y: Larissa is in GR on another hall, not in CY": [hall("venue-x", "Odos 1"),
+                                                                           hall("venue-y", "Odos 2", country="CY")]}
+        for message, venues in cases.items():
+            with self.subTest(message), tempfile.TemporaryDirectory() as tmp:
+                data = Path(tmp, "venues.json")
+                data.write_text(json.dumps(venues), encoding="utf-8")
+                with mock.patch.object(b, "DATA", data), self.assertRaises(SystemExit) as stop:
+                    b.load_venues()
+                self.assertIn(message, str(stop.exception.code))
+
+    def test_structured_data_names_each_halls_own_country(self):
+        cyprus = hall("venue-cy-nic-a", "Odos 4", "Nicosia", "CY")
+        self.assertEqual(b.business(cyprus)["address"], {"@type": "PostalAddress", "streetAddress": "Odos 4",
+                                                         "addressLocality": "Λευκωσία", "addressCountry": "CY"})
+        for v in b.load_venues():
+            self.assertEqual(b.business(v)["address"]["addressCountry"], v["country"], v["id"])
+
+    def test_the_directory_gives_each_country_a_heading_over_its_cities(self):
+        cities = self.two_countries()
+        expected = {"el": ("Αίθουσες μπιλιάρδου στην Ελλάδα και στην Κύπρο", "", ("Ελλάδα", "Κύπρος")),
+                    "en": ("Billiard halls in Greece and Cyprus", " by city", ("Greece", "Cyprus"))}
+        for lang, (h1, by_city, headings) in expected.items():
+            text = b.index_page(cities, lang)
+            self.assertIn(f"<h1>{h1}</h1>", text)
+            self.assertIn(f"<title>{h1}{by_city} | RackUp</title>", text)
+            sections = re.findall(r'<section class="country" id="([a-z]{2})">\n<h3>([^<]*)</h3>\n'
+                                  r'<ul class="city-grid">\n(.*?)\n</ul>\n</section>', text, re.S)
+            self.assertEqual([(code, name) for code, name, _ in sections], [("gr", headings[0]), ("cy", headings[1])])
+            grids = [re.findall(r'<a href="([^"]*)/">', grid) for _, _, grid in sections]
+            self.assertEqual(grids, [["athens", "larissa"], ["lemesos", "lefkosia"]], lang)
+            (listing,) = [n for n in graph(text) if n["@type"] == "ItemList"]
+            self.assertEqual([item["url"].rsplit("/", 2)[1] for item in listing["itemListElement"]],
+                             grids[0] + grids[1], "the structured list follows the page")
+        greece = {city: halls for city, halls in cities.items() if b.country_of(halls) == "GR"}
+        alone = b.index_page(greece, "el")
+        self.assertNotIn('<section class="country"', alone, "a lone country needs no heading of its own")
+        self.assertIn("<title>Αίθουσες μπιλιάρδου στην Ελλάδα ανά πόλη | RackUp</title>", alone)
+
+    def test_other_cities_are_the_pages_own_countrys(self):
+        cities = self.two_countries()
+        for city, others in {"Athens": ["larissa"], "Nicosia": ["lemesos"]}.items():
+            for lang in ("el", "en"):
+                text = b.city_page(city, cities[city], cities, lang)
+                nav = re.search(r'<nav class="other".*?</nav>', text, re.S).group(0)
+                self.assertEqual(re.findall(r'href="\.\./([^/]*)/"', nav), others, f"{city} {lang}")
+        alone = b.city_page("Nicosia", cities["Nicosia"], {"Nicosia": cities["Nicosia"]}, "el")
+        self.assertNotIn('<nav class="other"', alone, "a country's only city has no other cities to list")
+        real = b.group_by_city(b.load_venues())
+        for city, halls in real.items():
+            mine = {b.CITIES[c][0] for c in real if c != city and b.country_of(real[c]) == b.country_of(halls)}
+            nav = re.search(r'<nav class="other".*?</nav>', b.city_page(city, halls, real, "en"), re.S).group(0)
+            self.assertEqual(set(re.findall(r'href="\.\./([^/]*)/"', nav)), mine, city)
+
+    def test_homes_name_every_country_the_directory_lists(self):
+        cities = b.group_by_city(b.load_venues())
+        files = b.render()
+        for home in b.HOMES:
+            (app,) = [n for n in graph(files[b.ROOT / home]) if n["@type"] == "MobileApplication"]
+            self.assertEqual(app["countriesSupported"], list(b.by_country(cities)), home)
+        with self.assertRaises(SystemExit):
+            b.home_with_countries("<p>no structured data</p>", cities)
+
+    def test_the_sitemap_lists_every_city_page_once_country_by_country(self):
+        cities = b.group_by_city(b.load_venues())
+        locs = re.findall(r"<loc>([^<]+)</loc>", b.render()[b.ROOT / "sitemap.xml"])
+        for city in cities:
+            for root in (b.EL_ROOT, b.EN_ROOT):
+                self.assertEqual(locs.count(b.url(f"{root}/{b.CITIES[city][0]}/")), 1, f"{root} {city}")
+        country_of_slug = {b.CITIES[c][0]: b.country_of(h) for c, h in cities.items()}
+        listed = [country_of_slug[loc.rsplit("/", 2)[1]] for loc in locs if loc.startswith(b.url(f"{b.EL_ROOT}/"))
+                  and loc != b.url(f"{b.EL_ROOT}/")]
+        self.assertEqual(listed, sorted(listed, key=list(b.by_country(cities)).index))
+
+    def test_english_pages_mark_greek_text_and_only_greek_text_as_greek(self):
+        latin, greek = hall("venue-a", "Kantaras 12"), hall("venue-b", "Νικολάου Έλληνα 51, Έμπα")
+        self.assertIn('<p class="addr">Kantaras 12</p>', b.hall_item(latin, "en"))
+        self.assertIn('<p class="addr" lang="el">Νικολάου Έλληνα 51, Έμπα</p>', b.hall_item(greek, "en"))
+        self.assertIn('<p class="addr">Νικολάου Έλληνα 51, Έμπα</p>', b.hall_item(greek, "el"))
 
 
 if __name__ == "__main__":

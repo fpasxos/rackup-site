@@ -18,7 +18,7 @@ TAIL_EN = "Find an opponent with the free RackUp app."
 
 
 def hall(vid, address, phone=None, city="Larissa", name=None):
-    v = {"id": vid, "name": name or vid.title(), "city": city, "address": address, "sortOrder": 1}
+    v = {"id": vid, "name": name or vid.title(), "city": city, "country": "GR", "address": address, "sortOrder": 1}
     if phone:
         v["phone"] = phone
     return v
@@ -157,13 +157,15 @@ class LeadTest(unittest.TestCase):
         self.assertEqual(self.lead("Larissa", covered, "el"),
                          "Λάρισα: 2 αίθουσες μπιλιάρδου στον κατάλογο του RackUp, σε Kalamaria και Pylaia. "
                          "Παρακάτω θα βρεις τα μπιλιάρδα με τις διευθύνσεις και τα τηλέφωνά τους.")
+        # Districts in Latin letters, as many Cypriot halls write them, stay in the page's language.
         self.assertEqual(self.lead("Larissa", covered, "en"),
                          'Larissa (<span lang="el">Λάρισα</span>): RackUp\'s directory lists 2 billiard halls, in '
-                         '<span lang="el">Kalamaria</span> and <span lang="el">Pylaia</span>. '
-                         "Below, each hall comes with its address and phone number.")
+                         "Kalamaria and Pylaia. Below, each hall comes with its address and phone number.")
         unplaced = covered + [hall("c", "Odos 3")]
         self.assertIn("σε Kalamaria, Pylaia και αλλού.", self.lead("Larissa", unplaced, "el"))
-        self.assertIn('<span lang="el">Pylaia</span> and elsewhere.', self.lead("Larissa", unplaced, "en"))
+        self.assertIn("Kalamaria, Pylaia and elsewhere.", self.lead("Larissa", unplaced, "en"))
+        greek = [hall("a", "Odos 1, Καλαμαριά"), hall("b", "Odos 2, Pylaia")]
+        self.assertIn('in <span lang="el">Καλαμαριά</span> and Pylaia.', self.lead("Larissa", greek, "en"))
         many = [hall(f"h{i}", f"Odos {i}, {area}") for i, area in enumerate(("Ano", "Kato", "Mesa", "Exo", "Pano"))]
         self.assertIn("σε Ano, Kato, Mesa, Exo και αλλού. Παρακάτω θα βρεις τα μπιλιάρδα με τις "
                       "διευθύνσεις τους.", self.lead("Larissa", many, "el"))
