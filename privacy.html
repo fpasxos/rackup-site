@@ -35,11 +35,17 @@
 <main id="main" class="container">
 <article class="prose">
   <h1>RackUp Privacy Policy</h1>
-  <p class="muted">Effective date: 27 October 2026 · Applies to the RackUp apps for Android
+  <p class="muted">Effective date: XX November 2026 · Applies to the RackUp apps for Android
   and iPhone (<code>com.rackup.app</code>)</p>
   <p lang="el"><a href="#el">Στα Ελληνικά</a></p>
 
   <div class="card">
+    <p><strong>What changed on XX November 2026.</strong> Ahead of version 2.4.3 of the apps,
+    under <em>Notifications</em>: when someone posts an open match at a hall in the city on your
+    profile, we may send you a push about it, the <strong>city alert</strong>, at most once a day
+    and only from 10:00 to 21:30, until you turn off <em>Games in my city</em> in Settings. To
+    keep to one a day, our server keeps, under your account, the day and time of the last city
+    alert it sent you, and nothing about the match.</p>
     <p><strong>What changed on 27 October 2026.</strong> Three things, ahead of version 2.4.2 of
     the apps. First, under <em>Location</em>: if you have already allowed location and you are in
     another country where RackUp is open, the app may also use it on your phone to offer you a
@@ -361,7 +367,8 @@
   with your language, the platform, the app version and build, and the time it was last updated,
   which the app refreshes each time it starts, so we can send you push notifications about join
   requests, match updates, direct challenges, quick messages, reminders, saved search alerts, new
-  games from players you follow and, for halls you starred, new games and check-ins there. With
+  games from players you follow, from version 2.4.3 new games in your city and, for halls you
+  starred, new games and check-ins there. With
   the app version, that time also lets us count updates as totals, as described under <em>Your
   account</em>. You control notifications with the switches in Settings and with your device's
   notification permission, with two exceptions to the switches: a no-show report against you
@@ -377,6 +384,20 @@
   A quick message comes only as a push, showing the sender's name and the message in your
   language, and adds nothing to your activity feed. The pushes for both follow the <em>Match
   updates</em> switch.</p>
+  <p>From version 2.4.3 of the apps, when someone posts an open match at a hall in the city on
+  your profile, we may send you a <strong>city alert</strong>: a push naming the player who posted
+  it, the hall and when the game is, in your language. It comes only as a push and adds nothing to
+  your activity feed. It is only for the games you play, as on your profile, or for pool if you
+  have not picked any, and never for your own match or one posted by a player you blocked or who
+  blocked you. Nor do you get it for a match that already reaches you through a hall you starred,
+  a saved search, your looking-for-a-game post or a player you follow. You get at most one a day,
+  and only from 10:00 to 21:30 at the hall's local time. A match posted outside those hours waits
+  until 10:00 and is announced then only if it is still open and has not started; while it waits,
+  our server keeps only the match's id and when it was put on hold. The city alert is on until you
+  turn off <em>Games in my city</em> in Settings. To keep to one a day, our server keeps, under
+  your account, the day of the last city alert it sent you and the time it sent it, never which
+  match it was about. No app can read that record, each new city alert replaces it, and deleting
+  your account deletes it.</p>
 
   <h3>Crash diagnostics (both apps)</h3>
   <p>Both apps include <strong>Firebase Crashlytics</strong>. When the app crashes or hits a
@@ -664,6 +685,7 @@
     <li>your profile photo file in Cloud Storage;</li>
     <li>your notification tokens, notification preferences, activity feed, saved searches,
         starred venues, weekly schedule and blocked list;</li>
+    <li>the day and time of the last city alert we sent you;</li>
     <li>your follows of other players, and other players' follows of you;</li>
     <li>the ratings other players gave you;</li>
     <li>every match you hosted and every open challenge you posted, along with the requests other
@@ -754,10 +776,13 @@
 
   <h2>Changes to this policy</h2>
   <p>If this policy changes, the new version is published at this address with a new effective
-  date, and we say at the top what changed. This version, dated 27 October 2026, adds that from
+  date, and we say at the top what changed. This version, dated XX November 2026, adds the city
+  alert, a push about a new match in the city on your profile from version 2.4.3 of the apps, and
+  the record of the last one that our server keeps so that it sends at most one a day, and
+  supersedes the version dated 27 October 2026, which added that from
   version 2.4.2 the app may also use location you have already allowed to offer you a visit to
   another country where RackUp is open, and your phone's region to ask whether you play there,
-  names the supervisory authority for players who live in Cyprus, and supersedes the version
+  and named the supervisory authority for players who live in Cyprus, and superseded the version
   dated 21 October 2026, which added how the
   apps pick the country whose games a guest sees and the country sign-up suggests, ahead of
   version 2.4.0, and superseded the version dated 20 October 2026, which added that the
@@ -884,7 +909,19 @@
   εφαρμογής, μας δείχνει, μόνο ως συνολικούς αριθμούς, πόσοι από όσους άνοιξαν πρόσφατα την
   εφαρμογή την έχουν ενημερώσει, ώστε να ξέρουμε πότε μπορούμε να βγάλουμε μια αλλαγή. Νομική
   βάση και γι' αυτό είναι το έννομο συμφέρον μας, και μπορείς να αντιταχθείς όποτε θέλεις. Η
-  έκδοση της εφαρμογής που κρατάμε στον λογαριασμό σου συνδέεται με αυτόν. Και στις δύο εφαρμογές
+  έκδοση της εφαρμογής που κρατάμε στον λογαριασμό σου συνδέεται με αυτόν. Από την έκδοση 2.4.3,
+  όταν κάποιος ανεβάζει ανοιχτό ματς σε αίθουσα της πόλης που έχεις στο προφίλ σου, μπορεί να σου
+  στείλουμε ειδοποίηση push με το όνομά του, την αίθουσα και την ώρα. Τη στέλνουμε μόνο για τα
+  παιχνίδια που παίζεις, ή για το αμερικάνικο αν δεν έχεις διαλέξει κανένα, το πολύ μία φορά την
+  ημέρα και μόνο από τις 10:00 έως τις 21:30, τοπική ώρα της αίθουσας. Ένα ματς που ανεβαίνει
+  εκτός αυτών των ωρών περιμένει ως τις 10:00, και η ειδοποίηση φεύγει τότε μόνο αν είναι ακόμη
+  ανοιχτό και δεν έχει αρχίσει. Δεν τη λαμβάνεις για δικό σου ματς, για ματς παίκτη που έχεις
+  αποκλείσει ή που σε έχει αποκλείσει, ούτε όταν σε ειδοποιεί ήδη γι' αυτό μια αγαπημένη σου
+  αίθουσα, μια αποθηκευμένη αναζήτηση, η δήλωσή σου ότι ψάχνεις παιχνίδι ή ένας παίκτης που
+  ακολουθείς. Την κλείνεις όποτε θέλεις με το «Ματς στην πόλη μου» στις Ρυθμίσεις, που είναι
+  αρχικά ανοιχτό. Για να μη στέλνουμε πάνω από μία την ημέρα, ο διακομιστής μας κρατά στον
+  λογαριασμό σου την ημέρα και την ώρα της τελευταίας τέτοιας ειδοποίησης, χωρίς να γράφει ποιο
+  ματς ήταν, και τις σβήνει όταν διαγράψεις τον λογαριασμό σου. Και στις δύο εφαρμογές
   (στο iPhone από την έκδοση 2.2.0), αν επιτρέψεις την τοποθεσία, η κατά προσέγγιση τοποθεσία σου
   χρησιμεύει για να βλέπεις πρώτα τις αίθουσες και τα ματς της πόλης σου, και <strong>η εφαρμογή
   δεν μας στέλνει ποτέ τη θέση σου</strong>. Από την έκδοση 2.4.2, αν έχεις ήδη επιτρέψει την
