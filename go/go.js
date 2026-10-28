@@ -119,8 +119,8 @@
   // Every link names a storefront, or it falls back to the US store and 404s on a computer. A slug
   // that starts with a listed code and a hyphen opens that store; any other opens the Greek one.
   // List a country only once its appStoreOpen is true in the app repo's data/countries.json: an
-  // unsold storefront says "not available". Cyprus joins as cy: "cy" when its App Store opens.
-  var STOREFRONTS = {};
+  // unsold storefront says "not available". Take a country out again if its appStoreOpen goes false.
+  var STOREFRONTS = { cy: "cy" };
   var DEFAULT_STOREFRONT = "gr";
 
   function storefrontOf(hall) {

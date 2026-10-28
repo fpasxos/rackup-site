@@ -171,11 +171,11 @@ builder: the static link in `m/index.html` carries `ct=share` under the same `pt
 and `tools/match_page.test.js` reads the token from `go/go.js`, so a new token
 fails that test until the link changes too.
 
-Every App Store URL names the Greek storefront, `https://apps.apple.com/gr/app/...`:
+Every App Store URL on a page names the Greek storefront, `https://apps.apple.com/gr/app/...`:
 the tagged links, and the plain one in the homes' structured data (`sameAs`).
-RackUp is only in the Greek App Store, and a link without a storefront falls back
-to the US store on the web, which answers 404 on a computer (an iPhone opens the
-App Store app either way). The tagged form is
+A link without a storefront falls back to the US store on the web, which answers
+404 on a computer (an iPhone opens the App Store app either way). Only `go/go.js`
+opens another country's storefront (Store QR codes, below). The tagged form is
 `https://apps.apple.com/gr/app/apple-store/id6800614202?pt=<pt>&ct=<campaign>&mt=8`;
 Apple redirects it to the listing and keeps `pt` and `ct`. The tests fail on any
 published file (page, script, `sitemap.xml`, `robots.txt`) that names the App Store
@@ -218,6 +218,12 @@ most 30 characters; anything else counts as the general code.
 - The Play links and the tagged App Store links must match what the app repo's
   `store-assets/hall-links/hall_links.py` builds. `tools/go_page.test.js` pins
   them as literals, so change both together.
+- `STOREFRONTS` in `go/go.js` lists the countries whose App Store sells RackUp,
+  now `cy`; `appStoreOpen` in the app repo's `data/countries.json` says which.
+  A slug that starts with a listed code and a hyphen (`cy-nic-room9`) opens that
+  storefront, any other the Greek one. List a country only once it is sold there,
+  since an unsold storefront says "not available", and take it out again if the
+  flag goes back to false.
 - `PROVIDER_TOKEN` in `go/go.js` holds the `pt` from App Store Connect,
   `129299799`, so every App Store link built here carries a campaign: the hall
   slug, or `general` for the general code (ad and bio links, below, add a
