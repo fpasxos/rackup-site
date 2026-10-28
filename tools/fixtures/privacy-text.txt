@@ -1,5 +1,5 @@
-RackUp Privacy Policy Effective date: XX November 2026 · Applies to the RackUp apps for Android and
-iPhone (com.rackup.app) What changed on XX November 2026. Ahead of version 2.4.3 of the apps, under
+RackUp Privacy Policy Effective date: 28 October 2026 · Applies to the RackUp apps for Android and
+iPhone (com.rackup.app) What changed on 28 October 2026. Ahead of version 2.4.3 of the apps, under
 Notifications: when someone posts an open match at a hall in the city on your profile, we may send
 you a push about it, the city alert, at most once a day and only from 10:00 to 21:30, until you turn
 off Games in my city in Settings. To keep to one a day, our server keeps, under your account, the
@@ -506,19 +506,19 @@ additionally verifies itself with Firebase App Check. We are a small team and we
 be immune to every risk, but if a breach affects your personal data we will notify the Hellenic Data
 Protection Authority and, where the law requires it, you. Changes to this policy If this policy
 changes, the new version is published at this address with a new effective date, and we say at the
-top what changed. This version, dated XX November 2026, adds the city alert, a push about a new
-match in the city on your profile from version 2.4.3 of the apps, and the record of the last one
-that our server keeps so that it sends at most one a day, and supersedes the version dated 27
-October 2026, which added that from version 2.4.2 the app may also use location you have already
-allowed to offer you a visit to another country where RackUp is open, and your phone's region to ask
-whether you play there, and named the supervisory authority for players who live in Cyprus, and
-superseded the version dated 21 October 2026, which added how the apps pick the country whose games
-a guest sees and the country sign-up suggests, ahead of version 2.4.0, and superseded the version
-dated 20 October 2026, which added that the tags of our Facebook and Instagram ad links say where
-the ad was shown, and superseded the version dated 16 October 2026, which added the country on your
-profile record, your player card and what you post or save, and the copies of open games kept for
-guests, ahead of version 2.3.3 of the apps, and superseded the version dated 15 October 2026, which
-said what the notification token's refresh time is also used for, that the city on your profile is
+top what changed. This version, dated 28 October 2026, adds the city alert, a push about a new match
+in the city on your profile from version 2.4.3 of the apps, and the record of the last one that our
+server keeps so that it sends at most one a day, and supersedes the version dated 27 October 2026,
+which added that from version 2.4.2 the app may also use location you have already allowed to offer
+you a visit to another country where RackUp is open, and your phone's region to ask whether you play
+there, and named the supervisory authority for players who live in Cyprus, and superseded the
+version dated 21 October 2026, which added how the apps pick the country whose games a guest sees
+and the country sign-up suggests, ahead of version 2.4.0, and superseded the version dated 20
+October 2026, which added that the tags of our Facebook and Instagram ad links say where the ad was
+shown, and superseded the version dated 16 October 2026, which added the country on your profile
+record, your player card and what you post or save, and the copies of open games kept for guests,
+ahead of version 2.3.3 of the apps, and superseded the version dated 15 October 2026, which said
+what the notification token's refresh time is also used for, that the city on your profile is
 approximate location, which halls we keep, that a saved search can keep a city suggested from your
 position, that the Android app stores its notification token whether or not notifications are
 allowed, that the token and your notifications rest on our contract with you, that the app version
