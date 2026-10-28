@@ -8,7 +8,7 @@ path on `getrackup.com`, so links already in the app and on QR codes keep workin
 
 | Path | What it is | Edited by |
 |---|---|---|
-| `index.html` | Greek home page, served at `/` | hand, except the `data-count` spans, the city grid and the store links |
+| `index.html` | Greek home page, served at `/` | hand, except the `data-count` spans, `countriesSupported`, the city grid and the store links |
 | `en/index.html` | English home page, served at `/en/` | hand, likewise |
 | `404.html` | Bilingual page GitHub Pages serves for any missing path (root-relative links only) | hand, except the store links |
 | `support.html`, `privacy.html` | Support and privacy policy (store listings link here, so keep the URLs) | hand, except the store links in `support.html` |
@@ -44,7 +44,8 @@ python tools/build_directory.py --import ../rackup/data/venues-backup.json
 
 That refreshes `data/venues.json`, rewrites every page under `mpiliardo/` and
 `en/billiards/` and the two carom pages, rewrites `sitemap.xml`, updates the hall and city counts on the
-home pages, fills the city grid on both homes, tags the store links on the hand
+home pages, fills the city grid on both homes, names every listed country in the
+homes' `countriesSupported`, tags the store links on the hand
 pages (`HAND_PAGES`), and removes
 the folder of any city that no longer has a hall. Review
 the diff, commit, and open a pull request. The import reads `countries.json`
@@ -96,7 +97,7 @@ that way; `tools/test_site.py` fails on the old green and gold palette.
 
 ## Rules the generator enforces
 
-- **Only name, city, address, sort order, phone, website and carom leave the
+- **Only name, city, country, address, sort order, phone, website and carom leave the
   app repo.** This repo is public, so `--import` drops coordinates, prices, hours,
   amenities and every other field, and the build refuses a `data/venues.json`
   that contains them. Carom leaves only as a fact the site shows: `caromTables`
@@ -104,18 +105,23 @@ that way; `tools/test_site.py` fails on the old green and gold palette.
   app's `Venue.offersCarom`. A count of 0 or an unknown stays in the app repo.
 - **Only the halls of open countries leave the app repo.** `--import` skips every
   hall whose `country` is not `open: true` in `countries.json` (a hall that names
-  no country is in the fallback country, as the app reads it), so a closed
-  country's halls wait there until it opens. Then its cities need lines in
-  `CITIES`, and the build stops on each one that lacks it.
+  no country is in the fallback country, as the app reads it, and is written with
+  the fallback's code), so a closed country's halls wait there until it opens.
+  Then the country needs a line in `COUNTRIES` and its cities lines in `CITIES`,
+  and the build stops on each one that lacks it.
+- **Each country is its own space.** Once the directory lists more than one
+  country, its index gives each country a heading over its own cities, named
+  from `COUNTRIES`, and a city page's "other cities" are its own country's. Every
+  hall of a city must name the same country, or the build stops.
 - **No maps.** No embeds, no Google Maps links and no coordinates in pages or
   structured data. The venue data licence rules in the app repo's `CLAUDE.md`
   are the reason.
 - **Nothing that is not in the data.** A phone or website appears only when the
   venue record has one, and copy promises phones only when every hall in the
   city has one. Each hall's structured data is a `SportsActivityLocation` (a
-  `LocalBusiness` type) with only name, address, city, and phone or website
-  when present; its `@id` is the hall's anchor on the Greek city page, the
-  same in both languages.
+  `LocalBusiness` type) with only name, address, city, the hall's own country,
+  and phone or website when present; its `@id` is the hall's anchor on the
+  Greek city page, the same in both languages.
 - **Carom only where the data says so.** A hall card carries a carom chip, the
   carom page lists it and its city page links the carom page only when the
   hall offers carom; the chip gives the table count only when `caromTables` is
@@ -137,8 +143,10 @@ that way; `tools/test_site.py` fails on the old green and gold palette.
   `python tools/test_directory_design.py --capture` and read the diff.
 - **A new city needs a line in `CITIES`** at the top of the script: its URL slug,
   Greek name and the Greek "in the city" phrase (`στη Θεσσαλονίκη`,
-  `στον Βόλο`). The build stops and says so if one is missing, mirroring
-  `GreekCity.kt` in the app.
+  `στον Βόλο`), all three as the city has them in the app's `data/countries.json`
+  (`slug`, `names.el`, `phraseIn.el`). A new country needs a line in `COUNTRIES`:
+  its Greek and English names and the Greek "in the country" phrase
+  (`στην Κύπρο`). The build stops and says so if either is missing.
 - **No en or em dashes** in any generated page. The build stops if one appears.
 
 ## Store links on the site

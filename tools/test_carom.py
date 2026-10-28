@@ -23,7 +23,7 @@ LINK = re.compile(r'<p class="tags"><a class="chip chip-link" href="([^"]*)">'
 
 
 def hall(vid, city="Larissa", **carom):
-    v = {"id": vid, "name": vid.title(), "city": city, "address": "Odos 1", "sortOrder": 1}
+    v = {"id": vid, "name": vid.title(), "city": city, "country": "GR", "address": "Odos 1", "sortOrder": 1}
     v.update(carom)
     return v
 
