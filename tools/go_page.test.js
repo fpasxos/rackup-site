@@ -170,8 +170,17 @@ test("every App Store link names the Greek storefront unless its country's App S
 });
 
 test("only a country whose App Store sells RackUp is listed, and its slugs open that storefront", () => {
-  // The app repo's data/countries.json has Cyprus with appStoreOpen false: /cy/ says "not available".
-  assert.deepEqual(Object.keys(page.STOREFRONTS), [], "a country is listed only once its App Store sells RackUp");
+  // The app repo's data/countries.json has appStoreOpen true for Cyprus as well as Greece.
+  assert.deepEqual(Object.keys(page.STOREFRONTS), ["cy"], "a country is listed only once its App Store sells RackUp");
+  for (const [code, store] of Object.entries(page.STOREFRONTS)) {
+    assert.match(code, /^[a-z]{2}$/);
+    assert.equal(page.storefrontOf(`${code}-some-hall`), store);
+    assert.equal(page.buildAppStoreUrl(`${code}-some-hall`, ""), `https://apps.apple.com/${store}/app/id6800614202`);
+  }
+  assert.equal(page.buildAppStoreUrl("cy-lefkosia-room9", "12aB34"),
+    "https://apps.apple.com/cy/app/apple-store/id6800614202?pt=12aB34&ct=cy-lefkosia-room9&mt=8");
+  assert.equal(page.buildAppStoreUrl("cy-lefkosia", "12aB34", "meta"),
+    "https://apps.apple.com/cy/app/apple-store/id6800614202?pt=12aB34&ct=meta-cy-lefkosia&mt=8");
   page.STOREFRONTS.zz = "zz";
   try {
     assert.equal(page.storefrontOf("zz-some-hall"), "zz");
@@ -182,20 +191,30 @@ test("only a country whose App Store sells RackUp is listed, and its slugs open 
     delete page.STOREFRONTS.zz;
   }
   // An unlisted code, a code with no hyphen, and inherited object keys all stay Greek.
-  for (const hall of [null, "nax-galaxias", "cy", "cy-lefkosia-room9", "cyprus-pool", "lefkosia-cy", "cyy-x",
+  for (const hall of [null, "nax-galaxias", "cy", "cyprus-pool", "lefkosia-cy", "cyy-x",
     "de-berlin", "constructor-x", "tostring-x", "proto-x"]) {
     assert.equal(page.storefrontOf(hall), "gr", String(hall));
   }
-  assert.equal(page.buildAppStoreUrl("cy-lefkosia-room9", "12aB34"),
-    "https://apps.apple.com/gr/app/apple-store/id6800614202?pt=12aB34&ct=cy-lefkosia-room9&mt=8");
   // Play has no storefront in its links: a Cypriot slug changes only the campaign.
   assert.equal(page.playUrl("cy-lefkosia", "meta"), "https://play.google.com/store/apps/details?id=com.rackup.app" +
     "&referrer=utm_source%3Dmeta%26utm_medium%3Dpaid%26utm_campaign%3Dcy-lefkosia");
 });
 
-test("a Cypriot ad link opens the Greek App Store until Cyprus's sells RackUp, and Play on Android", () => {
+// hall_links.py names a hall's QR campaign after its id, so the id's country prefix is what picks the store.
+test("every hall's slug opens its country's storefront when that is listed, else the Greek one", () => {
+  const halls = JSON.parse(read("data/venues.json"));
+  assert.ok(halls.some((hall) => page.STOREFRONTS[(hall.country || "GR").toLowerCase()]),
+    "no hall is in a listed country: this check would pass on nothing");
+  for (const hall of halls) {
+    const slug = hall.id.replace(/^venue-/, "");
+    const listed = page.STOREFRONTS[(hall.country || "GR").toLowerCase()];
+    assert.equal(page.storefrontOf(slug), listed || "gr", hall.id);
+  }
+});
+
+test("a Cypriot ad link opens the Cypriot App Store on iOS and Play on Android", () => {
   const search = "?s=meta&h=cy-lefkosia&fbclid=IwAR0abc";
-  const apple = "https://apps.apple.com/gr/app/apple-store/id6800614202?pt=" + page.PROVIDER_TOKEN +
+  const apple = "https://apps.apple.com/cy/app/apple-store/id6800614202?pt=" + page.PROVIDER_TOKEN +
     "&ct=meta-cy-lefkosia&mt=8";
   const play = page.playUrl("cy-lefkosia", "meta");
   for (const [ua, touch] of [[UA.iphoneSafari, 5], [UA.facebookIos, 5], [UA.instagramIos, 5]]) {
