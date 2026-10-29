@@ -1244,5 +1244,13 @@
     "address": "Ayia Napa",
     "sortOrder": 141,
     "phone": "+357 97 469666"
+  },
+  {
+    "id": "venue-ioa-jouet2",
+    "name": "Jouet 2",
+    "city": "Ioannina",
+    "country": "GR",
+    "address": "Ανεξαρτησίας 41",
+    "sortOrder": 142
   }
 ]
