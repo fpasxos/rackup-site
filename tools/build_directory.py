@@ -4,20 +4,26 @@
 Run from anywhere, Python 3.8+ and the standard library only:
   python tools/build_directory.py                 rebuild every directory page
   python tools/build_directory.py --import PATH   refresh data/venues.json from the app repo's
-                                                  data/venues-backup.json, then rebuild
+                                                  data/venues-backup.json, date the pages whose listing
+                                                  changed in data/revisions.json, then rebuild
   python tools/build_directory.py --check         exit 1 if the committed pages are stale
 """
 import argparse
+import datetime
 import html
 import json
 import re
 import shutil
+import subprocess
 import sys
 import unicodedata
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data" / "venues.json"
+# The day each directory page's listing last changed: the sitemap's <lastmod> and the page's
+# visible date. Only --import moves a date, so a rebuild never makes a page look new.
+REVISIONS = ROOT / "data" / "revisions.json"
 BASE_URL = "https://getrackup.com"
 APP_STORE = "https://apps.apple.com/gr/app/rackup-find-an-opponent/id6800614202"
 PLAY_STORE = "https://play.google.com/store/apps/details?id=com.rackup.app"
@@ -120,6 +126,16 @@ DESCRIPTION_LIMIT = 155
 TAIL = {"el": "Βρες αντίπαλο με το δωρεάν RackUp.", "en": "Find an opponent with the free RackUp app."}
 # Greek letters, so Greek names on English pages can carry lang="el" for screen readers.
 GREEK_TEXT = re.compile("[Ͱ-Ͽἀ-῿]")
+# Month names for a page's visible date: Greek in the genitive, as in «20 Οκτωβρίου 2026».
+MONTHS = {
+    "el": ("Ιανουαρίου", "Φεβρουαρίου", "Μαρτίου", "Απριλίου", "Μαΐου", "Ιουνίου", "Ιουλίου", "Αυγούστου",
+           "Σεπτεμβρίου", "Οκτωβρίου", "Νοεμβρίου", "Δεκεμβρίου"),
+    "en": ("January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
+           "November", "December"),
+}
+# What a dated page lists. A page's date moves when these change; sortOrder is out, as no page shows it.
+HALL_SHOWN = ("id", "name", "address", "phone", "website", "caromTables", "hasCarom")
+CAROM_SHOWN = ("id", "name", "city", "address", "caromTables", "hasCarom")
 
 
 def esc(text):
@@ -303,6 +319,106 @@ def areas_of(halls):
 def phone_href(phone):
     digits = re.sub(r"[^\d+]", "", phone)
     return f"tel:{digits}" if len(re.sub(r"\D", "", digits)) >= 6 else None
+
+
+# ---------------------------------------------------------------- revision dates
+
+def listed(halls, fields):
+    """Halls as a page lists them, comparable across imports."""
+    rows = sorted(({f: v[f] for f in fields if f in v} for v in halls), key=lambda row: row["id"])
+    return json.dumps(rows, ensure_ascii=False, sort_keys=True)
+
+
+def revision_units(cities):
+    """What each dated page lists: the indexes every city with its country and count, the carom pages their
+    halls, a city page its own halls."""
+    return {
+        "directory": json.dumps(sorted([country_of(h), c, len(h)] for c, h in cities.items()), ensure_ascii=False),
+        "carom": listed([v for h in carom_by_city(cities).values() for v in h], CAROM_SHOWN),
+        "cities": {city: listed(halls, HALL_SHOWN) for city, halls in cities.items()},
+    }
+
+
+def is_day(value):
+    if not isinstance(value, str) or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", value):
+        return False
+    try:
+        datetime.date.fromisoformat(value)
+    except ValueError:
+        return False
+    return True
+
+
+def load_dates(cities):
+    """data/revisions.json, checked against the halls: one date for the indexes, one for the carom pages and
+    one per city, and nothing else."""
+    dates = json.loads(REVISIONS.read_text(encoding="utf-8"))
+    errors = []
+    if set(dates) != {"directory", "carom", "cities"}:
+        errors.append("it needs exactly directory, carom and cities")
+    else:
+        mine = dates["cities"]
+        errors += [f"no date for {c}" for c in sorted(set(cities) - set(mine))]
+        errors += [f"{c} has no halls but has a date" for c in sorted(set(mine) - set(cities))]
+        days = [("directory", dates["directory"]), ("carom", dates["carom"]), *sorted(mine.items())]
+        errors += [f"{key}: {day!r} is not a YYYY-MM-DD date" for key, day in days if not is_day(day)]
+    if errors:
+        sys.exit("data/revisions.json is invalid; refresh the directory with --import:\n  " + "\n  ".join(errors))
+    return dates
+
+
+def revise(before, after, dates, day):
+    """The dates after an import. A page whose listing changed takes day(), the app repo's commit date, and
+    never goes back in time; the rest keep theirs. day() runs only when something changed."""
+    old, new = revision_units(before), revision_units(after)
+    stamp = []
+
+    def date(changed, previous):
+        if previous and not changed:
+            return previous
+        if not stamp:
+            stamp.append(day())
+        return max(previous or stamp[0], stamp[0])
+
+    return {
+        "directory": date(old["directory"] != new["directory"], dates.get("directory")),
+        "carom": date(old["carom"] != new["carom"], dates.get("carom")),
+        "cities": {city: date(old["cities"].get(city) != shown, dates.get("cities", {}).get(city))
+                   for city, shown in sorted(new["cities"].items())},
+    }
+
+
+def dates_text(dates):
+    return json.dumps(dates, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
+
+
+def revision_date(source):
+    """The day the app repo last committed the imported files: the data's revision, never the build's day."""
+    folder, names = Path(source).resolve().parent, [Path(source).name, "countries.json"]
+
+    def git(*args):
+        try:
+            return subprocess.run(["git", *args, "--", *names], cwd=folder, capture_output=True, text=True,
+                                  check=True).stdout.strip()
+        except (OSError, subprocess.CalledProcessError) as error:
+            sys.exit(f"cannot read the import's commit date from git in {folder}: {error}")
+
+    if git("status", "--porcelain"):
+        sys.exit(f"{names[0]} or {names[1]} has uncommitted changes in {folder}: commit them in the app repo "
+                 "first, so the directory dates the change by that commit")
+    day = git("log", "-1", "--format=%cs")
+    if not is_day(day):
+        sys.exit(f"no commit of {names[0]} in {folder} to date the import by")
+    return day
+
+
+def updated(day, lang):
+    """A page's visible date, the same day as its <lastmod>, in a <time> people and crawlers both read."""
+    if not day:
+        return ""
+    when = datetime.date.fromisoformat(day)
+    label = "Τελευταία ενημέρωση" if lang == "el" else "Last updated"
+    return f'{label}: <time datetime="{day}">{when.day} {MONTHS[lang][when.month - 1]} {when.year}</time>. '
 
 
 # ---------------------------------------------------------------- pages
@@ -597,7 +713,7 @@ def carom_chip(v, lang):
     return f'  <p class="tags"><span class="chip">{CAROM_BALL}{text}</span></p>'
 
 
-def index_page(cities, lang):
+def index_page(cities, lang, revised=None):
     total = sum(len(h) for h in cities.values())
     count = len(cities)
     root = EL_ROOT if lang == "el" else EN_ROOT
@@ -660,7 +776,7 @@ def index_page(cities, lang):
 <h2>Διάλεξε πόλη</h2>
 {chr(10).join(grids)}
 {pitch}
-<p class="note">Λείπει η αίθουσά σου ή βρήκες κάποιο λάθος; Γράψε μας στο <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
+<p class="note">{updated(revised, "el")}Λείπει η αίθουσά σου ή βρήκες κάποιο λάθος; Γράψε μας στο <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
 </div>"""
         list_name = f"Αίθουσες μπιλιάρδου {where} ανά πόλη"
     else:
@@ -684,7 +800,7 @@ def index_page(cities, lang):
 <h2>Pick a city</h2>
 {chr(10).join(grids)}
 {pitch}
-<p class="note">Is your hall missing, or did you spot a mistake? Email us at <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
+<p class="note">{updated(revised, "en")}Is your hall missing, or did you spot a mistake? Email us at <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
 </div>"""
         list_name = f"Billiard halls {where} by city"
     alt_root = EN_ROOT if lang == "el" else EL_ROOT
@@ -775,7 +891,7 @@ def business(v):
     return item
 
 
-def city_page(city, halls, cities, lang):
+def city_page(city, halls, cities, lang, revised=None):
     slug, name_el, in_el = CITIES[city]
     n = len(halls)
     # One district among several halls reads as if every hall were there.
@@ -830,7 +946,7 @@ def city_page(city, halls, cities, lang):
 {hall_list}
 </ul>
 {pitch}
-<p class="note">Ο κατάλογος είναι φτιαγμένος στο χέρι και κάτι μπορεί να έχει αλλάξει. Λείπει η αίθουσά σου ή βρήκες κάποιο λάθος; Γράψε μας στο <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>{other_nav}
+<p class="note">{updated(revised, "el")}Ο κατάλογος είναι φτιαγμένος στο χέρι και κάτι μπορεί να έχει αλλάξει. Λείπει η αίθουσά σου ή βρήκες κάποιο λάθος; Γράψε μας στο <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>{other_nav}
 </div>"""
         crumbs = [("RackUp", url("")), ("Αίθουσες μπιλιάρδου", url(f"{root}/")), (name_el, url(path))]
     else:
@@ -862,7 +978,7 @@ def city_page(city, halls, cities, lang):
 {hall_list}
 </ul>
 {pitch}
-<p class="note">The directory is researched by hand, so something may have changed. Is your hall missing, or did you spot a mistake? Email us at <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>{other_nav}
+<p class="note">{updated(revised, "en")}The directory is researched by hand, so something may have changed. Is your hall missing, or did you spot a mistake? Email us at <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>{other_nav}
 </div>"""
         crumbs = [("RackUp", url("en/")), ("Billiard halls", url(f"{root}/")), (city, url(path))]
     data = {
@@ -889,7 +1005,7 @@ def carom_hall(v, lang, prefix):
                       "</li>"])
 
 
-def carom_page(cities, lang):
+def carom_page(cities, lang, revised=None):
     """Every hall known to have carom tables, by city, with the count where it is known."""
     carom = carom_by_city(cities)
     n, c = sum(len(h) for h in carom.values()), len(carom)
@@ -966,7 +1082,7 @@ def carom_page(cities, lang):
 </ul>
 {chr(10).join(sections)}
 {pitch}
-<p class="note">{note}</p>
+<p class="note">{updated(revised, lang)}{note}</p>
 </div>"""
     crumbs = [("RackUp", url("" if lang == "el" else "en/")), (heading, url(path))]
     data = {"@context": "https://schema.org", "@graph": [
@@ -978,14 +1094,19 @@ def carom_page(cities, lang):
                 alt_path=alt_path, depth=depth, body=body, data=data)
 
 
-def sitemap(cities):
-    paths = ["", "en/", "support.html", "privacy.html", f"{EL_ROOT}/", f"{EN_ROOT}/",
-             f"{CAROM['el']}/", f"{CAROM['en']}/"]
+def sitemap(cities, dates=None):
+    """Every page. A directory page carries <lastmod>, the day its listing last changed; the hand-written
+    pages carry none, as nothing here knows when their words changed."""
+    dates = dates or {"cities": {}}
+    paths = [("", None), ("en/", None), ("support.html", None), ("privacy.html", None),
+             (f"{EL_ROOT}/", dates.get("directory")), (f"{EN_ROOT}/", dates.get("directory")),
+             (f"{CAROM['el']}/", dates.get("carom")), (f"{CAROM['en']}/", dates.get("carom"))]
     for mine in by_country(cities).values():
         for city in city_order(mine, "el"):
-            slug = CITIES[city][0]
-            paths += [f"{EL_ROOT}/{slug}/", f"{EN_ROOT}/{slug}/"]
-    entries = "\n".join(f"  <url><loc>{url(p)}</loc></url>" for p in paths)
+            slug, day = CITIES[city][0], dates["cities"].get(city)
+            paths += [(f"{EL_ROOT}/{slug}/", day), (f"{EN_ROOT}/{slug}/", day)]
+    entries = "\n".join(f"  <url><loc>{url(p)}</loc>{f'<lastmod>{day}</lastmod>' if day else ''}</url>"
+                        for p, day in paths)
     return ('<?xml version="1.0" encoding="UTF-8"?>\n'
             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
             f"{entries}\n</urlset>\n")
@@ -1044,9 +1165,10 @@ def with_store_links(name, text):
     return text
 
 
-def render(data=None):
+def render(data=None, dates=None):
     cities = group_by_city(load_venues(data))
-    files = {ROOT / "sitemap.xml": sitemap(cities)}
+    dates = load_dates(cities) if dates is None else dates
+    files = {ROOT / "sitemap.xml": sitemap(cities, dates)}
     for name in HAND_PAGES:
         text = (ROOT / name).read_text(encoding="utf-8")
         if name in HOMES:
@@ -1054,10 +1176,11 @@ def render(data=None):
             text = home_with_city_grid(text, cities, HOMES[name])
         files[ROOT / name] = with_store_links(name, text)
     for lang, root in (("el", EL_ROOT), ("en", EN_ROOT)):
-        files[ROOT / root / "index.html"] = index_page(cities, lang)
-        files[ROOT / CAROM[lang] / "index.html"] = carom_page(cities, lang)
+        files[ROOT / root / "index.html"] = index_page(cities, lang, dates["directory"])
+        files[ROOT / CAROM[lang] / "index.html"] = carom_page(cities, lang, dates["carom"])
         for city, halls in cities.items():
-            files[ROOT / root / CITIES[city][0] / "index.html"] = city_page(city, halls, cities, lang)
+            files[ROOT / root / CITIES[city][0] / "index.html"] = city_page(city, halls, cities, lang,
+                                                                            dates["cities"][city])
     for path, text in files.items():
         if DASHES.search(text):
             sys.exit(f"{path.relative_to(ROOT)} would contain an en or em dash; fix the copy or the data")
@@ -1096,9 +1219,14 @@ def main():
 
     # An import is checked like every page and written with them, so a stopped build writes nothing.
     data = import_backup(args.source) if args.source else None
-    files = render(data)
+    dates = None
+    if data is not None:
+        after = group_by_city(load_venues(data))
+        before = group_by_city(json.loads(DATA.read_text(encoding="utf-8")))
+        dates = revise(before, after, load_dates(before), lambda: revision_date(args.source))
+    files = render(data, dates)
     stale = stale_generated_dirs(files)
-    outputs = files if data is None else {DATA: data, **files}
+    outputs = files if data is None else {DATA: data, REVISIONS: dates_text(dates), **files}
     if args.check:
         outdated = [p for p, t in outputs.items() if not p.is_file() or p.read_text(encoding="utf-8") != t]
         for p in outdated + stale:
