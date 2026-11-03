@@ -402,6 +402,22 @@ class SearchTest(unittest.TestCase):
             self.assertTrue(title.endswith("| RackUp"), f"{page}: brand goes last")
             self.assertLessEqual(len(title), 60, page)
 
+    def test_greek_home_says_app_and_answers_near_me_and_american_against_french(self):
+        """Audit fix 7: «εφαρμογή» in the lead, and FAQ answers to two searches the home did not meet."""
+        text = (b.ROOT / "index.html").read_text(encoding="utf-8")
+        lead = re.search(r"</h1>\s*<p class=\"lead\">(.*?)</p>", text, re.S).group(1)
+        self.assertTrue(lead.startswith("Η δωρεάν εφαρμογή για παίκτες μπιλιάρδου. Δημοσίευσε πότε και πού "), lead)
+        faq = dict(re.findall(r"<details><summary>(.*?)</summary><p>(.*?)</p></details>", text))
+        near = faq["Πώς βρίσκω μπιλιάρδο κοντά μου;"]
+        # The app's rule: nearest first with the distance when location is on, the home city first when it is off.
+        for said in ("Αίθουσες", "κοντά σου", "χιλιόμετρα", "Χωρίς τοποθεσία", "της πόλης σου"):
+            self.assertIn(said, near)
+        games = faq["Ποια η διαφορά αμερικάνικου και γαλλικού μπιλιάρδου;"]
+        for said in ("8-Ball", "9-Ball", "10-Ball", "τρίσποντο", "μονόσποντο", "με τρύπες", "χωρίς τρύπες"):
+            self.assertIn(said, games)
+        # Carom's Greek spelling waits on Search Console (audit fix 4), and pool is never «πουλ».
+        self.assertNotRegex(games + near, r"(?i)καρ[αο]μπόλα|\bπουλ\b")
+
     def test_every_indexable_page_previews_as_a_large_card_with_its_size_and_alt(self):
         checked = 0
         for rel, text in published(".html"):
