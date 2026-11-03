@@ -124,6 +124,8 @@ DASHES = re.compile("[" + "".join(map(chr, (0x2012, 0x2013, 0x2014, 0x2015))) + 
 TITLE_LIMIT = 60
 DESCRIPTION_LIMIT = 155
 TAIL = {"el": "Βρες αντίπαλο με το δωρεάν RackUp.", "en": "Find an opponent with the free RackUp app."}
+# Shorter Greek descriptions leave room in the search result that the page could use.
+GREEK_FLOOR = 110
 # Greek letters, so Greek names on English pages can carry lang="el" for screen readers.
 GREEK_TEXT = re.compile("[Ͱ-Ͽἀ-῿]")
 # Month names for a page's visible date: Greek in the genitive, as in «20 Οκτωβρίου 2026».
@@ -528,17 +530,50 @@ def card_copy(lang, name_app):
             "a ranking by city and hall.")
 
 
-def fit_description(head, areas, tail, label):
-    """Adds district names to a meta description while it stays short. The label is plural, so never one."""
+def with_areas(head, areas, tail, label):
+    """A meta description with district names while it stays short, or None when fewer than two fit:
+    the label is plural, so never one."""
     chosen = []
     for area in areas:
         trial = f"{head} {label}: {', '.join(chosen + [area])}. {tail}"
         if len(trial) > DESCRIPTION_LIMIT:
             break
         chosen.append(area)
-    if len(chosen) < 2:
-        return f"{head} {tail}"
-    return f"{head} {label}: {', '.join(chosen)}. {tail}"
+    return f"{head} {label}: {', '.join(chosen)}. {tail}" if len(chosen) >= 2 else None
+
+
+def fitted(*candidates, floor=0):
+    """The first candidate from floor to DESCRIPTION_LIMIT long, else the first that fits, else the last."""
+    fits = [c for c in candidates if c and len(c) <= DESCRIPTION_LIMIT]
+    return next((c for c in fits if len(c) >= floor), fits[0] if fits else candidates[-1])
+
+
+def city_description(city, halls, areas, lang):
+    """What a city page lists and what the app finds an opponent for. No hall's address or phone (the page
+    has them), no Greek letters on an English page, and carom only where a hall has carom tables."""
+    in_el, n = CITIES[city][2], len(halls)
+    every_phone = all(v.get("phone") for v in halls)
+    carom = any(offers_carom(v) for v in halls)
+    if lang == "el":
+        games = "αμερικάνικο ή γαλλικό" if carom else "αμερικάνικο"
+        if n == 1:
+            head = (f"Μπιλιάρδο {in_el}: μία αίθουσα στον κατάλογο, με "
+                    f"{'διεύθυνση και τηλέφωνο' if every_phone else 'διεύθυνση'}.")
+            return fitted(f"{head} Βρες αντίπαλο για {games} με το δωρεάν RackUp.",
+                          f"{head} Βρες αντίπαλο για {games} μπιλιάρδο με το δωρεάν RackUp.",
+                          f"{head} {TAIL['el']}", floor=GREEK_FLOOR)
+        contact = "διευθύνσεις και τηλέφωνα" if every_phone else "διευθύνσεις"
+        return fitted(with_areas(f"Μπιλιάρδα {in_el}: {n} αίθουσες με {contact}.", areas, TAIL["el"], "Περιοχές"),
+                      f"Μπιλιάρδο {in_el}: {n} αίθουσες με {contact}. "
+                      f"Βρες αντίπαλο για {games} μπιλιάρδο με το δωρεάν RackUp.",
+                      f"Μπιλιάρδο {in_el}: {n} αίθουσες με {contact}. {TAIL['el']}", floor=GREEK_FLOOR)
+    tail = f"Find an opponent for {'pool or carom' if carom else 'pool'} with the free RackUp app."
+    if n == 1:
+        head = (f"Pool and billiards in {city}: one hall in the directory, with its "
+                f"{'address and phone' if every_phone else 'address'}.")
+    else:
+        head = f"Pool and billiards in {city}: {n} halls with {'addresses and phone numbers' if every_phone else 'addresses'}."
+    return fitted(f"{head} {tail}", f"{head} {TAIL['en']}")
 
 
 # The logo's mark, as the app repo's store-assets/logo/rackup-mark.svg draws it: a rounded
@@ -836,11 +871,12 @@ def hall_item(v, lang):
 
 
 def places(areas, halls, lang):
-    """Up to four districts, closed with "elsewhere" unless they hold every hall."""
+    """Up to four districts, closed with «άλλες» after the Greek label, or "elsewhere", unless they hold
+    every hall."""
     shown = areas[:4]
     words = [esc(a) if lang == "el" else in_greek(a) for a in shown]
     if any(area_of(v["address"]) not in shown for v in halls):
-        words.append("αλλού" if lang == "el" else "elsewhere")
+        words.append("άλλες" if lang == "el" else "elsewhere")
     return joined(words, lang) if words else ""
 
 
@@ -855,9 +891,10 @@ def city_lead(city, halls, areas, lang):
             where = f" ({esc(area)})" if area else ""
             return (f"{esc(name_el)}: ο κατάλογος του RackUp έχει μία αίθουσα μπιλιάρδου, το {esc(first['name'])}"
                     f'{where}. Ξέρεις κι άλλα μπιλιάρδα {esc(in_el)}; <a href="mailto:{EMAIL}">Γράψε μας</a>.')
-        found = f", σε {places(areas, halls, 'el')}" if areas else ""
+        # A label, as «σε» would need each district in the accusative with its article.
+        found = f" Περιοχές: {places(areas, halls, 'el')}." if areas else ""
         contact = "τις διευθύνσεις και τα τηλέφωνά τους" if every_phone else "τις διευθύνσεις τους"
-        return (f"{esc(name_el)}: {len(halls)} αίθουσες μπιλιάρδου στον κατάλογο του RackUp{found}. "
+        return (f"{esc(name_el)}: {len(halls)} αίθουσες μπιλιάρδου στον κατάλογο του RackUp.{found} "
                 f"Παρακάτω θα βρεις τα μπιλιάρδα με {contact}.")
     city_name = f'{esc(city)} (<span lang="el">{esc(name_el)}</span>)'
     if len(halls) == 1:
@@ -908,7 +945,6 @@ def city_page(city, halls, cities, lang, revised=None):
     # Each country is its own space: the other cities are this one's country's.
     others = sorted((c for c in cities if c != city and country_of(cities[c]) == country_of(halls)),
                     key=lambda c: fold(CITIES[c][1] if lang == "el" else c))
-    every_phone = all(v.get("phone") for v in halls)
     first = halls[0]
     carom = sum(1 for v in halls if offers_carom(v))
     to_carom = ""
@@ -921,13 +957,9 @@ def city_page(city, halls, cities, lang, revised=None):
         if n == 1:
             title = first_fit(TITLE_LIMIT, f"{heading}: {first['name']} | RackUp", f"{heading}: {first['name']}",
                               f"{heading}: {plural_el(n)} μπιλιάρδου | RackUp")
-            hall_line = f"{heading}: {first['name']}, {first['address']}"
-            phone = f", τηλ. {first['phone']}" if first.get("phone") else ""
-            description = first_fit(DESCRIPTION_LIMIT, f"{hall_line}{phone}. {TAIL['el']}", f"{hall_line}. {TAIL['el']}")
         else:
             title = f"{heading}: {plural_el(n)} μπιλιάρδου | RackUp"
-            contact = "διευθύνσεις και τηλέφωνα" if every_phone else "διευθύνσεις"
-            description = fit_description(f"{heading}: {n} αίθουσες με {contact}.", areas, TAIL["el"], "Περιοχές")
+        description = city_description(city, halls, areas, lang)
         lead = city_lead(city, halls, areas, lang)
         other_links = " ".join(f'<li><a class="chip" href="../{CITIES[c][0]}/">{esc(CITIES[c][1])}</a></li>'
                                for c in others)
@@ -954,13 +986,9 @@ def city_page(city, halls, cities, lang, revised=None):
         if n == 1:
             title = first_fit(TITLE_LIMIT, f"{heading}: {first['name']} | RackUp", f"{heading}: {first['name']}",
                               f"Pool and billiards in {city}: {plural_en(n)} | RackUp")
-            hall_line = f"{heading}: {first['name']}, {first['address']}"
-            phone = f", phone {first['phone']}" if first.get("phone") else ""
-            description = first_fit(DESCRIPTION_LIMIT, f"{hall_line}{phone}. {TAIL['en']}", f"{hall_line}. {TAIL['en']}")
         else:
             title = f"Pool and billiards in {city}: {plural_en(n)} | RackUp"
-            contact = "addresses and phone numbers" if every_phone else "addresses"
-            description = fit_description(f"{heading}: {n} halls with {contact}.", areas, TAIL["en"], "Areas")
+        description = city_description(city, halls, areas, lang)
         lead = city_lead(city, halls, areas, lang)
         other_links = " ".join(f'<li><a class="chip" href="../{CITIES[c][0]}/">{esc(c)}</a></li>' for c in others)
         other_nav = (f'\n<nav class="other" aria-label="Other cities">\n<h2>Other cities</h2>\n'
