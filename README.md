@@ -25,6 +25,7 @@ path on `getrackup.com`, so links already in the app and on QR codes keep workin
 | `favicon.ico`, `assets/favicon.svg`, `assets/apple-touch-icon.png`, `assets/icon-512.png` | The logo as browsers, phones and the structured data take it. Masters and rules: `store-assets/logo/` in the app repo. The wordmark's mark is `MARK` in the generator, copied into each hand page; `tools/test_logo.py` checks both | hand |
 | `CNAME` | The custom domain, `getrackup.com`, that GitHub Pages serves the site on | hand |
 | `data/venues.json` | Public copy of the venue directory | generator (`--import`) |
+| `data/revisions.json` | The day each directory page's listing last changed: its sitemap `<lastmod>` and its visible "updated" date | generator (`--import`) |
 | `0a9442a5613cbbd088b30f789f206e74.txt` | The IndexNow key, which proves to Bing and others that the site is ours | never; see below |
 | `tools/build_directory.py` | The generator | hand |
 | `tools/indexnow.py` | Tells IndexNow engines the site changed | hand |
@@ -53,6 +54,15 @@ beside the backup, the app repo's `data/countries.json`, and nothing is written
 until every check passes, so an import that stops leaves the checkout as it was.
 With `--check` it writes nothing and names `data/venues.json` with the pages it
 would change.
+
+The import also dates every directory page whose listing changed (a city page
+its halls, the indexes their cities and counts, the carom pages their halls) in
+`data/revisions.json`, by the day the app repo last committed the backup or
+`countries.json`. So commit the venue change in the app repo first: the import
+stops on an uncommitted backup. No other run moves a date, so a rebuild or a
+template edit never makes a page look new. Each date is the page's `<lastmod>`
+in `sitemap.xml` and its visible «Τελευταία ενημέρωση» / "Last updated" line.
+The hand-written pages carry no `<lastmod>`.
 
 Other modes:
 
