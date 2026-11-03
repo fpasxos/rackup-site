@@ -51,6 +51,8 @@ class SitemapDateTest(unittest.TestCase):
             expected[b.url(f"{root}/")] = dates["directory"]
             for city, day in dates["cities"].items():
                 expected[b.url(f"{root}/{b.CITIES[city][0]}/")] = day
+            for code, day in dates["hubs"].items():
+                expected[b.url(f"{root}/{b.HUBS[code]}/")] = day
         for lang in ("el", "en"):
             expected[b.url(f"{b.CAROM[lang]}/")] = dates["carom"]
         self.assertEqual(found, expected)
@@ -70,8 +72,9 @@ class SitemapDateTest(unittest.TestCase):
             self.assertEqual(text.count("<time "), 1, rel)
             self.assertIn(f'<p class="note">{shown}', text, rel)
             checked += 1
-        # Per language: the index, the carom page and every city page.
-        self.assertEqual(checked, 2 * (2 + len(cities_of(b.load_venues()))))
+        # Per language: the index, the carom page, every city page and every country hub.
+        cities = cities_of(b.load_venues())
+        self.assertEqual(checked, 2 * (2 + len(cities) + len(b.hubs_of(cities))))
 
     def test_the_build_reads_no_clock(self):
         # Only fromisoformat is left on datetime.date: a call to today() or now() would fail the build.
@@ -100,6 +103,7 @@ class ReviseTest(unittest.TestCase):
         """The units whose date differs from the committed one."""
         moved = [k for k in ("directory", "carom") if after[k] != self.dates[k]]
         moved += [c for c, d in after["cities"].items() if self.dates["cities"].get(c) != d]
+        moved += [f"{c} hub" for c, d in after["hubs"].items() if self.dates["hubs"].get(c) != d]
         return sorted(moved)
 
     def test_a_new_phone_dates_its_city_only(self):
@@ -113,6 +117,11 @@ class ReviseTest(unittest.TestCase):
         venues = self.venues + [{"id": "venue-lar-new", "name": "New Hall", "city": "Larissa", "country": "GR",
                                  "address": "Odos 1", "sortOrder": 999}]
         self.assertEqual(self.moved(self.revised(venues)), ["Larissa", "directory"])
+
+    def test_a_new_hall_in_a_hub_country_dates_its_hub_too(self):
+        venues = self.venues + [{"id": "venue-cy-lar-new", "name": "New Hall", "city": "Larnaca", "country": "CY",
+                                 "address": "Odos 1", "sortOrder": 999}]
+        self.assertEqual(self.moved(self.revised(venues)), ["CY hub", "Larnaca", "directory"])
 
     def test_carom_tables_date_the_carom_pages_and_the_city(self):
         hall = no_carom_hall_with_a_phone()
@@ -165,8 +174,10 @@ class ImportDateTest(unittest.TestCase):
         cities = cities_of(b.load_venues())
         dates = b.load_dates(cities)
         self.assertEqual(b.dates_text(dates), b.REVISIONS.read_text(encoding="utf-8"), "run the generator's format")
-        self.assertLessEqual(max([dates["directory"], dates["carom"], *dates["cities"].values()]),
-                             datetime.date.today().isoformat(), "a page dated in the future")
+        # A day of slack: a page dated in Athens just after midnight is still yesterday on a UTC clock.
+        newest = max([dates["directory"], dates["carom"], *dates["cities"].values(), *dates["hubs"].values()])
+        tomorrow = datetime.date.today() + datetime.timedelta(days=1)
+        self.assertLessEqual(newest, tomorrow.isoformat(), "a page dated in the future")
 
     def test_dates_that_do_not_fit_the_halls_stop_the_build(self):
         cities = cities_of(b.load_venues())
@@ -175,7 +186,10 @@ class ImportDateTest(unittest.TestCase):
                  "Berlin has no halls but has a date": dict(good, cities=dict(good["cities"], Berlin=DAY)),
                  "carom: '2026-13-01' is not a YYYY-MM-DD date": dict(good, carom="2026-13-01"),
                  "directory: 'today' is not a YYYY-MM-DD date": dict(good, directory="today"),
-                 "it needs exactly directory, carom and cities": {"cities": good["cities"]}}
+                 "no date for the CY hub": dict(good, hubs={}),
+                 "the DE hub has no page but has a date": dict(good, hubs=dict(good["hubs"], DE=DAY)),
+                 "CY hub: '4 Nov' is not a YYYY-MM-DD date": dict(good, hubs={"CY": "4 Nov"}),
+                 "it needs exactly directory, carom, cities and hubs": {"cities": good["cities"]}}
         for message, dates in cases.items():
             with self.subTest(message), tempfile.TemporaryDirectory() as tmp:
                 path = Path(tmp, "revisions.json")

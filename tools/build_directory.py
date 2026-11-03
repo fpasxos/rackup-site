@@ -63,6 +63,9 @@ COUNTRIES = {
     "GR": ("Ελλάδα", "Greece", "στην Ελλάδα"),
     "CY": ("Κύπρος", "Cyprus", "στην Κύπρο"),
 }
+# Countries with a hub page of their own: ISO code -> its slug under both directory roots, spelled
+# like the city slugs. A hub lists only its own country's cities, in its own words.
+HUBS = {"CY": "kypros"}
 
 # English key as stored on venue docs -> (slug, Greek name, Greek "in the city").
 # Mirrors the cities in the app's data/countries.json. A new directory city must be added here.
@@ -124,6 +127,8 @@ DASHES = re.compile("[" + "".join(map(chr, (0x2012, 0x2013, 0x2014, 0x2015))) + 
 TITLE_LIMIT = 60
 DESCRIPTION_LIMIT = 155
 TAIL = {"el": "Βρες αντίπαλο με το δωρεάν RackUp.", "en": "Find an opponent with the free RackUp app."}
+# Shorter Greek descriptions leave room in the search result that the page could use.
+GREEK_FLOOR = 110
 # Greek letters, so Greek names on English pages can carry lang="el" for screen readers.
 GREEK_TEXT = re.compile("[Ͱ-Ͽἀ-῿]")
 # Month names for a page's visible date: Greek in the genitive, as in «20 Οκτωβρίου 2026».
@@ -299,6 +304,16 @@ def by_country(cities):
     return {code: found[code] for code in order}
 
 
+def hubs_of(cities):
+    """Hub country code -> its slug, for every hub country the directory lists. A slug never takes a city's."""
+    taken = {CITIES[c][0] for c in cities}
+    found = {code: HUBS[code] for code in by_country(cities) if code in HUBS}
+    for code, slug in found.items():
+        if slug in taken:
+            sys.exit(f"the {code} hub's slug {slug!r} is a city's too; change it in HUBS")
+    return found
+
+
 def area_of(address):
     """The part after the last comma, when it holds no digit: the district."""
     parts = [p.strip() for p in address.split(",")]
@@ -331,11 +346,14 @@ def listed(halls, fields):
 
 def revision_units(cities):
     """What each dated page lists: the indexes every city with its country and count, the carom pages their
-    halls, a city page its own halls."""
+    halls, a city page its own halls, a country's hub its own cities with their counts."""
+    countries = by_country(cities)
     return {
         "directory": json.dumps(sorted([country_of(h), c, len(h)] for c, h in cities.items()), ensure_ascii=False),
         "carom": listed([v for h in carom_by_city(cities).values() for v in h], CAROM_SHOWN),
         "cities": {city: listed(halls, HALL_SHOWN) for city, halls in cities.items()},
+        "hubs": {code: json.dumps(sorted([c, len(h)] for c, h in countries[code].items()), ensure_ascii=False)
+                 for code in hubs_of(cities)},
     }
 
 
@@ -350,17 +368,20 @@ def is_day(value):
 
 
 def load_dates(cities):
-    """data/revisions.json, checked against the halls: one date for the indexes, one for the carom pages and
-    one per city, and nothing else."""
+    """data/revisions.json, checked against the halls: one date for the indexes, one for the carom pages,
+    one per city and one per hub country, and nothing else."""
     dates = json.loads(REVISIONS.read_text(encoding="utf-8"))
     errors = []
-    if set(dates) != {"directory", "carom", "cities"}:
-        errors.append("it needs exactly directory, carom and cities")
+    if set(dates) != {"directory", "carom", "cities", "hubs"}:
+        errors.append("it needs exactly directory, carom, cities and hubs")
     else:
-        mine = dates["cities"]
+        mine, hubs = dates["cities"], dates["hubs"]
         errors += [f"no date for {c}" for c in sorted(set(cities) - set(mine))]
         errors += [f"{c} has no halls but has a date" for c in sorted(set(mine) - set(cities))]
-        days = [("directory", dates["directory"]), ("carom", dates["carom"]), *sorted(mine.items())]
+        errors += [f"no date for the {c} hub" for c in sorted(set(hubs_of(cities)) - set(hubs))]
+        errors += [f"the {c} hub has no page but has a date" for c in sorted(set(hubs) - set(hubs_of(cities)))]
+        days = [("directory", dates["directory"]), ("carom", dates["carom"]), *sorted(mine.items()),
+                *((f"{c} hub", day) for c, day in sorted(hubs.items()))]
         errors += [f"{key}: {day!r} is not a YYYY-MM-DD date" for key, day in days if not is_day(day)]
     if errors:
         sys.exit("data/revisions.json is invalid; refresh the directory with --import:\n  " + "\n  ".join(errors))
@@ -385,6 +406,8 @@ def revise(before, after, dates, day):
         "carom": date(old["carom"] != new["carom"], dates.get("carom")),
         "cities": {city: date(old["cities"].get(city) != shown, dates.get("cities", {}).get(city))
                    for city, shown in sorted(new["cities"].items())},
+        "hubs": {code: date(old["hubs"].get(code) != shown, dates.get("hubs", {}).get(code))
+                 for code, shown in sorted(new["hubs"].items())},
     }
 
 
@@ -528,17 +551,50 @@ def card_copy(lang, name_app):
             "a ranking by city and hall.")
 
 
-def fit_description(head, areas, tail, label):
-    """Adds district names to a meta description while it stays short. The label is plural, so never one."""
+def with_areas(head, areas, tail, label):
+    """A meta description with district names while it stays short, or None when fewer than two fit:
+    the label is plural, so never one."""
     chosen = []
     for area in areas:
         trial = f"{head} {label}: {', '.join(chosen + [area])}. {tail}"
         if len(trial) > DESCRIPTION_LIMIT:
             break
         chosen.append(area)
-    if len(chosen) < 2:
-        return f"{head} {tail}"
-    return f"{head} {label}: {', '.join(chosen)}. {tail}"
+    return f"{head} {label}: {', '.join(chosen)}. {tail}" if len(chosen) >= 2 else None
+
+
+def fitted(*candidates, floor=0):
+    """The first candidate from floor to DESCRIPTION_LIMIT long, else the first that fits, else the last."""
+    fits = [c for c in candidates if c and len(c) <= DESCRIPTION_LIMIT]
+    return next((c for c in fits if len(c) >= floor), fits[0] if fits else candidates[-1])
+
+
+def city_description(city, halls, areas, lang):
+    """What a city page lists and what the app finds an opponent for. No hall's address or phone (the page
+    has them), no Greek letters on an English page, and carom only where a hall has carom tables."""
+    in_el, n = CITIES[city][2], len(halls)
+    every_phone = all(v.get("phone") for v in halls)
+    carom = any(offers_carom(v) for v in halls)
+    if lang == "el":
+        games = "αμερικάνικο ή γαλλικό" if carom else "αμερικάνικο"
+        if n == 1:
+            head = (f"Μπιλιάρδο {in_el}: μία αίθουσα στον κατάλογο, με "
+                    f"{'διεύθυνση και τηλέφωνο' if every_phone else 'διεύθυνση'}.")
+            return fitted(f"{head} Βρες αντίπαλο για {games} με το δωρεάν RackUp.",
+                          f"{head} Βρες αντίπαλο για {games} μπιλιάρδο με το δωρεάν RackUp.",
+                          f"{head} {TAIL['el']}", floor=GREEK_FLOOR)
+        contact = "διευθύνσεις και τηλέφωνα" if every_phone else "διευθύνσεις"
+        return fitted(with_areas(f"Μπιλιάρδα {in_el}: {n} αίθουσες με {contact}.", areas, TAIL["el"], "Περιοχές"),
+                      f"Μπιλιάρδο {in_el}: {n} αίθουσες με {contact}. "
+                      f"Βρες αντίπαλο για {games} μπιλιάρδο με το δωρεάν RackUp.",
+                      f"Μπιλιάρδο {in_el}: {n} αίθουσες με {contact}. {TAIL['el']}", floor=GREEK_FLOOR)
+    tail = f"Find an opponent for {'pool or carom' if carom else 'pool'} with the free RackUp app."
+    if n == 1:
+        head = (f"Pool and billiards in {city}: one hall in the directory, with its "
+                f"{'address and phone' if every_phone else 'address'}.")
+    else:
+        head = f"Pool and billiards in {city}: {n} halls with {'addresses and phone numbers' if every_phone else 'addresses'}."
+    return fitted(f"{head} {tail}", f"{head} {TAIL['en']}")
 
 
 # The logo's mark, as the app repo's store-assets/logo/rackup-mark.svg draws it: a rounded
@@ -585,6 +641,13 @@ HEADER = {
   </div>
 </header>""",
 }
+# Each hub country's page in every footer, by the hub's own title, after the directory it belongs to.
+FOOTER_HUBS = {
+    "el": "".join(f'\n      <a href="{{root}}{EL_ROOT}/{slug}/">Μπιλιάρδο {COUNTRIES[code][2]}</a>'
+                  for code, slug in HUBS.items()),
+    "en": "".join(f'\n      <a href="{{root}}{EN_ROOT}/{slug}/">Billiards in {COUNTRIES[code][1]}</a>'
+                  for code, slug in HUBS.items()),
+}
 FOOTER = {
     "el": f"""<footer class="site-footer">
   <div class="container foot">
@@ -594,7 +657,7 @@ FOOTER = {
       <p>RackUp · Ιωάννινα</p>
     </div>
     <nav aria-label="Σύνδεσμοι">
-      <a href="{{root}}{EL_ROOT}/">Αίθουσες μπιλιάρδου</a>
+      <a href="{{root}}{EL_ROOT}/">Αίθουσες μπιλιάρδου</a>{FOOTER_HUBS['el']}
       <a href="{{root}}{CAROM['el']}/">Γαλλικό μπιλιάρδο</a>
       <a href="{{root}}support.html#el">Υποστήριξη</a>
       <a href="{{root}}privacy.html#el">Απόρρητο</a>
@@ -612,7 +675,7 @@ FOOTER = {
       <p>RackUp · Ioannina</p>
     </div>
     <nav aria-label="Links">
-      <a href="{{root}}{EN_ROOT}/">Billiard halls</a>
+      <a href="{{root}}{EN_ROOT}/">Billiard halls</a>{FOOTER_HUBS['en']}
       <a href="{{root}}{CAROM['en']}/">Carom billiards</a>
       <a href="{{root}}support.html">Support</a>
       <a href="{{root}}privacy.html">Privacy Policy</a>
@@ -703,6 +766,16 @@ def carom_link(href, text):
     return f'<p class="tags"><a class="chip chip-link" href="{href}">{CAROM_BALL}{text}</a></p>'
 
 
+def hub_link(href, code, mine, lang):
+    """The link to a country's hub under a list of its cities: on the homes and on the directory index."""
+    n, c = sum(len(h) for h in mine.values()), len(mine)
+    if lang == "el":
+        text = f"Μπιλιάρδο {COUNTRIES[code][2]}: {plural_el(n)} σε {cities_el(c)}"
+    else:
+        text = f"Billiards in {COUNTRIES[code][1]}: {plural_en(n)} in {cities_en(c)}"
+    return f'<p class="more"><a href="{href}">{esc(text)}</a></p>'
+
+
 def carom_chip(v, lang):
     """A hall's carom chip: the count when it is known, the word alone when it is not."""
     n = carom_tables(v)
@@ -748,6 +821,8 @@ def index_page(cities, lang, revised=None):
                 "url": url(f"{root}/{slug}/"),
             })
         grid = '<ul class="city-grid">\n' + "\n".join(items) + "\n</ul>"
+        if code in HUBS:
+            grid += "\n" + hub_link(f"{HUBS[code]}/", code, mine, lang)
         if len(countries) > 1:
             heading = COUNTRIES[code][0 if lang == "el" else 1]
             grid = f'<section class="country" id="{code.lower()}">\n<h3>{esc(heading)}</h3>\n{grid}\n</section>'
@@ -836,11 +911,12 @@ def hall_item(v, lang):
 
 
 def places(areas, halls, lang):
-    """Up to four districts, closed with "elsewhere" unless they hold every hall."""
+    """Up to four districts, closed with «άλλες» after the Greek label, or "elsewhere", unless they hold
+    every hall."""
     shown = areas[:4]
     words = [esc(a) if lang == "el" else in_greek(a) for a in shown]
     if any(area_of(v["address"]) not in shown for v in halls):
-        words.append("αλλού" if lang == "el" else "elsewhere")
+        words.append("άλλες" if lang == "el" else "elsewhere")
     return joined(words, lang) if words else ""
 
 
@@ -855,9 +931,10 @@ def city_lead(city, halls, areas, lang):
             where = f" ({esc(area)})" if area else ""
             return (f"{esc(name_el)}: ο κατάλογος του RackUp έχει μία αίθουσα μπιλιάρδου, το {esc(first['name'])}"
                     f'{where}. Ξέρεις κι άλλα μπιλιάρδα {esc(in_el)}; <a href="mailto:{EMAIL}">Γράψε μας</a>.')
-        found = f", σε {places(areas, halls, 'el')}" if areas else ""
+        # A label, as «σε» would need each district in the accusative with its article.
+        found = f" Περιοχές: {places(areas, halls, 'el')}." if areas else ""
         contact = "τις διευθύνσεις και τα τηλέφωνά τους" if every_phone else "τις διευθύνσεις τους"
-        return (f"{esc(name_el)}: {len(halls)} αίθουσες μπιλιάρδου στον κατάλογο του RackUp{found}. "
+        return (f"{esc(name_el)}: {len(halls)} αίθουσες μπιλιάρδου στον κατάλογο του RackUp.{found} "
                 f"Παρακάτω θα βρεις τα μπιλιάρδα με {contact}.")
     city_name = f'{esc(city)} (<span lang="el">{esc(name_el)}</span>)'
     if len(halls) == 1:
@@ -908,8 +985,12 @@ def city_page(city, halls, cities, lang, revised=None):
     # Each country is its own space: the other cities are this one's country's.
     others = sorted((c for c in cities if c != city and country_of(cities[c]) == country_of(halls)),
                     key=lambda c: fold(CITIES[c][1] if lang == "el" else c))
-    every_phone = all(v.get("phone") for v in halls)
     first = halls[0]
+    # A hub country's cities sit under its hub, in the visible crumbs and in the structured ones.
+    hub = HUBS.get(country_of(halls))
+    country = COUNTRIES[country_of(halls)][0 if lang == "el" else 1]
+    via = f'<a href="../{hub}/">{esc(country)}</a> › ' if hub else ""
+    via_crumb = [(country, url(f"{root}/{hub}/"))] if hub else []
     carom = sum(1 for v in halls if offers_carom(v))
     to_carom = ""
     if carom:
@@ -921,13 +1002,9 @@ def city_page(city, halls, cities, lang, revised=None):
         if n == 1:
             title = first_fit(TITLE_LIMIT, f"{heading}: {first['name']} | RackUp", f"{heading}: {first['name']}",
                               f"{heading}: {plural_el(n)} μπιλιάρδου | RackUp")
-            hall_line = f"{heading}: {first['name']}, {first['address']}"
-            phone = f", τηλ. {first['phone']}" if first.get("phone") else ""
-            description = first_fit(DESCRIPTION_LIMIT, f"{hall_line}{phone}. {TAIL['el']}", f"{hall_line}. {TAIL['el']}")
         else:
             title = f"{heading}: {plural_el(n)} μπιλιάρδου | RackUp"
-            contact = "διευθύνσεις και τηλέφωνα" if every_phone else "διευθύνσεις"
-            description = fit_description(f"{heading}: {n} αίθουσες με {contact}.", areas, TAIL["el"], "Περιοχές")
+        description = city_description(city, halls, areas, lang)
         lead = city_lead(city, halls, areas, lang)
         other_links = " ".join(f'<li><a class="chip" href="../{CITIES[c][0]}/">{esc(CITIES[c][1])}</a></li>'
                                for c in others)
@@ -936,7 +1013,7 @@ def city_page(city, halls, cities, lang, revised=None):
         pitch = cta_card("el", f"Θες αντίπαλο {esc(in_el)};", card_copy("el", True), campaign, prefix)
         body = f"""<section class="page-hero">
 <div class="container">
-<p class="crumbs"><a href="../../">RackUp</a> › <a href="../">Αίθουσες μπιλιάρδου</a> › {esc(name_el)}</p>
+<p class="crumbs"><a href="../../">RackUp</a> › <a href="../">Αίθουσες μπιλιάρδου</a> › {via}{esc(name_el)}</p>
 <h1>{esc(heading)}</h1>
 <p class="lead">{lead}</p>{to_carom}
 </div>
@@ -948,19 +1025,15 @@ def city_page(city, halls, cities, lang, revised=None):
 {pitch}
 <p class="note">{updated(revised, "el")}Ο κατάλογος είναι φτιαγμένος στο χέρι και κάτι μπορεί να έχει αλλάξει. Λείπει η αίθουσά σου ή βρήκες κάποιο λάθος; Γράψε μας στο <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>{other_nav}
 </div>"""
-        crumbs = [("RackUp", url("")), ("Αίθουσες μπιλιάρδου", url(f"{root}/")), (name_el, url(path))]
+        crumbs = [("RackUp", url("")), ("Αίθουσες μπιλιάρδου", url(f"{root}/")), *via_crumb, (name_el, url(path))]
     else:
         heading = f"Billiards in {city}"
         if n == 1:
             title = first_fit(TITLE_LIMIT, f"{heading}: {first['name']} | RackUp", f"{heading}: {first['name']}",
                               f"Pool and billiards in {city}: {plural_en(n)} | RackUp")
-            hall_line = f"{heading}: {first['name']}, {first['address']}"
-            phone = f", phone {first['phone']}" if first.get("phone") else ""
-            description = first_fit(DESCRIPTION_LIMIT, f"{hall_line}{phone}. {TAIL['en']}", f"{hall_line}. {TAIL['en']}")
         else:
             title = f"Pool and billiards in {city}: {plural_en(n)} | RackUp"
-            contact = "addresses and phone numbers" if every_phone else "addresses"
-            description = fit_description(f"{heading}: {n} halls with {contact}.", areas, TAIL["en"], "Areas")
+        description = city_description(city, halls, areas, lang)
         lead = city_lead(city, halls, areas, lang)
         other_links = " ".join(f'<li><a class="chip" href="../{CITIES[c][0]}/">{esc(c)}</a></li>' for c in others)
         other_nav = (f'\n<nav class="other" aria-label="Other cities">\n<h2>Other cities</h2>\n'
@@ -968,7 +1041,7 @@ def city_page(city, halls, cities, lang, revised=None):
         pitch = cta_card("en", f"Looking for an opponent in {esc(city)}?", card_copy("en", True), campaign, prefix)
         body = f"""<section class="page-hero">
 <div class="container">
-<p class="crumbs"><a href="../../../en/">RackUp</a> › <a href="../">Billiard halls</a> › {esc(city)}</p>
+<p class="crumbs"><a href="../../../en/">RackUp</a> › <a href="../">Billiard halls</a> › {via}{esc(city)}</p>
 <h1>{esc(heading)}</h1>
 <p class="lead">{lead}</p>{to_carom}
 </div>
@@ -980,7 +1053,7 @@ def city_page(city, halls, cities, lang, revised=None):
 {pitch}
 <p class="note">{updated(revised, "en")}The directory is researched by hand, so something may have changed. Is your hall missing, or did you spot a mistake? Email us at <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>{other_nav}
 </div>"""
-        crumbs = [("RackUp", url("en/")), ("Billiard halls", url(f"{root}/")), (city, url(path))]
+        crumbs = [("RackUp", url("en/")), ("Billiard halls", url(f"{root}/")), *via_crumb, (city, url(path))]
     data = {
         "@context": "https://schema.org",
         "@graph": [
@@ -994,6 +1067,91 @@ def city_page(city, halls, cities, lang, revised=None):
                 alt_path=f"{alt_root}/{slug}/", depth=depth, body=body, data=data)
 
 
+def country_page(code, cities, lang, revised=None):
+    """A hub country's own page: its cities with their counts, in its own words. It names no other country,
+    and claims no game its halls lack: the shared download card is the only place games are named."""
+    slug, mine = HUBS[code], by_country(cities)[code]
+    name_el, name_en, in_el = COUNTRIES[code]
+    n, c = sum(len(h) for h in mine.values()), len(mine)
+    every_phone = all(v.get("phone") for halls in mine.values() for v in halls)
+    root = EL_ROOT if lang == "el" else EN_ROOT
+    alt_root = EN_ROOT if lang == "el" else EL_ROOT
+    path = f"{root}/{slug}/"
+    campaign = campaign_for(path)
+    depth = root.count("/") + 2
+    prefix = "../" * depth
+    order = city_order(mine, lang)
+    items, list_data = [], []
+    for city in order:
+        city_slug, city_el, city_in_el = CITIES[city]
+        label = plural_el(len(mine[city])) if lang == "el" else plural_en(len(mine[city]))
+        items.append(f'  <li><a href="../{city_slug}/"><span class="city">{esc(city_el if lang == "el" else city)}'
+                     f'</span> <span class="count">{label}</span></a></li>')
+        list_data.append({"@type": "ListItem", "position": len(list_data) + 1,
+                          "name": f"Μπιλιάρδο {city_in_el}" if lang == "el" else f"Billiards in {city}",
+                          "url": url(f"{root}/{city_slug}/")})
+    grid = '<ul class="city-grid">\n' + "\n".join(items) + "\n</ul>"
+    names = [CITIES[x][1] if lang == "el" else x for x in order]
+    # As many cities as fit, the rest summed up as «άλλες» or "more".
+    lists = [joined(names[:k] + (["άλλες" if lang == "el" else "more"] if k < c else []), lang)
+             for k in range(c, 0, -1)]
+    if lang == "el":
+        heading = f"Μπιλιάρδο {in_el}"
+        title = first_fit(TITLE_LIMIT, f"{heading}: {plural_el(n)} σε {cities_el(c)} | RackUp",
+                          f"{heading}: {plural_el(n)} σε {cities_el(c)}", f"{heading} | RackUp")
+        description = first_fit(DESCRIPTION_LIMIT, *(f"Μπιλιάρδα {in_el}: {plural_el(n)} στον κατάλογο. "
+                                                     f"Πόλεις: {names_}. {TAIL['el']}" for names_ in lists))
+        contact = "τη διεύθυνση και το τηλέφωνο της καθεμιάς" if every_phone else "τη διεύθυνση της καθεμιάς"
+        lead = (f"Ψάχνεις πού να παίξεις μπιλιάρδο {esc(in_el)}; Ο κατάλογος του RackUp έχει {plural_el(n)} σε "
+                f"{cities_el(c)}, με {contact}. Διάλεξε πόλη για να δεις τα μπιλιάρδα της.")
+        pitch = cta_card("el", f"Θες αντίπαλο {esc(in_el)};", card_copy("el", True), campaign, prefix)
+        body = f"""<section class="page-hero">
+<div class="container">
+<p class="crumbs"><a href="../../">RackUp</a> › <a href="../">Αίθουσες μπιλιάρδου</a> › {esc(name_el)}</p>
+<h1>{esc(heading)}</h1>
+<p class="lead">{lead}</p>
+</div>
+</section>
+<div class="container">
+<h2>Διάλεξε πόλη</h2>
+{grid}
+{pitch}
+<p class="note">{updated(revised, "el")}Ο κατάλογος είναι φτιαγμένος στο χέρι και κάτι μπορεί να έχει αλλάξει. Λείπει η αίθουσά σου ή βρήκες κάποιο λάθος; Γράψε μας στο <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
+</div>"""
+        crumbs = [("RackUp", url("")), ("Αίθουσες μπιλιάρδου", url(f"{root}/")), (name_el, url(path))]
+    else:
+        heading = f"Billiards in {name_en}"
+        title = first_fit(TITLE_LIMIT, f"Pool and billiards in {name_en}: {plural_en(n)} in {cities_en(c)} | RackUp",
+                          f"{heading}: {plural_en(n)} in {cities_en(c)} | RackUp", f"{heading} | RackUp")
+        description = first_fit(DESCRIPTION_LIMIT, *(f"Pool and billiards in {name_en}: {plural_en(n)} in "
+                                                     f"{names_}. {TAIL['en']}" for names_ in lists))
+        contact = "its address and phone number" if every_phone else "its address"
+        lead = (f"Looking for somewhere to play billiards in {esc(name_en)}? RackUp's directory lists "
+                f"{plural_en(n)} in {cities_en(c)}, each with {contact}. Pick a city to see its halls.")
+        pitch = cta_card("en", f"Looking for an opponent in {esc(name_en)}?", card_copy("en", True), campaign,
+                         prefix)
+        body = f"""<section class="page-hero">
+<div class="container">
+<p class="crumbs"><a href="../../../en/">RackUp</a> › <a href="../">Billiard halls</a> › {esc(name_en)}</p>
+<h1>{esc(heading)}</h1>
+<p class="lead">{lead}</p>
+</div>
+</section>
+<div class="container">
+<h2>Pick a city</h2>
+{grid}
+{pitch}
+<p class="note">{updated(revised, "en")}The directory is researched by hand, so something may have changed. Is your hall missing, or did you spot a mistake? Email us at <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
+</div>"""
+        crumbs = [("RackUp", url("en/")), ("Billiard halls", url(f"{root}/")), (name_en, url(path))]
+    data = {"@context": "https://schema.org", "@graph": [
+        breadcrumb_list(crumbs),
+        {"@type": "ItemList", "name": heading, "numberOfItems": c, "itemListElement": list_data},
+    ]}
+    return page(lang=lang, title=title, description=description, path=path,
+                alt_path=f"{alt_root}/{slug}/", depth=depth, body=body, data=data)
+
+
 def carom_hall(v, lang, prefix):
     """A hall on the carom page. Its name opens its entry on the city page, the hall's one anchor."""
     root = EL_ROOT if lang == "el" else EN_ROOT
@@ -1003,6 +1161,72 @@ def carom_hall(v, lang, prefix):
                       f'  <p class="addr"{lang_attr(v["address"], lang)}>{esc(v["address"])}</p>',
                       carom_chip(v, lang),
                       "</li>"])
+
+
+def carom_explainer(lang):
+    """How carom is played, plainly. «καραμπόλα» appears once, as a synonym; never «σπόντα»."""
+    if lang == "el":
+        return ("Πώς παίζεται το γαλλικό μπιλιάρδο",
+                "Το γαλλικό μπιλιάρδο, ή καραμπόλα, παίζεται σε τραπέζι χωρίς τρύπες, με τρεις μπάλες: μία για "
+                "κάθε παίκτη και μία κόκκινη. Χτυπάς μόνο τη δική σου μπάλα και κερδίζεις πόντο όταν αυτή χτυπήσει "
+                "και τις δύο άλλες. Όσο κερδίζεις πόντους συνεχίζεις, και όταν αστοχήσεις παίζει ο αντίπαλος. Στο "
+                "RackUp παίζεις δύο παιχνίδια του, το τρίσποντο και το μονόσποντο, που διαφέρουν σε ένα σημείο: "
+                "πόσες φορές πρέπει η μπάλα σου να ακουμπήσει τα πλαϊνά του τραπεζιού.")
+    return ("How carom is played",
+            "Carom billiards is played on a table without pockets, with three balls: one for each player and a "
+            "red one. You strike only your own ball, and you score a point when it hits both of the others. You "
+            "keep playing while you score, and when you miss, your opponent plays. RackUp has two carom games, "
+            "3-cushion and 1-cushion, which differ in one thing: how many times your ball must touch the "
+            "table's cushions.")
+
+
+def carom_faq(carom, cities, lang):
+    """The carom page's questions, as (question, answer) pairs. Counts come from the data, and the halls'
+    countries are named only while a listed country has none, so no page implies carom where there is none."""
+    n, c = sum(len(h) for h in carom.values()), len(carom)
+    counted = [carom_tables(v) for halls in carom.values() for v in halls if carom_tables(v)]
+    tables, known = sum(counted), len(counted)
+    codes = list(by_country(carom))
+    partial = len(codes) < len(by_country(cities))
+    if lang == "el":
+        where = f", προς το παρόν όλες {joined([COUNTRIES[x][2] for x in codes], 'el')}" if partial else ""
+        count = (f" Μετράμε {tables} {'τραπέζι' if tables == 1 else 'τραπέζια'} γαλλικού σε {plural_el(known)} "
+                 f"όπου ξέρουμε πόσα {'έχει' if known == 1 else 'έχουν'}." if known else "")
+        return [
+            ("Τι είναι το τρίσποντο;",
+             "Παιχνίδι γαλλικού μπιλιάρδου: για να κερδίσεις πόντο, η μπάλα σου πρέπει να χτυπήσει και τις δύο "
+             "άλλες μπάλες και, πριν φτάσει στη δεύτερη, να έχει ακουμπήσει τουλάχιστον τρεις φορές τα πλαϊνά "
+             "του τραπεζιού."),
+            ("Τι είναι το μονόσποντο;",
+             "Το ίδιο με το τρίσποντο, αλλά αρκεί μία φορά: η μπάλα σου πρέπει να ακουμπήσει τα πλαϊνά "
+             "τουλάχιστον μία φορά πριν χτυπήσει τη δεύτερη μπάλα. Έτσι οι πόντοι έρχονται πιο εύκολα."),
+            ("Πού παίζω γαλλικό μπιλιάρδο;",
+             "Σε αίθουσα με τραπέζια γαλλικού, γιατί το γαλλικό δεν παίζεται σε τραπέζι με τρύπες. Ο κατάλογος "
+             f"έχει {n} τέτοιες αίθουσες σε {cities_el(c)}{where}.{count} Τις βρίσκεις σε αυτή τη σελίδα, "
+             "ανά πόλη."),
+            ("Πώς βρίσκω αντίπαλο για τρίσποντο ή μονόσποντο;",
+             "Στο RackUp δημοσίευσε αίθουσα με τραπέζια γαλλικού, παιχνίδι και ώρα, και διάλεξε αντίπαλο από "
+             "όσους ζητήσουν να μπουν. Ή δες στη ροή μόνο τα ματς γαλλικού και ζήτα να μπεις σε τραπέζι που "
+             "άνοιξε κάποιος άλλος."),
+        ]
+    where = f", for now all of them in {joined([COUNTRIES[x][1] for x in codes], 'en')}" if partial else ""
+    count = (f" We count {tables} carom {'table' if tables == 1 else 'tables'} at the {plural_en(known)} where "
+             "we know how many." if known else "")
+    return [
+        ("What is 3-cushion?",
+         "A carom game: to score a point, your ball must hit both other balls and, before it reaches the second "
+         "one, touch the table's cushions at least three times."),
+        ("What is 1-cushion?",
+         "The same as 3-cushion, but once is enough: your ball must touch the cushions at least once before it "
+         "hits the second ball. So points come more easily."),
+        ("Where can I play carom?",
+         "At a hall with carom tables, since carom is not played on a table with pockets. The directory lists "
+         f"{n} such halls in {cities_en(c)}{where}.{count} You find them on this page, city by city."),
+        ("How do I find a 3-cushion or 1-cushion opponent?",
+         "On RackUp, post a hall with carom tables, the game and a time, then choose your opponent from the "
+         "players who ask to join. Or show only carom matches in the feed and ask to join a table someone "
+         "else opened."),
+    ]
 
 
 def carom_page(cities, lang, revised=None):
@@ -1041,8 +1265,9 @@ def carom_page(cities, lang, revised=None):
         title = first_fit(TITLE_LIMIT, f"{heading}: {plural_el(n)} σε {cities_el(c)} | RackUp",
                           f"{heading}: {plural_el(n)} σε {cities_el(c)}")
         start = f"Τρίσποντο και μονόσποντο: {plural_el(n)} με τραπέζια γαλλικού σε {cities_el(c)}"
-        description = first_fit(DESCRIPTION_LIMIT, *(f"{start} ({top}). {TAIL['el']}" for top in tops),
-                                 f"{start}. {TAIL['el']}")
+        description = first_fit(DESCRIPTION_LIMIT,
+                                f"{start}. Τι είναι το γαλλικό μπιλιάρδο και πώς βρίσκεις αντίπαλο με το RackUp.",
+                                *(f"{start} ({top}). {TAIL['el']}" for top in tops), f"{start}. {TAIL['el']}")
         lead = ("Το τρίσποντο και το μονόσποντο παίζονται σε τραπέζι γαλλικού, χωρίς τρύπες. "
                 f"Στον κατάλογο του RackUp, {plural_el(n)} σε {cities_el(c)} {verb} τραπέζια γαλλικού. "
                 "Όπου ξέρουμε πόσα, το γράφουμε δίπλα στην αίθουσα.")
@@ -1057,8 +1282,9 @@ def carom_page(cities, lang, revised=None):
         title = first_fit(TITLE_LIMIT, f"{heading}: {plural_en(n)} in {cities_en(c)} | RackUp",
                           f"{heading}: {plural_en(n)} in {cities_en(c)}")
         start = f"3-cushion and 1-cushion: {plural_en(n)} with carom tables in {cities_en(c)}"
-        description = first_fit(DESCRIPTION_LIMIT, *(f"{start} ({top}). {TAIL['en']}" for top in tops),
-                                f"{start}. {TAIL['en']}")
+        description = first_fit(DESCRIPTION_LIMIT,
+                                f"{start}. What carom billiards is, and how to find an opponent with RackUp.",
+                                *(f"{start} ({top}). {TAIL['en']}" for top in tops), f"{start}. {TAIL['en']}")
         lead = ("3-cushion and 1-cushion are played on a carom table, which has no pockets. "
                 f"In RackUp's directory, {plural_en(n)} in {cities_en(c)} {'has' if n == 1 else 'have'} carom "
                 "tables. Where we know how many, the count is next to the hall.")
@@ -1068,6 +1294,19 @@ def carom_page(cities, lang, revised=None):
         note = ("The directory is researched by hand, so something may have changed. Where a hall shows just "
                 '"Carom", we know it has carom tables but not how many. Is a hall with carom missing, or did you '
                 f'spot a mistake? Email us at <a href="mailto:{EMAIL}">{EMAIL}</a>.')
+    about_heading, about = carom_explainer(lang)
+    faq = carom_faq(carom, cities, lang)
+    questions = "\n".join(f"<details><summary>{esc(q)}</summary><p>{esc(a)}</p></details>" for q, a in faq)
+    explained = f"""<section class="carom-about" id="how-to-play">
+<h2>{about_heading}</h2>
+<p>{esc(about)}</p>
+</section>
+<section class="carom-faq" id="faq">
+<h2>{"Συχνές ερωτήσεις" if lang == "el" else "Questions"}</h2>
+<div class="faq">
+{questions}
+</div>
+</section>"""
     body = f"""<section class="page-hero">
 <div class="container">
 <p class="crumbs"><a href="{home}">RackUp</a> › {heading}</p>
@@ -1081,6 +1320,7 @@ def carom_page(cities, lang, revised=None):
 {chr(10).join(grid)}
 </ul>
 {chr(10).join(sections)}
+{explained}
 {pitch}
 <p class="note">{updated(revised, lang)}{note}</p>
 </div>"""
@@ -1089,6 +1329,8 @@ def carom_page(cities, lang, revised=None):
         breadcrumb_list(crumbs),
         {"@type": "ItemList", "name": heading, "numberOfItems": n, "itemListElement": [
             {"@type": "ListItem", "position": i, "item": business(v)} for i, v in enumerate(items, start=1)]},
+        {"@type": "FAQPage", "mainEntity": [
+            {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]},
     ]}
     return page(lang=lang, title=title, description=description, path=path,
                 alt_path=alt_path, depth=depth, body=body, data=data)
@@ -1101,7 +1343,10 @@ def sitemap(cities, dates=None):
     paths = [("", None), ("en/", None), ("support.html", None), ("privacy.html", None),
              (f"{EL_ROOT}/", dates.get("directory")), (f"{EN_ROOT}/", dates.get("directory")),
              (f"{CAROM['el']}/", dates.get("carom")), (f"{CAROM['en']}/", dates.get("carom"))]
-    for mine in by_country(cities).values():
+    for code, mine in by_country(cities).items():
+        if code in HUBS:
+            day = dates.get("hubs", {}).get(code)
+            paths += [(f"{EL_ROOT}/{HUBS[code]}/", day), (f"{EN_ROOT}/{HUBS[code]}/", day)]
         for city in city_order(mine, "el"):
             slug, day = CITIES[city][0], dates["cities"].get(city)
             paths += [(f"{EL_ROOT}/{slug}/", day), (f"{EN_ROOT}/{slug}/", day)]
@@ -1146,11 +1391,19 @@ def city_grid(cities, lang):
     return '<ul class="city-grid">\n' + "\n".join(items) + "\n</ul>"
 
 
+def hub_links(cities, lang):
+    """Under a home's city grid, the link to each hub country's page, relative to that home."""
+    root = EL_ROOT if lang == "el" else EN_ROOT[len("en/"):]
+    return "".join("\n" + hub_link(f"{root}/{slug}/", code, by_country(cities)[code], lang)
+                   for code, slug in hubs_of(cities).items())
+
+
 def home_with_city_grid(text, cities, lang):
     start, end = text.find(GRID_START), text.find(GRID_END)
     if start < 0 or end < start:
         sys.exit(f"a home page has no {GRID_START} ... {GRID_END} block for the city grid")
-    return text[:start + len(GRID_START)] + "\n" + city_grid(cities, lang) + "\n" + text[end:]
+    block = city_grid(cities, lang) + hub_links(cities, lang)
+    return text[:start + len(GRID_START)] + "\n" + block + "\n" + text[end:]
 
 
 def with_store_links(name, text):
@@ -1181,6 +1434,8 @@ def render(data=None, dates=None):
         for city, halls in cities.items():
             files[ROOT / root / CITIES[city][0] / "index.html"] = city_page(city, halls, cities, lang,
                                                                             dates["cities"][city])
+        for code, slug in hubs_of(cities).items():
+            files[ROOT / root / slug / "index.html"] = country_page(code, cities, lang, dates["hubs"][code])
     for path, text in files.items():
         if DASHES.search(text):
             sys.exit(f"{path.relative_to(ROOT)} would contain an en or em dash; fix the copy or the data")

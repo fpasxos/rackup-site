@@ -402,6 +402,38 @@ class SearchTest(unittest.TestCase):
             self.assertTrue(title.endswith("| RackUp"), f"{page}: brand goes last")
             self.assertLessEqual(len(title), 60, page)
 
+    def test_greek_home_says_app_and_answers_near_me_and_american_against_french(self):
+        """Audit fix 7: «εφαρμογή» in the lead, and FAQ answers to two searches the home did not meet."""
+        text = (b.ROOT / "index.html").read_text(encoding="utf-8")
+        lead = re.search(r"</h1>\s*<p class=\"lead\">(.*?)</p>", text, re.S).group(1)
+        self.assertTrue(lead.startswith("Η δωρεάν εφαρμογή για παίκτες μπιλιάρδου. Δημοσίευσε πότε και πού "), lead)
+        faq = dict(re.findall(r"<details><summary>(.*?)</summary><p>(.*?)</p></details>", text))
+        near = faq["Πώς βρίσκω μπιλιάρδο κοντά μου;"]
+        # The app's rule: nearest first with the distance when location is on, the home city first when it is off.
+        for said in ("Αίθουσες", "κοντά σου", "χιλιόμετρα", "Χωρίς τοποθεσία", "της πόλης σου"):
+            self.assertIn(said, near)
+        games = faq["Ποια η διαφορά αμερικάνικου και γαλλικού μπιλιάρδου;"]
+        for said in ("8-Ball", "9-Ball", "10-Ball", "τρίσποντο", "μονόσποντο", "με τρύπες", "χωρίς τρύπες"):
+            self.assertIn(said, games)
+        # «καραμπόλα» appears once, on the carom page only (audit fix 4), and pool is never «πουλ».
+        self.assertNotRegex(games + near, r"(?i)καρ[αο]μπόλα|\bπουλ\b")
+
+    def test_english_home_answers_near_me_and_pool_against_carom_where_the_greek_does(self):
+        """Audit fix 7 on the English home: the Greek home's two answers, in the English home's words."""
+        text = (b.ROOT / "en" / "index.html").read_text(encoding="utf-8")
+        faq = dict(re.findall(r"<details><summary>(.*?)</summary><p>(.*?)</p></details>", text))
+        near = faq["How do I find a billiard hall near me?"]
+        for said in ("Venues", "near you first", "kilometres", "Without location", "your city's halls"):
+            self.assertIn(said, near)
+        games = faq["What is the difference between pool and carom?"]
+        for said in ("8-Ball", "9-Ball", "10-Ball", "3-cushion", "1-cushion", "with pockets", "without pockets"):
+            self.assertIn(said, games)
+        self.assertNotRegex(games + near, r"(?i)carambol|καρ[αο]μπόλα")
+        order = list(faq)
+        self.assertEqual(order.index("What is the difference between pool and carom?"),
+                         order.index("Which games does it cover?") + 1)
+        self.assertEqual(order.index("How do I find a billiard hall near me?"), order.index("Which cities?") + 1)
+
     def test_every_indexable_page_previews_as_a_large_card_with_its_size_and_alt(self):
         checked = 0
         for rel, text in published(".html"):
@@ -444,14 +476,17 @@ COUNTRY = re.compile(r"Greece|Ελλάδ|ΕΛΛΑΔ|(?<!in )\bGreek\b(?!,?\s+(?:
 # They list each country's halls under its name.
 NAMES_ITS_COUNTRY = {"mpiliardo/index.html", "en/billiards/index.html"}
 # Exact strings that may name the country, only on the page that carries each: the postal
-# contact line, the data controller's address and which authority a player in Greece complains
-# to. Each must still occur, so none goes stale.
+# contact line, the data controller's address, which authority a player in Greece complains
+# to, and where the carom halls are while a listed country has none (from the data, so no
+# page implies carom tables in Cyprus). Each must still occur, so none goes stale.
 CONTACT = "RackUp · Ioannina, Greece · rackupbilliard@gmail.com"
 ALLOWED = {
     "support.html": (CONTACT,),
     "privacy.html": (CONTACT, "RackUp, Ioannina, Greece, is the data controller",
                      "In Greece that is the Hellenic Data Protection Authority",
                      "Στην Ελλάδα είναι η Αρχή Προστασίας Δεδομένων Προσωπικού Χαρακτήρα"),
+    "galliko-mpiliardo/index.html": ("προς το παρόν όλες στην Ελλάδα",),
+    "en/carom-billiards/index.html": ("for now all of them in Greece",),
 }
 
 
