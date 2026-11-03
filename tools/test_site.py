@@ -415,8 +415,24 @@ class SearchTest(unittest.TestCase):
         games = faq["Ποια η διαφορά αμερικάνικου και γαλλικού μπιλιάρδου;"]
         for said in ("8-Ball", "9-Ball", "10-Ball", "τρίσποντο", "μονόσποντο", "με τρύπες", "χωρίς τρύπες"):
             self.assertIn(said, games)
-        # Carom's Greek spelling waits on Search Console (audit fix 4), and pool is never «πουλ».
+        # «καραμπόλα» appears once, on the carom page only (audit fix 4), and pool is never «πουλ».
         self.assertNotRegex(games + near, r"(?i)καρ[αο]μπόλα|\bπουλ\b")
+
+    def test_english_home_answers_near_me_and_pool_against_carom_where_the_greek_does(self):
+        """Audit fix 7 on the English home: the Greek home's two answers, in the English home's words."""
+        text = (b.ROOT / "en" / "index.html").read_text(encoding="utf-8")
+        faq = dict(re.findall(r"<details><summary>(.*?)</summary><p>(.*?)</p></details>", text))
+        near = faq["How do I find a billiard hall near me?"]
+        for said in ("Venues", "near you first", "kilometres", "Without location", "your city's halls"):
+            self.assertIn(said, near)
+        games = faq["What is the difference between pool and carom?"]
+        for said in ("8-Ball", "9-Ball", "10-Ball", "3-cushion", "1-cushion", "with pockets", "without pockets"):
+            self.assertIn(said, games)
+        self.assertNotRegex(games + near, r"(?i)carambol|καρ[αο]μπόλα")
+        order = list(faq)
+        self.assertEqual(order.index("What is the difference between pool and carom?"),
+                         order.index("Which games does it cover?") + 1)
+        self.assertEqual(order.index("How do I find a billiard hall near me?"), order.index("Which cities?") + 1)
 
     def test_every_indexable_page_previews_as_a_large_card_with_its_size_and_alt(self):
         checked = 0

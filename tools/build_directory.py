@@ -641,6 +641,13 @@ HEADER = {
   </div>
 </header>""",
 }
+# Each hub country's page in every footer, by the hub's own title, after the directory it belongs to.
+FOOTER_HUBS = {
+    "el": "".join(f'\n      <a href="{{root}}{EL_ROOT}/{slug}/">Μπιλιάρδο {COUNTRIES[code][2]}</a>'
+                  for code, slug in HUBS.items()),
+    "en": "".join(f'\n      <a href="{{root}}{EN_ROOT}/{slug}/">Billiards in {COUNTRIES[code][1]}</a>'
+                  for code, slug in HUBS.items()),
+}
 FOOTER = {
     "el": f"""<footer class="site-footer">
   <div class="container foot">
@@ -650,7 +657,7 @@ FOOTER = {
       <p>RackUp · Ιωάννινα</p>
     </div>
     <nav aria-label="Σύνδεσμοι">
-      <a href="{{root}}{EL_ROOT}/">Αίθουσες μπιλιάρδου</a>
+      <a href="{{root}}{EL_ROOT}/">Αίθουσες μπιλιάρδου</a>{FOOTER_HUBS['el']}
       <a href="{{root}}{CAROM['el']}/">Γαλλικό μπιλιάρδο</a>
       <a href="{{root}}support.html#el">Υποστήριξη</a>
       <a href="{{root}}privacy.html#el">Απόρρητο</a>
@@ -668,7 +675,7 @@ FOOTER = {
       <p>RackUp · Ioannina</p>
     </div>
     <nav aria-label="Links">
-      <a href="{{root}}{EN_ROOT}/">Billiard halls</a>
+      <a href="{{root}}{EN_ROOT}/">Billiard halls</a>{FOOTER_HUBS['en']}
       <a href="{{root}}{CAROM['en']}/">Carom billiards</a>
       <a href="{{root}}support.html">Support</a>
       <a href="{{root}}privacy.html">Privacy Policy</a>

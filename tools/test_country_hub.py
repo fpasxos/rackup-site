@@ -1,4 +1,4 @@
-"""Country hubs: a hub country's own page, linked from its cities, from both homes and from the directory.
+"""Country hubs: a hub country's own page, linked from its cities, both homes, the directory and every footer.
 Python 3.8+, no packages: python -m unittest discover -s tools
 """
 import re
@@ -6,9 +6,11 @@ import sys
 import unittest
 from pathlib import Path
 from unittest import mock
+from urllib.parse import urljoin
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import build_directory as b  # noqa: E402
+from test_build_directory import published, site_path  # noqa: E402
 from test_directory_seo import description, node, structured, title, visible_crumbs, visible_text  # noqa: E402
 
 LANGS = (("el", b.EL_ROOT), ("en", b.EN_ROOT))
@@ -111,6 +113,20 @@ class CountryHubTest(unittest.TestCase):
         with mock.patch.dict(b.HUBS, {"CY": "lefkosia"}), self.assertRaises(SystemExit) as stop:
             b.hubs_of(self.cities)
         self.assertIn("is a city's too", str(stop.exception.code))
+
+    def test_every_footer_links_the_hub_in_its_language_by_the_hubs_title(self):
+        titles = {"el": "Μπιλιάρδο στην Κύπρο", "en": "Billiards in Cyprus"}
+        checked = 0
+        for rel, text in published(".html"):
+            lang = re.search(r'<html lang="(el|en)">', text).group(1)
+            footer = re.search(r'<footer class="site-footer">.*?</footer>', text, re.S).group(0)
+            # The 404 page is served at any depth, so it links from the root.
+            base = f"{b.BASE_URL}/" if rel == "404.html" else f"{b.BASE_URL}/{site_path(rel)}"
+            links = {urljoin(base, href): label for href, label in re.findall(r'<a href="([^"]*)">([^<]*)</a>', footer)}
+            root = b.EL_ROOT if lang == "el" else b.EN_ROOT
+            self.assertEqual(links.get(b.url(f"{root}/kypros/")), titles[lang], rel)
+            checked += 1
+        self.assertGreater(checked, 90, "too few pages read")
 
 
 if __name__ == "__main__":

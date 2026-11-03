@@ -301,7 +301,9 @@ class CaromExplainerTest(unittest.TestCase):
         self.assertIn(f"{n} such halls in {c} cities, for now all of them in Greece.", en)
         self.assertIn(f"We count {sum(counted)} carom tables at the {len(counted)} halls where we know", en)
         for rel in PAGES.values():
-            self.assertNotRegex(self.files[rel], r"Κύπρ|Cyprus", f"{rel} must not imply carom tables in Cyprus")
+            # The page's own words: every footer links the Cyprus page, which says nothing about carom.
+            main = re.search(r'<main id="main">(.*)</main>', self.files[rel], re.S).group(1)
+            self.assertNotRegex(main, r"Κύπρ|Cyprus", f"{rel} must not imply carom tables in Cyprus")
 
     def test_the_country_and_table_lines_follow_the_data(self):
         greek, cyprus = hall("venue-lar-a", caromTables=1), dict(hall("venue-cy-nic-a", city="Nicosia"), country="CY")
