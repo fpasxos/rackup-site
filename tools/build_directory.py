@@ -509,6 +509,8 @@ FOOTER = {
 }
 # The face the first paint needs: Greek pages are set in Commissioner, English ones in Space Grotesk.
 PRELOAD_FONT = {"el": "commissioner-greek.woff2", "en": "space-grotesk-latin.woff2"}
+# The 1200x630 social card's alt in each language, as the homes carry it.
+OG_ALT = {"el": "RackUp: Βρες αντίπαλο. Παίξε απόψε.", "en": "RackUp: find an opponent, play tonight."}
 
 
 def page(*, lang, title, description, path, alt_path, depth, body, data):
@@ -536,6 +538,10 @@ def page(*, lang, title, description, path, alt_path, depth, body, data):
 <meta property="og:description" content="{esc(description)}">
 <meta property="og:url" content="{url(path)}">
 <meta property="og:image" content="{url('assets/og-card.png' if lang == 'el' else 'assets/og-card-en.png')}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{esc(OG_ALT[lang])}">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0E1512">
 <link rel="icon" href="{prefix}favicon.ico" sizes="32x32">
 <link rel="icon" href="{prefix}assets/favicon.svg" type="image/svg+xml">

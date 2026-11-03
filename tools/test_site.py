@@ -358,6 +358,26 @@ def ld_nodes(text):
     return nodes
 
 
+def ld_ids(item):
+    """(defined, pointed at): the @id of every node the JSON-LD describes, and of every bare {"@id": ...}."""
+    defined, pointed = set(), set()
+    if isinstance(item, dict):
+        if "@id" in item:
+            (pointed if len(item) == 1 else defined).add(item["@id"])
+        children = list(item.values())
+    else:
+        children = item if isinstance(item, list) else []
+    for child in children:
+        found = ld_ids(child)
+        defined |= found[0]
+        pointed |= found[1]
+    return defined, pointed
+
+
+# The 1200x630 social card's alt in each page language; tools/test_images.py pins the size.
+CARD_ALT = {"el": "RackUp: Βρες αντίπαλο. Παίξε απόψε.", "en": "RackUp: find an opponent, play tonight."}
+
+
 class SearchTest(unittest.TestCase):
 
     def test_robots_txt_allows_crawling_and_names_the_sitemap(self):
@@ -381,6 +401,32 @@ class SearchTest(unittest.TestCase):
             self.assertIn(word, title, page)
             self.assertTrue(title.endswith("| RackUp"), f"{page}: brand goes last")
             self.assertLessEqual(len(title), 60, page)
+
+    def test_every_indexable_page_previews_as_a_large_card_with_its_size_and_alt(self):
+        checked = 0
+        for rel, text in published(".html"):
+            if 'content="noindex"' in text:
+                continue
+            lang = re.search(r'<html lang="(el|en)">', text).group(1)
+            for tag in ('<meta property="og:image:width" content="1200">',
+                        '<meta property="og:image:height" content="630">',
+                        f'<meta property="og:image:alt" content="{CARD_ALT[lang]}">',
+                        '<meta name="twitter:card" content="summary_large_image">'):
+                self.assertEqual(text.count(tag), 1, f"{rel} needs exactly one {tag}")
+            checked += 1
+        self.assertGreater(checked, 100, "the walk missed the pages")
+
+    def test_every_structured_data_pointer_names_a_node_on_its_own_page(self):
+        """The English home's publisher pointed at an Organization only the Greek home described."""
+        for rel, text in published(".html"):
+            defined, pointed = set(), set()
+            for node in ld_nodes(text):
+                found = ld_ids(node)
+                defined |= found[0]
+                pointed |= found[1]
+            self.assertEqual(pointed - defined, set(), f"{rel}: a JSON-LD pointer has no node on its page")
+            if rel in ("index.html", "en/index.html"):
+                self.assertIn("https://getrackup.com/#org", pointed, f"{rel}: the walk found no pointer")
 
     def test_root_names_the_brand_the_site_and_the_app(self):
         nodes = {n["@type"]: n for n in ld_nodes((b.ROOT / "index.html").read_text(encoding="utf-8"))}
