@@ -1033,6 +1033,72 @@ def carom_hall(v, lang, prefix):
                       "</li>"])
 
 
+def carom_explainer(lang):
+    """How carom is played, plainly. «καραμπόλα» appears once, as a synonym; never «σπόντα»."""
+    if lang == "el":
+        return ("Πώς παίζεται το γαλλικό μπιλιάρδο",
+                "Το γαλλικό μπιλιάρδο, ή καραμπόλα, παίζεται σε τραπέζι χωρίς τρύπες, με τρεις μπάλες: μία για "
+                "κάθε παίκτη και μία κόκκινη. Χτυπάς μόνο τη δική σου μπάλα και κερδίζεις πόντο όταν αυτή χτυπήσει "
+                "και τις δύο άλλες. Όσο κερδίζεις πόντους συνεχίζεις, και όταν αστοχήσεις παίζει ο αντίπαλος. Στο "
+                "RackUp παίζεις δύο παιχνίδια του, το τρίσποντο και το μονόσποντο, που διαφέρουν σε ένα σημείο: "
+                "πόσες φορές πρέπει η μπάλα σου να ακουμπήσει τα πλαϊνά του τραπεζιού.")
+    return ("How carom is played",
+            "Carom billiards is played on a table without pockets, with three balls: one for each player and a "
+            "red one. You strike only your own ball, and you score a point when it hits both of the others. You "
+            "keep playing while you score, and when you miss, your opponent plays. RackUp has two carom games, "
+            "3-cushion and 1-cushion, which differ in one thing: how many times your ball must touch the "
+            "table's cushions.")
+
+
+def carom_faq(carom, cities, lang):
+    """The carom page's questions, as (question, answer) pairs. Counts come from the data, and the halls'
+    countries are named only while a listed country has none, so no page implies carom where there is none."""
+    n, c = sum(len(h) for h in carom.values()), len(carom)
+    counted = [carom_tables(v) for halls in carom.values() for v in halls if carom_tables(v)]
+    tables, known = sum(counted), len(counted)
+    codes = list(by_country(carom))
+    partial = len(codes) < len(by_country(cities))
+    if lang == "el":
+        where = f", προς το παρόν όλες {joined([COUNTRIES[x][2] for x in codes], 'el')}" if partial else ""
+        count = (f" Μετράμε {tables} {'τραπέζι' if tables == 1 else 'τραπέζια'} γαλλικού σε {plural_el(known)} "
+                 f"όπου ξέρουμε πόσα {'έχει' if known == 1 else 'έχουν'}." if known else "")
+        return [
+            ("Τι είναι το τρίσποντο;",
+             "Παιχνίδι γαλλικού μπιλιάρδου: για να κερδίσεις πόντο, η μπάλα σου πρέπει να χτυπήσει και τις δύο "
+             "άλλες μπάλες και, πριν φτάσει στη δεύτερη, να έχει ακουμπήσει τουλάχιστον τρεις φορές τα πλαϊνά "
+             "του τραπεζιού."),
+            ("Τι είναι το μονόσποντο;",
+             "Το ίδιο με το τρίσποντο, αλλά αρκεί μία φορά: η μπάλα σου πρέπει να ακουμπήσει τα πλαϊνά "
+             "τουλάχιστον μία φορά πριν χτυπήσει τη δεύτερη μπάλα. Έτσι οι πόντοι έρχονται πιο εύκολα."),
+            ("Πού παίζω γαλλικό μπιλιάρδο;",
+             "Σε αίθουσα με τραπέζια γαλλικού, γιατί το γαλλικό δεν παίζεται σε τραπέζι με τρύπες. Ο κατάλογος "
+             f"έχει {n} τέτοιες αίθουσες σε {cities_el(c)}{where}.{count} Τις βρίσκεις σε αυτή τη σελίδα, "
+             "ανά πόλη."),
+            ("Πώς βρίσκω αντίπαλο για τρίσποντο ή μονόσποντο;",
+             "Στο RackUp δημοσίευσε αίθουσα με τραπέζια γαλλικού, παιχνίδι και ώρα, και διάλεξε αντίπαλο από "
+             "όσους ζητήσουν να μπουν. Ή δες στη ροή μόνο τα ματς γαλλικού και ζήτα να μπεις σε τραπέζι που "
+             "άνοιξε κάποιος άλλος."),
+        ]
+    where = f", for now all of them in {joined([COUNTRIES[x][1] for x in codes], 'en')}" if partial else ""
+    count = (f" We count {tables} carom {'table' if tables == 1 else 'tables'} at the {plural_en(known)} where "
+             "we know how many." if known else "")
+    return [
+        ("What is 3-cushion?",
+         "A carom game: to score a point, your ball must hit both other balls and, before it reaches the second "
+         "one, touch the table's cushions at least three times."),
+        ("What is 1-cushion?",
+         "The same as 3-cushion, but once is enough: your ball must touch the cushions at least once before it "
+         "hits the second ball. So points come more easily."),
+        ("Where can I play carom?",
+         "At a hall with carom tables, since carom is not played on a table with pockets. The directory lists "
+         f"{n} such halls in {cities_en(c)}{where}.{count} You find them on this page, city by city."),
+        ("How do I find a 3-cushion or 1-cushion opponent?",
+         "On RackUp, post a hall with carom tables, the game and a time, then choose your opponent from the "
+         "players who ask to join. Or show only carom matches in the feed and ask to join a table someone "
+         "else opened."),
+    ]
+
+
 def carom_page(cities, lang, revised=None):
     """Every hall known to have carom tables, by city, with the count where it is known."""
     carom = carom_by_city(cities)
@@ -1069,8 +1135,9 @@ def carom_page(cities, lang, revised=None):
         title = first_fit(TITLE_LIMIT, f"{heading}: {plural_el(n)} σε {cities_el(c)} | RackUp",
                           f"{heading}: {plural_el(n)} σε {cities_el(c)}")
         start = f"Τρίσποντο και μονόσποντο: {plural_el(n)} με τραπέζια γαλλικού σε {cities_el(c)}"
-        description = first_fit(DESCRIPTION_LIMIT, *(f"{start} ({top}). {TAIL['el']}" for top in tops),
-                                 f"{start}. {TAIL['el']}")
+        description = first_fit(DESCRIPTION_LIMIT,
+                                f"{start}. Τι είναι το γαλλικό μπιλιάρδο και πώς βρίσκεις αντίπαλο με το RackUp.",
+                                *(f"{start} ({top}). {TAIL['el']}" for top in tops), f"{start}. {TAIL['el']}")
         lead = ("Το τρίσποντο και το μονόσποντο παίζονται σε τραπέζι γαλλικού, χωρίς τρύπες. "
                 f"Στον κατάλογο του RackUp, {plural_el(n)} σε {cities_el(c)} {verb} τραπέζια γαλλικού. "
                 "Όπου ξέρουμε πόσα, το γράφουμε δίπλα στην αίθουσα.")
@@ -1085,8 +1152,9 @@ def carom_page(cities, lang, revised=None):
         title = first_fit(TITLE_LIMIT, f"{heading}: {plural_en(n)} in {cities_en(c)} | RackUp",
                           f"{heading}: {plural_en(n)} in {cities_en(c)}")
         start = f"3-cushion and 1-cushion: {plural_en(n)} with carom tables in {cities_en(c)}"
-        description = first_fit(DESCRIPTION_LIMIT, *(f"{start} ({top}). {TAIL['en']}" for top in tops),
-                                f"{start}. {TAIL['en']}")
+        description = first_fit(DESCRIPTION_LIMIT,
+                                f"{start}. What carom billiards is, and how to find an opponent with RackUp.",
+                                *(f"{start} ({top}). {TAIL['en']}" for top in tops), f"{start}. {TAIL['en']}")
         lead = ("3-cushion and 1-cushion are played on a carom table, which has no pockets. "
                 f"In RackUp's directory, {plural_en(n)} in {cities_en(c)} {'has' if n == 1 else 'have'} carom "
                 "tables. Where we know how many, the count is next to the hall.")
@@ -1096,6 +1164,19 @@ def carom_page(cities, lang, revised=None):
         note = ("The directory is researched by hand, so something may have changed. Where a hall shows just "
                 '"Carom", we know it has carom tables but not how many. Is a hall with carom missing, or did you '
                 f'spot a mistake? Email us at <a href="mailto:{EMAIL}">{EMAIL}</a>.')
+    about_heading, about = carom_explainer(lang)
+    faq = carom_faq(carom, cities, lang)
+    questions = "\n".join(f"<details><summary>{esc(q)}</summary><p>{esc(a)}</p></details>" for q, a in faq)
+    explained = f"""<section class="carom-about" id="how-to-play">
+<h2>{about_heading}</h2>
+<p>{esc(about)}</p>
+</section>
+<section class="carom-faq" id="faq">
+<h2>{"Συχνές ερωτήσεις" if lang == "el" else "Questions"}</h2>
+<div class="faq">
+{questions}
+</div>
+</section>"""
     body = f"""<section class="page-hero">
 <div class="container">
 <p class="crumbs"><a href="{home}">RackUp</a> › {heading}</p>
@@ -1109,6 +1190,7 @@ def carom_page(cities, lang, revised=None):
 {chr(10).join(grid)}
 </ul>
 {chr(10).join(sections)}
+{explained}
 {pitch}
 <p class="note">{updated(revised, lang)}{note}</p>
 </div>"""
@@ -1117,6 +1199,8 @@ def carom_page(cities, lang, revised=None):
         breadcrumb_list(crumbs),
         {"@type": "ItemList", "name": heading, "numberOfItems": n, "itemListElement": [
             {"@type": "ListItem", "position": i, "item": business(v)} for i, v in enumerate(items, start=1)]},
+        {"@type": "FAQPage", "mainEntity": [
+            {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]},
     ]}
     return page(lang=lang, title=title, description=description, path=path,
                 alt_path=alt_path, depth=depth, body=body, data=data)

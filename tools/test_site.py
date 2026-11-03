@@ -444,14 +444,17 @@ COUNTRY = re.compile(r"Greece|Ελλάδ|ΕΛΛΑΔ|(?<!in )\bGreek\b(?!,?\s+(?:
 # They list each country's halls under its name.
 NAMES_ITS_COUNTRY = {"mpiliardo/index.html", "en/billiards/index.html"}
 # Exact strings that may name the country, only on the page that carries each: the postal
-# contact line, the data controller's address and which authority a player in Greece complains
-# to. Each must still occur, so none goes stale.
+# contact line, the data controller's address, which authority a player in Greece complains
+# to, and where the carom halls are while a listed country has none (from the data, so no
+# page implies carom tables in Cyprus). Each must still occur, so none goes stale.
 CONTACT = "RackUp · Ioannina, Greece · rackupbilliard@gmail.com"
 ALLOWED = {
     "support.html": (CONTACT,),
     "privacy.html": (CONTACT, "RackUp, Ioannina, Greece, is the data controller",
                      "In Greece that is the Hellenic Data Protection Authority",
                      "Στην Ελλάδα είναι η Αρχή Προστασίας Δεδομένων Προσωπικού Χαρακτήρα"),
+    "galliko-mpiliardo/index.html": ("προς το παρόν όλες στην Ελλάδα",),
+    "en/carom-billiards/index.html": ("for now all of them in Greece",),
 }
 
 
