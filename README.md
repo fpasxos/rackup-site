@@ -12,7 +12,7 @@ path on `getrackup.com`, so links already in the app and on QR codes keep workin
 | `en/index.html` | English home page, served at `/en/` | hand, likewise |
 | `404.html` | Bilingual page GitHub Pages serves for any missing path (root-relative links only) | hand, except the store links |
 | `support.html`, `privacy.html` | Support and privacy policy (store listings link here, so keep the URLs) | hand, except the store links in `support.html` |
-| `mpiliardo/` | Greek hall directory: index plus one page per city | generator |
+| `mpiliardo/` | Greek hall directory: index, one page per city and a hub page per country in `HUBS` (Cyprus: `kypros/`) | generator |
 | `en/billiards/` | The same directory in English | generator |
 | `galliko-mpiliardo/`, `en/carom-billiards/` | Carom page: every hall known to have carom tables, by city, with the count where known | generator |
 | `sitemap.xml` | Every page on the site | generator |
@@ -113,6 +113,12 @@ that way; `tools/test_site.py` fails on the old green and gold palette.
   country, its index gives each country a heading over its own cities, named
   from `COUNTRIES`, and a city page's "other cities" are its own country's. Every
   hall of a city must name the same country, or the build stops.
+- **A country in `HUBS` gets a hub page** under both directory roots (Cyprus:
+  `mpiliardo/kypros/`, `en/billiards/kypros/`): its cities with their counts, in
+  its own words, naming no other country and no game its halls lack outside the
+  shared download card. Its city pages' breadcrumbs pass through it, and both
+  homes and the directory index link it under their city lists. A hub slug may
+  never be a city's; the build stops if it is.
 - **No maps.** No embeds, no Google Maps links and no coordinates in pages or
   structured data. The venue data licence rules in the app repo's `CLAUDE.md`
   are the reason.
