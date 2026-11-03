@@ -167,12 +167,14 @@ class BuildDirectoryTest(unittest.TestCase):
         expected = {"": "home", "support.html": "support", "mpiliardo/": "el-directory",
                     "en/billiards/": "en-directory", "mpiliardo/athens/": "el-athens",
                     "en/billiards/athens/": "en-athens", "mpiliardo/agios-nikolaos/": "el-agios-nikolaos",
-                    "galliko-mpiliardo/": "el-carom", "en/carom-billiards/": "en-carom"}
+                    "galliko-mpiliardo/": "el-carom", "en/carom-billiards/": "en-carom",
+                    "mpiliardo/kypros/": "el-kypros", "en/billiards/kypros/": "en-kypros"}
         for path, campaign in expected.items():
             self.assertEqual(b.campaign_for(path), campaign, path)
         campaigns = [b.campaign_for(site_path(rel)) for rel in sorted(rendered_pages())]
-        self.assertEqual(len(campaigns),
-                         2 * len(b.group_by_city(b.load_venues())) + 2 + len(b.CAROM) + len(b.HAND_PAGES))
+        cities = b.group_by_city(b.load_venues())
+        self.assertEqual(len(campaigns), 2 * len(cities) + 2 + len(b.CAROM) + len(b.HAND_PAGES)
+                         + 2 * len(b.hubs_of(cities)))
         self.assertEqual(len(set(campaigns)), len(campaigns), "two pages share a campaign")
         for campaign in campaigns:
             self.assertRegex(campaign, r"^[a-z0-9]+(-[a-z0-9]+)*$")
@@ -264,7 +266,8 @@ class BuildDirectoryTest(unittest.TestCase):
             self.assertIn(f'<span data-count="cities">{count}</span>', text, home)
             grid = re.search(r"<!-- city-grid -->(.*?)<!-- /city-grid -->", text, re.S).group(1)
             hrefs = re.findall(r'<a href="([^"]+)"', grid)
-            self.assertEqual(len(hrefs), count, home)
+            # Every city, then a link to each hub country's page.
+            self.assertEqual(len(hrefs), count + len(b.hubs_of(cities)), home)
             for href in hrefs:
                 page = (b.ROOT / home).parent / href / "index.html"
                 self.assertIn(page.resolve(), {p.resolve() for p in files}, f"{home} links {href}")
@@ -401,9 +404,12 @@ class CountryPagesTest(unittest.TestCase):
             self.assertIn(f"<h1>{h1}</h1>", text)
             self.assertIn(f"<title>{h1}{by_city} | RackUp</title>", text)
             sections = re.findall(r'<section class="country" id="([a-z]{2})">\n<h3>([^<]*)</h3>\n'
-                                  r'<ul class="city-grid">\n(.*?)\n</ul>\n</section>', text, re.S)
-            self.assertEqual([(code, name) for code, name, _ in sections], [("gr", headings[0]), ("cy", headings[1])])
-            grids = [re.findall(r'<a href="([^"]*)/">', grid) for _, _, grid in sections]
+                                  r'<ul class="city-grid">\n(.*?)\n</ul>\n'
+                                  r'(?:<p class="more"><a href="([^"]*)">[^<]*</a></p>\n)?</section>', text, re.S)
+            self.assertEqual([(code, name) for code, name, _, _ in sections],
+                             [("gr", headings[0]), ("cy", headings[1])])
+            self.assertEqual([hub for _, _, _, hub in sections], ["", "kypros/"], "only a hub country links its page")
+            grids = [re.findall(r'<a href="([^"]*)/">', grid) for _, _, grid, _ in sections]
             self.assertEqual(grids, [["athens", "larissa"], ["lemesos", "lefkosia"]], lang)
             (listing,) = [n for n in graph(text) if n["@type"] == "ItemList"]
             self.assertEqual([item["url"].rsplit("/", 2)[1] for item in listing["itemListElement"]],
@@ -444,6 +450,10 @@ class CountryPagesTest(unittest.TestCase):
             for root in (b.EL_ROOT, b.EN_ROOT):
                 self.assertEqual(locs.count(b.url(f"{root}/{b.CITIES[city][0]}/")), 1, f"{root} {city}")
         country_of_slug = {b.CITIES[c][0]: b.country_of(h) for c, h in cities.items()}
+        for code, slug in b.hubs_of(cities).items():
+            country_of_slug[slug] = code
+            for root in (b.EL_ROOT, b.EN_ROOT):
+                self.assertEqual(locs.count(b.url(f"{root}/{slug}/")), 1, f"{root} hub {code}")
         listed = [country_of_slug[loc.rsplit("/", 2)[1]] for loc in locs if loc.startswith(b.url(f"{b.EL_ROOT}/"))
                   and loc != b.url(f"{b.EL_ROOT}/")]
         self.assertEqual(listed, sorted(listed, key=list(b.by_country(cities)).index))

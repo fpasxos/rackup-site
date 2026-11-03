@@ -267,6 +267,9 @@ def visible_crumbs(text):
 class StructuredDataTest(unittest.TestCase):
 
     def test_breadcrumbs_in_json_ld_match_the_visible_ones(self):
+        cities = b.group_by_city(b.load_venues())
+        # A hub country's city pages pass through its hub: RackUp › halls › country › city.
+        under_hub = {b.CITIES[c][0]: b.HUBS[b.country_of(h)] for c, h in cities.items() if b.country_of(h) in b.HUBS}
         for rel, text in directory_pages().items():
             with self.subTest(page=rel):
                 trail = node(structured(text), "BreadcrumbList")["itemListElement"]
@@ -275,7 +278,11 @@ class StructuredDataTest(unittest.TestCase):
                 home = f"{b.BASE_URL}/" if is_greek(rel) else f"{b.BASE_URL}/en/"
                 self.assertEqual(trail[0]["item"], home)
                 index = rel in (f"{b.EL_ROOT}/index.html", f"{b.EN_ROOT}/index.html")
-                self.assertEqual(len(trail), 2 if index else 3)
+                slug = rel.split("/")[-2]
+                self.assertEqual(len(trail), 2 if index else 4 if slug in under_hub else 3)
+                if slug in under_hub:
+                    root = b.EL_ROOT if is_greek(rel) else b.EN_ROOT
+                    self.assertEqual(trail[2]["item"], b.url(f"{root}/{under_hub[slug]}/"))
 
     def test_index_pages_keep_their_city_list(self):
         cities = b.group_by_city(b.load_venues())
