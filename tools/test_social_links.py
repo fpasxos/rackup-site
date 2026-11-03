@@ -1,4 +1,4 @@
-"""RackUp's Instagram and Facebook: linked from every page's footer, named in the home's structured data.
+"""RackUp's Instagram and Facebook: linked from every page's footer, named in both homes' structured data.
 Python 3.8+, no packages: python -m unittest discover -s tools
 """
 import json
@@ -15,6 +15,9 @@ from test_build_directory import published, rendered_pages  # noqa: E402
 # Literals, so a typo in the generator's constants fails here too.
 PROFILES = {"Instagram": "https://www.instagram.com/rackupbilliard/",
             "Facebook": "https://www.facebook.com/rackupbilliard"}
+# The bare store listings, also literals: the Organization names the ones its app does.
+STORES = ["https://apps.apple.com/gr/app/id6800614202", "https://play.google.com/store/apps/details?id=com.rackup.app"]
+HOMES = {"index.html": "https://getrackup.com/", "en/index.html": "https://getrackup.com/en/"}
 LABEL = {"el": "RackUp στο {}", "en": "RackUp on {}"}
 HAND = {"index.html", "en/index.html", "404.html", "support.html", "privacy.html", "m/index.html", "go/index.html"}
 
@@ -47,21 +50,29 @@ class SocialLinksTest(unittest.TestCase):
         missing = (HAND | rendered_pages()) - checked
         self.assertEqual(missing, set(), "pages the walk never reached")
 
-    def test_home_organization_names_both_profiles(self):
-        text = (b.ROOT / "index.html").read_text(encoding="utf-8")
-        blocks = re.findall(r'<script type="application/ld\+json">(.*?)</script>', text, re.S)
-        self.assertEqual(len(blocks), 1, "one JSON-LD block on the home")
-        nodes = json.loads(blocks[0])["@graph"]
-        (org,) = [n for n in nodes if n["@type"] == "Organization"]
-        self.assertEqual((org["name"], org["url"]), ("RackUp", "https://getrackup.com/"))
-        for link in PROFILES.values():
-            self.assertIn(link, org["sameAs"])
-        self.assertEqual(len(org["sameAs"]), len(set(org["sameAs"])), "a profile is listed twice")
-        self.assertNotIn("facebook.com/profile.php", text, "the numeric Facebook URL is replaced by the name")
-        logo = urlsplit(org["logo"]["url"]).path.lstrip("/")
-        self.assertTrue((b.ROOT / logo).is_file(), f"logo {logo} is not on the site")
-        (app,) = [n for n in nodes if n["@type"] == "MobileApplication"]
-        self.assertEqual(app["publisher"], {"@id": org["@id"]})
+    def test_each_home_organization_names_both_profiles_and_both_stores(self):
+        described = {}
+        for rel, home in HOMES.items():
+            text = (b.ROOT / rel).read_text(encoding="utf-8")
+            blocks = re.findall(r'<script type="application/ld\+json">(.*?)</script>', text, re.S)
+            self.assertEqual(len(blocks), 1, f"{rel}: one JSON-LD block on the home")
+            nodes = json.loads(blocks[0])["@graph"]
+            (org,) = [n for n in nodes if n["@type"] == "Organization"]
+            self.assertEqual((org["name"], org["url"]), ("RackUp", "https://getrackup.com/"), rel)
+            for link in (*PROFILES.values(), *STORES):
+                self.assertIn(link, org["sameAs"], rel)
+            self.assertEqual(len(org["sameAs"]), len(set(org["sameAs"])), f"{rel}: a link is listed twice")
+            self.assertNotIn("facebook.com/profile.php", text, "the numeric Facebook URL is replaced by the name")
+            logo = urlsplit(org["logo"]["url"]).path.lstrip("/")
+            self.assertTrue((b.ROOT / logo).is_file(), f"logo {logo} is not on the site")
+            (app,) = [n for n in nodes if n["@type"] == "MobileApplication"]
+            self.assertEqual(app["publisher"], {"@id": org["@id"]}, rel)
+            self.assertEqual(app["sameAs"], STORES, f"{rel}: the app lists the store listings")
+            self.assertEqual(app["url"], home, f"{rel}: the app points at the home of its language")
+            described[rel] = {n["@type"]: n for n in nodes}
+        for kind in ("Organization", "WebSite"):
+            self.assertEqual(described["index.html"][kind], described["en/index.html"][kind],
+                             f"the {kind} is one entity, so both homes describe it the same")
 
 
 if __name__ == "__main__":

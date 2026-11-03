@@ -253,9 +253,9 @@ node --test tools/go_page.test.js
 ## Social profiles
 
 Every footer links RackUp on Instagram and Facebook: the generator from `INSTAGRAM`
-and `FACEBOOK` in `tools/build_directory.py`, the hand pages by hand. The home's
-`Organization` lists both in `sameAs`; the store listings stay on the
-`MobileApplication`. Plain links only, never an embed, a share widget or a pixel.
+and `FACEBOOK` in `tools/build_directory.py`, the hand pages by hand. Each home's
+`Organization` lists both in `sameAs`, then the two bare store listings, which
+the `MobileApplication` names too. Plain links only, never an embed, a share widget or a pixel.
 `tools/test_social_links.py` checks every page and the structured data.
 
 ## Telling search engines
