@@ -147,6 +147,7 @@ p{margin:0 0 1em}
 .city{font-weight:600}
 .count{color:var(--accent);font-size:.85rem;font-weight:500}
 .country+.country{margin-top:32px}
+.city-grid+.more{margin-top:20px}
 
 /* FAQ */
 .faq{max-width:760px;margin:0 auto}
@@ -185,6 +186,9 @@ p{margin:0 0 1em}
 .chip-link{min-height:44px;padding:9px 16px 9px 9px}
 .carom-city{margin-top:40px}
 .carom-city .more{margin:12px 0 0}
+.carom-about,.carom-faq{margin-top:48px}
+.carom-about p{max-width:70ch;color:var(--ink2)}
+.carom-faq .faq{margin:0}
 .more a{display:inline-block;padding:12px 0;margin:-12px 0}
 .addr{color:var(--ink2)}
 .contact{color:var(--muted);font-size:.92rem}

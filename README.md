@@ -12,7 +12,7 @@ path on `getrackup.com`, so links already in the app and on QR codes keep workin
 | `en/index.html` | English home page, served at `/en/` | hand, likewise |
 | `404.html` | Bilingual page GitHub Pages serves for any missing path (root-relative links only) | hand, except the store links |
 | `support.html`, `privacy.html` | Support and privacy policy (store listings link here, so keep the URLs) | hand, except the store links in `support.html` |
-| `mpiliardo/` | Greek hall directory: index plus one page per city | generator |
+| `mpiliardo/` | Greek hall directory: index, one page per city and a hub page per country in `HUBS` (Cyprus: `kypros/`) | generator |
 | `en/billiards/` | The same directory in English | generator |
 | `galliko-mpiliardo/`, `en/carom-billiards/` | Carom page: every hall known to have carom tables, by city, with the count where known | generator |
 | `sitemap.xml` | Every page on the site | generator |
@@ -25,6 +25,7 @@ path on `getrackup.com`, so links already in the app and on QR codes keep workin
 | `favicon.ico`, `assets/favicon.svg`, `assets/apple-touch-icon.png`, `assets/icon-512.png` | The logo as browsers, phones and the structured data take it. Masters and rules: `store-assets/logo/` in the app repo. The wordmark's mark is `MARK` in the generator, copied into each hand page; `tools/test_logo.py` checks both | hand |
 | `CNAME` | The custom domain, `getrackup.com`, that GitHub Pages serves the site on | hand |
 | `data/venues.json` | Public copy of the venue directory | generator (`--import`) |
+| `data/revisions.json` | The day each directory page's listing last changed: its sitemap `<lastmod>` and its visible "updated" date | generator (`--import`) |
 | `0a9442a5613cbbd088b30f789f206e74.txt` | The IndexNow key, which proves to Bing and others that the site is ours | never; see below |
 | `tools/build_directory.py` | The generator | hand |
 | `tools/indexnow.py` | Tells IndexNow engines the site changed | hand |
@@ -53,6 +54,15 @@ beside the backup, the app repo's `data/countries.json`, and nothing is written
 until every check passes, so an import that stops leaves the checkout as it was.
 With `--check` it writes nothing and names `data/venues.json` with the pages it
 would change.
+
+The import also dates every directory page whose listing changed (a city page
+its halls, the indexes their cities and counts, the carom pages their halls) in
+`data/revisions.json`, by the day the app repo last committed the backup or
+`countries.json`. So commit the venue change in the app repo first: the import
+stops on an uncommitted backup. No other run moves a date, so a rebuild or a
+template edit never makes a page look new. Each date is the page's `<lastmod>`
+in `sitemap.xml` and its visible «Τελευταία ενημέρωση» / "Last updated" line.
+The hand-written pages carry no `<lastmod>`.
 
 Other modes:
 
@@ -113,6 +123,12 @@ that way; `tools/test_site.py` fails on the old green and gold palette.
   country, its index gives each country a heading over its own cities, named
   from `COUNTRIES`, and a city page's "other cities" are its own country's. Every
   hall of a city must name the same country, or the build stops.
+- **A country in `HUBS` gets a hub page** under both directory roots (Cyprus:
+  `mpiliardo/kypros/`, `en/billiards/kypros/`): its cities with their counts, in
+  its own words, naming no other country and no game its halls lack outside the
+  shared download card. Its city pages' breadcrumbs pass through it, and both
+  homes and the directory index link it under their city lists. A hub slug may
+  never be a city's; the build stops if it is.
 - **No maps.** No embeds, no Google Maps links and no coordinates in pages or
   structured data. The venue data licence rules in the app repo's `CLAUDE.md`
   are the reason.

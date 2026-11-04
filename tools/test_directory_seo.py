@@ -104,28 +104,79 @@ class TitleAndDescriptionTest(unittest.TestCase):
     def test_descriptions_say_what_each_hall_comes_with(self):
         phones = [hall("a", "Odos 1, Kalamaria", "+30 1"), hall("b", "Odos 2, Pylaia", "+30 2")]
         mixed = [hall("a", "Odos 1"), hall("b", "Odos 2", "+30 2")]
+        carom = [dict(hall("a", "Odos 1"), caromTables=2), hall("b", "Odos 2", "+30 2")]
+        # Districts make it «Μπιλιάρδα», the plural people search for; English lists none, as most are Greek.
         self.assertEqual(description(b.city_page("Larissa", phones, {}, "el")),
-                         f"Μπιλιάρδο στη Λάρισα: 2 αίθουσες με διευθύνσεις και τηλέφωνα. "
+                         f"Μπιλιάρδα στη Λάρισα: 2 αίθουσες με διευθύνσεις και τηλέφωνα. "
                          f"Περιοχές: Kalamaria, Pylaia. {TAIL_EL}")
         self.assertEqual(description(b.city_page("Larissa", mixed, {}, "el")),
-                         f"Μπιλιάρδο στη Λάρισα: 2 αίθουσες με διευθύνσεις. {TAIL_EL}")
+                         "Μπιλιάρδο στη Λάρισα: 2 αίθουσες με διευθύνσεις. "
+                         "Βρες αντίπαλο για αμερικάνικο μπιλιάρδο με το δωρεάν RackUp.")
+        self.assertEqual(description(b.city_page("Larissa", carom, {}, "el")),
+                         "Μπιλιάρδο στη Λάρισα: 2 αίθουσες με διευθύνσεις. "
+                         "Βρες αντίπαλο για αμερικάνικο ή γαλλικό μπιλιάρδο με το δωρεάν RackUp.")
         self.assertEqual(description(b.city_page("Larissa", phones, {}, "en")),
-                         f"Billiards in Larissa: 2 halls with addresses and phone numbers. "
-                         f"Areas: Kalamaria, Pylaia. {TAIL_EN}")
+                         "Pool and billiards in Larissa: 2 halls with addresses and phone numbers. "
+                         "Find an opponent for pool with the free RackUp app.")
         self.assertEqual(description(b.city_page("Larissa", mixed, {}, "en")),
-                         f"Billiards in Larissa: 2 halls with addresses. {TAIL_EN}")
+                         "Pool and billiards in Larissa: 2 halls with addresses. "
+                         "Find an opponent for pool with the free RackUp app.")
+        self.assertEqual(description(b.city_page("Larissa", carom, {}, "en")),
+                         "Pool and billiards in Larissa: 2 halls with addresses. "
+                         "Find an opponent for pool or carom with the free RackUp app.")
 
-    def test_one_hall_descriptions_carry_the_phone_when_there_is_one(self):
+    def test_one_hall_descriptions_name_neither_its_address_nor_its_phone(self):
         with_phone = [hall("a", "Odos 1, Chora", "+30 698", city="Naxos", name="Galaxias")]
         without = [hall("a", "Odos 1, Chora", city="Naxos", name="Galaxias")]
-        self.assertEqual(description(b.city_page("Naxos", with_phone, {}, "el")),
-                         f"Μπιλιάρδο στη Νάξο: Galaxias, Odos 1, Chora, τηλ. +30 698. {TAIL_EL}")
-        self.assertEqual(description(b.city_page("Naxos", without, {}, "el")),
-                         f"Μπιλιάρδο στη Νάξο: Galaxias, Odos 1, Chora. {TAIL_EL}")
-        self.assertEqual(description(b.city_page("Naxos", with_phone, {}, "en")),
-                         f"Billiards in Naxos: Galaxias, Odos 1, Chora, phone +30 698. {TAIL_EN}")
-        self.assertEqual(description(b.city_page("Naxos", without, {}, "en")),
-                         f"Billiards in Naxos: Galaxias, Odos 1, Chora. {TAIL_EN}")
+        carom = [dict(hall("a", "Odos 1, Chora", "+30 698", city="Naxos", name="Galaxias"), hasCarom=True)]
+        cases = {
+            ("el", 0): "Μπιλιάρδο στη Νάξο: μία αίθουσα στον κατάλογο, με διεύθυνση και τηλέφωνο. "
+                       "Βρες αντίπαλο για αμερικάνικο με το δωρεάν RackUp.",
+            ("el", 1): "Μπιλιάρδο στη Νάξο: μία αίθουσα στον κατάλογο, με διεύθυνση. "
+                       "Βρες αντίπαλο για αμερικάνικο με το δωρεάν RackUp.",
+            ("el", 2): "Μπιλιάρδο στη Νάξο: μία αίθουσα στον κατάλογο, με διεύθυνση και τηλέφωνο. "
+                       "Βρες αντίπαλο για αμερικάνικο ή γαλλικό με το δωρεάν RackUp.",
+            ("en", 0): "Pool and billiards in Naxos: one hall in the directory, with its address and phone. "
+                       "Find an opponent for pool with the free RackUp app.",
+            ("en", 1): "Pool and billiards in Naxos: one hall in the directory, with its address. "
+                       "Find an opponent for pool with the free RackUp app.",
+            ("en", 2): "Pool and billiards in Naxos: one hall in the directory, with its address and phone. "
+                       "Find an opponent for pool or carom with the free RackUp app.",
+        }
+        for (lang, i), expected in cases.items():
+            halls = (with_phone, without, carom)[i]
+            self.assertEqual(description(b.city_page("Naxos", halls, {}, lang)), expected, (lang, i))
+
+    def test_the_first_description_within_the_floor_and_the_limit_wins(self):
+        short, mid, long = "a" * 100, "b" * 120, "c" * 200
+        self.assertEqual(b.fitted(short, mid, floor=110), mid, "too short gives way to one that fits both")
+        self.assertEqual(b.fitted(short, long, floor=110), short, "too short beats too long")
+        self.assertEqual(b.fitted(None, long, mid), mid, "no districts fitted, and too long is skipped")
+        self.assertEqual(b.fitted(long, "d" * 160), "d" * 160, "nothing fits: the last, as before")
+
+    def test_every_city_description_keeps_the_audits_rules(self):
+        """No Greek letters in English, Greek at least GREEK_FLOOR long, no one-hall address or phone,
+        carom only where a hall has carom tables, and «Μπιλιάρδα» wherever districts are listed."""
+        greek, listed = re.compile("[Ͱ-Ͽἀ-῿]"), 0
+        for city, halls, lang, text in city_pages():
+            found, carom = description(text), any(b.offers_carom(v) for v in halls)
+            with self.subTest(city=city, lang=lang):
+                if lang == "en":
+                    self.assertNotRegex(found, greek)
+                else:
+                    self.assertGreaterEqual(len(found), b.GREEK_FLOOR)
+                if len(halls) == 1:
+                    v = halls[0]
+                    if v.get("phone"):
+                        self.assertNotIn(v["phone"], found)
+                    if v["address"] not in (city, b.CITIES[city][1]):
+                        self.assertNotIn(v["address"], found)
+                if not carom:
+                    self.assertNotRegex(found, r"γαλλικ|carom")
+                if "Περιοχές:" in found:
+                    self.assertTrue(found.startswith(f"Μπιλιάρδα {b.CITIES[city][2]}: "), found)
+                    listed += 1
+        self.assertGreater(listed, 0, "no description lists districts")
 
 
 class LeadTest(unittest.TestCase):
@@ -154,22 +205,31 @@ class LeadTest(unittest.TestCase):
 
     def test_lead_lists_up_to_four_districts_and_says_when_halls_lie_elsewhere(self):
         covered = [hall("a", "Odos 1, Kalamaria", "+30 1"), hall("b", "Odos 2, Pylaia", "+30 2")]
+        # A label, never «σε Αγ. Παντελεήμονας»: «σε» wants each district in the accusative.
         self.assertEqual(self.lead("Larissa", covered, "el"),
-                         "Λάρισα: 2 αίθουσες μπιλιάρδου στον κατάλογο του RackUp, σε Kalamaria και Pylaia. "
+                         "Λάρισα: 2 αίθουσες μπιλιάρδου στον κατάλογο του RackUp. Περιοχές: Kalamaria και Pylaia. "
                          "Παρακάτω θα βρεις τα μπιλιάρδα με τις διευθύνσεις και τα τηλέφωνά τους.")
         # Districts in Latin letters, as many Cypriot halls write them, stay in the page's language.
         self.assertEqual(self.lead("Larissa", covered, "en"),
                          'Larissa (<span lang="el">Λάρισα</span>): RackUp\'s directory lists 2 billiard halls, in '
                          "Kalamaria and Pylaia. Below, each hall comes with its address and phone number.")
         unplaced = covered + [hall("c", "Odos 3")]
-        self.assertIn("σε Kalamaria, Pylaia και αλλού.", self.lead("Larissa", unplaced, "el"))
+        self.assertIn("Περιοχές: Kalamaria, Pylaia και άλλες.", self.lead("Larissa", unplaced, "el"))
         self.assertIn("Kalamaria, Pylaia and elsewhere.", self.lead("Larissa", unplaced, "en"))
         greek = [hall("a", "Odos 1, Καλαμαριά"), hall("b", "Odos 2, Pylaia")]
         self.assertIn('in <span lang="el">Καλαμαριά</span> and Pylaia.', self.lead("Larissa", greek, "en"))
         many = [hall(f"h{i}", f"Odos {i}, {area}") for i, area in enumerate(("Ano", "Kato", "Mesa", "Exo", "Pano"))]
-        self.assertIn("σε Ano, Kato, Mesa, Exo και αλλού. Παρακάτω θα βρεις τα μπιλιάρδα με τις "
+        self.assertIn("Περιοχές: Ano, Kato, Mesa, Exo και άλλες. Παρακάτω θα βρεις τα μπιλιάρδα με τις "
                       "διευθύνσεις τους.", self.lead("Larissa", many, "el"))
         self.assertIn("Below, each hall comes with its address.", self.lead("Larissa", many, "en"))
+
+    def test_no_greek_lead_puts_a_district_after_se(self):
+        for city, halls, lang, text in city_pages():
+            if lang != "el":
+                continue
+            lead = re.search(r'<p class="lead">(.*?)</p>', text, re.S).group(1)
+            self.assertNotIn(", σε ", lead, city)
+            self.assertEqual("Περιοχές: " in lead, len(b.areas_of(halls)) >= 2, city)
 
     def test_every_city_page_opens_with_the_city_and_says_mpiliarda_once(self):
         for city, _, lang, text in city_pages():
@@ -207,6 +267,9 @@ def visible_crumbs(text):
 class StructuredDataTest(unittest.TestCase):
 
     def test_breadcrumbs_in_json_ld_match_the_visible_ones(self):
+        cities = b.group_by_city(b.load_venues())
+        # A hub country's city pages pass through its hub: RackUp › halls › country › city.
+        under_hub = {b.CITIES[c][0]: b.HUBS[b.country_of(h)] for c, h in cities.items() if b.country_of(h) in b.HUBS}
         for rel, text in directory_pages().items():
             with self.subTest(page=rel):
                 trail = node(structured(text), "BreadcrumbList")["itemListElement"]
@@ -215,7 +278,11 @@ class StructuredDataTest(unittest.TestCase):
                 home = f"{b.BASE_URL}/" if is_greek(rel) else f"{b.BASE_URL}/en/"
                 self.assertEqual(trail[0]["item"], home)
                 index = rel in (f"{b.EL_ROOT}/index.html", f"{b.EN_ROOT}/index.html")
-                self.assertEqual(len(trail), 2 if index else 3)
+                slug = rel.split("/")[-2]
+                self.assertEqual(len(trail), 2 if index else 4 if slug in under_hub else 3)
+                if slug in under_hub:
+                    root = b.EL_ROOT if is_greek(rel) else b.EN_ROOT
+                    self.assertEqual(trail[2]["item"], b.url(f"{root}/{under_hub[slug]}/"))
 
     def test_index_pages_keep_their_city_list(self):
         cities = b.group_by_city(b.load_venues())

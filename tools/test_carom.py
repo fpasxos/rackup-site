@@ -1,6 +1,7 @@
 """The carom pages and chips: every hall the data says has carom tables, and no other.
 Python 3.8+, no packages: python -m unittest discover -s tools
 """
+import html
 import json
 import re
 import sys
@@ -13,7 +14,8 @@ from urllib.parse import urljoin, urlsplit
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import build_directory as b  # noqa: E402
 from test_build_directory import imported, published, site_path  # noqa: E402
-from test_directory_seo import description, node, structured, title, visible_crumbs, visible_text  # noqa: E402
+from test_directory_seo import (description, node, strip_tags, structured, title, visible_crumbs,  # noqa: E402
+                                visible_text)
 
 PAGES = {"el": "galliko-mpiliardo/index.html", "en": "en/carom-billiards/index.html"}
 URLS = {"el": "https://getrackup.com/galliko-mpiliardo/", "en": "https://getrackup.com/en/carom-billiards/"}
@@ -234,6 +236,101 @@ class CaromSiteTest(unittest.TestCase):
         # A fan site's compiled list: a lead for research, never a source the site names.
         for rel, text in published(".html", ".xml", ".json", ".txt", ".js", ".css"):
             self.assertNotIn("carom.gr", text.lower(), rel)
+
+
+WHERE = {"el": "Πού παίζω γαλλικό μπιλιάρδο;", "en": "Where can I play carom?"}
+
+
+def faq_of(text):
+    """The visible questions and answers, as text."""
+    return [(html.unescape(q), html.unescape(a))
+            for q, a in re.findall(r"<details><summary>(.*?)</summary><p>(.*?)</p></details>", text)]
+
+
+def own_copy(text):
+    """The explainer and the FAQ: the page's new words, without its hall listings or the shared card."""
+    return re.search(r'<section class="carom-about".*?<section class="carom-faq".*?</section>', text, re.S).group(0)
+
+
+class CaromExplainerTest(unittest.TestCase):
+    """Audit fix 4: how carom is played and a FAQ, on both carom pages."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.files = {p.relative_to(b.ROOT).as_posix(): t for p, t in b.render().items()}
+        cls.cities = b.group_by_city(b.load_venues())
+        cls.carom = b.carom_by_city(cls.cities)
+
+    def test_the_faq_and_its_structured_data_say_the_same(self):
+        for rel in PAGES.values():
+            text = self.files[rel]
+            faq = node(structured(text), "FAQPage")["mainEntity"]
+            self.assertEqual([(q["name"], q["acceptedAnswer"]["text"]) for q in faq], faq_of(text), rel)
+            self.assertEqual(len(faq), 4, rel)
+
+    def test_the_explainer_says_plainly_how_both_games_are_played(self):
+        expected = {"el": ("χωρίς τρύπες", "τρεις μπάλες", "τουλάχιστον τρεις φορές", "τουλάχιστον μία φορά"),
+                    "en": ("without pockets", "three balls", "at least three times", "at least once")}
+        for lang, rel in PAGES.items():
+            text = self.files[rel]
+            self.assertIn('<section class="carom-about" id="how-to-play">', text, "the explainer is never folded")
+            said = strip_tags(own_copy(text))
+            for phrase in expected[lang]:
+                self.assertIn(phrase, said, rel)
+
+    def test_karambola_once_as_a_synonym_and_no_other_spelling(self):
+        greek = self.files[PAGES["el"]]  # head, body and structured data alike
+        self.assertEqual(len(re.findall(r"(?i)καραμπόλα", greek)), 1)
+        self.assertIn("Το γαλλικό μπιλιάρδο, ή καραμπόλα,", greek)
+        self.assertNotRegex(greek, r"(?i)καρομπόλα")
+        # Never «σπόντα» in any form, as 1-cushion is «μονόσποντο». Hall addresses are data, not copy
+        # (Ελλησπόντου 26-28), so this reads the page's own words.
+        lead = re.search(r'<p class="lead">(.*?)</p>', greek, re.S).group(1)
+        words = " ".join([title(greek), description(greek), lead, strip_tags(own_copy(greek))])
+        self.assertNotRegex(words, r"(?i)σπόντ|\bπουλ\b")
+        self.assertNotRegex(self.files[PAGES["en"]], r"(?i)carambol|καρ[αο]μπόλα")
+
+    def test_where_to_play_counts_from_the_data_and_names_only_carom_countries(self):
+        n, c = sum(len(h) for h in self.carom.values()), len(self.carom)
+        counted = [b.carom_tables(v) for halls in self.carom.values() for v in halls if b.carom_tables(v)]
+        self.assertEqual(list(b.by_country(self.carom)), ["GR"], "another country has carom now: revisit the copy")
+        el = dict(faq_of(self.files[PAGES["el"]]))[WHERE["el"]]
+        self.assertIn(f"{n} τέτοιες αίθουσες σε {c} πόλεις, προς το παρόν όλες στην Ελλάδα.", el)
+        self.assertIn(f"Μετράμε {sum(counted)} τραπέζια γαλλικού σε {len(counted)} αίθουσες όπου ξέρουμε", el)
+        en = dict(faq_of(self.files[PAGES["en"]]))[WHERE["en"]]
+        self.assertIn(f"{n} such halls in {c} cities, for now all of them in Greece.", en)
+        self.assertIn(f"We count {sum(counted)} carom tables at the {len(counted)} halls where we know", en)
+        for rel in PAGES.values():
+            # The page's own words: every footer links the Cyprus page, which says nothing about carom.
+            main = re.search(r'<main id="main">(.*)</main>', self.files[rel], re.S).group(1)
+            self.assertNotRegex(main, r"Κύπρ|Cyprus", f"{rel} must not imply carom tables in Cyprus")
+
+    def test_the_country_and_table_lines_follow_the_data(self):
+        greek, cyprus = hall("venue-lar-a", caromTables=1), dict(hall("venue-cy-nic-a", city="Nicosia"), country="CY")
+
+        def where(venues, lang):
+            cities = b.group_by_city(venues)
+            return dict(b.carom_faq(b.carom_by_city(cities), cities, lang))[WHERE[lang]]
+
+        self.assertIn("προς το παρόν όλες στην Ελλάδα.", where([greek, cyprus], "el"))
+        self.assertNotIn("προς το παρόν", where([greek], "el"), "one country: nothing to tell apart")
+        both = [greek, dict(cyprus, hasCarom=True)]
+        self.assertNotIn("προς το παρόν", where(both, "el"))
+        self.assertNotIn("for now", where(both, "en"))
+        self.assertIn("Μετράμε 1 τραπέζι γαλλικού σε 1 αίθουσα όπου ξέρουμε πόσα έχει.", where([greek], "el"))
+        self.assertIn("We count 1 carom table at the 1 hall where we know how many.", where([greek], "en"))
+        unknown = [hall("venue-lar-b", hasCarom=True)]
+        self.assertNotIn("Μετράμε", where(unknown, "el"), "no count is known, so none is said")
+        self.assertNotIn("We count", where(unknown, "en"))
+
+    def test_the_new_copy_names_no_hall_and_claims_no_authority_ranking_or_health(self):
+        names = [v["name"] for v in b.load_venues()]
+        for rel in PAGES.values():
+            said = own_copy(self.files[rel])
+            for name in names:
+                self.assertNotIn(name, said, rel)
+            self.assertNotRegex(said, r"(?i)\bUMB\b|ομοσπονδ|federation|επίσημ|official|κανονισμ|\brules\b|"
+                                      r"κορυφαί|καλύτερ|\bbest\b|υγεί|health", rel)
 
 
 if __name__ == "__main__":
