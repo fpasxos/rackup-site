@@ -152,6 +152,40 @@ class PolicyDateTest(unittest.TestCase):
         self.assertEqual(["XX October 2026"], placeholders(page))
 
 
+# The app's AnalyticsEvent names (core/presentation Analytics.kt). The app's AnalyticsTest
+# pins the same list, so a new event fails there until this list and the policy name it.
+APP_EVENTS = {
+    "sign_up", "login", "guest_browse_started", "email_verified", "tutorial_complete",
+    "home_venue_set", "notification_permission_result", "match_viewed", "match_posted",
+    "join_requested", "request_accepted", "score_reported", "score_confirmed", "score_disputed",
+    "opponent_rated", "h2h_opened", "h2h_rematch", "reputation_opened",
+    "looking_for_game_posted", "looking_for_game_converted", "venue_checked_in",
+    "player_followed", "saved_search_created", "notifications_opened", "notification_row_tapped",
+}
+
+
+def listed_events(page):
+    """The event names in the list under App usage analytics."""
+    section = re.search(r"<h3>App usage analytics\b.*?</h3>.*?<ul>(.*?)</ul>", main_html(page), re.S)
+    if not section:
+        raise AssertionError("privacy.html has no App usage analytics list")
+    return set(re.findall(r"<code>([a-z0-9_]+)</code>", section.group(1)))
+
+
+class AnalyticsCountTest(unittest.TestCase):
+
+    def test_the_policy_lists_every_event_the_apps_log(self):
+        self.assertEqual(APP_EVENTS, listed_events(current("privacy.html")))
+
+    def test_both_languages_give_the_count_of_the_listed_events(self):
+        text = visible_text(main_html(current("privacy.html")))
+        english = re.search(r"We log (\d+) events about how the app is used", text)
+        greek = re.search(r"Firebase Analytics \((\d+) συμβάντα χρήσης", text)
+        self.assertTrue(english and greek, "a count sentence moved or changed its words")
+        self.assertEqual(len(APP_EVENTS), int(english.group(1)))
+        self.assertEqual(len(APP_EVENTS), int(greek.group(1)))
+
+
 if __name__ == "__main__":
     if sys.argv[1:] == ["--capture"]:
         capture()

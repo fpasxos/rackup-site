@@ -39,11 +39,18 @@
 <main id="main" class="container">
 <article class="prose">
   <h1>RackUp Privacy Policy</h1>
-  <p class="muted">Effective date: 4 November 2026 · Applies to the RackUp apps for Android
+  <p class="muted">Effective date: XX November 2026 · Applies to the RackUp apps for Android
   and iPhone (<code>com.rackup.app</code>)</p>
   <p lang="el"><a href="#el">Στα Ελληνικά</a></p>
 
   <div class="card">
+    <p><strong>What changed on XX November 2026.</strong> Ahead of version 2.4.5 of the apps,
+    under <em>App usage analytics</em>: we log one more event, <code>match_viewed</code>, when you
+    open another player's open match, with how you got there, the id of the hall and how far ahead
+    the match starts. <code>match_posted</code> now also says how far ahead the match starts and
+    whether you picked one of the times the app suggested, <code>request_accepted</code> says where
+    you accepted the request, and <code>looking_for_game_converted</code> says whether the post was
+    your own. None of them carries a name, a user id or a match id.</p>
     <p><strong>What changed on 4 November 2026.</strong> Three things, ahead of version 2.4.5 of
     the apps, under <em>What you post and write</em>. First, we show everyone who uses the app,
     guests included, how many games found an opponent in each city and hall, the hours with the
@@ -433,9 +440,10 @@
   <p>Both apps include <strong>Firebase Analytics</strong>, and it is on by default. The old
   version of this policy said the app had no analytics profiles. That was wrong, and correcting
   it was the main reason for the version dated 4 September 2026.</p>
-  <p>We log 24 events about how the app is used, the same on both apps, or 23 before version
-  2.3.0, which adds <code>guest_browse_started</code>. Most of them record only that something
-  happened. Here they all are, with any detail an event carries:</p>
+  <p>We log 25 events about how the app is used, the same on both apps, or 24 before version
+  2.4.5, which adds <code>match_viewed</code>, and 23 before version 2.3.0, which adds
+  <code>guest_browse_started</code>. Most of them record only that something happened. Here
+  they all are, with any detail an event carries:</p>
   <ul>
     <li><strong>Signing in and the first run</strong>: <code>sign_up</code> and
         <code>login</code>, each with the sign-in method (password, Google or Apple);
@@ -445,9 +453,14 @@
         welcome tour; <code>home_venue_set</code>, when you pick a home hall at its end; and
         <code>notification_permission_result</code>, with whether you allowed
         notifications.</li>
-    <li><strong>Matches</strong>: <code>match_posted</code>, with the game type, whether it was
-        a "play now" post and the id of the hall; <code>join_requested</code>;
-        <code>request_accepted</code>; <code>score_reported</code>;
+    <li><strong>Matches</strong>: <code>match_viewed</code>, when you open another player's open
+        match, with how you got there (the board, a hall's page, a notification, a link or your
+        activity feed), the id of the hall and how far ahead the match starts (play now, under 6
+        hours, 6 to 24 hours, or a day or more); <code>match_posted</code>, with the game type,
+        whether it was a "play now" post, the id of the hall, how far ahead it starts and whether
+        you picked one of the times the app suggested; <code>join_requested</code>;
+        <code>request_accepted</code>, with where you accepted it (a notification, the card on
+        the board, the match page or the Requests tab); <code>score_reported</code>;
         <code>score_confirmed</code>; <code>score_disputed</code>; <code>opponent_rated</code>;
         <code>h2h_opened</code> and <code>h2h_rematch</code>, when you open the head to head
         screen and when you tap its rematch button; and <code>reputation_opened</code>, when you
@@ -455,15 +468,16 @@
     <li><strong>Looking for a game</strong>: <code>looking_for_game_posted</code>, with the game
         type, the part of the day, whether any hall will do and whether it replaced an earlier
         post of yours; and <code>looking_for_game_converted</code>, when a match is posted from
-        another player's looking-for-a-game post, with the game type and whether that post
-        would take any hall.</li>
+        a looking-for-a-game post, with the game type, whether that post would take any hall,
+        and whether the post was your own.</li>
     <li><strong>Everything else</strong>: <code>venue_checked_in</code>, with the id of the hall;
         <code>player_followed</code>; <code>saved_search_created</code>; and
         <code>notifications_opened</code> and <code>notification_row_tapped</code>, when you
         open your activity feed and when you tap one of its entries.</li>
   </ul>
-  <p>The only ids any event carries are hall ids, on <code>match_posted</code> and
-  <code>venue_checked_in</code>. A hall id names a billiard hall in our directory, not a person.
+  <p>The only ids any event carries are hall ids, on <code>match_posted</code>,
+  <code>match_viewed</code> and <code>venue_checked_in</code>. A hall id names a billiard hall
+  in our directory, not a person.
   No name, no email, no user id, no match id and no free text is ever attached to an analytics
   event. Firebase Analytics also collects its own standard measurements, such as app opens and
   sessions, and it derives approximate geography from a masked IP address.</p>
@@ -799,10 +813,13 @@
 
   <h2>Changes to this policy</h2>
   <p>If this policy changes, the new version is published at this address with a new effective
-  date, and we say at the top what changed. This version, dated 4 November 2026, adds what the
+  date, and we say at the top what changed. This version, dated XX November 2026, adds the
+  analytics event <code>match_viewed</code> and what <code>match_posted</code>,
+  <code>request_accepted</code> and <code>looking_for_game_converted</code> also record from
+  version 2.4.5 of the apps, and supersedes the version dated 4 November 2026, which added what the
   apps show from version 2.4.5 about games that found an opponent: nameless counts and recent
   games by city and hall, a host's count of games played, the status of a shared game and a count
-  in the city alert, and supersedes the version dated 28 October 2026, which added the city
+  in the city alert, and superseded the version dated 28 October 2026, which added the city
   alert, a push about a new match in the city on your profile from version 2.4.3 of the apps, and
   the record of the last one that our server keeps so that it sends at most one a day, and
   superseded the version dated 27 October 2026, which added that from
@@ -902,9 +919,11 @@
   ανταλλάσσουν μόνο έτοιμα γρήγορα μηνύματα, χωρίς πληκτρολόγηση. Τα βλέπετε μόνο εσείς οι δύο
   και σβήνονται μετά από 14 ημέρες.</p>
   <p>Και οι δύο εφαρμογές περιλαμβάνουν <strong>Firebase Crashlytics</strong> (αναφορές
-  σφαλμάτων) και <strong>Firebase Analytics</strong> (24 συμβάντα χρήσης από την έκδοση 2.3.0,
-  23 στις προηγούμενες, όπως η δημοσίευση αγώνα ή το check-in σε αίθουσα). Αυτά τα δύο
-  συμβάντα καταγράφουν και ποια αίθουσα αφορούν.
+  σφαλμάτων) και <strong>Firebase Analytics</strong> (25 συμβάντα χρήσης από την έκδοση 2.4.5,
+  24 από την 2.3.0 και 23 στις προηγούμενες, όπως η δημοσίευση αγώνα ή το check-in σε αίθουσα).
+  Αυτά τα δύο συμβάντα καταγράφουν και ποια αίθουσα αφορούν. Από την έκδοση 2.4.5 καταγράφουμε
+  επίσης πότε ανοίγεις ένα ανοιχτό ματς άλλου παίκτη, από πού έφτασες εκεί, την αίθουσα και πόσο
+  νωρίτερα από την έναρξη, χωρίς όνομα ή αναγνωριστικό χρήστη.
   Κανένα συμβάν δεν περιέχει όνομα, email ή κείμενο που έγραψες, και κανένα από τα δύο εργαλεία
   δεν συνδέεται με τον λογαριασμό σου: η εφαρμογή δεν στέλνει ποτέ το αναγνωριστικό χρήστη σε
   αυτές τις υπηρεσίες.</p>
