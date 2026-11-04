@@ -1,7 +1,7 @@
-RackUp Privacy Policy Effective date: XX November 2026 · Applies to the RackUp apps for Android and
-iPhone (com.rackup.app) What changed on XX November 2026. Three things, ahead of version 2.4.5 of
-the apps, under What you post and write. First, we show everyone who uses the app, guests included,
-how many games found an opponent in each city and hall, the hours with the most games, and the hall,
+RackUp Privacy Policy Effective date: 4 November 2026 · Applies to the RackUp apps for Android and
+iPhone (com.rackup.app) What changed on 4 November 2026. Three things, ahead of version 2.4.5 of the
+apps, under What you post and write. First, we show everyone who uses the app, guests included, how
+many games found an opponent in each city and hall, the hours with the most games, and the hall,
 game, race and time of recent ones, never with a name or a user id. Second, beside a host's name on
 their posts we show how many games they have played with a confirmed score, from three on. Third, a
 guest who opens a link to a game that has found an opponent is told so and at which hall, never who
@@ -521,7 +521,7 @@ The Android app additionally verifies itself with Firebase App Check. We are a s
 not pretend to be immune to every risk, but if a breach affects your personal data we will notify
 the Hellenic Data Protection Authority and, where the law requires it, you. Changes to this policy
 If this policy changes, the new version is published at this address with a new effective date, and
-we say at the top what changed. This version, dated XX November 2026, adds what the apps show from
+we say at the top what changed. This version, dated 4 November 2026, adds what the apps show from
 version 2.4.5 about games that found an opponent: nameless counts and recent games by city and hall,
 a host's count of games played, the status of a shared game and a count in the city alert, and
 supersedes the version dated 28 October 2026, which added the city alert, a push about a new match
