@@ -1,5 +1,5 @@
-RackUp Privacy Policy Effective date: XX November 2026 · Applies to the RackUp apps for Android and
-iPhone (com.rackup.app) What changed on XX November 2026. Ahead of version 2.4.5 of the apps, under
+RackUp Privacy Policy Effective date: 5 November 2026 · Applies to the RackUp apps for Android and
+iPhone (com.rackup.app) What changed on 5 November 2026. Ahead of version 2.4.5 of the apps, under
 App usage analytics: we log one more event, match_viewed, when you open another player's open match,
 with how you got there, the id of the hall and how far ahead the match starts. match_posted now also
 says how far ahead the match starts and whether you picked one of the times the app suggested,
@@ -532,7 +532,7 @@ The Android app additionally verifies itself with Firebase App Check. We are a s
 not pretend to be immune to every risk, but if a breach affects your personal data we will notify
 the Hellenic Data Protection Authority and, where the law requires it, you. Changes to this policy
 If this policy changes, the new version is published at this address with a new effective date, and
-we say at the top what changed. This version, dated XX November 2026, adds the analytics event
+we say at the top what changed. This version, dated 5 November 2026, adds the analytics event
 match_viewed and what match_posted, request_accepted and looking_for_game_converted also record from
 version 2.4.5 of the apps, and supersedes the version dated 4 November 2026, which added what the
 apps show from version 2.4.5 about games that found an opponent: nameless counts and recent games by
