@@ -516,26 +516,29 @@ player's reputation and that player did not ask for anything. We sever the link 
 field is overwritten with the fixed value [erased], which is the same value for everyone, so your
 ratings cannot be picked out or grouped afterwards. Open challenges you claimed but did not host
 stay, with your name and id cleared, and the slot reopens. Abuse reports filed about you stay, as a
-safety record. No app can read them. The erasure record described under retention stays. Server logs
-may contain your user id for a bounded period. We do not claim that deleting your account erases
-every trace of you everywhere. The list above is what remains. Your rights (GDPR) If you are in the
-EU or the EEA you have the following rights over your personal data, and we will honour them all:
-Access: ask us for a copy of the personal data we hold about you. Rectification: have inaccurate
-data corrected. You can edit your name, category, city, the games you play and your photo in the app
-yourself, and change or remove your usual hall in Settings, under Your home venue. Erasure: have
-your data deleted, as described above. Portability: receive your data in a structured, machine
-readable format, or have us send it to another controller where that is technically feasible.
-Objection: object to processing we carry out on the basis of legitimate interests, including the
-analytics and crash reporting described above. Restriction: ask us to stop processing your data
-while a dispute about it is resolved. Withdraw consent: turn off the location permission, on either
-app, at any time, without affecting anything we did before you did so. You can also turn
-notifications off at any time, in Settings or in your device's settings. To exercise any of these,
-email rackupbilliard@gmail.com from the address on your account. We reply within one month, as the
-GDPR requires. There is no charge. If you are unhappy with how we have handled your data, you can
-complain to the supervisory authority in the EU country where you live. In Greece that is the
-Hellenic Data Protection Authority, at dpa.gr, and in Cyprus the Office of the Commissioner for
-Personal Data Protection, at gov.cy/dataprotection. Wherever you live, you can also complain to the
-Hellenic authority, which oversees RackUp. Children RackUp is not directed at children. The app
+safety record. No app can read them. The erasure record described under retention stays. Your user
+id can stay in another player's record of their challenge pushes. If a push told you about a direct
+challenge from them, that record, described under Notifications, keeps your user id until they send
+another challenge push a day or more after that one, or until they delete their account. No app can
+read it. Server logs may contain your user id for a bounded period. We do not claim that deleting
+your account erases every trace of you everywhere. The list above is what remains. Your rights
+(GDPR) If you are in the EU or the EEA you have the following rights over your personal data, and we
+will honour them all: Access: ask us for a copy of the personal data we hold about you.
+Rectification: have inaccurate data corrected. You can edit your name, category, city, the games you
+play and your photo in the app yourself, and change or remove your usual hall in Settings, under
+Your home venue. Erasure: have your data deleted, as described above. Portability: receive your data
+in a structured, machine readable format, or have us send it to another controller where that is
+technically feasible. Objection: object to processing we carry out on the basis of legitimate
+interests, including the analytics and crash reporting described above. Restriction: ask us to stop
+processing your data while a dispute about it is resolved. Withdraw consent: turn off the location
+permission, on either app, at any time, without affecting anything we did before you did so. You can
+also turn notifications off at any time, in Settings or in your device's settings. To exercise any
+of these, email rackupbilliard@gmail.com from the address on your account. We reply within one
+month, as the GDPR requires. There is no charge. If you are unhappy with how we have handled your
+data, you can complain to the supervisory authority in the EU country where you live. In Greece that
+is the Hellenic Data Protection Authority, at dpa.gr, and in Cyprus the Office of the Commissioner
+for Personal Data Protection, at gov.cy/dataprotection. Wherever you live, you can also complain to
+the Hellenic authority, which oversees RackUp. Children RackUp is not directed at children. The app
 arranges meetings between adults at billiard halls, and we do not knowingly collect data from
 children under 16. There is no age verification in the app. If you believe a child has created an
 account, email us and we will remove it. Security All traffic between the apps and Firebase is
@@ -725,10 +728,14 @@ Firebase Crashlytics (αναφορές σφαλμάτων) και Firebase Analy
 μέσα από την εφαρμογή (Προφίλ → Ρυθμίσεις → Διαγραφή λογαριασμού) ή με email στο
 rackupbilliard@gmail.com. Μαζί με τον λογαριασμό σου διαγράφονται η κάρτα παίκτη σου, οι προσωπικές
 προκλήσεις και τα γρήγορα μηνύματα που έστειλες ή έλαβες, και οι ειδοποιήσεις στη ροή δραστηριότητας
-άλλων παικτών που αναφέρουν το όνομά σου. Διάβασε παραπάνω τι ακριβώς διαγράφεται και τι παραμένει.
-Έχεις δικαίωμα πρόσβασης, διόρθωσης, διαγραφής, φορητότητας, εναντίωσης και περιορισμού, δικαίωμα να
-ανακαλέσεις όποτε θέλεις τη συγκατάθεσή σου για την τοποθεσία, καθώς και δικαίωμα καταγγελίας στην
-εποπτική αρχή της χώρας της ΕΕ όπου μένεις. Στην Ελλάδα είναι η Αρχή Προστασίας Δεδομένων Προσωπικού
-Χαρακτήρα (dpa.gr) και στην Κύπρο το Γραφείο Επιτρόπου Προστασίας Δεδομένων Προσωπικού Χαρακτήρα
-(gov.cy/dataprotection). Όπου κι αν μένεις, μπορείς να κάνεις καταγγελία και στην ελληνική Αρχή, που
-εποπτεύει το RackUp. RackUp · Ioannina, Greece · rackupbilliard@gmail.com Support · Home
+άλλων παικτών που αναφέρουν το όνομά σου. Αν μια ειδοποίηση push σε ενημέρωσε για προσωπική πρόκληση
+άλλου παίκτη, μετά τη διαγραφή το αναγνωριστικό χρήστη σου μπορεί να μείνει στο αρχείο εκείνου του
+παίκτη με τις ειδοποιήσεις προκλήσεων που έστειλε, μέχρι να στείλει άλλη τέτοια ειδοποίηση
+τουλάχιστον μία ημέρα αργότερα ή να διαγράψει τον λογαριασμό του. Καμία εφαρμογή δεν διαβάζει αυτό
+το αρχείο. Διάβασε παραπάνω τι ακριβώς διαγράφεται και τι παραμένει. Έχεις δικαίωμα πρόσβασης,
+διόρθωσης, διαγραφής, φορητότητας, εναντίωσης και περιορισμού, δικαίωμα να ανακαλέσεις όποτε θέλεις
+τη συγκατάθεσή σου για την τοποθεσία, καθώς και δικαίωμα καταγγελίας στην εποπτική αρχή της χώρας
+της ΕΕ όπου μένεις. Στην Ελλάδα είναι η Αρχή Προστασίας Δεδομένων Προσωπικού Χαρακτήρα (dpa.gr) και
+στην Κύπρο το Γραφείο Επιτρόπου Προστασίας Δεδομένων Προσωπικού Χαρακτήρα (gov.cy/dataprotection).
+Όπου κι αν μένεις, μπορείς να κάνεις καταγγελία και στην ελληνική Αρχή, που εποπτεύει το RackUp.
+RackUp · Ioannina, Greece · rackupbilliard@gmail.com Support · Home
