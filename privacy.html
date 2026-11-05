@@ -48,9 +48,12 @@
     under <em>App usage analytics</em>: we log one more event, <code>match_viewed</code>, when you
     open another player's open match, with how you got there, the id of the hall and how far ahead
     the match starts. <code>match_posted</code> now also says how far ahead the match starts and
-    whether you picked one of the times the app suggested, <code>request_accepted</code> says where
+    which of the times the app suggested you kept, if any, <code>request_accepted</code> says where
     you accepted the request, and <code>looking_for_game_converted</code> says whether the post was
-    your own. None of them carries a name, a user id or a match id.</p>
+    your own. None of them carries a name, a user id or a match id. Also, under
+    <em>Notifications</em>: when a host has not answered your join request for a while, we may tell
+    you so, at most twice a day, and we now describe the records our server keeps so that this
+    notice and the ones about your new matches and direct challenges stay few.</p>
     <p><strong>What changed on 4 November 2026.</strong> Three things, ahead of version 2.4.5 of
     the apps, under <em>What you post and write</em>. First, we show everyone who uses the app,
     guests included, how many games found an opponent in each city and hall, the hours with the
@@ -427,6 +430,19 @@
   your account, the day of the last city alert it sent you and the time it sent it, never which
   match it was about. No app can read that record, each new city alert replaces it, and deleting
   your account deletes it.</p>
+  <p>Three more records like it, also under your account, keep other notifications to a few a
+  day. When a match you post is announced to other players, through their starred halls, saved
+  searches, follows, looking-for-a-game posts or the city alert, our server keeps the match's id
+  and the time, and announces at most five of your matches in any 24 hours. When it sends another
+  player a push about a direct challenge from you, it keeps the challenge's id, that player's user
+  id and the time, so that in any 24 hours each player gets at most one such push from you, and at
+  most 20 players get one. When a host has not answered your join request for a while, we may add
+  a "No answer yet" entry to your activity feed and send you a push, which follows the <em>Match
+  updates</em> switch, at most twice a day; for that our server keeps the day and how many it sent
+  you that day. An entry older than a day drops out when its record is next updated. No app can
+  read these records, and deleting your account deletes them. A join request also carries marks
+  for the reminders and notices we send about it, with the time the host was last reminded about
+  it, so that none goes twice; like the rest of the request, only you and the host can read them.</p>
 
   <h3>Crash diagnostics (both apps)</h3>
   <p>Both apps include <strong>Firebase Crashlytics</strong>. When the app crashes or hits a
@@ -454,11 +470,11 @@
         <code>notification_permission_result</code>, with whether you allowed
         notifications.</li>
     <li><strong>Matches</strong>: <code>match_viewed</code>, when you open another player's open
-        match, with how you got there (the board, a hall's page, a notification, a link or your
-        activity feed), the id of the hall and how far ahead the match starts (play now, under 6
-        hours, 6 to 24 hours, or a day or more); <code>match_posted</code>, with the game type,
-        whether it was a "play now" post, the id of the hall, how far ahead it starts and whether
-        you picked one of the times the app suggested; <code>join_requested</code>;
+        match, with how you got there (the board, a hall's page, a notification, a link, your
+        activity feed or elsewhere in the app), the id of the hall and how far ahead the match
+        starts (play now, under 6 hours, 6 to 24 hours, or a day or more); <code>match_posted</code>,
+        with the game type, whether it was a "play now" post, the id of the hall, how far ahead it
+        starts and which of the times the app suggested you kept, if any; <code>join_requested</code>;
         <code>request_accepted</code>, with where you accepted it (a notification, the card on
         the board, the match page or the Requests tab); <code>score_reported</code>;
         <code>score_confirmed</code>; <code>score_disputed</code>; <code>opponent_rated</code>;
@@ -722,6 +738,8 @@
     <li>your notification tokens, notification preferences, activity feed, saved searches,
         starred venues, weekly schedule and blocked list;</li>
     <li>the day and time of the last city alert we sent you;</li>
+    <li>the records that keep the notifications about your new matches and direct challenges, and
+        your "No answer yet" notices, to a few a day;</li>
     <li>the count of the games you have played with a confirmed score;</li>
     <li>your follows of other players, and other players' follows of you;</li>
     <li>the ratings other players gave you;</li>
@@ -814,9 +832,10 @@
   <h2>Changes to this policy</h2>
   <p>If this policy changes, the new version is published at this address with a new effective
   date, and we say at the top what changed. This version, dated 5 November 2026, adds the
-  analytics event <code>match_viewed</code> and what <code>match_posted</code>,
+  analytics event <code>match_viewed</code>, what <code>match_posted</code>,
   <code>request_accepted</code> and <code>looking_for_game_converted</code> also record from
-  version 2.4.5 of the apps, and supersedes the version dated 4 November 2026, which added what the
+  version 2.4.5 of the apps, the "No answer yet" notice and the records that keep some
+  notifications to a few a day, and supersedes the version dated 4 November 2026, which added what the
   apps show from version 2.4.5 about games that found an opponent: nameless counts and recent
   games by city and hall, a host's count of games played, the status of a shared game and a count
   in the city alert, and superseded the version dated 28 October 2026, which added the city
@@ -975,7 +994,16 @@
   ακολουθείς. Την κλείνεις όποτε θέλεις με το «Ματς στην πόλη μου» στις Ρυθμίσεις, που είναι
   αρχικά ανοιχτό. Για να μη στέλνουμε πάνω από μία την ημέρα, ο διακομιστής μας κρατά στον
   λογαριασμό σου την ημέρα και την ώρα της τελευταίας τέτοιας ειδοποίησης, χωρίς να γράφει ποιο
-  ματς ήταν, και τις σβήνει όταν διαγράψεις τον λογαριασμό σου. Και στις δύο εφαρμογές
+  ματς ήταν, και τις σβήνει όταν διαγράψεις τον λογαριασμό σου. Με τον ίδιο τρόπο, για να μένουν
+  λίγες και άλλες ειδοποιήσεις, κρατά στον λογαριασμό σου τρία ακόμη αρχεία. Για κάθε ματς σου για
+  το οποίο ειδοποιούμε άλλους παίκτες, κρατά το αναγνωριστικό του και την ώρα, ώστε να
+  ειδοποιούμε για το πολύ πέντε ματς σου σε 24 ώρες. Για κάθε ειδοποίηση push που στέλνουμε σε
+  έναν παίκτη για προσωπική πρόκλησή σου, κρατά το αναγνωριστικό της πρόκλησης, το αναγνωριστικό
+  χρήστη του παίκτη και την ώρα, ώστε σε 24 ώρες να φτάνει το πολύ μία σε κάθε παίκτη και σε 20
+  παίκτες συνολικά. Για την ειδοποίηση «Δεν έχει απαντήσει ακόμη», που μπορεί να σου στείλουμε όταν
+  ο διοργανωτής αργεί να απαντήσει στο αίτημά σου, κρατά την ημέρα και πόσες σου στείλαμε εκείνη
+  την ημέρα, ώστε να μην παίρνεις πάνω από δύο την ημέρα. Καμία εφαρμογή δεν διαβάζει αυτά τα
+  αρχεία, και σβήνονται όταν διαγράψεις τον λογαριασμό σου. Και στις δύο εφαρμογές
   (στο iPhone από την έκδοση 2.2.0), αν επιτρέψεις την τοποθεσία, η κατά προσέγγιση τοποθεσία σου
   χρησιμεύει για να βλέπεις πρώτα τις αίθουσες και τα ματς της πόλης σου, και <strong>η εφαρμογή
   δεν μας στέλνει ποτέ τη θέση σου</strong>. Από την έκδοση 2.4.2, αν έχεις ήδη επιτρέψει την
