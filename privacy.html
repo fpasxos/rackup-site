@@ -55,7 +55,15 @@
     where each service we use keeps or handles your data, list our server logs and Firebase App
     Check too, and say how your data is protected when it is processed outside the European
     Economic Area: by the EU-U.S. Data Privacy Framework, under which Google is certified, and by
-    the standard contractual clauses in Google's data processing terms.</p>
+    the standard contractual clauses in Google's data processing terms. We also say there that
+    Firebase Authentication processes your IP address and your app's user agent, and keeps the
+    IP addresses it logs for a few weeks. Under <em>What survives deletion</em>, we add that
+    deleted data can stay for up to 7 days in our database's backups, and a deleted profile photo
+    for 7 days, before those copies are gone, and that Google takes up to 180 days to remove a
+    deleted account's sign-in details from its own backups. And we drop the item there about your
+    user id staying in another player's record of their challenge pushes: since 5 November,
+    deleting your account also removes it from those records, although that removal is not
+    retried if it fails.</p>
     <p><strong>What changed on 5 November 2026.</strong> Ahead of version 2.4.5 of the apps,
     under <em>App usage analytics</em>: we log one more event, <code>match_viewed</code>, when you
     open another player's open match, with how you got there, the id of the hall and how far ahead
@@ -642,7 +650,10 @@
   <ul>
     <li><strong>Firebase Authentication</strong>: your sign-in identity and password, and, from
         version 2.3.0, guest identifiers. Google runs this service only from data centres in the
-        <strong>United States</strong>, so that is where it processes them.</li>
+        <strong>United States</strong>, so that is where it processes them. To sign you in and to
+        prevent abuse, it also processes your IP address and your app's user agent, a short
+        description of the phone's software, and it keeps the IP addresses it logs for a few
+        weeks.</li>
     <li><strong>Cloud Firestore</strong>: everything described above that is stored as a record.
         Our database is kept in Google's <code>europe-central2</code> region, in Warsaw,
         Poland.</li>
@@ -808,11 +819,12 @@
     <li><strong>Abuse reports filed about you stay</strong>, as a safety record. No app can read
         them.</li>
     <li><strong>The erasure record</strong> described under retention stays.</li>
-    <li><strong>Your user id can stay in another player's record of their challenge
-        pushes.</strong> If a push told you about a direct challenge from them, that record,
-        described under <em>Notifications</em>, keeps your user id until they send another
-        challenge push a day or more after that one, or until they delete their account. No app
-        can read it.</li>
+    <li><strong>Backups keep your data for a while.</strong> Deleted data can remain for up to 7
+        days in the daily backup of our database and in its point-in-time recovery, which can
+        restore the database as it was at any moment in the past 7 days. A deleted profile photo
+        can also be restored for 7 days. After that, those copies are gone. Separately, Google
+        removes a deleted account's sign-in details from its own backup systems within 180
+        days.</li>
     <li>Server logs may contain your user id for a bounded period.</li>
   </ul>
   <p>We do not claim that deleting your account erases every trace of you everywhere. The list
@@ -873,7 +885,9 @@
   date, and we say at the top what changed. This version, dated XX November 2026, corrects where
   your profile photo is kept and where your sign-in details are processed, says where each
   service we use keeps or handles your data and how your data is protected outside the European
-  Economic Area, and supersedes the version dated 5 November 2026, which added the
+  Economic Area, what Firebase Authentication logs and how long backups keep deleted data, drops
+  the item about your user id in another player's record of their challenge pushes, and
+  supersedes the version dated 5 November 2026, which added the
   analytics event <code>match_viewed</code>, what <code>match_posted</code>,
   <code>request_accepted</code> and <code>looking_for_game_converted</code> also record from
   version 2.4.5 of the apps, the "No answer yet" notice and the records that keep some
@@ -929,6 +943,9 @@
   Functions), που τρέχει στο Βέλγιο. Στις Ηνωμένες Πολιτείες όμως φυλάσσεται η φωτογραφία
   προφίλ σου (Cloud Storage), και μόνο σε κέντρα δεδομένων στις Ηνωμένες Πολιτείες επεξεργάζεται
   η Google τα στοιχεία σύνδεσής σου και τα αναγνωριστικά επισκεπτών (Firebase Authentication).
+  Για να σε συνδέει και να αποτρέπει την κατάχρηση, το Firebase Authentication επεξεργάζεται
+  επίσης τη διεύθυνση IP σου και το user agent της εφαρμογής σου, μια σύντομη περιγραφή του
+  λογισμικού του τηλεφώνου, και κρατά τις διευθύνσεις IP που καταγράφει για λίγες εβδομάδες.
   Το Firebase Crashlytics, το Firebase Analytics, το Firebase Cloud Messaging, που στέλνει τις
   ειδοποιήσεις push, και το Firebase App Check, με το οποίο η εφαρμογή Android επιβεβαιώνει,
   μέσω του Google Play, ότι είναι η γνήσια εφαρμογή μας, είναι παγκόσμιες υπηρεσίες της Google.
@@ -1096,11 +1113,13 @@
   email στο <a href="mailto:rackupbilliard@gmail.com">rackupbilliard@gmail.com</a>. Μαζί με τον
   λογαριασμό σου διαγράφονται η κάρτα παίκτη σου, οι προσωπικές προκλήσεις και τα γρήγορα
   μηνύματα που έστειλες ή έλαβες, και οι ειδοποιήσεις στη ροή δραστηριότητας άλλων παικτών που
-  αναφέρουν το όνομά σου. Αν μια ειδοποίηση push σε ενημέρωσε για προσωπική πρόκληση άλλου
-  παίκτη, μετά τη διαγραφή το αναγνωριστικό χρήστη σου μπορεί να μείνει στο αρχείο εκείνου του
-  παίκτη με τις ειδοποιήσεις προκλήσεων που έστειλε, μέχρι να στείλει άλλη τέτοια ειδοποίηση
-  τουλάχιστον μία ημέρα αργότερα ή να διαγράψει τον λογαριασμό του. Καμία εφαρμογή δεν διαβάζει
-  αυτό το αρχείο. Διάβασε παραπάνω τι ακριβώς διαγράφεται και τι παραμένει.</p>
+  αναφέρουν το όνομά σου. Τα διαγραμμένα δεδομένα μπορεί να μείνουν έως 7 ημέρες στο ημερήσιο
+  αντίγραφο ασφαλείας της βάσης δεδομένων μας και στη λειτουργία που επαναφέρει τη βάση όπως
+  ήταν οποιαδήποτε στιγμή των τελευταίων 7 ημερών (point-in-time recovery), και μια διαγραμμένη
+  φωτογραφία προφίλ μπορεί να ανακτηθεί για 7 ημέρες. Μετά από αυτό, τα αντίγραφα αυτά
+  σβήνονται. Η Google, από την πλευρά της, αφαιρεί τα στοιχεία σύνδεσης ενός διαγραμμένου
+  λογαριασμού από τα δικά της αντίγραφα ασφαλείας μέσα σε 180 ημέρες. Διάβασε παραπάνω τι
+  ακριβώς διαγράφεται και τι παραμένει.</p>
   <p>Έχεις δικαίωμα πρόσβασης, διόρθωσης, διαγραφής, φορητότητας, εναντίωσης και περιορισμού,
   δικαίωμα να ανακαλέσεις όποτε θέλεις τη συγκατάθεσή σου για την τοποθεσία, καθώς και δικαίωμα
   καταγγελίας στην εποπτική αρχή της χώρας της ΕΕ όπου μένεις.
