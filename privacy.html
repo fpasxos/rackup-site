@@ -39,11 +39,23 @@
 <main id="main" class="container">
 <article class="prose">
   <h1>RackUp Privacy Policy</h1>
-  <p class="muted">Effective date: 5 November 2026 · Applies to the RackUp apps for Android
+  <p class="muted">Effective date: XX November 2026 · Applies to the RackUp apps for Android
   and iPhone (<code>com.rackup.app</code>)</p>
   <p lang="el"><a href="#el">Στα Ελληνικά</a></p>
 
   <div class="card">
+    <p><strong>What changed on XX November 2026.</strong> The apps did not change and collect
+    nothing new, but this policy was wrong about where some of your data is kept. It said that
+    our storage runs in Google's European regions, and it named only Crashlytics and Analytics as
+    services that may process data outside the European Economic Area. In fact your profile
+    photo is kept in Google's <code>us-east1</code> region, in the United States, and Firebase
+    Authentication, which handles your sign-in and guest identifiers, runs only from data centres
+    in the United States. The summary in Greek also placed Firebase Authentication and our
+    storage in Europe. Under <em>Where your data is stored, and who processes it</em>, we now say
+    where each service we use keeps or handles your data, list our server logs and Firebase App
+    Check too, and say how your data is protected when it is processed outside the European
+    Economic Area: by the EU-U.S. Data Privacy Framework, under which Google is certified, and by
+    the standard contractual clauses in Google's data processing terms.</p>
     <p><strong>What changed on 5 November 2026.</strong> Ahead of version 2.4.5 of the apps,
     under <em>App usage analytics</em>: we log one more event, <code>match_viewed</code>, when you
     open another player's open match, with how you got there, the id of the hall and how far ahead
@@ -626,30 +638,52 @@
   <h2>Where your data is stored, and who processes it</h2>
   <p>RackUp runs entirely on <strong>Google Firebase</strong>, on Google Cloud infrastructure.
   Google acts as our service provider and processes this data on our instructions. The services
-  we use are:</p>
+  we use, and where each one keeps or handles your data, are:</p>
   <ul>
     <li><strong>Firebase Authentication</strong>: your sign-in identity and password, and, from
-        version 2.3.0, guest identifiers.</li>
-    <li><strong>Cloud Firestore</strong>: everything described above that is stored as a record.</li>
-    <li><strong>Cloud Storage for Firebase</strong>: profile photos, uploaded from either app.</li>
+        version 2.3.0, guest identifiers. Google runs this service only from data centres in the
+        <strong>United States</strong>, so that is where it processes them.</li>
+    <li><strong>Cloud Firestore</strong>: everything described above that is stored as a record.
+        Our database is kept in Google's <code>europe-central2</code> region, in Warsaw,
+        Poland.</li>
+    <li><strong>Cloud Storage for Firebase</strong>: profile photos, uploaded from either app.
+        They are kept in Google's <code>us-east1</code> region, in the <strong>United
+        States</strong>.</li>
     <li><strong>Cloud Functions</strong>: our server-side jobs, including notifications, saved
         search alerts, player cards, the copies of open games for guests, giving what you
         post or save, and your profile, its country when an app leaves it out, and the account
         erasure job. These run in Google's
-        <code>europe-west1</code> region.</li>
+        <code>europe-west1</code> region, in Belgium. <strong>Cloud Scheduler</strong>, in the
+        same region, starts the jobs that run on a timetable, and holds no personal data.</li>
+    <li><strong>Cloud Logging</strong>: the logs our server-side jobs write, which can contain
+        your user id. Google keeps them in its global location, which means they can be stored
+        in any of its data centres.</li>
     <li><strong>Firebase Crashlytics</strong>: crash and diagnostic reports.</li>
     <li><strong>Firebase Analytics</strong>: the app usage events described above.</li>
     <li><strong>Firebase Cloud Messaging</strong>: push notifications on both apps. On iPhone,
         Firebase passes them to Apple's Push Notification service, which delivers them.</li>
+    <li><strong>Firebase App Check</strong>: on Android, the app uses it, with Google Play, to
+        show our services that a request comes from our genuine app.</li>
   </ul>
   <p>The Android app's map in the Venues tab is <strong>Google Maps</strong>. Opening it sends
   Google your device's IP address and the area you are looking at, which, if you allowed location,
   is the area around you. Google handles this under its own terms and
   <a href="https://policies.google.com/privacy">privacy policy</a>.</p>
-  <p>Our database, storage and server functions are configured to run in Google's European
-  regions. Crashlytics and Analytics are global Google services, so the diagnostic and usage data
-  they collect may be processed outside the European Economic Area under Google's own data
-  processing terms. Google's documentation for all of this is at
+  <p>So our database and our server-side jobs are in the European Union, but your sign-in
+  details and your profile photo are in the United States. Crashlytics, Analytics, Cloud
+  Messaging and App Check are global Google services and, like our server logs, what they handle
+  may be processed or stored anywhere Google has facilities, including outside the European
+  Economic Area.</p>
+  <p>When your data is processed outside the European Economic Area, it is protected in one of
+  two ways. In the United States, by the <strong>EU-U.S. Data Privacy Framework</strong>: the
+  European Commission has decided that personal data sent to companies certified under it is
+  adequately protected, and Google LLC is certified. In any other country whose protection the
+  Commission has not found adequate, and in the United States should the framework stop
+  applying, by the European Commission's <strong>standard contractual clauses</strong>, which
+  are part of Google's data processing terms: the Cloud Data Processing Addendum for
+  Authentication, Firestore, Cloud Storage, Cloud Functions, Cloud Logging and App Check, the
+  Firebase Data Processing and Security Terms for Crashlytics and Cloud Messaging, and the
+  Google Ads Data Processing Terms for Analytics. Google's documentation for all of this is at
   <a href="https://firebase.google.com/support/privacy">firebase.google.com/support/privacy</a>.</p>
   <p>Data is encrypted in transit. Access from the apps is controlled by Firebase security rules
   that enforce exactly the visibility described in the section above.</p>
@@ -836,11 +870,14 @@
 
   <h2>Changes to this policy</h2>
   <p>If this policy changes, the new version is published at this address with a new effective
-  date, and we say at the top what changed. This version, dated 5 November 2026, adds the
+  date, and we say at the top what changed. This version, dated XX November 2026, corrects where
+  your profile photo is kept and where your sign-in details are processed, says where each
+  service we use keeps or handles your data and how your data is protected outside the European
+  Economic Area, and supersedes the version dated 5 November 2026, which added the
   analytics event <code>match_viewed</code>, what <code>match_posted</code>,
   <code>request_accepted</code> and <code>looking_for_game_converted</code> also record from
   version 2.4.5 of the apps, the "No answer yet" notice and the records that keep some
-  notifications to a few a day, and supersedes the version dated 4 November 2026, which added what the
+  notifications to a few a day, and superseded the version dated 4 November 2026, which added what the
   apps show from version 2.4.5 about games that found an opponent: nameless counts and recent
   games by city and hall, a host's count of games played, the status of a shared game and a count
   in the city alert, and superseded the version dated 28 October 2026, which added the city
@@ -886,8 +923,27 @@
   προεπιλεγμένη της εφαρμογής. Τη γράφουμε επίσης στην κάρτα παίκτη σου, στα ματς, στις
   προκλήσεις, στις δηλώσεις ότι ψάχνεις παιχνίδι, στις αποθηκευμένες αναζητήσεις και στο
   εβδομαδιαίο πρόγραμμά σου, ώστε τα ματς, οι αίθουσες, οι κατατάξεις και οι περισσότερες
-  ειδοποιήσεις κάθε χώρας να μένουν σε αυτήν. Όλα βρίσκονται στο Google Firebase (Authentication,
-  Firestore, Cloud Storage, Cloud Functions στην Ευρώπη).</p>
+  ειδοποιήσεις κάθε χώρας να μένουν σε αυτήν. Όλα βρίσκονται στο Google Firebase.</p>
+  <p><strong>Πού βρίσκονται τα δεδομένα σου.</strong> Στην Ευρωπαϊκή Ένωση βρίσκονται η βάση
+  δεδομένων μας (Cloud Firestore), στη Βαρσοβία της Πολωνίας, και ο διακομιστής μας (Cloud
+  Functions), που τρέχει στο Βέλγιο. Στις Ηνωμένες Πολιτείες όμως φυλάσσεται η φωτογραφία
+  προφίλ σου (Cloud Storage), και μόνο σε κέντρα δεδομένων στις Ηνωμένες Πολιτείες επεξεργάζεται
+  η Google τα στοιχεία σύνδεσής σου και τα αναγνωριστικά επισκεπτών (Firebase Authentication).
+  Το Firebase Crashlytics, το Firebase Analytics, το Firebase Cloud Messaging, που στέλνει τις
+  ειδοποιήσεις push, και το Firebase App Check, με το οποίο η εφαρμογή Android επιβεβαιώνει,
+  μέσω του Google Play, ότι είναι η γνήσια εφαρμογή μας, είναι παγκόσμιες υπηρεσίες της Google.
+  Τα αρχεία καταγραφής του διακομιστή μας (Cloud Logging), που μπορεί να περιέχουν το
+  αναγνωριστικό χρήστη σου, η Google τα κρατά σε οποιοδήποτε από τα κέντρα δεδομένων της στον
+  κόσμο. Έτσι, όσα χειρίζονται αυτές οι υπηρεσίες μπορεί να επεξεργαστούν και εκτός του
+  Ευρωπαϊκού Οικονομικού Χώρου (ΕΟΧ). Στις Ηνωμένες Πολιτείες ισχύει το πλαίσιο ΕΕ-ΗΠΑ για την
+  προστασία των δεδομένων (EU-U.S. Data Privacy Framework): η Ευρωπαϊκή Επιτροπή έχει κρίνει
+  ότι τα δεδομένα που διαβιβάζονται σε εταιρείες πιστοποιημένες σε αυτό προστατεύονται
+  επαρκώς, και η Google LLC είναι πιστοποιημένη. Σε κάθε άλλη χώρα εκτός ΕΟΧ για την οποία η
+  Επιτροπή δεν έχει κρίνει ότι προστατεύει επαρκώς τα δεδομένα, και στις Ηνωμένες Πολιτείες αν
+  το πλαίσιο πάψει να ισχύει, τα δεδομένα σου τα προστατεύουν οι τυποποιημένες συμβατικές
+  ρήτρες της Ευρωπαϊκής Επιτροπής, που περιλαμβάνονται στους όρους επεξεργασίας δεδομένων της
+  Google (Cloud Data Processing Addendum, Firebase Data Processing and Security Terms και, για το
+  Analytics, Google Ads Data Processing Terms).</p>
   <p>Το email σου είναι ιδιωτικό. Το όνομα, η κατηγορία και η φωτογραφία σου εμφανίζονται στα
   ματς που δημοσιεύεις ή στα οποία συμμετέχεις, όταν δηλώνεις ότι ψάχνεις παιχνίδι, και στην
   κάρτα παίκτη σου, μαζί με τη χώρα και την πόλη σου, την αίθουσα όπου παίζεις συνήθως και τι
