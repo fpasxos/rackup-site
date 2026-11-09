@@ -39,11 +39,32 @@
 <main id="main" class="container">
 <article class="prose">
   <h1>RackUp Privacy Policy</h1>
-  <p class="muted">Effective date: 9 November 2026 · Applies to the RackUp apps for Android
+  <p class="muted">Effective date: XX November 2026 · Applies to the RackUp apps for Android
   and iPhone (<code>com.rackup.app</code>)</p>
   <p lang="el"><a href="#el">Στα Ελληνικά</a></p>
 
   <div class="card">
+    <p><strong>What changed on XX November 2026.</strong> The apps did not change and collect
+    nothing new, but this policy needed three corrections. First, it named Sign in with Apple and
+    Apple's Push Notification service, which delivers notifications to iPhones, without saying
+    where Apple handles your data for them. Under <em>Where your data is stored, and who processes
+    it</em>, we now give what Apple's own documents say: they name no country for either service,
+    and Apple's privacy policy says that the personal data Apple collects is generally stored by
+    Apple Inc. in the United States, that for people in the European Economic Area it is
+    controlled by Apple Distribution International Limited in Ireland, and that its transfer out
+    of the European Economic Area is governed by standard contractual clauses. Second, it never
+    mentioned the <strong>Firebase installation ID</strong>, a random identifier that Google gives
+    each install of the app and that Crashlytics, Analytics and Cloud Messaging use. We now
+    describe it in the same section, say that Google names no location for it, and say how long
+    Google keeps it, which deleting your account does not change. We also correct <em>Crash
+    diagnostics</em>, which said that crash reports carry only Crashlytics' own identifier. Third,
+    it still said that our security rules let a guest session read a whole match or challenge
+    record, the host's note included. That stopped on 20 October 2026, when our rules began to
+    refuse a guest session every match and challenge record. Under <em>Looking around as a
+    guest</em>, <em>What you post and write</em>, <em>Who can see what</em> and
+    <em>Security</em>, we now say what a guest session can read. And under <em>Who can see
+    what</em> we add that, with no sign-in at all, our database also lets anyone read the list of
+    countries and cities the app offers, which holds no personal data.</p>
     <p><strong>What changed on 9 November 2026.</strong> The apps did not change and collect
     nothing new, but this policy was wrong about where some of your data is kept. It said that
     our storage runs in Google's European regions, and it named only Crashlytics and Analytics as
@@ -215,7 +236,8 @@
   <p>To sign in you use an email address and a password, or Google (Android), or Sign in with
   Apple (iPhone). Passwords are handled and stored by Google Firebase Authentication and we
   never see them. If you sign in with Apple and choose to hide your address, we store the Apple
-  private relay address exactly as Apple gives it to us.</p>
+  private relay address exactly as Apple gives it to us. Sign in with Apple itself is Apple's
+  service, described under <em>Where your data is stored, and who processes it</em>.</p>
   <p>Your profile record holds your display name, your email address, the skill category you
   choose for yourself (Pro down to E), your country and city, your usual hall and the games you
   play if you gave them, a link to your profile photo if you have one, your notification
@@ -251,14 +273,18 @@
   hall, game and time. You cannot see what a host wrote: the app shows the note on a match or a
   challenge, and the note on a cancelled match, only to players with an account. On a match page
   a guest sees the line "The host's note is for players with an account" instead. The note is
-  also left out of a guest's Add to calendar entry. Versions 2.3.0 to 2.3.2 read the match and
-  challenge records themselves and hide the note on screen, and there a guest can also open a
-  game that has been taken or called off, with the reason it was called off. From version 2.3.3,
-  the app reads only the copies of open games described below, which never hold a note, so a
-  game that has been taken or called off shows as no longer there. On every version, our
-  security rules still let any signed in session, a guest's included, read a whole match or
-  challenge record, note included, if it asks our database directly. You cannot open player
-  cards or search for players. Posting, asking to join, following, blocking, starring
+  also left out of a guest's Add to calendar entry. From version 2.3.3, the app reads only the
+  copies of open games described below, which never hold a note, so a game that has been taken
+  or called off shows as no longer there, except that from version 2.4.5 a game that found an
+  opponent says so, with its hall, as described under <em>What you post and write</em>. Versions
+  2.3.0 to 2.3.2 read the match and challenge records themselves and hid the note on screen.
+  Since 20 October 2026, our security rules have refused a guest session every match and
+  challenge record, so those versions show a guest no games, and no version can reach a note by
+  asking our database directly. In our database, a guest session can read only the copies of
+  open games, looking-for-a-game posts, the halls, what is described under <em>What you post
+  and write</em> about games that found an opponent, and settings and lists that hold no
+  personal data, such as the countries and cities the app offers. You cannot open player cards
+  or search for players. Posting, asking to join, following, blocking, starring
   a hall, checking in, saving a search, challenging a player and notifications all need an
   account, and the app asks you to create one instead. Our security rules also stop a guest
   from creating a profile, uploading a photo, posting a match or a challenge, or checking
@@ -335,9 +361,10 @@
         game type, date and time, and any free text note you write, together with your display
         name, skill category, photo and reliability figure copied onto the post. <strong>Every
         signed in player can
-        read these.</strong> That is the point of the app. From version 2.3.0 a guest sees them
-        too, but not your note, which the app shows only to players with an account; our
-        security rules would still let a guest session read it.</li>
+        read these.</strong> That is the point of the app. From version 2.3.0 a guest sees your
+        open posts too, from the copies described under <em>Looking around as a guest</em>, but
+        never your note: the copies leave it out, and since 20 October 2026 our security rules
+        let a guest session read no match or challenge record.</li>
     <li><strong>Direct challenges</strong>: when you challenge one player by name, we store both
         players' user ids, display names, categories, photo links and verified badges, the game
         type, the hall (its id, name, city, country and time zone), the date and time you
@@ -469,8 +496,9 @@
   handled error, Crashlytics sends Google a report containing the crash, your device model, your
   operating system version and the app version. We use it to find and fix bugs. <strong>We never
   attach your account to a crash report.</strong> The app never calls Crashlytics' user id
-  function, so reports carry only Crashlytics' own installation identifier, which we cannot
-  match to a person.</p>
+  function, so reports carry no user id, only random identifiers, such as Crashlytics' own
+  installation identifier and the Firebase installation ID described under <em>Where your data
+  is stored, and who processes it</em>. We do not match them to a person.</p>
 
   <h3>App usage analytics (both apps)</h3>
   <p>Both apps include <strong>Firebase Analytics</strong>, and it is on by default. The old
@@ -613,35 +641,34 @@
         category, your profile photo, your reliability figure and verified badge, everything on
         the matches and open challenges you post or join, including your notes, scores, dispute
         status and cancellation notes, and your looking-for-a-game post. <strong>From version
-        2.3.0, guests see this too, except the notes</strong>, which the app shows only to
-        players with an account. On versions 2.3.0 to 2.3.2 a guest's lists show only games
-        nobody has taken, and a played match only when the guest opens its link. From version
-        2.3.3, a guest's app shows only open games, from the copies described above, so no
-        scores, results or cancellations either. Our security rules would still let a guest
-        session read a note, as they let any signed in session read a whole match record. A guest is
-        someone looking around in the app without an
-        account, as described above.</li>
+        2.3.0, guests see part of this</strong>: what the copies of your open games hold, as
+        described above, and your looking-for-a-game post, but never a note, a score, a result
+        or a cancellation. A guest is someone looking around in the app without an account, as
+        described above.</li>
     <li><strong>Visible only to us</strong>: abuse reports and feedback messages.</li>
     <li><strong>Nobody without a sign-in, with one exception.</strong> There is no public web
         profile. Looking around as a guest, from version 2.3.0, still signs in, anonymously, as
         described above. With
         no sign-in at all, our database lets nothing be read except a settings record that tells
-        each app the oldest version we still support, which holds no personal data. The
+        each app the oldest version we still support and the list of countries and cities the
+        app offers, neither of which holds personal data. The
         exception is your profile photo: its link carries its own access key, so anyone who has
         the link can open the photo without signing in. That link is copied onto your posts,
-        which every signed in player can read (and, from version 2.3.0, every guest), and onto
-        your player card.</li>
+        which every signed in player can read, onto the copies of your open games and your
+        looking-for-a-game post, which guests can read too, and onto your player card.</li>
   </ul>
-  <p>For reading, our security rules check that a request is signed in, not that it comes from an
-  account. A guest session, which the apps start from version 2.3.0, is signed in that way, so it
-  may read what every signed in player can read, listed above, notes included, except player
-  cards, and nothing that is private to you or visible only to us. In a list, a guest session
-  gets only games that nobody has taken, never a player's played matches. No version of the apps
-  shows a guest a note.</p>
+  <p>For most reading, our security rules check that a request is signed in, not that it comes
+  from an account. A guest session, which the apps start from version 2.3.0, is signed in that
+  way, but for matches, challenges and player cards the rules also check for an account. So a
+  guest session cannot read a player card, and since 20 October 2026 it cannot read a match or
+  challenge record either, so it gets no note, score or cancellation. It has never been able to
+  read anything that is private to you or visible only to us. What it can read is listed under
+  <em>Looking around as a guest</em>. No version of the apps shows a guest a note.</p>
   <p>One consequence worth knowing: because match records pair a user id with a display name and
-  are readable by any signed in player or guest, a user id that appears anywhere in the app can be
-  resolved to a display name by another player, or from version 2.3.0 by a guest. A player with
-  an account can also read the player card behind it.</p>
+  are readable by any signed in player, a user id that appears anywhere in the app can be
+  resolved to a display name by another player, who can also read the player card behind it. A
+  guest can do this only for a player whose open game or looking-for-a-game post it can see,
+  because the copy or the post holds that player's user id beside their name.</p>
 
   <h2>Where your data is stored, and who processes it</h2>
   <p>RackUp runs entirely on <strong>Google Firebase</strong>, on Google Cloud infrastructure.
@@ -672,9 +699,19 @@
     <li><strong>Firebase Crashlytics</strong>: crash and diagnostic reports.</li>
     <li><strong>Firebase Analytics</strong>: the app usage events described above.</li>
     <li><strong>Firebase Cloud Messaging</strong>: push notifications on both apps. On iPhone,
-        Firebase passes them to Apple's Push Notification service, which delivers them.</li>
+        Firebase passes them to Apple's Push Notification service, which delivers them, as
+        described below.</li>
     <li><strong>Firebase App Check</strong>: on Android, the app uses it, with Google Play, to
         show our services that a request comes from our genuine app.</li>
+    <li><strong>Firebase Installations</strong>: it gives each install of the app a random
+        <strong>Firebase installation ID</strong>, which identifies that install, not you: the
+        app installed again, or another app on the same phone, gets a different one. Crashlytics
+        attaches it to crash reports, Cloud Messaging uses it to deliver notifications to the
+        right phone, and Analytics may use it to measure how the app is used and where installs
+        come from. We do not use it ourselves, but the notification token we keep under your
+        account is issued for the same install and tied to it, so through that token the ID can
+        be linked to your account. Firebase's privacy page names no location for this
+        service.</li>
   </ul>
   <p>The Android app's map in the Venues tab is <strong>Google Maps</strong>. Opening it sends
   Google your device's IP address and the area you are looking at, which, if you allowed location,
@@ -684,7 +721,9 @@
   details and your profile photo are in the United States. Crashlytics, Analytics, Cloud
   Messaging and App Check are global Google services and, like our server logs, what they handle
   may be processed or stored anywhere Google has facilities, including outside the European
-  Economic Area.</p>
+  Economic Area. So may installation IDs: for a service that does not let us choose a location,
+  Firebase's privacy page says that Firebase may process and store data anywhere Google or its
+  agents maintain facilities.</p>
   <p>When your data is processed outside the European Economic Area, it is protected in one of
   two ways. In the United States, by the <strong>EU-U.S. Data Privacy Framework</strong>: the
   European Commission has decided that personal data sent to companies certified under it is
@@ -696,6 +735,22 @@
   Firebase Data Processing and Security Terms for Crashlytics and Cloud Messaging, and the
   Google Ads Data Processing Terms for Analytics. Google's documentation for all of this is at
   <a href="https://firebase.google.com/support/privacy">firebase.google.com/support/privacy</a>.</p>
+  <p>On iPhone, two of Apple's services also handle your data. If you choose <strong>Sign in with
+  Apple</strong>, Apple signs you in with your Apple Account and gives us your name, if you share
+  it, and your email address or a private relay address that forwards to it. Apple handles this
+  under its own privacy policy, as its page
+  <a href="https://www.apple.com/legal/privacy/data/en/sign-in-with-apple/">Sign in with Apple
+  &amp; Privacy</a> says. <strong>Apple's Push Notification service</strong> receives every
+  notification we send to your iPhone, with what it says, and delivers it. Apple's terms for app
+  developers say that Apple will not access or disclose a notification's content unless it
+  believes in good faith that this is reasonably necessary, for example to comply with legal
+  process or to deal with security, fraud or technical issues. Apple does not say in which
+  country it runs either service. Its
+  <a href="https://www.apple.com/legal/privacy/en-ww/">privacy policy</a> says that personal data
+  collected by Apple is generally stored by Apple Inc. in the United States, that personal data
+  relating to people in the European Economic Area is controlled by Apple Distribution
+  International Limited in Ireland, and that Apple's transfers of personal data collected in the
+  European Economic Area are governed by standard contractual clauses.</p>
   <p>Data is encrypted in transit. Access from the apps is controlled by Firebase security rules
   that enforce exactly the visibility described in the section above.</p>
 
@@ -717,8 +772,8 @@
         crash, in knowing when enough players have updated to release a change, in seeing whether
         games fill, and in spending our advertising budget where it brings new players. We have
         kept the data to the minimum that serves it, and measuring our posts and ads collects
-        nothing extra. Nothing that Firebase Analytics or Crashlytics collects is tied to your
-        account. The app version stored with your profile record and your notification tokens
+        nothing extra. We never tie anything that Firebase Analytics or Crashlytics collects to
+        your account. The app version stored with your profile record and your notification tokens
         is, and the counts come from those records and from your posts, join requests, challenge
         claims, direct challenges and activity feed, but as with install sources we look only at
         the totals, never at a single player. You can object to this processing at any time, at
@@ -753,6 +808,12 @@
     <li><strong>Crash and analytics records</strong>: held by Google under the Firebase project's
         own retention settings. They are not linked to your account, so they are not affected by
         account deletion and we cannot single out an individual's records.</li>
+    <li><strong>Firebase installation IDs</strong>: kept by Google until they are deleted. We do
+        not delete them, and deleting your account does not delete them either. Google deletes
+        one once the app has not been used on that phone for 270 days, its current limit, and
+        says that the data tied to a deleted ID is removed from its live and backup systems
+        within 180 days. Crashlytics keeps the ones in crash reports for 90 days before it starts
+        removing them.</li>
     <li><strong>Erasure records</strong>: when an account is erased we keep one small record
         holding the user id, a status, timestamps and the names of the steps that ran. It holds
         no name, no email, no photo and no message text. It is our evidence that the erasure
@@ -825,6 +886,10 @@
         can also be restored for 7 days. After that, those copies are gone. Separately, Google
         removes a deleted account's sign-in details from its own backup systems within 180
         days.</li>
+    <li><strong>The Firebase installation ID</strong> of each phone you used the app on stays
+        with Google until Google deletes it, as described under retention. The notification
+        tokens we kept under your account, which were issued for the same installs, are
+        deleted.</li>
     <li>Server logs may contain your user id for a bounded period.</li>
   </ul>
   <p>We do not claim that deleting your account erases every trace of you everywhere. The list
@@ -868,26 +933,25 @@
   <h2>Security</h2>
   <p>All traffic between the apps and Firebase is encrypted. What each account may read and
   write is enforced by Firebase security rules on the server, not by the app, so a modified app
-  cannot reach data it is not entitled to. There is one exception, which we are closing: our
-  rules let a guest session read a whole match or challenge record, the host's note included,
-  although no version of the apps shows a guest a note (see <em>Looking around as a
-  guest</em>). From version 2.3.3 the apps show guests open games only from the copies described
-  there, which never hold a note. We will close the exception in our rules once guests have had time
-  to update to
-  that version, and we will update this page on that day. The Android app additionally verifies
-  itself with
+  cannot reach data it is not entitled to. That includes a guest session: since 20 October 2026
+  our rules let it read no match or challenge record, so it cannot reach a host's note even by
+  asking our database directly (see <em>Looking around as a guest</em>). The Android app
+  additionally verifies itself with
   Firebase App Check. We are a small team and we do not pretend to be immune to every risk, but
   if a breach affects your personal data we will notify the Hellenic Data Protection Authority
   and, where the law requires it, you.</p>
 
   <h2>Changes to this policy</h2>
   <p>If this policy changes, the new version is published at this address with a new effective
-  date, and we say at the top what changed. This version, dated 9 November 2026, corrects where
-  your profile photo is kept and where your sign-in details are processed, says where each
-  service we use keeps or handles your data and how your data is protected outside the European
-  Economic Area, what Firebase Authentication logs and how long backups keep deleted data, drops
-  the item about your user id in another player's record of their challenge pushes, and
-  supersedes the version dated 5 November 2026, which added the
+  date, and we say at the top what changed. This version, dated XX November 2026, says where
+  Apple handles your data for Sign in with Apple and iPhone notifications, describes the
+  Firebase installation ID, corrects what a guest session can read, and supersedes the version
+  dated 9 November 2026, which corrected where your profile photo is kept and where your sign-in
+  details are processed, said where each service we use keeps or handles your data and how your
+  data is protected outside the European Economic Area, what Firebase Authentication logs and
+  how long backups keep deleted data, and dropped the item about your user id in another
+  player's record of their challenge pushes, and superseded the version dated 5 November 2026,
+  which added the
   analytics event <code>match_viewed</code>, what <code>match_posted</code>,
   <code>request_accepted</code> and <code>looking_for_game_converted</code> also record from
   version 2.4.5 of the apps, the "No answer yet" notice and the records that keep some
@@ -951,7 +1015,17 @@
   μέσω του Google Play, ότι είναι η γνήσια εφαρμογή μας, είναι παγκόσμιες υπηρεσίες της Google.
   Τα αρχεία καταγραφής του διακομιστή μας (Cloud Logging), που μπορεί να περιέχουν το
   αναγνωριστικό χρήστη σου, η Google τα κρατά σε οποιοδήποτε από τα κέντρα δεδομένων της στον
-  κόσμο. Έτσι, όσα χειρίζονται αυτές οι υπηρεσίες μπορεί να επεξεργαστούν και εκτός του
+  κόσμο. Το Crashlytics, το Analytics και το Cloud Messaging χρησιμοποιούν επίσης το
+  αναγνωριστικό εγκατάστασης του Firebase (Firebase installation ID): ένα τυχαίο αναγνωριστικό
+  που δίνει η υπηρεσία Firebase Installations σε κάθε εγκατάσταση της εφαρμογής και που
+  ξεχωρίζει την εγκατάσταση, όχι εσένα. Εμείς δεν το χρησιμοποιούμε, αλλά το αναγνωριστικό
+  ειδοποιήσεων που κρατάμε στον λογαριασμό σου εκδίδεται για την ίδια εγκατάσταση και είναι
+  δεμένο με αυτό, οπότε μέσω αυτού το αναγνωριστικό εγκατάστασης μπορεί να συνδεθεί με τον
+  λογαριασμό σου. Η σελίδα του Firebase για το απόρρητο δεν λέει πού το επεξεργάζεται η Google.
+  Η Google το κρατά μέχρι να διαγραφεί: εμείς δεν το διαγράφουμε, ούτε όταν διαγράφεις τον
+  λογαριασμό σου, ενώ η Google το διαγράφει όταν η εφαρμογή μείνει 270 ημέρες αχρησιμοποίητη
+  στο τηλέφωνο και αφαιρεί μέσα σε 180 ημέρες τα δεδομένα που συνδέονται με αυτό. Έτσι, όσα
+  χειρίζονται αυτές οι υπηρεσίες μπορεί να επεξεργαστούν και εκτός του
   Ευρωπαϊκού Οικονομικού Χώρου (ΕΟΧ). Στις Ηνωμένες Πολιτείες ισχύει το πλαίσιο ΕΕ-ΗΠΑ για την
   προστασία των δεδομένων (EU-U.S. Data Privacy Framework): η Ευρωπαϊκή Επιτροπή έχει κρίνει
   ότι τα δεδομένα που διαβιβάζονται σε εταιρείες πιστοποιημένες σε αυτό προστατεύονται
@@ -961,6 +1035,20 @@
   ρήτρες της Ευρωπαϊκής Επιτροπής, που περιλαμβάνονται στους όρους επεξεργασίας δεδομένων της
   Google (Cloud Data Processing Addendum, Firebase Data Processing and Security Terms και, για το
   Analytics, Google Ads Data Processing Terms).</p>
+  <p>Στο iPhone, δύο υπηρεσίες της Apple χειρίζονται επίσης δεδομένα σου. Αν συνδέεσαι με το
+  Sign in with Apple, η Apple σε συνδέει με τον λογαριασμό Apple σου και μας δίνει το όνομά σου,
+  αν το μοιραστείς, και το email σου ή, αν το κρύψεις, μια διεύθυνση της Apple που προωθεί τα
+  μηνύματα σε αυτό. Αυτά η Apple τα χειρίζεται σύμφωνα με τη δική της πολιτική απορρήτου. Η
+  υπηρεσία ειδοποιήσεων push της Apple (Apple Push Notification service) λαμβάνει κάθε
+  ειδοποίηση που στέλνουμε στο iPhone σου, μαζί με το κείμενό της, και την παραδίδει. Οι όροι
+  της Apple για τους προγραμματιστές εφαρμογών λένε ότι δεν διαβάζει ούτε αποκαλύπτει το
+  περιεχόμενο μιας ειδοποίησης, εκτός αν κρίνει καλόπιστα ότι αυτό είναι εύλογα απαραίτητο, για
+  παράδειγμα για να συμμορφωθεί με νομική διαδικασία ή για ζητήματα ασφαλείας, απάτης ή
+  τεχνικά. Η Apple δεν λέει σε ποια χώρα λειτουργεί καμία από τις δύο υπηρεσίες. Η πολιτική
+  απορρήτου της λέει ότι τα προσωπικά δεδομένα που συλλέγει τα αποθηκεύει γενικά η Apple Inc.
+  στις Ηνωμένες Πολιτείες, ότι για τα προσωπικά δεδομένα όσων βρίσκονται στον ΕΟΧ υπεύθυνη
+  επεξεργασίας είναι η Apple Distribution International Limited στην Ιρλανδία, και ότι η
+  διαβίβασή τους εκτός ΕΟΧ διέπεται από τυποποιημένες συμβατικές ρήτρες.</p>
   <p>Το email σου είναι ιδιωτικό. Το όνομα, η κατηγορία και η φωτογραφία σου εμφανίζονται στα
   ματς που δημοσιεύεις ή στα οποία συμμετέχεις, όταν δηλώνεις ότι ψάχνεις παιχνίδι, και στην
   κάρτα παίκτη σου, μαζί με τη χώρα και την πόλη σου, την αίθουσα όπου παίζεις συνήθως και τι
@@ -969,24 +1057,27 @@
   κλείσεις το «Να με βρίσκουν στην αναζήτηση» στις Ρυθμίσεις. Την αίθουσα όπου παίζεις συνήθως
   την αλλάζεις ή τη βγάζεις από τις Ρυθμίσεις, στο «Η λέσχη σου». Όλα αυτά τα βλέπουν μόνο όσοι
   έχουν συνδεθεί στην εφαρμογή, με μία εξαίρεση: όποιος έχει τον σύνδεσμο της φωτογραφίας σου
-  μπορεί να την ανοίξει και χωρίς σύνδεση. Από την έκδοση 2.3.0 της εφαρμογής, τα ματς σου και
-  τις δηλώσεις σου ότι ψάχνεις παιχνίδι, μαζί με το όνομα, την κατηγορία και τη φωτογραφία σου,
-  τα βλέπουν και οι επισκέπτες, δηλαδή όσοι ρίχνουν μια ματιά στην εφαρμογή χωρίς λογαριασμό.
+  μπορεί να την ανοίξει και χωρίς σύνδεση. Από την έκδοση 2.3.0 της εφαρμογής, τα ανοιχτά ματς
+  σου και τις δηλώσεις σου ότι ψάχνεις παιχνίδι, μαζί με το όνομα, την κατηγορία και τη
+  φωτογραφία σου, τα βλέπουν και οι επισκέπτες, δηλαδή όσοι ρίχνουν μια ματιά στην εφαρμογή
+  χωρίς λογαριασμό.
   Την κάρτα σου δεν τη βλέπουν,
   ούτε όσα γράφεις σε σημείωση: η εφαρμογή δείχνει τη σημείωση ενός ματς ή μιας πρόκλησης, και τη
-  σημείωση μιας ακύρωσης, μόνο σε παίκτες με λογαριασμό. Οι εκδόσεις 2.3.0 έως 2.3.2 διαβάζουν τα
-  ίδια τα ματς και τις προκλήσεις και κρύβουν τη σημείωση στην οθόνη. Από την έκδοση 2.3.3, η
+  σημείωση μιας ακύρωσης, μόνο σε παίκτες με λογαριασμό. Οι εκδόσεις 2.3.0 έως 2.3.2 διάβαζαν τα
+  ίδια τα ματς και τις προκλήσεις και έκρυβαν τη σημείωση στην οθόνη. Από την έκδοση 2.3.3, η
   εφαρμογή δείχνει στον επισκέπτη μόνο αντίγραφα των ανοιχτών ματς και προκλήσεων, που τα κρατά ο
   διακομιστής μας χωρίς σημείωση, σημείωση ακύρωσης, αντίπαλο, σκορ ή απουσία. Ένα αντίγραφο
   σβήνεται μόλις κάποιος πάρει το ματς ή την πρόκληση, μόλις ακυρωθεί ή διαγραφεί, και όταν ο
   διοργανωτής διαγράψει τον λογαριασμό του. Αλλιώς, το αντίγραφο ενός ματς σβήνεται μέσα σε
   περίπου μία ώρα αφού περάσουν δύο ώρες από την έναρξή του, και το αντίγραφο μιας πρόκλησης μέσα
-  σε περίπου μία ώρα αφού συμπληρώσει 24 ώρες ή περάσουν δύο ώρες από την ώρα της. Οι
-  κανόνες ασφαλείας της βάσης μας όμως επιτρέπουν ακόμη σε κάθε συνδεδεμένο χρήστη, και στον
-  επισκέπτη, να διαβάσει ολόκληρη την εγγραφή ενός ματς ή μιας πρόκλησης, μαζί με τη σημείωση, αν
-  τη ζητήσει απευθείας από τη βάση. Θα κλείσουμε αυτή τη δυνατότητα στους κανόνες μόλις οι
-  επισκέπτες
-  προλάβουν να ενημερώσουν την εφαρμογή, και τότε θα το γράψουμε εδώ.</p>
+  σε περίπου μία ώρα αφού συμπληρώσει 24 ώρες ή περάσουν δύο ώρες από την ώρα της. Από τις 20
+  Οκτωβρίου 2026, οι κανόνες ασφαλείας της βάσης μας δεν επιτρέπουν στον επισκέπτη να διαβάσει
+  κανένα ματς και καμία πρόκληση, ούτε αν τα ζητήσει απευθείας από τη βάση, οπότε δεν φτάνει σε
+  καμία σημείωση, και οι εκδόσεις 2.3.0 έως 2.3.2 δεν δείχνουν πια ματς στον επισκέπτη. Στη βάση
+  μας, ο επισκέπτης μπορεί να διαβάσει μόνο τα αντίγραφα των ανοιχτών ματς και προκλήσεων, τις
+  δηλώσεις ότι ψάχνει κάποιος παιχνίδι, τις αίθουσες, όσα γράφουμε παρακάτω για τα ματς που
+  βρήκαν αντίπαλο, και ρυθμίσεις και λίστες χωρίς προσωπικά δεδομένα, όπως τις χώρες και τις
+  πόλεις της εφαρμογής.</p>
   <p>Από την έκδοση 2.3.0 της εφαρμογής, μπορείς να ρίξεις μια ματιά πριν φτιάξεις λογαριασμό,
   με το «Ρίξε πρώτα μια ματιά» στην πρώτη οθόνη. Οι προηγούμενες εκδόσεις δεν έχουν λειτουργία
   επισκέπτη. Τότε η εφαρμογή συνδέεται ανώνυμα στο Firebase Authentication και
@@ -1021,9 +1112,9 @@
   Αυτά τα δύο συμβάντα καταγράφουν και ποια αίθουσα αφορούν. Από την έκδοση 2.4.5 καταγράφουμε
   επίσης πότε ανοίγεις ένα ανοιχτό ματς άλλου παίκτη, από πού έφτασες εκεί, την αίθουσα και πόσο
   νωρίτερα από την έναρξη, χωρίς όνομα ή αναγνωριστικό χρήστη.
-  Κανένα συμβάν δεν περιέχει όνομα, email ή κείμενο που έγραψες, και κανένα από τα δύο εργαλεία
-  δεν συνδέεται με τον λογαριασμό σου: η εφαρμογή δεν στέλνει ποτέ το αναγνωριστικό χρήστη σε
-  αυτές τις υπηρεσίες.</p>
+  Κανένα συμβάν δεν περιέχει όνομα, email ή κείμενο που έγραψες, και όσα συλλέγουν τα δύο
+  εργαλεία δεν τα συνδέουμε ποτέ με τον λογαριασμό σου: η εφαρμογή δεν στέλνει ποτέ το
+  αναγνωριστικό χρήστη σε αυτές τις υπηρεσίες.</p>
   <p>Στο Android, όταν εγκαθιστάς την εφαρμογή από σύνδεσμό μας, το Google Play δίνει στο Firebase
   Analytics τις ετικέτες του συνδέσμου και πότε τον πάτησες. Οι ετικέτες λένε την πηγή, το μέσο
   και την καμπάνια, ανάλογα με το πού ήταν ο σύνδεσμος: για παράδειγμα στην ιστοσελίδα μας, στη
