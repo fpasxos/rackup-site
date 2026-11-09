@@ -113,6 +113,7 @@ CITIES = {
     "Saronida": ("saronida", "Σαρωνίδα", "στη Σαρωνίδα"),
     "Leros": ("leros", "Λέρος", "στη Λέρο"),
     "Alexandroupoli": ("alexandroupoli", "Αλεξανδρούπολη", "στην Αλεξανδρούπολη"),
+    "Tripoli": ("tripoli", "Τρίπολη", "στην Τρίπολη"),
     "Nicosia": ("lefkosia", "Λευκωσία", "στη Λευκωσία"),
     "Paphos": ("pafos", "Πάφος", "στην Πάφο"),
     "Limassol": ("lemesos", "Λεμεσός", "στη Λεμεσό"),
