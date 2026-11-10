@@ -18,7 +18,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import build_directory as b  # noqa: E402
 from test_build_directory import app_data, generate  # noqa: E402
 
-DAY = "2026-11-05"
+# Later than any real revision, so a city dated after this test was written never beats it.
+DAY = "2999-12-31"
 
 
 def committed():
