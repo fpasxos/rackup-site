@@ -535,12 +535,14 @@
   was blocked by them, and a starred hall's alerts follow the star. A push due outside its hours
   waits for the morning and goes only if the match is still open and not too close. While it waits,
   our server keeps only the match's id, when it was put on hold and which of these pushes are
-  waiting, with no names. To send them, our server also keeps, on the match, when its seat was last
-  taken and when its hall was told; on the join request of the player the host accepted, the time
-  of the acceptance; on each request still waiting, a mark that its player was told the place was
-  free again; and, under your account, the day and time of the last such push a starred hall sent
-  you, never which match it was about. No app can read these records. They are deleted with the
-  request, the match or your account respectively.</p>
+  waiting, with no names. To send them, our server also keeps, in a separate record for each match,
+  when its seat was last taken and when its hall was told; on the join request of the player the
+  host accepted, the time of the acceptance; on each request still waiting, a mark that its player
+  was told the place was free again; and, under your account, the day and time of the last such
+  push a starred hall sent you, never which match it was about. No app can read the match's records
+  or the one under your account. Like the rest of a join request, the marks on it can be read only
+  by its player and the host. They are deleted with the match, the request or your account
+  respectively.</p>
 
   <h3>Crash diagnostics (both apps)</h3>
   <p>Both apps include <strong>Firebase Crashlytics</strong>. When the app crashes or hits a
@@ -898,7 +900,8 @@
     <li>your profile photo file in Cloud Storage;</li>
     <li>your notification tokens, notification preferences, activity feed, saved searches,
         starred venues, weekly schedule and blocked list;</li>
-    <li>the day and time of the last city alert we sent you;</li>
+    <li>the day and time of the last city alert we sent you, and of the last notice from a starred
+        hall that a place is free again;</li>
     <li>the records that keep the notifications about your new matches and direct challenges, and
         your "No answer yet" notices, to a few a day;</li>
     <li>the count of the games you have played with a confirmed score;</li>
@@ -1247,12 +1250,14 @@
   τουλάχιστον 90 λεπτά. Μια ειδοποίηση που θα έφευγε εκτός ωρών περιμένει το πρωί και φεύγει μόνο
   αν το ματς είναι ακόμη ανοιχτό και δεν είναι πολύ κοντά. Όσο περιμένει, ο διακομιστής μας κρατά
   μόνο το αναγνωριστικό του ματς, πότε μπήκε σε αναμονή και ποιες ειδοποιήσεις περιμένουν, χωρίς
-  ονόματα. Για να τις στέλνουμε, κρατάμε στο ματς πότε πιάστηκε τελευταία η θέση και πότε
-  ειδοποιήθηκε η αίθουσα, στο αίτημα του παίκτη που έγινε δεκτός την ώρα που τον δέχτηκε ο
-  διοργανωτής, σε κάθε αίτημα που περιμένει ένα σημάδι ότι ειδοποιήσαμε τον παίκτη, και στον
-  λογαριασμό σου την ημέρα και την ώρα της τελευταίας τέτοιας ειδοποίησης από αίθουσα, χωρίς να
-  γράφουμε ποιο ματς ήταν. Καμία εφαρμογή δεν τα διαβάζει, και σβήνονται μαζί με το αίτημα, το
-  ματς ή τον λογαριασμό σου αντίστοιχα. Και στις δύο εφαρμογές
+  ονόματα. Για να τις στέλνουμε, κρατάμε σε ξεχωριστή εγγραφή για κάθε ματς πότε πιάστηκε
+  τελευταία η θέση και πότε ειδοποιήθηκε η αίθουσα, στο αίτημα του παίκτη που έγινε δεκτός την ώρα
+  που τον δέχτηκε ο διοργανωτής, σε κάθε αίτημα που περιμένει ένα σημάδι ότι ειδοποιήσαμε τον
+  παίκτη, και στον λογαριασμό σου την ημέρα και την ώρα της τελευταίας τέτοιας ειδοποίησης από
+  αίθουσα, χωρίς να γράφουμε ποιο ματς ήταν. Τις εγγραφές του ματς και την εγγραφή στον λογαριασμό
+  σου δεν τις διαβάζει καμία εφαρμογή. Τα σημάδια σε ένα αίτημα, όπως και το υπόλοιπο αίτημα, τα
+  βλέπουν μόνο ο παίκτης του και ο διοργανωτής. Σβήνονται μαζί με το ματς, το αίτημα ή τον
+  λογαριασμό σου αντίστοιχα. Και στις δύο εφαρμογές
   (στο iPhone από την έκδοση 2.2.0), αν επιτρέψεις την τοποθεσία, η κατά προσέγγιση τοποθεσία σου
   χρησιμεύει για να βλέπεις πρώτα τις αίθουσες και τα ματς της πόλης σου, και <strong>η εφαρμογή
   δεν μας στέλνει ποτέ τη θέση σου</strong>. Από την έκδοση 2.4.2, αν έχεις ήδη επιτρέψει την
