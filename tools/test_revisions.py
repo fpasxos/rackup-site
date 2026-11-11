@@ -47,7 +47,7 @@ class SitemapDateTest(unittest.TestCase):
 
     def test_directory_pages_carry_their_listings_date_and_hand_pages_none(self):
         dates, found = b.load_dates(cities_of(b.load_venues())), lastmods()
-        expected = {b.url(p): None for p in ("", "en/", "support.html", "privacy.html")}
+        expected = {b.url(p): None for p in ("", "en/", "support.html", "privacy.html", "press/")}
         for root in (b.EL_ROOT, b.EN_ROOT):
             expected[b.url(f"{root}/")] = dates["directory"]
             for city, day in dates["cities"].items():

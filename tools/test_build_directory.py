@@ -168,7 +168,7 @@ class BuildDirectoryTest(unittest.TestCase):
                     "en/billiards/": "en-directory", "mpiliardo/athens/": "el-athens",
                     "en/billiards/athens/": "en-athens", "mpiliardo/agios-nikolaos/": "el-agios-nikolaos",
                     "galliko-mpiliardo/": "el-carom", "en/carom-billiards/": "en-carom",
-                    "mpiliardo/kypros/": "el-kypros", "en/billiards/kypros/": "en-kypros"}
+                    "mpiliardo/kypros/": "el-kypros", "en/billiards/kypros/": "en-kypros", "press/": "press"}
         for path, campaign in expected.items():
             self.assertEqual(b.campaign_for(path), campaign, path)
         campaigns = [b.campaign_for(site_path(rel)) for rel in sorted(rendered_pages())]
