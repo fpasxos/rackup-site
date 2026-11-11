@@ -692,7 +692,7 @@ FOOTER = {
 # The face the first paint needs: Greek pages are set in Commissioner, English ones in Space Grotesk.
 PRELOAD_FONT = {"el": "commissioner-greek.woff2", "en": "space-grotesk-latin.woff2"}
 # The 1200x630 social card's alt in each language, as the homes carry it.
-OG_ALT = {"el": "RackUp: Βρες αντίπαλο. Παίξε απόψε.", "en": "RackUp: find an opponent, play tonight."}
+OG_ALT = {"el": "RackUp: Βρες αντίπαλο. Εσύ λες πότε και πού.", "en": "RackUp: find an opponent. You say when and where."}
 
 
 def page(*, lang, title, description, path, alt_path, depth, body, data):

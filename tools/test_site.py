@@ -375,7 +375,7 @@ def ld_ids(item):
 
 
 # The 1200x630 social card's alt in each page language; tools/test_images.py pins the size.
-CARD_ALT = {"el": "RackUp: Βρες αντίπαλο. Παίξε απόψε.", "en": "RackUp: find an opponent, play tonight."}
+CARD_ALT = {"el": "RackUp: Βρες αντίπαλο. Εσύ λες πότε και πού.", "en": "RackUp: find an opponent. You say when and where."}
 
 
 class SearchTest(unittest.TestCase):
