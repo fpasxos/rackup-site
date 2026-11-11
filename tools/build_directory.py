@@ -35,7 +35,7 @@ PROVIDER_TOKEN = "129299799"
 CAMPAIGN = re.compile(r"[a-z0-9]+(-[a-z0-9]+)*")
 CAMPAIGN_MAX = 26
 # Hand-written pages whose store links the build tags too: file -> site path.
-HAND_PAGES = {"index.html": "", "en/index.html": "en/", "support.html": "support.html", "press/index.html": "press",
+HAND_PAGES = {"index.html": "", "en/index.html": "en/", "support.html": "support.html", "press/index.html": "press/",
               "404.html": "404.html"}
 # The two homes: each carries the counts and the city grid, in its own language.
 HOMES = {"index.html": "el", "en/index.html": "en"}
@@ -471,7 +471,7 @@ def campaign_for(path):
             campaign = f"{lang}-{path[len(root) + 1:].strip('/') or 'directory'}"
             break
     else:
-        named = {"en/": "en-home", f"{CAROM['el']}/": "el-carom", f"{CAROM['en']}/": "en-carom"}
+        named = {"en/": "en-home", "press/": "press", f"{CAROM['el']}/": "el-carom", f"{CAROM['en']}/": "en-carom"}
         campaign = named.get(path) or re.sub(r"\.html$", "", path) or "home"
     if len(campaign) > CAMPAIGN_MAX or not CAMPAIGN.fullmatch(campaign):
         sys.exit(f"{path!r} gives campaign {campaign!r}: use a-z, 0-9 and single hyphens, "
