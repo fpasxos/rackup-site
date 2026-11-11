@@ -1245,5 +1245,15 @@
     "country": "GR",
     "address": "Ανεξαρτησίας 41",
     "sortOrder": 142
+  },
+  {
+    "id": "venue-tri-playroom",
+    "name": "Playroom",
+    "city": "Tripoli",
+    "country": "GR",
+    "address": "Δεληγιάννη 2",
+    "sortOrder": 143,
+    "phone": "+30 271 024 1824",
+    "hasCarom": true
   }
 ]
