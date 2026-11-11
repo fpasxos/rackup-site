@@ -39,11 +39,21 @@
 <main id="main" class="container">
 <article class="prose">
   <h1>RackUp Privacy Policy</h1>
-  <p class="muted">Effective date: 10 November 2026 · Applies to the RackUp apps for Android
+  <p class="muted">Effective date: 11 November 2026 · Applies to the RackUp apps for Android
   and iPhone (<code>com.rackup.app</code>)</p>
   <p lang="el"><a href="#el">Στα Ελληνικά</a></p>
 
   <div class="card">
+    <p><strong>What changed on 11 November 2026.</strong> The apps collect nothing new, but we
+    have moved your profile photo to Europe. Until now this policy said that profile photos are
+    kept in Google's <code>us-east1</code> region, in the United States. They are now kept in
+    Google's <code>europe-west1</code> region, in Belgium, in the European Union. Photos set with
+    version 2.4.6 of the apps go there directly. A photo uploaded from an older app is first stored
+    in the United States, and we move it to Belgium afterwards. When we move a photo we delete its
+    copy in the United States, a few days later, and Google can restore a deleted photo for 7
+    days. Under <em>Where your data is stored, and who processes it</em> and <em>What survives
+    deletion</em> we say so, and in the summary in Greek too. Firebase Authentication, which
+    handles your sign-in details and guest identifiers, still runs only in the United States.</p>
     <p><strong>What changed on 10 November 2026.</strong> The apps collect nothing new, but our
     server now works out each player's recent wins and losses, win rate, reliability figure and
     verified badge, and keeps them on their player card. Until now this policy said that the
@@ -702,8 +712,12 @@
         Our database is kept in Google's <code>europe-central2</code> region, in Warsaw,
         Poland.</li>
     <li><strong>Cloud Storage for Firebase</strong>: profile photos, uploaded from either app.
-        They are kept in Google's <code>us-east1</code> region, in the <strong>United
-        States</strong>.</li>
+        They are kept in Google's <code>europe-west1</code> region, in Belgium, in the
+        <strong>European Union</strong>. A photo uploaded from an app older than version 2.4.6 is
+        first stored in Google's <code>us-east1</code> region, in the United States, and we move
+        it to Belgium afterwards, so until then it is in the United States. When we move a photo,
+        we delete its copy in the United States, a few days later, and Google can restore it for 7
+        days.</li>
     <li><strong>Cloud Functions</strong>: our server-side jobs, including notifications, saved
         search alerts, player cards, the copies of open games for guests, giving what you
         post or save, and your profile, its country when an app leaves it out, and the account
@@ -734,8 +748,8 @@
   Google your device's IP address and the area you are looking at, which, if you allowed location,
   is the area around you. Google handles this under its own terms and
   <a href="https://policies.google.com/privacy">privacy policy</a>.</p>
-  <p>So our database and our server-side jobs are in the European Union, but your sign-in
-  details and your profile photo are in the United States. Crashlytics, Analytics, Cloud
+  <p>So our database, our server-side jobs and your profile photo are in the European Union, but
+  your sign-in details are in the United States. Crashlytics, Analytics, Cloud
   Messaging and App Check are global Google services and, like our server logs, what they handle
   may be processed or stored anywhere Google has facilities, including outside the European
   Economic Area. So may installation IDs: for a service that does not let us choose a location,
@@ -900,7 +914,8 @@
     <li><strong>Backups keep your data for a while.</strong> Deleted data can remain for up to 7
         days in the daily backup of our database and in its point-in-time recovery, which can
         restore the database as it was at any moment in the past 7 days. A deleted profile photo
-        can also be restored for 7 days. After that, those copies are gone. Separately, Google
+        can also be restored for 7 days, and so can the copy in the United States that we delete
+        after moving a photo. After that, those copies are gone. Separately, Google
         removes a deleted account's sign-in details from its own backup systems within 180
         days.</li>
     <li><strong>The Firebase installation ID</strong> of each phone you used the app on stays
@@ -960,9 +975,11 @@
 
   <h2>Changes to this policy</h2>
   <p>If this policy changes, the new version is published at this address with a new effective
-  date, and we say at the top what changed. This version, dated 10 November 2026, says that our
-  server keeps each player's recent wins and losses, win rate, reliability figure and verified
-  badge on their player card, and supersedes the version dated 9 November 2026, which said where
+  date, and we say at the top what changed. This version, dated 11 November 2026, says that profile
+  photos are kept in the European Union, in Belgium, and supersedes the version dated 10 November
+  2026, which said that our server keeps each player's recent wins and losses, win rate,
+  reliability figure and verified badge on their player card, and superseded the version dated
+  9 November 2026, which said where
   Apple handles your data for Sign in with Apple and iPhone notifications, described the
   Firebase installation ID, corrected what a guest session can read, and superseded an earlier
   version of the same day, which corrected where your profile photo is kept and where your
@@ -1022,10 +1039,13 @@
   εβδομαδιαίο πρόγραμμά σου, ώστε τα ματς, οι αίθουσες, οι κατατάξεις και οι περισσότερες
   ειδοποιήσεις κάθε χώρας να μένουν σε αυτήν. Όλα βρίσκονται στο Google Firebase.</p>
   <p><strong>Πού βρίσκονται τα δεδομένα σου.</strong> Στην Ευρωπαϊκή Ένωση βρίσκονται η βάση
-  δεδομένων μας (Cloud Firestore), στη Βαρσοβία της Πολωνίας, και ο διακομιστής μας (Cloud
-  Functions), που τρέχει στο Βέλγιο. Στις Ηνωμένες Πολιτείες όμως φυλάσσεται η φωτογραφία
-  προφίλ σου (Cloud Storage), και μόνο σε κέντρα δεδομένων στις Ηνωμένες Πολιτείες επεξεργάζεται
-  η Google τα στοιχεία σύνδεσής σου και τα αναγνωριστικά επισκεπτών (Firebase Authentication).
+  δεδομένων μας (Cloud Firestore), στη Βαρσοβία της Πολωνίας, ο διακομιστής μας (Cloud
+  Functions), που τρέχει στο Βέλγιο, και η φωτογραφία προφίλ σου (Cloud Storage), επίσης στο
+  Βέλγιο. Μια φωτογραφία που ανεβαίνει από εφαρμογή παλιότερη της έκδοσης 2.4.6 αποθηκεύεται
+  πρώτα στις Ηνωμένες Πολιτείες και τη μεταφέρουμε στο Βέλγιο αργότερα. Όταν τη μεταφέρουμε,
+  διαγράφουμε μετά από λίγες ημέρες το αντίγραφό της στις Ηνωμένες Πολιτείες. Μόνο σε κέντρα
+  δεδομένων στις Ηνωμένες Πολιτείες επεξεργάζεται η Google τα στοιχεία σύνδεσής σου και τα
+  αναγνωριστικά επισκεπτών (Firebase Authentication).
   Για να σε συνδέει και να αποτρέπει την κατάχρηση, το Firebase Authentication επεξεργάζεται
   επίσης τη διεύθυνση IP σου και το user agent της εφαρμογής σου, μια σύντομη περιγραφή του
   λογισμικού του τηλεφώνου, και κρατά τις διευθύνσεις IP που καταγράφει για λίγες εβδομάδες.
@@ -1226,7 +1246,8 @@
   αναφέρουν το όνομά σου. Τα διαγραμμένα δεδομένα μπορεί να μείνουν έως 7 ημέρες στο ημερήσιο
   αντίγραφο ασφαλείας της βάσης δεδομένων μας και στη λειτουργία που επαναφέρει τη βάση όπως
   ήταν οποιαδήποτε στιγμή των τελευταίων 7 ημερών (point-in-time recovery), και μια διαγραμμένη
-  φωτογραφία προφίλ μπορεί να ανακτηθεί για 7 ημέρες. Μετά από αυτό, τα αντίγραφα αυτά
+  φωτογραφία προφίλ μπορεί να ανακτηθεί για 7 ημέρες, όπως και το αντίγραφο στις Ηνωμένες
+  Πολιτείες που διαγράφουμε μετά τη μεταφορά μιας φωτογραφίας. Μετά από αυτό, τα αντίγραφα αυτά
   σβήνονται. Η Google, από την πλευρά της, αφαιρεί τα στοιχεία σύνδεσης ενός διαγραμμένου
   λογαριασμού από τα δικά της αντίγραφα ασφαλείας μέσα σε 180 ημέρες. Διάβασε παραπάνω τι
   ακριβώς διαγράφεται και τι παραμένει.</p>

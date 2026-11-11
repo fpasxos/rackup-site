@@ -1,105 +1,114 @@
-RackUp Privacy Policy Effective date: 10 November 2026 · Applies to the RackUp apps for Android and
-iPhone (com.rackup.app) What changed on 10 November 2026. The apps collect nothing new, but our
-server now works out each player's recent wins and losses, win rate, reliability figure and verified
-badge, and keeps them on their player card. Until now this policy said that the viewer's phone works
-out these figures, which the card screen shows, and that none of them is stored on the card. Under
-Your player card and player search, we now say which figures the card holds, when our server counts
-them again, and that, like the rest of the card, only players with an account can read them and they
-are deleted with the card. The viewer's own record against a player is still worked out on the
-viewer's phone and is not stored. What changed on 9 November 2026. The apps did not change and
-collect nothing new, but this policy needed three corrections. First, it named Sign in with Apple
-and Apple's Push Notification service, which delivers notifications to iPhones, without saying where
-Apple handles your data for them. Under Where your data is stored, and who processes it, we now give
-what Apple's own documents say: they name no country for either service, and Apple's privacy policy
-says that the personal data Apple collects is generally stored by Apple Inc. in the United States,
-that for people in the European Economic Area it is controlled by Apple Distribution International
-Limited in Ireland, and that its transfer out of the European Economic Area is governed by standard
-contractual clauses. Second, it never mentioned the Firebase installation ID, a random identifier
-that Google gives each install of the app and that Crashlytics, Analytics and Cloud Messaging use.
-We now describe it in the same section, say that Google names no location for it, and say how long
-Google keeps it, which deleting your account does not change. We also correct Crash diagnostics,
-which said that crash reports carry only Crashlytics' own identifier. Third, it still said that our
-security rules let a guest session read a whole match or challenge record, the host's note included.
-That stopped on 20 October 2026, when our rules began to refuse a guest session every match and
-challenge record. Under Looking around as a guest, What you post and write, Who can see what and
-Security, we now say what a guest session can read. And under Who can see what we add that, with no
-sign-in at all, our database also lets anyone read the list of countries and cities the app offers,
-which holds no personal data. Earlier on 9 November 2026. The apps did not change and collect
-nothing new, but this policy was wrong about where some of your data is kept. It said that our
-storage runs in Google's European regions, and it named only Crashlytics and Analytics as services
-that may process data outside the European Economic Area. In fact your profile photo is kept in
-Google's us-east1 region, in the United States, and Firebase Authentication, which handles your
-sign-in and guest identifiers, runs only from data centres in the United States. The summary in
-Greek also placed Firebase Authentication and our storage in Europe. Under Where your data is
-stored, and who processes it, we now say where each service we use keeps or handles your data, list
-our server logs and Firebase App Check too, and say how your data is protected when it is processed
-outside the European Economic Area: by the EU-U.S. Data Privacy Framework, under which Google is
-certified, and by the standard contractual clauses in Google's data processing terms. We also say
-there that Firebase Authentication processes your IP address and your app's user agent, and keeps
-the IP addresses it logs for a few weeks. Under What survives deletion, we add that deleted data can
-stay for up to 7 days in our database's backups, and a deleted profile photo for 7 days, before
-those copies are gone, and that Google takes up to 180 days to remove a deleted account's sign-in
-details from its own backups. And we drop the item there about your user id staying in another
-player's record of their challenge pushes: since 5 November, deleting your account also removes it
-from those records, although that removal is not retried if it fails. What changed on 5 November
-2026. Ahead of version 2.4.5 of the apps, under App usage analytics: we log one more event,
-match_viewed, when you open another player's open match, with how you got there, the id of the hall
-and how far ahead the match starts. match_posted now also says how far ahead the match starts and
-which of the times the app suggested you kept, if any, request_accepted says where you accepted the
-request, and looking_for_game_converted says whether the post was your own. None of them carries a
-name, a user id or a match id. Also, under Notifications: when a host has not answered your join
-request for a while, we may tell you so, at most twice a day, and we now describe the records our
-server keeps so that this notice and the ones about your new matches and direct challenges stay few.
-What changed on 4 November 2026. Three things, ahead of version 2.4.5 of the apps, under What you
-post and write. First, we show everyone who uses the app, guests included, how many games found an
-opponent in each city and hall, the hours with the most games, and the hall, game, race and time of
-recent ones, never with a name or a user id. Second, beside a host's name on their posts we show how
-many games they have played with a confirmed score, from three on. Third, a guest who opens a link
-to a game that has found an opponent is told so and at which hall, never who is playing. All of it
-is worked out from the match records described there, so nothing new is collected. Also, under
-Notifications, the city alert now says, from three games on, how many games in your city found an
-opponent this week or in the last month, with no names. What changed on 28 October 2026. Ahead of
-version 2.4.3 of the apps, under Notifications: when someone posts an open match at a hall in the
-city on your profile, we may send you a push about it, the city alert, at most once a day and only
-from 10:00 to 21:30, until you turn off Games in my city in Settings. To keep to one a day, our
-server keeps, under your account, the day and time of the last city alert it sent you, and nothing
-about the match. What changed on 27 October 2026. Three things, ahead of version 2.4.2 of the apps.
-First, under Location: if you have already allowed location and you are in another country where
-RackUp is open, the app may also use it on your phone to offer you a visit there, and for this your
-position still never leaves your phone. Second, in the same section: if you are signed in and your
-phone's region names another country where RackUp is open, the app may also use it, on your phone
-only, to ask you once whether you play there, so that you can visit that country or make it your
-country. Third, under Your rights, we now name the supervisory authority for players who live in
-Cyprus, the Office of the Commissioner for Personal Data Protection, as well as the Hellenic Data
-Protection Authority. What changed on 21 October 2026. Ahead of version 2.4.0 of the apps, we say
-how the app picks the country whose games a guest sees and the country sign-up suggests: on Android
-from the mobile network, the SIM card or the phone's language, on iPhone from your Region setting.
-The app sends none of these to us. What changed on 20 October 2026. On Android, the tags of our
-Facebook and Instagram ad links now also say where the ad was shown, for example in the Facebook
-feed or in Instagram Reels. What changed on 16 October 2026. Two things, ahead of version 2.3.3 of
-the apps. First, your profile record and your player card now hold your country as well as your
-city, and so does what you post or save: matches, open and direct challenges, looking-for-a-game
-posts, saved searches and your weekly schedule. The country is the one your city or hall is in; a
-saved search with neither takes the country on your profile. It keeps each country's games, halls,
-leaderboards and most notifications to that country, and nothing you see in the apps changes.
-Second, our server now keeps copies of open games for guests, without the host's note, and from
-version 2.3.3 the apps show a guest only those copies. Our security rules still let a guest session
-read a whole match or challenge record, note included, if it asks our database directly. The
-Security section now says so, and this page will change again when the rules stop it. What changed
-on 15 October 2026. The apps did not change and collect nothing new, but this policy left out four
-things that are true today. The time your app last refreshed its notification token, which we
-already stored, also lets us count, as totals, how many recently active players have updated. The
-city you choose for your profile is approximate location, linked to your account, and we now name
-the halls we keep because you chose them. A search you save from Discover keeps the city it opened
-on, which can be the one worked out from your approximate location. And the Android app stores its
-notification token whether or not you allow notifications. We also now say that storing that token
-and sending the notifications you leave on rest on our contract with you, that the app version kept
-with your account is linked to it, that the Android app's map is Google Maps, which, if you allowed
-location, loads the map around you, and that we count, as totals, whether games find a player. What
-changed on 7 October 2026. From version 2.3.0 of the apps, you can look around before you create an
-account, with Look around first on the welcome screen. Earlier versions have no guest mode. A guest
-gets a random guest identifier from Firebase Authentication, with no name, email or profile, and can
-see the open games, match pages and halls. So from version 2.3.0, your name, category and photo on a
+RackUp Privacy Policy Effective date: 11 November 2026 · Applies to the RackUp apps for Android and
+iPhone (com.rackup.app) What changed on 11 November 2026. The apps collect nothing new, but we have
+moved your profile photo to Europe. Until now this policy said that profile photos are kept in
+Google's us-east1 region, in the United States. They are now kept in Google's europe-west1 region,
+in Belgium, in the European Union. Photos set with version 2.4.6 of the apps go there directly. A
+photo uploaded from an older app is first stored in the United States, and we move it to Belgium
+afterwards. When we move a photo we delete its copy in the United States, a few days later, and
+Google can restore a deleted photo for 7 days. Under Where your data is stored, and who processes it
+and What survives deletion we say so, and in the summary in Greek too. Firebase Authentication,
+which handles your sign-in details and guest identifiers, still runs only in the United States. What
+changed on 10 November 2026. The apps collect nothing new, but our server now works out each
+player's recent wins and losses, win rate, reliability figure and verified badge, and keeps them on
+their player card. Until now this policy said that the viewer's phone works out these figures, which
+the card screen shows, and that none of them is stored on the card. Under Your player card and
+player search, we now say which figures the card holds, when our server counts them again, and that,
+like the rest of the card, only players with an account can read them and they are deleted with the
+card. The viewer's own record against a player is still worked out on the viewer's phone and is not
+stored. What changed on 9 November 2026. The apps did not change and collect nothing new, but this
+policy needed three corrections. First, it named Sign in with Apple and Apple's Push Notification
+service, which delivers notifications to iPhones, without saying where Apple handles your data for
+them. Under Where your data is stored, and who processes it, we now give what Apple's own documents
+say: they name no country for either service, and Apple's privacy policy says that the personal data
+Apple collects is generally stored by Apple Inc. in the United States, that for people in the
+European Economic Area it is controlled by Apple Distribution International Limited in Ireland, and
+that its transfer out of the European Economic Area is governed by standard contractual clauses.
+Second, it never mentioned the Firebase installation ID, a random identifier that Google gives each
+install of the app and that Crashlytics, Analytics and Cloud Messaging use. We now describe it in
+the same section, say that Google names no location for it, and say how long Google keeps it, which
+deleting your account does not change. We also correct Crash diagnostics, which said that crash
+reports carry only Crashlytics' own identifier. Third, it still said that our security rules let a
+guest session read a whole match or challenge record, the host's note included. That stopped on 20
+October 2026, when our rules began to refuse a guest session every match and challenge record. Under
+Looking around as a guest, What you post and write, Who can see what and Security, we now say what a
+guest session can read. And under Who can see what we add that, with no sign-in at all, our database
+also lets anyone read the list of countries and cities the app offers, which holds no personal data.
+Earlier on 9 November 2026. The apps did not change and collect nothing new, but this policy was
+wrong about where some of your data is kept. It said that our storage runs in Google's European
+regions, and it named only Crashlytics and Analytics as services that may process data outside the
+European Economic Area. In fact your profile photo is kept in Google's us-east1 region, in the
+United States, and Firebase Authentication, which handles your sign-in and guest identifiers, runs
+only from data centres in the United States. The summary in Greek also placed Firebase
+Authentication and our storage in Europe. Under Where your data is stored, and who processes it, we
+now say where each service we use keeps or handles your data, list our server logs and Firebase App
+Check too, and say how your data is protected when it is processed outside the European Economic
+Area: by the EU-U.S. Data Privacy Framework, under which Google is certified, and by the standard
+contractual clauses in Google's data processing terms. We also say there that Firebase
+Authentication processes your IP address and your app's user agent, and keeps the IP addresses it
+logs for a few weeks. Under What survives deletion, we add that deleted data can stay for up to 7
+days in our database's backups, and a deleted profile photo for 7 days, before those copies are
+gone, and that Google takes up to 180 days to remove a deleted account's sign-in details from its
+own backups. And we drop the item there about your user id staying in another player's record of
+their challenge pushes: since 5 November, deleting your account also removes it from those records,
+although that removal is not retried if it fails. What changed on 5 November 2026. Ahead of version
+2.4.5 of the apps, under App usage analytics: we log one more event, match_viewed, when you open
+another player's open match, with how you got there, the id of the hall and how far ahead the match
+starts. match_posted now also says how far ahead the match starts and which of the times the app
+suggested you kept, if any, request_accepted says where you accepted the request, and
+looking_for_game_converted says whether the post was your own. None of them carries a name, a user
+id or a match id. Also, under Notifications: when a host has not answered your join request for a
+while, we may tell you so, at most twice a day, and we now describe the records our server keeps so
+that this notice and the ones about your new matches and direct challenges stay few. What changed on
+4 November 2026. Three things, ahead of version 2.4.5 of the apps, under What you post and write.
+First, we show everyone who uses the app, guests included, how many games found an opponent in each
+city and hall, the hours with the most games, and the hall, game, race and time of recent ones,
+never with a name or a user id. Second, beside a host's name on their posts we show how many games
+they have played with a confirmed score, from three on. Third, a guest who opens a link to a game
+that has found an opponent is told so and at which hall, never who is playing. All of it is worked
+out from the match records described there, so nothing new is collected. Also, under Notifications,
+the city alert now says, from three games on, how many games in your city found an opponent this
+week or in the last month, with no names. What changed on 28 October 2026. Ahead of version 2.4.3 of
+the apps, under Notifications: when someone posts an open match at a hall in the city on your
+profile, we may send you a push about it, the city alert, at most once a day and only from 10:00 to
+21:30, until you turn off Games in my city in Settings. To keep to one a day, our server keeps,
+under your account, the day and time of the last city alert it sent you, and nothing about the
+match. What changed on 27 October 2026. Three things, ahead of version 2.4.2 of the apps. First,
+under Location: if you have already allowed location and you are in another country where RackUp is
+open, the app may also use it on your phone to offer you a visit there, and for this your position
+still never leaves your phone. Second, in the same section: if you are signed in and your phone's
+region names another country where RackUp is open, the app may also use it, on your phone only, to
+ask you once whether you play there, so that you can visit that country or make it your country.
+Third, under Your rights, we now name the supervisory authority for players who live in Cyprus, the
+Office of the Commissioner for Personal Data Protection, as well as the Hellenic Data Protection
+Authority. What changed on 21 October 2026. Ahead of version 2.4.0 of the apps, we say how the app
+picks the country whose games a guest sees and the country sign-up suggests: on Android from the
+mobile network, the SIM card or the phone's language, on iPhone from your Region setting. The app
+sends none of these to us. What changed on 20 October 2026. On Android, the tags of our Facebook and
+Instagram ad links now also say where the ad was shown, for example in the Facebook feed or in
+Instagram Reels. What changed on 16 October 2026. Two things, ahead of version 2.3.3 of the apps.
+First, your profile record and your player card now hold your country as well as your city, and so
+does what you post or save: matches, open and direct challenges, looking-for-a-game posts, saved
+searches and your weekly schedule. The country is the one your city or hall is in; a saved search
+with neither takes the country on your profile. It keeps each country's games, halls, leaderboards
+and most notifications to that country, and nothing you see in the apps changes. Second, our server
+now keeps copies of open games for guests, without the host's note, and from version 2.3.3 the apps
+show a guest only those copies. Our security rules still let a guest session read a whole match or
+challenge record, note included, if it asks our database directly. The Security section now says so,
+and this page will change again when the rules stop it. What changed on 15 October 2026. The apps
+did not change and collect nothing new, but this policy left out four things that are true today.
+The time your app last refreshed its notification token, which we already stored, also lets us
+count, as totals, how many recently active players have updated. The city you choose for your
+profile is approximate location, linked to your account, and we now name the halls we keep because
+you chose them. A search you save from Discover keeps the city it opened on, which can be the one
+worked out from your approximate location. And the Android app stores its notification token whether
+or not you allow notifications. We also now say that storing that token and sending the
+notifications you leave on rest on our contract with you, that the app version kept with your
+account is linked to it, that the Android app's map is Google Maps, which, if you allowed location,
+loads the map around you, and that we count, as totals, whether games find a player. What changed on
+7 October 2026. From version 2.3.0 of the apps, you can look around before you create an account,
+with Look around first on the welcome screen. Earlier versions have no guest mode. A guest gets a
+random guest identifier from Firebase Authentication, with no name, email or profile, and can see
+the open games, match pages and halls. So from version 2.3.0, your name, category and photo on a
 match or a looking-for-a-game post, and its hall, game and time, can be seen by guests as well as by
 players. What a host wrote in a note cannot: the apps show notes only to players with an account.
 Neither can your player card. A guest can report a player or send us feedback, and either carries
@@ -495,78 +504,81 @@ abuse, it also processes your IP address and your app's user agent, a short desc
 phone's software, and it keeps the IP addresses it logs for a few weeks. Cloud Firestore: everything
 described above that is stored as a record. Our database is kept in Google's europe-central2 region,
 in Warsaw, Poland. Cloud Storage for Firebase: profile photos, uploaded from either app. They are
-kept in Google's us-east1 region, in the United States. Cloud Functions: our server-side jobs,
-including notifications, saved search alerts, player cards, the copies of open games for guests,
-giving what you post or save, and your profile, its country when an app leaves it out, and the
-account erasure job. These run in Google's europe-west1 region, in Belgium. Cloud Scheduler, in the
-same region, starts the jobs that run on a timetable, and holds no personal data. Cloud Logging: the
-logs our server-side jobs write, which can contain your user id. Google keeps them in its global
-location, which means they can be stored in any of its data centres. Firebase Crashlytics: crash and
-diagnostic reports. Firebase Analytics: the app usage events described above. Firebase Cloud
-Messaging: push notifications on both apps. On iPhone, Firebase passes them to Apple's Push
-Notification service, which delivers them, as described below. Firebase App Check: on Android, the
-app uses it, with Google Play, to show our services that a request comes from our genuine app.
-Firebase Installations: it gives each install of the app a random Firebase installation ID, which
-identifies that install, not you: the app installed again, or another app on the same phone, gets a
-different one. Crashlytics attaches it to crash reports, Cloud Messaging uses it to deliver
-notifications to the right phone, and Analytics may use it to measure how the app is used and where
-installs come from. We do not use it ourselves, but the notification token we keep under your
-account is issued for the same install and tied to it, so through that token the ID can be linked to
-your account. Firebase's privacy page names no location for this service. The Android app's map in
-the Venues tab is Google Maps. Opening it sends Google your device's IP address and the area you are
-looking at, which, if you allowed location, is the area around you. Google handles this under its
-own terms and privacy policy. So our database and our server-side jobs are in the European Union,
-but your sign-in details and your profile photo are in the United States. Crashlytics, Analytics,
-Cloud Messaging and App Check are global Google services and, like our server logs, what they handle
-may be processed or stored anywhere Google has facilities, including outside the European Economic
-Area. So may installation IDs: for a service that does not let us choose a location, Firebase's
-privacy page says that Firebase may process and store data anywhere Google or its agents maintain
-facilities. When your data is processed outside the European Economic Area, it is protected in one
-of two ways. In the United States, by the EU-U.S. Data Privacy Framework: the European Commission
-has decided that personal data sent to companies certified under it is adequately protected, and
-Google LLC is certified. In any other country whose protection the Commission has not found
-adequate, and in the United States should the framework stop applying, by the European Commission's
-standard contractual clauses, which are part of Google's data processing terms: the Cloud Data
-Processing Addendum for Authentication, Firestore, Cloud Storage, Cloud Functions, Cloud Logging and
-App Check, the Firebase Data Processing and Security Terms for Crashlytics and Cloud Messaging, and
-the Google Ads Data Processing Terms for Analytics. Google's documentation for all of this is at
-firebase.google.com/support/privacy. On iPhone, two of Apple's services also handle your data. If
-you choose Sign in with Apple, Apple signs you in with your Apple Account and gives us your name, if
-you share it, and your email address or a private relay address that forwards to it. Apple handles
-this under its own privacy policy, as its page Sign in with Apple & Privacy says. Apple's Push
-Notification service receives every notification we send to your iPhone, with what it says, and
-delivers it. Apple's terms for app developers say that Apple will not access or disclose a
-notification's content unless it believes in good faith that this is reasonably necessary, for
-example to comply with legal process or to deal with security, fraud or technical issues. Apple does
-not say in which country it runs either service. Its privacy policy says that personal data
-collected by Apple is generally stored by Apple Inc. in the United States, that personal data
-relating to people in the European Economic Area is controlled by Apple Distribution International
-Limited in Ireland, and that Apple's transfers of personal data collected in the European Economic
-Area are governed by standard contractual clauses. Data is encrypted in transit. Access from the
-apps is controlled by Firebase security rules that enforce exactly the visibility described in the
-section above. Our lawful basis (GDPR Article 6) Performance of a contract (Article 6(1)(b)):
-creating and running your account, publishing your match posts, handling join requests, recording
-results, and everything else you need for the app to do its job, including storing each device's
-notification token and sending you the notifications you leave on in Settings, which your device's
-notification permission can also stop. From version 2.3.0, before you have an account, the same
-basis covers the guest identifier that lets you look around, which you ask for when you tap Look
-around first. Legitimate interests (Article 6(1)(f)): keeping RackUp safe and working, and finding
-out which of our social media posts, ads and posters bring new players. This covers abuse reports,
-blocking, no show and dispute records, the profanity filter, crash diagnostics, the app usage
-analytics described above, including where installs come from, and the weekly sign-up, update and
-fill counts described with your profile record. Our interest is in running a service that is safe
-for players and does not crash, in knowing when enough players have updated to release a change, in
-seeing whether games fill, and in spending our advertising budget where it brings new players. We
-have kept the data to the minimum that serves it, and measuring our posts and ads collects nothing
-extra. We never tie anything that Firebase Analytics or Crashlytics collects to your account. The
-app version stored with your profile record and your notification tokens is, and the counts come
-from those records and from your posts, join requests, challenge claims, direct challenges and
-activity feed, but as with install sources we look only at the totals, never at a single player. You
-can object to this processing at any time, at the address below. Consent (Article 6(1)(a)): the
-optional approximate location permission on both apps. You can withdraw it at any time in your
-device settings. How long we keep it Your account and everything attached to it: for as long as your
-account exists. Delete your account and the erasure described below runs. Guest identifiers, from
-version 2.3.0: kept in Firebase Authentication until we delete them. We do not delete them
+kept in Google's europe-west1 region, in Belgium, in the European Union. A photo uploaded from an
+app older than version 2.4.6 is first stored in Google's us-east1 region, in the United States, and
+we move it to Belgium afterwards, so until then it is in the United States. When we move a photo, we
+delete its copy in the United States, a few days later, and Google can restore it for 7 days. Cloud
+Functions: our server-side jobs, including notifications, saved search alerts, player cards, the
+copies of open games for guests, giving what you post or save, and your profile, its country when an
+app leaves it out, and the account erasure job. These run in Google's europe-west1 region, in
+Belgium. Cloud Scheduler, in the same region, starts the jobs that run on a timetable, and holds no
+personal data. Cloud Logging: the logs our server-side jobs write, which can contain your user id.
+Google keeps them in its global location, which means they can be stored in any of its data centres.
+Firebase Crashlytics: crash and diagnostic reports. Firebase Analytics: the app usage events
+described above. Firebase Cloud Messaging: push notifications on both apps. On iPhone, Firebase
+passes them to Apple's Push Notification service, which delivers them, as described below. Firebase
+App Check: on Android, the app uses it, with Google Play, to show our services that a request comes
+from our genuine app. Firebase Installations: it gives each install of the app a random Firebase
+installation ID, which identifies that install, not you: the app installed again, or another app on
+the same phone, gets a different one. Crashlytics attaches it to crash reports, Cloud Messaging uses
+it to deliver notifications to the right phone, and Analytics may use it to measure how the app is
+used and where installs come from. We do not use it ourselves, but the notification token we keep
+under your account is issued for the same install and tied to it, so through that token the ID can
+be linked to your account. Firebase's privacy page names no location for this service. The Android
+app's map in the Venues tab is Google Maps. Opening it sends Google your device's IP address and the
+area you are looking at, which, if you allowed location, is the area around you. Google handles this
+under its own terms and privacy policy. So our database, our server-side jobs and your profile photo
+are in the European Union, but your sign-in details are in the United States. Crashlytics,
+Analytics, Cloud Messaging and App Check are global Google services and, like our server logs, what
+they handle may be processed or stored anywhere Google has facilities, including outside the
+European Economic Area. So may installation IDs: for a service that does not let us choose a
+location, Firebase's privacy page says that Firebase may process and store data anywhere Google or
+its agents maintain facilities. When your data is processed outside the European Economic Area, it
+is protected in one of two ways. In the United States, by the EU-U.S. Data Privacy Framework: the
+European Commission has decided that personal data sent to companies certified under it is
+adequately protected, and Google LLC is certified. In any other country whose protection the
+Commission has not found adequate, and in the United States should the framework stop applying, by
+the European Commission's standard contractual clauses, which are part of Google's data processing
+terms: the Cloud Data Processing Addendum for Authentication, Firestore, Cloud Storage, Cloud
+Functions, Cloud Logging and App Check, the Firebase Data Processing and Security Terms for
+Crashlytics and Cloud Messaging, and the Google Ads Data Processing Terms for Analytics. Google's
+documentation for all of this is at firebase.google.com/support/privacy. On iPhone, two of Apple's
+services also handle your data. If you choose Sign in with Apple, Apple signs you in with your Apple
+Account and gives us your name, if you share it, and your email address or a private relay address
+that forwards to it. Apple handles this under its own privacy policy, as its page Sign in with Apple
+& Privacy says. Apple's Push Notification service receives every notification we send to your
+iPhone, with what it says, and delivers it. Apple's terms for app developers say that Apple will not
+access or disclose a notification's content unless it believes in good faith that this is reasonably
+necessary, for example to comply with legal process or to deal with security, fraud or technical
+issues. Apple does not say in which country it runs either service. Its privacy policy says that
+personal data collected by Apple is generally stored by Apple Inc. in the United States, that
+personal data relating to people in the European Economic Area is controlled by Apple Distribution
+International Limited in Ireland, and that Apple's transfers of personal data collected in the
+European Economic Area are governed by standard contractual clauses. Data is encrypted in transit.
+Access from the apps is controlled by Firebase security rules that enforce exactly the visibility
+described in the section above. Our lawful basis (GDPR Article 6) Performance of a contract (Article
+6(1)(b)): creating and running your account, publishing your match posts, handling join requests,
+recording results, and everything else you need for the app to do its job, including storing each
+device's notification token and sending you the notifications you leave on in Settings, which your
+device's notification permission can also stop. From version 2.3.0, before you have an account, the
+same basis covers the guest identifier that lets you look around, which you ask for when you tap
+Look around first. Legitimate interests (Article 6(1)(f)): keeping RackUp safe and working, and
+finding out which of our social media posts, ads and posters bring new players. This covers abuse
+reports, blocking, no show and dispute records, the profanity filter, crash diagnostics, the app
+usage analytics described above, including where installs come from, and the weekly sign-up, update
+and fill counts described with your profile record. Our interest is in running a service that is
+safe for players and does not crash, in knowing when enough players have updated to release a
+change, in seeing whether games fill, and in spending our advertising budget where it brings new
+players. We have kept the data to the minimum that serves it, and measuring our posts and ads
+collects nothing extra. We never tie anything that Firebase Analytics or Crashlytics collects to
+your account. The app version stored with your profile record and your notification tokens is, and
+the counts come from those records and from your posts, join requests, challenge claims, direct
+challenges and activity feed, but as with install sources we look only at the totals, never at a
+single player. You can object to this processing at any time, at the address below. Consent (Article
+6(1)(a)): the optional approximate location permission on both apps. You can withdraw it at any time
+in your device settings. How long we keep it Your account and everything attached to it: for as long
+as your account exists. Delete your account and the erasure described below runs. Guest identifiers,
+from version 2.3.0: kept in Firebase Authentication until we delete them. We do not delete them
 automatically today, and creating an account does not delete yours. A guest identifier holds no
 name, email address or profile, only when it was created and last used. Because nothing in it names
 you, we cannot pick yours out from a request by email. Copies of open games for guests: deleted as
@@ -621,29 +633,30 @@ reopens. Abuse reports filed about you stay, as a safety record. No app can read
 record described under retention stays. Backups keep your data for a while. Deleted data can remain
 for up to 7 days in the daily backup of our database and in its point-in-time recovery, which can
 restore the database as it was at any moment in the past 7 days. A deleted profile photo can also be
-restored for 7 days. After that, those copies are gone. Separately, Google removes a deleted
-account's sign-in details from its own backup systems within 180 days. The Firebase installation ID
-of each phone you used the app on stays with Google until Google deletes it, as described under
-retention. The notification tokens we kept under your account, which were issued for the same
-installs, are deleted. Server logs may contain your user id for a bounded period. We do not claim
-that deleting your account erases every trace of you everywhere. The list above is what remains.
-Your rights (GDPR) If you are in the EU or the EEA you have the following rights over your personal
-data, and we will honour them all: Access: ask us for a copy of the personal data we hold about you.
-Rectification: have inaccurate data corrected. You can edit your name, category, city, the games you
-play and your photo in the app yourself, and change or remove your usual hall in Settings, under
-Your home venue. Erasure: have your data deleted, as described above. Portability: receive your data
-in a structured, machine readable format, or have us send it to another controller where that is
-technically feasible. Objection: object to processing we carry out on the basis of legitimate
-interests, including the analytics and crash reporting described above. Restriction: ask us to stop
-processing your data while a dispute about it is resolved. Withdraw consent: turn off the location
-permission, on either app, at any time, without affecting anything we did before you did so. You can
-also turn notifications off at any time, in Settings or in your device's settings. To exercise any
-of these, email rackupbilliard@gmail.com from the address on your account. We reply within one
-month, as the GDPR requires. There is no charge. If you are unhappy with how we have handled your
-data, you can complain to the supervisory authority in the EU country where you live. In Greece that
-is the Hellenic Data Protection Authority, at dpa.gr, and in Cyprus the Office of the Commissioner
-for Personal Data Protection, at gov.cy/dataprotection. Wherever you live, you can also complain to
-the Hellenic authority, which oversees RackUp. Children RackUp is not directed at children. The app
+restored for 7 days, and so can the copy in the United States that we delete after moving a photo.
+After that, those copies are gone. Separately, Google removes a deleted account's sign-in details
+from its own backup systems within 180 days. The Firebase installation ID of each phone you used the
+app on stays with Google until Google deletes it, as described under retention. The notification
+tokens we kept under your account, which were issued for the same installs, are deleted. Server logs
+may contain your user id for a bounded period. We do not claim that deleting your account erases
+every trace of you everywhere. The list above is what remains. Your rights (GDPR) If you are in the
+EU or the EEA you have the following rights over your personal data, and we will honour them all:
+Access: ask us for a copy of the personal data we hold about you. Rectification: have inaccurate
+data corrected. You can edit your name, category, city, the games you play and your photo in the app
+yourself, and change or remove your usual hall in Settings, under Your home venue. Erasure: have
+your data deleted, as described above. Portability: receive your data in a structured, machine
+readable format, or have us send it to another controller where that is technically feasible.
+Objection: object to processing we carry out on the basis of legitimate interests, including the
+analytics and crash reporting described above. Restriction: ask us to stop processing your data
+while a dispute about it is resolved. Withdraw consent: turn off the location permission, on either
+app, at any time, without affecting anything we did before you did so. You can also turn
+notifications off at any time, in Settings or in your device's settings. To exercise any of these,
+email rackupbilliard@gmail.com from the address on your account. We reply within one month, as the
+GDPR requires. There is no charge. If you are unhappy with how we have handled your data, you can
+complain to the supervisory authority in the EU country where you live. In Greece that is the
+Hellenic Data Protection Authority, at dpa.gr, and in Cyprus the Office of the Commissioner for
+Personal Data Protection, at gov.cy/dataprotection. Wherever you live, you can also complain to the
+Hellenic authority, which oversees RackUp. Children RackUp is not directed at children. The app
 arranges meetings between adults at billiard halls, and we do not knowingly collect data from
 children under 16. There is no age verification in the app. If you believe a child has created an
 account, email us and we will remove it. Security All traffic between the apps and Firebase is
@@ -655,102 +668,106 @@ Android app additionally verifies itself with Firebase App Check. We are a small
 pretend to be immune to every risk, but if a breach affects your personal data we will notify the
 Hellenic Data Protection Authority and, where the law requires it, you. Changes to this policy If
 this policy changes, the new version is published at this address with a new effective date, and we
-say at the top what changed. This version, dated 10 November 2026, says that our server keeps each
-player's recent wins and losses, win rate, reliability figure and verified badge on their player
-card, and supersedes the version dated 9 November 2026, which said where Apple handles your data for
-Sign in with Apple and iPhone notifications, described the Firebase installation ID, corrected what
-a guest session can read, and superseded an earlier version of the same day, which corrected where
-your profile photo is kept and where your sign-in details are processed, said where each service we
-use keeps or handles your data and how your data is protected outside the European Economic Area,
-what Firebase Authentication logs and how long backups keep deleted data, and dropped the item about
-your user id in another player's record of their challenge pushes, and superseded the version dated
-5 November 2026, which added the analytics event match_viewed, what match_posted, request_accepted
-and looking_for_game_converted also record from version 2.4.5 of the apps, the "No answer yet"
-notice and the records that keep some notifications to a few a day, and superseded the version dated
-4 November 2026, which added what the apps show from version 2.4.5 about games that found an
-opponent: nameless counts and recent games by city and hall, a host's count of games played, the
-status of a shared game and a count in the city alert, and superseded the version dated 28 October
-2026, which added the city alert, a push about a new match in the city on your profile from version
-2.4.3 of the apps, and the record of the last one that our server keeps so that it sends at most one
-a day, and superseded the version dated 27 October 2026, which added that from version 2.4.2 the app
-may also use location you have already allowed to offer you a visit to another country where RackUp
-is open, and your phone's region to ask whether you play there, and named the supervisory authority
-for players who live in Cyprus, and superseded the version dated 21 October 2026, which added how
-the apps pick the country whose games a guest sees and the country sign-up suggests, ahead of
-version 2.4.0, and superseded the version dated 20 October 2026, which added that the tags of our
-Facebook and Instagram ad links say where the ad was shown, and superseded the version dated 16
-October 2026, which added the country on your profile record, your player card and what you post or
-save, and the copies of open games kept for guests, ahead of version 2.3.3 of the apps, and
-superseded the version dated 15 October 2026, which said what the notification token's refresh time
-is also used for, that the city on your profile is approximate location, which halls we keep, that a
-saved search can keep a city suggested from your position, that the Android app stores its
-notification token whether or not notifications are allowed, that the token and your notifications
-rest on our contract with you, that the app version kept with your account is linked to it, that the
-Android map is Google Maps and that we count whether games fill, and superseded the version dated 7
-October 2026, which added looking around as a guest, from version 2.3.0 of the apps, and superseded
-the version dated 5 October 2026, which added how we measure which of our social media posts, ads
-and posters bring new players and superseded the version dated 2 October 2026. That one described
-version 2.2.0 of the apps and replaced an earlier version of the same day that held only the
-corrections described at the top. Both superseded the version dated 1 October 2026, which superseded
-the version dated 29 September 2026. That one superseded the version dated 4 September 2026, which
-superseded the version dated 7 July 2026 in full. Σύνοψη στα Ελληνικά Το RackUp αποθηκεύει: όνομα,
-email, κατηγορία παίκτη, χώρα και πόλη, αίθουσα όπου παίζεις συνήθως, τι παίζεις, προαιρετική
-φωτογραφία προφίλ και όσα δημοσιεύεις ή στέλνεις μέσα στην εφαρμογή, δηλαδή ματς, προσωπικές
-προκλήσεις, σημειώσεις, σκορ, ακυρώσεις, δηλώσεις ότι ψάχνεις παιχνίδι, ποιους ακολουθείς, γρήγορα
-μηνύματα, βαθμολογίες αντιπάλων, check-in σε αίθουσες, αναφορές και σχόλια. Η χώρα είναι εκείνη της
-πόλης ή της αίθουσας που διαλέγεις, ή, σε μια αποθηκευμένη αναζήτηση χωρίς πόλη ή αίθουσα, η χώρα
-του προφίλ σου. Σε ένα παλιότερο προφίλ χωρίς πόλη, η χώρα είναι η προεπιλεγμένη της εφαρμογής. Τη
-γράφουμε επίσης στην κάρτα παίκτη σου, στα ματς, στις προκλήσεις, στις δηλώσεις ότι ψάχνεις
-παιχνίδι, στις αποθηκευμένες αναζητήσεις και στο εβδομαδιαίο πρόγραμμά σου, ώστε τα ματς, οι
-αίθουσες, οι κατατάξεις και οι περισσότερες ειδοποιήσεις κάθε χώρας να μένουν σε αυτήν. Όλα
-βρίσκονται στο Google Firebase. Πού βρίσκονται τα δεδομένα σου. Στην Ευρωπαϊκή Ένωση βρίσκονται η
-βάση δεδομένων μας (Cloud Firestore), στη Βαρσοβία της Πολωνίας, και ο διακομιστής μας (Cloud
-Functions), που τρέχει στο Βέλγιο. Στις Ηνωμένες Πολιτείες όμως φυλάσσεται η φωτογραφία προφίλ σου
-(Cloud Storage), και μόνο σε κέντρα δεδομένων στις Ηνωμένες Πολιτείες επεξεργάζεται η Google τα
-στοιχεία σύνδεσής σου και τα αναγνωριστικά επισκεπτών (Firebase Authentication). Για να σε συνδέει
-και να αποτρέπει την κατάχρηση, το Firebase Authentication επεξεργάζεται επίσης τη διεύθυνση IP σου
-και το user agent της εφαρμογής σου, μια σύντομη περιγραφή του λογισμικού του τηλεφώνου, και κρατά
-τις διευθύνσεις IP που καταγράφει για λίγες εβδομάδες. Το Firebase Crashlytics, το Firebase
-Analytics, το Firebase Cloud Messaging, που στέλνει τις ειδοποιήσεις push, και το Firebase App
-Check, με το οποίο η εφαρμογή Android επιβεβαιώνει, μέσω του Google Play, ότι είναι η γνήσια
-εφαρμογή μας, είναι παγκόσμιες υπηρεσίες της Google. Τα αρχεία καταγραφής του διακομιστή μας (Cloud
-Logging), που μπορεί να περιέχουν το αναγνωριστικό χρήστη σου, η Google τα κρατά σε οποιοδήποτε από
-τα κέντρα δεδομένων της στον κόσμο. Το Crashlytics, το Analytics και το Cloud Messaging
-χρησιμοποιούν επίσης το αναγνωριστικό εγκατάστασης του Firebase (Firebase installation ID): ένα
-τυχαίο αναγνωριστικό που δίνει η υπηρεσία Firebase Installations σε κάθε εγκατάσταση της εφαρμογής
-και που ξεχωρίζει την εγκατάσταση, όχι εσένα. Εμείς δεν το χρησιμοποιούμε, αλλά το αναγνωριστικό
-ειδοποιήσεων που κρατάμε στον λογαριασμό σου εκδίδεται για την ίδια εγκατάσταση και είναι δεμένο με
-αυτό, οπότε μέσω αυτού το αναγνωριστικό εγκατάστασης μπορεί να συνδεθεί με τον λογαριασμό σου. Η
-σελίδα του Firebase για το απόρρητο δεν λέει πού το επεξεργάζεται η Google. Η Google το κρατά μέχρι
-να διαγραφεί: εμείς δεν το διαγράφουμε, ούτε όταν διαγράφεις τον λογαριασμό σου, ενώ η Google το
-διαγράφει όταν η εφαρμογή μείνει 270 ημέρες αχρησιμοποίητη στο τηλέφωνο και αφαιρεί μέσα σε 180
-ημέρες τα δεδομένα που συνδέονται με αυτό. Έτσι, όσα χειρίζονται αυτές οι υπηρεσίες μπορεί να
-επεξεργαστούν και εκτός του Ευρωπαϊκού Οικονομικού Χώρου (ΕΟΧ). Στις Ηνωμένες Πολιτείες ισχύει το
-πλαίσιο ΕΕ-ΗΠΑ για την προστασία των δεδομένων (EU-U.S. Data Privacy Framework): η Ευρωπαϊκή
-Επιτροπή έχει κρίνει ότι τα δεδομένα που διαβιβάζονται σε εταιρείες πιστοποιημένες σε αυτό
-προστατεύονται επαρκώς, και η Google LLC είναι πιστοποιημένη. Σε κάθε άλλη χώρα εκτός ΕΟΧ για την
-οποία η Επιτροπή δεν έχει κρίνει ότι προστατεύει επαρκώς τα δεδομένα, και στις Ηνωμένες Πολιτείες αν
-το πλαίσιο πάψει να ισχύει, τα δεδομένα σου τα προστατεύουν οι τυποποιημένες συμβατικές ρήτρες της
-Ευρωπαϊκής Επιτροπής, που περιλαμβάνονται στους όρους επεξεργασίας δεδομένων της Google (Cloud Data
-Processing Addendum, Firebase Data Processing and Security Terms και, για το Analytics, Google Ads
-Data Processing Terms). Στο iPhone, δύο υπηρεσίες της Apple χειρίζονται επίσης δεδομένα σου. Αν
-συνδέεσαι με το Sign in with Apple, η Apple σε συνδέει με τον λογαριασμό Apple σου και μας δίνει το
-όνομά σου, αν το μοιραστείς, και το email σου ή, αν το κρύψεις, μια διεύθυνση της Apple που προωθεί
-τα μηνύματα σε αυτό. Αυτά η Apple τα χειρίζεται σύμφωνα με τη δική της πολιτική απορρήτου. Η
-υπηρεσία ειδοποιήσεων push της Apple (Apple Push Notification service) λαμβάνει κάθε ειδοποίηση που
-στέλνουμε στο iPhone σου, μαζί με το κείμενό της, και την παραδίδει. Οι όροι της Apple για τους
-προγραμματιστές εφαρμογών λένε ότι δεν διαβάζει ούτε αποκαλύπτει το περιεχόμενο μιας ειδοποίησης,
-εκτός αν κρίνει καλόπιστα ότι αυτό είναι εύλογα απαραίτητο, για παράδειγμα για να συμμορφωθεί με
-νομική διαδικασία ή για ζητήματα ασφαλείας, απάτης ή τεχνικά. Η Apple δεν λέει σε ποια χώρα
-λειτουργεί καμία από τις δύο υπηρεσίες. Η πολιτική απορρήτου της λέει ότι τα προσωπικά δεδομένα που
-συλλέγει τα αποθηκεύει γενικά η Apple Inc. στις Ηνωμένες Πολιτείες, ότι για τα προσωπικά δεδομένα
-όσων βρίσκονται στον ΕΟΧ υπεύθυνη επεξεργασίας είναι η Apple Distribution International Limited στην
-Ιρλανδία, και ότι η διαβίβασή τους εκτός ΕΟΧ διέπεται από τυποποιημένες συμβατικές ρήτρες. Το email
-σου είναι ιδιωτικό. Το όνομα, η κατηγορία και η φωτογραφία σου εμφανίζονται στα ματς που δημοσιεύεις
-ή στα οποία συμμετέχεις, όταν δηλώνεις ότι ψάχνεις παιχνίδι, και στην κάρτα παίκτη σου, μαζί με τη
-χώρα και την πόλη σου, την αίθουσα όπου παίζεις συνήθως και τι παίζεις. Την κάρτα σου τη βλέπουν
-όσοι έχουν λογαριασμό, και μπορούν να σε βρουν με το όνομά σου, εκτός αν κλείσεις το «Να με βρίσκουν
-στην αναζήτηση» στις Ρυθμίσεις. Την αίθουσα όπου παίζεις συνήθως την αλλάζεις ή τη βγάζεις από τις
+say at the top what changed. This version, dated 11 November 2026, says that profile photos are kept
+in the European Union, in Belgium, and supersedes the version dated 10 November 2026, which said
+that our server keeps each player's recent wins and losses, win rate, reliability figure and
+verified badge on their player card, and superseded the version dated 9 November 2026, which said
+where Apple handles your data for Sign in with Apple and iPhone notifications, described the
+Firebase installation ID, corrected what a guest session can read, and superseded an earlier version
+of the same day, which corrected where your profile photo is kept and where your sign-in details are
+processed, said where each service we use keeps or handles your data and how your data is protected
+outside the European Economic Area, what Firebase Authentication logs and how long backups keep
+deleted data, and dropped the item about your user id in another player's record of their challenge
+pushes, and superseded the version dated 5 November 2026, which added the analytics event
+match_viewed, what match_posted, request_accepted and looking_for_game_converted also record from
+version 2.4.5 of the apps, the "No answer yet" notice and the records that keep some notifications
+to a few a day, and superseded the version dated 4 November 2026, which added what the apps show
+from version 2.4.5 about games that found an opponent: nameless counts and recent games by city and
+hall, a host's count of games played, the status of a shared game and a count in the city alert, and
+superseded the version dated 28 October 2026, which added the city alert, a push about a new match
+in the city on your profile from version 2.4.3 of the apps, and the record of the last one that our
+server keeps so that it sends at most one a day, and superseded the version dated 27 October 2026,
+which added that from version 2.4.2 the app may also use location you have already allowed to offer
+you a visit to another country where RackUp is open, and your phone's region to ask whether you play
+there, and named the supervisory authority for players who live in Cyprus, and superseded the
+version dated 21 October 2026, which added how the apps pick the country whose games a guest sees
+and the country sign-up suggests, ahead of version 2.4.0, and superseded the version dated 20
+October 2026, which added that the tags of our Facebook and Instagram ad links say where the ad was
+shown, and superseded the version dated 16 October 2026, which added the country on your profile
+record, your player card and what you post or save, and the copies of open games kept for guests,
+ahead of version 2.3.3 of the apps, and superseded the version dated 15 October 2026, which said
+what the notification token's refresh time is also used for, that the city on your profile is
+approximate location, which halls we keep, that a saved search can keep a city suggested from your
+position, that the Android app stores its notification token whether or not notifications are
+allowed, that the token and your notifications rest on our contract with you, that the app version
+kept with your account is linked to it, that the Android map is Google Maps and that we count
+whether games fill, and superseded the version dated 7 October 2026, which added looking around as a
+guest, from version 2.3.0 of the apps, and superseded the version dated 5 October 2026, which added
+how we measure which of our social media posts, ads and posters bring new players and superseded the
+version dated 2 October 2026. That one described version 2.2.0 of the apps and replaced an earlier
+version of the same day that held only the corrections described at the top. Both superseded the
+version dated 1 October 2026, which superseded the version dated 29 September 2026. That one
+superseded the version dated 4 September 2026, which superseded the version dated 7 July 2026 in
+full. Σύνοψη στα Ελληνικά Το RackUp αποθηκεύει: όνομα, email, κατηγορία παίκτη, χώρα και πόλη,
+αίθουσα όπου παίζεις συνήθως, τι παίζεις, προαιρετική φωτογραφία προφίλ και όσα δημοσιεύεις ή
+στέλνεις μέσα στην εφαρμογή, δηλαδή ματς, προσωπικές προκλήσεις, σημειώσεις, σκορ, ακυρώσεις,
+δηλώσεις ότι ψάχνεις παιχνίδι, ποιους ακολουθείς, γρήγορα μηνύματα, βαθμολογίες αντιπάλων, check-in
+σε αίθουσες, αναφορές και σχόλια. Η χώρα είναι εκείνη της πόλης ή της αίθουσας που διαλέγεις, ή, σε
+μια αποθηκευμένη αναζήτηση χωρίς πόλη ή αίθουσα, η χώρα του προφίλ σου. Σε ένα παλιότερο προφίλ
+χωρίς πόλη, η χώρα είναι η προεπιλεγμένη της εφαρμογής. Τη γράφουμε επίσης στην κάρτα παίκτη σου,
+στα ματς, στις προκλήσεις, στις δηλώσεις ότι ψάχνεις παιχνίδι, στις αποθηκευμένες αναζητήσεις και
+στο εβδομαδιαίο πρόγραμμά σου, ώστε τα ματς, οι αίθουσες, οι κατατάξεις και οι περισσότερες
+ειδοποιήσεις κάθε χώρας να μένουν σε αυτήν. Όλα βρίσκονται στο Google Firebase. Πού βρίσκονται τα
+δεδομένα σου. Στην Ευρωπαϊκή Ένωση βρίσκονται η βάση δεδομένων μας (Cloud Firestore), στη Βαρσοβία
+της Πολωνίας, ο διακομιστής μας (Cloud Functions), που τρέχει στο Βέλγιο, και η φωτογραφία προφίλ
+σου (Cloud Storage), επίσης στο Βέλγιο. Μια φωτογραφία που ανεβαίνει από εφαρμογή παλιότερη της
+έκδοσης 2.4.6 αποθηκεύεται πρώτα στις Ηνωμένες Πολιτείες και τη μεταφέρουμε στο Βέλγιο αργότερα.
+Όταν τη μεταφέρουμε, διαγράφουμε μετά από λίγες ημέρες το αντίγραφό της στις Ηνωμένες Πολιτείες.
+Μόνο σε κέντρα δεδομένων στις Ηνωμένες Πολιτείες επεξεργάζεται η Google τα στοιχεία σύνδεσής σου και
+τα αναγνωριστικά επισκεπτών (Firebase Authentication). Για να σε συνδέει και να αποτρέπει την
+κατάχρηση, το Firebase Authentication επεξεργάζεται επίσης τη διεύθυνση IP σου και το user agent της
+εφαρμογής σου, μια σύντομη περιγραφή του λογισμικού του τηλεφώνου, και κρατά τις διευθύνσεις IP που
+καταγράφει για λίγες εβδομάδες. Το Firebase Crashlytics, το Firebase Analytics, το Firebase Cloud
+Messaging, που στέλνει τις ειδοποιήσεις push, και το Firebase App Check, με το οποίο η εφαρμογή
+Android επιβεβαιώνει, μέσω του Google Play, ότι είναι η γνήσια εφαρμογή μας, είναι παγκόσμιες
+υπηρεσίες της Google. Τα αρχεία καταγραφής του διακομιστή μας (Cloud Logging), που μπορεί να
+περιέχουν το αναγνωριστικό χρήστη σου, η Google τα κρατά σε οποιοδήποτε από τα κέντρα δεδομένων της
+στον κόσμο. Το Crashlytics, το Analytics και το Cloud Messaging χρησιμοποιούν επίσης το
+αναγνωριστικό εγκατάστασης του Firebase (Firebase installation ID): ένα τυχαίο αναγνωριστικό που
+δίνει η υπηρεσία Firebase Installations σε κάθε εγκατάσταση της εφαρμογής και που ξεχωρίζει την
+εγκατάσταση, όχι εσένα. Εμείς δεν το χρησιμοποιούμε, αλλά το αναγνωριστικό ειδοποιήσεων που κρατάμε
+στον λογαριασμό σου εκδίδεται για την ίδια εγκατάσταση και είναι δεμένο με αυτό, οπότε μέσω αυτού το
+αναγνωριστικό εγκατάστασης μπορεί να συνδεθεί με τον λογαριασμό σου. Η σελίδα του Firebase για το
+απόρρητο δεν λέει πού το επεξεργάζεται η Google. Η Google το κρατά μέχρι να διαγραφεί: εμείς δεν το
+διαγράφουμε, ούτε όταν διαγράφεις τον λογαριασμό σου, ενώ η Google το διαγράφει όταν η εφαρμογή
+μείνει 270 ημέρες αχρησιμοποίητη στο τηλέφωνο και αφαιρεί μέσα σε 180 ημέρες τα δεδομένα που
+συνδέονται με αυτό. Έτσι, όσα χειρίζονται αυτές οι υπηρεσίες μπορεί να επεξεργαστούν και εκτός του
+Ευρωπαϊκού Οικονομικού Χώρου (ΕΟΧ). Στις Ηνωμένες Πολιτείες ισχύει το πλαίσιο ΕΕ-ΗΠΑ για την
+προστασία των δεδομένων (EU-U.S. Data Privacy Framework): η Ευρωπαϊκή Επιτροπή έχει κρίνει ότι τα
+δεδομένα που διαβιβάζονται σε εταιρείες πιστοποιημένες σε αυτό προστατεύονται επαρκώς, και η Google
+LLC είναι πιστοποιημένη. Σε κάθε άλλη χώρα εκτός ΕΟΧ για την οποία η Επιτροπή δεν έχει κρίνει ότι
+προστατεύει επαρκώς τα δεδομένα, και στις Ηνωμένες Πολιτείες αν το πλαίσιο πάψει να ισχύει, τα
+δεδομένα σου τα προστατεύουν οι τυποποιημένες συμβατικές ρήτρες της Ευρωπαϊκής Επιτροπής, που
+περιλαμβάνονται στους όρους επεξεργασίας δεδομένων της Google (Cloud Data Processing Addendum,
+Firebase Data Processing and Security Terms και, για το Analytics, Google Ads Data Processing
+Terms). Στο iPhone, δύο υπηρεσίες της Apple χειρίζονται επίσης δεδομένα σου. Αν συνδέεσαι με το Sign
+in with Apple, η Apple σε συνδέει με τον λογαριασμό Apple σου και μας δίνει το όνομά σου, αν το
+μοιραστείς, και το email σου ή, αν το κρύψεις, μια διεύθυνση της Apple που προωθεί τα μηνύματα σε
+αυτό. Αυτά η Apple τα χειρίζεται σύμφωνα με τη δική της πολιτική απορρήτου. Η υπηρεσία ειδοποιήσεων
+push της Apple (Apple Push Notification service) λαμβάνει κάθε ειδοποίηση που στέλνουμε στο iPhone
+σου, μαζί με το κείμενό της, και την παραδίδει. Οι όροι της Apple για τους προγραμματιστές εφαρμογών
+λένε ότι δεν διαβάζει ούτε αποκαλύπτει το περιεχόμενο μιας ειδοποίησης, εκτός αν κρίνει καλόπιστα
+ότι αυτό είναι εύλογα απαραίτητο, για παράδειγμα για να συμμορφωθεί με νομική διαδικασία ή για
+ζητήματα ασφαλείας, απάτης ή τεχνικά. Η Apple δεν λέει σε ποια χώρα λειτουργεί καμία από τις δύο
+υπηρεσίες. Η πολιτική απορρήτου της λέει ότι τα προσωπικά δεδομένα που συλλέγει τα αποθηκεύει γενικά
+η Apple Inc. στις Ηνωμένες Πολιτείες, ότι για τα προσωπικά δεδομένα όσων βρίσκονται στον ΕΟΧ
+υπεύθυνη επεξεργασίας είναι η Apple Distribution International Limited στην Ιρλανδία, και ότι η
+διαβίβασή τους εκτός ΕΟΧ διέπεται από τυποποιημένες συμβατικές ρήτρες. Το email σου είναι ιδιωτικό.
+Το όνομα, η κατηγορία και η φωτογραφία σου εμφανίζονται στα ματς που δημοσιεύεις ή στα οποία
+συμμετέχεις, όταν δηλώνεις ότι ψάχνεις παιχνίδι, και στην κάρτα παίκτη σου, μαζί με τη χώρα και την
+πόλη σου, την αίθουσα όπου παίζεις συνήθως και τι παίζεις. Την κάρτα σου τη βλέπουν όσοι έχουν
+λογαριασμό, και μπορούν να σε βρουν με το όνομά σου, εκτός αν κλείσεις το «Να με βρίσκουν στην
+αναζήτηση» στις Ρυθμίσεις. Την αίθουσα όπου παίζεις συνήθως την αλλάζεις ή τη βγάζεις από τις
 Ρυθμίσεις, στο «Η λέσχη σου». Όλα αυτά τα βλέπουν μόνο όσοι έχουν συνδεθεί στην εφαρμογή, με μία
 εξαίρεση: όποιος έχει τον σύνδεσμο της φωτογραφίας σου μπορεί να την ανοίξει και χωρίς σύνδεση. Από
 την έκδοση 2.3.0 της εφαρμογής, τα ανοιχτά ματς σου και τις δηλώσεις σου ότι ψάχνεις παιχνίδι, μαζί
@@ -886,7 +903,8 @@ rackupbilliard@gmail.com. Μαζί με τον λογαριασμό σου δι�
 άλλων παικτών που αναφέρουν το όνομά σου. Τα διαγραμμένα δεδομένα μπορεί να μείνουν έως 7 ημέρες στο
 ημερήσιο αντίγραφο ασφαλείας της βάσης δεδομένων μας και στη λειτουργία που επαναφέρει τη βάση όπως
 ήταν οποιαδήποτε στιγμή των τελευταίων 7 ημερών (point-in-time recovery), και μια διαγραμμένη
-φωτογραφία προφίλ μπορεί να ανακτηθεί για 7 ημέρες. Μετά από αυτό, τα αντίγραφα αυτά σβήνονται. Η
+φωτογραφία προφίλ μπορεί να ανακτηθεί για 7 ημέρες, όπως και το αντίγραφο στις Ηνωμένες Πολιτείες
+που διαγράφουμε μετά τη μεταφορά μιας φωτογραφίας. Μετά από αυτό, τα αντίγραφα αυτά σβήνονται. Η
 Google, από την πλευρά της, αφαιρεί τα στοιχεία σύνδεσης ενός διαγραμμένου λογαριασμού από τα δικά
 της αντίγραφα ασφαλείας μέσα σε 180 ημέρες. Διάβασε παραπάνω τι ακριβώς διαγράφεται και τι
 παραμένει. Έχεις δικαίωμα πρόσβασης, διόρθωσης, διαγραφής, φορητότητας, εναντίωσης και περιορισμού,
