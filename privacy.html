@@ -57,12 +57,12 @@
     write</em>: our server keeps, for each city, a yes or no for whether three or fewer of the
     players whose home city it is opened RackUp in the last 7 days, and from version 2.4.7 the app
     uses it to suggest sending a new post to a friend. Fourth, in the same section, games at the
-    table: when a player logs a game they are already playing with another player at a hall and the
-    other player confirms it, our server records it as a match with both of them in it. It counts in
-    their games and results, but not towards the verified badge or the reliability figure, nor in
-    the public counts of games that found an opponent or in the halls' list in <em>Rankings</em>,
-    and your player card now also says whether your app can confirm one. Under <em>App usage
-    analytics</em>, version 2.4.7 logs five more events, 30 in all.</p>
+    table, from version 2.4.7: when a player logs a game they are already playing with another
+    player at a hall and the other player confirms it, our server records it as a match with both of
+    them in it. It counts in their games and results, but not towards the verified badge or the
+    reliability figure, nor in the public counts of games that found an opponent or in the halls'
+    list in <em>Rankings</em>, and your player card now also says whether your app can confirm one.
+    Under <em>App usage analytics</em>, version 2.4.7 logs six more events, 31 in all.</p>
     <p><strong>What changed on XX November 2026.</strong> The apps did not change, but our server
     did, in two ways. First, under <em>How long we keep it</em>: we used to delete each quick
     message once it was 14 days old, so on a match set more than two weeks ahead, the first
@@ -482,25 +482,25 @@
         can read, but the note is not copied onto it: it stays on the challenge, visible only to
         the two of you, and is deleted with the challenge, 30 days after its 24 hour answer
         window ends.</li>
-    <li><strong>Games at the table</strong>: when you log a game you are already playing with
-        another player at a hall, we store an invitation for them to confirm it, with both
-        players' user ids, display names, categories, photo links and verified badges, the game
-        and any race, the hall (its id, name, city, country and time zone) and when the game
-        started, at most 2 hours before you log it. It also holds whether it is waiting,
+    <li><strong>Games at the table</strong>: from version 2.4.7 of the apps, when you log a game you
+        are already playing with another player at a hall, we store an invitation for them to
+        confirm it, with both players' user ids, display names, categories, photo links and verified
+        badges, the game and any race, the hall (its id, name, city, country and time zone) and when
+        the game started, at most 2 hours before you log it. It also holds whether it is waiting,
         confirmed, declined, called off or ended, why it ended if no game came of it (no answer
-        within 2 hours, the day's limit of games at the table, an app too old to confirm it, or
-        a game we could not log), when it was sent, answered and due to end, and, once
-        confirmed, the match it became. <strong>Only the two of you can read it.</strong> Once
-        the other player confirms it, our server creates an ordinary match with both of you
-        already in it, marked as logged at the table, which every player with an account can
-        read, like any match. It is never announced to other players or copied for guests. It
-        counts in both players' games played, results and history and in the players' list in
-        <em>Rankings</em>, but not towards the verified badge or the reliability figure, nor in
-        the counts of games that found an opponent or the halls' list in <em>Rankings</em>, and
-        it cannot be rated. Two players can log at most 4 games at the table together on one
-        day, and one player at most 8, by the hall's local time. An invitation already over a
-        limit when you send it ends at once without telling the other player, and so does one
-        whose other player has no app new enough to confirm it.</li>
+        within 2 hours, the day's limit of games at the table, an app too old to confirm it, or a
+        game we could not log), when it was sent, answered and due to end, and, once confirmed, the
+        match it became. <strong>Only the two of you can read it.</strong> Once the other player
+        confirms it, our server creates an ordinary match with both of you already in it, marked as
+        logged at the table, which every player with an account can read, like any match. It is
+        never announced to other players or copied for guests. It counts in both players' games
+        played, results and history and in the players' list in <em>Rankings</em>, but not towards
+        the verified badge or the reliability figure, nor in the counts of games that found an
+        opponent or the halls' list in <em>Rankings</em>, and it cannot be rated. Two players can
+        log at most 4 games at the table together on one day, and one player at most 8, by the
+        hall's local time. An invitation already over a limit when you send it ends at once without
+        telling the other player, and so does one whose other player has no app new enough to
+        confirm it.</li>
     <li><strong>Join requests</strong>: when you ask to join someone's match, your name, category
         and photo go to that host. Only you and the host can read the request.</li>
     <li><strong>Quick messages</strong>: once a match is confirmed, its two players can send each
@@ -689,12 +689,12 @@
   <p>Both apps include <strong>Firebase Analytics</strong>, and it is on by default. The old
   version of this policy said the app had no analytics profiles. That was wrong, and correcting
   it was the main reason for the version dated 4 September 2026.</p>
-  <p>We log 30 events about how the app is used, the same on both apps, or 25 before version
-  2.4.7, which adds <code>match_shared</code>, <code>seat_check_answered</code>,
-  <code>rankings_opened</code>, <code>ranking_hall_opened</code> and <code>share_opened</code>,
-  24 before version 2.4.5, which adds <code>match_viewed</code>, and 23 before version 2.3.0,
-  which adds <code>guest_browse_started</code>. Most of them record only that something happened. Here
-  they all are, with any detail an event carries:</p>
+  <p>We log 31 events about how the app is used, the same on both apps, or 25 before version 2.4.7,
+  which adds <code>match_shared</code>, <code>seat_check_answered</code>,
+  <code>table_game_logged</code>, <code>rankings_opened</code>, <code>ranking_hall_opened</code> and
+  <code>share_opened</code>, 24 before version 2.4.5, which adds <code>match_viewed</code>, and 23
+  before version 2.3.0, which adds <code>guest_browse_started</code>. Most of them record only that
+  something happened. Here they all are, with any detail an event carries:</p>
   <ul>
     <li><strong>Signing in and the first run</strong>: <code>sign_up</code> and
         <code>login</code>, each with the sign-in method (password, Google or Apple);
@@ -717,7 +717,10 @@
         <code>request_accepted</code>, with where you accepted it (a notification, the card on
         the board, the match page or the Requests tab); <code>seat_check_answered</code>, when
         you say on the match page that you are coming, or free your seat after saying you can't
-        make it, with which of the two; <code>score_reported</code>;
+        make it, with which of the two; <code>table_game_logged</code>, when you send a game at
+        the table for the other player to confirm, with where you started it (the post form, My
+        matches, a hall's page, or another game from a game at the table) and the game type;
+        <code>score_reported</code>;
         <code>score_confirmed</code>; <code>score_disputed</code>; <code>opponent_rated</code>;
         <code>h2h_opened</code> and <code>h2h_rematch</code>, when you open the head to head
         screen and when you tap its rematch button; and <code>reputation_opened</code>, when you
@@ -1170,7 +1173,7 @@
   <p>If this policy changes, the new version is published at this address with a new effective
   date, and we say at the top what changed. This version, dated YY November 2026, adds
   Rankings, the question whether a match is still on, the yes or no for quiet cities, games at the
-  table and five analytics events, and supersedes the version
+  table and six analytics events, and supersedes the version
   dated XX November 2026, which said that quick messages sent before a match are kept until 14
   days after its start and added the record our server keeps once a player has sent 30 quick
   messages in one match, and superseded the version dated 12 November 2026, which said that when a player who joined a match withdraws, the
@@ -1376,27 +1379,27 @@
   διακομιστής μας προσθέτει στα μηνύματα του ματς μια εγγραφή ότι έφτασες το όριο, ώστε να μην
   μπορείς να στείλεις άλλα σε αυτό. Μόνο εσύ έχεις πρόσβαση σε αυτή την εγγραφή, και σβήνεται
   όπως ένα μήνυμα.</p>
-  <p>Όταν καταγράφεις ένα παιχνίδι που ήδη παίζεις με άλλον παίκτη σε αίθουσα, κρατάμε μια
-  πρόσκληση για να το επιβεβαιώσει, με τους δύο παίκτες (αναγνωριστικά, ονόματα, κατηγορίες,
-  φωτογραφίες και σήματα επιβεβαίωσης), την αίθουσα, το παιχνίδι, την ώρα που ξεκίνησε, την
-  απάντηση και, αν έληξε χωρίς παιχνίδι, τον λόγο. Τη βλέπετε μόνο εσείς οι δύο. Αν δεν
-  απαντηθεί μέσα σε 2 ώρες λήγει, και κάθε πρόσκληση σβήνεται 30 ημέρες μετά τη λήξη των 2 ωρών
-  της, ή αμέσως αν κάποιος από τους δύο διαγράψει τον λογαριασμό του. Αν ο άλλος παίκτης την
-  επιβεβαιώσει, ο διακομιστής μας δημιουργεί ένα κανονικό ματς με τους δύο σας ήδη μέσα. Μετράει
-  στα ματς, στο σκορ και στο ιστορικό του καθενός και στη λίστα των παικτών της Κατάταξης, αλλά
-  δεν ανακοινώνεται σε άλλους παίκτες, δεν το βλέπουν οι επισκέπτες, δεν μετράει στις συνόψεις
-  με τα ματς που βρήκαν αντίπαλο, στη λίστα των αιθουσών, στο σήμα επιβεβαίωσης ή στην
-  αξιοπιστία, και δεν βαθμολογείται. Δύο παίκτες μπορούν να καταγράψουν έως 4 τέτοια παιχνίδια
-  μαζί την ημέρα, και κάθε παίκτης έως 8. Μια πρόσκληση πάνω από αυτά τα όρια, ή προς παίκτη που
-  η εφαρμογή του είναι πολύ παλιά για να την επιβεβαιώσει, λήγει αμέσως χωρίς να ειδοποιηθεί ο
-  άλλος. Αλλιώς ο άλλος παίκτης τη βρίσκει στη ροή δραστηριότητάς του και παίρνει ειδοποίηση
-  push, που ακολουθεί τον διακόπτη «Ενημερώσεις ματς», όχι όμως τη νύχτα, από τις 23:00 έως τις
-  09:00, ούτε για 24 ώρες αφού αρνήθηκε πρόσκληση του ίδιου παίκτη. Η κάρτα παίκτη σου λέει
-  επίσης αν η εφαρμογή σου μπορεί να επιβεβαιώνει παιχνίδια στο τραπέζι, και ο διακομιστής μας
-  κρατά στον λογαριασμό σου πόσες τέτοιες προσκλήσεις σου έδειξε σε άλλους κάθε ημέρα, ως
-  αριθμό, ώστε να μην ξεπερνούν τις 10 την ημέρα.</p>
+  <p>Από την έκδοση 2.4.7, όταν καταγράφεις ένα παιχνίδι που ήδη παίζεις με άλλον παίκτη σε αίθουσα,
+  κρατάμε μια πρόσκληση για να το επιβεβαιώσει, με τους δύο παίκτες (αναγνωριστικά, ονόματα,
+  κατηγορίες, φωτογραφίες και σήματα επιβεβαίωσης), την αίθουσα, το παιχνίδι, την ώρα που ξεκίνησε,
+  την απάντηση και, αν έληξε χωρίς παιχνίδι, τον λόγο. Τη βλέπετε μόνο εσείς οι δύο. Αν δεν
+  απαντηθεί μέσα σε 2 ώρες λήγει, και κάθε πρόσκληση σβήνεται 30 ημέρες μετά τη λήξη των 2 ωρών της,
+  ή αμέσως αν κάποιος από τους δύο διαγράψει τον λογαριασμό του. Αν ο άλλος παίκτης την
+  επιβεβαιώσει, ο διακομιστής μας δημιουργεί ένα κανονικό ματς με τους δύο σας ήδη μέσα. Μετράει στα
+  ματς, στο σκορ και στο ιστορικό του καθενός και στη λίστα των παικτών της Κατάταξης, αλλά δεν
+  ανακοινώνεται σε άλλους παίκτες, δεν το βλέπουν οι επισκέπτες, δεν μετράει στις συνόψεις με τα
+  ματς που βρήκαν αντίπαλο, στη λίστα των αιθουσών, στο σήμα επιβεβαίωσης ή στην αξιοπιστία, και δεν
+  βαθμολογείται. Δύο παίκτες μπορούν να καταγράψουν έως 4 τέτοια παιχνίδια μαζί την ημέρα, και κάθε
+  παίκτης έως 8. Μια πρόσκληση πάνω από αυτά τα όρια, ή προς παίκτη που η εφαρμογή του είναι πολύ
+  παλιά για να την επιβεβαιώσει, λήγει αμέσως χωρίς να ειδοποιηθεί ο άλλος. Αλλιώς ο άλλος παίκτης
+  τη βρίσκει στη ροή δραστηριότητάς του και παίρνει ειδοποίηση push, που ακολουθεί τον διακόπτη
+  «Ενημερώσεις ματς», όχι όμως τη νύχτα, από τις 23:00 έως τις 09:00, ούτε για 24 ώρες αφού αρνήθηκε
+  πρόσκληση του ίδιου παίκτη. Η κάρτα παίκτη σου λέει επίσης αν η εφαρμογή σου μπορεί να
+  επιβεβαιώνει παιχνίδια στο τραπέζι, και ο διακομιστής μας κρατά στον λογαριασμό σου πόσες τέτοιες
+  προσκλήσεις σου έδειξε σε άλλους κάθε ημέρα, ως αριθμό, ώστε να μην ξεπερνούν τις 10 την
+  ημέρα.</p>
   <p>Και οι δύο εφαρμογές περιλαμβάνουν <strong>Firebase Crashlytics</strong> (αναφορές
-  σφαλμάτων) και <strong>Firebase Analytics</strong> (30 συμβάντα χρήσης από την έκδοση 2.4.7,
+  σφαλμάτων) και <strong>Firebase Analytics</strong> (31 συμβάντα χρήσης από την έκδοση 2.4.7,
   25 από την 2.4.5, 24 από την 2.3.0 και 23 στις προηγούμενες, όπως η δημοσίευση αγώνα ή το
   check-in σε αίθουσα).
   Αυτά τα δύο συμβάντα καταγράφουν και ποια αίθουσα αφορούν. Από την έκδοση 2.4.5 καταγράφουμε
@@ -1404,7 +1407,10 @@
   νωρίτερα από την έναρξη, χωρίς όνομα ή αναγνωριστικό χρήστη. Από την έκδοση 2.4.7 καταγράφουμε
   επίσης όταν ανοίγεις την κοινοποίηση ενός ματς, από πού, αν το ματς είναι δικό σου και πόσο
   νωρίτερα ξεκινά, όχι όμως αν το έστειλες ή σε ποιον, την απάντησή σου στην ερώτηση αν ισχύει το
-  ματς σου (έρχομαι, ή δεν μπορώ και ελευθερώνεις τη θέση), και όταν ανοίγεις την Κατάταξη, μια
+  ματς σου (έρχομαι, ή δεν μπορώ και ελευθερώνεις τη θέση), όταν στέλνεις ένα παιχνίδι στο
+  τραπέζι για επιβεβαίωση, από πού ξεκίνησες (τη φόρμα ανάρτησης, τα παιχνίδια σου, τη σελίδα μιας
+  αίθουσας ή ένα άλλο παιχνίδι στο τραπέζι) και το είδος του παιχνιδιού, και όταν ανοίγεις την
+  Κατάταξη, μια
   αίθουσα από εκεί ή την κοινοποίηση της κάρτας μιας αίθουσας, με τη λίστα, την αίθουσα και το
   είδος της κάρτας, πάλι χωρίς όνομα ή αναγνωριστικό χρήστη.
   Κανένα συμβάν δεν περιέχει όνομα, email ή κείμενο που έγραψες, και όσα συλλέγουν τα δύο

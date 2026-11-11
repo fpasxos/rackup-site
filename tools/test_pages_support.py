@@ -162,6 +162,7 @@ APP_EVENTS = {
     "looking_for_game_posted", "looking_for_game_converted", "venue_checked_in",
     "player_followed", "saved_search_created", "notifications_opened", "notification_row_tapped",
     "match_shared", "seat_check_answered", "rankings_opened", "ranking_hall_opened", "share_opened",
+    "table_game_logged",
 }
 
 
