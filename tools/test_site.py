@@ -485,6 +485,8 @@ ALLOWED = {
     "privacy.html": (CONTACT, "RackUp, Ioannina, Greece, is the data controller",
                      "In Greece that is the Hellenic Data Protection Authority",
                      "Στην Ελλάδα είναι η Αρχή Προστασίας Δεδομένων Προσωπικού Χαρακτήρα"),
+    "press/index.html": ("<strong>Πού λειτουργεί:</strong> Ελλάδα και Κύπρος",
+                         "<strong>Where it works:</strong> Greece and Cyprus"),
     "galliko-mpiliardo/index.html": ("προς το παρόν όλες στην Ελλάδα",),
     "en/carom-billiards/index.html": ("for now all of them in Greece",),
 }

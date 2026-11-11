@@ -35,7 +35,8 @@ PROVIDER_TOKEN = "129299799"
 CAMPAIGN = re.compile(r"[a-z0-9]+(-[a-z0-9]+)*")
 CAMPAIGN_MAX = 26
 # Hand-written pages whose store links the build tags too: file -> site path.
-HAND_PAGES = {"index.html": "", "en/index.html": "en/", "support.html": "support.html", "404.html": "404.html"}
+HAND_PAGES = {"index.html": "", "en/index.html": "en/", "support.html": "support.html", "press/index.html": "press",
+              "404.html": "404.html"}
 # The two homes: each carries the counts and the city grid, in its own language.
 HOMES = {"index.html": "el", "en/index.html": "en"}
 GRID_START, GRID_END = "<!-- city-grid -->", "<!-- /city-grid -->"
@@ -1341,7 +1342,7 @@ def sitemap(cities, dates=None):
     """Every page. A directory page carries <lastmod>, the day its listing last changed; the hand-written
     pages carry none, as nothing here knows when their words changed."""
     dates = dates or {"cities": {}}
-    paths = [("", None), ("en/", None), ("support.html", None), ("privacy.html", None),
+    paths = [("", None), ("en/", None), ("support.html", None), ("privacy.html", None), ("press/", None),
              (f"{EL_ROOT}/", dates.get("directory")), (f"{EN_ROOT}/", dates.get("directory")),
              (f"{CAROM['el']}/", dates.get("carom")), (f"{CAROM['en']}/", dates.get("carom"))]
     for code, mine in by_country(cities).items():
@@ -1428,6 +1429,8 @@ def render(data=None, dates=None):
         if name in HOMES:
             text = home_with_countries(home_with_counts(text, cities), cities)
             text = home_with_city_grid(text, cities, HOMES[name])
+        elif name == "press/index.html":
+            text = home_with_counts(text, cities)
         files[ROOT / name] = with_store_links(name, text)
     for lang, root in (("el", EL_ROOT), ("en", EN_ROOT)):
         files[ROOT / root / "index.html"] = index_page(cities, lang, dates["directory"])
