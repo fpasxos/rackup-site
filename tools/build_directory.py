@@ -17,6 +17,7 @@ import shutil
 import subprocess
 import sys
 import unicodedata
+from urllib.parse import quote
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -891,6 +892,17 @@ def index_page(cities, lang, revised=None):
                 alt_path=f"{alt_root}/", depth=depth, body=body, data=data)
 
 
+def owner_line(v, lang):
+    """Shown by CSS :target only, to an owner who arrives on the hall's own address."""
+    subject = quote(f"RackUp: {v['name']}")
+    mail = f'<a href="mailto:{EMAIL}?subject={subject}">'
+    if lang == "el":
+        text = f"Η αίθουσά σου είναι ήδη στο RackUp. Δωρεάν, χωρίς καμία υποχρέωση. Λάθος στοιχεία; {mail}Γράψε μας</a>."
+    else:
+        text = f"Your hall is already on RackUp. Free, with no obligation. Wrong details? {mail}Write to us</a>."
+    return f'  <p class="owner-line">{text}</p>'
+
+
 def hall_item(v, lang):
     parts = [f'<li class="hall" id="{esc(v["id"])}">',
              f'  <h2{lang_attr(v["name"], lang)}>{esc(v["name"])}</h2>',
@@ -908,6 +920,7 @@ def hall_item(v, lang):
         parts.append(f'  <p class="contact">{label}: <a href="{esc(website)}" rel="noopener">{esc(host)}</a></p>')
     if offers_carom(v):
         parts.append(carom_chip(v, lang))
+    parts.append(owner_line(v, lang))
     parts.append("</li>")
     return "\n".join(parts)
 
