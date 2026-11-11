@@ -173,6 +173,9 @@ p{margin:0 0 1em}
 @media (hover:hover){.crumbs a:hover{color:var(--accent)}}
 .halls{display:grid;gap:12px;margin:24px 0 0;padding:0;list-style:none;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr))}
 .hall{border:1px solid var(--outline);border-radius:var(--radius-lg);padding:20px 22px;background:linear-gradient(180deg,var(--surface),var(--surface-low))}
+.hall .owner-line{display:none;margin-top:12px;font-size:.9rem;color:var(--muted)}
+.hall:target .owner-line{display:block}
+.tile .tag.sample{margin:18px 0 -10px}
 .hall:target{border-color:var(--accent);box-shadow:0 0 0 3px var(--lime-wash)}
 .hall h2,.hall h3{font-size:1.2rem;margin:0 0 4px}
 .hall p{margin:0}
