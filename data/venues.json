@@ -55,14 +55,6 @@
     "phone": "+30 210 898 0159"
   },
   {
-    "id": "venue-ath-gameon",
-    "name": "Game On Sports Cafe",
-    "city": "Athens",
-    "country": "GR",
-    "address": "Κων/νου Ωραιοπούλου 10, Ηράκλειο",
-    "sortOrder": 7
-  },
-  {
     "id": "venue-ath-jolly",
     "name": "Jolly Billiards Club",
     "city": "Athens",
