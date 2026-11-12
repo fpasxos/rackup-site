@@ -50,19 +50,21 @@
     days. The halls' list names no player, and anyone using the app can read it. The players' list
     holds each listed player's user id, name, photo link, category and city and, from 3 on, how many
     games they played and against how many opponents. It lists only players who appear in player
-    search, and only players with an account can read it. From version 2.4.7 it replaces the monthly
-    leaderboards in Profile. Second, under <em>Notifications</em>: from version 2.4.7, we ask the
-    player who joined a match whether it is still on, on its day or the evening before, and keep on
-    their join request when we asked and when they answered. Third, under <em>What you post and
-    write</em>: our server keeps, for each city, a yes or no for whether three or fewer of the
-    players whose home city it is opened RackUp in the last 7 days, and from version 2.4.7 the app
-    uses it to suggest sending a new post to a friend. Fourth, in the same section, games at the
-    table, from version 2.4.7: when a player logs a game they are already playing with another
-    player at a hall and the other player confirms it, our server records it as a match with both of
-    them in it. It counts in their games and results, but not towards the verified badge or the
-    reliability figure, nor in the public counts of games that found an opponent or in the halls'
-    list in <em>Rankings</em>, and your player card now also says whether your app can confirm one.
-    Under <em>App usage analytics</em>, version 2.4.7 logs six more events, 31 in all.</p>
+    search, and only players with an account can read it. From version 2.4.7, Rankings replaces the
+    monthly leaderboards in Profile. Second, under <em>Notifications</em>: from version 2.4.7, we
+    ask the player who joined a match whether it is still on, on its day or the evening before, and
+    keep on their join request when we asked and when they said they are coming. A player still
+    waiting when a place opens again now also gets an entry in their activity feed. Third, under
+    <em>What you post and write</em>: our server keeps, for each city, a yes or no for whether three
+    or fewer of the players whose home city it is opened RackUp in the last 7 days, and from version
+    2.4.7 the app uses it to suggest sending a new post to a friend. Fourth, in the same section,
+    games at the table, from version 2.4.7: when a player logs a game they are already playing with
+    another player at a hall, we keep an invitation that only the two of them can read, and once the
+    other player confirms it, our server records it as a match with both of them in it. It counts in
+    their games and results, but not towards the verified badge or the reliability figure, nor in
+    the public counts of games that found an opponent or in the halls' list in <em>Rankings</em>,
+    and your player card now also says whether your app can confirm one. Under <em>App usage
+    analytics</em>, version 2.4.7 logs six more events, 31 in all.</p>
     <p><strong>Earlier on 12 November 2026.</strong> Two earlier versions of this policy were
     published that day, and in neither did the apps collect anything new. In the first, our server
     began to do more when a player who joined a match withdraws. The players still waiting for that
@@ -554,8 +556,9 @@
   <p><strong>Quiet cities.</strong> Every 6 hours our server works out, for each city, whether
   three or fewer of the players whose home city it is opened RackUp in the last 7 days, judging by
   when their profile and their notification tokens were last updated. It leaves out automated
-  test accounts and Apple's review account, and keeps for each city only that yes or no, with no
-  names and no numbers, which players with an account can read. From version 2.4.7, when you post
+  test accounts and Apple's review account. For each city it keeps only that yes or no and when it
+  was worked out, with no names and no counts, and only players with an account can read it. From
+  version 2.4.7, when you post
   a match at a hall in a city where it is yes, the app suggests sending the match to a friend who
   plays, and, while the city stays quiet, so does the empty list of requests on your match.</p>
 
@@ -670,8 +673,8 @@
   answers on the match page, with <em>Yes, I'm coming</em> or with <em>I can't make it</em>,
   which offers to free their seat as withdrawing does. Once we have asked, the host sees on the
   match page whether the player has said they are coming. On the player's join request we keep
-  when we asked and when they answered; like the rest of the request, only that player and the
-  host can read them, and they are deleted with it. From version 2.4.7, a player still waiting
+  when we asked and when they said they are coming; like the rest of the request, only that
+  player and the host can read them, and they are deleted with it. From version 2.4.7, a player still waiting
   when a place opens again, as described above, also gets an entry in their activity feed, naming
   the host.</p>
 
@@ -1348,9 +1351,9 @@
   ματς και τις προκλήσεις, και ένα ματς μετράει στη χώρα της αίθουσάς του. Για τις αίθουσες μετράνε τα ματς
   που παίχτηκαν με επιβεβαιωμένο σκορ τις τελευταίες 60 ημέρες και τα ανοιχτά ματς και οι
   ανοιχτές προκλήσεις των επόμενων 7 ημερών, όχι τα check-in, τα ακυρωμένα ματς ή τα παιχνίδια
-  στο τραπέζι. Η λίστα των αιθουσών δεν έχει ούτε παίκτες ούτε αριθμούς, και τη βλέπουν όλοι, και
-  οι επισκέπτες. Η λίστα των παικτών κατατάσσει, έως 20 παίκτες, όσους έπαιξαν τα περισσότερα
-  ματς με επιβεβαιωμένο σκορ τις τελευταίες 30 ημέρες, έως δύο την εβδομάδα με τον ίδιο
+  στο τραπέζι. Η λίστα των αιθουσών δεν αναφέρει κανέναν παίκτη ούτε πόσα ματς παίχτηκαν, και τη
+  βλέπουν όλοι, και οι επισκέπτες. Η λίστα των παικτών κατατάσσει, έως 20 παίκτες, όσους
+  έπαιξαν τα περισσότερα ματς με επιβεβαιωμένο σκορ τις τελευταίες 30 ημέρες, έως δύο την εβδομάδα με τον ίδιο
   αντίπαλο, ποτέ με βάση τις νίκες. Για κάθε παίκτη κρατά το αναγνωριστικό χρήστη, το όνομα, τη
   φωτογραφία, την κατηγορία και την πόλη του, όπως στην κάρτα παίκτη, τη θέση του, αν έπαιξε τις
   τελευταίες 7 ημέρες και, από 3 και πάνω, πόσα ματς έπαιξε και με πόσους αντιπάλους. Μπαίνουν
@@ -1359,13 +1362,14 @@
   βγάζει αμέσως από τη λίστα. Σε μια κάρτα που βλέπεις μόνο εσύ, η εφαρμογή σού δείχνει τη θέση
   σου και πόσα ματς και αντιπάλους είχες, όπως τα υπολογίζει το τηλέφωνό σου. Από τη λίστα των
   αιθουσών μπορείς να μοιραστείς μια κάρτα για μια αίθουσα, που τη φτιάχνει το τηλέφωνό σου χωρίς
-  όνομα παίκτη ή αριθμούς. Εμείς μαθαίνουμε μόνο ότι άνοιξες την κοινοποίηση, όχι τι έστειλες ή
-  σε ποιον. Στο iPhone, για να σώσεις την κάρτα στις φωτογραφίες σου, το τηλέφωνο ζητά άδεια μόνο
+  όνομα παίκτη και χωρίς να λέει πόσα ματς παίχτηκαν. Εμείς μαθαίνουμε μόνο ότι άνοιξες την
+  κοινοποίηση, όχι τι έστειλες ή σε ποιον. Στο iPhone, για να σώσεις την κάρτα στις φωτογραφίες σου, το τηλέφωνο ζητά άδεια μόνο
   για να την προσθέσει, και η εφαρμογή δεν διαβάζει ποτέ τη βιβλιοθήκη σου.</p>
   <p>Κάθε 6 ώρες ο διακομιστής μας υπολογίζει για κάθε πόλη αν τρεις ή λιγότεροι από τους
   παίκτες που την έχουν πόλη τους άνοιξαν το RackUp τις τελευταίες 7 ημέρες, από το πότε
   ενημερώθηκαν τελευταία το προφίλ και τα αναγνωριστικά ειδοποιήσεών τους, και κρατά μόνο αυτό
-  το ναι ή όχι, χωρίς ονόματα ή αριθμούς. Από την έκδοση 2.4.7, όταν ανεβάζεις ματς σε αίθουσα
+  το ναι ή όχι και πότε υπολογίστηκε, χωρίς ονόματα και χωρίς τον αριθμό των παικτών. Από την
+  έκδοση 2.4.7, όταν ανεβάζεις ματς σε αίθουσα
   μιας τέτοιας πόλης, η εφαρμογή σού προτείνει να το στείλεις σε έναν φίλο που παίζει. Νομική
   βάση είναι το έννομο συμφέρον μας, και μπορείς να αντιταχθείς όποτε θέλεις.</p>
   <p>Μια προσωπική πρόκληση τη βλέπετε μόνο εσείς οι δύο, μαζί με τη σημείωσή της. Αν γίνει δεκτή,
@@ -1498,7 +1502,7 @@
   πριν από την έναρξη, για παιχνίδι στο τραπέζι, όποιον έχει ήδη πει στον διοργανωτή με γρήγορο
   μήνυμα ότι έρχεται, ούτε όποιον δεν έχει την έκδοση 2.4.7 ή νεότερη. Ο διοργανωτής βλέπει στη
   σελίδα του ματς αν ο παίκτης είπε ότι έρχεται. Στο αίτημα συμμετοχής του παίκτη κρατάμε πότε
-  τον ρωτήσαμε και πότε απάντησε. Όπως και το υπόλοιπο αίτημα, τα βλέπουν μόνο ο ίδιος και ο
+  τον ρωτήσαμε και πότε είπε ότι έρχεται. Όπως και το υπόλοιπο αίτημα, τα βλέπουν μόνο ο ίδιος και ο
   διοργανωτής, και σβήνονται μαζί του. Και στις δύο εφαρμογές
   (στο iPhone από την έκδοση 2.2.0), αν επιτρέψεις την τοποθεσία, η κατά προσέγγιση τοποθεσία σου
   χρησιμεύει για να βλέπεις πρώτα τις αίθουσες και τα ματς της πόλης σου, και <strong>η εφαρμογή
