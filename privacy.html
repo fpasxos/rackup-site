@@ -39,11 +39,18 @@
 <main id="main" class="container">
 <article class="prose">
   <h1>RackUp Privacy Policy</h1>
-  <p class="muted">Effective date: 12 November 2026 · Applies to the RackUp apps for Android
+  <p class="muted">Effective date: 13 November 2026 · Applies to the RackUp apps for Android
   and iPhone (<code>com.rackup.app</code>)</p>
   <p lang="el"><a href="#el">Στα Ελληνικά</a></p>
 
   <div class="card">
+    <p><strong>What changed on 13 November 2026.</strong> The apps collect nothing new, but since
+    12 November our server sends fewer notifications at night. A push about a new match at a hall
+    you starred, about one that fits your saved search or your looking-for-a-game post, or about
+    one posted by a player you follow, now goes only from 09:00 to 23:00 at the hall's local time,
+    and one due at night waits until 09:00. A push about a check-in at a hall you starred is not
+    sent at night at all. Under <em>Notifications</em> we say so, and describe the small record,
+    with no names, that our server keeps while such a push waits.</p>
     <p><strong>What changed on 12 November 2026.</strong> Four things. First, under
     <em>Rankings</em>, a new section: our server now works out every hour, for each country, which
     halls are busiest and which players played the most games with a confirmed score in the last 30
@@ -638,6 +645,16 @@
   read these records, and deleting your account deletes them. A join request also carries marks
   for the reminders and notices we send about it, with the time the host was last reminded about
   it, so that none goes twice; like the rest of the request, only you and the host can read them.</p>
+  <p>A push about a new match at a hall you starred, about one that fits your saved search or your
+  looking-for-a-game post, or about one posted by a player you follow, goes only from 09:00 to
+  23:00 at the hall's local time. For a match posted outside those hours it waits until 09:00 and
+  goes then only if the match is still open and has not started, and not at all if the match
+  starts before 09:00. The entry in your activity feed for a saved search, a looking-for-a-game
+  post or a player you follow still comes at once. While such pushes wait, our server keeps only
+  the match's id, when they were put on hold and which of them are waiting, with no names. No app
+  can read that record, and it is deleted when the pushes are sent or dropped. A push about a
+  check-in at a hall you starred is not sent from 23:00 to 09:00 at the hall's local time, and
+  is not sent later either.</p>
   <p>If a player who joined a match withdraws, the host gets a push that says so and, when players
   are still waiting for that match, names the one waiting or counts them. It follows the <em>Match
   updates</em> switch. From 23:00 to 09:00 at the hall's local time it waits until 09:00, unless the
@@ -1173,10 +1190,12 @@
 
   <h2>Changes to this policy</h2>
   <p>If this policy changes, the new version is published at this address with a new effective
-  date, and we say at the top what changed. This version, dated 12 November 2026, adds
-  Rankings, the question whether a match is still on, the yes or no for quiet cities, games at the
-  table and six analytics events, and supersedes the earlier versions of 12 November 2026. The
-  second of those said that quick messages sent before a match are kept until 14 days after its
+  date, and we say at the top what changed. This version, dated 13 November 2026, says that the
+  pushes about new matches at a hall you starred, a saved search, a looking-for-a-game post or a
+  player you follow wait until 09:00 at night, and that check-in pushes are not sent at night,
+  and supersedes the version dated 12 November 2026, which added Rankings, the question whether a
+  match is still on, the yes or no for quiet cities, games at the table and six analytics events,
+  and superseded the earlier versions of 12 November 2026. The second of those said that quick messages sent before a match are kept until 14 days after its
   start, added the record our server keeps once a player has sent 30 quick messages in one match,
   and superseded the first, which said that when a player who joined a match withdraws, the
   waiting players and the hall's fans may be told that the place is free again and the host's
@@ -1477,6 +1496,17 @@
   ο διοργανωτής αργεί να απαντήσει στο αίτημά σου, κρατά την ημέρα και πόσες σου στείλαμε εκείνη
   την ημέρα, ώστε να μην παίρνεις πάνω από δύο την ημέρα. Καμία εφαρμογή δεν διαβάζει αυτά τα
   αρχεία, και σβήνονται όταν διαγράψεις τον λογαριασμό σου.
+  Οι ειδοποιήσεις push για νέο ματς σε αίθουσα που έχεις στα αγαπημένα, για ματς που ταιριάζει σε
+  αποθηκευμένη αναζήτησή σου ή στη δήλωσή σου ότι ψάχνεις παιχνίδι, ή για ματς που ανέβασε παίκτης
+  που ακολουθείς, φεύγουν μόνο από τις 09:00 έως τις 23:00, τοπική ώρα της αίθουσας. Για ματς που
+  ανεβαίνει εκτός αυτών των ωρών περιμένουν ως τις 09:00 και φεύγουν τότε μόνο αν το ματς είναι
+  ακόμη ανοιχτό και δεν έχει αρχίσει, ενώ αν αρχίζει πριν από τις 09:00 δεν φεύγουν καθόλου. Η
+  καταχώριση στη ροή δραστηριότητάς σου για αποθηκευμένη αναζήτηση, δήλωση ότι ψάχνεις παιχνίδι ή
+  παίκτη που ακολουθείς έρχεται αμέσως. Όσο περιμένουν, ο διακομιστής μας κρατά μόνο το
+  αναγνωριστικό του ματς, πότε μπήκαν σε αναμονή και ποιες περιμένουν, χωρίς ονόματα. Καμία
+  εφαρμογή δεν διαβάζει αυτή την εγγραφή, και σβήνεται όταν οι ειδοποιήσεις σταλούν ή ακυρωθούν.
+  Η ειδοποίηση για check-in σε αίθουσα που έχεις στα αγαπημένα δεν φεύγει από τις 23:00 έως τις
+  09:00, τοπική ώρα της αίθουσας, ούτε αργότερα.
   Αν ένας παίκτης που μπήκε σε ματς αποχωρήσει, ο διοργανωτής παίρνει ειδοποίηση push και, όταν
   περιμένουν ακόμη παίκτες, η ειδοποίηση λέει ποιος περιμένει ή πόσοι. Από τις 23:00 έως τις 09:00,
   τοπική ώρα της αίθουσας, περιμένει ως τις 09:00, εκτός αν το ματς αρχίζει μέσα σε 3 ώρες. Όσοι
