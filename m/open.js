@@ -22,6 +22,19 @@
     return /Android/i.test(userAgent || "");
   }
 
+  function isIos(userAgent) {
+    return /iPhone|iPad|iPod/i.test(userAgent || "");
+  }
+
+  // A visitor on a phone sees the one store for it; a desktop keeps both.
+  function showStoreFor(doc, userAgent) {
+    var android = isAndroid(userAgent);
+    if (!android && !isIos(userAgent)) return;
+    doc.getElementById(android ? "app-store" : "google-play").hidden = true;
+    doc.getElementById("stores-note").hidden = true;
+    doc.getElementById(android ? "note-android" : "note-ios").hidden = false;
+  }
+
   // Chrome opens rackup://match/<id> in the app, or the fallback when it is not installed.
   function intentUrl(id) {
     if (!isValidMatchId(id)) throw new Error("invalid match id");
@@ -30,6 +43,7 @@
   }
 
   function wire(doc, userAgent, search) {
+    showStoreFor(doc, userAgent);
     var id = matchIdFrom(search);
     if (id === null) {
       doc.getElementById("bad-link").hidden = false;
@@ -44,6 +58,7 @@
     isValidMatchId: isValidMatchId,
     matchIdFrom: matchIdFrom,
     isAndroid: isAndroid,
+    isIos: isIos,
     intentUrl: intentUrl,
     wire: wire
   };
