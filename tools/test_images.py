@@ -2,12 +2,15 @@
 python -m unittest discover -s tools
 """
 import struct
+import sys
 import unittest
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import build_directory as b  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 IMG = ROOT / "assets" / "img"
-OG_CARD = ROOT / "assets" / "og-card.png"
 WEBPS = [IMG / f"{lang}-{screen}-{width}.webp"
          for lang in ("el", "en") for screen in ("venue", "create", "welcome") for width in (360, 720)]
 WEBP_MAX = 60 * 1024
@@ -53,11 +56,16 @@ class ImagesTest(unittest.TestCase):
                 width, _ = webp_size(data)
                 self.assertIn(width, (360, 720), path.name)
                 self.assertEqual(width, int(path.stem.rsplit("-", 1)[1]), "width disagrees with the name")
-        for card in (OG_CARD, OG_CARD.with_name("og-card-en.png")):
+        for card in (ROOT / name for name in b.OG_CARD.values()):
             self.assertTrue(card.is_file(), f"missing assets/{card.name}")
             data = card.read_bytes()
             self.assertEqual(png_size(data), (1200, 630), card.name)
             self.assertLess(len(data), OG_MAX, f"{card.name} is {len(data)} bytes")
+
+    def test_only_the_current_cards_are_kept(self):
+        """No page may name an old card (tools/test_site.py), so its file would be dead weight."""
+        self.assertEqual({card.name for card in (ROOT / "assets").glob("og-card*.png")},
+                         {Path(name).name for name in b.OG_CARD.values()})
 
 
 if __name__ == "__main__":

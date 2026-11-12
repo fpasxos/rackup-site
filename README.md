@@ -21,7 +21,7 @@ path on `getrackup.com`, so links already in the app and on QR codes keep workin
 | `media/social/` | JPEGs and MP4s that Instagram fetches by URL for posts the RackUp publisher sends out at their scheduled times (linked from nothing, not in the sitemap; `tools/test_social_media.py` checks their format). Safe to remove once those posts are out | copied from the publisher's media folder |
 | `assets/site.css` | The one stylesheet: the app's Felt and Neon tokens and every component | hand |
 | `assets/fonts/` | Self-hosted Space Grotesk, Hanken Grotesk (Latin) and Commissioner (Greek), with their OFL licences | `tools/make_fonts.py` |
-| `assets/img/`, `assets/og-card.png` | App screenshots as WebP, and the 1200x630 social card | `tools/make_images.py` |
+| `assets/img/`, `assets/og-card-*.png` | App screenshots as WebP, and the 1200x630 social card in Greek and English (`OG_CARD` in the generator names the files) | `tools/make_images.py` |
 | `favicon.ico`, `assets/favicon.svg`, `assets/apple-touch-icon.png`, `assets/icon-512.png` | The logo as browsers, phones and the structured data take it. Masters and rules: `store-assets/logo/` in the app repo. The wordmark's mark is `MARK` in the generator, copied into each hand page; `tools/test_logo.py` checks both | hand |
 | `CNAME` | The custom domain, `getrackup.com`, that GitHub Pages serves the site on | hand |
 | `data/venues.json` | Public copy of the venue directory | generator (`--import`) |
@@ -100,7 +100,9 @@ that way; `tools/test_site.py` fails on the old green and gold palette.
 - **Images.** `python tools/make_images.py` rebuilds the WebP screenshots from the
   app repo's unframed iPhone captures, `store-assets/store-shots/raw/ios/` (not
   `1-venues.png`, its hall count goes stale; a screen with no capture keeps its WebP) and,
-  with `--og-card`, optimises the social card rendered from `tools/og-card.html`.
+  with `--og-card`, optimises the social card rendered from `tools/og-card.html` and
+  `og-card-en.html`. A changed card gets a new file name in `OG_CARD`, on every page that
+  uses it, because link previews cache an image by its URL; the old file goes.
 - **Checking a phone layout.** Headless Edge will not lay out narrower than 484 px,
   so load pages into a same-origin iframe of the width you want and compare
   `scrollWidth` with `clientWidth`.

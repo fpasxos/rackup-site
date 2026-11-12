@@ -693,6 +693,9 @@ FOOTER = {
 PRELOAD_FONT = {"el": "commissioner-greek.woff2", "en": "space-grotesk-latin.woff2"}
 # The 1200x630 social card's alt in each language, as the homes carry it.
 OG_ALT = {"el": "RackUp: Βρες αντίπαλο. Εσύ λες πότε και πού.", "en": "RackUp: find an opponent. You say when and where."}
+# The card itself, rendered from tools/og-card.html and og-card-en.html. A new card takes a new
+# file name: link previews cache an image by its URL. Hand pages carry the same URLs.
+OG_CARD = {"el": "assets/og-card-2026-11-12.png", "en": "assets/og-card-2026-11-12-en.png"}
 
 
 def page(*, lang, title, description, path, alt_path, depth, body, data):
@@ -719,7 +722,7 @@ def page(*, lang, title, description, path, alt_path, depth, body, data):
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(description)}">
 <meta property="og:url" content="{url(path)}">
-<meta property="og:image" content="{url('assets/og-card.png' if lang == 'el' else 'assets/og-card-en.png')}">
+<meta property="og:image" content="{url(OG_CARD[lang])}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="{esc(OG_ALT[lang])}">

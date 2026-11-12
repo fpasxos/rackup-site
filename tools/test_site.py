@@ -448,6 +448,41 @@ class SearchTest(unittest.TestCase):
             checked += 1
         self.assertGreater(checked, 100, "the walk missed the pages")
 
+    def test_every_preview_image_is_the_current_card_in_the_pages_language(self):
+        """A new card takes a new file name, so a page left on the old one previews with no image."""
+        checked = 0
+        for rel, text in published(".html"):
+            images = re.findall(r'<meta (?:property="og:image"|name="twitter:image") content="([^"]*)">', text)
+            if not images:
+                continue
+            lang = re.search(r'<html lang="(el|en)">', text).group(1)
+            self.assertEqual(set(images), {b.url(b.OG_CARD[lang])}, rel)
+            checked += 1
+        self.assertGreater(checked, 100, "the walk missed the pages")
+        for name in b.OG_CARD.values():
+            self.assertTrue((b.ROOT / name).is_file(), f"{name} is missing")
+        names = {Path(name).name for name in b.OG_CARD.values()}
+        for rel, text in published(".html", ".js", ".css", ".xml"):
+            self.assertLessEqual(set(re.findall(r"og-card[\w.-]*\.png", text)), names, f"{rel} names an old card")
+
+    def test_the_social_cards_say_what_the_homes_and_their_alt_say(self):
+        """The card's promise is the home's, and its words are the alt every page gives it. The PNG
+        cannot be read here, so its source is held to both: re-render it after changing either."""
+        def words(html):
+            return " ".join(re.sub(r"<[^>]+>", " ", html).split())
+
+        for lang, template, home in (("el", "og-card.html", "index.html"), ("en", "og-card-en.html", "en/index.html")):
+            with self.subTest(card=template):
+                card = (b.ROOT / "tools" / template).read_text(encoding="utf-8")
+                card_h1 = re.search(r"<h1>(.*?)</h1>", card, re.S).group(1)
+                home_h1 = re.search(r"<h1>(.*?)</h1>", (b.ROOT / home).read_text(encoding="utf-8"), re.S).group(1)
+                promise = re.compile(r'<span class="hl">(.*?)</span>', re.S)
+                self.assertEqual(words(promise.search(card_h1).group(1)), words(promise.search(home_h1).group(1)))
+                said = words(card_h1)
+                self.assertIn(CARD_ALT[lang], (f"RackUp: {said}", f"RackUp: {said[0].lower()}{said[1:]}"))
+                # A hall's screen puts its name, address and table count into every shared link.
+                self.assertNotIn("-venue-", re.search(r'<img src="([^"]*)"', card).group(1))
+
     def test_every_structured_data_pointer_names_a_node_on_its_own_page(self):
         """The English home's publisher pointed at an Organization only the Greek home described."""
         for rel, text in published(".html"):

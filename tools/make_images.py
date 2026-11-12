@@ -1,6 +1,7 @@
 """Rebuilds assets/img from the iPhone captures in the sibling rackup repo. Dev only:
 pip install Pillow && python tools/make_images.py [path/to/store-shots/raw/ios]
-After rendering tools/og-card.html to assets/og-card.png: python tools/make_images.py --og-card
+After rendering tools/og-card.html and og-card-en.html to the files OG_CARD names in
+build_directory.py: python tools/make_images.py --og-card
 1-venues.png is left out: its hall count is a snapshot that goes stale as halls are added.
 A screen with no capture there (4-venue.png since 2.3.3) keeps the webp it has.
 """
@@ -10,11 +11,12 @@ from pathlib import Path
 
 from PIL import Image
 
+from build_directory import OG_CARD
+
 ROOT = Path(__file__).resolve().parent.parent
 # The unframed captures; from 2.3.3 the listing set itself carries captions.
 SOURCE = ROOT.parent / "rackup" / "store-assets" / "store-shots" / "raw" / "ios"
 OUT = ROOT / "assets" / "img"
-OG_CARD = ROOT / "assets" / "og-card.png"
 LANGS = {"el": "el", "en": "en-GB"}
 SCREENS = {"venue": "4-venue.png", "create": "2-create.png", "welcome": "5-welcome.png"}
 WIDTHS = (360, 720)
@@ -40,7 +42,7 @@ def build(source):
 
 def optimise_og_card():
     # Lossless only: a 256-colour palette bands the glow and the 9 and 10 balls.
-    for path in (OG_CARD, OG_CARD.with_name("og-card-en.png")):
+    for path in (ROOT / name for name in OG_CARD.values()):
         with Image.open(path) as card:
             card = card.convert("RGB")
         card.save(path, "PNG", optimize=True)
