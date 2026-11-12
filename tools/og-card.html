@@ -4,33 +4,32 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=1200">
 <title>RackUp social card</title>
-<!-- Source of assets/og-card.png (1200x630). Fonts need http: serve the repo root, render with
-     headless Edge at --window-size=1200,630, then run python tools/make_images.py --og-card.
-     og-card-en.html is the same card in English, rendered to assets/og-card-en.png. -->
+<!-- Source of the 1200x630 card OG_CARD names in build_directory.py. Fonts need http: serve the
+     repo root, render with headless Edge at --window-size=1200,630, then run python
+     tools/make_images.py --og-card. og-card-en.html is the same card in English. -->
 <link rel="stylesheet" href="../assets/site.css">
 <style>
 html,body{width:1200px;height:630px;overflow:hidden}
 .og{position:relative;width:1200px;height:630px;overflow:hidden;isolation:isolate}
 .og::before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(560px 470px at 76% 56%,rgba(198,242,78,.3),transparent 70%),radial-gradient(760px 520px at 0% 115%,rgba(44,201,192,.09),transparent 70%)}
 .og::after{content:"";position:absolute;inset:0;z-index:-1;background-image:radial-gradient(rgba(234,242,237,.07) 1px,transparent 1px);background-size:22px 22px;-webkit-mask-image:linear-gradient(180deg,#000,transparent 92%);mask-image:linear-gradient(180deg,#000,transparent 92%)}
-.copy{position:absolute;left:76px;top:64px;bottom:60px;width:640px;display:flex;flex-direction:column}
+.copy{position:absolute;left:76px;top:64px;bottom:60px;width:680px;display:flex;flex-direction:column}
 .og .wordmark{font-size:2.1rem;gap:14px}
 .og .wordmark .mark{height:42px}
-.og h1{font-size:90px;margin:auto 0 22px;letter-spacing:-.035em;line-height:.98}
-.og h1 .hl{white-space:nowrap}
+.og h1{font-size:80px;margin:auto 0 22px;letter-spacing:-.035em;line-height:.98}
 .og .line{font:500 27px/1.35 var(--text);color:var(--ink2);margin:0 0 auto}
 .foot{display:flex;align-items:center;gap:22px}
 .og .balls{gap:10px}
 .og .balls .ball{--s:50px}
 .url{font:600 26px/1 var(--display);color:var(--ink);letter-spacing:-.01em;padding:13px 22px;border-radius:999px;background:var(--lime-wash);border:1px solid var(--lime-line)}
-.og .phone{--pw:292px;right:118px;top:62px;transform:rotate(-5deg)}
+.og .phone{--pw:320px;right:66px;top:56px;transform:rotate(-5deg)}
 </style>
 </head>
 <body>
 <div class="og">
   <div class="copy">
     <span class="wordmark"><svg class="mark" viewBox="0 0 80.4 73.808" aria-hidden="true" focusable="false"><path fill="#C6F24E" fill-rule="evenodd" d="M53.71 7.8L78.31 50.408A15.6 15.6 0 0 1 64.8 73.808L15.6 73.808A15.6 15.6 0 0 1 2.09 50.408L26.69 7.8A15.6 15.6 0 0 1 53.71 7.8ZM49.033 10.5A10.2 10.2 0 0 0 31.367 10.5L6.767 53.108A10.2 10.2 0 0 0 15.6 68.408L64.8 68.408A10.2 10.2 0 0 0 73.633 53.108Z"/><g fill="#EAF2ED"><circle cx="40.2" cy="15.6" r="7.2"/><circle cx="32" cy="29.803" r="7.2"/><circle cx="48.4" cy="29.803" r="7.2"/><circle cx="23.8" cy="44.006" r="7.2"/><circle cx="56.6" cy="44.006" r="7.2"/><circle cx="15.6" cy="58.208" r="7.2"/><circle cx="32" cy="58.208" r="7.2"/><circle cx="48.4" cy="58.208" r="7.2"/><circle cx="64.8" cy="58.208" r="7.2"/></g><circle cx="40.2" cy="44.006" r="7.2" fill="#C6F24E"/></svg><span class="wm">RACK<span>UP</span></span></span>
-    <h1>Βρες αντίπαλο. <span class="hl">Παίξε απόψε.</span></h1>
+    <h1>Βρες αντίπαλο.<br><span class="hl">Εσύ λες πότε<br>και πού.</span></h1>
     <p class="line">Αμερικάνικο και γαλλικό,<br>σε αίθουσες μπιλιάρδου</p>
     <div class="foot">
       <div class="balls">
@@ -41,7 +40,7 @@ html,body{width:1200px;height:630px;overflow:hidden}
       <span class="url">getrackup.com</span>
     </div>
   </div>
-  <div class="phone"><img src="../assets/img/el-venue-720.webp" alt="" width="720" height="1566"></div>
+  <div class="phone"><img src="../assets/img/el-create-720.webp" alt="" width="720" height="1566"></div>
 </div>
 </body>
 </html>

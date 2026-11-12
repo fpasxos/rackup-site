@@ -13,7 +13,6 @@ import build_directory as b  # noqa: E402
 # Every directory page's head. After a venue import or a copy change alters one on purpose,
 # read the diff, then refresh it with: python tools/test_directory_design.py --capture
 FIXTURE = Path(__file__).resolve().parent / "fixtures" / "directory-head.json"
-SOCIAL_CARD = f"{b.BASE_URL}/assets/og-card.png"
 # The copy a search rewrite may reword. URLs, hreflang, locale and hall anchors never move with it.
 REWORDABLE = ("title", "description", "jsonld")
 REWORDABLE_TAG = re.compile(r'<meta (property="og:(title|description)"|name="twitter:)')
@@ -100,7 +99,7 @@ class DirectoryDesignTest(unittest.TestCase):
     def test_directory_pages_share_the_social_card(self):
         for rel, text in directory_pages().items():
             with self.subTest(page=rel):
-                card = SOCIAL_CARD.replace("og-card.png", "og-card-en.png") if rel.startswith("en/") else SOCIAL_CARD
+                card = b.url(b.OG_CARD["en" if rel.startswith("en/") else "el"])
                 self.assertIn(f'<meta property="og:image" content="{card}">', text, "English pages preview in English")
                 self.assertIn('<meta name="theme-color" content="#0E1512">', text)
                 self.assertNotIn("\N{BILLIARDS}", text, "the brand is the rack mark, not an emoji")
