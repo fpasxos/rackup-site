@@ -15,6 +15,9 @@ WEBPS = [IMG / f"{lang}-{screen}-{width}.webp"
          for lang in ("el", "en") for screen in ("venue", "create", "welcome") for width in (360, 720)]
 WEBP_MAX = 60 * 1024
 OG_MAX = 300 * 1024
+# Old cards that link previews cached before the switch still fetch by URL. No page names them
+# (tools/test_site.py). Delete them, and this, after about 12 December 2026.
+RETIRED_CARDS = ("og-card.png", "og-card-en.png")
 
 
 def webp_size(data):
@@ -62,10 +65,12 @@ class ImagesTest(unittest.TestCase):
             self.assertEqual(png_size(data), (1200, 630), card.name)
             self.assertLess(len(data), OG_MAX, f"{card.name} is {len(data)} bytes")
 
-    def test_only_the_current_cards_are_kept(self):
-        """No page may name an old card (tools/test_site.py), so its file would be dead weight."""
+    def test_only_the_current_and_retired_cards_are_kept(self):
+        """Pages name only a current card; a retired one stays a real card for cached previews."""
         self.assertEqual({card.name for card in (ROOT / "assets").glob("og-card*.png")},
-                         {Path(name).name for name in b.OG_CARD.values()})
+                         {Path(name).name for name in b.OG_CARD.values()} | set(RETIRED_CARDS))
+        for name in RETIRED_CARDS:
+            self.assertEqual(png_size((ROOT / "assets" / name).read_bytes()), (1200, 630), name)
 
 
 if __name__ == "__main__":

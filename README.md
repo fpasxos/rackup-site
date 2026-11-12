@@ -102,7 +102,9 @@ that way; `tools/test_site.py` fails on the old green and gold palette.
   `1-venues.png`, its hall count goes stale; a screen with no capture keeps its WebP) and,
   with `--og-card`, optimises the social card rendered from `tools/og-card.html` and
   `og-card-en.html`. A changed card gets a new file name in `OG_CARD`, on every page that
-  uses it, because link previews cache an image by its URL; the old file goes.
+  uses it, because link previews cache an image by its URL. The old file stays about 30
+  days, as `RETIRED_CARDS` in `tools/test_images.py`, for previews cached before the
+  switch, then goes.
 - **Checking a phone layout.** Headless Edge will not lay out narrower than 484 px,
   so load pages into a same-origin iframe of the width you want and compare
   `scrollWidth` with `clientWidth`.
