@@ -17,6 +17,7 @@ import shutil
 import subprocess
 import sys
 import unicodedata
+from urllib.parse import quote
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -35,7 +36,8 @@ PROVIDER_TOKEN = "129299799"
 CAMPAIGN = re.compile(r"[a-z0-9]+(-[a-z0-9]+)*")
 CAMPAIGN_MAX = 26
 # Hand-written pages whose store links the build tags too: file -> site path.
-HAND_PAGES = {"index.html": "", "en/index.html": "en/", "support.html": "support.html", "404.html": "404.html"}
+HAND_PAGES = {"index.html": "", "en/index.html": "en/", "support.html": "support.html", "press/index.html": "press/",
+              "404.html": "404.html"}
 # The two homes: each carries the counts and the city grid, in its own language.
 HOMES = {"index.html": "el", "en/index.html": "en"}
 GRID_START, GRID_END = "<!-- city-grid -->", "<!-- /city-grid -->"
@@ -470,7 +472,7 @@ def campaign_for(path):
             campaign = f"{lang}-{path[len(root) + 1:].strip('/') or 'directory'}"
             break
     else:
-        named = {"en/": "en-home", f"{CAROM['el']}/": "el-carom", f"{CAROM['en']}/": "en-carom"}
+        named = {"en/": "en-home", "press/": "press", f"{CAROM['el']}/": "el-carom", f"{CAROM['en']}/": "en-carom"}
         campaign = named.get(path) or re.sub(r"\.html$", "", path) or "home"
     if len(campaign) > CAMPAIGN_MAX or not CAMPAIGN.fullmatch(campaign):
         sys.exit(f"{path!r} gives campaign {campaign!r}: use a-z, 0-9 and single hyphens, "
@@ -690,7 +692,7 @@ FOOTER = {
 # The face the first paint needs: Greek pages are set in Commissioner, English ones in Space Grotesk.
 PRELOAD_FONT = {"el": "commissioner-greek.woff2", "en": "space-grotesk-latin.woff2"}
 # The 1200x630 social card's alt in each language, as the homes carry it.
-OG_ALT = {"el": "RackUp: Βρες αντίπαλο. Παίξε απόψε.", "en": "RackUp: find an opponent, play tonight."}
+OG_ALT = {"el": "RackUp: Βρες αντίπαλο. Εσύ λες πότε και πού.", "en": "RackUp: find an opponent. You say when and where."}
 
 
 def page(*, lang, title, description, path, alt_path, depth, body, data):
@@ -890,6 +892,17 @@ def index_page(cities, lang, revised=None):
                 alt_path=f"{alt_root}/", depth=depth, body=body, data=data)
 
 
+def owner_line(v, lang):
+    """Shown by CSS :target only, to an owner who arrives on the hall's own address."""
+    subject = quote(f"RackUp: {v['name']}")
+    mail = f'<a href="mailto:{EMAIL}?subject={subject}">'
+    if lang == "el":
+        text = f"Η αίθουσά σου είναι ήδη στο RackUp. Δωρεάν, χωρίς καμία υποχρέωση. Λάθος στοιχεία; {mail}Γράψε μας</a>."
+    else:
+        text = f"Your hall is already on RackUp. Free, with no obligation. Wrong details? {mail}Write to us</a>."
+    return f'  <p class="owner-line">{text}</p>'
+
+
 def hall_item(v, lang):
     parts = [f'<li class="hall" id="{esc(v["id"])}">',
              f'  <h2{lang_attr(v["name"], lang)}>{esc(v["name"])}</h2>',
@@ -907,6 +920,7 @@ def hall_item(v, lang):
         parts.append(f'  <p class="contact">{label}: <a href="{esc(website)}" rel="noopener">{esc(host)}</a></p>')
     if offers_carom(v):
         parts.append(carom_chip(v, lang))
+    parts.append(owner_line(v, lang))
     parts.append("</li>")
     return "\n".join(parts)
 
@@ -1341,7 +1355,7 @@ def sitemap(cities, dates=None):
     """Every page. A directory page carries <lastmod>, the day its listing last changed; the hand-written
     pages carry none, as nothing here knows when their words changed."""
     dates = dates or {"cities": {}}
-    paths = [("", None), ("en/", None), ("support.html", None), ("privacy.html", None),
+    paths = [("", None), ("en/", None), ("support.html", None), ("privacy.html", None), ("press/", None),
              (f"{EL_ROOT}/", dates.get("directory")), (f"{EN_ROOT}/", dates.get("directory")),
              (f"{CAROM['el']}/", dates.get("carom")), (f"{CAROM['en']}/", dates.get("carom"))]
     for code, mine in by_country(cities).items():
@@ -1428,6 +1442,8 @@ def render(data=None, dates=None):
         if name in HOMES:
             text = home_with_countries(home_with_counts(text, cities), cities)
             text = home_with_city_grid(text, cities, HOMES[name])
+        elif name == "press/index.html":
+            text = home_with_counts(text, cities)
         files[ROOT / name] = with_store_links(name, text)
     for lang, root in (("el", EL_ROOT), ("en", EN_ROOT)):
         files[ROOT / root / "index.html"] = index_page(cities, lang, dates["directory"])

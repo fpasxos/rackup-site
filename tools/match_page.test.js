@@ -24,8 +24,8 @@ const EXPECTED_INTENT = "intent://match/Xy12ab_CD-ef#Intent;scheme=rackup;packag
 
 function fakeDocument() {
   const elements = {};
-  for (const id of ["android", "open-app", "bad-link"]) {
-    elements[id] = { hidden: true, attributes: {}, setAttribute(k, v) { this.attributes[k] = v; } };
+  for (const id of ["android", "open-app", "bad-link", "app-store", "google-play", "stores-note", "note-android", "note-ios"]) {
+    elements[id] = { hidden: !["app-store", "google-play", "stores-note"].includes(id), attributes: {}, setAttribute(k, v) { this.attributes[k] = v; } };
   }
   return { elements, getElementById: (id) => elements[id] };
 }
@@ -153,4 +153,25 @@ test("the page stays out of the sitemap, is published, and has no en or em dash"
   const dashes = /[\u2012\u2013\u2014\u2015]/;
   assert.ok(!dashes.test(html), "m/index.html has a dash");
   assert.ok(!dashes.test(read("m/open.js")), "m/open.js has a dash");
+});
+
+test("a phone sees only its own store and one line; a desktop keeps both buttons", () => {
+  const cases = [
+    [ANDROID_UA, "app-store", "note-android"],
+    [IPHONE_UA, "google-play", "note-ios"]
+  ];
+  for (const [ua, hiddenStore, note] of cases) {
+    const doc = fakeDocument();
+    page.wire(doc, ua, `?id=${AUTO_ID}`);
+    assert.equal(doc.elements[hiddenStore].hidden, true, hiddenStore);
+    assert.equal(doc.elements[note].hidden, false, note);
+    assert.equal(doc.elements["stores-note"].hidden, true);
+  }
+  const doc = fakeDocument();
+  page.wire(doc, DESKTOP_UA, `?id=${AUTO_ID}`);
+  assert.equal(doc.elements["app-store"].hidden, false);
+  assert.equal(doc.elements["google-play"].hidden, false);
+  assert.equal(doc.elements["note-android"].hidden, true);
+  assert.equal(doc.elements["note-ios"].hidden, true);
+  for (const id of ["note-android", "note-ios", "stores-note"]) assert.match(html, new RegExp(`id="${id}"`));
 });

@@ -375,7 +375,7 @@ def ld_ids(item):
 
 
 # The 1200x630 social card's alt in each page language; tools/test_images.py pins the size.
-CARD_ALT = {"el": "RackUp: Βρες αντίπαλο. Παίξε απόψε.", "en": "RackUp: find an opponent, play tonight."}
+CARD_ALT = {"el": "RackUp: Βρες αντίπαλο. Εσύ λες πότε και πού.", "en": "RackUp: find an opponent. You say when and where."}
 
 
 class SearchTest(unittest.TestCase):
@@ -485,6 +485,8 @@ ALLOWED = {
     "privacy.html": (CONTACT, "RackUp, Ioannina, Greece, is the data controller",
                      "In Greece that is the Hellenic Data Protection Authority",
                      "Στην Ελλάδα είναι η Αρχή Προστασίας Δεδομένων Προσωπικού Χαρακτήρα"),
+    "press/index.html": ("<strong>Πού λειτουργεί:</strong> Ελλάδα και Κύπρος",
+                         "<strong>Where it works:</strong> Greece and Cyprus"),
     "galliko-mpiliardo/index.html": ("προς το παρόν όλες στην Ελλάδα",),
     "en/carom-billiards/index.html": ("for now all of them in Greece",),
 }
