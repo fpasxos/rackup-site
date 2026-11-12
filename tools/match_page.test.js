@@ -175,3 +175,24 @@ test("a phone sees only its own store and one line; a desktop keeps both buttons
   assert.equal(doc.elements["note-ios"].hidden, true);
   for (const id of ["note-android", "note-ios", "stores-note"]) assert.match(html, new RegExp(`id="${id}"`));
 });
+
+// The test above sets .hidden on a fake document; a browser still drew the other store's
+// button, because .btn sets display and an author rule beats the hidden attribute's.
+test("the hidden attribute wins over the button styles, so a phone's other store really goes", () => {
+  const css = read("assets/site.css");
+  assert.match(css, /\[hidden\]\s*\{\s*display\s*:\s*none\s*!important\s*;?\s*\}/);
+  for (const id of ["app-store", "google-play"]) {
+    const classes = html.match(new RegExp(`<a class="([^"]+)" id="${id}"`))[1].split(/\s+/);
+    assert.ok(classes.includes("btn"), `${id} is no longer a .btn; recheck what hides it`);
+  }
+  assert.match(css, /\.btn\{display:inline-flex/);
+});
+
+test("an Android visitor is told once that Google Play opens, not twice", () => {
+  const androidBlock = html.match(/<div id="android" hidden>([\s\S]*?)<\/div>/)[1];
+  const noteAndroid = html.match(/<p class="note" id="note-android" hidden>([\s\S]*?)<\/p>/)[1];
+  assert.match(androidBlock, /Google Play/);
+  assert.doesNotMatch(noteAndroid, /Google Play/);
+  assert.match(noteAndroid, /πάτα ξανά τον σύνδεσμο/);
+  assert.match(noteAndroid, /tap the link again/);
+});
