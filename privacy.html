@@ -39,11 +39,30 @@
 <main id="main" class="container">
 <article class="prose">
   <h1>RackUp Privacy Policy</h1>
-  <p class="muted">Effective date: 13 November 2026 · Applies to the RackUp apps for Android
+  <p class="muted">Effective date: XX November 2026 · Applies to the RackUp apps for Android
   and iPhone (<code>com.rackup.app</code>)</p>
   <p lang="el"><a href="#el">Στα Ελληνικά</a></p>
 
   <div class="card">
+    <p><strong>What changed on XX November 2026.</strong> Version 2.4.8 of the apps logs two more
+    analytics events, 33 in all: <code>screen_view</code>, when you open <em>Discover</em>,
+    <em>Matches</em>, <em>Rankings</em>, <em>Venues</em> or <em>Profile</em>, and
+    <code>post_started</code>, when you open the form for a new match or a new looking-for-a-game
+    post. <code>match_posted</code> now also says where you opened the form and about how long it
+    was open, <code>join_requested</code> says how you got to the match's page, and
+    <code>match_viewed</code>, for a match opened from the board, says its place there and how many
+    matches the board showed. None of them carries a name, a user id or a match id. The apps also
+    give Firebase Analytics three user properties: the country on your profile, whether you have an
+    account or are looking around as a guest, and the theme the app shows. And they stop Firebase
+    Analytics from recording screen views by itself, so that every <code>screen_view</code> is one
+    of ours. Also, under <em>Notifications</em>, we correct how often your notification token's
+    record is updated. We said that the app updates it each time it starts, but since version 2.4.4
+    the Android app does so only if a day or more has passed since it last did, or when the token,
+    your language or the app version has changed. We also add there that our server reads the
+    time of that update for quiet cities. We describe all of this under <em>App usage
+    analytics</em> and <em>Notifications</em>, and in the summary in Greek too. Finally, under
+    <em>Who can see what</em>, we add that, with no sign-in at all, our database also lets anyone
+    read the text the apps show on screen, which holds no personal data.</p>
     <p><strong>What changed on 13 November 2026.</strong> The apps collect nothing new, but to tell
     whether a player opened RackUp in the last 7 days, for quiet cities, our server now looks only
     at when their notification tokens were last updated. Until now this policy said that it also
@@ -591,13 +610,18 @@
   <h3>Notifications</h3>
   <p>We store a Firebase Cloud Messaging token for each of your devices, Android or iPhone, along
   with your language, the platform, the app version and build, and the time it was last updated,
-  which the app refreshes each time it starts, so we can send you push notifications about join
+  so we can send you push notifications about join
   requests, match updates, direct challenges, invitations to confirm a game at the table, quick
   messages, reminders, saved search alerts, new
   games from players you follow, from version 2.4.3 new games in your city and, for halls you
   starred, new games and check-ins there. With
   the app version, that time also lets us count updates as totals, as described under <em>Your
-  account</em>. You control notifications with the switches in Settings and with your device's
+  account</em>, and our server reads it to tell whether a player opened RackUp in the last 7 days,
+  for quiet cities, as described under <em>What you post and write</em>. The iPhone app updates
+  the token's record each time it starts. From version 2.4.4, the Android app updates it when it
+  starts only if a day or more has passed since it last did, and whenever the token, your
+  language or the app version changes. You control
+  notifications with the switches in Settings and with your device's
   notification permission, with two exceptions to the switches: a no-show report against you
   reaches you even with <em>Match updates</em> off, because it affects your verified badge, and a
   starred hall's alerts follow the star. The Android app stores its token whether or not you
@@ -713,7 +737,8 @@
   <p>Both apps include <strong>Firebase Analytics</strong>, and it is on by default. The old
   version of this policy said the app had no analytics profiles. That was wrong, and correcting
   it was the main reason for the version dated 4 September 2026.</p>
-  <p>We log 31 events about how the app is used, the same on both apps, or 25 before version 2.4.7,
+  <p>We log 33 events about how the app is used, the same on both apps, or 31 before version 2.4.8,
+  which adds <code>screen_view</code> and <code>post_started</code>, 25 before version 2.4.7,
   which adds <code>match_shared</code>, <code>seat_check_answered</code>,
   <code>table_game_logged</code>, <code>rankings_opened</code>, <code>ranking_hall_opened</code> and
   <code>share_opened</code>, 24 before version 2.4.5, which adds <code>match_viewed</code>, and 23
@@ -728,16 +753,33 @@
         welcome tour; <code>home_venue_set</code>, when you pick a home hall at its end; and
         <code>notification_permission_result</code>, with whether you allowed
         notifications.</li>
+    <li><strong>Screens</strong>: <code>screen_view</code>, from version 2.4.8, when you open, or
+        go back to, <em>Discover</em>, <em>Matches</em>, <em>Rankings</em>, <em>Venues</em> or
+        <em>Profile</em>, with which of the five it is, as both its screen name and its screen
+        class. Earlier versions let Firebase Analytics record screen views by itself, as one of its
+        standard measurements; from version 2.4.8 the apps turn that off, so it records only
+        these.</li>
     <li><strong>Matches</strong>: <code>match_viewed</code>, when you open another player's open
         match, with how you got there (the board, a hall's page, a notification, a link, your
         activity feed or elsewhere in the app), the id of the hall and how far ahead the match
-        starts (play now, under 6 hours, 6 to 24 hours, or a day or more);
-        <code>match_shared</code>, when you open the share sheet for a match, with where you
-        opened it (the card after posting, the match page, the empty list of requests or the
-        card of a game that found an opponent), whether the match is yours and how far ahead it
-        starts, never whether you sent it, or to whom; <code>match_posted</code>,
+        starts (play now, under 6 hours, 6 to 24 hours, or a day or more), and, from version
+        2.4.8, for a match you opened from the board, its place among the matches there (1 to 20,
+        or below 20) and how many matches the board showed (1, 2, 3 to 5, 6 to 10, or 11 or
+        more); <code>match_shared</code>, when you open the share sheet for a match, with where you
+        opened it (what the app shows after you post, the match page, the empty list of requests
+        or the card of a game that found an opponent), whether the match is yours and how far
+        ahead it starts, never whether you sent it, or to whom; <code>post_started</code>, from
+        version 2.4.8, when you open the form for a new match or a new looking-for-a-game post,
+        but not when you edit one, with which of the two it is and where you opened it (the +
+        button, the shortcut on the Android app's icon, the board, the game an empty board
+        suggests, a looking-for-a-game post, a hall's page, <em>Rankings</em>, the page of a game
+        that found an opponent, a rematch or elsewhere in the app); <code>match_posted</code>,
         with the game type, whether it was a "play now" post, the id of the hall, how far ahead it
-        starts and which of the times the app suggested you kept, if any; <code>join_requested</code>;
+        starts and which of the times the app suggested you kept, if any, and, from version 2.4.8,
+        where you opened the form and about how long it was open before you posted (under 30
+        seconds, 30 to 60 seconds, 1 to 2 minutes, 2 to 5 minutes, or longer);
+        <code>join_requested</code>, from version 2.4.8 with how you got to the match's page, as
+        for <code>match_viewed</code>;
         <code>request_accepted</code>, with where you accepted it (a notification, the card on
         the board, the match page or the Requests tab); <code>seat_check_answered</code>, when
         you say on the match page that you are coming, or free your seat after saying you can't
@@ -773,6 +815,17 @@
   No name, no email, no user id, no match id and no free text is ever attached to an analytics
   event. Firebase Analytics also collects its own standard measurements, such as app opens and
   sessions, and it derives approximate geography from a masked IP address.</p>
+  <p><strong>User properties.</strong> From version 2.4.8, the apps also give Firebase Analytics
+  three user properties, which it attaches to the events from that install of the app:
+  <code>home_country</code>, the country on your profile, or the app's default one for an older
+  profile that has none, only while you are signed in with an account; <code>account</code>,
+  whether you are signed in with an account or looking around as a guest; and
+  <code>theme</code>, which <em>Theme</em> you chose in Settings, <em>Dark</em>, <em>Light</em>
+  or <em>System default</em>, and with <em>System default</em>, which of the two your phone
+  shows. Signing out clears <code>home_country</code> and <code>account</code>. We use them only
+  to compare totals, for example how the app is used by guests and by players, in each country
+  and with each theme. None of them is a name or a user id, and the app still never gives
+  Analytics your user id.</p>
   <p><strong>Where new players come from.</strong> On Android, Google Play passes Firebase
   Analytics the tags of the link that led to an install, and when that link was tapped. The tags
   name a source, a medium and a campaign, and we choose them by where the link appears: for
@@ -880,8 +933,10 @@
         profile. Looking around as a guest, from version 2.3.0, still signs in, anonymously, as
         described above. With
         no sign-in at all, our database lets nothing be read except a settings record that tells
-        each app the oldest version we still support and the list of countries and cities the
-        app offers, neither of which holds personal data. The
+        each app the oldest version we still support, the list of countries and cities the app
+        offers, and the text the apps show on screen, in each language, which they read from our
+        database from version 2.4.8, so that we can correct a word without a new version. None of
+        these holds personal data. The
         exception is your profile photo: its link carries its own access key, so anyone who has
         the link can open the photo without signing in. That link is copied onto your posts,
         which every signed in player can read, onto the copies of your open games and your
@@ -1195,9 +1250,15 @@
 
   <h2>Changes to this policy</h2>
   <p>If this policy changes, the new version is published at this address with a new effective
-  date, and we say at the top what changed. This version, dated 13 November 2026, says that, for
+  date, and we say at the top what changed. This version, dated XX November 2026, adds the
+  analytics events <code>screen_view</code> and <code>post_started</code>, what
+  <code>match_posted</code>, <code>join_requested</code> and <code>match_viewed</code> also record
+  and three user properties, from version 2.4.8 of the apps, corrects how often the Android app
+  updates its notification token's record, adds that our server reads its time for quiet cities,
+  adds the text the apps show to what anyone can read without a sign-in, and supersedes the
+  version dated 13 November 2026, which said that, for
   quiet cities, our server tells whether a player opened RackUp in the last 7 days only by when
-  their notification tokens were last updated, and supersedes the earlier version of 13 November
+  their notification tokens were last updated, and superseded the earlier version of 13 November
   2026, which said that the
   pushes about new matches at a hall you starred, a saved search, a looking-for-a-game post or a
   player you follow wait until 09:00 at night, and that check-in pushes are not sent at night,
@@ -1429,9 +1490,9 @@
   προσκλήσεις σου έδειξε σε άλλους κάθε ημέρα, ως αριθμό, ώστε να μην ξεπερνούν τις 10 την
   ημέρα.</p>
   <p>Και οι δύο εφαρμογές περιλαμβάνουν <strong>Firebase Crashlytics</strong> (αναφορές
-  σφαλμάτων) και <strong>Firebase Analytics</strong> (31 συμβάντα χρήσης από την έκδοση 2.4.7,
-  25 από την 2.4.5, 24 από την 2.3.0 και 23 στις προηγούμενες, όπως η δημοσίευση αγώνα ή το
-  check-in σε αίθουσα).
+  σφαλμάτων) και <strong>Firebase Analytics</strong> (33 συμβάντα χρήσης από την έκδοση 2.4.8,
+  31 από την 2.4.7, 25 από την 2.4.5, 24 από την 2.3.0 και 23 στις προηγούμενες, όπως η
+  δημοσίευση αγώνα ή το check-in σε αίθουσα).
   Αυτά τα δύο συμβάντα καταγράφουν και ποια αίθουσα αφορούν. Από την έκδοση 2.4.5 καταγράφουμε
   επίσης πότε ανοίγεις ένα ανοιχτό ματς άλλου παίκτη, από πού έφτασες εκεί, την αίθουσα και πόσο
   νωρίτερα από την έναρξη, χωρίς όνομα ή αναγνωριστικό χρήστη. Από την έκδοση 2.4.7 καταγράφουμε
@@ -1443,6 +1504,19 @@
   Κατάταξη, μια
   αίθουσα από εκεί ή την κοινοποίηση της κάρτας μιας αίθουσας, με τη λίστα, την αίθουσα και το
   είδος της κάρτας, πάλι χωρίς όνομα ή αναγνωριστικό χρήστη.
+  Από την έκδοση 2.4.8 καταγράφουμε επίσης ποια από τις οθόνες «Ανακάλυψη», «Παιχνίδια»,
+  «Κατάταξη», «Αίθουσες» και «Προφίλ» ανοίγεις, και το Firebase Analytics δεν το καταγράφει πια
+  από μόνο του. Καταγράφουμε ακόμη όταν ανοίγεις τη φόρμα για νέο ματς ή για νέα δήλωση ότι
+  ψάχνεις παιχνίδι, για ποιο από τα δύο είναι και από πού την άνοιξες, και, όταν δημοσιεύεις
+  ματς, από πού άνοιξες τη φόρμα και περίπου πόση ώρα ήταν ανοιχτή. Όταν ζητάς να μπεις σε ματς,
+  καταγράφουμε από πού έφτασες στη σελίδα του, και όταν ανοίγεις ματς από τη λίστα της οθόνης
+  «Ανακάλυψη», τη θέση του στη λίστα και πόσα ματς είχε, πάλι χωρίς όνομα ή αναγνωριστικό
+  χρήστη. Από την ίδια έκδοση, η εφαρμογή στέλνει στο Firebase Analytics και τρεις ιδιότητες
+  χρήστη: τη χώρα του προφίλ σου, μόνο όσο έχεις συνδεθεί με λογαριασμό, αν έχεις λογαριασμό ή
+  ρίχνεις μια ματιά ως επισκέπτης, και ποιο θέμα διάλεξες στις Ρυθμίσεις («Σκούρο», «Φωτεινό» ή
+  «Προεπιλογή συστήματος») και, με την προεπιλογή συστήματος, ποιο από τα δύο δείχνει το
+  τηλέφωνό σου. Τις χρησιμοποιούμε μόνο για να συγκρίνουμε συνολικούς αριθμούς, και καμία δεν
+  είναι όνομα ή αναγνωριστικό χρήστη.
   Κανένα συμβάν δεν περιέχει όνομα, email ή κείμενο που έγραψες, και όσα συλλέγουν τα δύο
   εργαλεία δεν τα συνδέουμε ποτέ με τον λογαριασμό σου: η εφαρμογή δεν στέλνει ποτέ το
   αναγνωριστικό χρήστη σε αυτές τις υπηρεσίες.</p>
@@ -1475,10 +1549,14 @@
   iPhone. Στο Android η εφαρμογή κρατά το αναγνωριστικό ακόμη κι αν δεν επιτρέψεις τις
   ειδοποιήσεις, και τι θα λαμβάνεις το ορίζουν κυρίως οι διακόπτες στις Ρυθμίσεις και η άδεια της
   συσκευής. Τη φύλαξη του αναγνωριστικού και την αποστολή των ειδοποιήσεων που αφήνεις ανοιχτές
-  τις στηρίζουμε στη σύμβασή μας μαζί σου. Σε Android και iPhone, η εφαρμογή ενημερώνει την
-  εγγραφή του σε κάθε εκκίνηση. Η ώρα της τελευταίας ενημέρωσης, μαζί με την έκδοση της
-  εφαρμογής, μας δείχνει, μόνο ως συνολικούς αριθμούς, πόσοι από όσους άνοιξαν πρόσφατα την
-  εφαρμογή την έχουν ενημερώσει, ώστε να ξέρουμε πότε μπορούμε να βγάλουμε μια αλλαγή. Νομική
+  τις στηρίζουμε στη σύμβασή μας μαζί σου. Στο iPhone, η εφαρμογή ενημερώνει την εγγραφή του σε
+  κάθε εκκίνηση. Στο Android, από την έκδοση 2.4.4, την ενημερώνει κατά την εκκίνηση μόνο αν έχει
+  περάσει τουλάχιστον μία ημέρα από την τελευταία φορά, και κάθε φορά που αλλάζει το
+  αναγνωριστικό, η γλώσσα σου ή η έκδοση της εφαρμογής. Η ώρα της τελευταίας ενημέρωσης, μαζί με
+  την έκδοση της εφαρμογής, μας δείχνει, μόνο ως συνολικούς αριθμούς, πόσοι από όσους άνοιξαν
+  πρόσφατα την εφαρμογή την έχουν ενημερώσει, ώστε να ξέρουμε πότε μπορούμε να βγάλουμε μια
+  αλλαγή. Από την ίδια ώρα ο διακομιστής μας κρίνει επίσης, όπως γράφουμε παραπάνω, αν τρεις ή
+  λιγότεροι από τους παίκτες μιας πόλης άνοιξαν το RackUp τις τελευταίες 7 ημέρες. Νομική
   βάση και γι' αυτό είναι το έννομο συμφέρον μας, και μπορείς να αντιταχθείς όποτε θέλεις. Η
   έκδοση της εφαρμογής που κρατάμε στον λογαριασμό σου συνδέεται με αυτόν. Από την έκδοση 2.4.3,
   όταν κάποιος ανεβάζει ανοιχτό ματς σε αίθουσα της πόλης που έχεις στο προφίλ σου, μπορεί να σου
