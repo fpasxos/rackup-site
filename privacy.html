@@ -44,7 +44,12 @@
   <p lang="el"><a href="#el">Στα Ελληνικά</a></p>
 
   <div class="card">
-    <p><strong>What changed on 13 November 2026.</strong> The apps collect nothing new, but since
+    <p><strong>What changed on 13 November 2026.</strong> The apps collect nothing new, but to tell
+    whether a player opened RackUp in the last 7 days, for quiet cities, our server now looks only
+    at when their notification tokens were last updated. Until now this policy said that it also
+    looked at when their profile was last updated. Under <em>What you post and write</em> we say
+    so, and in the summary in Greek too.</p>
+    <p><strong>Earlier on 13 November 2026.</strong> The apps collect nothing new, but since
     12 November our server sends fewer notifications at night. A push about a new match at a hall
     you starred, about one that fits your saved search or your looking-for-a-game post, or about
     one posted by a player you follow, now goes only from 09:00 to 23:00 at the hall's local time,
@@ -562,7 +567,7 @@
   opponent is told so and at which hall, never who is playing.</p>
   <p><strong>Quiet cities.</strong> Every 6 hours our server works out, for each city, whether
   three or fewer of the players whose home city it is opened RackUp in the last 7 days, judging by
-  when their profile and their notification tokens were last updated. It leaves out automated
+  when their notification tokens were last updated. It leaves out automated
   test accounts and Apple's review account. For each city it keeps only that yes or no and when it
   was worked out, with no names and no counts, and only players with an account can read it. From
   version 2.4.7, when you post
@@ -1190,10 +1195,13 @@
 
   <h2>Changes to this policy</h2>
   <p>If this policy changes, the new version is published at this address with a new effective
-  date, and we say at the top what changed. This version, dated 13 November 2026, says that the
+  date, and we say at the top what changed. This version, dated 13 November 2026, says that, for
+  quiet cities, our server tells whether a player opened RackUp in the last 7 days only by when
+  their notification tokens were last updated, and supersedes the earlier version of 13 November
+  2026, which said that the
   pushes about new matches at a hall you starred, a saved search, a looking-for-a-game post or a
   player you follow wait until 09:00 at night, and that check-in pushes are not sent at night,
-  and supersedes the version dated 12 November 2026, which added Rankings, the question whether a
+  and superseded the version dated 12 November 2026, which added Rankings, the question whether a
   match is still on, the yes or no for quiet cities, games at the table and six analytics events,
   and superseded the earlier versions of 12 November 2026. The second of those said that quick messages sent before a match are kept until 14 days after its
   start, added the record our server keeps once a player has sent 30 quick messages in one match,
@@ -1386,7 +1394,7 @@
   για να την προσθέσει, και η εφαρμογή δεν διαβάζει ποτέ τη βιβλιοθήκη σου.</p>
   <p>Κάθε 6 ώρες ο διακομιστής μας υπολογίζει για κάθε πόλη αν τρεις ή λιγότεροι από τους
   παίκτες που την έχουν πόλη τους άνοιξαν το RackUp τις τελευταίες 7 ημέρες, από το πότε
-  ενημερώθηκαν τελευταία το προφίλ και τα αναγνωριστικά ειδοποιήσεών τους, και κρατά μόνο αυτό
+  ενημερώθηκαν τελευταία τα αναγνωριστικά ειδοποιήσεών τους, και κρατά μόνο αυτό
   το ναι ή όχι και πότε υπολογίστηκε, χωρίς ονόματα και χωρίς τον αριθμό των παικτών. Από την
   έκδοση 2.4.7, όταν ανεβάζεις ματς σε αίθουσα
   μιας τέτοιας πόλης, η εφαρμογή σού προτείνει να το στείλεις σε έναν φίλο που παίζει. Νομική
