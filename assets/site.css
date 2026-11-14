@@ -231,6 +231,14 @@ p{margin:0 0 1em}
 .share-card .stores{justify-content:center}
 .share-card .note,.stores-note{color:var(--muted);font-size:.9rem}
 .open-app{min-height:58px;padding:14px 28px;font-size:1.1rem}
+.game{list-style:none;margin:22px auto 0;padding:4px 18px;max-width:420px;text-align:left;border:1px solid var(--outline);border-radius:20px;background:var(--surface)}
+.game li{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--outline);font-weight:600;line-height:1.35;color:var(--ink)}
+.game li:last-child{border-bottom:0}
+.game small{display:block;font-weight:500;font-size:.85rem;color:var(--muted)}
+.game a{color:var(--ink);text-decoration-color:var(--lime-line)}
+.game-icon{flex:none;width:28px;height:28px;padding:5px;border-radius:9px;background:var(--lime-wash);fill:none;stroke:var(--accent);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.game-icon .dot{fill:var(--accent);stroke:none}
+.share-card #game-note{margin:10px 0 0}
 .open-app small{display:block;font-size:.75rem;font-weight:500}
 
 /* Footer */
