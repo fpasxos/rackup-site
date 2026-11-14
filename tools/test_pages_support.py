@@ -162,8 +162,11 @@ APP_EVENTS = {
     "looking_for_game_posted", "looking_for_game_converted", "venue_checked_in",
     "player_followed", "saved_search_created", "notifications_opened", "notification_row_tapped",
     "match_shared", "seat_check_answered", "rankings_opened", "ranking_hall_opened", "share_opened",
-    "table_game_logged",
+    "table_game_logged", "screen_view", "post_started",
 }
+
+# The app's UserProperty names (core/presentation Analytics.kt, from 2.4.8).
+APP_USER_PROPERTIES = {"home_country", "account", "theme"}
 
 
 def listed_events(page):
@@ -172,6 +175,15 @@ def listed_events(page):
     if not section:
         raise AssertionError("privacy.html has no App usage analytics list")
     return set(re.findall(r"<code>([a-z0-9_]+)</code>", section.group(1)))
+
+
+def named_user_properties(page):
+    """The <code> names in the User properties paragraph under App usage analytics."""
+    found = re.search(r"<h3>App usage analytics\b.*?</h3>.*?<p><strong>User properties\.</strong>(.*?)</p>",
+                      main_html(page), re.S)
+    if not found:
+        raise AssertionError("privacy.html has no User properties paragraph under App usage analytics")
+    return set(re.findall(r"<code>([a-z0-9_]+)</code>", found.group(1)))
 
 
 class AnalyticsCountTest(unittest.TestCase):
@@ -186,6 +198,15 @@ class AnalyticsCountTest(unittest.TestCase):
         self.assertTrue(english and greek, "a count sentence moved or changed its words")
         self.assertEqual(len(APP_EVENTS), int(english.group(1)))
         self.assertEqual(len(APP_EVENTS), int(greek.group(1)))
+
+    def test_the_policy_names_every_user_property_the_apps_set(self):
+        self.assertEqual(APP_USER_PROPERTIES, named_user_properties(current("privacy.html")))
+
+    def test_the_property_check_reads_only_its_own_paragraph(self):
+        page = ('<main><h3>App usage analytics</h3><ul><li><code>theme</code></li></ul>'
+                '<p><strong>User properties.</strong> <code>account</code> and <code>home_country</code>.</p>'
+                '<p><code>theme</code></p></main>')
+        self.assertEqual({"account", "home_country"}, named_user_properties(page))
 
 
 if __name__ == "__main__":
