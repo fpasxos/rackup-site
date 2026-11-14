@@ -6,8 +6,9 @@ In that version, match_posted also says where you opened the form and about how 
 join_requested says how you got to the match's page, and match_viewed, for a match opened from the
 board, says its place there and how many matches the board showed. None of them carries a name, a
 user id or a match id. That version also gives Firebase Analytics three user properties: the country
-on your profile, whether you have an account or are looking around as a guest, and the theme the app
-shows. And it stops Firebase Analytics from recording screen views by itself, so that every
+on your profile, whether you have an account or are looking around as a guest, and which Theme you
+chose in Settings, Dark, Light or System default, and with System default, which of the two your
+phone shows. And it stops Firebase Analytics from recording screen views by itself, so that every
 screen_view is one of ours. Version 2.4.8 also lets you share, from the halls' list in Rankings, a
 card with up to three halls at the top of the list, and share_opened then records that kind of card
 with no hall id. And from that version, a link to a game you share also carries the game type, any
@@ -1202,7 +1203,7 @@ iPhone. Στο iPhone το αναγνωριστικό μένει μέχρι να
 περάσει τουλάχιστον μία ημέρα από την τελευταία φορά, και κάθε φορά που αλλάζει το αναγνωριστικό, η
 γλώσσα σου ή η έκδοση της εφαρμογής. Η ώρα της τελευταίας ενημέρωσης, μαζί με την έκδοση της
 εφαρμογής, μας δείχνει, μόνο ως συνολικούς αριθμούς, πόσοι από όσους άνοιξαν πρόσφατα την εφαρμογή
-την έχουν ενημερώσει, ώστε να ξέρουμε πότε μπορούμε να βγάλουμε μια αλλαγή. Από την ίδια ώρα ο
+την έχουν ενημερώσει, ώστε να ξέρουμε πότε μπορούμε να βγάλουμε μια αλλαγή. Με βάση την ίδια ώρα ο
 διακομιστής μας κρίνει επίσης, όπως γράφουμε παραπάνω, αν τρεις ή λιγότεροι από τους παίκτες μιας
 πόλης άνοιξαν το RackUp τις τελευταίες 7 ημέρες. Νομική βάση και γι' αυτό είναι το έννομο συμφέρον
 μας, και μπορείς να αντιταχθείς όποτε θέλεις. Η έκδοση της εφαρμογής που κρατάμε στον λογαριασμό σου

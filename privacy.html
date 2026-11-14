@@ -53,7 +53,9 @@
     <code>match_viewed</code>, for a match opened from the board, says its place there and how many
     matches the board showed. None of them carries a name, a user id or a match id. That version
     also gives Firebase Analytics three user properties: the country on your profile, whether you
-    have an account or are looking around as a guest, and the theme the app shows. And it stops
+    have an account or are looking around as a guest, and which <em>Theme</em> you chose in
+    Settings, <em>Dark</em>, <em>Light</em> or <em>System default</em>, and with
+    <em>System default</em>, which of the two your phone shows. And it stops
     Firebase Analytics from recording screen views by itself, so that every <code>screen_view</code>
     is one of ours. Version 2.4.8 also lets you share, from the halls' list in <em>Rankings</em>, a
     card with up to three halls at the top of the list, and <code>share_opened</code> then records
@@ -1605,7 +1607,7 @@
   αναγνωριστικό, η γλώσσα σου ή η έκδοση της εφαρμογής. Η ώρα της τελευταίας ενημέρωσης, μαζί με
   την έκδοση της εφαρμογής, μας δείχνει, μόνο ως συνολικούς αριθμούς, πόσοι από όσους άνοιξαν
   πρόσφατα την εφαρμογή την έχουν ενημερώσει, ώστε να ξέρουμε πότε μπορούμε να βγάλουμε μια
-  αλλαγή. Από την ίδια ώρα ο διακομιστής μας κρίνει επίσης, όπως γράφουμε παραπάνω, αν τρεις ή
+  αλλαγή. Με βάση την ίδια ώρα ο διακομιστής μας κρίνει επίσης, όπως γράφουμε παραπάνω, αν τρεις ή
   λιγότεροι από τους παίκτες μιας πόλης άνοιξαν το RackUp τις τελευταίες 7 ημέρες. Νομική
   βάση και γι' αυτό είναι το έννομο συμφέρον μας, και μπορείς να αντιταχθείς όποτε θέλεις. Η
   έκδοση της εφαρμογής που κρατάμε στον λογαριασμό σου συνδέεται με αυτόν. Από την έκδοση 2.4.3,
