@@ -429,7 +429,7 @@
   ]
  },
  "en/billiards/katerini/index.html": {
-  "title": "<title>Billiards in Katerini: Πολυχώρος Ευκαρπίδη | RackUp</title>",
+  "title": "<title>Billiards in Katerini: Cine Efkarpidis | RackUp</title>",
   "description": "<meta name=\"description\" content=\"Pool and billiards in Katerini: one hall in the directory, with its address and phone. Find an opponent for pool with the free RackUp app.\">",
   "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/en/billiards/katerini/\">",
   "alternates": [
@@ -441,14 +441,14 @@
    "<meta property=\"og:type\" content=\"website\">",
    "<meta property=\"og:site_name\" content=\"RackUp\">",
    "<meta property=\"og:locale\" content=\"en_GB\">",
-   "<meta property=\"og:title\" content=\"Billiards in Katerini: Πολυχώρος Ευκαρπίδη | RackUp\">",
+   "<meta property=\"og:title\" content=\"Billiards in Katerini: Cine Efkarpidis | RackUp\">",
    "<meta property=\"og:description\" content=\"Pool and billiards in Katerini: one hall in the directory, with its address and phone. Find an opponent for pool with the free RackUp app.\">",
    "<meta property=\"og:url\" content=\"https://getrackup.com/en/billiards/katerini/\">",
    "<meta property=\"og:image:width\" content=\"1200\">",
    "<meta property=\"og:image:height\" content=\"630\">",
    "<meta property=\"og:image:alt\" content=\"RackUp: find an opponent. You say when and where.\">"
   ],
-  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/en/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Billiard halls\",\"item\":\"https://getrackup.com/en/billiards/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Katerini\",\"item\":\"https://getrackup.com/en/billiards/katerini/\"}]},{\"@type\":\"ItemList\",\"name\":\"Billiards in Katerini\",\"numberOfItems\":1,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/katerini/#venue-kat-efkarpidis\",\"name\":\"Πολυχώρος Ευκαρπίδη\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"25ης Μαρτίου 28\",\"addressLocality\":\"Κατερίνη\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 235 103 4551\"}}]}]}",
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/en/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Billiard halls\",\"item\":\"https://getrackup.com/en/billiards/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Katerini\",\"item\":\"https://getrackup.com/en/billiards/katerini/\"}]},{\"@type\":\"ItemList\",\"name\":\"Billiards in Katerini\",\"numberOfItems\":1,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/katerini/#venue-kat-efkarpidis\",\"name\":\"Cine Efkarpidis\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"25ης Μαρτίου 28\",\"addressLocality\":\"Κατερίνη\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 235 103 4551\"}}]}]}",
   "venues": [
    "venue-kat-efkarpidis"
   ]
@@ -1812,7 +1812,7 @@
   ]
  },
  "mpiliardo/katerini/index.html": {
-  "title": "<title>Μπιλιάρδο στην Κατερίνη: Πολυχώρος Ευκαρπίδη | RackUp</title>",
+  "title": "<title>Μπιλιάρδο στην Κατερίνη: Cine Efkarpidis | RackUp</title>",
   "description": "<meta name=\"description\" content=\"Μπιλιάρδο στην Κατερίνη: μία αίθουσα στον κατάλογο, με διεύθυνση και τηλέφωνο. Βρες αντίπαλο για αμερικάνικο με το δωρεάν RackUp.\">",
   "canonical": "<link rel=\"canonical\" href=\"https://getrackup.com/mpiliardo/katerini/\">",
   "alternates": [
@@ -1824,14 +1824,14 @@
    "<meta property=\"og:type\" content=\"website\">",
    "<meta property=\"og:site_name\" content=\"RackUp\">",
    "<meta property=\"og:locale\" content=\"el_GR\">",
-   "<meta property=\"og:title\" content=\"Μπιλιάρδο στην Κατερίνη: Πολυχώρος Ευκαρπίδη | RackUp\">",
+   "<meta property=\"og:title\" content=\"Μπιλιάρδο στην Κατερίνη: Cine Efkarpidis | RackUp\">",
    "<meta property=\"og:description\" content=\"Μπιλιάρδο στην Κατερίνη: μία αίθουσα στον κατάλογο, με διεύθυνση και τηλέφωνο. Βρες αντίπαλο για αμερικάνικο με το δωρεάν RackUp.\">",
    "<meta property=\"og:url\" content=\"https://getrackup.com/mpiliardo/katerini/\">",
    "<meta property=\"og:image:width\" content=\"1200\">",
    "<meta property=\"og:image:height\" content=\"630\">",
    "<meta property=\"og:image:alt\" content=\"RackUp: Βρες αντίπαλο. Εσύ λες πότε και πού.\">"
   ],
-  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Αίθουσες μπιλιάρδου\",\"item\":\"https://getrackup.com/mpiliardo/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Κατερίνη\",\"item\":\"https://getrackup.com/mpiliardo/katerini/\"}]},{\"@type\":\"ItemList\",\"name\":\"Μπιλιάρδο στην Κατερίνη\",\"numberOfItems\":1,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/katerini/#venue-kat-efkarpidis\",\"name\":\"Πολυχώρος Ευκαρπίδη\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"25ης Μαρτίου 28\",\"addressLocality\":\"Κατερίνη\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 235 103 4551\"}}]}]}",
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"RackUp\",\"item\":\"https://getrackup.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Αίθουσες μπιλιάρδου\",\"item\":\"https://getrackup.com/mpiliardo/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Κατερίνη\",\"item\":\"https://getrackup.com/mpiliardo/katerini/\"}]},{\"@type\":\"ItemList\",\"name\":\"Μπιλιάρδο στην Κατερίνη\",\"numberOfItems\":1,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"SportsActivityLocation\",\"@id\":\"https://getrackup.com/mpiliardo/katerini/#venue-kat-efkarpidis\",\"name\":\"Cine Efkarpidis\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"25ης Μαρτίου 28\",\"addressLocality\":\"Κατερίνη\",\"addressCountry\":\"GR\"},\"telephone\":\"+30 235 103 4551\"}}]}]}",
   "venues": [
    "venue-kat-efkarpidis"
   ]
