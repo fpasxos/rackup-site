@@ -39,27 +39,27 @@
 <main id="main" class="container">
 <article class="prose">
   <h1>RackUp Privacy Policy</h1>
-  <p class="muted">Effective date: XX November 2026 · Applies to the RackUp apps for Android
+  <p class="muted">Effective date: 15 November 2026 · Applies to the RackUp apps for Android
   and iPhone (<code>com.rackup.app</code>)</p>
   <p lang="el"><a href="#el">Στα Ελληνικά</a></p>
 
   <div class="card">
-    <p><strong>What changed on XX November 2026.</strong> Version 2.4.8 of the apps logs two more
+    <p><strong>What changed on 15 November 2026.</strong> Version 2.4.8 of the apps logs two more
     analytics events, 33 in all: <code>screen_view</code>, when you open <em>Discover</em>,
     <em>Matches</em>, <em>Rankings</em>, <em>Venues</em> or <em>Profile</em>, and
     <code>post_started</code>, when you open the form for a new match or a new looking-for-a-game
-    post. <code>match_posted</code> now also says where you opened the form and about how long it
-    was open, <code>join_requested</code> says how you got to the match's page, and
+    post. In that version, <code>match_posted</code> also says where you opened the form and about
+    how long it was open, <code>join_requested</code> says how you got to the match's page, and
     <code>match_viewed</code>, for a match opened from the board, says its place there and how many
-    matches the board showed. None of them carries a name, a user id or a match id. The apps also
-    give Firebase Analytics three user properties: the country on your profile, whether you have an
-    account or are looking around as a guest, and the theme the app shows. And they stop Firebase
-    Analytics from recording screen views by itself, so that every <code>screen_view</code> is one
-    of ours. Version 2.4.8 also lets you share, from the halls' list in <em>Rankings</em>, a card
-    with up to three halls at the top of the list, and <code>share_opened</code> then records that
-    kind of card with no hall id. And a link to a game you share now also carries the game type,
-    any race or points, the date and time at the hall and the hall's id, so that the game's page
-    on our website can show them, with no name and no user id. Also, under
+    matches the board showed. None of them carries a name, a user id or a match id. That version
+    also gives Firebase Analytics three user properties: the country on your profile, whether you
+    have an account or are looking around as a guest, and the theme the app shows. And it stops
+    Firebase Analytics from recording screen views by itself, so that every <code>screen_view</code>
+    is one of ours. Version 2.4.8 also lets you share, from the halls' list in <em>Rankings</em>, a
+    card with up to three halls at the top of the list, and <code>share_opened</code> then records
+    that kind of card with no hall id. And from that version, a link to a game you share also
+    carries the game type, any race or points, the date and time at the hall and the hall's id, so
+    that the game's page on our website can show them, with no name and no user id. Also, under
     <em>Notifications</em>, we correct how often your notification token's
     record is updated. We said that the app updates it each time it starts, but since version 2.4.4
     the Android app does so only if a day or more has passed since it last did, or when the token,
@@ -605,9 +605,9 @@
   <p><strong>Sharing a game.</strong> When you share a game, the app hands the app you choose a
   message and a link to our website. From version 2.4.8, a link to the game's own page there also
   carries the game type, any race or points, the date and time at the hall and the hall's id, so
-  that the page can show them as they were when the link was sent. The link carries no name and
-  no user id, and the page reads nothing from our database or our server: it names the hall from
-  the public list of halls on our website.</p>
+  that the page can show them as they were when the link was sent, with the hall named from the
+  public list of halls on our website. The link carries no name and no user id, and the page reads
+  nothing from our database or our server.</p>
   <p><strong>Games that found an opponent.</strong> We count the games that found an opponent in
   each city and hall, and show everyone who uses the app, guests included, those counts, the hours
   with the most games, and the hall, game, race and time of recent ones. These summaries never hold
@@ -1283,7 +1283,7 @@
 
   <h2>Changes to this policy</h2>
   <p>If this policy changes, the new version is published at this address with a new effective
-  date, and we say at the top what changed. This version, dated XX November 2026, adds the
+  date, and we say at the top what changed. This version, dated 15 November 2026, adds the
   analytics events <code>screen_view</code> and <code>post_started</code>, what
   <code>match_posted</code>, <code>join_requested</code> and <code>match_viewed</code> also record,
   three user properties, the card of the halls at the top of <em>Rankings</em> and what the link
@@ -1494,9 +1494,9 @@
   που διαλέγεις ένα μήνυμα και έναν σύνδεσμο για την ιστοσελίδα μας. Από την έκδοση 2.4.8, ένας
   σύνδεσμος για τη σελίδα του ίδιου του ματς έχει επίσης το παιχνίδι, το race ή τους πόντους, αν
   υπάρχουν, την ημέρα και την ώρα στην αίθουσα και το αναγνωριστικό της αίθουσας, ώστε η σελίδα
-  να τα δείχνει όπως ήταν όταν στάλθηκε. Ο σύνδεσμος δεν έχει όνομα ή αναγνωριστικό χρήστη, και η
-  σελίδα δεν διαβάζει τίποτα από τη βάση δεδομένων ή τον διακομιστή μας: την αίθουσα την ονομάζει
-  από τη δημόσια λίστα αιθουσών της ιστοσελίδας μας.</p>
+  να τα δείχνει όπως ήταν όταν στάλθηκε, με το όνομα της αίθουσας από τη δημόσια λίστα αιθουσών
+  της ιστοσελίδας μας. Ο σύνδεσμος δεν έχει όνομα ή αναγνωριστικό χρήστη, και η σελίδα δεν
+  διαβάζει τίποτα από τη βάση δεδομένων ή τον διακομιστή μας.</p>
   <p>Κάθε 6 ώρες ο διακομιστής μας υπολογίζει για κάθε πόλη αν τρεις ή λιγότεροι από τους
   παίκτες που την έχουν πόλη τους άνοιξαν το RackUp τις τελευταίες 7 ημέρες, από το πότε
   ενημερώθηκαν τελευταία τα αναγνωριστικά ειδοποιήσεών τους, και κρατά μόνο αυτό
@@ -1554,11 +1554,11 @@
   χρήστη.
   Από την έκδοση 2.4.8 καταγράφουμε επίσης ποια από τις οθόνες «Ανακάλυψη», «Παιχνίδια»,
   «Κατάταξη», «Αίθουσες» και «Προφίλ» ανοίγεις, και το Firebase Analytics δεν το καταγράφει πια
-  από μόνο του. Καταγράφουμε ακόμη όταν ανοίγεις τη φόρμα για νέο ματς ή για νέα δήλωση ότι
-  ψάχνεις παιχνίδι, για ποιο από τα δύο είναι και από πού την άνοιξες, και, όταν δημοσιεύεις
-  ματς, από πού άνοιξες τη φόρμα και περίπου πόση ώρα ήταν ανοιχτή. Όταν ζητάς να μπεις σε ματς,
-  καταγράφουμε από πού έφτασες στη σελίδα του, και όταν ανοίγεις ματς από τη λίστα της οθόνης
-  «Ανακάλυψη», τη θέση του στη λίστα και πόσα ματς είχε, πάλι χωρίς όνομα ή αναγνωριστικό
+  από μόνο του. Από την ίδια έκδοση καταγράφουμε ακόμη όταν ανοίγεις τη φόρμα για νέο ματς ή για
+  νέα δήλωση ότι ψάχνεις παιχνίδι, για ποιο από τα δύο είναι και από πού την άνοιξες, και, όταν
+  δημοσιεύεις ματς, από πού άνοιξες τη φόρμα και περίπου πόση ώρα ήταν ανοιχτή. Στην ίδια έκδοση,
+  όταν ζητάς να μπεις σε ματς, καταγράφουμε από πού έφτασες στη σελίδα του, και όταν ανοίγεις
+  ματς από τη λίστα της οθόνης «Ανακάλυψη», τη θέση του στη λίστα και πόσα ματς είχε, πάλι χωρίς όνομα ή αναγνωριστικό
   χρήστη. Από την ίδια έκδοση, η εφαρμογή στέλνει στο Firebase Analytics και τρεις ιδιότητες
   χρήστη. Η πρώτη είναι η χώρα του προφίλ σου, ή, σε ένα παλιότερο προφίλ χωρίς χώρα, η
   προεπιλεγμένη χώρα της εφαρμογής, και τη στέλνει μόνο όσο έχεις συνδεθεί με λογαριασμό. Η
