@@ -73,7 +73,7 @@
     "venue-ioa-nineball": ["Nine Ball Cafe", "Ιωάννινα", "Ioannina", "ioannina"],
     "venue-kal-newpost": ["The New Post", "Καλαμάτα", "Kalamata", "kalamata"],
     "venue-kal-top": ["Top Billiards", "Καλαμάτα", "Kalamata", "kalamata"],
-    "venue-kat-efkarpidis": ["Πολυχώρος Ευκαρπίδη", "Κατερίνη", "Katerini", "katerini"],
+    "venue-kat-efkarpidis": ["Cine Efkarpidis", "Κατερίνη", "Katerini", "katerini"],
     "venue-kav-cityhall": ["City Billiard Hall", "Καβάλα", "Kavala", "kavala"],
     "venue-kav-tifanys": ["Tifany's Billiard Club", "Καβάλα", "Kavala", "kavala"],
     "venue-kef-vamos": ["Vamos NetGames", "Κεφαλονιά", "Kefalonia", "kefalonia"],
