@@ -10,6 +10,7 @@ const path = require("node:path");
 const ROOT = path.resolve(__dirname, "..");
 const read = (file) => fs.readFileSync(path.join(ROOT, file), "utf8");
 const page = require(path.join(ROOT, "m", "open.js"));
+const HALLS = require(path.join(ROOT, "m", "halls.js"));
 const html = read("m/index.html");
 
 const AUTO_ID = "Xy12abCDef34GhIjKl56";
@@ -22,12 +23,28 @@ const EXPECTED_INTENT = "intent://match/Xy12ab_CD-ef#Intent;scheme=rackup;packag
   "S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.rackup.app" +
   "%26referrer%3Dutm_source%253Dshare%2526utm_medium%253Dmatch_link;end";
 
+const GAME_IDS = ["game", "game-note", "game-what", "game-what-en", "game-when", "game-when-en", "game-hall", "game-city",
+  "game-where-en"];
+
 function fakeDocument() {
   const elements = {};
-  for (const id of ["android", "open-app", "bad-link", "app-store", "google-play", "stores-note", "note-android", "note-ios"]) {
-    elements[id] = { hidden: !["app-store", "google-play", "stores-note"].includes(id), attributes: {}, setAttribute(k, v) { this.attributes[k] = v; } };
+  for (const id of ["android", "open-app", "bad-link", "app-store", "google-play", "stores-note", "note-android", "note-ios",
+    ...GAME_IDS]) {
+    elements[id] = {
+      hidden: !["app-store", "google-play", "stores-note"].includes(id), attributes: {}, textContent: "",
+      setAttribute(k, v) { this.attributes[k] = v; }
+    };
   }
   return { elements, getElementById: (id) => elements[id] };
+}
+
+// What app 2.4.8 shares for a 9-Ball race to 5 at ManCave on Sunday 15 November 2026, 21:00.
+const DETAILS = `?id=${"Xy12abCDef34GhIjKl56"}&g=NINE_BALL&r=5&t=202611152100&v=venue-koz-mancave`;
+
+function shown(search, ua = IPHONE_UA) {
+  const doc = fakeDocument();
+  page.wire(doc, ua, search, HALLS);
+  return doc.elements;
 }
 
 test("a Firestore auto id and the full allowed alphabet are accepted", () => {
@@ -110,7 +127,8 @@ test("the page is noindex, previews well and loads no script but its own", () =>
   const image = html.match(/property="og:image" content="https:\/\/getrackup\.com\/([^"]+)"/)[1];
   assert.ok(fs.existsSync(path.join(ROOT, image)), `og:image ${image} is not in the repo`);
   const scripts = [...html.matchAll(/<script\b[^>]*>/g)].map((m) => m[0]);
-  assert.deepEqual(scripts, ['<script src="open.js" defer>']);
+  // The halls first: deferred scripts run in order, and open.js names a hall from them.
+  assert.deepEqual(scripts, ['<script src="halls.js" defer>', '<script src="open.js" defer>']);
   assert.match(html, /script-src 'self'/);
 });
 
@@ -126,7 +144,8 @@ test("the page is styled by the site stylesheet and nothing else", () => {
 });
 
 test("every element the script touches exists and starts hidden", () => {
-  for (const id of ["android", "bad-link"]) {
+  for (const id of GAME_IDS) assert.match(html, new RegExp(`id="${id}"`), id);
+  for (const id of ["android", "bad-link", "game", "game-note"]) {
     assert.match(html, new RegExp(`id="${id}"[^>]*\\bhidden\\b`), id);
   }
   assert.match(html, /<a id="open-app"(?![^>]*href)[^>]*>/, "open-app must have no href until the script sets one");
@@ -195,4 +214,105 @@ test("an Android visitor is told once that Google Play opens, not twice", () => 
   assert.doesNotMatch(noteAndroid, /Google Play/);
   assert.match(noteAndroid, /πάτα ξανά τον σύνδεσμο/);
   assert.match(noteAndroid, /tap the link again/);
+});
+
+test("a 2.4.8 link shows the game, its time at the hall and the hall, as sent", () => {
+  const el = shown(DETAILS);
+  assert.equal(el.game.hidden, false);
+  assert.equal(el["game-note"].hidden, false);
+  assert.equal(el["game-what"].textContent, "9-Ball · Race στα 5");
+  assert.equal(el["game-what-en"].textContent, "9-Ball · Race to 5");
+  assert.equal(el["game-when"].textContent, "Κυριακή 15 Νοεμβρίου, 21:00");
+  assert.equal(el["game-when-en"].textContent, "Sunday 15 November, 21:00");
+  assert.equal(el["game-hall"].textContent, "ManCave");
+  assert.equal(el["game-hall"].attributes.href, "../mpiliardo/kozani/#venue-koz-mancave");
+  assert.equal(el["game-city"].textContent, ", Κοζάνη");
+  assert.equal(el["game-where-en"].textContent, "ManCave, Kozani");
+  assert.equal(el["bad-link"].hidden, true);
+});
+
+test("on Android the details come with the open button", () => {
+  const el = shown(DETAILS, ANDROID_UA);
+  assert.equal(el.game.hidden, false);
+  assert.equal(el.android.hidden, false);
+  assert.match(el["open-app"].attributes.href, /^intent:\/\/match\/Xy12abCDef34GhIjKl56#/);
+});
+
+test("carom counts points, and a game posted with no race shows the game alone", () => {
+  const carom = shown("?id=a&g=THREE_CUSHION&r=30&t=202611152100&v=venue-cy-lim-century");
+  assert.equal(carom["game-what"].textContent, "3-Cushion · Στους 30 πόντους");
+  assert.equal(carom["game-what-en"].textContent, "3-Cushion · To 30 points");
+  assert.equal(carom["game-where-en"].textContent, "Century House of Billiards, Limassol");
+  assert.equal(carom["game-hall"].attributes.href, "../mpiliardo/lemesos/#venue-cy-lim-century");
+  for (const race of ["", "&r=0", "&r=1000", "&r=5a", "&r=-3", "&r=05"]) {
+    const el = shown(`?id=a&g=EIGHT_BALL${race}&t=202611152100&v=venue-koz-mancave`);
+    assert.equal(el["game-what"].textContent, "8-Ball", race);
+    assert.equal(el.game.hidden, false, race);
+  }
+});
+
+test("a link from an older app, or one with a detail that is not sound, shows the page as before", () => {
+  const broken = [
+    "?id=a",
+    "?id=a&g=NINE_BALL&t=202611152100",
+    "?id=a&t=202611152100&v=venue-koz-mancave",
+    "?id=a&g=NINE_BALL&v=venue-koz-mancave",
+    "?id=a&g=SNOOKER&t=202611152100&v=venue-koz-mancave",
+    "?id=a&g=nine_ball&t=202611152100&v=venue-koz-mancave",
+    "?id=a&g=toString&t=202611152100&v=venue-koz-mancave",
+    "?id=a&g=NINE_BALL&t=202611312100&v=venue-koz-mancave",
+    "?id=a&g=NINE_BALL&t=202702291200&v=venue-koz-mancave",
+    "?id=a&g=NINE_BALL&t=202611152500&v=venue-koz-mancave",
+    "?id=a&g=NINE_BALL&t=202611152160&v=venue-koz-mancave",
+    "?id=a&g=NINE_BALL&t=2026-11-15T21:00&v=venue-koz-mancave",
+    "?id=a&g=NINE_BALL&t=202611152100&v=venue-nowhere",
+    "?id=a&g=NINE_BALL&t=202611152100&v=constructor",
+    "?id=a&g=NINE_BALL&t=202611152100&v=" + encodeURIComponent("<img src=x onerror=alert(1)>")
+  ];
+  for (const search of broken) {
+    const el = shown(search);
+    assert.equal(el.game.hidden, true, search);
+    assert.equal(el["game-note"].hidden, true, search);
+    assert.equal(el["game-hall"].textContent, "", search);
+    assert.equal(el["game-hall"].attributes.href, undefined, search);
+  }
+  // A bad id shows the bad link note and no details, whatever else the link says.
+  const bad = shown("?id=a;b&g=NINE_BALL&t=202611152100&v=venue-koz-mancave");
+  assert.equal(bad["bad-link"].hidden, false);
+  assert.equal(bad.game.hidden, true);
+});
+
+test("a leap day is a day, and the start is the time at the hall, not the reader's", () => {
+  assert.deepEqual(page.startFrom("202802291930"), { year: 2028, month: 2, day: 29, hour: 19, minute: 30, weekday: 2 });
+  assert.equal(page.startFrom("202702291930"), null);
+  assert.equal(page.whenText(page.startFrom("202701020905"), "el"), "Σάββατο 2 Ιανουαρίου, 09:05");
+  assert.equal(page.whenText(page.startFrom("202705030000"), "en"), "Monday 3 May, 00:00");
+  assert.equal(page.whenText(page.startFrom("202705030000"), "el"), "Δευτέρα 3 Μαΐου, 00:00");
+});
+
+test("the hall's name and city come from the directory, never from the link", () => {
+  const el = shown(DETAILS + "&name=" + encodeURIComponent("Call 6900000000") + "&h=Fake");
+  assert.equal(el["game-hall"].textContent, "ManCave");
+  for (const id of GAME_IDS) assert.ok(!/6900000000|Fake/.test(el[id].textContent || ""), id);
+  const source = read("m/open.js");
+  assert.doesNotMatch(source, /innerHTML|outerHTML|insertAdjacentHTML|document\.write/);
+});
+
+test("every game the app can share has the app's own words", () => {
+  // The app's GameType names, as its MatchLinkDetailsTest pins them; change both together.
+  assert.deepEqual(Object.keys(page.GAMES), ["EIGHT_BALL", "NINE_BALL", "TEN_BALL", "THREE_CUSHION", "ONE_CUSHION"]);
+  assert.deepEqual(Object.values(page.GAMES).map((g) => g.label), ["8-Ball", "9-Ball", "10-Ball", "3-Cushion", "1-Cushion"]);
+});
+
+test("the halls the page can name are the directory's, with each one's city", () => {
+  const venues = JSON.parse(read("data/venues.json"));
+  assert.deepEqual(Object.keys(HALLS).sort(), venues.map((v) => v.id).sort());
+  for (const v of venues) {
+    const [name, cityEl, cityEn, slug] = HALLS[v.id];
+    assert.equal(name, v.name, v.id);
+    assert.equal(cityEn, v.city, v.id);
+    assert.ok(fs.existsSync(path.join(ROOT, "mpiliardo", slug, "index.html")), `${v.id}: no page for ${slug}`);
+    assert.ok(read(`mpiliardo/${slug}/index.html`).includes(`id="${v.id}"`), `${v.id} is not anchored on its page`);
+    assert.match(cityEl, /[\u0370-\u03FF]/, v.id);
+  }
 });
