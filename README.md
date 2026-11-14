@@ -218,7 +218,18 @@ RackUp** button pointing at
   `LaunchIntentOpensOnceTest` parses the same intent string, so change both together.
 - The Google Play links carry `referrer=utm_source=share&utm_medium=match_link` so Play
   attributes installs that came from a shared match. Nothing on the page sets a cookie
-  or loads a third party script, and its Content Security Policy only allows `open.js`.
+  or loads a third party script, and its Content Security Policy allows scripts from this
+  site only: `m/halls.js`, then `m/open.js`. The page fetches nothing.
+- From app 2.4.8 the link also carries the game, its start and its hall after the id:
+  `g` (the game's stored name: `EIGHT_BALL`, `NINE_BALL`, `TEN_BALL`, `THREE_CUSHION`,
+  `ONE_CUSHION`), `r` (race or points, 1 to 999, optional), `t` (the start as wall time at
+  the hall, `yyyyMMddHHmm`) and `v` (the hall's id). The page shows them under the title,
+  marked as sent, only when the game, a real date and a hall in `m/halls.js` are all there,
+  and prints only its own words and the directory's name and city for the hall; a link
+  from an older app keeps the page as it was. `m/halls.js` is generator output (rerun
+  `tools/build_directory.py` after a venue change). The game list is pinned in both repos:
+  `GAMES` in `m/open.js` with its test here, and the app's `MatchLinkDetailsTest`. A new
+  game type changes both together.
 
 Run the tests with Node 18 or newer, no packages needed:
 
