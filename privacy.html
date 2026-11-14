@@ -67,7 +67,11 @@
     time of that update for quiet cities. And our server now also reads the app version stored
     with your notification tokens to tell whether your player card says that your app can confirm
     a game at the table, which it used to tell from the app version on your profile alone. We
-    describe all of this under <em>App usage analytics</em>, <em>Rankings</em>, <em>What you post
+    also add, under <em>What you post and write</em>, something this policy left out: when you
+    check in at a hall, other players see only that someone is there, never who. For each hall
+    our server keeps a count with no names, which anyone using the app can read, and players who
+    starred the hall may get a push that does not say who either. We describe all of this under
+    <em>App usage analytics</em>, <em>Rankings</em>, <em>What you post
     and write</em>, <em>Notifications</em> and <em>Your player card and player search</em>, and in
     the summary in Greek too. Finally, under
     <em>Who can see what</em>, we add that, with no sign-in at all, our database also lets anyone
@@ -569,7 +573,15 @@
     <li><strong>Venue check-ins</strong>: if you check in at a venue, we store your user id and
         the time. There is no coordinate and no location check, and since 27 August 2026 only
         you can read your own check-ins. A check-in counts for 3 hours, and our server deletes it
-        within about two hours after that. Your profile record keeps which hall you last checked
+        within about two hours after that. Other players see only that someone is at the hall,
+        never who. For each hall, our server keeps how many players are checked in there, the time
+        each of their check-ins stops counting, rounded up to the minute, and when it last updated
+        these, with no names and no user ids. Anyone using the app can read it, guests included,
+        and the apps show it as the number of players at the hall now. A check-out takes your
+        check-in out of that count at once, and one that stops counting leaves it the next time our
+        server counts there, normally within about two hours. Players who starred the hall may
+        also get a push that a player just checked in there, at most one an hour for each hall,
+        which does not say who either. Your profile record keeps which hall you last checked
         in at, and when, until your next check-in or check-out. Check-in records written by older
         Android versions may still contain your display name.</li>
     <li><strong>Looking for a game</strong>: if you say you are looking for a game, we store a
@@ -1278,7 +1290,8 @@
   to a shared game carries, from version 2.4.8 of the apps, corrects how often the Android app
   updates its notification token's record, adds that our server reads its time for quiet cities
   and its app version for your player card, adds the text the apps show to what anyone can read
-  without a sign-in, and supersedes the
+  without a sign-in, says that other players see only that someone has checked in at a hall,
+  never who, and supersedes the
   version dated 13 November 2026, which said that, for
   quiet cities, our server tells whether a player opened RackUp in the last 7 days only by when
   their notification tokens were last updated, and superseded the earlier version of 13 November
@@ -1682,7 +1695,17 @@
   συνήθως, τις αγαπημένες σου αίθουσες, που σου φέρνουν και τις ειδοποιήσεις τους, τα check-in σου,
   και την αίθουσα ή την πόλη των ματς, των προκλήσεων, των δηλώσεων ότι ψάχνεις παιχνίδι, των
   αποθηκευμένων αναζητήσεων και του εβδομαδιαίου προγράμματός σου. Ένα check-in ισχύει 3 ώρες και
-  ο διακομιστής μας το σβήνει μέσα σε περίπου δύο ώρες μετά. Αν αποθηκεύσεις μια αναζήτηση,
+  ο διακομιστής μας το σβήνει μέσα σε περίπου δύο ώρες μετά. Τα check-in σου τα βλέπεις μόνο
+  εσύ, και οι άλλοι παίκτες βλέπουν μόνο ότι κάποιος είναι στην αίθουσα, ποτέ ποιος. Για κάθε
+  αίθουσα, ο διακομιστής μας κρατά πόσοι παίκτες έχουν κάνει check-in εκεί, την ώρα που σταματά
+  να μετράει το check-in του καθενός, στρογγυλεμένη προς τα πάνω στο λεπτό, και πότε τα ενημέρωσε
+  τελευταία, χωρίς ονόματα ή αναγνωριστικά χρήστη. Αυτή την εγγραφή μπορεί να τη διαβάσει όποιος
+  χρησιμοποιεί την εφαρμογή, ακόμη και επισκέπτης, και οι εφαρμογές τη δείχνουν ως τον αριθμό των
+  παικτών που είναι τώρα στην αίθουσα. Όταν δηλώνεις στην εφαρμογή ότι έφυγες, το check-in σου
+  βγαίνει αμέσως από αυτή, και ένα check-in που έπαψε να μετράει βγαίνει την επόμενη φορά που ο
+  διακομιστής μας μετράει σε εκείνη την αίθουσα, συνήθως μέσα σε περίπου δύο ώρες. Όσοι έχουν
+  την αίθουσα στα αγαπημένα μπορεί να πάρουν και ειδοποίηση ότι μόλις ήρθε ένας παίκτης, το πολύ
+  μία την ώρα για κάθε αίθουσα, που επίσης δεν λέει ποιος. Αν αποθηκεύσεις μια αναζήτηση,
   κρατάμε την πόλη του φίλτρου της, ακόμη κι αν την πρότεινε η εφαρμογή από τη θέση σου.</p>
   <p>Διαγραφή λογαριασμού: μέσα από την εφαρμογή (Προφίλ → Ρυθμίσεις → Διαγραφή λογαριασμού) ή με
   email στο <a href="mailto:rackupbilliard@gmail.com">rackupbilliard@gmail.com</a>. Μαζί με τον
