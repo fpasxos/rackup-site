@@ -16,7 +16,7 @@ path on `getrackup.com`, so links already in the app and on QR codes keep workin
 | `en/billiards/` | The same directory in English | generator |
 | `galliko-mpiliardo/`, `en/carom-billiards/` | Carom page: every hall known to have carom tables, by city, with the count where known | generator |
 | `sitemap.xml` | Every page on the site | generator |
-| `m/` | Landing page for match links shared from the app (`noindex`, not in the sitemap) | hand |
+| `m/` | Landing page for match links shared from the app (`noindex`, not in the sitemap). From app 2.4.8 a link also carries the game, its start and its hall, which the page shows as sent | hand, except `m/halls.js`, the halls a link may name (generator) |
 | `go/` | Where printed QR codes point: sends phones to their app store with tagged links (`noindex`, not in the sitemap) | hand |
 | `media/social/` | JPEGs and MP4s that Instagram fetches by URL for posts the RackUp publisher sends out at their scheduled times (linked from nothing, not in the sitemap; `tools/test_social_media.py` checks their format). Safe to remove once those posts are out | copied from the publisher's media folder |
 | `assets/site.css` | The one stylesheet: the app's Felt and Neon tokens and every component | hand |
@@ -218,7 +218,18 @@ RackUp** button pointing at
   `LaunchIntentOpensOnceTest` parses the same intent string, so change both together.
 - The Google Play links carry `referrer=utm_source=share&utm_medium=match_link` so Play
   attributes installs that came from a shared match. Nothing on the page sets a cookie
-  or loads a third party script, and its Content Security Policy only allows `open.js`.
+  or loads a third party script, and its Content Security Policy allows scripts from this
+  site only: `m/halls.js`, then `m/open.js`. The page fetches nothing.
+- From app 2.4.8 the link also carries the game, its start and its hall after the id:
+  `g` (the game's stored name: `EIGHT_BALL`, `NINE_BALL`, `TEN_BALL`, `THREE_CUSHION`,
+  `ONE_CUSHION`), `r` (race or points, 1 to 999, optional), `t` (the start as wall time at
+  the hall, `yyyyMMddHHmm`) and `v` (the hall's id). The page shows them under the title,
+  marked as sent, only when the game, a real date and a hall in `m/halls.js` are all there,
+  and prints only its own words and the directory's name and city for the hall; a link
+  from an older app keeps the page as it was. `m/halls.js` is generator output (rerun
+  `tools/build_directory.py` after a venue change). The game list is pinned in both repos:
+  `GAMES` in `m/open.js` with its test here, and the app's `MatchLinkDetailsTest`. A new
+  game type changes both together.
 
 Run the tests with Node 18 or newer, no packages needed:
 
