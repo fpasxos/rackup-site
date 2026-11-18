@@ -176,6 +176,11 @@ test("on Android a good link opens the invite in RackUp, and keeps the hall, the
   }
 });
 
+test("the iPhone's open button says to update first, as only app 2.4.9 registers the scheme", () => {
+  const html = fs.readFileSync(path.join(ROOT, "f", "index.html"), "utf8");
+  assert.match(html, /<div id="ios-open" hidden>\s*<p><a id="open-ios" class="btn btn-ghost open-app"><span>Το έχεις ήδη; Άνοιξε την πρόσκληση<small lang="en">Already have it\? Open the invite<\/small><\/span><\/a><\/p>\s*<p class="note">Αν δεν ανοίξει, ενημέρωσε πρώτα το RackUp από το App Store\.<br>\s*<span lang="en">If it does not open, update RackUp from the App Store first\.<\/span><\/p>\s*<\/div>/);
+});
+
 test("on an iPhone the page offers the App Store, the app link and the code, and goes nowhere by itself", () => {
   for (const [ua, touch] of IOS) {
     const { el, loc } = run(ua, touch, LINK);

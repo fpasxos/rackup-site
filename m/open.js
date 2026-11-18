@@ -8,8 +8,9 @@
   var SHARE_TAGS = "utm_source=share&utm_medium=match_link";
   // The page's own Play link, for a bad link: no game to carry.
   var PLAY_URL = PLAY_BASE + encodeURIComponent(SHARE_TAGS);
-  // The id lands in an href, so only characters that cannot end or escape it pass.
-  var MATCH_ID = /^[A-Za-z0-9_-]{1,128}$/;
+  // The id lands in an href, so only characters that cannot end or escape it pass; 64 at most, as
+  // the app's incomingId takes, and never a name Firestore reserves (__x__).
+  var MATCH_ID = /^[A-Za-z0-9_-]{1,64}$/;
 
   // From app 2.4.8 the link also carries g, r, t and v (MatchLinkDetails in the app repo).
   // The page prints only its own words for them, and a hall only if the directory lists it.
@@ -35,12 +36,13 @@
   var DIRECTORY = { el: "../mpiliardo/", en: "../en/billiards/" };
 
   function isValidMatchId(id) {
-    return typeof id === "string" && MATCH_ID.test(id);
+    return typeof id === "string" && MATCH_ID.test(id) && !(id.slice(0, 2) === "__" && id.slice(-2) === "__");
   }
 
+  // Exactly one id: a repeated key is ambiguous, as on /go/ and /f/.
   function matchIdFrom(search) {
-    var id = new URLSearchParams(search || "").get("id");
-    return isValidMatchId(id) ? id : null;
+    var ids = new URLSearchParams(search || "").getAll("id");
+    return ids.length === 1 && isValidMatchId(ids[0]) ? ids[0] : null;
   }
 
   function isAndroid(userAgent) {

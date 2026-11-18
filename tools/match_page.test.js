@@ -54,12 +54,12 @@ function shown(search, ua = IPHONE_UA) {
 test("a Firestore auto id and the full allowed alphabet are accepted", () => {
   assert.equal(page.matchIdFrom(`?id=${AUTO_ID}`), AUTO_ID);
   assert.equal(page.matchIdFrom("?id=a_B-9"), "a_B-9");
-  assert.equal(page.matchIdFrom(`?id=${"a".repeat(128)}`), "a".repeat(128));
+  assert.equal(page.matchIdFrom(`?id=${"a".repeat(64)}`), "a".repeat(64), "64, as the app's incomingId");
 });
 
 test("ids that could break out of an href or change the intent are rejected", () => {
   const hostile = [
-    "", "a".repeat(129), "abc;end", "abc#Intent", "abc/../x", "a b", "a\"b", "a'b", "a<b",
+    "", "a".repeat(65), "__system__", "__", "___", "abc;end", "abc#Intent", "abc/../x", "a b", "a\"b", "a'b", "a<b",
     "javascript:alert(1)", "a%2Fb", "abc%0A", "ματς", "a.b", "a&b"
   ];
   for (const id of hostile) {
@@ -126,7 +126,8 @@ test("an iPhone gets an open button on the app's own scheme beside the App Store
   assert.equal(page.appUrl(AUTO_ID), `rackup://match/${AUTO_ID}`);
   assert.equal(el["app-store"].hidden, false);
   assert.equal(el.android.hidden, true);
-  assert.match(html, /<p id="ios-open" hidden><a id="open-ios" class="btn btn-ghost open-app"><span>Το έχεις ήδη; Άνοιξε στο RackUp<small lang="en">Already have it\? Open in RackUp<\/small><\/span><\/a><\/p>/);
+  // Only app 2.4.9 registers the scheme on an iPhone: an older one gets Safari's "cannot open".
+  assert.match(html, /<div id="ios-open" hidden>\s*<p><a id="open-ios" class="btn btn-ghost open-app"><span>Το έχεις ήδη; Άνοιξε στο RackUp<small lang="en">Already have it\? Open in RackUp<\/small><\/span><\/a><\/p>\s*<p class="note">Αν δεν ανοίξει, ενημέρωσε πρώτα το RackUp από το App Store\.<br>\s*<span lang="en">If it does not open, update RackUp from the App Store first\.<\/span><\/p>\s*<\/div>/);
   assert.match(html, /<a id="open-ios"(?![^>]*href)[^>]*>/, "open-ios must have no href until the script sets one");
 });
 
@@ -138,6 +139,18 @@ test("a bad link jumps nowhere and offers no game to open, on any phone", () => 
     assert.equal(el.android.hidden, true, ua);
     assert.equal(el["ios-open"].hidden, true, ua);
     assert.equal(el["google-play"].attributes.href, undefined, "the static Play link stays: " + ua);
+  }
+});
+
+test("a link with two ids opens nothing, as /go/ and /f/ refuse a repeated key", () => {
+  assert.equal(page.matchIdFrom(`?id=${AUTO_ID}&id=Xy12ab_CD-ef`), null);
+  assert.equal(page.matchIdFrom(`?id=${AUTO_ID}&id=${AUTO_ID}`), null);
+  for (const ua of [ANDROID_UA, IPHONE_UA]) {
+    const { el, jumps } = wired(ua, `?id=${AUTO_ID}&id=Xy12ab_CD-ef`);
+    assert.deepEqual(jumps, [], ua);
+    assert.equal(el["bad-link"].hidden, false, ua);
+    assert.equal(el.android.hidden, true, ua);
+    assert.equal(el["ios-open"].hidden, true, ua);
   }
 });
 
