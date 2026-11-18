@@ -6,10 +6,12 @@ const test = require("node:test");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
+const vm = require("node:vm");
 
 const ROOT = path.resolve(__dirname, "..");
 const read = (file) => fs.readFileSync(path.join(ROOT, file), "utf8");
 const page = require(path.join(ROOT, "go", "go.js"));
+const HALLS = require(path.join(ROOT, "m", "halls.js"));
 const html = read("go/index.html");
 
 // Literals the app repo's store-assets/hall-links/hall_links.py builds; change both together.
@@ -80,11 +82,15 @@ const UA = {
   windowsChrome: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
 };
 
-// Starts as go/index.html does: only the desktop block is hidden.
+// Starts as go/index.html does: only the desktop and hall blocks are hidden.
+const HALL_IDS = ["hall-open", "hall-name", "hall-city", "hall-en", "open-app", "stores-note"];
 function fakeDocument() {
   const elements = {};
-  for (const id of ["app-store", "google-play", "opening", "desktop"]) {
-    elements[id] = { hidden: id === "desktop", attributes: {}, setAttribute(k, v) { this.attributes[k] = v; } };
+  for (const id of ["app-store", "google-play", "opening", "desktop", ...HALL_IDS]) {
+    elements[id] = {
+      hidden: id === "desktop" || id === "hall-open", attributes: {}, textContent: "",
+      setAttribute(k, v) { this.attributes[k] = v; }
+    };
   }
   return { elements, getElementById: (id) => elements[id] };
 }
@@ -93,12 +99,25 @@ function fakeLocation(search) {
   return { search, replaced: [], replace(url) { this.replaced.push(url); } };
 }
 
-function run(userAgent, maxTouchPoints, search) {
+// Without halls the page runs as it did before it knew any: as if m/halls.js had failed to load.
+function run(userAgent, maxTouchPoints, search, halls) {
   const doc = fakeDocument();
   const loc = fakeLocation(search);
-  page.wire(doc, { userAgent, maxTouchPoints }, loc);
+  page.wire(doc, { userAgent, maxTouchPoints }, loc, halls);
   return { doc, loc, hrefs: [doc.elements["app-store"].attributes.href, doc.elements["google-play"].attributes.href] };
 }
+
+// The app repo's link test parses these; change both together. The fallback is the poster's Play link.
+const HALL_INTENT = "intent://venue/venue-nax-galaxias#Intent;scheme=rackup;package=com.rackup.app;" +
+  "S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.rackup.app" +
+  "%26referrer%3Dutm_source%253Dhall%2526utm_medium%253Dqr%2526utm_campaign%253Dnax-galaxias;end";
+// The Rankings hall card's QR code: s=card.
+const CARD_PLAY = "https://play.google.com/store/apps/details?id=com.rackup.app" +
+  "&referrer=utm_source%3Dcard%26utm_medium%3Dqr%26utm_campaign%3Dath-king8";
+const CARD_INTENT = "intent://venue/venue-ath-king8#Intent;scheme=rackup;package=com.rackup.app;" +
+  "S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.rackup.app" +
+  "%26referrer%3Dutm_source%253Dcard%2526utm_medium%253Dqr%2526utm_campaign%253Dath-king8;end";
+const CARD_APP_STORE = "https://apps.apple.com/gr/app/apple-store/id6800614202?pt=12aB34&ct=card-ath-king8&mt=8";
 
 test("hall slugs as hall_links.py derives them are accepted", () => {
   for (const slug of ["nax-galaxias", "ath-king8", "vol-galaxy", "a", "9", "a1-b2-c3", "a".repeat(30)]) {
@@ -156,7 +175,7 @@ test("every App Store link names the Greek storefront unless its country's App S
   const greek = "apps.apple.com/gr/app/";
   for (const token of ["", "12aB34", page.PROVIDER_TOKEN]) {
     for (const hall of [null, "nax-galaxias", "a".repeat(30), "cy", "cyprus-pool", "lefkosia-cy"]) {
-      for (const source of [null, undefined, "meta", "ig", "fb"]) {
+      for (const source of [null, undefined, "meta", "ig", "fb", "card"]) {
         const url = page.buildAppStoreUrl(hall, token, source);
         assert.ok(url.startsWith("https://" + greek), `${url} names no storefront`);
       }
@@ -321,8 +340,8 @@ test("the general code and a hostile h both send phones to the general links", (
   }
 });
 
-test("only meta, ig and fb are sources, and only when s appears once", () => {
-  for (const key of ["meta", "ig", "fb"]) {
+test("only meta, ig, fb and card are sources, and only when s appears once", () => {
+  for (const key of ["meta", "ig", "fb", "card"]) {
     assert.equal(page.sourceFrom(`?s=${key}`), key);
     assert.equal(page.sourceFrom(`?s=${key}&h=ath-tonight&fbclid=IwAR0abc`), key);
     assert.equal(page.isValidSource(key), true, key);
@@ -382,7 +401,9 @@ test("a ct that would pass Apple's 30 characters drops the source, never the cam
   assert.equal(page.campaignToken("a".repeat(26), "meta"), "a".repeat(26));
   assert.equal(page.campaignToken("a".repeat(27), "ig"), "ig-" + "a".repeat(27));
   assert.equal(page.campaignToken("a".repeat(28), "fb"), "a".repeat(28));
-  for (const source of ["meta", "ig", "fb", null]) {
+  assert.equal(page.campaignToken("a".repeat(25), "card"), "card-" + "a".repeat(25));
+  assert.equal(page.campaignToken("a".repeat(26), "card"), "a".repeat(26));
+  for (const source of ["meta", "ig", "fb", "card", null]) {
     for (let n = 1; n <= 30; n++) {
       const token = page.campaignToken("a".repeat(n), source);
       assert.ok(token.length <= 30, `${source} with ${n} gives ${token.length}`);
@@ -644,7 +665,8 @@ test("the page is noindex, previews well and loads no script but its own", () =>
   const image = html.match(/property="og:image" content="https:\/\/getrackup\.com\/([^"]+)"/)[1];
   assert.ok(fs.existsSync(path.join(ROOT, image)), `og:image ${image} is not in the repo`);
   const scripts = [...html.matchAll(/<script\b[^>]*>/g)].map((m) => m[0]);
-  assert.deepEqual(scripts, ['<script src="go.js" defer>']);
+  // The halls first: deferred scripts run in order, and go.js names a hall from them.
+  assert.deepEqual(scripts, ['<script src="../m/halls.js" defer>', '<script src="go.js" defer>']);
   assert.doesNotMatch(html, /<img\b|<iframe\b|gtag|googletagmanager|analytics/i);
 });
 
@@ -679,4 +701,201 @@ test("the page stays out of the sitemap, is published, and has no en or em dash"
   for (const file of ["go/index.html", "go/go.js", "tools/go_page.test.js"]) {
     assert.ok(!dashes.test(read(file)), `${file} has a dash`);
   }
+});
+
+test("on Android a listed hall's poster opens the app on that hall, with the poster's Play link as the fallback", () => {
+  for (const ua of [UA.androidChrome, UA.samsungInternet, UA.facebookAndroid, UA.instagramAndroid]) {
+    const { doc, loc, hrefs } = run(ua, 5, "?h=nax-galaxias", HALLS);
+    const el = doc.elements;
+    assert.deepEqual(loc.replaced, [HALL_INTENT], ua);
+    assert.deepEqual(hrefs, [page.appStoreUrl("nax-galaxias"), HALL_PLAY]);
+    // Chrome may refuse to open an app without a tap, so the page keeps the hall and a button.
+    assert.equal(el["open-app"].attributes.href, HALL_INTENT);
+    assert.equal(el["hall-open"].hidden, false);
+    assert.equal(el.opening.hidden, true, "it opens RackUp, not the app store");
+    assert.equal(el.desktop.hidden, true);
+    assert.equal(el["app-store"].hidden, true, "an Android phone sees only Google Play");
+    assert.equal(el["google-play"].hidden, false);
+    assert.equal(el["stores-note"].hidden, true);
+  }
+  assert.equal(page.venueIntentUrl("nax-galaxias"), HALL_INTENT);
+});
+
+test("the fallback decodes once to the poster's or the card's Play link, referrer and all", () => {
+  const fallback = (intent) => decodeURIComponent(intent.match(/;S\.browser_fallback_url=([^;]*);end$/)[1]);
+  assert.equal(fallback(HALL_INTENT), HALL_PLAY);
+  assert.equal(fallback(CARD_INTENT), CARD_PLAY);
+  const referrer = (url) => new URL(url).searchParams.get("referrer");
+  assert.equal(referrer(fallback(HALL_INTENT)), "utm_source=hall&utm_medium=qr&utm_campaign=nax-galaxias");
+  assert.equal(referrer(fallback(CARD_INTENT)), "utm_source=card&utm_medium=qr&utm_campaign=ath-king8");
+});
+
+test("the hall and its city come from the directory, never from the link", () => {
+  const search = "?h=nax-galaxias&name=" + encodeURIComponent("Call 6900000000") + "&n=Fake&v=venue-ath-king8";
+  const el = run(UA.androidChrome, 5, search, HALLS).doc.elements;
+  assert.equal(el["hall-name"].textContent, "Galaxias Billiards");
+  assert.equal(el["hall-name"].attributes.href, "../mpiliardo/naxos/#venue-nax-galaxias");
+  assert.equal(el["hall-city"].textContent, ", Νάξος");
+  assert.equal(el["hall-en"].textContent, "Galaxias Billiards, Naxos");
+  for (const id of HALL_IDS) assert.ok(!/6900000000|Fake|King/.test(el[id].textContent), id);
+  assert.doesNotMatch(read("go/go.js"), /innerHTML|outerHTML|insertAdjacentHTML|document\.write/);
+});
+
+test("every listed hall's poster opens that hall, named and linked to its place in the directory", () => {
+  for (const [id, [name, , cityEn, slug]] of Object.entries(HALLS)) {
+    const hall = id.replace(/^venue-/, "");
+    const { doc, loc } = run(UA.androidChrome, 5, `?h=${hall}`, HALLS);
+    assert.deepEqual(loc.replaced, [page.venueIntentUrl(hall)], id);
+    assert.ok(loc.replaced[0].startsWith(`intent://venue/${id}#Intent;scheme=rackup;package=com.rackup.app;`), id);
+    assert.equal(doc.elements["hall-name"].textContent, name, id);
+    assert.equal(doc.elements["hall-en"].textContent, `${name}, ${cityEn}`, id);
+    assert.equal(doc.elements["hall-name"].attributes.href, `../mpiliardo/${slug}/#${id}`, id);
+    assert.ok(read(`mpiliardo/${slug}/index.html`).includes(`id="${id}"`), `${id} is not anchored on its page`);
+  }
+});
+
+test("the Rankings card's QR, s=card, tags card and qr, ct card-<slug>, and opens the hall like a poster", () => {
+  assert.equal(page.playUrl("ath-king8", "card"), CARD_PLAY);
+  assert.equal(page.buildAppStoreUrl("ath-king8", "12aB34", "card"), CARD_APP_STORE);
+  assert.equal(page.venueIntentUrl("ath-king8", "card"), CARD_INTENT);
+  for (const ua of [UA.androidChrome, UA.samsungInternet, UA.instagramAndroid]) {
+    const { doc, loc, hrefs } = run(ua, 5, "?h=ath-king8&s=card", HALLS);
+    assert.deepEqual(loc.replaced, [CARD_INTENT], ua);
+    assert.deepEqual(hrefs, [page.appStoreUrl("ath-king8", "card"), CARD_PLAY]);
+    assert.equal(doc.elements["open-app"].attributes.href, CARD_INTENT);
+    assert.equal(doc.elements["hall-open"].hidden, false);
+  }
+  // A card whose hall is not listed is tagged the same way and goes to Play, as any other link does.
+  assert.deepEqual(run(UA.androidChrome, 5, "?h=ath-tonight&s=card", HALLS).loc.replaced,
+    [page.playUrl("ath-tonight", "card")]);
+  assert.equal(new URL(page.playUrl(null, "card")).searchParams.get("referrer"),
+    "utm_source=card&utm_medium=qr&utm_campaign=general");
+});
+
+test("iPhones and computers are unchanged for a listed hall: the App Store at once, or both buttons", () => {
+  for (const [search, hall, source] of [["?h=nax-galaxias", "nax-galaxias", null], ["?h=ath-king8&s=card", "ath-king8", "card"]]) {
+    for (const [ua, touch] of [[UA.iphoneSafari, 5], [UA.ipadDesktopMode, 5], [UA.instagramIos, 5]]) {
+      const listed = run(ua, touch, search, HALLS);
+      assert.deepEqual(listed.loc.replaced, [page.appStoreUrl(hall, source)], search);
+      assert.deepEqual(listed.hrefs, run(ua, touch, search).hrefs, search);
+      assert.equal(listed.doc.elements["hall-open"].hidden, true);
+      assert.equal(listed.doc.elements.opening.hidden, false);
+    }
+    for (const [ua, touch] of [[UA.macSafari, 0], [UA.windowsChrome, 0]]) {
+      const { doc, loc, hrefs } = run(ua, touch, search, HALLS);
+      assert.deepEqual(loc.replaced, [], search);
+      assert.deepEqual(hrefs, [page.appStoreUrl(hall, source), page.playUrl(hall, source)]);
+      assert.equal(doc.elements.desktop.hidden, false);
+      assert.equal(doc.elements["hall-open"].hidden, true);
+      assert.equal(doc.elements["app-store"].hidden, false);
+    }
+  }
+});
+
+test("an ad or bio link, an unlisted or repeated h, or no hall list keeps Android's Play redirect", () => {
+  const cases = [
+    ["?s=meta&h=nax-galaxias", HALLS, page.playUrl("nax-galaxias", "meta")],
+    ["?s=ig&h=nax-galaxias", HALLS, page.playUrl("nax-galaxias", "ig")],
+    ["?s=fb&h=nax-galaxias", HALLS, page.playUrl("nax-galaxias", "fb")],
+    ["?s=meta&h=nax-galaxias&p=ig&pl=Instagram_Reels", HALLS, page.playUrl("nax-galaxias", "meta", "ig_reels")],
+    ["?h=ath-tonight", HALLS, page.playUrl("ath-tonight")],
+    ["?h=nax-galaxias&h=ath-king8", HALLS, GENERAL_PLAY],
+    ["?h=" + encodeURIComponent("nax-galaxias#Intent;end"), HALLS, GENERAL_PLAY],
+    ["", HALLS, GENERAL_PLAY],
+    ["?h=nax-galaxias", undefined, HALL_PLAY],
+    ["?h=nax-galaxias", {}, HALL_PLAY],
+    ["?h=nax-galaxias", null, HALL_PLAY]
+  ];
+  for (const [search, halls, play] of cases) {
+    for (const ua of [UA.androidChrome, UA.facebookAndroid]) {
+      const { doc, loc } = run(ua, 5, search, halls);
+      assert.deepEqual(loc.replaced, [play], search);
+      assert.equal(doc.elements["hall-open"].hidden, true, search);
+      assert.equal(doc.elements["open-app"].attributes.href, undefined, search);
+      assert.equal(doc.elements["app-store"].hidden, false, search);
+    }
+  }
+});
+
+test("an unknown or repeated s is no s at all, so a listed hall still opens", () => {
+  for (const extra of ["s=google", "s=", "s", "s=meta&s=ig", "s=card&s=card", "S=card", "s=__proto__"]) {
+    assert.deepEqual(run(UA.androidChrome, 5, `?h=nax-galaxias&${extra}`, HALLS).loc.replaced, [HALL_INTENT], extra);
+  }
+});
+
+test("the hall builder refuses anything but a valid hall from a poster or a card", () => {
+  for (const bad of [null, undefined, "", "NAX", "nax galaxias", "a".repeat(31), "nax;end", "nax#Intent"]) {
+    assert.throws(() => page.venueIntentUrl(bad), /invalid hall slug/, String(bad));
+  }
+  for (const source of ["meta", "ig", "fb"]) {
+    assert.throws(() => page.venueIntentUrl("nax-galaxias", source), /only a poster or a card opens a hall/, source);
+  }
+  assert.throws(() => page.venueIntentUrl("nax-galaxias", "google"), /invalid source/);
+});
+
+test("every listed hall keeps its card- and f- prefix within Apple's 30 characters", () => {
+  for (const id of Object.keys(HALLS)) {
+    const hall = id.replace(/^venue-/, "");
+    assert.equal(page.campaignToken(hall, "card"), `card-${hall}`, id);
+    assert.equal(page.campaignToken(hall, "f"), `f-${hall}`, id);
+  }
+});
+
+test("taggedAppStoreUrl tags another page's installs with its prefix, by the same storefront and rule", () => {
+  const pt = page.PROVIDER_TOKEN;
+  const store = (front, ct) => `https://apps.apple.com/${front}/app/apple-store/id6800614202?pt=${pt}&ct=${ct}&mt=8`;
+  assert.equal(page.taggedAppStoreUrl("ath-king8", "f"), store("gr", "f-ath-king8"));
+  assert.equal(page.taggedAppStoreUrl("cy-lim-century", "f"), store("cy", "f-cy-lim-century"));
+  assert.equal(page.taggedAppStoreUrl(null, "f"), store("gr", "f-general"));
+  assert.equal(page.taggedAppStoreUrl("a".repeat(29), "f"), store("gr", "a".repeat(29)));
+  for (const bad of ["", "F", "f-x", "f&ct=evil", "f1", "f ", null, undefined, 1]) {
+    assert.throws(() => page.taggedAppStoreUrl("ath-king8", bad), /invalid ct prefix/, String(bad));
+  }
+  assert.throws(() => page.taggedAppStoreUrl("ath king8", "f"), /invalid hall slug/);
+});
+
+// go.js as a browser runs it: a classic script, no module, the page's globals around it.
+function loadInBrowser(ids, search, halls) {
+  const elements = {};
+  for (const id of ids) {
+    elements[id] = {
+      hidden: id === "desktop" || id === "hall-open", attributes: {}, textContent: "",
+      setAttribute(k, v) { this.attributes[k] = v; }
+    };
+  }
+  const loc = fakeLocation(search);
+  const win = {
+    document: { getElementById: (id) => elements[id] || null },
+    navigator: { userAgent: UA.androidChrome, maxTouchPoints: 5 },
+    location: loc, URLSearchParams, RACKUP_HALLS: halls
+  };
+  vm.runInNewContext(read("go/go.js"), win);
+  return { win, loc, elements };
+}
+
+test("in a browser go.js runs the go page, and on any other page only lends its builders", () => {
+  const GO_PAGE = ["app-store", "google-play", "opening", "desktop", ...HALL_IDS];
+  const go = loadInBrowser(GO_PAGE, "?h=nax-galaxias", HALLS);
+  assert.deepEqual(go.loc.replaced, [HALL_INTENT]);
+  assert.equal(go.elements["hall-open"].hidden, false);
+  // The invite page loads go.js for its store links and has no #opening: nothing moves there.
+  const other = loadInBrowser(["app-store", "google-play"], "?h=nax-galaxias", HALLS);
+  assert.deepEqual(other.loc.replaced, []);
+  assert.deepEqual(other.elements["app-store"].attributes, {});
+  assert.equal(other.win.RACKUP_GO.taggedAppStoreUrl("ath-king8", "f"), page.taggedAppStoreUrl("ath-king8", "f"));
+  assert.equal(other.win.RACKUP_GO.platformOf(UA.iphoneSafari, 5), "ios");
+  // Without m/halls.js the go page redirects as it did before it knew any hall.
+  assert.deepEqual(loadInBrowser(GO_PAGE, "?h=nax-galaxias").loc.replaced, [HALL_PLAY]);
+});
+
+test("the hall block starts hidden and says what the approved page says, around a button the script fills", () => {
+  const block = html.match(/<div id="hall-open" hidden>([\s\S]*?)<\/div>/);
+  assert.ok(block, "#hall-open must start hidden");
+  assert.match(block[1], /<h1>Ανοίγει το RackUp…<\/h1>/);
+  assert.match(block[1], /<p class="tag" lang="en">Opening RackUp…<\/p>/);
+  assert.match(block[1], /<span>Άνοιξε την αίθουσα στο RackUp<small lang="en">Open the hall in RackUp<\/small><\/span>/);
+  assert.match(block[1], /Αν δεν έχεις την εφαρμογή, ανοίγει το Google Play\./);
+  assert.match(block[1], /<span lang="en">No app yet\? Google Play opens instead\.<\/span>/);
+  assert.match(html, /<a id="open-app"(?![^>]*href)[^>]*>/, "open-app must have no href until the script sets one");
+  for (const id of HALL_IDS) assert.equal((html.match(new RegExp(`id="${id}"`, "g")) || []).length, 1, id);
 });

@@ -17,7 +17,7 @@ path on `getrackup.com`, so links already in the app and on QR codes keep workin
 | `galliko-mpiliardo/`, `en/carom-billiards/` | Carom page: every hall known to have carom tables, by city, with the count where known | generator |
 | `sitemap.xml` | Every page on the site | generator |
 | `m/` | Landing page for match links shared from the app (`noindex`, not in the sitemap). From app 2.4.8 a link also carries the game, its start and its hall, which the page shows as sent | hand, except `m/halls.js`, the halls a link may name (generator) |
-| `go/` | Where printed QR codes point: sends phones to their app store with tagged links (`noindex`, not in the sitemap) | hand |
+| `go/` | Where printed QR codes point: sends phones to their app store with tagged links, and from app 2.4.9 opens a listed hall in the Android app (`noindex`, not in the sitemap) | hand |
 | `media/social/` | JPEGs and MP4s that Instagram fetches by URL for posts the RackUp publisher sends out at their scheduled times (linked from nothing, not in the sitemap; `tools/test_social_media.py` checks their format). Safe to remove once those posts are out | copied from the publisher's media folder |
 | `assets/site.css` | The one stylesheet: the app's Felt and Neon tokens and every component | hand |
 | `assets/fonts/` | Self-hosted Space Grotesk, Hanken Grotesk (Latin) and Commissioner (Greek), with their OFL licences | `tools/make_fonts.py` |
@@ -276,6 +276,20 @@ most 30 characters; anything else counts as the general code.
   tag is at most 40 characters, or there is none. Nothing else in the address is
   read, `fbclid` included. Apple's `ct` stays one per ad: a placement would split
   its counts under Apple's threshold of 5.
+- The QR code on the Rankings hall card (app 2.4.9) adds `s=card`: Play gets
+  `utm_source=card&utm_medium=qr`, Apple `ct=card-<slug>`.
+- **A listed hall opens in the Android app** (app 2.4.9). When `h` is a hall in
+  `m/halls.js` and `s` is absent or `card`, Android goes to
+  `intent://venue/venue-<slug>#Intent;scheme=rackup;package=com.rackup.app;S.browser_fallback_url=...;end`
+  instead of Play: the app opens on the hall, or Chrome opens the same tagged Play link
+  when it is not installed, so the referrer is unchanged. Chrome may refuse an app launch
+  without a tap, so the page also shows the hall and an **Open the hall in RackUp**
+  button with the same link. iPhones keep the instant App Store jump and computers the
+  two buttons; ads, bios and unlisted halls keep the Play redirect. Without
+  `m/halls.js` (it loads first) every link behaves as before. App versions before 2.4.9
+  have no `venue` link, so Chrome falls back to Play, as the page did before.
+- `go/go.js` also lends its store link builders to the invite page as `RACKUP_GO`
+  (`taggedAppStoreUrl`, `platformOf`); it redirects only a page with `#opening`.
 
 ```bash
 node --test tools/go_page.test.js
