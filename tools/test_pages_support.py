@@ -167,6 +167,19 @@ class InviteLinksPolicyTest(unittest.TestCase):
                      "What deletion removes", "in the summary in Greek too"):
             self.assertIn(fact, newest)
 
+    def test_invite_shared_never_claims_an_invite_was_sent(self):
+        # The app logs it when the share sheet opens or the QR code shows; it cannot see a send.
+        main = main_html(current("privacy.html"))
+        (item,) = [visible_text(li) for li in re.findall(r"<li>(.*?)</li>", main, re.S) if "<code>invite_shared</code>" in li]
+        self.assertIn("when you open your phone's share sheet with an invite to play at a hall, or show its QR code", item)
+        self.assertIn("never whether you sent it, or to whom", item)
+        text = visible_text(main)
+        self.assertIn("όταν ανοίγεις την κοινοποίηση μιας πρόσκλησης για μια αίθουσα ή δείχνεις τον κωδικό QR της", text)
+        self.assertIn("όχι όμως αν την έστειλες ή σε ποιον", text)
+        for claim in ("when you share an invite", "whether you sent its link", "όταν στέλνεις σε φίλο πρόσκληση",
+                      "αν έστειλες τον σύνδεσμο"):
+            self.assertNotIn(claim, text)
+
     def test_invites_are_in_the_notifications_retention_and_deletion_parts(self):
         main = main_html(current("privacy.html"))
         text = visible_text(main)
