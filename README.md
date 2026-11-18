@@ -281,6 +281,34 @@ most 30 characters; anything else counts as the general code.
 node --test tools/go_page.test.js
 ```
 
+### Halls and games that open in the app (app 2.4.9)
+
+Merged once iOS 2.4.9 is live, as the iPhone buttons need it.
+
+- The QR code on the Rankings hall card (app 2.4.9) adds `s=card`: Play gets
+  `utm_source=card&utm_medium=qr`, Apple `ct=card-<slug>`.
+- **A listed hall opens in the Android app.** When `h` is a hall in `m/halls.js` (the go
+  page loads it first) and `s` is absent or `card`, Android goes to
+  `intent://venue/venue-<slug>#Intent;scheme=rackup;package=com.rackup.app;S.browser_fallback_url=...;end`
+  instead of Play: the app opens on the hall, or Chrome opens the same tagged Play link
+  when it is not installed, so the referrer is unchanged. Chrome may refuse an app launch
+  without a tap, so the page also shows the hall and an **Open the hall in RackUp**
+  button with the same link. An app's own browser (its user agent says `; wv)`) may answer
+  an app link with an error page, so there the page jumps nowhere and shows the hall, the
+  button and Google Play under **Get RackUp**. iPhones keep the instant App Store jump and
+  computers the two buttons; ads, bios and unlisted halls keep the Play redirect. Without
+  `m/halls.js` every link behaves as before. App versions before 2.4.9 have no `venue`
+  link, so Chrome falls back to Play, as the page did before.
+- **A shared game opens in the app.** On Android `m/open.js` jumps to
+  `rackup://match/<id>` (every app since 2.4.8 opens it) and keeps its button; an app's own
+  browser gets the buttons only. The Play link carries
+  `utm_source=share&utm_medium=match_link&rackup_match=<id>`, which app 2.4.9 reads once
+  after an install to open that game. An iPhone gets **Already have it? Open in RackUp**
+  on the same scheme beside the App Store, with the same update note. The page takes
+  exactly one `id` of at most 64 characters, never a reserved `__x__`, and still reads
+  nothing from the database. The intent literal is pinned in `tools/match_page.test.js`
+  and in the app's `LaunchIntentOpensOnceTest`.
+
 ## Social profiles
 
 Every footer links RackUp on Instagram and Facebook: the generator from `INSTAGRAM`
