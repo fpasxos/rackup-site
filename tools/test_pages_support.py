@@ -163,8 +163,25 @@ class InviteLinksPolicyTest(unittest.TestCase):
 
     def test_the_newest_note_says_what_changed(self):
         newest = next(p for p in paragraphs(current("privacy.html")) if p.startswith("What changed on "))
-        for fact in ("version 2.4.9", "invite a friend", "Google Play", "in the summary in Greek too"):
+        for fact in ("version 2.4.9", "invite a friend", "Google Play", "37 in all", "How long we keep it",
+                     "What deletion removes", "in the summary in Greek too"):
             self.assertIn(fact, newest)
+
+    def test_invites_are_in_the_notifications_retention_and_deletion_parts(self):
+        main = main_html(current("privacy.html"))
+        text = visible_text(main)
+        lists = {visible_text(li) for li in re.findall(r"<li>(.*?)</li>", main, re.S)}
+        self.assertIn("Invites: they work for 14 days and are deleted 30 days after they expire, with their joins.",
+                      lists)
+        self.assertIn("the invites you made, and your joins through other players' invites;", lists)
+        for said in ("each running invite's code, when it ends, how many friends joined with it",
+                     "none goes at night, from 23:00 to 09:00 at the hall's local time, nor later",
+                     "invitations to games at the table and invites",
+                     "no invite code",
+                     "για κάθε πρόσκληση που ισχύει ακόμη, τον κωδικό της",
+                     "οι προσκλήσεις σου σε φίλους και ό,τι καταγράψαμε όταν μπήκες με πρόσκληση άλλου",
+                     "μαζί με όσα καταγράψαμε για όσους μπήκαν με αυτήν"):
+            self.assertIn(said, text)
 
 
 class PolicyDateTest(unittest.TestCase):
@@ -204,6 +221,7 @@ APP_EVENTS = {
     "player_followed", "saved_search_created", "notifications_opened", "notification_row_tapped",
     "match_shared", "seat_check_answered", "rankings_opened", "ranking_hall_opened", "share_opened",
     "table_game_logged", "screen_view", "post_started",
+    "link_opened", "invite_shared", "invite_joined", "invite_undone",
 }
 
 # The app's UserProperty names (core/presentation Analytics.kt, from 2.4.8).
