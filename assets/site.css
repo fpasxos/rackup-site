@@ -240,6 +240,7 @@ p{margin:0 0 1em}
 .game-icon .dot{fill:var(--accent);stroke:none}
 .share-card #game-note{margin:10px 0 0}
 .open-app small{display:block;font-size:.75rem;font-weight:500}
+.share-card .open-row{margin-top:22px}
 
 /* Footer */
 .site-footer{border-top:1px solid var(--outline);margin-top:24px;padding:40px 0 48px;color:var(--muted);font-size:.92rem}
