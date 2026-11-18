@@ -1,5 +1,5 @@
-RackUp Privacy Policy Effective date: 19 November 2026 · Applies to the RackUp apps for Android and
-iPhone (com.rackup.app) What changed on 19 November 2026. From version 2.4.9 of the apps you can
+RackUp Privacy Policy Effective date: 18 November 2026 · Applies to the RackUp apps for Android and
+iPhone (com.rackup.app) What changed on 18 November 2026. From version 2.4.9 of the apps you can
 invite a friend to play at a hall, with a link or a QR code. Under What you post and write we say
 what an invite keeps, who can read it, what happens when your friend joins with it, and when we
 delete it; under Notifications, how we tell you, and the record our server keeps of each running
@@ -974,7 +974,7 @@ around as a guest). The Android app additionally verifies itself with Firebase A
 small team and we do not pretend to be immune to every risk, but if a breach affects your personal
 data we will notify the Hellenic Data Protection Authority and, where the law requires it, you.
 Changes to this policy If this policy changes, the new version is published at this address with a
-new effective date, and we say at the top what changed. This version, dated 19 November 2026, adds
+new effective date, and we say at the top what changed. This version, dated 18 November 2026, adds
 inviting a friend to play at a hall, how we tell you when a friend joins and the record of each
 running invite's joins and pushes, four analytics events, and the tags the Android app reads after
 an install from a hall's poster, a hall's share card, a friend's invite or a shared game's page,
