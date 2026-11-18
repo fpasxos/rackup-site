@@ -137,13 +137,17 @@ INVITE_LINES = (
      ("From version 2.4.9", "14 days", "never your name or user id", "reads nothing from our database",
       "Anyone with an account who has the code", "30 days after it expires", "when you delete your account")),
     ("Where new players come from.", "Links from posters and invites.",
-     ("From version 2.4.9", "once, on your phone", "except the invite's code", "On iPhone the app reads nothing")),
+     ("From version 2.4.9", "once, on your phone", "None of these tags is sent to us, except the invite's code",
+      "the app logs only that it opened a hall or an invite this way, as link_opened",
+      "On iPhone the app reads nothing")),
     ("Κοινοποίηση ματς.", "Πρόσκληση σε φίλο.",
      ("Από την έκδοση 2.4.9", "14 ημέρες", "ποτέ το όνομα ή το αναγνωριστικό χρήστη σου",
       "δεν διαβάζει τίποτα από τη βάση δεδομένων μας", "Όποιος έχει λογαριασμό και τον κωδικό",
       "30 ημέρες αφού λήξει", "όταν διαγράψεις τον λογαριασμό σου")),
     ("Στο Android, όταν εγκαθιστάς την εφαρμογή από σύνδεσμό μας", "Σύνδεσμοι από αφίσες και προσκλήσεις.",
-     ("Από την έκδοση 2.4.9", "μία φορά, στο τηλέφωνό σου", "εκτός από τον κωδικό της πρόσκλησης",
+     ("Από την έκδοση 2.4.9", "μία φορά, στο τηλέφωνό σου",
+      "Καμία από αυτές τις ετικέτες δεν μας στέλνεται, εκτός από τον κωδικό της πρόσκλησης",
+      "η εφαρμογή καταγράφει μόνο ότι άνοιξε έτσι μια αίθουσα ή μια πρόσκληση, με το συμβάν link_opened",
       "Στο iPhone η εφαρμογή δεν διαβάζει τίποτα")),
 )
 
@@ -164,8 +168,12 @@ class InviteLinksPolicyTest(unittest.TestCase):
     def test_the_newest_note_says_what_changed(self):
         newest = next(p for p in paragraphs(current("privacy.html")) if p.startswith("What changed on "))
         for fact in ("version 2.4.9", "invite a friend", "Google Play", "37 in all", "How long we keep it",
-                     "What deletion removes", "in the summary in Greek too"):
+                     "What deletion removes", "none of these tags is sent to us except an invite's code",
+                     "the app logs only that it opened one, as link_opened", "in the summary in Greek too"):
             self.assertIn(fact, newest)
+        # link_opened sends Analytics that the app opened a hall or invite from a link or the Play tags.
+        self.assertNotIn("Nothing about it is sent to us", visible_text(main_html(current("privacy.html"))))
+        self.assertNotIn("nothing about it is sent to us", newest)
 
     def test_an_invite_gives_its_hall_only_to_a_friend_with_none(self):
         # rackup#723: the star, then the home hall, for any account with none in the hall's country.
@@ -173,17 +181,23 @@ class InviteLinksPolicyTest(unittest.TestCase):
         for said in ("If the hall is in their own country, a friend with no usual hall yet gets it as their usual "
                      "hall and as a starred hall, which brings them its notifications; one who has a usual hall "
                      "keeps it.",
-                     "Your friend can undo what the invite made: the join, the follows, the usual hall and the star.",
+                     "Right after joining, your friend can undo it from the hall's page, which deletes the join and "
+                     "takes back the follows, the usual hall and the star the invite made. Later, they can still "
+                     "unfollow you, change their usual hall and remove the star.",
                      "home_venue_set, when you pick a home hall, at its end or later, and, from version 2.4.9, "
                      "when a friend's invite gives you one;",
                      "Αν η αίθουσα είναι στη χώρα του, ένας φίλος που δεν έχει ακόμη λέσχη την παίρνει ως λέσχη του "
                      "και στις αγαπημένες του, που του φέρνουν τις ειδοποιήσεις τους, ενώ όποιος έχει ήδη λέσχη "
                      "την κρατά.",
-                     "Ο φίλος σου μπορεί να αναιρέσει ό,τι έκανε η πρόσκληση: την καταγραφή, το ότι ακολουθείτε ο "
-                     "ένας τον άλλον, τη λέσχη και την αγαπημένη αίθουσα."):
+                     "Αμέσως μετά, ο φίλος σου μπορεί να το αναιρέσει από τη σελίδα της αίθουσας, οπότε σβήνουμε την "
+                     "καταγραφή και παίρνουμε πίσω ό,τι έκανε η πρόσκληση: το ότι ακολουθείτε ο ένας τον άλλον, τη "
+                     "λέσχη και την αγαπημένη αίθουσα. Αργότερα μπορεί ακόμη να σταματήσει να σε ακολουθεί, να αλλάξει "
+                     "λέσχη και να βγάλει την αίθουσα από τις αγαπημένες του."):
             self.assertIn(said, text)
-        for old in ("A friend who is new to RackUp", "Your friend can undo this.", "καινούργιος στο RackUp",
-                    "Ο φίλος σου μπορεί να το αναιρέσει."):
+        # rackup#723's undo is a card on the hall's page that a restart forgets; the text says so.
+        for old in ("A friend who is new to RackUp", "Your friend can undo this.", "Your friend can undo what",
+                    "καινούργιος στο RackUp", "Ο φίλος σου μπορεί να το αναιρέσει.",
+                    "Ο φίλος σου μπορεί να αναιρέσει ό,τι"):
             self.assertNotIn(old, text)
 
     def test_invite_shared_never_claims_an_invite_was_sent(self):
@@ -206,14 +220,25 @@ class InviteLinksPolicyTest(unittest.TestCase):
         self.assertIn("Invites: they work for 14 days and are deleted 30 days after they expire, with their joins.",
                       lists)
         self.assertIn("the invites you made, and your joins through other players' invites;", lists)
+        # Each cap as it is: a few a day for the others, per invite for invites.
+        self.assertIn('the records that keep the notifications about your new matches, direct challenges and '
+                      'invitations to games at the table, and your "No answer yet" notices, to a few a day;', lists)
+        self.assertIn("the record that keeps each of your invites to at most 10 friends who join and 5 pushes;", lists)
         for said in ("each running invite's code, when it ends, how many friends joined with it",
+                     "and drops an invite from that record within about a day of its end.",
                      "none goes at night, from 23:00 to 09:00 at the hall's local time, nor later",
-                     "invitations to games at the table and invites",
+                     "One invite acts on at most 10 friends who join and sends you at most 5 pushes.",
                      "no invite code",
                      "για κάθε πρόσκληση που ισχύει ακόμη, τον κωδικό της",
+                     "και τη βγάζει από την εγγραφή μέσα σε περίπου μία ημέρα αφού λήξει.",
+                     "Μια πρόσκληση μετρά το πολύ 10 φίλους και σου στέλνει το πολύ 5 ειδοποιήσεις push.",
                      "οι προσκλήσεις σου σε φίλους και ό,τι καταγράψαμε όταν μπήκες με πρόσκληση άλλου",
                      "μαζί με όσα καταγράψαμε για όσους μπήκαν με αυτήν"):
             self.assertIn(said, text)
+        # The server prunes the record in a daily sweep (rackup#714), not the moment an invite ends.
+        for old in ("drops an invite from that record once it ends", "τη βγάζει από την εγγραφή όταν λήξει",
+                    "invitations to games at the table and invites"):
+            self.assertNotIn(old, text)
 
 
 class PolicyDateTest(unittest.TestCase):

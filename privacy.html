@@ -52,8 +52,9 @@
     it</em> and <em>What deletion removes</em>, when invites go. Under <em>App usage analytics</em>
     we add that from the same version, on Android, the app reads once, on your phone, the tags
     Google Play passes on after an install from a hall's poster, a hall's share card or a friend's
-    invite, to open that hall or that invite, and that nothing about it is sent to us except an
-    invite's code. That version also logs four more analytics events, 37 in all:
+    invite, to open that hall or that invite; that none of these tags is sent to us except an
+    invite's code; and that the app logs only that it opened one, as <code>link_opened</code>. That
+    version also logs four more analytics events, 37 in all:
     <code>invite_shared</code>, <code>invite_joined</code>, <code>invite_undone</code> and
     <code>link_opened</code>, none of which carries a name, a user id or an invite's code. We say so
     in the summary in Greek too.</p>
@@ -631,8 +632,10 @@
   joins with it, we record who joined and when, you follow each other, and we tell you with a
   notification. If the hall is in their own country, a friend with no usual hall yet gets it as
   their usual hall and as a starred hall, which brings them its notifications; one who has a usual
-  hall keeps it. Your friend can undo what the invite made: the join, the follows, the usual hall
-  and the star. We delete an invite, with its joins, 30 days after it expires, and all
+  hall keeps it. Right after joining, your friend can undo it from the hall's page, which deletes
+  the join and takes back the follows, the usual hall and the star the invite made. Later, they can
+  still unfollow you, change their usual hall and remove the star. We delete an invite, with its
+  joins, 30 days after it expires, and all
   your invites and joins when you delete your account.</p>
   <p><strong>Games that found an opponent.</strong> We count the games that found an opponent in
   each city and hall, and show everyone who uses the app, guests included, those counts, the hours
@@ -708,7 +711,8 @@
   09:00 at the hall's local time, nor later. One invite acts on at most 10 friends who join and
   sends you at most 5 pushes. So that it keeps to that, our server keeps, under your account, each
   running invite's code, when it ends, how many friends joined with it and how many pushes it
-  sent, and drops an invite from that record once it ends. No app can read that record, and
+  sent, and drops an invite from that record within about a day of its end. No app can read that
+  record, and
   deleting your account deletes it.</p>
   <p>From version 2.4.3 of the apps, when someone posts an open match at a hall in the city on
   your profile, we may send you a <strong>city alert</strong>: a push naming the player who posted
@@ -920,8 +924,9 @@
   <p><strong>Links from posters and invites.</strong> On Android, when you install RackUp from a
   hall's poster, a hall's share card or a friend's invite, Google Play passes the app the same tags
   it passes Firebase Analytics. From version 2.4.9 the app reads them once, on your phone, to open
-  that hall or that invite. Nothing about it is sent to us, except the invite's code when your
-  friend's invite is used. On iPhone the app reads nothing like this.</p>
+  that hall or that invite. None of these tags is sent to us, except the invite's code when your
+  friend's invite is used, and the app logs only that it opened a hall or an invite this way, as
+  <code>link_opened</code>, described above. On iPhone the app reads nothing like this.</p>
   <p><strong>Analytics is not linked to your account.</strong> The app never calls Analytics'
   user id function, so Analytics keys on its own per installation identifier. One practical
   consequence, stated honestly: because these records are not tied to your account, we cannot
@@ -1234,9 +1239,9 @@
         starred venues, weekly schedule and blocked list;</li>
     <li>the day and time of the last city alert we sent you, and of the last notice from a starred
         hall that a place is free again;</li>
-    <li>the records that keep the notifications about your new matches, direct challenges,
-        invitations to games at the table and invites, and your "No answer yet" notices, to a few a
-        day;</li>
+    <li>the records that keep the notifications about your new matches, direct challenges and
+        invitations to games at the table, and your "No answer yet" notices, to a few a day;</li>
+    <li>the record that keeps each of your invites to at most 10 friends who join and 5 pushes;</li>
     <li>the count of the games you have played with a confirmed score;</li>
     <li>your follows of other players, and other players' follows of you;</li>
     <li>the ratings other players gave you;</li>
@@ -1566,9 +1571,11 @@
   αίθουσα. Όταν ο φίλος σου μπει με την πρόσκληση, καταγράφουμε ποιος μπήκε και πότε,
   ακολουθείτε ο ένας τον άλλον και σε ενημερώνουμε με μια ειδοποίηση. Αν η αίθουσα είναι στη χώρα
   του, ένας φίλος που δεν έχει ακόμη λέσχη την παίρνει ως λέσχη του και στις αγαπημένες του, που
-  του φέρνουν τις ειδοποιήσεις τους, ενώ όποιος έχει ήδη λέσχη την κρατά. Ο φίλος σου μπορεί να
-  αναιρέσει ό,τι έκανε η πρόσκληση: την καταγραφή, το ότι ακολουθείτε ο ένας τον άλλον, τη λέσχη
-  και την αγαπημένη αίθουσα. Μια πρόσκληση τη σβήνουμε 30 ημέρες αφού λήξει, μαζί με όσα καταγράψαμε για όσους
+  του φέρνουν τις ειδοποιήσεις τους, ενώ όποιος έχει ήδη λέσχη την κρατά. Αμέσως μετά, ο φίλος σου
+  μπορεί να το αναιρέσει από τη σελίδα της αίθουσας, οπότε σβήνουμε την καταγραφή και παίρνουμε
+  πίσω ό,τι έκανε η πρόσκληση: το ότι ακολουθείτε ο ένας τον άλλον, τη λέσχη και την αγαπημένη
+  αίθουσα. Αργότερα μπορεί ακόμη να σταματήσει να σε ακολουθεί, να αλλάξει λέσχη και να βγάλει την
+  αίθουσα από τις αγαπημένες του. Μια πρόσκληση τη σβήνουμε 30 ημέρες αφού λήξει, μαζί με όσα καταγράψαμε για όσους
   μπήκαν με αυτήν, και όταν διαγράψεις τον λογαριασμό σου σβήνουμε όλες τις προσκλήσεις σου και
   ό,τι καταγράψαμε όταν μπήκες με πρόσκληση άλλου.</p>
   <p>Κάθε 6 ώρες ο διακομιστής μας υπολογίζει για κάθε πόλη αν τρεις ή λιγότεροι από τους
@@ -1676,9 +1683,10 @@
   από την αφίσα ή την κάρτα μιας αίθουσας, ή από την πρόσκληση ενός φίλου, το Google Play δίνει
   στην εφαρμογή τις ίδιες ετικέτες που δίνει στο Firebase Analytics. Από την έκδοση 2.4.9, η
   εφαρμογή τις διαβάζει μία φορά, στο τηλέφωνό σου, για να ανοίξει εκείνη την αίθουσα ή εκείνη
-  την πρόσκληση. Τίποτα από αυτά δεν μας στέλνεται, εκτός από τον κωδικό της πρόσκλησης, όταν
-  χρησιμοποιείς την πρόσκληση του φίλου σου. Στο iPhone η εφαρμογή δεν διαβάζει τίποτα
-  τέτοιο.</p>
+  την πρόσκληση. Καμία από αυτές τις ετικέτες δεν μας στέλνεται, εκτός από τον κωδικό της
+  πρόσκλησης, όταν χρησιμοποιείς την πρόσκληση του φίλου σου, και η εφαρμογή καταγράφει μόνο ότι
+  άνοιξε έτσι μια αίθουσα ή μια πρόσκληση, με το συμβάν <code>link_opened</code> που γράφουμε
+  παραπάνω. Στο iPhone η εφαρμογή δεν διαβάζει τίποτα τέτοιο.</p>
   <p>Δεν υπάρχουν διαφημίσεις μέσα στις εφαρμογές, ούτε διαφημιστικά αναγνωριστικά, ούτε
   παρακολούθηση σε εφαρμογές άλλων εταιρειών. Δεν πουλάμε δεδομένα. Από την έκδοση 2.1.0
   υπάρχουν ειδοποιήσεις push και στο iPhone: αν τις επιτρέψεις, κρατάμε στον λογαριασμό σου
@@ -1727,8 +1735,8 @@
   23:00 έως τις 09:00, τοπική ώρα της αίθουσας, ούτε αργότερα. Μια πρόσκληση μετρά το πολύ 10
   φίλους και σου στέλνει το πολύ 5 ειδοποιήσεις push. Γι' αυτό ο διακομιστής μας κρατά στον
   λογαριασμό σου, για κάθε πρόσκληση που ισχύει ακόμη, τον κωδικό της, πότε λήγει, πόσοι φίλοι
-  μπήκαν με αυτήν και πόσες ειδοποιήσεις push σου έστειλε, και τη βγάζει από την εγγραφή όταν
-  λήξει. Καμία εφαρμογή δεν διαβάζει αυτή την εγγραφή, και σβήνεται όταν διαγράψεις τον
+  μπήκαν με αυτήν και πόσες ειδοποιήσεις push σου έστειλε, και τη βγάζει από την εγγραφή μέσα σε
+  περίπου μία ημέρα αφού λήξει. Καμία εφαρμογή δεν διαβάζει αυτή την εγγραφή, και σβήνεται όταν διαγράψεις τον
   λογαριασμό σου.
   Οι ειδοποιήσεις push για νέο ματς σε αίθουσα που έχεις στα αγαπημένα, για ματς που ταιριάζει σε
   αποθηκευμένη αναζήτησή σου ή στη δήλωσή σου ότι ψάχνεις παιχνίδι, ή για ματς που ανέβασε παίκτης
