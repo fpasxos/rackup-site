@@ -17,18 +17,22 @@ const AUTO_ID = "Xy12abCDef34GhIjKl56";
 const ANDROID_UA = "Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 Chrome/128.0 Mobile Safari/537.36";
 const IPHONE_UA = "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 Version/18.0 Mobile/15E148 Safari/604.1";
 const DESKTOP_UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/128.0 Safari/537.36";
+// Instagram's own browser on Android: "; wv)" marks a WebView (go/go.js isWebView).
+const WEBVIEW_UA = "Mozilla/5.0 (Linux; Android 14; Pixel 8; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 " +
+  "Chrome/128.0 Mobile Safari/537.36 Instagram 350.0.0.0";
 
 // The literal the app repo's LaunchIntentOpensOnceTest parses; change both together.
 const EXPECTED_INTENT = "intent://match/Xy12ab_CD-ef#Intent;scheme=rackup;package=com.rackup.app;" +
   "S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.rackup.app" +
-  "%26referrer%3Dutm_source%253Dshare%2526utm_medium%253Dmatch_link;end";
+  "%26referrer%3Dutm_source%253Dshare%2526utm_medium%253Dmatch_link%2526rackup_match%253DXy12ab_CD-ef;end";
 
 const GAME_IDS = ["game", "game-note", "game-what", "game-what-en", "game-when", "game-when-en", "game-hall", "game-city",
   "game-where-en"];
 
 function fakeDocument() {
   const elements = {};
-  for (const id of ["android", "open-app", "bad-link", "app-store", "google-play", "stores-note", "note-android", "note-ios",
+  for (const id of ["android", "open-app", "ios-open", "open-ios", "bad-link", "app-store", "google-play", "stores-note",
+    "note-android", "note-ios",
     ...GAME_IDS]) {
     elements[id] = {
       hidden: !["app-store", "google-play", "stores-note"].includes(id), attributes: {}, textContent: "",
@@ -50,12 +54,12 @@ function shown(search, ua = IPHONE_UA) {
 test("a Firestore auto id and the full allowed alphabet are accepted", () => {
   assert.equal(page.matchIdFrom(`?id=${AUTO_ID}`), AUTO_ID);
   assert.equal(page.matchIdFrom("?id=a_B-9"), "a_B-9");
-  assert.equal(page.matchIdFrom(`?id=${"a".repeat(128)}`), "a".repeat(128));
+  assert.equal(page.matchIdFrom(`?id=${"a".repeat(64)}`), "a".repeat(64), "64, as the app's incomingId");
 });
 
 test("ids that could break out of an href or change the intent are rejected", () => {
   const hostile = [
-    "", "a".repeat(129), "abc;end", "abc#Intent", "abc/../x", "a b", "a\"b", "a'b", "a<b",
+    "", "a".repeat(65), "__system__", "__", "___", "abc;end", "abc#Intent", "abc/../x", "a b", "a\"b", "a'b", "a<b",
     "javascript:alert(1)", "a%2Fb", "abc%0A", "ματς", "a.b", "a&b"
   ];
   for (const id of hostile) {
@@ -71,12 +75,85 @@ test("the intent url opens rackup match links in the RackUp package", () => {
   assert.equal(page.intentUrl("Xy12ab_CD-ef"), EXPECTED_INTENT);
 });
 
-test("the fallback decodes once to the Play listing with the share referrer", () => {
+test("the fallback decodes once to the Play listing with the share referrer and the game's id", () => {
   const fallback = page.intentUrl(AUTO_ID).match(/;S\.browser_fallback_url=([^;]*);end$/)[1];
   const play = new URL(decodeURIComponent(fallback));
   assert.equal(play.origin + play.pathname, "https://play.google.com/store/apps/details");
   assert.equal(play.searchParams.get("id"), "com.rackup.app");
-  assert.equal(play.searchParams.get("referrer"), "utm_source=share&utm_medium=match_link");
+  assert.equal(play.searchParams.get("referrer"), `utm_source=share&utm_medium=match_link&rackup_match=${AUTO_ID}`);
+});
+
+// The page with a spy for location.replace: what it shows, and where it jumped.
+function wired(ua, search) {
+  const doc = fakeDocument();
+  const jumps = [];
+  page.wire(doc, ua, search, HALLS, (url) => jumps.push(url));
+  return { el: doc.elements, jumps };
+}
+
+test("the game's Play link carries its id in the install tags, so a fresh install opens that game", () => {
+  const referrer = new URL(page.playUrl(AUTO_ID)).searchParams.get("referrer");
+  assert.equal(referrer, `utm_source=share&utm_medium=match_link&rackup_match=${AUTO_ID}`);
+  assert.throws(() => page.playUrl("a/b"));
+  for (const ua of [ANDROID_UA, WEBVIEW_UA, DESKTOP_UA]) {
+    assert.equal(wired(ua, `?id=${AUTO_ID}`).el["google-play"].attributes.href, page.playUrl(AUTO_ID), ua);
+  }
+});
+
+test("Android's Chrome opens the game in the app at once, and keeps the button in case it wants a tap", () => {
+  const { el, jumps } = wired(ANDROID_UA, "?id=Xy12ab_CD-ef");
+  assert.deepEqual(jumps, [EXPECTED_INTENT]);
+  assert.equal(el["open-app"].attributes.href, EXPECTED_INTENT);
+  assert.equal(el.android.hidden, false);
+  assert.equal(el["ios-open"].hidden, true);
+});
+
+test("an app's own browser on Android jumps nowhere and shows the open button and Google Play", () => {
+  assert.equal(page.isWebView(WEBVIEW_UA), true);
+  assert.equal(page.isWebView(ANDROID_UA), false);
+  const { el, jumps } = wired(WEBVIEW_UA, "?id=Xy12ab_CD-ef");
+  assert.deepEqual(jumps, []);
+  assert.equal(el.android.hidden, false);
+  assert.equal(el["open-app"].attributes.href, EXPECTED_INTENT);
+  assert.equal(el["google-play"].hidden, false);
+});
+
+test("an iPhone keeps the App Store and nothing moves", () => {
+  const { el, jumps } = wired(IPHONE_UA, `?id=${AUTO_ID}`);
+  assert.deepEqual(jumps, []);
+  assert.equal(el["app-store"].hidden, false);
+  assert.equal(el.android.hidden, true);
+  assert.equal(el["ios-open"].hidden, true);
+});
+
+test("a bad link jumps nowhere and offers no game to open, on any phone", () => {
+  for (const ua of [ANDROID_UA, WEBVIEW_UA, IPHONE_UA]) {
+    const { el, jumps } = wired(ua, "?id=" + encodeURIComponent("a/../b"));
+    assert.deepEqual(jumps, [], ua);
+    assert.equal(el["bad-link"].hidden, false, ua);
+    assert.equal(el.android.hidden, true, ua);
+    assert.equal(el["ios-open"].hidden, true, ua);
+    assert.equal(el["google-play"].attributes.href, undefined, "the static Play link stays: " + ua);
+  }
+});
+
+test("a link with two ids opens nothing, as /go/ and /f/ refuse a repeated key", () => {
+  assert.equal(page.matchIdFrom(`?id=${AUTO_ID}&id=Xy12ab_CD-ef`), null);
+  assert.equal(page.matchIdFrom(`?id=${AUTO_ID}&id=${AUTO_ID}`), null);
+  for (const ua of [ANDROID_UA, IPHONE_UA]) {
+    const { el, jumps } = wired(ua, `?id=${AUTO_ID}&id=Xy12ab_CD-ef`);
+    assert.deepEqual(jumps, [], ua);
+    assert.equal(el["bad-link"].hidden, false, ua);
+    assert.equal(el.android.hidden, true, ua);
+    assert.equal(el["ios-open"].hidden, true, ua);
+  }
+});
+
+test("a computer jumps nowhere and shows no open button", () => {
+  const { el, jumps } = wired(DESKTOP_UA, `?id=${AUTO_ID}`);
+  assert.deepEqual(jumps, []);
+  assert.equal(el.android.hidden, true);
+  assert.equal(el["ios-open"].hidden, true);
 });
 
 test("building an intent for an invalid id throws instead of emitting it", () => {

@@ -5,6 +5,8 @@
   "use strict";
 
   var APP_STORE_ID = "6800614202";
+  var PACKAGE = "com.rackup.app";
+  var DIRECTORY = "../mpiliardo/";
   // The pt value from App Store Connect, App Analytics, Campaigns. Empty means untagged links.
   var PROVIDER_TOKEN = "129299799";
   var GENERAL = "general";
@@ -15,10 +17,12 @@
   // Ads and bios add s, so their installs are not filed as hall QR scans; h is then the campaign.
   // The key also prefixes Apple's ct. Any other s, or a repeated one, is ignored.
   // Only an ad link carries Meta's placement, and only to Play (placementFrom, below).
+  // The Rankings hall card's QR adds s=card and, like a poster, opens its hall in the app.
   var SOURCES = {
     meta: { source: "meta", medium: "paid", placement: true },
     ig: { source: "instagram", medium: "social" },
-    fb: { source: "facebook", medium: "social" }
+    fb: { source: "facebook", medium: "social" },
+    card: { source: "card", medium: "qr", opensHall: true }
   };
   // A ct prefix another page tags its installs with (f/invite.js: f).
   var PREFIX = /^[a-z]+$/;
@@ -59,6 +63,11 @@
 
   function takesPlacement(source) {
     return isValidSource(source) && SOURCES[source].placement === true;
+  }
+
+  // A poster (no s) or the Rankings card; an ad or bio link names a campaign, never a hall to open.
+  function opensHall(source) {
+    return source == null || (isValidSource(source) && SOURCES[source].opensHall === true);
   }
 
   // The hall's row in m/halls.js, [name, Greek city, English city, city slug], or null if not listed.
@@ -163,6 +172,15 @@
     return storeUrl(hall, PROVIDER_TOKEN, campaignToken(hall, prefix));
   }
 
+  // Chrome opens rackup://venue/venue-<hall> in the app, or the same Play link when it is not installed.
+  function venueIntentUrl(hall, source) {
+    if (!isValidHall(hall)) throw new Error("invalid hall slug");
+    checkSource(source);
+    if (!opensHall(source)) throw new Error("only a poster or a card opens a hall");
+    return "intent://venue/venue-" + hall + "#Intent;scheme=rackup;package=" + PACKAGE +
+      ";S.browser_fallback_url=" + encodeURIComponent(playUrl(hall, source)) + ";end";
+  }
+
   // An Android app's own browser (Instagram, Messenger, Viber...) says "; wv)" and may answer an app
   // link with an error page and no way back, so there the pages only show their buttons.
   function isWebView(userAgent) {
@@ -178,9 +196,28 @@
     return "other";
   }
 
+  // Text only, into elements the page already has. Chrome may refuse to open an app without a
+  // tap, so the hall and a button stay on the page, with Google Play as the only store. Where
+  // nothing opens by itself, "Get RackUp" replaces "Opening RackUp".
+  function showHall(doc, hall, row, intent, webView) {
+    doc.getElementById("hall-opening").hidden = webView;
+    doc.getElementById("hall-get").hidden = !webView;
+    var name = doc.getElementById("hall-name");
+    name.textContent = row[0];
+    name.setAttribute("href", DIRECTORY + row[3] + "/#venue-" + hall);
+    doc.getElementById("hall-city").textContent = ", " + row[1];
+    doc.getElementById("hall-en").textContent = row[0] + ", " + row[2];
+    doc.getElementById("open-app").setAttribute("href", intent);
+    doc.getElementById("opening").hidden = true;
+    doc.getElementById("app-store").hidden = true;
+    doc.getElementById("stores-note").hidden = true;
+    doc.getElementById("hall-open").hidden = false;
+  }
+
   // The buttons always carry the tagged links, so the page still works if a store fails to open.
   // Apple's ct stays per ad: a placement would split its counts under Apple's threshold of 5.
-  function wire(doc, nav, loc) {
+  // halls is m/halls.js; without it every link behaves as it did before the page knew any hall.
+  function wire(doc, nav, loc, halls) {
     var hall = hallFrom(loc.search);
     var source = sourceFrom(loc.search);
     var placement = takesPlacement(source) ? placementFrom(loc.search) : null;
@@ -189,8 +226,14 @@
     doc.getElementById("app-store").setAttribute("href", apple);
     doc.getElementById("google-play").setAttribute("href", play);
     var platform = platformOf(nav.userAgent, nav.maxTouchPoints);
+    var row = opensHall(source) ? listedHall(halls, hall) : null;
     if (platform === "ios") {
       loc.replace(apple);
+    } else if (platform === "android" && row !== null) {
+      var intent = venueIntentUrl(hall, source);
+      var webView = isWebView(nav.userAgent);
+      showHall(doc, hall, row, intent, webView);
+      if (!webView) loc.replace(intent);
     } else if (platform === "android") {
       loc.replace(play);
     } else {
@@ -217,6 +260,7 @@
     appStoreUrl: appStoreUrl,
     taggedAppStoreUrl: taggedAppStoreUrl,
     listedHall: listedHall,
+    venueIntentUrl: venueIntentUrl,
     isWebView: isWebView,
     platformOf: platformOf,
     wire: wire
@@ -225,6 +269,6 @@
     module.exports = api;
   } else if (typeof document !== "undefined") {
     root.RACKUP_GO = api;
-    if (document.getElementById("opening")) wire(document, navigator, location);
+    if (document.getElementById("opening")) wire(document, navigator, location, root.RACKUP_HALLS);
   }
 })(this);
