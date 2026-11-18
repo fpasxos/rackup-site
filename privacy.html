@@ -51,9 +51,10 @@
     our server keeps of each running invite's joins and pushes; and under <em>How long we keep
     it</em> and <em>What deletion removes</em>, when invites go. Under <em>App usage analytics</em>
     we add that from the same version, on Android, the app reads once, on your phone, the tags
-    Google Play passes on after an install from a hall's poster, a hall's share card or a friend's
-    invite, to open that hall or that invite; that none of these tags is sent to us except an
-    invite's code; and that the app logs only that it opened one, as <code>link_opened</code>. That
+    Google Play passes on after an install from a hall's poster, a hall's share card, a friend's
+    invite or a shared game's page, to open that hall, that invite or that game; that none of these
+    tags is sent to us except an invite's code or a game's id; and that the app logs only that it
+    opened one, as <code>link_opened</code>. That
     version also logs four more analytics events, 37 in all:
     <code>invite_shared</code>, <code>invite_joined</code>, <code>invite_undone</code> and
     <code>link_opened</code>, none of which carries a name, a user id or an invite's code. We say so
@@ -885,8 +886,8 @@
         <code>invite_joined</code>, when you join with a friend's invite, with whether it set up a
         new account or you accepted it with the account you had; <code>invite_undone</code>, when
         you undo what a friend's invite set up; and <code>link_opened</code>, when the app opens a
-        hall or an invite, with which of the two and whether it came from a link, from the tags
-        Google Play passed on after an install or from an invite code you typed.</li>
+        hall, an invite or a game, with which of the three and whether it came from a link, from the
+        tags Google Play passed on after an install or from an invite code you typed.</li>
     <li><strong>Everything else</strong>: <code>venue_checked_in</code>, with the id of the hall;
         <code>player_followed</code>; <code>saved_search_created</code>; and
         <code>notifications_opened</code> and <code>notification_row_tapped</code>, when you
@@ -922,12 +923,13 @@
   media posts, ads and posters bring new players. On iPhone the app collects nothing for this.
   Apple tells us only totals, such as how many downloads came from each of our campaign links,
   from our ads on the App Store, or from another app or website.</p>
-  <p><strong>Links from posters and invites.</strong> On Android, when you install RackUp from a
-  hall's poster, a hall's share card or a friend's invite, Google Play passes the app the same tags
-  it passes Firebase Analytics. From version 2.4.9 the app reads them once, on your phone, to open
-  that hall or that invite. None of these tags is sent to us, except the invite's code when your
-  friend's invite is used, and the app logs only that it opened a hall or an invite this way, as
-  <code>link_opened</code>, described above. On iPhone the app reads nothing like this.</p>
+  <p><strong>Links from posters, invites and shared games.</strong> On Android, when you install
+  RackUp from a hall's poster, a hall's share card, a friend's invite or a shared game's page,
+  Google Play passes the app the same tags it passes Firebase Analytics. From version 2.4.9 the app
+  reads them once, on your phone, to open that hall, that invite or that game. None of these tags
+  is sent to us, except the invite's code when your friend's invite is used and the game's id when
+  the app opens that game, and the app logs only that it opened a hall, an invite or a game this
+  way, as <code>link_opened</code>, described above. On iPhone the app reads nothing like this.</p>
   <p><strong>Analytics is not linked to your account.</strong> The app never calls Analytics'
   user id function, so Analytics keys on its own per installation identifier. One practical
   consequence, stated honestly: because these records are not tied to your account, we cannot
@@ -1347,8 +1349,8 @@
   date, and we say at the top what changed. This version, dated 18 November 2026, adds inviting a
   friend to play at a hall, how we tell you when a friend joins and the record of each running
   invite's joins and pushes, four analytics events, and the tags the Android app reads after an
-  install from a hall's poster, a hall's share card or a friend's invite, from version 2.4.9 of the
-  apps, and supersedes
+  install from a hall's poster, a hall's share card, a friend's invite or a shared game's page,
+  from version 2.4.9 of the apps, and supersedes
   the version dated 15 November 2026, which added the
   analytics events <code>screen_view</code> and <code>post_started</code>, what
   <code>match_posted</code>, <code>join_requested</code> and <code>match_viewed</code> also record,
@@ -1654,9 +1656,9 @@
   σελίδα μιας αίθουσας ή την «Ανακάλυψη»), όχι όμως αν την έστειλες ή σε ποιον, όταν μπαίνεις με
   την πρόσκληση ενός φίλου, και αν ο
   λογαριασμός σου ήταν καινούργιος ή τη δέχτηκες με τον λογαριασμό που είχες ήδη, όταν αναιρείς
-  ό,τι έκανε η πρόσκληση ενός φίλου, και όταν η εφαρμογή ανοίγει μια αίθουσα ή μια πρόσκληση, με
-  το ποια από τις δύο ήταν και αν ήρθε από σύνδεσμο, από τις ετικέτες του Google Play μετά από
-  εγκατάσταση ή από κωδικό πρόσκλησης που έγραψες.
+  ό,τι έκανε η πρόσκληση ενός φίλου, και όταν η εφαρμογή ανοίγει μια αίθουσα, μια πρόσκληση ή ένα
+  ματς, με το ποιο από τα τρία ήταν και αν ήρθε από σύνδεσμο, από τις ετικέτες του Google Play μετά
+  από εγκατάσταση ή από κωδικό πρόσκλησης που έγραψες.
   Κανένα συμβάν δεν περιέχει όνομα, email, κωδικό πρόσκλησης ή κείμενο που έγραψες, και όσα συλλέγουν τα δύο
   εργαλεία δεν τα συνδέουμε ποτέ με τον λογαριασμό σου: η εφαρμογή δεν στέλνει ποτέ το
   αναγνωριστικό χρήστη σε αυτές τις υπηρεσίες.</p>
@@ -1680,14 +1682,16 @@
   ξέρουμε ποιες αναρτήσεις, διαφημίσεις και αφίσες μας φέρνουν νέους παίκτες και αν γεμίζουν τα
   ματς. Νομική βάση είναι το έννομο συμφέρον μας, και
   μπορείς να αντιταχθείς όποτε θέλεις.</p>
-  <p><strong>Σύνδεσμοι από αφίσες και προσκλήσεις.</strong> Στο Android, όταν εγκαθιστάς το RackUp
-  από την αφίσα ή την κάρτα μιας αίθουσας, ή από την πρόσκληση ενός φίλου, το Google Play δίνει
-  στην εφαρμογή τις ίδιες ετικέτες που δίνει στο Firebase Analytics. Από την έκδοση 2.4.9, η
-  εφαρμογή τις διαβάζει μία φορά, στο τηλέφωνό σου, για να ανοίξει εκείνη την αίθουσα ή εκείνη
-  την πρόσκληση. Καμία από αυτές τις ετικέτες δεν μας στέλνεται, εκτός από τον κωδικό της
-  πρόσκλησης, όταν χρησιμοποιείς την πρόσκληση του φίλου σου, και η εφαρμογή καταγράφει μόνο ότι
-  άνοιξε έτσι μια αίθουσα ή μια πρόσκληση, με το συμβάν <code>link_opened</code> που γράφουμε
-  παραπάνω. Στο iPhone η εφαρμογή δεν διαβάζει τίποτα τέτοιο.</p>
+  <p><strong>Σύνδεσμοι από αφίσες, προσκλήσεις και κοινοποιημένα ματς.</strong> Στο Android, όταν
+  εγκαθιστάς το RackUp από την αφίσα ή την κάρτα μιας αίθουσας, από την πρόσκληση ενός φίλου ή από
+  τη σελίδα ενός ματς που σου έστειλαν, το Google Play δίνει στην εφαρμογή τις ίδιες ετικέτες που
+  δίνει στο Firebase Analytics. Από την έκδοση 2.4.9, η εφαρμογή τις διαβάζει μία φορά, στο
+  τηλέφωνό σου, για να ανοίξει εκείνη την αίθουσα, εκείνη την πρόσκληση ή εκείνο το ματς. Καμία από
+  αυτές τις ετικέτες δεν μας στέλνεται, εκτός από τον κωδικό της πρόσκλησης, όταν χρησιμοποιείς την
+  πρόσκληση του φίλου σου, και το αναγνωριστικό του ματς, όταν η εφαρμογή ανοίγει εκείνο το ματς,
+  και η εφαρμογή καταγράφει μόνο ότι άνοιξε έτσι μια αίθουσα, μια πρόσκληση ή ένα ματς, με το συμβάν
+  <code>link_opened</code> που γράφουμε παραπάνω. Στο iPhone η εφαρμογή δεν διαβάζει τίποτα
+  τέτοιο.</p>
   <p>Δεν υπάρχουν διαφημίσεις μέσα στις εφαρμογές, ούτε διαφημιστικά αναγνωριστικά, ούτε
   παρακολούθηση σε εφαρμογές άλλων εταιρειών. Δεν πουλάμε δεδομένα. Από την έκδοση 2.1.0
   υπάρχουν ειδοποιήσεις push και στο iPhone: αν τις επιτρέψεις, κρατάμε στον λογαριασμό σου

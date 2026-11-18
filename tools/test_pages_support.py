@@ -136,18 +136,21 @@ INVITE_LINES = (
     ("Sharing a game.", "Inviting a friend.",
      ("From version 2.4.9", "14 days", "never your name or user id", "reads nothing from our database",
       "Anyone with an account who has the code", "30 days after it expires", "when you delete your account")),
-    ("Where new players come from.", "Links from posters and invites.",
+    ("Where new players come from.", "Links from posters, invites and shared games.",
      ("From version 2.4.9", "once, on your phone", "None of these tags is sent to us, except the invite's code",
-      "the app logs only that it opened a hall or an invite this way, as link_opened",
+      "and the game's id when the app opens that game",
+      "the app logs only that it opened a hall, an invite or a game this way, as link_opened",
       "On iPhone the app reads nothing")),
     ("Κοινοποίηση ματς.", "Πρόσκληση σε φίλο.",
      ("Από την έκδοση 2.4.9", "14 ημέρες", "ποτέ το όνομα ή το αναγνωριστικό χρήστη σου",
       "δεν διαβάζει τίποτα από τη βάση δεδομένων μας", "Όποιος έχει λογαριασμό και τον κωδικό",
       "30 ημέρες αφού λήξει", "όταν διαγράψεις τον λογαριασμό σου")),
-    ("Στο Android, όταν εγκαθιστάς την εφαρμογή από σύνδεσμό μας", "Σύνδεσμοι από αφίσες και προσκλήσεις.",
+    ("Στο Android, όταν εγκαθιστάς την εφαρμογή από σύνδεσμό μας",
+     "Σύνδεσμοι από αφίσες, προσκλήσεις και κοινοποιημένα ματς.",
      ("Από την έκδοση 2.4.9", "μία φορά, στο τηλέφωνό σου",
       "Καμία από αυτές τις ετικέτες δεν μας στέλνεται, εκτός από τον κωδικό της πρόσκλησης",
-      "η εφαρμογή καταγράφει μόνο ότι άνοιξε έτσι μια αίθουσα ή μια πρόσκληση, με το συμβάν link_opened",
+      "και το αναγνωριστικό του ματς, όταν η εφαρμογή ανοίγει εκείνο το ματς",
+      "η εφαρμογή καταγράφει μόνο ότι άνοιξε έτσι μια αίθουσα, μια πρόσκληση ή ένα ματς, με το συμβάν link_opened",
       "Στο iPhone η εφαρμογή δεν διαβάζει τίποτα")),
 )
 
@@ -168,7 +171,8 @@ class InviteLinksPolicyTest(unittest.TestCase):
     def test_the_newest_note_says_what_changed(self):
         newest = next(p for p in paragraphs(current("privacy.html")) if p.startswith("What changed on "))
         for fact in ("version 2.4.9", "invite a friend", "Google Play", "37 in all", "How long we keep it",
-                     "What deletion removes", "none of these tags is sent to us except an invite's code",
+                     "What deletion removes", "none of these tags is sent to us except an invite's code or a game's id",
+                     "a friend's invite or a shared game's page",
                      "the app logs only that it opened one, as link_opened", "in the summary in Greek too"):
             self.assertIn(fact, newest)
         # link_opened sends Analytics that the app opened a hall or invite from a link or the Play tags.
@@ -242,6 +246,22 @@ class InviteLinksPolicyTest(unittest.TestCase):
                     "invitations to games at the table and invites",
                     "10 friends who join", "how many friends joined with it",
                     "10 φίλους και σου", "πόσοι φίλοι μπήκαν με αυτήν"):
+            self.assertNotIn(old, text)
+
+
+class GameLinksPolicyTest(unittest.TestCase):
+    """2.4.9: a shared game's page opens the game, and its Play link carries the game's id."""
+
+    def test_link_opened_names_games_beside_halls_and_invites(self):
+        text = visible_text(main_html(current("privacy.html")))
+        for said in ("when the app opens a hall, an invite or a game, with which of the three",
+                     "ανοίγει μια αίθουσα, μια πρόσκληση ή ένα ματς, με το ποιο από τα τρία ήταν",
+                     "the tags the Android app reads after an install from a hall's poster, a hall's share card, "
+                     "a friend's invite or a shared game's page"):
+            self.assertIn(said, text)
+        for old in ("when the app opens a hall or an invite, with which of the two",
+                    "ανοίγει μια αίθουσα ή μια πρόσκληση, με το ποια από τις δύο ήταν", "a hall's share card or a friend's invite",
+                    "Links from posters and invites.", "Σύνδεσμοι από αφίσες και προσκλήσεις."):
             self.assertNotIn(old, text)
 
 
