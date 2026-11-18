@@ -17,8 +17,8 @@ from urllib.parse import parse_qs, urlsplit
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import build_directory as b  # noqa: E402
 
-# Pages that tag Play with their own source: match shares (m/), QR codes and ads (go/).
-OWN_SOURCE = {"m/index.html", "go/index.html"}
+# Pages that tag Play with their own source: match shares (m/), QR codes and ads (go/), invites (f/).
+OWN_SOURCE = {"m/index.html", "go/index.html", "f/index.html"}
 # _config.yml keeps these off the site.
 UNPUBLISHED = {".git", "tools", "data", "docs", ".superpowers", "README.md", ".gitignore"}
 # Not a scheme and not protocol relative, so the browser stays on this site.

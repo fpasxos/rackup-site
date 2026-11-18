@@ -39,11 +39,27 @@
 <main id="main" class="container">
 <article class="prose">
   <h1>RackUp Privacy Policy</h1>
-  <p class="muted">Effective date: 15 November 2026 · Applies to the RackUp apps for Android
+  <p class="muted">Effective date: 18 November 2026 · Applies to the RackUp apps for Android
   and iPhone (<code>com.rackup.app</code>)</p>
   <p lang="el"><a href="#el">Στα Ελληνικά</a></p>
 
   <div class="card">
+    <p><strong>What changed on 18 November 2026.</strong> From version 2.4.9 of the apps you can
+    invite a friend to play at a hall, with a link or a QR code. Under <em>What you post and
+    write</em> we say what an invite keeps, who can read it, what happens when your friend joins
+    with it, and when we delete it; under <em>Notifications</em>, how we tell you, and the record
+    our server keeps of each running invite's joins and pushes; and under <em>How long we keep
+    it</em> and <em>What deletion removes</em>, when invites go. Under <em>App usage analytics</em>
+    we add that from the same version, on Android, the app reads once, on your phone, the tags
+    Google Play passes on after an install from a hall's poster, a hall's share card, a friend's
+    invite or a shared game's page, to open that hall, that invite or that game; that of these tags
+    only the hall, the invite's code and the game they name can reach us, when the app loads them;
+    and that the app logs that it opened one, as <code>link_opened</code>, and a game also as
+    <code>match_viewed</code> when it is another player's open match. That
+    version also logs four more analytics events, 37 in all:
+    <code>invite_shared</code>, <code>invite_joined</code>, <code>invite_undone</code> and
+    <code>link_opened</code>, none of which carries a name, a user id or an invite's code. We say so
+    in the summary in Greek too.</p>
     <p><strong>What changed on 15 November 2026.</strong> Version 2.4.8 of the apps logs two more
     analytics events, 33 in all: <code>screen_view</code>, when you open <em>Discover</em>,
     <em>Matches</em>, <em>Rankings</em>, <em>Venues</em> or <em>Profile</em>, and
@@ -610,6 +626,19 @@
   that the page can show them as they were when the link was sent, with the hall named from the
   public list of halls on our website. The link carries no name and no user id, and the page reads
   nothing from our database or our server.</p>
+  <p><strong>Inviting a friend.</strong> From version 2.4.9 you can invite a friend to play at a
+  hall. An invite lasts 14 days, and we keep with it a random code, your user id, your display
+  name, the hall, and when it was made. The link holds only the code and the hall, never your name
+  or user id, and the page it opens reads nothing from our database. Anyone with an account who
+  has the code can read the invite: your user id, your display name and the hall. When your friend
+  joins with it, we record who joined and when, you follow each other, and we tell you with a
+  notification. If the hall is in their own country, a friend with no usual hall yet gets it as
+  their usual hall and as a starred hall, which brings them its notifications; one who has a usual
+  hall keeps it. Right after joining, your friend can undo it from the hall's page, which deletes
+  the join and takes back the follows, the usual hall and the star the invite made. Later, they can
+  still unfollow you, change their usual hall and remove the star. We delete an invite, with its
+  joins, 30 days after it expires, and all
+  your invites and joins when you delete your account.</p>
   <p><strong>Games that found an opponent.</strong> We count the games that found an opponent in
   each city and hall, and show everyone who uses the app, guests included, those counts, the hours
   with the most games, and the hall, game, race and time of recent ones. These summaries never hold
@@ -678,6 +707,16 @@
   that one player's invitations reach others at most 10 times a day, our server keeps, under that
   player's account, the day and how many of their invitations it showed that day. No app can read
   that record, and deleting the account deletes it.</p>
+  <p>From version 2.4.9, when a friend joins with your invite, described under <em>What you post
+  and write</em>, you get an entry in your activity feed and a push, both naming your friend and the
+  hall. The push follows the <em>Match updates</em> switch, and none goes at night, from 23:00 to
+  09:00 at the hall's local time, nor later. One invite acts on at most 10 friends at a time and
+  sends you at most 5 pushes. So that it keeps to that, our server keeps, under your account, each
+  running invite's code, when it ends, the time of each join with it that has not been undone, and
+  how many pushes it sent, and drops an invite from that record within about a day of its end. No
+  app can read that
+  record, and
+  deleting your account deletes it.</p>
   <p>From version 2.4.3 of the apps, when someone posts an open match at a hall in the city on
   your profile, we may send you a <strong>city alert</strong>: a push naming the player who posted
   it, the hall and when the game is, in your language. From three games on, the alert also says
@@ -770,7 +809,9 @@
   <p>Both apps include <strong>Firebase Analytics</strong>, and it is on by default. The old
   version of this policy said the app had no analytics profiles. That was wrong, and correcting
   it was the main reason for the version dated 4 September 2026.</p>
-  <p>We log 33 events about how the app is used, the same on both apps, or 31 before version 2.4.8,
+  <p>We log 37 events about how the app is used, the same on both apps, or 33 before version 2.4.9,
+  which adds <code>invite_shared</code>, <code>invite_joined</code>, <code>invite_undone</code> and
+  <code>link_opened</code>, 31 before version 2.4.8,
   which adds <code>screen_view</code> and <code>post_started</code>, 25 before version 2.4.7,
   which adds <code>match_shared</code>, <code>seat_check_answered</code>,
   <code>table_game_logged</code>, <code>rankings_opened</code>, <code>ranking_hall_opened</code> and
@@ -783,7 +824,8 @@
         <code>guest_browse_started</code>, from version 2.3.0, when you choose to look around as
         a guest;
         <code>email_verified</code>; <code>tutorial_complete</code>, when you finish or skip the
-        welcome tour; <code>home_venue_set</code>, when you pick a home hall at its end; and
+        welcome tour; <code>home_venue_set</code>, when you pick a home hall, at its end or later,
+        and, from version 2.4.9, when a friend's invite gives you one; and
         <code>notification_permission_result</code>, with whether you allowed
         notifications.</li>
     <li><strong>Screens</strong>: <code>screen_view</code>, from version 2.4.8, when you open, or
@@ -838,6 +880,16 @@
         list, with the kind of card (busy, hall of the week, invitation or top of the list), its
         format and, for one hall's card, the id of the hall, never whether you sent it, or to
         whom.</li>
+    <li><strong>Invites and links</strong>, from version 2.4.9: <code>invite_shared</code>, when you
+        open your phone's share sheet with an invite to play at a hall, or show its QR code, with
+        which of the two and where you started (a hall's page or <em>Discover</em>), never whether
+        you sent it, or to whom;
+        <code>invite_joined</code>, when you join with a friend's invite, with whether it set up a
+        new account or you accepted it with the account you had; <code>invite_undone</code>, when
+        you undo what a friend's invite set up; and <code>link_opened</code>, when the app opens a
+        hall, an invite or a game, with which of the three and how it came: a hall from a link or
+        from the tags Google Play passed on after an install, an invite from a link, from those tags
+        or from an invite code you typed, and a game only from those tags.</li>
     <li><strong>Everything else</strong>: <code>venue_checked_in</code>, with the id of the hall;
         <code>player_followed</code>; <code>saved_search_created</code>; and
         <code>notifications_opened</code> and <code>notification_row_tapped</code>, when you
@@ -847,8 +899,8 @@
   <code>match_viewed</code>, <code>venue_checked_in</code>, <code>ranking_hall_opened</code> and
   <code>share_opened</code>. A hall id names a billiard hall
   in our directory, not a person.
-  No name, no email, no user id, no match id and no free text is ever attached to an analytics
-  event. Firebase Analytics also collects its own standard measurements, such as app opens and
+  No name, no email, no user id, no match id, no invite code and no free text is ever attached to
+  an analytics event. Firebase Analytics also collects its own standard measurements, such as app opens and
   sessions, and it derives approximate geography from a masked IP address.</p>
   <p><strong>User properties.</strong> From version 2.4.8, the apps also give Firebase Analytics
   three user properties, which it attaches to the events from that install of the app:
@@ -873,6 +925,15 @@
   media posts, ads and posters bring new players. On iPhone the app collects nothing for this.
   Apple tells us only totals, such as how many downloads came from each of our campaign links,
   from our ads on the App Store, or from another app or website.</p>
+  <p><strong>Links from posters, invites and shared games.</strong> On Android, when you install
+  RackUp from a hall's poster, a hall's share card, a friend's invite or a shared game's page,
+  Google Play passes the app the same tags it passes Firebase Analytics. From version 2.4.9 the app
+  reads them once, on your phone, to open that hall, that invite or that game. Of these tags, only
+  the hall, the invite's code and the game they name can reach us, when the app loads that hall,
+  that invite or that game. The app logs that it opened one this way as <code>link_opened</code>,
+  described above, and when the game is another player's open match, opening it also logs
+  <code>match_viewed</code>, with the game's hall, as opening any such match does. On iPhone the app
+  reads nothing like this.</p>
   <p><strong>Analytics is not linked to your account.</strong> The app never calls Analytics'
   user id function, so Analytics keys on its own per installation identifier. One practical
   consequence, stated honestly: because these records are not tied to your account, we cannot
@@ -1136,6 +1197,8 @@
     <li><strong>Games at the table</strong>: an invitation that is not answered within 2 hours
         ends. Every invitation, answered or not, is deleted 30 days after its 2 hours ran out. A
         confirmed one has already become a match, which is kept like any other.</li>
+    <li><strong>Invites</strong>: they work for 14 days and are deleted 30 days after they expire,
+        with their joins.</li>
     <li><strong>Rankings</strong>: our server rewrites each country's lists every hour, so a
         player stays on the players' list only while their games of the last 30 days keep them
         there, and leaves it at once on turning off <em>Show me in player search</em> or deleting
@@ -1185,6 +1248,7 @@
         hall that a place is free again;</li>
     <li>the records that keep the notifications about your new matches, direct challenges and
         invitations to games at the table, and your "No answer yet" notices, to a few a day;</li>
+    <li>the record that keeps each of your invites to at most 10 friends at a time and 5 pushes;</li>
     <li>the count of the games you have played with a confirmed score;</li>
     <li>your follows of other players, and other players' follows of you;</li>
     <li>the ratings other players gave you;</li>
@@ -1194,6 +1258,7 @@
     <li>your looking-for-a-game post, if you have one;</li>
     <li>every direct challenge, and every invitation to a game at the table, you sent or
         received;</li>
+    <li>the invites you made, and your joins through other players' invites;</li>
     <li>every quick message you sent or received, in any match, your read marks, and any record
         that you reached a match's limit of quick messages;</li>
     <li>the notifications in other players' activity feeds that name you, such as the one
@@ -1285,15 +1350,20 @@
 
   <h2>Changes to this policy</h2>
   <p>If this policy changes, the new version is published at this address with a new effective
-  date, and we say at the top what changed. This version, dated 15 November 2026, adds the
+  date, and we say at the top what changed. This version, dated 18 November 2026, adds inviting a
+  friend to play at a hall, how we tell you when a friend joins and the record of each running
+  invite's joins and pushes, four analytics events, and the tags the Android app reads after an
+  install from a hall's poster, a hall's share card, a friend's invite or a shared game's page,
+  from version 2.4.9 of the apps, and supersedes
+  the version dated 15 November 2026, which added the
   analytics events <code>screen_view</code> and <code>post_started</code>, what
   <code>match_posted</code>, <code>join_requested</code> and <code>match_viewed</code> also record,
   three user properties, the card of the halls at the top of <em>Rankings</em> and what the link
-  to a shared game carries, from version 2.4.8 of the apps, corrects how often the Android app
-  updates its notification token's record, adds that our server reads its time for quiet cities
-  and its app version for your player card, adds the text the apps show to what anyone can read
-  without a sign-in, says that other players see only that someone has checked in at a hall,
-  never who, and supersedes the
+  to a shared game carries, from version 2.4.8 of the apps, corrected how often the Android app
+  updates its notification token's record, added that our server reads its time for quiet cities
+  and its app version for your player card, added the text the apps show to what anyone can read
+  without a sign-in, said that other players see only that someone has checked in at a hall,
+  never who, and superseded the
   version dated 13 November 2026, which said that, for
   quiet cities, our server tells whether a player opened RackUp in the last 7 days only by when
   their notification tokens were last updated, and superseded the earlier version of 13 November
@@ -1499,6 +1569,22 @@
   να τα δείχνει όπως ήταν όταν στάλθηκε, με το όνομα της αίθουσας από τη δημόσια λίστα αιθουσών
   της ιστοσελίδας μας. Ο σύνδεσμος δεν έχει όνομα ή αναγνωριστικό χρήστη, και η σελίδα δεν
   διαβάζει τίποτα από τη βάση δεδομένων ή τον διακομιστή μας.</p>
+  <p><strong>Πρόσκληση σε φίλο.</strong> Από την έκδοση 2.4.9 μπορείς να καλέσεις έναν φίλο να
+  παίξετε σε μια αίθουσα. Μια πρόσκληση ισχύει 14 ημέρες, και μαζί της κρατάμε έναν τυχαίο
+  κωδικό, το αναγνωριστικό χρήστη σου, το όνομά σου, την αίθουσα και πότε τη δημιούργησες. Ο
+  σύνδεσμος έχει μόνο τον κωδικό και την αίθουσα, ποτέ το όνομα ή το αναγνωριστικό χρήστη σου, και
+  η σελίδα που ανοίγει δεν διαβάζει τίποτα από τη βάση δεδομένων μας. Όποιος έχει λογαριασμό και
+  τον κωδικό μπορεί να διαβάσει την πρόσκληση: το αναγνωριστικό χρήστη σου, το όνομά σου και την
+  αίθουσα. Όταν ο φίλος σου μπει με την πρόσκληση, καταγράφουμε ποιος μπήκε και πότε,
+  ακολουθείτε ο ένας τον άλλον και σε ενημερώνουμε με μια ειδοποίηση. Αν η αίθουσα είναι στη χώρα
+  του, ένας φίλος που δεν έχει ακόμη λέσχη την παίρνει ως λέσχη του και στις αγαπημένες του, που
+  του φέρνουν τις ειδοποιήσεις τους, ενώ όποιος έχει ήδη λέσχη την κρατά. Αμέσως μετά, ο φίλος σου
+  μπορεί να το αναιρέσει από τη σελίδα της αίθουσας, οπότε σβήνουμε την καταγραφή και παίρνουμε
+  πίσω ό,τι έκανε η πρόσκληση: το ότι ακολουθείτε ο ένας τον άλλον, τη λέσχη και την αγαπημένη
+  αίθουσα. Αργότερα μπορεί ακόμη να σταματήσει να σε ακολουθεί, να αλλάξει λέσχη και να βγάλει την
+  αίθουσα από τις αγαπημένες του. Μια πρόσκληση τη σβήνουμε 30 ημέρες αφού λήξει, μαζί με όσα καταγράψαμε για όσους
+  μπήκαν με αυτήν, και όταν διαγράψεις τον λογαριασμό σου σβήνουμε όλες τις προσκλήσεις σου και
+  ό,τι καταγράψαμε όταν μπήκες με πρόσκληση άλλου.</p>
   <p>Κάθε 6 ώρες ο διακομιστής μας υπολογίζει για κάθε πόλη αν τρεις ή λιγότεροι από τους
   παίκτες που την έχουν πόλη τους άνοιξαν το RackUp τις τελευταίες 7 ημέρες, από το πότε
   ενημερώθηκαν τελευταία τα αναγνωριστικά ειδοποιήσεών τους, και κρατά μόνο αυτό
@@ -1538,8 +1624,8 @@
   προσκλήσεις σου έδειξε σε άλλους κάθε ημέρα, ως αριθμό, ώστε να μην ξεπερνούν τις 10 την
   ημέρα.</p>
   <p>Και οι δύο εφαρμογές περιλαμβάνουν <strong>Firebase Crashlytics</strong> (αναφορές
-  σφαλμάτων) και <strong>Firebase Analytics</strong> (33 συμβάντα χρήσης από την έκδοση 2.4.8,
-  31 από την 2.4.7, 25 από την 2.4.5, 24 από την 2.3.0 και 23 στις προηγούμενες, όπως η
+  σφαλμάτων) και <strong>Firebase Analytics</strong> (37 συμβάντα χρήσης από την έκδοση 2.4.9,
+  33 από την 2.4.8, 31 από την 2.4.7, 25 από την 2.4.5, 24 από την 2.3.0 και 23 στις προηγούμενες, όπως η
   δημοσίευση αγώνα ή το check-in σε αίθουσα).
   Αυτά τα δύο συμβάντα καταγράφουν και ποια αίθουσα αφορούν. Από την έκδοση 2.4.5 καταγράφουμε
   επίσης πότε ανοίγεις ένα ανοιχτό ματς άλλου παίκτη, από πού έφτασες εκεί, την αίθουσα και πόσο
@@ -1569,7 +1655,16 @@
   συστήματος, ποιο από τα δύο δείχνει το τηλέφωνό σου. Όταν αποσυνδεθείς, η εφαρμογή σβήνει τις
   δύο πρώτες. Τις χρησιμοποιούμε μόνο για να συγκρίνουμε συνολικούς αριθμούς, και καμία δεν
   είναι όνομα ή αναγνωριστικό χρήστη.
-  Κανένα συμβάν δεν περιέχει όνομα, email ή κείμενο που έγραψες, και όσα συλλέγουν τα δύο
+  Από την έκδοση 2.4.9 καταγράφουμε επίσης όταν ανοίγεις την κοινοποίηση μιας πρόσκλησης για μια
+  αίθουσα ή δείχνεις τον κωδικό QR της, με το ποιο από τα δύο έκανες και από πού ξεκίνησες (τη
+  σελίδα μιας αίθουσας ή την «Ανακάλυψη»), όχι όμως αν την έστειλες ή σε ποιον, όταν μπαίνεις με
+  την πρόσκληση ενός φίλου, και αν ο
+  λογαριασμός σου ήταν καινούργιος ή τη δέχτηκες με τον λογαριασμό που είχες ήδη, όταν αναιρείς
+  ό,τι έκανε η πρόσκληση ενός φίλου, και όταν η εφαρμογή ανοίγει μια αίθουσα, μια πρόσκληση ή ένα
+  ματς, με το ποιο από τα τρία ήταν και πώς ήρθε: μια αίθουσα από σύνδεσμο ή από τις ετικέτες του
+  Google Play μετά από εγκατάσταση, μια πρόσκληση από σύνδεσμο, από αυτές τις ετικέτες ή από κωδικό
+  πρόσκλησης που έγραψες, και ένα ματς μόνο από αυτές τις ετικέτες.
+  Κανένα συμβάν δεν περιέχει όνομα, email, κωδικό πρόσκλησης ή κείμενο που έγραψες, και όσα συλλέγουν τα δύο
   εργαλεία δεν τα συνδέουμε ποτέ με τον λογαριασμό σου: η εφαρμογή δεν στέλνει ποτέ το
   αναγνωριστικό χρήστη σε αυτές τις υπηρεσίες.</p>
   <p>Στο Android, όταν εγκαθιστάς την εφαρμογή από σύνδεσμό μας, το Google Play δίνει στο Firebase
@@ -1592,6 +1687,17 @@
   ξέρουμε ποιες αναρτήσεις, διαφημίσεις και αφίσες μας φέρνουν νέους παίκτες και αν γεμίζουν τα
   ματς. Νομική βάση είναι το έννομο συμφέρον μας, και
   μπορείς να αντιταχθείς όποτε θέλεις.</p>
+  <p><strong>Σύνδεσμοι από αφίσες, προσκλήσεις και κοινοποιημένα ματς.</strong> Στο Android, όταν
+  εγκαθιστάς το RackUp από την αφίσα ή την κάρτα μιας αίθουσας, από την πρόσκληση ενός φίλου ή από
+  τη σελίδα ενός ματς που σου έστειλαν, το Google Play δίνει στην εφαρμογή τις ίδιες ετικέτες που
+  δίνει στο Firebase Analytics. Από την έκδοση 2.4.9, η εφαρμογή τις διαβάζει μία φορά, στο
+  τηλέφωνό σου, για να ανοίξει εκείνη την αίθουσα, εκείνη την πρόσκληση ή εκείνο το ματς. Από αυτές
+  τις ετικέτες, μόνο η αίθουσα, ο κωδικός της πρόσκλησης και το ματς που αναφέρουν μπορεί να μας
+  φτάσουν, όταν η εφαρμογή φορτώνει εκείνη την αίθουσα, εκείνη την πρόσκληση ή εκείνο το ματς. Η
+  εφαρμογή καταγράφει ότι άνοιξε έτσι ένα από αυτά με το συμβάν <code>link_opened</code> που
+  γράφουμε παραπάνω, και όταν το ματς είναι ανοιχτό ματς άλλου παίκτη, καταγράφει επίσης το
+  <code>match_viewed</code>, με την αίθουσα του ματς, όπως για κάθε τέτοιο ματς που ανοίγεις. Στο
+  iPhone η εφαρμογή δεν διαβάζει τίποτα τέτοιο.</p>
   <p>Δεν υπάρχουν διαφημίσεις μέσα στις εφαρμογές, ούτε διαφημιστικά αναγνωριστικά, ούτε
   παρακολούθηση σε εφαρμογές άλλων εταιρειών. Δεν πουλάμε δεδομένα. Από την έκδοση 2.1.0
   υπάρχουν ειδοποιήσεις push και στο iPhone: αν τις επιτρέψεις, κρατάμε στον λογαριασμό σου
@@ -1634,6 +1740,16 @@
   ο διοργανωτής αργεί να απαντήσει στο αίτημά σου, κρατά την ημέρα και πόσες σου στείλαμε εκείνη
   την ημέρα, ώστε να μην παίρνεις πάνω από δύο την ημέρα. Καμία εφαρμογή δεν διαβάζει αυτά τα
   αρχεία, και σβήνονται όταν διαγράψεις τον λογαριασμό σου.
+  Από την έκδοση 2.4.9, όταν ένας φίλος μπει με την πρόσκλησή σου, σου έρχεται καταχώριση στη ροή
+  δραστηριότητας και ειδοποίηση push, που λένε και οι δύο το όνομά του και την αίθουσα. Η
+  ειδοποίηση push ακολουθεί τον διακόπτη «Ενημερώσεις ματς» και δεν φεύγει τη νύχτα, από τις
+  23:00 έως τις 09:00, τοπική ώρα της αίθουσας, ούτε αργότερα. Μια πρόσκληση μετρά το πολύ 10
+  φίλους κάθε φορά και σου στέλνει το πολύ 5 ειδοποιήσεις push. Γι' αυτό ο διακομιστής μας κρατά
+  στον λογαριασμό σου, για κάθε πρόσκληση που ισχύει ακόμη, τον κωδικό της, πότε λήγει, πότε μπήκε
+  με αυτήν κάθε φίλος που δεν το έχει αναιρέσει και πόσες ειδοποιήσεις push σου έστειλε, και τη
+  βγάζει από την εγγραφή μέσα σε
+  περίπου μία ημέρα αφού λήξει. Καμία εφαρμογή δεν διαβάζει αυτή την εγγραφή, και σβήνεται όταν διαγράψεις τον
+  λογαριασμό σου.
   Οι ειδοποιήσεις push για νέο ματς σε αίθουσα που έχεις στα αγαπημένα, για ματς που ταιριάζει σε
   αποθηκευμένη αναζήτησή σου ή στη δήλωσή σου ότι ψάχνεις παιχνίδι, ή για ματς που ανέβασε παίκτης
   που ακολουθείς, φεύγουν μόνο από τις 09:00 έως τις 23:00, τοπική ώρα της αίθουσας. Για ματς που
@@ -1713,7 +1829,8 @@
   email στο <a href="mailto:rackupbilliard@gmail.com">rackupbilliard@gmail.com</a>. Μαζί με τον
   λογαριασμό σου διαγράφονται η κάρτα παίκτη σου και η θέση σου στην Κατάταξη, οι προσωπικές
   προκλήσεις, οι προσκλήσεις για παιχνίδι στο τραπέζι και τα γρήγορα μηνύματα που έστειλες ή
-  έλαβες, και οι ειδοποιήσεις στη ροή δραστηριότητας άλλων παικτών που
+  έλαβες, οι προσκλήσεις σου σε φίλους και ό,τι καταγράψαμε όταν μπήκες με πρόσκληση άλλου, και
+  οι ειδοποιήσεις στη ροή δραστηριότητας άλλων παικτών που
   αναφέρουν το όνομά σου. Τα διαγραμμένα δεδομένα μπορεί να μείνουν έως 7 ημέρες στο ημερήσιο
   αντίγραφο ασφαλείας της βάσης δεδομένων μας και στη λειτουργία που επαναφέρει τη βάση όπως
   ήταν οποιαδήποτε στιγμή των τελευταίων 7 ημερών (point-in-time recovery), και μια διαγραμμένη

@@ -240,6 +240,10 @@ p{margin:0 0 1em}
 .game-icon .dot{fill:var(--accent);stroke:none}
 .share-card #game-note{margin:10px 0 0}
 .open-app small{display:block;font-size:.75rem;font-weight:500}
+.share-card .open-row{margin-top:22px}
+.code-box{margin:22px auto 0;max-width:420px;padding:14px 18px;border:1px solid var(--accent);border-radius:18px;background:var(--surface)}
+.code-box strong{display:block;font:700 clamp(1.3rem,8vw,1.9rem)/1.2 ui-monospace,Consolas,monospace;letter-spacing:.12em;color:var(--accent);margin:4px 0}
+.code-box small{display:block;color:var(--muted);font-size:.85rem}
 
 /* Footer */
 .site-footer{border-top:1px solid var(--outline);margin-top:24px;padding:40px 0 48px;color:var(--muted);font-size:.92rem}

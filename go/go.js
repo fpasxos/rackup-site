@@ -1,6 +1,7 @@
 // Store redirect for go/index.html, the page printed QR codes point at. The pure functions
 // are exported so tools/go_page.test.js can run them under node; the DOM part runs only in a browser.
-(function () {
+// f/invite.js borrows the store links through RACKUP_GO; only a page with #opening is redirected.
+(function (root) {
   "use strict";
 
   var APP_STORE_ID = "6800614202";
@@ -19,6 +20,8 @@
     ig: { source: "instagram", medium: "social" },
     fb: { source: "facebook", medium: "social" }
   };
+  // A ct prefix another page tags its installs with (f/invite.js: f).
+  var PREFIX = /^[a-z]+$/;
   // Lowercase words joined by single underscores, as Play's utm_content: fb_mobile_feed, ig_reels.
   var PLACEMENT = /^[a-z0-9]+(_[a-z0-9]+)*$/;
   var PLACEMENT_MAX = 40;
@@ -56,6 +59,12 @@
 
   function takesPlacement(source) {
     return isValidSource(source) && SOURCES[source].placement === true;
+  }
+
+  // The hall's row in m/halls.js, [name, Greek city, English city, city slug], or null if not listed.
+  function listedHall(halls, hall) {
+    var id = "venue-" + hall;
+    return isValidHall(hall) && halls && Object.prototype.hasOwnProperty.call(halls, id) ? halls[id] : null;
   }
 
   function isValidPlacement(placement) {
@@ -129,18 +138,35 @@
     return code !== null && Object.prototype.hasOwnProperty.call(STOREFRONTS, code) ? STOREFRONTS[code] : DEFAULT_STOREFRONT;
   }
 
-  function buildAppStoreUrl(hall, token, source) {
-    checkHall(hall);
-    checkSource(source);
+  // The one App Store URL expression on the site's scripts; callers check hall and ct first.
+  function storeUrl(hall, token, ct) {
     var store = "https://apps.apple.com/" + storefrontOf(hall) + "/app/";
     if (!token) return store + "id" + APP_STORE_ID;
     if (!TOKEN.test(token)) throw new Error("invalid provider token");
-    return store + "apple-store/id" + APP_STORE_ID + "?pt=" + token +
-      "&ct=" + campaignToken(hall, source) + "&mt=8";
+    return store + "apple-store/id" + APP_STORE_ID + "?pt=" + token + "&ct=" + ct + "&mt=8";
+  }
+
+  function buildAppStoreUrl(hall, token, source) {
+    checkHall(hall);
+    checkSource(source);
+    return storeUrl(hall, token, campaignToken(hall, source));
   }
 
   function appStoreUrl(hall, source) {
     return buildAppStoreUrl(hall, PROVIDER_TOKEN, source);
+  }
+
+  // For a page that tags its own installs: ct is <prefix>-<hall> by the rule above, same storefront.
+  function taggedAppStoreUrl(hall, prefix) {
+    checkHall(hall);
+    if (typeof prefix !== "string" || !PREFIX.test(prefix)) throw new Error("invalid ct prefix");
+    return storeUrl(hall, PROVIDER_TOKEN, campaignToken(hall, prefix));
+  }
+
+  // An Android app's own browser (Instagram, Messenger, Viber...) says "; wv)" and may answer an app
+  // link with an error page and no way back, so there the pages only show their buttons.
+  function isWebView(userAgent) {
+    return /; wv\)/.test(userAgent || "");
   }
 
   // iPadOS Safari asks for desktop sites by default and then claims to be a Mac with a touch screen.
@@ -189,12 +215,16 @@
     storefrontOf: storefrontOf,
     buildAppStoreUrl: buildAppStoreUrl,
     appStoreUrl: appStoreUrl,
+    taggedAppStoreUrl: taggedAppStoreUrl,
+    listedHall: listedHall,
+    isWebView: isWebView,
     platformOf: platformOf,
     wire: wire
   };
   if (typeof module === "object" && module.exports) {
     module.exports = api;
   } else if (typeof document !== "undefined") {
-    wire(document, navigator, location);
+    root.RACKUP_GO = api;
+    if (document.getElementById("opening")) wire(document, navigator, location);
   }
-})();
+})(this);
