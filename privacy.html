@@ -52,9 +52,10 @@
     it</em> and <em>What deletion removes</em>, when invites go. Under <em>App usage analytics</em>
     we add that from the same version, on Android, the app reads once, on your phone, the tags
     Google Play passes on after an install from a hall's poster, a hall's share card, a friend's
-    invite or a shared game's page, to open that hall, that invite or that game; that none of these
-    tags is sent to us except an invite's code or a game's id; and that the app logs only that it
-    opened one, as <code>link_opened</code>. That
+    invite or a shared game's page, to open that hall, that invite or that game; that of these tags
+    only the hall, the invite's code and the game they name can reach us, when the app loads them;
+    and that the app logs that it opened one, as <code>link_opened</code>, and a game also as
+    <code>match_viewed</code> when it is another player's open match. That
     version also logs four more analytics events, 37 in all:
     <code>invite_shared</code>, <code>invite_joined</code>, <code>invite_undone</code> and
     <code>link_opened</code>, none of which carries a name, a user id or an invite's code. We say so
@@ -886,8 +887,9 @@
         <code>invite_joined</code>, when you join with a friend's invite, with whether it set up a
         new account or you accepted it with the account you had; <code>invite_undone</code>, when
         you undo what a friend's invite set up; and <code>link_opened</code>, when the app opens a
-        hall, an invite or a game, with which of the three and whether it came from a link, from the
-        tags Google Play passed on after an install or from an invite code you typed.</li>
+        hall, an invite or a game, with which of the three and how it came: a hall from a link or
+        from the tags Google Play passed on after an install, an invite from a link, from those tags
+        or from an invite code you typed, and a game only from those tags.</li>
     <li><strong>Everything else</strong>: <code>venue_checked_in</code>, with the id of the hall;
         <code>player_followed</code>; <code>saved_search_created</code>; and
         <code>notifications_opened</code> and <code>notification_row_tapped</code>, when you
@@ -926,10 +928,12 @@
   <p><strong>Links from posters, invites and shared games.</strong> On Android, when you install
   RackUp from a hall's poster, a hall's share card, a friend's invite or a shared game's page,
   Google Play passes the app the same tags it passes Firebase Analytics. From version 2.4.9 the app
-  reads them once, on your phone, to open that hall, that invite or that game. None of these tags
-  is sent to us, except the invite's code when your friend's invite is used and the game's id when
-  the app opens that game, and the app logs only that it opened a hall, an invite or a game this
-  way, as <code>link_opened</code>, described above. On iPhone the app reads nothing like this.</p>
+  reads them once, on your phone, to open that hall, that invite or that game. Of these tags, only
+  the hall, the invite's code and the game they name can reach us, when the app loads that hall,
+  that invite or that game. The app logs that it opened one this way as <code>link_opened</code>,
+  described above, and when the game is another player's open match, opening it also logs
+  <code>match_viewed</code>, with the game's hall, as opening any such match does. On iPhone the app
+  reads nothing like this.</p>
   <p><strong>Analytics is not linked to your account.</strong> The app never calls Analytics'
   user id function, so Analytics keys on its own per installation identifier. One practical
   consequence, stated honestly: because these records are not tied to your account, we cannot
@@ -1657,8 +1661,9 @@
   την πρόσκληση ενός φίλου, και αν ο
   λογαριασμός σου ήταν καινούργιος ή τη δέχτηκες με τον λογαριασμό που είχες ήδη, όταν αναιρείς
   ό,τι έκανε η πρόσκληση ενός φίλου, και όταν η εφαρμογή ανοίγει μια αίθουσα, μια πρόσκληση ή ένα
-  ματς, με το ποιο από τα τρία ήταν και αν ήρθε από σύνδεσμο, από τις ετικέτες του Google Play μετά
-  από εγκατάσταση ή από κωδικό πρόσκλησης που έγραψες.
+  ματς, με το ποιο από τα τρία ήταν και πώς ήρθε: μια αίθουσα από σύνδεσμο ή από τις ετικέτες του
+  Google Play μετά από εγκατάσταση, μια πρόσκληση από σύνδεσμο, από αυτές τις ετικέτες ή από κωδικό
+  πρόσκλησης που έγραψες, και ένα ματς μόνο από αυτές τις ετικέτες.
   Κανένα συμβάν δεν περιέχει όνομα, email, κωδικό πρόσκλησης ή κείμενο που έγραψες, και όσα συλλέγουν τα δύο
   εργαλεία δεν τα συνδέουμε ποτέ με τον λογαριασμό σου: η εφαρμογή δεν στέλνει ποτέ το
   αναγνωριστικό χρήστη σε αυτές τις υπηρεσίες.</p>
@@ -1686,12 +1691,13 @@
   εγκαθιστάς το RackUp από την αφίσα ή την κάρτα μιας αίθουσας, από την πρόσκληση ενός φίλου ή από
   τη σελίδα ενός ματς που σου έστειλαν, το Google Play δίνει στην εφαρμογή τις ίδιες ετικέτες που
   δίνει στο Firebase Analytics. Από την έκδοση 2.4.9, η εφαρμογή τις διαβάζει μία φορά, στο
-  τηλέφωνό σου, για να ανοίξει εκείνη την αίθουσα, εκείνη την πρόσκληση ή εκείνο το ματς. Καμία από
-  αυτές τις ετικέτες δεν μας στέλνεται, εκτός από τον κωδικό της πρόσκλησης, όταν χρησιμοποιείς την
-  πρόσκληση του φίλου σου, και το αναγνωριστικό του ματς, όταν η εφαρμογή ανοίγει εκείνο το ματς,
-  και η εφαρμογή καταγράφει μόνο ότι άνοιξε έτσι μια αίθουσα, μια πρόσκληση ή ένα ματς, με το συμβάν
-  <code>link_opened</code> που γράφουμε παραπάνω. Στο iPhone η εφαρμογή δεν διαβάζει τίποτα
-  τέτοιο.</p>
+  τηλέφωνό σου, για να ανοίξει εκείνη την αίθουσα, εκείνη την πρόσκληση ή εκείνο το ματς. Από αυτές
+  τις ετικέτες, μόνο η αίθουσα, ο κωδικός της πρόσκλησης και το ματς που αναφέρουν μπορεί να μας
+  φτάσουν, όταν η εφαρμογή φορτώνει εκείνη την αίθουσα, εκείνη την πρόσκληση ή εκείνο το ματς. Η
+  εφαρμογή καταγράφει ότι άνοιξε έτσι ένα από αυτά με το συμβάν <code>link_opened</code> που
+  γράφουμε παραπάνω, και όταν το ματς είναι ανοιχτό ματς άλλου παίκτη, καταγράφει επίσης το
+  <code>match_viewed</code>, με την αίθουσα του ματς, όπως για κάθε τέτοιο ματς που ανοίγεις. Στο
+  iPhone η εφαρμογή δεν διαβάζει τίποτα τέτοιο.</p>
   <p>Δεν υπάρχουν διαφημίσεις μέσα στις εφαρμογές, ούτε διαφημιστικά αναγνωριστικά, ούτε
   παρακολούθηση σε εφαρμογές άλλων εταιρειών. Δεν πουλάμε δεδομένα. Από την έκδοση 2.1.0
   υπάρχουν ειδοποιήσεις push και στο iPhone: αν τις επιτρέψεις, κρατάμε στον λογαριασμό σου

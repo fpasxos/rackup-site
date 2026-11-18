@@ -137,9 +137,10 @@ INVITE_LINES = (
      ("From version 2.4.9", "14 days", "never your name or user id", "reads nothing from our database",
       "Anyone with an account who has the code", "30 days after it expires", "when you delete your account")),
     ("Where new players come from.", "Links from posters, invites and shared games.",
-     ("From version 2.4.9", "once, on your phone", "None of these tags is sent to us, except the invite's code",
-      "and the game's id when the app opens that game",
-      "the app logs only that it opened a hall, an invite or a game this way, as link_opened",
+     ("From version 2.4.9", "once, on your phone",
+      "Of these tags, only the hall, the invite's code and the game they name can reach us",
+      "The app logs that it opened one this way as link_opened",
+      "when the game is another player's open match, opening it also logs match_viewed",
       "On iPhone the app reads nothing")),
     ("Κοινοποίηση ματς.", "Πρόσκληση σε φίλο.",
      ("Από την έκδοση 2.4.9", "14 ημέρες", "ποτέ το όνομα ή το αναγνωριστικό χρήστη σου",
@@ -148,9 +149,9 @@ INVITE_LINES = (
     ("Στο Android, όταν εγκαθιστάς την εφαρμογή από σύνδεσμό μας",
      "Σύνδεσμοι από αφίσες, προσκλήσεις και κοινοποιημένα ματς.",
      ("Από την έκδοση 2.4.9", "μία φορά, στο τηλέφωνό σου",
-      "Καμία από αυτές τις ετικέτες δεν μας στέλνεται, εκτός από τον κωδικό της πρόσκλησης",
-      "και το αναγνωριστικό του ματς, όταν η εφαρμογή ανοίγει εκείνο το ματς",
-      "η εφαρμογή καταγράφει μόνο ότι άνοιξε έτσι μια αίθουσα, μια πρόσκληση ή ένα ματς, με το συμβάν link_opened",
+      "μόνο η αίθουσα, ο κωδικός της πρόσκλησης και το ματς που αναφέρουν μπορεί να μας φτάσουν",
+      "καταγράφει ότι άνοιξε έτσι ένα από αυτά με το συμβάν link_opened",
+      "όταν το ματς είναι ανοιχτό ματς άλλου παίκτη, καταγράφει επίσης το match_viewed",
       "Στο iPhone η εφαρμογή δεν διαβάζει τίποτα")),
 )
 
@@ -171,9 +172,9 @@ class InviteLinksPolicyTest(unittest.TestCase):
     def test_the_newest_note_says_what_changed(self):
         newest = next(p for p in paragraphs(current("privacy.html")) if p.startswith("What changed on "))
         for fact in ("version 2.4.9", "invite a friend", "Google Play", "37 in all", "How long we keep it",
-                     "What deletion removes", "none of these tags is sent to us except an invite's code or a game's id",
+                     "What deletion removes", "of these tags only the hall, the invite's code and the game they name can reach us",
                      "a friend's invite or a shared game's page",
-                     "the app logs only that it opened one, as link_opened", "in the summary in Greek too"):
+                     "the app logs that it opened one, as link_opened, and a game also as match_viewed when it is another player's open match", "in the summary in Greek too"):
             self.assertIn(fact, newest)
         # link_opened sends Analytics that the app opened a hall or invite from a link or the Play tags.
         self.assertNotIn("Nothing about it is sent to us", visible_text(main_html(current("privacy.html"))))
@@ -257,8 +258,16 @@ class GameLinksPolicyTest(unittest.TestCase):
         for said in ("when the app opens a hall, an invite or a game, with which of the three",
                      "ανοίγει μια αίθουσα, μια πρόσκληση ή ένα ματς, με το ποιο από τα τρία ήταν",
                      "the tags the Android app reads after an install from a hall's poster, a hall's share card, "
-                     "a friend's invite or a shared game's page"):
+                     "a friend's invite or a shared game's page",
+                     # A game comes only from the Play tags: a tapped game link logs match_viewed instead.
+                     "and a game only from those tags", "και ένα ματς μόνο από αυτές τις ετικέτες"):
             self.assertIn(said, text)
+        # A poster's hall is loaded by its id too, and a game opened also logs match_viewed.
+        for old in ("None of these tags is sent to us", "none of these tags is sent to us",
+                    "Καμία από αυτές τις ετικέτες δεν μας στέλνεται", "logs only that it opened",
+                    "καταγράφει μόνο ότι άνοιξε", "whether it came from a link, from the tags",
+                    "και αν ήρθε από σύνδεσμο, από τις ετικέτες"):
+            self.assertNotIn(old, text)
         for old in ("when the app opens a hall or an invite, with which of the two",
                     "ανοίγει μια αίθουσα ή μια πρόσκληση, με το ποια από τις δύο ήταν", "a hall's share card or a friend's invite",
                     "Links from posters and invites.", "Σύνδεσμοι από αφίσες και προσκλήσεις."):
