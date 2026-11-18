@@ -81,8 +81,9 @@
     doc.getElementById("hall").hidden = false;
   }
 
-  // Android opens the invite at once, with a button in case Chrome wants a tap. An iPhone needs the
-  // code after an install, so nothing moves there; a computer gets the code and both stores.
+  // Android opens the invite at once, with a button in case Chrome wants a tap; an app's own browser
+  // only gets the buttons (go.isWebView). An iPhone needs the code after an install, so nothing
+  // moves there; a computer gets the code and both stores.
   function wire(doc, nav, loc, halls) {
     var invite = inviteFrom(loc.search, halls);
     if (invite === null) {
@@ -98,7 +99,7 @@
       doc.getElementById("open-app").setAttribute("href", intent);
       doc.getElementById("android").hidden = false;
       doc.getElementById("app-store").hidden = true;
-      loc.replace(intent);
+      if (!go.isWebView(nav.userAgent)) loc.replace(intent);
       return;
     }
     doc.getElementById("code").textContent = codeText(invite.code);

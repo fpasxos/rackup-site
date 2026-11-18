@@ -79,21 +79,27 @@ const UA = {
   samsungInternet: "Mozilla/5.0 (Linux; Android 14; SAMSUNG SM-S918B) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/25.0 Chrome/121.0.0.0 Mobile Safari/537.36",
   instagramAndroid: "Mozilla/5.0 (Linux; Android 14; SM-S918B Build/UP1A.231005.007; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/127.0.6533.103 Mobile Safari/537.36 Instagram 344.0.0.34.89 Android (34/14; 480dpi; 1080x2340; samsung; SM-S918B; dm3q; qcom; el_GR; 630012345)",
   facebookAndroid: "Mozilla/5.0 (Linux; Android 13; Pixel 7 Build/TQ3A.230901.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/127.0.6533.103 Mobile Safari/537.36 [FB_IAB/FB4A;FBAV/475.0.0.43.111;]",
+  messengerAndroid: "Mozilla/5.0 (Linux; Android 13; Pixel 7 Build/TQ3A.230901.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/127.0.6533.103 Mobile Safari/537.36 [FB_IAB/Orca-Android;FBAV/450.0.0.38.108;]",
+  viberAndroid: "Mozilla/5.0 (Linux; Android 14; SM-A546B Build/UP1A.231005.007; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/128.0.6613.127 Mobile Safari/537.36 Viber/24.6.0.0",
   windowsChrome: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
 };
 
-// Starts as go/index.html does: only the desktop and hall blocks are hidden.
-const HALL_IDS = ["hall-open", "hall-name", "hall-city", "hall-en", "open-app", "stores-note"];
+// Starts as go/index.html does: the desktop block, the hall block and its in-app heading are hidden.
+const HALL_IDS = ["hall-open", "hall-opening", "hall-get", "hall-name", "hall-city", "hall-en", "open-app", "stores-note"];
+const STARTS_HIDDEN = ["desktop", "hall-open", "hall-get"];
 function fakeDocument() {
   const elements = {};
   for (const id of ["app-store", "google-play", "opening", "desktop", ...HALL_IDS]) {
     elements[id] = {
-      hidden: id === "desktop" || id === "hall-open", attributes: {}, textContent: "",
+      hidden: STARTS_HIDDEN.includes(id), attributes: {}, textContent: "",
       setAttribute(k, v) { this.attributes[k] = v; }
     };
   }
   return { elements, getElementById: (id) => elements[id] };
 }
+// Chrome and Samsung Internet jump to the app; an app's own browser (; wv) only shows the buttons.
+const ANDROID_BROWSERS = ["androidChrome", "samsungInternet"];
+const ANDROID_WEBVIEWS = ["instagramAndroid", "facebookAndroid", "messengerAndroid", "viberAndroid"];
 
 function fakeLocation(search) {
   return { search, replaced: [], replace(url) { this.replaced.push(url); } };
@@ -704,14 +710,16 @@ test("the page stays out of the sitemap, is published, and has no en or em dash"
 });
 
 test("on Android a listed hall's poster opens the app on that hall, with the poster's Play link as the fallback", () => {
-  for (const ua of [UA.androidChrome, UA.samsungInternet, UA.facebookAndroid, UA.instagramAndroid]) {
-    const { doc, loc, hrefs } = run(ua, 5, "?h=nax-galaxias", HALLS);
+  for (const name of ANDROID_BROWSERS) {
+    const { doc, loc, hrefs } = run(UA[name], 5, "?h=nax-galaxias", HALLS);
     const el = doc.elements;
-    assert.deepEqual(loc.replaced, [HALL_INTENT], ua);
+    assert.deepEqual(loc.replaced, [HALL_INTENT], name);
     assert.deepEqual(hrefs, [page.appStoreUrl("nax-galaxias"), HALL_PLAY]);
     // Chrome may refuse to open an app without a tap, so the page keeps the hall and a button.
     assert.equal(el["open-app"].attributes.href, HALL_INTENT);
     assert.equal(el["hall-open"].hidden, false);
+    assert.equal(el["hall-opening"].hidden, false, "Opening RackUp, while it does");
+    assert.equal(el["hall-get"].hidden, true);
     assert.equal(el.opening.hidden, true, "it opens RackUp, not the app store");
     assert.equal(el.desktop.hidden, true);
     assert.equal(el["app-store"].hidden, true, "an Android phone sees only Google Play");
@@ -719,6 +727,35 @@ test("on Android a listed hall's poster opens the app on that hall, with the pos
     assert.equal(el["stores-note"].hidden, true);
   }
   assert.equal(page.venueIntentUrl("nax-galaxias"), HALL_INTENT);
+});
+
+test("in an app's own browser the page jumps nowhere, and shows the hall, its open button and Google Play", () => {
+  for (const [search, intent, play] of [["?h=nax-galaxias", HALL_INTENT, HALL_PLAY], ["?h=ath-king8&s=card", CARD_INTENT, CARD_PLAY]]) {
+    for (const name of ANDROID_WEBVIEWS) {
+      const { doc, loc, hrefs } = run(UA[name], 5, search, HALLS);
+      const el = doc.elements;
+      assert.deepEqual(loc.replaced, [], `${name} ${search}: an app link here can end on an error page`);
+      assert.equal(el["open-app"].attributes.href, intent, name);
+      assert.equal(hrefs[1], play, name);
+      assert.equal(el["hall-open"].hidden, false, name);
+      assert.equal(el["google-play"].hidden, false, name);
+      assert.equal(el["app-store"].hidden, true, name);
+      assert.equal(el["hall-opening"].hidden, true, `${name}: nothing opens by itself here`);
+      assert.equal(el["hall-get"].hidden, false, name);
+      assert.equal(el.opening.hidden, true, name);
+    }
+  }
+});
+
+test("only an Android app's own browser counts as one", () => {
+  for (const name of ANDROID_WEBVIEWS) assert.equal(page.isWebView(UA[name]), true, name);
+  for (const name of [...ANDROID_BROWSERS, "iphoneSafari", "iphoneChrome", "instagramIos", "facebookIos",
+    "ipadDesktopMode", "macSafari", "windowsChrome"]) {
+    assert.equal(page.isWebView(UA[name]), false, name);
+  }
+  for (const ua of [undefined, null, "", "wv", "Mozilla/5.0 (Linux; Android 14; wv-like) Chrome"]) {
+    assert.equal(page.isWebView(ua), false, String(ua));
+  }
 });
 
 test("the fallback decodes once to the poster's or the card's Play link, referrer and all", () => {
@@ -758,9 +795,9 @@ test("the Rankings card's QR, s=card, tags card and qr, ct card-<slug>, and open
   assert.equal(page.playUrl("ath-king8", "card"), CARD_PLAY);
   assert.equal(page.buildAppStoreUrl("ath-king8", "12aB34", "card"), CARD_APP_STORE);
   assert.equal(page.venueIntentUrl("ath-king8", "card"), CARD_INTENT);
-  for (const ua of [UA.androidChrome, UA.samsungInternet, UA.instagramAndroid]) {
-    const { doc, loc, hrefs } = run(ua, 5, "?h=ath-king8&s=card", HALLS);
-    assert.deepEqual(loc.replaced, [CARD_INTENT], ua);
+  for (const name of ANDROID_BROWSERS) {
+    const { doc, loc, hrefs } = run(UA[name], 5, "?h=ath-king8&s=card", HALLS);
+    assert.deepEqual(loc.replaced, [CARD_INTENT], name);
     assert.deepEqual(hrefs, [page.appStoreUrl("ath-king8", "card"), CARD_PLAY]);
     assert.equal(doc.elements["open-app"].attributes.href, CARD_INTENT);
     assert.equal(doc.elements["hall-open"].hidden, false);
@@ -889,13 +926,21 @@ test("in a browser go.js runs the go page, and on any other page only lends its 
 });
 
 test("the hall block starts hidden and says what the approved page says, around a button the script fills", () => {
-  const block = html.match(/<div id="hall-open" hidden>([\s\S]*?)<\/div>/);
-  assert.ok(block, "#hall-open must start hidden");
-  assert.match(block[1], /<h1>Ανοίγει το RackUp…<\/h1>/);
-  assert.match(block[1], /<p class="tag" lang="en">Opening RackUp…<\/p>/);
-  assert.match(block[1], /<span>Άνοιξε την αίθουσα στο RackUp<small lang="en">Open the hall in RackUp<\/small><\/span>/);
-  assert.match(block[1], /Αν δεν έχεις την εφαρμογή, ανοίγει το Google Play\./);
-  assert.match(block[1], /<span lang="en">No app yet\? Google Play opens instead\.<\/span>/);
+  assert.ok(html.includes('<div id="hall-open" hidden>'), "#hall-open must start hidden");
+  const block = html.split('<div id="hall-open" hidden>')[1].split('<div class="stores"')[0];
+  const part = (id, hidden) => block.match(new RegExp(`<div id="${id}"${hidden ? " hidden" : ""}>([\\s\\S]*?)</div>`));
+  const opening = part("hall-opening", false);
+  assert.ok(opening, "#hall-opening must start visible");
+  assert.match(opening[1], /<h1>Ανοίγει το RackUp…<\/h1>/);
+  assert.match(opening[1], /<p class="tag" lang="en">Opening RackUp…<\/p>/);
+  // An app's own browser jumps nowhere, so its heading says what the page offers instead.
+  const get = part("hall-get", true);
+  assert.ok(get, "#hall-get must start hidden");
+  assert.match(get[1], /<h1>Κατέβασε το RackUp<\/h1>/);
+  assert.match(get[1], /<p class="tag" lang="en">Get RackUp<\/p>/);
+  assert.match(block, /<span>Άνοιξε την αίθουσα στο RackUp<small lang="en">Open the hall in RackUp<\/small><\/span>/);
+  assert.match(block, /Αν δεν έχεις την εφαρμογή, ανοίγει το Google Play\./);
+  assert.match(block, /<span lang="en">No app yet\? Google Play opens instead\.<\/span>/);
   assert.match(html, /<a id="open-app"(?![^>]*href)[^>]*>/, "open-app must have no href until the script sets one");
   for (const id of HALL_IDS) assert.equal((html.match(new RegExp(`id="${id}"`, "g")) || []).length, 1, id);
 });

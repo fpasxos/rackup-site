@@ -253,7 +253,9 @@ store links and the platform test) and `invite.js`.
   whose fallback is Play with
   `referrer=utm_source=friend&utm_medium=invite&utm_campaign=<hall-slug>&rackup_invite=<code>`.
   The app reads that referrer once after an install. The page also shows the same link as
-  a button, because Chrome may refuse an app launch without a tap, and Google Play.
+  a button, because Chrome may refuse an app launch without a tap, and Google Play. In an
+  app's own browser (`; wv)` in its user agent) the page jumps nowhere and shows only the
+  button, the note and Google Play.
 - **iPhone** stays on the page: the App Store tagged `ct=f-<hall-slug>`, an
   **Already have it? Open the invite** button to `rackup://invite/<code>?h=<hall-slug>`
   (a scheme only app 2.4.9 and later register) and the code to type in the app.
@@ -315,7 +317,10 @@ most 30 characters; anything else counts as the general code.
   instead of Play: the app opens on the hall, or Chrome opens the same tagged Play link
   when it is not installed, so the referrer is unchanged. Chrome may refuse an app launch
   without a tap, so the page also shows the hall and an **Open the hall in RackUp**
-  button with the same link. iPhones keep the instant App Store jump and computers the
+  button with the same link. An app's own browser (its user agent says `; wv)`, as
+  Instagram's, Messenger's and Viber's do) may answer an app link with an error page, so
+  there the page jumps nowhere and shows the hall, the button and Google Play under
+  **Get RackUp**. iPhones keep the instant App Store jump and computers the
   two buttons; ads, bios and unlisted halls keep the Play redirect. Without
   `m/halls.js` (it loads first) every link behaves as before. App versions before 2.4.9
   have no `venue` link, so Chrome falls back to Play, as the page did before.

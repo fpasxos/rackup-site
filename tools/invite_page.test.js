@@ -37,13 +37,17 @@ const UA = {
   samsungInternet: "Mozilla/5.0 (Linux; Android 14; SAMSUNG SM-S918B) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/25.0 Chrome/121.0.0.0 Mobile Safari/537.36",
   instagramAndroid: "Mozilla/5.0 (Linux; Android 14; SM-S918B Build/UP1A.231005.007; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/127.0.6533.103 Mobile Safari/537.36 Instagram 344.0.0.34.89 Android (34/14; 480dpi; 1080x2340; samsung; SM-S918B; dm3q; qcom; el_GR; 630012345)",
   messengerAndroid: "Mozilla/5.0 (Linux; Android 13; Pixel 7 Build/TQ3A.230901.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/127.0.6533.103 Mobile Safari/537.36 [FB_IAB/Orca-Android;FBAV/450.0.0.38.108;]",
+  viberAndroid: "Mozilla/5.0 (Linux; Android 14; SM-A546B Build/UP1A.231005.007; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/128.0.6613.127 Mobile Safari/537.36 Viber/24.6.0.0",
   iphoneSafari: "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1",
   ipadDesktopMode: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
   instagramIos: "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Instagram 330.0.3.30.93 (iPhone15,2; iOS 17_5; el_GR; el; scale=3.00; 1179x2556; 598563473)",
   macSafari: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
   windowsChrome: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
 };
-const ANDROID = [[UA.androidChrome, 5], [UA.samsungInternet, 5], [UA.instagramAndroid, 5], [UA.messengerAndroid, 5]];
+// Chrome and Samsung Internet jump to the app; an app's own browser (; wv) only shows the buttons.
+const ANDROID_BROWSERS = [[UA.androidChrome, 5], [UA.samsungInternet, 5]];
+const ANDROID_WEBVIEWS = [[UA.instagramAndroid, 5], [UA.messengerAndroid, 5], [UA.viberAndroid, 5]];
+const ANDROID = [...ANDROID_BROWSERS, ...ANDROID_WEBVIEWS];
 const IOS = [[UA.iphoneSafari, 5], [UA.ipadDesktopMode, 5], [UA.instagramIos, 5]];
 const DESKTOP = [[UA.macSafari, 0], [UA.windowsChrome, 0]];
 
@@ -143,8 +147,22 @@ test("the builders refuse a bad hall or code instead of emitting it", () => {
   assert.throws(() => page.playUrl("ath-king8", null), /a hall needs its code/);
 });
 
+test("in an app's own browser a good link jumps nowhere, and shows the hall, the open button, the note and Play", () => {
+  for (const [ua, touch] of ANDROID_WEBVIEWS) {
+    const { el, loc } = run(ua, touch, LINK);
+    assert.deepEqual(loc.replaced, [], `${ua}: an app link here can end on an error page`);
+    assert.equal(el["open-app"].attributes.href, INVITE_INTENT);
+    assert.equal(el.android.hidden, false);
+    assert.equal(el.hall.hidden, false);
+    assert.equal(el["google-play"].attributes.href, INVITE_PLAY);
+    assert.equal(el["google-play"].hidden, false);
+    assert.equal(el["app-store"].hidden, true);
+    for (const id of ["ios-open", "code-box", "bad-link"]) assert.equal(el[id].hidden, true, id);
+  }
+});
+
 test("on Android a good link opens the invite in RackUp, and keeps the hall, the button, the note and Play", () => {
-  for (const [ua, touch] of ANDROID) {
+  for (const [ua, touch] of ANDROID_BROWSERS) {
     const { el, loc } = run(ua, touch, LINK);
     assert.deepEqual(loc.replaced, [INVITE_INTENT], ua);
     assert.equal(el["open-app"].attributes.href, INVITE_INTENT);

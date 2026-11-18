@@ -181,6 +181,12 @@
       ";S.browser_fallback_url=" + encodeURIComponent(playUrl(hall, source)) + ";end";
   }
 
+  // An Android app's own browser (Instagram, Messenger, Viber...) says "; wv)" and may answer an app
+  // link with an error page and no way back, so there the pages only show their buttons.
+  function isWebView(userAgent) {
+    return /; wv\)/.test(userAgent || "");
+  }
+
   // iPadOS Safari asks for desktop sites by default and then claims to be a Mac with a touch screen.
   function platformOf(userAgent, maxTouchPoints) {
     var ua = userAgent || "";
@@ -191,8 +197,11 @@
   }
 
   // Text only, into elements the page already has. Chrome may refuse to open an app without a
-  // tap, so the hall and a button stay on the page, with Google Play as the only store.
-  function showHall(doc, hall, row, intent) {
+  // tap, so the hall and a button stay on the page, with Google Play as the only store. Where
+  // nothing opens by itself, "Get RackUp" replaces "Opening RackUp".
+  function showHall(doc, hall, row, intent, webView) {
+    doc.getElementById("hall-opening").hidden = webView;
+    doc.getElementById("hall-get").hidden = !webView;
     var name = doc.getElementById("hall-name");
     name.textContent = row[0];
     name.setAttribute("href", DIRECTORY + row[3] + "/#venue-" + hall);
@@ -222,8 +231,9 @@
       loc.replace(apple);
     } else if (platform === "android" && row !== null) {
       var intent = venueIntentUrl(hall, source);
-      showHall(doc, hall, row, intent);
-      loc.replace(intent);
+      var webView = isWebView(nav.userAgent);
+      showHall(doc, hall, row, intent, webView);
+      if (!webView) loc.replace(intent);
     } else if (platform === "android") {
       loc.replace(play);
     } else {
@@ -251,6 +261,7 @@
     taggedAppStoreUrl: taggedAppStoreUrl,
     listedHall: listedHall,
     venueIntentUrl: venueIntentUrl,
+    isWebView: isWebView,
     platformOf: platformOf,
     wire: wire
   };
