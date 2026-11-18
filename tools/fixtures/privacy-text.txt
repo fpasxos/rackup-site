@@ -466,40 +466,42 @@ user id, your display name, the hall, and when it was made. The link holds only 
 hall, never your name or user id, and the page it opens reads nothing from our database. Anyone with
 an account who has the code can read the invite: your user id, your display name and the hall. When
 your friend joins with it, we record who joined and when, you follow each other, and we tell you
-with a notification. Your friend can undo this. A friend who is new to RackUp also starts with that
-hall as their usual hall. We delete an invite, with its joins, 30 days after it expires, and all
-your invites and joins when you delete your account. Games that found an opponent. We count the
-games that found an opponent in each city and hall, and show everyone who uses the app, guests
-included, those counts, the hours with the most games, and the hall, game, race and time of recent
-ones. These summaries never hold a name or a user id. Beside a host's name on their posts we show
-how many games they have played with a confirmed score, from three on. A guest who opens a link to a
-game that has found an opponent is told so and at which hall, never who is playing. Quiet cities.
-Every 6 hours our server works out, for each city, whether three or fewer of the players whose home
-city it is opened RackUp in the last 7 days, judging by when their notification tokens were last
-updated. It leaves out automated test accounts and Apple's review account. For each city it keeps
-only that yes or no and when it was worked out, with no names and no counts, and only players with
-an account can read it. From version 2.4.7, when you post a match at a hall in a city where it is
-yes, the app suggests sending the match to a friend who plays, and, while the city stays quiet, so
-does the empty list of requests on your match. Safety: reports and blocks If you report a player,
-from a match or from their player card for example, we store your user id, their user id, the match
-or post in question if there is one, and what you wrote. Reports go into a collection that no app
-can ever read back. Only we can read them, in the Firebase console, and we do so to act on abuse. If
-you block a player, we store their user id in a private list of yours. Blocking is invisible to the
-person blocked. It hides their posts from your feed and keeps them out of your player search, and it
-hides their quick messages and direct challenges, which also stop notifying you. Feedback The
-feedback form in Settings sends us your user id, the category you pick, your message, the app
-version and build, and which platform you are on. Like reports, no app can read this back.
-Notifications We store a Firebase Cloud Messaging token for each of your devices, Android or iPhone,
-along with your language, the platform, the app version and build, and the time it was last updated,
-so we can send you push notifications about join requests, match updates, direct challenges,
-invitations to confirm a game at the table, quick messages, reminders, saved search alerts, new
-games from players you follow, from version 2.4.3 new games in your city and, for halls you starred,
-new games and check-ins there. With the app version, that time also lets us count updates as totals,
-as described under Your account, and our server reads it to tell whether a player opened RackUp in
-the last 7 days, for quiet cities, as described under What you post and write. Our server also reads
-the app version stored with each token for your player card, as described under Your player card and
-player search. The iPhone app updates the token's record each time it starts. From version 2.4.4,
-the Android app updates it when it starts only if a day or more has passed since it last did, and
+with a notification. If the hall is in their own country, a friend with no usual hall yet gets it as
+their usual hall and as a starred hall, which brings them its notifications; one who has a usual
+hall keeps it. Your friend can undo what the invite made: the join, the follows, the usual hall and
+the star. We delete an invite, with its joins, 30 days after it expires, and all your invites and
+joins when you delete your account. Games that found an opponent. We count the games that found an
+opponent in each city and hall, and show everyone who uses the app, guests included, those counts,
+the hours with the most games, and the hall, game, race and time of recent ones. These summaries
+never hold a name or a user id. Beside a host's name on their posts we show how many games they have
+played with a confirmed score, from three on. A guest who opens a link to a game that has found an
+opponent is told so and at which hall, never who is playing. Quiet cities. Every 6 hours our server
+works out, for each city, whether three or fewer of the players whose home city it is opened RackUp
+in the last 7 days, judging by when their notification tokens were last updated. It leaves out
+automated test accounts and Apple's review account. For each city it keeps only that yes or no and
+when it was worked out, with no names and no counts, and only players with an account can read it.
+From version 2.4.7, when you post a match at a hall in a city where it is yes, the app suggests
+sending the match to a friend who plays, and, while the city stays quiet, so does the empty list of
+requests on your match. Safety: reports and blocks If you report a player, from a match or from
+their player card for example, we store your user id, their user id, the match or post in question
+if there is one, and what you wrote. Reports go into a collection that no app can ever read back.
+Only we can read them, in the Firebase console, and we do so to act on abuse. If you block a player,
+we store their user id in a private list of yours. Blocking is invisible to the person blocked. It
+hides their posts from your feed and keeps them out of your player search, and it hides their quick
+messages and direct challenges, which also stop notifying you. Feedback The feedback form in
+Settings sends us your user id, the category you pick, your message, the app version and build, and
+which platform you are on. Like reports, no app can read this back. Notifications We store a
+Firebase Cloud Messaging token for each of your devices, Android or iPhone, along with your
+language, the platform, the app version and build, and the time it was last updated, so we can send
+you push notifications about join requests, match updates, direct challenges, invitations to confirm
+a game at the table, quick messages, reminders, saved search alerts, new games from players you
+follow, from version 2.4.3 new games in your city and, for halls you starred, new games and
+check-ins there. With the app version, that time also lets us count updates as totals, as described
+under Your account, and our server reads it to tell whether a player opened RackUp in the last 7
+days, for quiet cities, as described under What you post and write. Our server also reads the app
+version stored with each token for your player card, as described under Your player card and player
+search. The iPhone app updates the token's record each time it starts. From version 2.4.4, the
+Android app updates it when it starts only if a day or more has passed since it last did, and
 whenever the token, your language or the app version changes. You control notifications with the
 switches in Settings and with your device's notification permission, with two exceptions to the
 switches: a no-show report against you reaches you even with Match updates off, because it affects
@@ -617,37 +619,37 @@ that something happened. Here they all are, with any detail an event carries: Si
 first run: sign_up and login, each with the sign-in method (password, Google or Apple);
 guest_browse_started, from version 2.3.0, when you choose to look around as a guest; email_verified;
 tutorial_complete, when you finish or skip the welcome tour; home_venue_set, when you pick a home
-hall at its end; and notification_permission_result, with whether you allowed notifications.
-Screens: screen_view, from version 2.4.8, when you open, or go back to, Discover, Matches, Rankings,
-Venues or Profile, with which of the five it is, as both its screen name and its screen class.
-Earlier versions let Firebase Analytics record screen views by itself, as one of its standard
-measurements; from version 2.4.8 the apps turn that off, so it records only these. Matches:
-match_viewed, when you open another player's open match, with how you got there (the board, a hall's
-page, a notification, a link, your activity feed or elsewhere in the app), the id of the hall and
-how far ahead the match starts (play now, under 6 hours, 6 to 24 hours, or a day or more), and, from
-version 2.4.8, for a match you opened from the board, its place among the matches there (1 to 20, or
-past the 20th) and how many matches the board showed (1, 2, 3 to 5, 6 to 10, or 11 or more);
-match_shared, when you open the share sheet for a match, with where you opened it (what the app
-shows after you post, the match page, the empty list of requests or the card of a game that found an
-opponent), whether the match is yours and how far ahead it starts, never whether you sent it, or to
-whom; post_started, from version 2.4.8, when you open the form for a new match or a new
-looking-for-a-game post, but not when you edit one, with which of the two it is and where you opened
-it (the + button, the shortcut on the Android app's icon, the board, the game an empty board
-suggests, a looking-for-a-game post, a hall's page, Rankings, the page of a game that found an
-opponent, a rematch or elsewhere in the app); match_posted, with the game type, whether it was a
-"play now" post, the id of the hall, how far ahead it starts and which of the times the app
-suggested you kept, if any, and, from version 2.4.8, where you opened the form and about how long it
-was open before you posted (under 30 seconds, 30 to 60 seconds, 1 to 2 minutes, 2 to 5 minutes, or
-longer); join_requested, from version 2.4.8 with how you got to the match's page, as for
-match_viewed; request_accepted, with where you accepted it (a notification, the card on the board,
-the match page or the Requests tab); seat_check_answered, when you say on the match page that you
-are coming, or free your seat after saying you can't make it, with which of the two;
-table_game_logged, when you send a game at the table for the other player to confirm, with where you
-started it (the post form, My matches, a hall's page, or another game from a game at the table) and
-the game type; score_reported; score_confirmed; score_disputed; opponent_rated; h2h_opened and
-h2h_rematch, when you open the head to head screen and when you tap its rematch button; and
-reputation_opened, when you open your own reputation screen. Looking for a game:
-looking_for_game_posted, with the game type, the part of the day, whether any hall will do and
+hall, at its end or later, and, from version 2.4.9, when a friend's invite gives you one; and
+notification_permission_result, with whether you allowed notifications. Screens: screen_view, from
+version 2.4.8, when you open, or go back to, Discover, Matches, Rankings, Venues or Profile, with
+which of the five it is, as both its screen name and its screen class. Earlier versions let Firebase
+Analytics record screen views by itself, as one of its standard measurements; from version 2.4.8 the
+apps turn that off, so it records only these. Matches: match_viewed, when you open another player's
+open match, with how you got there (the board, a hall's page, a notification, a link, your activity
+feed or elsewhere in the app), the id of the hall and how far ahead the match starts (play now,
+under 6 hours, 6 to 24 hours, or a day or more), and, from version 2.4.8, for a match you opened
+from the board, its place among the matches there (1 to 20, or past the 20th) and how many matches
+the board showed (1, 2, 3 to 5, 6 to 10, or 11 or more); match_shared, when you open the share sheet
+for a match, with where you opened it (what the app shows after you post, the match page, the empty
+list of requests or the card of a game that found an opponent), whether the match is yours and how
+far ahead it starts, never whether you sent it, or to whom; post_started, from version 2.4.8, when
+you open the form for a new match or a new looking-for-a-game post, but not when you edit one, with
+which of the two it is and where you opened it (the + button, the shortcut on the Android app's
+icon, the board, the game an empty board suggests, a looking-for-a-game post, a hall's page,
+Rankings, the page of a game that found an opponent, a rematch or elsewhere in the app);
+match_posted, with the game type, whether it was a "play now" post, the id of the hall, how far
+ahead it starts and which of the times the app suggested you kept, if any, and, from version 2.4.8,
+where you opened the form and about how long it was open before you posted (under 30 seconds, 30 to
+60 seconds, 1 to 2 minutes, 2 to 5 minutes, or longer); join_requested, from version 2.4.8 with how
+you got to the match's page, as for match_viewed; request_accepted, with where you accepted it (a
+notification, the card on the board, the match page or the Requests tab); seat_check_answered, when
+you say on the match page that you are coming, or free your seat after saying you can't make it,
+with which of the two; table_game_logged, when you send a game at the table for the other player to
+confirm, with where you started it (the post form, My matches, a hall's page, or another game from a
+game at the table) and the game type; score_reported; score_confirmed; score_disputed;
+opponent_rated; h2h_opened and h2h_rematch, when you open the head to head screen and when you tap
+its rematch button; and reputation_opened, when you open your own reputation screen. Looking for a
+game: looking_for_game_posted, with the game type, the part of the day, whether any hall will do and
 whether it replaced an earlier post of yours; and looking_for_game_converted, when a match is posted
 from a looking-for-a-game post, with the game type, whether that post would take any hall, and
 whether the post was your own. Rankings: rankings_opened, when you open Rankings, with which of its
@@ -1159,71 +1161,73 @@ email, κωδικό ή προφίλ. Ως επισκέπτης βλέπεις τ
 ανοίγει δεν διαβάζει τίποτα από τη βάση δεδομένων μας. Όποιος έχει λογαριασμό και τον κωδικό μπορεί
 να διαβάσει την πρόσκληση: το αναγνωριστικό χρήστη σου, το όνομά σου και την αίθουσα. Όταν ο φίλος
 σου μπει με την πρόσκληση, καταγράφουμε ποιος μπήκε και πότε, ακολουθείτε ο ένας τον άλλον και σε
-ενημερώνουμε με μια ειδοποίηση. Ο φίλος σου μπορεί να το αναιρέσει. Ένας φίλος που είναι καινούργιος
-στο RackUp ξεκινά επίσης με αυτή την αίθουσα ως λέσχη του. Μια πρόσκληση τη σβήνουμε 30 ημέρες αφού
-λήξει, μαζί με όσα καταγράψαμε για όσους μπήκαν με αυτήν, και όταν διαγράψεις τον λογαριασμό σου
-σβήνουμε όλες τις προσκλήσεις σου και ό,τι καταγράψαμε όταν μπήκες με πρόσκληση άλλου. Κάθε 6 ώρες ο
-διακομιστής μας υπολογίζει για κάθε πόλη αν τρεις ή λιγότεροι από τους παίκτες που την έχουν πόλη
-τους άνοιξαν το RackUp τις τελευταίες 7 ημέρες, από το πότε ενημερώθηκαν τελευταία τα αναγνωριστικά
-ειδοποιήσεών τους, και κρατά μόνο αυτό το ναι ή όχι και πότε υπολογίστηκε, χωρίς ονόματα και χωρίς
-τον αριθμό των παικτών. Από την έκδοση 2.4.7, όταν ανεβάζεις ματς σε αίθουσα μιας τέτοιας πόλης, η
-εφαρμογή σού προτείνει να το στείλεις σε έναν φίλο που παίζει. Νομική βάση είναι το έννομο συμφέρον
-μας, και μπορείς να αντιταχθείς όποτε θέλεις. Μια προσωπική πρόκληση τη βλέπετε μόνο εσείς οι δύο,
-μαζί με τη σημείωσή της. Αν γίνει δεκτή, δημιουργείται κανονικό ματς, που το βλέπουν όλοι οι
-παίκτες, αλλά η σημείωση δεν περνάει σε αυτό: μένει στην πρόκληση και σβήνεται μαζί της. Όταν
-κλείσει ένα ματς, οι δύο παίκτες του μπορούν να ανταλλάσσουν μόνο έτοιμα γρήγορα μηνύματα, χωρίς
-πληκτρολόγηση. Τα βλέπετε μόνο εσείς οι δύο και σβήνονται 14 ημέρες μετά την έναρξη του ματς ή, όσα
-σταλούν αργότερα, 14 ημέρες μετά την αποστολή τους. Ένα ματς μπορεί να απέχει έως και έναν χρόνο,
-οπότε ένα μήνυμα που στέλνεται πολύ νωρίτερα μπορεί να μείνει πάνω από έναν χρόνο. Αν στείλεις 30
-μηνύματα σε ένα ματς, ο διακομιστής μας προσθέτει στα μηνύματα του ματς μια εγγραφή ότι έφτασες το
-όριο, ώστε να μην μπορείς να στείλεις άλλα σε αυτό. Μόνο εσύ έχεις πρόσβαση σε αυτή την εγγραφή, και
-σβήνεται όπως ένα μήνυμα. Από την έκδοση 2.4.7, όταν καταγράφεις ένα παιχνίδι που ήδη παίζεις με
-άλλον παίκτη σε αίθουσα, κρατάμε μια πρόσκληση για να το επιβεβαιώσει, με τους δύο παίκτες
-(αναγνωριστικά, ονόματα, κατηγορίες, φωτογραφίες και σήματα επιβεβαίωσης), την αίθουσα, το παιχνίδι,
-την ώρα που ξεκίνησε, την απάντηση και, αν έληξε χωρίς παιχνίδι, τον λόγο. Τη βλέπετε μόνο εσείς οι
-δύο. Αν δεν απαντηθεί μέσα σε 2 ώρες λήγει, και κάθε πρόσκληση σβήνεται 30 ημέρες μετά τη λήξη των 2
-ωρών της, ή αμέσως αν κάποιος από τους δύο διαγράψει τον λογαριασμό του. Αν ο άλλος παίκτης την
-επιβεβαιώσει, ο διακομιστής μας δημιουργεί ένα κανονικό ματς με τους δύο σας ήδη μέσα. Μετράει στα
-ματς, στο σκορ και στο ιστορικό του καθενός και στη λίστα των παικτών της Κατάταξης, αλλά δεν
-ανακοινώνεται σε άλλους παίκτες, δεν το βλέπουν οι επισκέπτες, δεν μετράει στις συνόψεις με τα ματς
-που βρήκαν αντίπαλο, στη λίστα των αιθουσών, στο σήμα επιβεβαίωσης ή στην αξιοπιστία, και δεν
-βαθμολογείται. Δύο παίκτες μπορούν να καταγράψουν έως 4 τέτοια παιχνίδια μαζί την ημέρα, και κάθε
-παίκτης έως 8. Μια πρόσκληση πάνω από αυτά τα όρια, ή προς παίκτη που η εφαρμογή του είναι πολύ
-παλιά για να την επιβεβαιώσει, λήγει αμέσως χωρίς να ειδοποιηθεί ο άλλος. Αλλιώς ο άλλος παίκτης τη
-βρίσκει στη ροή δραστηριότητάς του και παίρνει ειδοποίηση push, που ακολουθεί τον διακόπτη
-«Ενημερώσεις ματς», όχι όμως τη νύχτα, από τις 23:00 έως τις 09:00, ούτε για 24 ώρες αφού αρνήθηκε
-πρόσκληση του ίδιου παίκτη. Η κάρτα παίκτη σου λέει επίσης αν η εφαρμογή σου μπορεί να επιβεβαιώνει
-παιχνίδια στο τραπέζι: ο διακομιστής μας το κρίνει από την έκδοση της εφαρμογής στο προφίλ σου και
-στην εγγραφή κάθε αναγνωριστικού ειδοποιήσεών σου, και η κάρτα λέει ναι αν έστω μία είναι αρκετά
-νέα. Ο διακομιστής μας κρατά επίσης στον λογαριασμό σου πόσες τέτοιες προσκλήσεις σου έδειξε σε
-άλλους κάθε ημέρα, ως αριθμό, ώστε να μην ξεπερνούν τις 10 την ημέρα. Και οι δύο εφαρμογές
-περιλαμβάνουν Firebase Crashlytics (αναφορές σφαλμάτων) και Firebase Analytics (37 συμβάντα χρήσης
-από την έκδοση 2.4.9, 33 από την 2.4.8, 31 από την 2.4.7, 25 από την 2.4.5, 24 από την 2.3.0 και 23
-στις προηγούμενες, όπως η δημοσίευση αγώνα ή το check-in σε αίθουσα). Αυτά τα δύο συμβάντα
-καταγράφουν και ποια αίθουσα αφορούν. Από την έκδοση 2.4.5 καταγράφουμε επίσης πότε ανοίγεις ένα
-ανοιχτό ματς άλλου παίκτη, από πού έφτασες εκεί, την αίθουσα και πόσο νωρίτερα από την έναρξη, χωρίς
-όνομα ή αναγνωριστικό χρήστη. Από την έκδοση 2.4.7 καταγράφουμε επίσης όταν ανοίγεις την κοινοποίηση
-ενός ματς, από πού, αν το ματς είναι δικό σου και πόσο νωρίτερα ξεκινά, όχι όμως αν το έστειλες ή σε
-ποιον, την απάντησή σου στην ερώτηση αν ισχύει το ματς σου (έρχομαι, ή δεν μπορώ και ελευθερώνεις τη
-θέση), όταν στέλνεις ένα παιχνίδι στο τραπέζι για επιβεβαίωση, από πού ξεκίνησες (τη φόρμα
-ανάρτησης, τα παιχνίδια σου, τη σελίδα μιας αίθουσας ή ένα άλλο παιχνίδι στο τραπέζι) και το είδος
-του παιχνιδιού, και όταν ανοίγεις την Κατάταξη, μια αίθουσα από εκεί ή την κοινοποίηση της κάρτας
-μιας αίθουσας ή, από την έκδοση 2.4.8, της κάρτας με τις αίθουσες στην κορυφή της λίστας, με τη
-λίστα, την αίθουσα (εκτός από την κάρτα με τις αίθουσες στην κορυφή) και το είδος της κάρτας, πάλι
-χωρίς όνομα ή αναγνωριστικό χρήστη. Από την έκδοση 2.4.8 καταγράφουμε επίσης ποια από τις οθόνες
-«Ανακάλυψη», «Παιχνίδια», «Κατάταξη», «Αίθουσες» και «Προφίλ» ανοίγεις, και το Firebase Analytics
-δεν το καταγράφει πια από μόνο του. Από την ίδια έκδοση καταγράφουμε ακόμη όταν ανοίγεις τη φόρμα
-για νέο ματς ή για νέα δήλωση ότι ψάχνεις παιχνίδι, για ποιο από τα δύο είναι και από πού την
-άνοιξες, και, όταν δημοσιεύεις ματς, από πού άνοιξες τη φόρμα και περίπου πόση ώρα ήταν ανοιχτή.
-Στην ίδια έκδοση, όταν ζητάς να μπεις σε ματς, καταγράφουμε από πού έφτασες στη σελίδα του, και όταν
-ανοίγεις ματς από τη λίστα της οθόνης «Ανακάλυψη», τη θέση του στη λίστα και πόσα ματς είχε, πάλι
-χωρίς όνομα ή αναγνωριστικό χρήστη. Από την ίδια έκδοση, η εφαρμογή στέλνει στο Firebase Analytics
-και τρεις ιδιότητες χρήστη. Η πρώτη είναι η χώρα του προφίλ σου, ή, σε ένα παλιότερο προφίλ χωρίς
-χώρα, η προεπιλεγμένη χώρα της εφαρμογής, και τη στέλνει μόνο όσο έχεις συνδεθεί με λογαριασμό. Η
-δεύτερη λέει αν έχεις λογαριασμό ή ρίχνεις μια ματιά ως επισκέπτης, και η τρίτη ποιο θέμα διάλεξες
-στις Ρυθμίσεις («Σκούρο», «Φωτεινό» ή «Προεπιλογή συστήματος») και, με την προεπιλογή συστήματος,
-ποιο από τα δύο δείχνει το τηλέφωνό σου. Όταν αποσυνδεθείς, η εφαρμογή σβήνει τις δύο πρώτες. Τις
-χρησιμοποιούμε μόνο για να συγκρίνουμε συνολικούς αριθμούς, και καμία δεν είναι όνομα ή
+ενημερώνουμε με μια ειδοποίηση. Αν η αίθουσα είναι στη χώρα του, ένας φίλος που δεν έχει ακόμη λέσχη
+την παίρνει ως λέσχη του και στις αγαπημένες του, που του φέρνουν τις ειδοποιήσεις τους, ενώ όποιος
+έχει ήδη λέσχη την κρατά. Ο φίλος σου μπορεί να αναιρέσει ό,τι έκανε η πρόσκληση: την καταγραφή, το
+ότι ακολουθείτε ο ένας τον άλλον, τη λέσχη και την αγαπημένη αίθουσα. Μια πρόσκληση τη σβήνουμε 30
+ημέρες αφού λήξει, μαζί με όσα καταγράψαμε για όσους μπήκαν με αυτήν, και όταν διαγράψεις τον
+λογαριασμό σου σβήνουμε όλες τις προσκλήσεις σου και ό,τι καταγράψαμε όταν μπήκες με πρόσκληση
+άλλου. Κάθε 6 ώρες ο διακομιστής μας υπολογίζει για κάθε πόλη αν τρεις ή λιγότεροι από τους παίκτες
+που την έχουν πόλη τους άνοιξαν το RackUp τις τελευταίες 7 ημέρες, από το πότε ενημερώθηκαν
+τελευταία τα αναγνωριστικά ειδοποιήσεών τους, και κρατά μόνο αυτό το ναι ή όχι και πότε
+υπολογίστηκε, χωρίς ονόματα και χωρίς τον αριθμό των παικτών. Από την έκδοση 2.4.7, όταν ανεβάζεις
+ματς σε αίθουσα μιας τέτοιας πόλης, η εφαρμογή σού προτείνει να το στείλεις σε έναν φίλο που παίζει.
+Νομική βάση είναι το έννομο συμφέρον μας, και μπορείς να αντιταχθείς όποτε θέλεις. Μια προσωπική
+πρόκληση τη βλέπετε μόνο εσείς οι δύο, μαζί με τη σημείωσή της. Αν γίνει δεκτή, δημιουργείται
+κανονικό ματς, που το βλέπουν όλοι οι παίκτες, αλλά η σημείωση δεν περνάει σε αυτό: μένει στην
+πρόκληση και σβήνεται μαζί της. Όταν κλείσει ένα ματς, οι δύο παίκτες του μπορούν να ανταλλάσσουν
+μόνο έτοιμα γρήγορα μηνύματα, χωρίς πληκτρολόγηση. Τα βλέπετε μόνο εσείς οι δύο και σβήνονται 14
+ημέρες μετά την έναρξη του ματς ή, όσα σταλούν αργότερα, 14 ημέρες μετά την αποστολή τους. Ένα ματς
+μπορεί να απέχει έως και έναν χρόνο, οπότε ένα μήνυμα που στέλνεται πολύ νωρίτερα μπορεί να μείνει
+πάνω από έναν χρόνο. Αν στείλεις 30 μηνύματα σε ένα ματς, ο διακομιστής μας προσθέτει στα μηνύματα
+του ματς μια εγγραφή ότι έφτασες το όριο, ώστε να μην μπορείς να στείλεις άλλα σε αυτό. Μόνο εσύ
+έχεις πρόσβαση σε αυτή την εγγραφή, και σβήνεται όπως ένα μήνυμα. Από την έκδοση 2.4.7, όταν
+καταγράφεις ένα παιχνίδι που ήδη παίζεις με άλλον παίκτη σε αίθουσα, κρατάμε μια πρόσκληση για να το
+επιβεβαιώσει, με τους δύο παίκτες (αναγνωριστικά, ονόματα, κατηγορίες, φωτογραφίες και σήματα
+επιβεβαίωσης), την αίθουσα, το παιχνίδι, την ώρα που ξεκίνησε, την απάντηση και, αν έληξε χωρίς
+παιχνίδι, τον λόγο. Τη βλέπετε μόνο εσείς οι δύο. Αν δεν απαντηθεί μέσα σε 2 ώρες λήγει, και κάθε
+πρόσκληση σβήνεται 30 ημέρες μετά τη λήξη των 2 ωρών της, ή αμέσως αν κάποιος από τους δύο διαγράψει
+τον λογαριασμό του. Αν ο άλλος παίκτης την επιβεβαιώσει, ο διακομιστής μας δημιουργεί ένα κανονικό
+ματς με τους δύο σας ήδη μέσα. Μετράει στα ματς, στο σκορ και στο ιστορικό του καθενός και στη λίστα
+των παικτών της Κατάταξης, αλλά δεν ανακοινώνεται σε άλλους παίκτες, δεν το βλέπουν οι επισκέπτες,
+δεν μετράει στις συνόψεις με τα ματς που βρήκαν αντίπαλο, στη λίστα των αιθουσών, στο σήμα
+επιβεβαίωσης ή στην αξιοπιστία, και δεν βαθμολογείται. Δύο παίκτες μπορούν να καταγράψουν έως 4
+τέτοια παιχνίδια μαζί την ημέρα, και κάθε παίκτης έως 8. Μια πρόσκληση πάνω από αυτά τα όρια, ή προς
+παίκτη που η εφαρμογή του είναι πολύ παλιά για να την επιβεβαιώσει, λήγει αμέσως χωρίς να
+ειδοποιηθεί ο άλλος. Αλλιώς ο άλλος παίκτης τη βρίσκει στη ροή δραστηριότητάς του και παίρνει
+ειδοποίηση push, που ακολουθεί τον διακόπτη «Ενημερώσεις ματς», όχι όμως τη νύχτα, από τις 23:00 έως
+τις 09:00, ούτε για 24 ώρες αφού αρνήθηκε πρόσκληση του ίδιου παίκτη. Η κάρτα παίκτη σου λέει επίσης
+αν η εφαρμογή σου μπορεί να επιβεβαιώνει παιχνίδια στο τραπέζι: ο διακομιστής μας το κρίνει από την
+έκδοση της εφαρμογής στο προφίλ σου και στην εγγραφή κάθε αναγνωριστικού ειδοποιήσεών σου, και η
+κάρτα λέει ναι αν έστω μία είναι αρκετά νέα. Ο διακομιστής μας κρατά επίσης στον λογαριασμό σου
+πόσες τέτοιες προσκλήσεις σου έδειξε σε άλλους κάθε ημέρα, ως αριθμό, ώστε να μην ξεπερνούν τις 10
+την ημέρα. Και οι δύο εφαρμογές περιλαμβάνουν Firebase Crashlytics (αναφορές σφαλμάτων) και Firebase
+Analytics (37 συμβάντα χρήσης από την έκδοση 2.4.9, 33 από την 2.4.8, 31 από την 2.4.7, 25 από την
+2.4.5, 24 από την 2.3.0 και 23 στις προηγούμενες, όπως η δημοσίευση αγώνα ή το check-in σε αίθουσα).
+Αυτά τα δύο συμβάντα καταγράφουν και ποια αίθουσα αφορούν. Από την έκδοση 2.4.5 καταγράφουμε επίσης
+πότε ανοίγεις ένα ανοιχτό ματς άλλου παίκτη, από πού έφτασες εκεί, την αίθουσα και πόσο νωρίτερα από
+την έναρξη, χωρίς όνομα ή αναγνωριστικό χρήστη. Από την έκδοση 2.4.7 καταγράφουμε επίσης όταν
+ανοίγεις την κοινοποίηση ενός ματς, από πού, αν το ματς είναι δικό σου και πόσο νωρίτερα ξεκινά, όχι
+όμως αν το έστειλες ή σε ποιον, την απάντησή σου στην ερώτηση αν ισχύει το ματς σου (έρχομαι, ή δεν
+μπορώ και ελευθερώνεις τη θέση), όταν στέλνεις ένα παιχνίδι στο τραπέζι για επιβεβαίωση, από πού
+ξεκίνησες (τη φόρμα ανάρτησης, τα παιχνίδια σου, τη σελίδα μιας αίθουσας ή ένα άλλο παιχνίδι στο
+τραπέζι) και το είδος του παιχνιδιού, και όταν ανοίγεις την Κατάταξη, μια αίθουσα από εκεί ή την
+κοινοποίηση της κάρτας μιας αίθουσας ή, από την έκδοση 2.4.8, της κάρτας με τις αίθουσες στην κορυφή
+της λίστας, με τη λίστα, την αίθουσα (εκτός από την κάρτα με τις αίθουσες στην κορυφή) και το είδος
+της κάρτας, πάλι χωρίς όνομα ή αναγνωριστικό χρήστη. Από την έκδοση 2.4.8 καταγράφουμε επίσης ποια
+από τις οθόνες «Ανακάλυψη», «Παιχνίδια», «Κατάταξη», «Αίθουσες» και «Προφίλ» ανοίγεις, και το
+Firebase Analytics δεν το καταγράφει πια από μόνο του. Από την ίδια έκδοση καταγράφουμε ακόμη όταν
+ανοίγεις τη φόρμα για νέο ματς ή για νέα δήλωση ότι ψάχνεις παιχνίδι, για ποιο από τα δύο είναι και
+από πού την άνοιξες, και, όταν δημοσιεύεις ματς, από πού άνοιξες τη φόρμα και περίπου πόση ώρα ήταν
+ανοιχτή. Στην ίδια έκδοση, όταν ζητάς να μπεις σε ματς, καταγράφουμε από πού έφτασες στη σελίδα του,
+και όταν ανοίγεις ματς από τη λίστα της οθόνης «Ανακάλυψη», τη θέση του στη λίστα και πόσα ματς
+είχε, πάλι χωρίς όνομα ή αναγνωριστικό χρήστη. Από την ίδια έκδοση, η εφαρμογή στέλνει στο Firebase
+Analytics και τρεις ιδιότητες χρήστη. Η πρώτη είναι η χώρα του προφίλ σου, ή, σε ένα παλιότερο
+προφίλ χωρίς χώρα, η προεπιλεγμένη χώρα της εφαρμογής, και τη στέλνει μόνο όσο έχεις συνδεθεί με
+λογαριασμό. Η δεύτερη λέει αν έχεις λογαριασμό ή ρίχνεις μια ματιά ως επισκέπτης, και η τρίτη ποιο
+θέμα διάλεξες στις Ρυθμίσεις («Σκούρο», «Φωτεινό» ή «Προεπιλογή συστήματος») και, με την προεπιλογή
+συστήματος, ποιο από τα δύο δείχνει το τηλέφωνό σου. Όταν αποσυνδεθείς, η εφαρμογή σβήνει τις δύο
+πρώτες. Τις χρησιμοποιούμε μόνο για να συγκρίνουμε συνολικούς αριθμούς, και καμία δεν είναι όνομα ή
 αναγνωριστικό χρήστη. Από την έκδοση 2.4.9 καταγράφουμε επίσης όταν ανοίγεις την κοινοποίηση μιας
 πρόσκλησης για μια αίθουσα ή δείχνεις τον κωδικό QR της, με το ποιο από τα δύο έκανες και από πού
 ξεκίνησες (τη σελίδα μιας αίθουσας ή την «Ανακάλυψη»), όχι όμως αν την έστειλες ή σε ποιον, όταν

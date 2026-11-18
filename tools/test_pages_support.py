@@ -167,6 +167,25 @@ class InviteLinksPolicyTest(unittest.TestCase):
                      "What deletion removes", "in the summary in Greek too"):
             self.assertIn(fact, newest)
 
+    def test_an_invite_gives_its_hall_only_to_a_friend_with_none(self):
+        # rackup#723: the star, then the home hall, for any account with none in the hall's country.
+        text = visible_text(main_html(current("privacy.html")))
+        for said in ("If the hall is in their own country, a friend with no usual hall yet gets it as their usual "
+                     "hall and as a starred hall, which brings them its notifications; one who has a usual hall "
+                     "keeps it.",
+                     "Your friend can undo what the invite made: the join, the follows, the usual hall and the star.",
+                     "home_venue_set, when you pick a home hall, at its end or later, and, from version 2.4.9, "
+                     "when a friend's invite gives you one;",
+                     "Αν η αίθουσα είναι στη χώρα του, ένας φίλος που δεν έχει ακόμη λέσχη την παίρνει ως λέσχη του "
+                     "και στις αγαπημένες του, που του φέρνουν τις ειδοποιήσεις τους, ενώ όποιος έχει ήδη λέσχη "
+                     "την κρατά.",
+                     "Ο φίλος σου μπορεί να αναιρέσει ό,τι έκανε η πρόσκληση: την καταγραφή, το ότι ακολουθείτε ο "
+                     "ένας τον άλλον, τη λέσχη και την αγαπημένη αίθουσα."):
+            self.assertIn(said, text)
+        for old in ("A friend who is new to RackUp", "Your friend can undo this.", "καινούργιος στο RackUp",
+                    "Ο φίλος σου μπορεί να το αναιρέσει."):
+            self.assertNotIn(old, text)
+
     def test_invite_shared_never_claims_an_invite_was_sent(self):
         # The app logs it when the share sheet opens or the QR code shows; it cannot see a send.
         main = main_html(current("privacy.html"))

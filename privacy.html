@@ -629,8 +629,10 @@
   or user id, and the page it opens reads nothing from our database. Anyone with an account who
   has the code can read the invite: your user id, your display name and the hall. When your friend
   joins with it, we record who joined and when, you follow each other, and we tell you with a
-  notification. Your friend can undo this. A friend who is new to RackUp also starts with that
-  hall as their usual hall. We delete an invite, with its joins, 30 days after it expires, and all
+  notification. If the hall is in their own country, a friend with no usual hall yet gets it as
+  their usual hall and as a starred hall, which brings them its notifications; one who has a usual
+  hall keeps it. Your friend can undo what the invite made: the join, the follows, the usual hall
+  and the star. We delete an invite, with its joins, 30 days after it expires, and all
   your invites and joins when you delete your account.</p>
   <p><strong>Games that found an opponent.</strong> We count the games that found an opponent in
   each city and hall, and show everyone who uses the app, guests included, those counts, the hours
@@ -815,7 +817,8 @@
         <code>guest_browse_started</code>, from version 2.3.0, when you choose to look around as
         a guest;
         <code>email_verified</code>; <code>tutorial_complete</code>, when you finish or skip the
-        welcome tour; <code>home_venue_set</code>, when you pick a home hall at its end; and
+        welcome tour; <code>home_venue_set</code>, when you pick a home hall, at its end or later,
+        and, from version 2.4.9, when a friend's invite gives you one; and
         <code>notification_permission_result</code>, with whether you allowed
         notifications.</li>
     <li><strong>Screens</strong>: <code>screen_view</code>, from version 2.4.8, when you open, or
@@ -1561,9 +1564,11 @@
   η σελίδα που ανοίγει δεν διαβάζει τίποτα από τη βάση δεδομένων μας. Όποιος έχει λογαριασμό και
   τον κωδικό μπορεί να διαβάσει την πρόσκληση: το αναγνωριστικό χρήστη σου, το όνομά σου και την
   αίθουσα. Όταν ο φίλος σου μπει με την πρόσκληση, καταγράφουμε ποιος μπήκε και πότε,
-  ακολουθείτε ο ένας τον άλλον και σε ενημερώνουμε με μια ειδοποίηση. Ο φίλος σου μπορεί να το
-  αναιρέσει. Ένας φίλος που είναι καινούργιος στο RackUp ξεκινά επίσης με αυτή την αίθουσα ως
-  λέσχη του. Μια πρόσκληση τη σβήνουμε 30 ημέρες αφού λήξει, μαζί με όσα καταγράψαμε για όσους
+  ακολουθείτε ο ένας τον άλλον και σε ενημερώνουμε με μια ειδοποίηση. Αν η αίθουσα είναι στη χώρα
+  του, ένας φίλος που δεν έχει ακόμη λέσχη την παίρνει ως λέσχη του και στις αγαπημένες του, που
+  του φέρνουν τις ειδοποιήσεις τους, ενώ όποιος έχει ήδη λέσχη την κρατά. Ο φίλος σου μπορεί να
+  αναιρέσει ό,τι έκανε η πρόσκληση: την καταγραφή, το ότι ακολουθείτε ο ένας τον άλλον, τη λέσχη
+  και την αγαπημένη αίθουσα. Μια πρόσκληση τη σβήνουμε 30 ημέρες αφού λήξει, μαζί με όσα καταγράψαμε για όσους
   μπήκαν με αυτήν, και όταν διαγράψεις τον λογαριασμό σου σβήνουμε όλες τις προσκλήσεις σου και
   ό,τι καταγράψαμε όταν μπήκες με πρόσκληση άλλου.</p>
   <p>Κάθε 6 ώρες ο διακομιστής μας υπολογίζει για κάθε πόλη αν τρεις ή λιγότεροι από τους
