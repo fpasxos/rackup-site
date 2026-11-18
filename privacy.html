@@ -708,10 +708,11 @@
   <p>From version 2.4.9, when a friend joins with your invite, described under <em>What you post
   and write</em>, you get an entry in your activity feed and a push, both naming your friend and the
   hall. The push follows the <em>Match updates</em> switch, and none goes at night, from 23:00 to
-  09:00 at the hall's local time, nor later. One invite acts on at most 10 friends who join and
+  09:00 at the hall's local time, nor later. One invite acts on at most 10 friends at a time and
   sends you at most 5 pushes. So that it keeps to that, our server keeps, under your account, each
-  running invite's code, when it ends, how many friends joined with it and how many pushes it
-  sent, and drops an invite from that record within about a day of its end. No app can read that
+  running invite's code, when it ends, the time of each join with it that has not been undone, and
+  how many pushes it sent, and drops an invite from that record within about a day of its end. No
+  app can read that
   record, and
   deleting your account deletes it.</p>
   <p>From version 2.4.3 of the apps, when someone posts an open match at a hall in the city on
@@ -1241,7 +1242,7 @@
         hall that a place is free again;</li>
     <li>the records that keep the notifications about your new matches, direct challenges and
         invitations to games at the table, and your "No answer yet" notices, to a few a day;</li>
-    <li>the record that keeps each of your invites to at most 10 friends who join and 5 pushes;</li>
+    <li>the record that keeps each of your invites to at most 10 friends at a time and 5 pushes;</li>
     <li>the count of the games you have played with a confirmed score;</li>
     <li>your follows of other players, and other players' follows of you;</li>
     <li>the ratings other players gave you;</li>
@@ -1733,9 +1734,10 @@
   δραστηριότητας και ειδοποίηση push, που λένε και οι δύο το όνομά του και την αίθουσα. Η
   ειδοποίηση push ακολουθεί τον διακόπτη «Ενημερώσεις ματς» και δεν φεύγει τη νύχτα, από τις
   23:00 έως τις 09:00, τοπική ώρα της αίθουσας, ούτε αργότερα. Μια πρόσκληση μετρά το πολύ 10
-  φίλους και σου στέλνει το πολύ 5 ειδοποιήσεις push. Γι' αυτό ο διακομιστής μας κρατά στον
-  λογαριασμό σου, για κάθε πρόσκληση που ισχύει ακόμη, τον κωδικό της, πότε λήγει, πόσοι φίλοι
-  μπήκαν με αυτήν και πόσες ειδοποιήσεις push σου έστειλε, και τη βγάζει από την εγγραφή μέσα σε
+  φίλους κάθε φορά και σου στέλνει το πολύ 5 ειδοποιήσεις push. Γι' αυτό ο διακομιστής μας κρατά
+  στον λογαριασμό σου, για κάθε πρόσκληση που ισχύει ακόμη, τον κωδικό της, πότε λήγει, πότε μπήκε
+  με αυτήν κάθε φίλος που δεν το έχει αναιρέσει και πόσες ειδοποιήσεις push σου έστειλε, και τη
+  βγάζει από την εγγραφή μέσα σε
   περίπου μία ημέρα αφού λήξει. Καμία εφαρμογή δεν διαβάζει αυτή την εγγραφή, και σβήνεται όταν διαγράψεις τον
   λογαριασμό σου.
   Οι ειδοποιήσεις push για νέο ματς σε αίθουσα που έχεις στα αγαπημένα, για ματς που ταιριάζει σε

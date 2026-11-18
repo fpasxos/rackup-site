@@ -528,41 +528,41 @@ account, the day and how many of their invitations it showed that day. No app ca
 and deleting the account deletes it. From version 2.4.9, when a friend joins with your invite,
 described under What you post and write, you get an entry in your activity feed and a push, both
 naming your friend and the hall. The push follows the Match updates switch, and none goes at night,
-from 23:00 to 09:00 at the hall's local time, nor later. One invite acts on at most 10 friends who
-join and sends you at most 5 pushes. So that it keeps to that, our server keeps, under your account,
-each running invite's code, when it ends, how many friends joined with it and how many pushes it
-sent, and drops an invite from that record within about a day of its end. No app can read that
-record, and deleting your account deletes it. From version 2.4.3 of the apps, when someone posts an
-open match at a hall in the city on your profile, we may send you a city alert: a push naming the
-player who posted it, the hall and when the game is, in your language. From three games on, the
-alert also says how many games in your city found an opponent this week or in the last month: only
-the number, with no names. It comes only as a push and adds nothing to your activity feed. It is
-only for the games you play, as on your profile, or for pool if you have not picked any, and never
-for your own match or one posted by a player you blocked or who blocked you. Nor do you get it for a
-match that already reaches you through a hall you starred, a saved search, your looking-for-a-game
-post or a player you follow. You get at most one a day, and only from 10:00 to 21:30 at the hall's
-local time. A match posted outside those hours waits until 10:00 and is announced then only if it is
-still open and has not started; while it waits, our server keeps only the match's id and when it was
-put on hold. The city alert is on until you turn off Games in my city in Settings. To keep to one a
-day, our server keeps, under your account, the day of the last city alert it sent you and the time
-it sent it, never which match it was about. No app can read that record, each new city alert
-replaces it, and deleting your account deletes it. Three more records like it, also under your
-account, keep other notifications to a few a day. When a match you post is announced to other
-players, through their starred halls, saved searches, follows, looking-for-a-game posts or the city
-alert, our server keeps the match's id and the time, and announces at most five of your matches in
-any 24 hours. When it sends another player a push about a direct challenge from you, it keeps the
-challenge's id, that player's user id and the time, so that in any 24 hours each player gets at most
-one such push from you, and at most 20 players get one. When a host has not answered your join
-request for a while, we may add a "No answer yet" entry to your activity feed and send you a push,
-which follows the Match updates switch, at most twice a day; for that our server keeps the day and
-how many it sent you that day. An entry older than a day drops out when its record is next updated.
-No app can read these records, and deleting your account deletes them. A join request also carries
-marks for the reminders and notices we send about it, with the time the host was last reminded about
-it, so that none goes twice; like the rest of the request, only you and the host can read them. A
-push about a new match at a hall you starred, about one that fits your saved search or your
-looking-for-a-game post, or about one posted by a player you follow, goes only from 09:00 to 23:00
-at the hall's local time. For a match posted outside those hours it waits until 09:00 and goes then
-only if the match is still open and has not started, and not at all if the match starts before
+from 23:00 to 09:00 at the hall's local time, nor later. One invite acts on at most 10 friends at a
+time and sends you at most 5 pushes. So that it keeps to that, our server keeps, under your account,
+each running invite's code, when it ends, the time of each join with it that has not been undone,
+and how many pushes it sent, and drops an invite from that record within about a day of its end. No
+app can read that record, and deleting your account deletes it. From version 2.4.3 of the apps, when
+someone posts an open match at a hall in the city on your profile, we may send you a city alert: a
+push naming the player who posted it, the hall and when the game is, in your language. From three
+games on, the alert also says how many games in your city found an opponent this week or in the last
+month: only the number, with no names. It comes only as a push and adds nothing to your activity
+feed. It is only for the games you play, as on your profile, or for pool if you have not picked any,
+and never for your own match or one posted by a player you blocked or who blocked you. Nor do you
+get it for a match that already reaches you through a hall you starred, a saved search, your
+looking-for-a-game post or a player you follow. You get at most one a day, and only from 10:00 to
+21:30 at the hall's local time. A match posted outside those hours waits until 10:00 and is
+announced then only if it is still open and has not started; while it waits, our server keeps only
+the match's id and when it was put on hold. The city alert is on until you turn off Games in my city
+in Settings. To keep to one a day, our server keeps, under your account, the day of the last city
+alert it sent you and the time it sent it, never which match it was about. No app can read that
+record, each new city alert replaces it, and deleting your account deletes it. Three more records
+like it, also under your account, keep other notifications to a few a day. When a match you post is
+announced to other players, through their starred halls, saved searches, follows, looking-for-a-game
+posts or the city alert, our server keeps the match's id and the time, and announces at most five of
+your matches in any 24 hours. When it sends another player a push about a direct challenge from you,
+it keeps the challenge's id, that player's user id and the time, so that in any 24 hours each player
+gets at most one such push from you, and at most 20 players get one. When a host has not answered
+your join request for a while, we may add a "No answer yet" entry to your activity feed and send you
+a push, which follows the Match updates switch, at most twice a day; for that our server keeps the
+day and how many it sent you that day. An entry older than a day drops out when its record is next
+updated. No app can read these records, and deleting your account deletes them. A join request also
+carries marks for the reminders and notices we send about it, with the time the host was last
+reminded about it, so that none goes twice; like the rest of the request, only you and the host can
+read them. A push about a new match at a hall you starred, about one that fits your saved search or
+your looking-for-a-game post, or about one posted by a player you follow, goes only from 09:00 to
+23:00 at the hall's local time. For a match posted outside those hours it waits until 09:00 and goes
+then only if the match is still open and has not started, and not at all if the match starts before
 09:00. The entry in your activity feed for a saved search, a looking-for-a-game post or a player you
 follow still comes at once. While such pushes wait, our server keeps only the match's id, when they
 were put on hold and which of them are waiting, with no names. No app can read that record, and it
@@ -910,7 +910,7 @@ notification preferences, activity feed, saved searches, starred venues, weekly 
 list; the day and time of the last city alert we sent you, and of the last notice from a starred
 hall that a place is free again; the records that keep the notifications about your new matches,
 direct challenges and invitations to games at the table, and your "No answer yet" notices, to a few
-a day; the record that keeps each of your invites to at most 10 friends who join and 5 pushes; the
+a day; the record that keeps each of your invites to at most 10 friends at a time and 5 pushes; the
 count of the games you have played with a confirmed score; your follows of other players, and other
 players' follows of you; the ratings other players gave you; every match you hosted and every open
 challenge you posted, along with the requests other players made to join them; every join request
@@ -1310,95 +1310,96 @@ iPhone. Στο iPhone το αναγνωριστικό μένει μέχρι να
 φίλος μπει με την πρόσκλησή σου, σου έρχεται καταχώριση στη ροή δραστηριότητας και ειδοποίηση push,
 που λένε και οι δύο το όνομά του και την αίθουσα. Η ειδοποίηση push ακολουθεί τον διακόπτη
 «Ενημερώσεις ματς» και δεν φεύγει τη νύχτα, από τις 23:00 έως τις 09:00, τοπική ώρα της αίθουσας,
-ούτε αργότερα. Μια πρόσκληση μετρά το πολύ 10 φίλους και σου στέλνει το πολύ 5 ειδοποιήσεις push.
-Γι' αυτό ο διακομιστής μας κρατά στον λογαριασμό σου, για κάθε πρόσκληση που ισχύει ακόμη, τον
-κωδικό της, πότε λήγει, πόσοι φίλοι μπήκαν με αυτήν και πόσες ειδοποιήσεις push σου έστειλε, και τη
-βγάζει από την εγγραφή μέσα σε περίπου μία ημέρα αφού λήξει. Καμία εφαρμογή δεν διαβάζει αυτή την
-εγγραφή, και σβήνεται όταν διαγράψεις τον λογαριασμό σου. Οι ειδοποιήσεις push για νέο ματς σε
-αίθουσα που έχεις στα αγαπημένα, για ματς που ταιριάζει σε αποθηκευμένη αναζήτησή σου ή στη δήλωσή
-σου ότι ψάχνεις παιχνίδι, ή για ματς που ανέβασε παίκτης που ακολουθείς, φεύγουν μόνο από τις 09:00
-έως τις 23:00, τοπική ώρα της αίθουσας. Για ματς που ανεβαίνει εκτός αυτών των ωρών περιμένουν ως
-τις 09:00 και φεύγουν τότε μόνο αν το ματς είναι ακόμη ανοιχτό και δεν έχει αρχίσει, ενώ αν αρχίζει
-πριν από τις 09:00 δεν φεύγουν καθόλου. Η καταχώριση στη ροή δραστηριότητάς σου για αποθηκευμένη
-αναζήτηση, δήλωση ότι ψάχνεις παιχνίδι ή παίκτη που ακολουθείς έρχεται αμέσως. Όσο περιμένουν, ο
-διακομιστής μας κρατά μόνο το αναγνωριστικό του ματς, πότε μπήκαν σε αναμονή και ποιες περιμένουν,
-χωρίς ονόματα. Καμία εφαρμογή δεν διαβάζει αυτή την εγγραφή, και σβήνεται όταν οι ειδοποιήσεις
-σταλούν ή ακυρωθούν. Η ειδοποίηση για check-in σε αίθουσα που έχεις στα αγαπημένα δεν φεύγει από τις
-23:00 έως τις 09:00, τοπική ώρα της αίθουσας, ούτε αργότερα. Αν ένας παίκτης που μπήκε σε ματς
-αποχωρήσει, ο διοργανωτής παίρνει ειδοποίηση push και, όταν περιμένουν ακόμη παίκτες, η ειδοποίηση
-λέει ποιος περιμένει ή πόσοι. Από τις 23:00 έως τις 09:00, τοπική ώρα της αίθουσας, περιμένει ως τις
-09:00, εκτός αν το ματς αρχίζει μέσα σε 3 ώρες. Όσοι περιμένουν ακόμη για το ματς παίρνουν μία
-ειδοποίηση ότι η θέση άνοιξε ξανά, μία φορά ανά αίτημα, από τις 09:00 έως τις 23:00. Όσοι έχουν την
-αίθουσα στα αγαπημένα παίρνουν μία ακόμη, μία φορά ανά ματς και το πολύ μία την ημέρα, μόνο από τις
-10:00 έως τις 21:30 και όσο το ματς απέχει τουλάχιστον 90 λεπτά. Μια ειδοποίηση που θα έφευγε εκτός
-ωρών περιμένει το πρωί και φεύγει μόνο αν το ματς είναι ακόμη ανοιχτό και δεν είναι πολύ κοντά. Όσο
-περιμένει, ο διακομιστής μας κρατά μόνο το αναγνωριστικό του ματς, πότε μπήκε σε αναμονή και ποιες
-ειδοποιήσεις περιμένουν, χωρίς ονόματα. Για να τις στέλνουμε, κρατάμε σε ξεχωριστή εγγραφή για κάθε
-ματς πότε πιάστηκε τελευταία η θέση και πότε ειδοποιήθηκε η αίθουσα, στο αίτημα του παίκτη που έγινε
-δεκτός την ώρα που τον δέχτηκε ο διοργανωτής, σε κάθε αίτημα που περιμένει ένα σημάδι ότι
-ειδοποιήσαμε τον παίκτη, και στον λογαριασμό σου την ημέρα και την ώρα της τελευταίας τέτοιας
-ειδοποίησης από αίθουσα, χωρίς να γράφουμε ποιο ματς ήταν. Τις εγγραφές του ματς και την εγγραφή
-στον λογαριασμό σου δεν τις διαβάζει καμία εφαρμογή. Τα σημάδια σε ένα αίτημα, όπως και το υπόλοιπο
-αίτημα, τα βλέπουν μόνο ο παίκτης του και ο διοργανωτής. Σβήνονται μαζί με το ματς, το αίτημα ή τον
-λογαριασμό σου αντίστοιχα. Από την έκδοση 2.4.7, ρωτάμε τον παίκτη που δέχτηκε ο διοργανωτής σε ένα
-ματς αν το ματς ισχύει, μία φορά, 5 ώρες πριν από την έναρξη ή 2 ώρες πριν αν τον δέχτηκε λιγότερο
-από 6,5 ώρες πριν. Η ερώτηση έρχεται στη ροή δραστηριότητάς του και με ειδοποίηση push, που
-ακολουθεί τον διακόπτη «Υπενθυμίσεις ματς». Δεν έρχεται ποτέ τη νύχτα: αν πέφτει από τις 23:00 έως
-τις 09:00, έρχεται στις 20:00 το προηγούμενο βράδυ ή στις 09:00, αν το ματς απέχει ακόμη τουλάχιστον
-2 ώρες, αλλιώς καθόλου. Δεν ρωτάμε όποιον έγινε δεκτός λιγότερο από 3,5 ώρες πριν από την έναρξη,
-για παιχνίδι στο τραπέζι, όποιον έχει ήδη πει στον διοργανωτή με γρήγορο μήνυμα ότι έρχεται, ούτε
-όποιον δεν έχει την έκδοση 2.4.7 ή νεότερη. Ο διοργανωτής βλέπει στη σελίδα του ματς αν ο παίκτης
-είπε ότι έρχεται. Στο αίτημα συμμετοχής του παίκτη κρατάμε πότε τον ρωτήσαμε και πότε είπε ότι
-έρχεται. Όπως και το υπόλοιπο αίτημα, τα βλέπουν μόνο ο ίδιος και ο διοργανωτής, και σβήνονται μαζί
-του. Και στις δύο εφαρμογές (στο iPhone από την έκδοση 2.2.0), αν επιτρέψεις την τοποθεσία, η κατά
-προσέγγιση τοποθεσία σου χρησιμεύει για να βλέπεις πρώτα τις αίθουσες και τα ματς της πόλης σου, και
-η εφαρμογή δεν μας στέλνει ποτέ τη θέση σου. Από την έκδοση 2.4.2, αν έχεις ήδη επιτρέψει την
-τοποθεσία και βρίσκεσαι σε άλλη χώρα όπου έχει ανοίξει το RackUp, η εφαρμογή μπορεί επίσης να τη
-χρησιμοποιήσει μέσα στο τηλέφωνο για να σου προτείνει μια επίσκεψη εκεί, και ούτε τότε η θέση σου
-φεύγει από το τηλέφωνο. Στο Android, αν επιτρέψεις την τοποθεσία, ο χάρτης των αιθουσών ανοίγει στην
-περιοχή σου, οπότε το Google Maps φορτώνει τον χάρτη γύρω σου. Το άνοιγμα του χάρτη στέλνει στη
-Google τη διεύθυνση IP της συσκευής και την περιοχή που βλέπεις. Από την έκδοση 2.4.0, για να
-διαλέξει ποιας χώρας τα ματς βλέπει ένας επισκέπτης και ποια χώρα προτείνει η εγγραφή, στο Android η
-εφαρμογή κοιτάζει τη χώρα του δικτύου κινητής τηλεφωνίας όπου είναι συνδεδεμένο το τηλέφωνο, αλλιώς
-της κάρτας SIM του, αλλιώς της γλώσσας του, και στο iPhone τη ρύθμιση «Περιοχή». Από την έκδοση
-2.4.2, αν έχεις συνδεθεί και η περιοχή του τηλεφώνου σου, διαβασμένη με τον ίδιο τρόπο, δείχνει άλλη
-χώρα όπου έχει ανοίξει το RackUp, η εφαρμογή μπορεί επίσης να τη χρησιμοποιήσει, μόνο μέσα στο
-τηλέφωνο, για να σε ρωτήσει μία φορά αν παίζεις εκεί, ώστε να την επισκεφθείς ή να την κάνεις χώρα
-σου. Τίποτα από αυτά δεν χρειάζεται άδεια. Η εφαρμογή δεν μας στέλνει το δίκτυο, την κάρτα SIM ή τη
-γλώσσα που διαβάζει: η εφαρμογή ενός επισκέπτη ζητά από τη βάση μας μόνο τα ματς εκείνης της χώρας,
-και το προφίλ σου κρατά μόνο τη χώρα που επιβεβαιώνεις. Η τοποθεσία που συνδέεται με τον λογαριασμό
-σου είναι αυτή που μας δίνεις εσύ. Την πόλη που διαλέγεις για το προφίλ σου και τη χώρα της τις
-κρατάμε ως κατά προσέγγιση τοποθεσία, συνδεδεμένη με τον λογαριασμό σου. Κρατάμε επίσης τις αίθουσες
-που δηλώνεις: την αίθουσα όπου παίζεις συνήθως, τις αγαπημένες σου αίθουσες, που σου φέρνουν και τις
-ειδοποιήσεις τους, τα check-in σου, και την αίθουσα ή την πόλη των ματς, των προκλήσεων, των
-δηλώσεων ότι ψάχνεις παιχνίδι, των αποθηκευμένων αναζητήσεων και του εβδομαδιαίου προγράμματός σου.
-Ένα check-in ισχύει 3 ώρες και ο διακομιστής μας το σβήνει μέσα σε περίπου δύο ώρες μετά. Τα
-check-in σου τα βλέπεις μόνο εσύ, και οι άλλοι παίκτες βλέπουν μόνο ότι κάποιος είναι στην αίθουσα,
-ποτέ ποιος. Για κάθε αίθουσα, ο διακομιστής μας κρατά πόσοι παίκτες έχουν κάνει check-in εκεί, την
-ώρα που σταματά να μετράει το check-in του καθενός, στρογγυλεμένη προς τα πάνω στο λεπτό, και πότε
-τα ενημέρωσε τελευταία, χωρίς ονόματα ή αναγνωριστικά χρήστη. Αυτή την εγγραφή μπορεί να τη διαβάσει
-όποιος χρησιμοποιεί την εφαρμογή, ακόμη και επισκέπτης, και οι εφαρμογές τη δείχνουν ως τον αριθμό
-των παικτών που είναι τώρα στην αίθουσα. Όταν δηλώνεις στην εφαρμογή ότι έφυγες, το check-in σου
-βγαίνει αμέσως από αυτή, και ένα check-in που έπαψε να μετράει βγαίνει την επόμενη φορά που ο
-διακομιστής μας μετράει σε εκείνη την αίθουσα, συνήθως μέσα σε περίπου δύο ώρες. Όσοι έχουν την
-αίθουσα στα αγαπημένα μπορεί να πάρουν και ειδοποίηση ότι μόλις ήρθε ένας παίκτης, το πολύ μία την
-ώρα για κάθε αίθουσα, που επίσης δεν λέει ποιος. Αν αποθηκεύσεις μια αναζήτηση, κρατάμε την πόλη του
-φίλτρου της, ακόμη κι αν την πρότεινε η εφαρμογή από τη θέση σου. Διαγραφή λογαριασμού: μέσα από την
-εφαρμογή (Προφίλ → Ρυθμίσεις → Διαγραφή λογαριασμού) ή με email στο rackupbilliard@gmail.com. Μαζί
-με τον λογαριασμό σου διαγράφονται η κάρτα παίκτη σου και η θέση σου στην Κατάταξη, οι προσωπικές
-προκλήσεις, οι προσκλήσεις για παιχνίδι στο τραπέζι και τα γρήγορα μηνύματα που έστειλες ή έλαβες,
-οι προσκλήσεις σου σε φίλους και ό,τι καταγράψαμε όταν μπήκες με πρόσκληση άλλου, και οι
-ειδοποιήσεις στη ροή δραστηριότητας άλλων παικτών που αναφέρουν το όνομά σου. Τα διαγραμμένα
-δεδομένα μπορεί να μείνουν έως 7 ημέρες στο ημερήσιο αντίγραφο ασφαλείας της βάσης δεδομένων μας και
-στη λειτουργία που επαναφέρει τη βάση όπως ήταν οποιαδήποτε στιγμή των τελευταίων 7 ημερών
-(point-in-time recovery), και μια διαγραμμένη φωτογραφία προφίλ μπορεί να ανακτηθεί για 7 ημέρες,
-όπως και το αντίγραφο στις Ηνωμένες Πολιτείες που διαγράφουμε μετά τη μεταφορά μιας φωτογραφίας.
-Μετά από αυτό, τα αντίγραφα αυτά σβήνονται. Η Google, από την πλευρά της, αφαιρεί τα στοιχεία
-σύνδεσης ενός διαγραμμένου λογαριασμού από τα δικά της αντίγραφα ασφαλείας μέσα σε 180 ημέρες.
-Διάβασε παραπάνω τι ακριβώς διαγράφεται και τι παραμένει. Έχεις δικαίωμα πρόσβασης, διόρθωσης,
-διαγραφής, φορητότητας, εναντίωσης και περιορισμού, δικαίωμα να ανακαλέσεις όποτε θέλεις τη
-συγκατάθεσή σου για την τοποθεσία, καθώς και δικαίωμα καταγγελίας στην εποπτική αρχή της χώρας της
-ΕΕ όπου μένεις. Στην Ελλάδα είναι η Αρχή Προστασίας Δεδομένων Προσωπικού Χαρακτήρα (dpa.gr) και στην
-Κύπρο το Γραφείο Επιτρόπου Προστασίας Δεδομένων Προσωπικού Χαρακτήρα (gov.cy/dataprotection). Όπου
-κι αν μένεις, μπορείς να κάνεις καταγγελία και στην ελληνική Αρχή, που εποπτεύει το RackUp. RackUp ·
-Ioannina, Greece · rackupbilliard@gmail.com Support · Home
+ούτε αργότερα. Μια πρόσκληση μετρά το πολύ 10 φίλους κάθε φορά και σου στέλνει το πολύ 5
+ειδοποιήσεις push. Γι' αυτό ο διακομιστής μας κρατά στον λογαριασμό σου, για κάθε πρόσκληση που
+ισχύει ακόμη, τον κωδικό της, πότε λήγει, πότε μπήκε με αυτήν κάθε φίλος που δεν το έχει αναιρέσει
+και πόσες ειδοποιήσεις push σου έστειλε, και τη βγάζει από την εγγραφή μέσα σε περίπου μία ημέρα
+αφού λήξει. Καμία εφαρμογή δεν διαβάζει αυτή την εγγραφή, και σβήνεται όταν διαγράψεις τον
+λογαριασμό σου. Οι ειδοποιήσεις push για νέο ματς σε αίθουσα που έχεις στα αγαπημένα, για ματς που
+ταιριάζει σε αποθηκευμένη αναζήτησή σου ή στη δήλωσή σου ότι ψάχνεις παιχνίδι, ή για ματς που
+ανέβασε παίκτης που ακολουθείς, φεύγουν μόνο από τις 09:00 έως τις 23:00, τοπική ώρα της αίθουσας.
+Για ματς που ανεβαίνει εκτός αυτών των ωρών περιμένουν ως τις 09:00 και φεύγουν τότε μόνο αν το ματς
+είναι ακόμη ανοιχτό και δεν έχει αρχίσει, ενώ αν αρχίζει πριν από τις 09:00 δεν φεύγουν καθόλου. Η
+καταχώριση στη ροή δραστηριότητάς σου για αποθηκευμένη αναζήτηση, δήλωση ότι ψάχνεις παιχνίδι ή
+παίκτη που ακολουθείς έρχεται αμέσως. Όσο περιμένουν, ο διακομιστής μας κρατά μόνο το αναγνωριστικό
+του ματς, πότε μπήκαν σε αναμονή και ποιες περιμένουν, χωρίς ονόματα. Καμία εφαρμογή δεν διαβάζει
+αυτή την εγγραφή, και σβήνεται όταν οι ειδοποιήσεις σταλούν ή ακυρωθούν. Η ειδοποίηση για check-in
+σε αίθουσα που έχεις στα αγαπημένα δεν φεύγει από τις 23:00 έως τις 09:00, τοπική ώρα της αίθουσας,
+ούτε αργότερα. Αν ένας παίκτης που μπήκε σε ματς αποχωρήσει, ο διοργανωτής παίρνει ειδοποίηση push
+και, όταν περιμένουν ακόμη παίκτες, η ειδοποίηση λέει ποιος περιμένει ή πόσοι. Από τις 23:00 έως τις
+09:00, τοπική ώρα της αίθουσας, περιμένει ως τις 09:00, εκτός αν το ματς αρχίζει μέσα σε 3 ώρες.
+Όσοι περιμένουν ακόμη για το ματς παίρνουν μία ειδοποίηση ότι η θέση άνοιξε ξανά, μία φορά ανά
+αίτημα, από τις 09:00 έως τις 23:00. Όσοι έχουν την αίθουσα στα αγαπημένα παίρνουν μία ακόμη, μία
+φορά ανά ματς και το πολύ μία την ημέρα, μόνο από τις 10:00 έως τις 21:30 και όσο το ματς απέχει
+τουλάχιστον 90 λεπτά. Μια ειδοποίηση που θα έφευγε εκτός ωρών περιμένει το πρωί και φεύγει μόνο αν
+το ματς είναι ακόμη ανοιχτό και δεν είναι πολύ κοντά. Όσο περιμένει, ο διακομιστής μας κρατά μόνο το
+αναγνωριστικό του ματς, πότε μπήκε σε αναμονή και ποιες ειδοποιήσεις περιμένουν, χωρίς ονόματα. Για
+να τις στέλνουμε, κρατάμε σε ξεχωριστή εγγραφή για κάθε ματς πότε πιάστηκε τελευταία η θέση και πότε
+ειδοποιήθηκε η αίθουσα, στο αίτημα του παίκτη που έγινε δεκτός την ώρα που τον δέχτηκε ο
+διοργανωτής, σε κάθε αίτημα που περιμένει ένα σημάδι ότι ειδοποιήσαμε τον παίκτη, και στον
+λογαριασμό σου την ημέρα και την ώρα της τελευταίας τέτοιας ειδοποίησης από αίθουσα, χωρίς να
+γράφουμε ποιο ματς ήταν. Τις εγγραφές του ματς και την εγγραφή στον λογαριασμό σου δεν τις διαβάζει
+καμία εφαρμογή. Τα σημάδια σε ένα αίτημα, όπως και το υπόλοιπο αίτημα, τα βλέπουν μόνο ο παίκτης του
+και ο διοργανωτής. Σβήνονται μαζί με το ματς, το αίτημα ή τον λογαριασμό σου αντίστοιχα. Από την
+έκδοση 2.4.7, ρωτάμε τον παίκτη που δέχτηκε ο διοργανωτής σε ένα ματς αν το ματς ισχύει, μία φορά, 5
+ώρες πριν από την έναρξη ή 2 ώρες πριν αν τον δέχτηκε λιγότερο από 6,5 ώρες πριν. Η ερώτηση έρχεται
+στη ροή δραστηριότητάς του και με ειδοποίηση push, που ακολουθεί τον διακόπτη «Υπενθυμίσεις ματς».
+Δεν έρχεται ποτέ τη νύχτα: αν πέφτει από τις 23:00 έως τις 09:00, έρχεται στις 20:00 το προηγούμενο
+βράδυ ή στις 09:00, αν το ματς απέχει ακόμη τουλάχιστον 2 ώρες, αλλιώς καθόλου. Δεν ρωτάμε όποιον
+έγινε δεκτός λιγότερο από 3,5 ώρες πριν από την έναρξη, για παιχνίδι στο τραπέζι, όποιον έχει ήδη
+πει στον διοργανωτή με γρήγορο μήνυμα ότι έρχεται, ούτε όποιον δεν έχει την έκδοση 2.4.7 ή νεότερη.
+Ο διοργανωτής βλέπει στη σελίδα του ματς αν ο παίκτης είπε ότι έρχεται. Στο αίτημα συμμετοχής του
+παίκτη κρατάμε πότε τον ρωτήσαμε και πότε είπε ότι έρχεται. Όπως και το υπόλοιπο αίτημα, τα βλέπουν
+μόνο ο ίδιος και ο διοργανωτής, και σβήνονται μαζί του. Και στις δύο εφαρμογές (στο iPhone από την
+έκδοση 2.2.0), αν επιτρέψεις την τοποθεσία, η κατά προσέγγιση τοποθεσία σου χρησιμεύει για να
+βλέπεις πρώτα τις αίθουσες και τα ματς της πόλης σου, και η εφαρμογή δεν μας στέλνει ποτέ τη θέση
+σου. Από την έκδοση 2.4.2, αν έχεις ήδη επιτρέψει την τοποθεσία και βρίσκεσαι σε άλλη χώρα όπου έχει
+ανοίξει το RackUp, η εφαρμογή μπορεί επίσης να τη χρησιμοποιήσει μέσα στο τηλέφωνο για να σου
+προτείνει μια επίσκεψη εκεί, και ούτε τότε η θέση σου φεύγει από το τηλέφωνο. Στο Android, αν
+επιτρέψεις την τοποθεσία, ο χάρτης των αιθουσών ανοίγει στην περιοχή σου, οπότε το Google Maps
+φορτώνει τον χάρτη γύρω σου. Το άνοιγμα του χάρτη στέλνει στη Google τη διεύθυνση IP της συσκευής
+και την περιοχή που βλέπεις. Από την έκδοση 2.4.0, για να διαλέξει ποιας χώρας τα ματς βλέπει ένας
+επισκέπτης και ποια χώρα προτείνει η εγγραφή, στο Android η εφαρμογή κοιτάζει τη χώρα του δικτύου
+κινητής τηλεφωνίας όπου είναι συνδεδεμένο το τηλέφωνο, αλλιώς της κάρτας SIM του, αλλιώς της γλώσσας
+του, και στο iPhone τη ρύθμιση «Περιοχή». Από την έκδοση 2.4.2, αν έχεις συνδεθεί και η περιοχή του
+τηλεφώνου σου, διαβασμένη με τον ίδιο τρόπο, δείχνει άλλη χώρα όπου έχει ανοίξει το RackUp, η
+εφαρμογή μπορεί επίσης να τη χρησιμοποιήσει, μόνο μέσα στο τηλέφωνο, για να σε ρωτήσει μία φορά αν
+παίζεις εκεί, ώστε να την επισκεφθείς ή να την κάνεις χώρα σου. Τίποτα από αυτά δεν χρειάζεται
+άδεια. Η εφαρμογή δεν μας στέλνει το δίκτυο, την κάρτα SIM ή τη γλώσσα που διαβάζει: η εφαρμογή ενός
+επισκέπτη ζητά από τη βάση μας μόνο τα ματς εκείνης της χώρας, και το προφίλ σου κρατά μόνο τη χώρα
+που επιβεβαιώνεις. Η τοποθεσία που συνδέεται με τον λογαριασμό σου είναι αυτή που μας δίνεις εσύ.
+Την πόλη που διαλέγεις για το προφίλ σου και τη χώρα της τις κρατάμε ως κατά προσέγγιση τοποθεσία,
+συνδεδεμένη με τον λογαριασμό σου. Κρατάμε επίσης τις αίθουσες που δηλώνεις: την αίθουσα όπου
+παίζεις συνήθως, τις αγαπημένες σου αίθουσες, που σου φέρνουν και τις ειδοποιήσεις τους, τα check-in
+σου, και την αίθουσα ή την πόλη των ματς, των προκλήσεων, των δηλώσεων ότι ψάχνεις παιχνίδι, των
+αποθηκευμένων αναζητήσεων και του εβδομαδιαίου προγράμματός σου. Ένα check-in ισχύει 3 ώρες και ο
+διακομιστής μας το σβήνει μέσα σε περίπου δύο ώρες μετά. Τα check-in σου τα βλέπεις μόνο εσύ, και οι
+άλλοι παίκτες βλέπουν μόνο ότι κάποιος είναι στην αίθουσα, ποτέ ποιος. Για κάθε αίθουσα, ο
+διακομιστής μας κρατά πόσοι παίκτες έχουν κάνει check-in εκεί, την ώρα που σταματά να μετράει το
+check-in του καθενός, στρογγυλεμένη προς τα πάνω στο λεπτό, και πότε τα ενημέρωσε τελευταία, χωρίς
+ονόματα ή αναγνωριστικά χρήστη. Αυτή την εγγραφή μπορεί να τη διαβάσει όποιος χρησιμοποιεί την
+εφαρμογή, ακόμη και επισκέπτης, και οι εφαρμογές τη δείχνουν ως τον αριθμό των παικτών που είναι
+τώρα στην αίθουσα. Όταν δηλώνεις στην εφαρμογή ότι έφυγες, το check-in σου βγαίνει αμέσως από αυτή,
+και ένα check-in που έπαψε να μετράει βγαίνει την επόμενη φορά που ο διακομιστής μας μετράει σε
+εκείνη την αίθουσα, συνήθως μέσα σε περίπου δύο ώρες. Όσοι έχουν την αίθουσα στα αγαπημένα μπορεί να
+πάρουν και ειδοποίηση ότι μόλις ήρθε ένας παίκτης, το πολύ μία την ώρα για κάθε αίθουσα, που επίσης
+δεν λέει ποιος. Αν αποθηκεύσεις μια αναζήτηση, κρατάμε την πόλη του φίλτρου της, ακόμη κι αν την
+πρότεινε η εφαρμογή από τη θέση σου. Διαγραφή λογαριασμού: μέσα από την εφαρμογή (Προφίλ → Ρυθμίσεις
+→ Διαγραφή λογαριασμού) ή με email στο rackupbilliard@gmail.com. Μαζί με τον λογαριασμό σου
+διαγράφονται η κάρτα παίκτη σου και η θέση σου στην Κατάταξη, οι προσωπικές προκλήσεις, οι
+προσκλήσεις για παιχνίδι στο τραπέζι και τα γρήγορα μηνύματα που έστειλες ή έλαβες, οι προσκλήσεις
+σου σε φίλους και ό,τι καταγράψαμε όταν μπήκες με πρόσκληση άλλου, και οι ειδοποιήσεις στη ροή
+δραστηριότητας άλλων παικτών που αναφέρουν το όνομά σου. Τα διαγραμμένα δεδομένα μπορεί να μείνουν
+έως 7 ημέρες στο ημερήσιο αντίγραφο ασφαλείας της βάσης δεδομένων μας και στη λειτουργία που
+επαναφέρει τη βάση όπως ήταν οποιαδήποτε στιγμή των τελευταίων 7 ημερών (point-in-time recovery),
+και μια διαγραμμένη φωτογραφία προφίλ μπορεί να ανακτηθεί για 7 ημέρες, όπως και το αντίγραφο στις
+Ηνωμένες Πολιτείες που διαγράφουμε μετά τη μεταφορά μιας φωτογραφίας. Μετά από αυτό, τα αντίγραφα
+αυτά σβήνονται. Η Google, από την πλευρά της, αφαιρεί τα στοιχεία σύνδεσης ενός διαγραμμένου
+λογαριασμού από τα δικά της αντίγραφα ασφαλείας μέσα σε 180 ημέρες. Διάβασε παραπάνω τι ακριβώς
+διαγράφεται και τι παραμένει. Έχεις δικαίωμα πρόσβασης, διόρθωσης, διαγραφής, φορητότητας,
+εναντίωσης και περιορισμού, δικαίωμα να ανακαλέσεις όποτε θέλεις τη συγκατάθεσή σου για την
+τοποθεσία, καθώς και δικαίωμα καταγγελίας στην εποπτική αρχή της χώρας της ΕΕ όπου μένεις. Στην
+Ελλάδα είναι η Αρχή Προστασίας Δεδομένων Προσωπικού Χαρακτήρα (dpa.gr) και στην Κύπρο το Γραφείο
+Επιτρόπου Προστασίας Δεδομένων Προσωπικού Χαρακτήρα (gov.cy/dataprotection). Όπου κι αν μένεις,
+μπορείς να κάνεις καταγγελία και στην ελληνική Αρχή, που εποπτεύει το RackUp. RackUp · Ioannina,
+Greece · rackupbilliard@gmail.com Support · Home

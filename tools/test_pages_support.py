@@ -223,21 +223,25 @@ class InviteLinksPolicyTest(unittest.TestCase):
         # Each cap as it is: a few a day for the others, per invite for invites.
         self.assertIn('the records that keep the notifications about your new matches, direct challenges and '
                       'invitations to games at the table, and your "No answer yet" notices, to a few a day;', lists)
-        self.assertIn("the record that keeps each of your invites to at most 10 friends who join and 5 pushes;", lists)
-        for said in ("each running invite's code, when it ends, how many friends joined with it",
+        self.assertIn("the record that keeps each of your invites to at most 10 friends at a time and 5 pushes;", lists)
+        for said in ("each running invite's code, when it ends, the time of each join with it that has not been undone,",
                      "and drops an invite from that record within about a day of its end.",
                      "none goes at night, from 23:00 to 09:00 at the hall's local time, nor later",
-                     "One invite acts on at most 10 friends who join and sends you at most 5 pushes.",
+                     "One invite acts on at most 10 friends at a time and sends you at most 5 pushes.",
                      "no invite code",
-                     "για κάθε πρόσκληση που ισχύει ακόμη, τον κωδικό της",
+                     "για κάθε πρόσκληση που ισχύει ακόμη, τον κωδικό της, πότε λήγει, "
+                     "πότε μπήκε με αυτήν κάθε φίλος που δεν το έχει αναιρέσει",
                      "και τη βγάζει από την εγγραφή μέσα σε περίπου μία ημέρα αφού λήξει.",
-                     "Μια πρόσκληση μετρά το πολύ 10 φίλους και σου στέλνει το πολύ 5 ειδοποιήσεις push.",
+                     "Μια πρόσκληση μετρά το πολύ 10 φίλους κάθε φορά και σου στέλνει το πολύ 5 ειδοποιήσεις push.",
                      "οι προσκλήσεις σου σε φίλους και ό,τι καταγράψαμε όταν μπήκες με πρόσκληση άλλου",
                      "μαζί με όσα καταγράψαμε για όσους μπήκαν με αυτήν"):
             self.assertIn(said, text)
         # The server prunes the record in a daily sweep (rackup#714), not the moment an invite ends.
+        # An undone join frees its place there, so the cap is 10 at a time and the record keeps each join's time.
         for old in ("drops an invite from that record once it ends", "τη βγάζει από την εγγραφή όταν λήξει",
-                    "invitations to games at the table and invites"):
+                    "invitations to games at the table and invites",
+                    "10 friends who join", "how many friends joined with it",
+                    "10 φίλους και σου", "πόσοι φίλοι μπήκαν με αυτήν"):
             self.assertNotIn(old, text)
 
 
