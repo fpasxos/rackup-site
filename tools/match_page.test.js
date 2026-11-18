@@ -118,12 +118,17 @@ test("an app's own browser on Android jumps nowhere and shows the open button an
   assert.equal(el["google-play"].hidden, false);
 });
 
-test("an iPhone keeps the App Store and nothing moves", () => {
+test("an iPhone gets an open button on the app's own scheme beside the App Store, and nothing moves", () => {
   const { el, jumps } = wired(IPHONE_UA, `?id=${AUTO_ID}`);
   assert.deepEqual(jumps, []);
+  assert.equal(el["ios-open"].hidden, false);
+  assert.equal(el["open-ios"].attributes.href, `rackup://match/${AUTO_ID}`);
+  assert.equal(page.appUrl(AUTO_ID), `rackup://match/${AUTO_ID}`);
   assert.equal(el["app-store"].hidden, false);
   assert.equal(el.android.hidden, true);
-  assert.equal(el["ios-open"].hidden, true);
+  // Only app 2.4.9 registers the scheme on an iPhone: an older one gets Safari's "cannot open".
+  assert.match(html, /<div id="ios-open" hidden>\s*<p><a id="open-ios" class="btn btn-ghost open-app"><span>Το έχεις ήδη; Άνοιξε στο RackUp<small lang="en">Already have it\? Open in RackUp<\/small><\/span><\/a><\/p>\s*<p class="note">Αν δεν ανοίξει, ενημέρωσε πρώτα το RackUp από το App Store\.<br>\s*<span lang="en">If it does not open, update RackUp from the App Store first\.<\/span><\/p>\s*<\/div>/);
+  assert.match(html, /<a id="open-ios"(?![^>]*href)[^>]*>/, "open-ios must have no href until the script sets one");
 });
 
 test("a bad link jumps nowhere and offers no game to open, on any phone", () => {

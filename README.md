@@ -308,6 +308,10 @@ to the same Play link the page used before, once, with no loop.
   `id` of at most 64 characters, never a reserved `__x__`, and still reads nothing from
   the database. iPhones keep the App Store button. The intent literal is pinned in
   `tools/match_page.test.js` and in the app's `LaunchIntentOpensOnceTest`.
+- **On an iPhone** (app 2.4.9; merged once iOS 2.4.9 is live) the game page adds
+  **Already have it? Open in RackUp** on `rackup://match/<id>` beside the App Store, with
+  the note to update first if it does not open: an older app answers with Safari's
+  "cannot open".
 
 ## Social profiles
 
