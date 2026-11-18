@@ -19,7 +19,8 @@ PROFILES = {"Instagram": "https://www.instagram.com/rackupbilliard/",
 STORES = ["https://apps.apple.com/gr/app/id6800614202", "https://play.google.com/store/apps/details?id=com.rackup.app"]
 HOMES = {"index.html": "https://getrackup.com/", "en/index.html": "https://getrackup.com/en/"}
 LABEL = {"el": "RackUp στο {}", "en": "RackUp on {}"}
-HAND = {"index.html", "en/index.html", "404.html", "support.html", "privacy.html", "m/index.html", "go/index.html"}
+HAND = {"index.html", "en/index.html", "404.html", "support.html", "privacy.html", "m/index.html", "go/index.html",
+        "f/index.html"}
 
 
 def footer(rel, text):

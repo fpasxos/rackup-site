@@ -16,7 +16,8 @@ path on `getrackup.com`, so links already in the app and on QR codes keep workin
 | `en/billiards/` | The same directory in English | generator |
 | `galliko-mpiliardo/`, `en/carom-billiards/` | Carom page: every hall known to have carom tables, by city, with the count where known | generator |
 | `sitemap.xml` | Every page on the site | generator |
-| `m/` | Landing page for match links shared from the app (`noindex`, not in the sitemap). From app 2.4.8 a link also carries the game, its start and its hall, which the page shows as sent | hand, except `m/halls.js`, the halls a link may name (generator) |
+| `m/` | Landing page for match links shared from the app (`noindex`, not in the sitemap). From app 2.4.8 a link also carries the game, its start and its hall, which the page shows as sent | hand, except `m/halls.js`, the halls a link may name (generator), which `go/` and `f/` read too |
+| `f/` | Landing page for invites sent from the app, from 2.4.9 (`noindex`, not in the sitemap) | hand |
 | `go/` | Where printed QR codes point: sends phones to their app store with tagged links, and from app 2.4.9 opens a listed hall in the Android app (`noindex`, not in the sitemap) | hand |
 | `media/social/` | JPEGs and MP4s that Instagram fetches by URL for posts the RackUp publisher sends out at their scheduled times (linked from nothing, not in the sitemap; `tools/test_social_media.py` checks their format). Safe to remove once those posts are out | copied from the publisher's media folder |
 | `assets/site.css` | The one stylesheet: the app's Felt and Neon tokens and every component | hand |
@@ -75,7 +76,7 @@ python -m unittest discover -s tools      # generator and site tests, standard l
 The full check, run before every commit:
 
 ```bash
-python tools/build_directory.py --check && python -m unittest discover -s tools && node --test tools/go_page.test.js && node --test tools/match_page.test.js
+python tools/build_directory.py --check && python -m unittest discover -s tools && node --test tools/go_page.test.js && node --test tools/match_page.test.js && node --test tools/invite_page.test.js
 ```
 
 Never edit a generated page by hand; the next run overwrites it. Change the
@@ -235,6 +236,36 @@ Run the tests with Node 18 or newer, no packages needed:
 
 ```bash
 node --test tools/match_page.test.js
+```
+
+## Invite links
+
+From 2.4.9 a player invites a friend to a hall with
+`https://getrackup.com/f/?h=<hall-slug>&c=<code>`. The code is 8 of the 31 symbols
+`23456789ABCDEFGHJKMNPQRSTUVWXYZ` (`^[2-9A-HJKMNP-Z]{8}$`), shown as two groups of
+four. `f/invite.js` accepts one `h` that `m/halls.js` lists and one `c` of that shape, and
+names the hall from the directory. It reads no other parameter and asks no server, so the
+page never shows a name. The scripts load in order: `../m/halls.js`, `../go/go.js` (the
+store links and the platform test) and `invite.js`.
+
+- **Android** goes at once to
+  `intent://invite/<code>?h=<hall-slug>#Intent;scheme=rackup;package=com.rackup.app;S.browser_fallback_url=...;end`,
+  whose fallback is Play with
+  `referrer=utm_source=friend&utm_medium=invite&utm_campaign=<hall-slug>&rackup_invite=<code>`.
+  The app reads that referrer once after an install. The page also shows the same link as
+  a button, because Chrome may refuse an app launch without a tap, and Google Play.
+- **iPhone** stays on the page: the App Store tagged `ct=f-<hall-slug>`, an
+  **Already have it? Open the invite** button to `rackup://invite/<code>?h=<hall-slug>`
+  (a scheme only app 2.4.9 and later register) and the code to type in the app.
+- **A computer** shows the code and both stores; **a bad link** a short note and both
+  stores, with the static links (`utm_campaign=general`, no code; `ct=f-general`).
+- **The page must be live before any app build that sends these links**, or every invite
+  opens a 404, and the iPhone button needs app 2.4.9 on the phone. The link formats and
+  the referrer are pinned as literals in `tools/invite_page.test.js`; the app parses the
+  same strings, so change both together.
+
+```bash
+node --test tools/invite_page.test.js
 ```
 
 ## Store QR codes
