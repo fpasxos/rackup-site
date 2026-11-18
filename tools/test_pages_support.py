@@ -126,6 +126,47 @@ def placeholders(page):
     return re.findall(r"\b[A-Z]{2} (?:%s) \d{4}" % "|".join(MONTHS), visible_text(main_html(page)))
 
 
+def paragraphs(page):
+    """Every paragraph of the policy, in order, as its visible text."""
+    return [visible_text(p) for p in re.findall(r"<p\b[^>]*>(.*?)</p>", main_html(page), re.S)]
+
+
+# From 2.4.9: each new paragraph, the one it must follow, and facts it must keep, in both languages.
+INVITE_LINES = (
+    ("Sharing a game.", "Inviting a friend.",
+     ("From version 2.4.9", "14 days", "never your name or user id", "reads nothing from our database",
+      "Anyone with an account who has the code", "30 days after it expires", "when you delete your account")),
+    ("Where new players come from.", "Links from posters and invites.",
+     ("From version 2.4.9", "once, on your phone", "except the invite's code", "On iPhone the app reads nothing")),
+    ("Κοινοποίηση ματς.", "Πρόσκληση σε φίλο.",
+     ("Από την έκδοση 2.4.9", "14 ημέρες", "ποτέ το όνομα ή το αναγνωριστικό χρήστη σου",
+      "δεν διαβάζει τίποτα από τη βάση δεδομένων μας", "Όποιος έχει λογαριασμό και τον κωδικό",
+      "30 ημέρες αφού λήξει", "όταν διαγράψεις τον λογαριασμό σου")),
+    ("Στο Android, όταν εγκαθιστάς την εφαρμογή από σύνδεσμό μας", "Σύνδεσμοι από αφίσες και προσκλήσεις.",
+     ("Από την έκδοση 2.4.9", "μία φορά, στο τηλέφωνό σου", "εκτός από τον κωδικό της πρόσκλησης",
+      "Στο iPhone η εφαρμογή δεν διαβάζει τίποτα")),
+)
+
+
+class InviteLinksPolicyTest(unittest.TestCase):
+    """2.4.9 invites and hall links: said beside the paragraphs they extend, in English and Greek."""
+
+    def test_each_paragraph_follows_the_one_it_extends_and_keeps_its_facts(self):
+        said = paragraphs(current("privacy.html"))
+        for before, opening, facts in INVITE_LINES:
+            with self.subTest(paragraph=opening):
+                at = [i for i, p in enumerate(said) if p.startswith(before)]
+                self.assertEqual(len(at), 1, f"one paragraph should open {before!r}")
+                self.assertTrue(said[at[0] + 1].startswith(opening), f"{opening!r} is not right after {before!r}")
+                for fact in facts:
+                    self.assertIn(fact, said[at[0] + 1])
+
+    def test_the_newest_note_says_what_changed(self):
+        newest = next(p for p in paragraphs(current("privacy.html")) if p.startswith("What changed on "))
+        for fact in ("version 2.4.9", "invite a friend", "Google Play", "in the summary in Greek too"):
+            self.assertIn(fact, newest)
+
+
 class PolicyDateTest(unittest.TestCase):
 
     def test_the_policy_carries_one_real_date(self):

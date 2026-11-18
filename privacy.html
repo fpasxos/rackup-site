@@ -39,11 +39,19 @@
 <main id="main" class="container">
 <article class="prose">
   <h1>RackUp Privacy Policy</h1>
-  <p class="muted">Effective date: 15 November 2026 · Applies to the RackUp apps for Android
+  <p class="muted">Effective date: 18 November 2026 · Applies to the RackUp apps for Android
   and iPhone (<code>com.rackup.app</code>)</p>
   <p lang="el"><a href="#el">Στα Ελληνικά</a></p>
 
   <div class="card">
+    <p><strong>What changed on 18 November 2026.</strong> From version 2.4.9 of the apps you can
+    invite a friend to play at a hall, with a link or a QR code. Under <em>What you post and
+    write</em> we say what an invite keeps, who can read it, what happens when your friend joins
+    with it, and when we delete it. Under <em>App usage analytics</em> we add that from the same
+    version, on Android, the app reads once, on your phone, the tags Google Play passes on after an
+    install from a hall's poster, a hall's share card or a friend's invite, to open that hall or
+    that invite, and that nothing about it is sent to us except an invite's code. We say so in the
+    summary in Greek too.</p>
     <p><strong>What changed on 15 November 2026.</strong> Version 2.4.8 of the apps logs two more
     analytics events, 33 in all: <code>screen_view</code>, when you open <em>Discover</em>,
     <em>Matches</em>, <em>Rankings</em>, <em>Venues</em> or <em>Profile</em>, and
@@ -610,6 +618,15 @@
   that the page can show them as they were when the link was sent, with the hall named from the
   public list of halls on our website. The link carries no name and no user id, and the page reads
   nothing from our database or our server.</p>
+  <p><strong>Inviting a friend.</strong> From version 2.4.9 you can invite a friend to play at a
+  hall. An invite lasts 14 days, and we keep with it a random code, your user id, your display
+  name, the hall, and when it was made. The link holds only the code and the hall, never your name
+  or user id, and the page it opens reads nothing from our database. Anyone with an account who
+  has the code can read the invite: your user id, your display name and the hall. When your friend
+  joins with it, we record who joined and when, you follow each other, and we tell you with a
+  notification. Your friend can undo this. A friend who is new to RackUp also starts with that
+  hall as their usual hall. We delete an invite 30 days after it expires, and all your invites and
+  joins when you delete your account.</p>
   <p><strong>Games that found an opponent.</strong> We count the games that found an opponent in
   each city and hall, and show everyone who uses the app, guests included, those counts, the hours
   with the most games, and the hall, game, race and time of recent ones. These summaries never hold
@@ -873,6 +890,11 @@
   media posts, ads and posters bring new players. On iPhone the app collects nothing for this.
   Apple tells us only totals, such as how many downloads came from each of our campaign links,
   from our ads on the App Store, or from another app or website.</p>
+  <p><strong>Links from posters and invites.</strong> On Android, when you install RackUp from a
+  hall's poster, a hall's share card or a friend's invite, Google Play passes the app the same tags
+  it passes Firebase Analytics. From version 2.4.9 the app reads them once, on your phone, to open
+  that hall or that invite. Nothing about it is sent to us, except the invite's code when your
+  friend's invite is used. On iPhone the app reads nothing like this.</p>
   <p><strong>Analytics is not linked to your account.</strong> The app never calls Analytics'
   user id function, so Analytics keys on its own per installation identifier. One practical
   consequence, stated honestly: because these records are not tied to your account, we cannot
@@ -1285,15 +1307,18 @@
 
   <h2>Changes to this policy</h2>
   <p>If this policy changes, the new version is published at this address with a new effective
-  date, and we say at the top what changed. This version, dated 15 November 2026, adds the
+  date, and we say at the top what changed. This version, dated 18 November 2026, adds inviting a
+  friend to play at a hall and the tags the Android app reads after an install from a hall's
+  poster, a hall's share card or a friend's invite, from version 2.4.9 of the apps, and supersedes
+  the version dated 15 November 2026, which added the
   analytics events <code>screen_view</code> and <code>post_started</code>, what
   <code>match_posted</code>, <code>join_requested</code> and <code>match_viewed</code> also record,
   three user properties, the card of the halls at the top of <em>Rankings</em> and what the link
-  to a shared game carries, from version 2.4.8 of the apps, corrects how often the Android app
-  updates its notification token's record, adds that our server reads its time for quiet cities
-  and its app version for your player card, adds the text the apps show to what anyone can read
-  without a sign-in, says that other players see only that someone has checked in at a hall,
-  never who, and supersedes the
+  to a shared game carries, from version 2.4.8 of the apps, corrected how often the Android app
+  updates its notification token's record, added that our server reads its time for quiet cities
+  and its app version for your player card, added the text the apps show to what anyone can read
+  without a sign-in, said that other players see only that someone has checked in at a hall,
+  never who, and superseded the
   version dated 13 November 2026, which said that, for
   quiet cities, our server tells whether a player opened RackUp in the last 7 days only by when
   their notification tokens were last updated, and superseded the earlier version of 13 November
@@ -1499,6 +1524,17 @@
   να τα δείχνει όπως ήταν όταν στάλθηκε, με το όνομα της αίθουσας από τη δημόσια λίστα αιθουσών
   της ιστοσελίδας μας. Ο σύνδεσμος δεν έχει όνομα ή αναγνωριστικό χρήστη, και η σελίδα δεν
   διαβάζει τίποτα από τη βάση δεδομένων ή τον διακομιστή μας.</p>
+  <p><strong>Πρόσκληση σε φίλο.</strong> Από την έκδοση 2.4.9 μπορείς να καλέσεις έναν φίλο να
+  παίξετε σε μια αίθουσα. Μια πρόσκληση ισχύει 14 ημέρες, και μαζί της κρατάμε έναν τυχαίο
+  κωδικό, το αναγνωριστικό χρήστη σου, το όνομά σου, την αίθουσα και πότε τη δημιούργησες. Ο
+  σύνδεσμος έχει μόνο τον κωδικό και την αίθουσα, ποτέ το όνομα ή το αναγνωριστικό χρήστη σου, και
+  η σελίδα που ανοίγει δεν διαβάζει τίποτα από τη βάση δεδομένων μας. Όποιος έχει λογαριασμό και
+  τον κωδικό μπορεί να διαβάσει την πρόσκληση: το αναγνωριστικό χρήστη σου, το όνομά σου και την
+  αίθουσα. Όταν ο φίλος σου μπει με την πρόσκληση, καταγράφουμε ποιος μπήκε και πότε,
+  ακολουθείτε ο ένας τον άλλον και σε ενημερώνουμε με μια ειδοποίηση. Ο φίλος σου μπορεί να το
+  αναιρέσει. Ένας φίλος που είναι καινούργιος στο RackUp ξεκινά επίσης με αυτή την αίθουσα ως
+  λέσχη του. Μια πρόσκληση τη σβήνουμε 30 ημέρες αφού λήξει, και όταν διαγράψεις τον λογαριασμό
+  σου σβήνουμε όλες τις προσκλήσεις σου και ό,τι καταγράψαμε όταν μπήκες με πρόσκληση άλλου.</p>
   <p>Κάθε 6 ώρες ο διακομιστής μας υπολογίζει για κάθε πόλη αν τρεις ή λιγότεροι από τους
   παίκτες που την έχουν πόλη τους άνοιξαν το RackUp τις τελευταίες 7 ημέρες, από το πότε
   ενημερώθηκαν τελευταία τα αναγνωριστικά ειδοποιήσεών τους, και κρατά μόνο αυτό
@@ -1592,6 +1628,13 @@
   ξέρουμε ποιες αναρτήσεις, διαφημίσεις και αφίσες μας φέρνουν νέους παίκτες και αν γεμίζουν τα
   ματς. Νομική βάση είναι το έννομο συμφέρον μας, και
   μπορείς να αντιταχθείς όποτε θέλεις.</p>
+  <p><strong>Σύνδεσμοι από αφίσες και προσκλήσεις.</strong> Στο Android, όταν εγκαθιστάς το RackUp
+  από την αφίσα ή την κάρτα μιας αίθουσας, ή από την πρόσκληση ενός φίλου, το Google Play δίνει
+  στην εφαρμογή τις ίδιες ετικέτες που δίνει στο Firebase Analytics. Από την έκδοση 2.4.9, η
+  εφαρμογή τις διαβάζει μία φορά, στο τηλέφωνό σου, για να ανοίξει εκείνη την αίθουσα ή εκείνη
+  την πρόσκληση. Τίποτα από αυτά δεν μας στέλνεται, εκτός από τον κωδικό της πρόσκλησης, όταν
+  χρησιμοποιείς την πρόσκληση του φίλου σου. Στο iPhone η εφαρμογή δεν διαβάζει τίποτα
+  τέτοιο.</p>
   <p>Δεν υπάρχουν διαφημίσεις μέσα στις εφαρμογές, ούτε διαφημιστικά αναγνωριστικά, ούτε
   παρακολούθηση σε εφαρμογές άλλων εταιρειών. Δεν πουλάμε δεδομένα. Από την έκδοση 2.1.0
   υπάρχουν ειδοποιήσεις push και στο iPhone: αν τις επιτρέψεις, κρατάμε στον λογαριασμό σου
