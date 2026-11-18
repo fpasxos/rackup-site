@@ -4,10 +4,13 @@
   "use strict";
 
   var PACKAGE = "com.rackup.app";
-  var PLAY_URL = "https://play.google.com/store/apps/details?id=com.rackup.app" +
-    "&referrer=utm_source%3Dshare%26utm_medium%3Dmatch_link";
-  // The id lands in an href, so only characters that cannot end or escape it pass.
-  var MATCH_ID = /^[A-Za-z0-9_-]{1,128}$/;
+  var PLAY_BASE = "https://play.google.com/store/apps/details?id=com.rackup.app&referrer=";
+  var SHARE_TAGS = "utm_source=share&utm_medium=match_link";
+  // The page's own Play link, for a bad link: no game to carry.
+  var PLAY_URL = PLAY_BASE + encodeURIComponent(SHARE_TAGS);
+  // The id lands in an href, so only characters that cannot end or escape it pass; 64 at most, as
+  // the app's incomingId takes, and never a name Firestore reserves (__x__).
+  var MATCH_ID = /^[A-Za-z0-9_-]{1,64}$/;
 
   // From app 2.4.8 the link also carries g, r, t and v (MatchLinkDetails in the app repo).
   // The page prints only its own words for them, and a hall only if the directory lists it.
@@ -33,12 +36,13 @@
   var DIRECTORY = { el: "../mpiliardo/", en: "../en/billiards/" };
 
   function isValidMatchId(id) {
-    return typeof id === "string" && MATCH_ID.test(id);
+    return typeof id === "string" && MATCH_ID.test(id) && !(id.slice(0, 2) === "__" && id.slice(-2) === "__");
   }
 
+  // Exactly one id: a repeated key is ambiguous, as on /go/ and /f/.
   function matchIdFrom(search) {
-    var id = new URLSearchParams(search || "").get("id");
-    return isValidMatchId(id) ? id : null;
+    var ids = new URLSearchParams(search || "").getAll("id");
+    return ids.length === 1 && isValidMatchId(ids[0]) ? ids[0] : null;
   }
 
   function isAndroid(userAgent) {
@@ -58,11 +62,27 @@
     doc.getElementById(android ? "note-android" : "note-ios").hidden = false;
   }
 
+  // The game's id rides in the install tags: app 2.4.9 reads them once after a fresh install and opens it.
+  function playUrl(id) {
+    if (!isValidMatchId(id)) throw new Error("invalid match id");
+    return PLAY_BASE + encodeURIComponent(SHARE_TAGS + "&rackup_match=" + id);
+  }
+
+  // The app's own scheme, which an iPhone opens from a tap (app 2.4.9 registers it there).
+  function appUrl(id) {
+    if (!isValidMatchId(id)) throw new Error("invalid match id");
+    return "rackup://match/" + id;
+  }
+
   // Chrome opens rackup://match/<id> in the app, or the fallback when it is not installed.
   function intentUrl(id) {
-    if (!isValidMatchId(id)) throw new Error("invalid match id");
     return "intent://match/" + id + "#Intent;scheme=rackup;package=" + PACKAGE +
-      ";S.browser_fallback_url=" + encodeURIComponent(PLAY_URL) + ";end";
+      ";S.browser_fallback_url=" + encodeURIComponent(playUrl(id)) + ";end";
+  }
+
+  // An Android app's own browser may answer an app link with an error page: buttons only there (go/go.js).
+  function isWebView(userAgent) {
+    return /; wv\)/.test(userAgent || "");
   }
 
   // A real day and time at the hall, or null: 20261131 and 25:00 are not.
@@ -131,7 +151,9 @@
     doc.getElementById("game-note").hidden = false;
   }
 
-  function wire(doc, userAgent, search, halls) {
+  // Android's Chrome jumps to the app at once and keeps the button in case it wants a tap; an app's
+  // own browser gets only the buttons. An iPhone gets a button on the scheme; nothing moves there.
+  function wire(doc, userAgent, search, halls, jump) {
     showStoreFor(doc, userAgent);
     var id = matchIdFrom(search);
     if (id === null) {
@@ -140,9 +162,15 @@
     }
     var details = detailsFrom(search, halls);
     if (details !== null) showDetails(doc, details);
+    doc.getElementById("google-play").setAttribute("href", playUrl(id));
     if (isAndroid(userAgent)) {
-      doc.getElementById("open-app").setAttribute("href", intentUrl(id));
+      var intent = intentUrl(id);
+      doc.getElementById("open-app").setAttribute("href", intent);
       doc.getElementById("android").hidden = false;
+      if (jump && !isWebView(userAgent)) jump(intent);
+    } else if (isIos(userAgent)) {
+      doc.getElementById("open-ios").setAttribute("href", appUrl(id));
+      doc.getElementById("ios-open").hidden = false;
     }
   }
 
@@ -153,6 +181,9 @@
     matchIdFrom: matchIdFrom,
     isAndroid: isAndroid,
     isIos: isIos,
+    isWebView: isWebView,
+    playUrl: playUrl,
+    appUrl: appUrl,
     intentUrl: intentUrl,
     startFrom: startFrom,
     detailsFrom: detailsFrom,
@@ -164,6 +195,8 @@
   if (typeof module === "object" && module.exports) {
     module.exports = api;
   } else if (typeof document !== "undefined") {
-    wire(document, navigator.userAgent, location.search, window.RACKUP_HALLS || {});
+    wire(document, navigator.userAgent, location.search, window.RACKUP_HALLS || {}, function (url) {
+      location.replace(url);
+    });
   }
 })();
