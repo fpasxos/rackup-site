@@ -91,7 +91,7 @@
     "address": "Αχαρνών 131, Αγ. Παντελεήμονας",
     "sortOrder": 12,
     "phone": "+30 694 434 0659",
-    "hasCarom": true
+    "caromTables": 3
   },
   {
     "id": "venue-ath-lacasa",
