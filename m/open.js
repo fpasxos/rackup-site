@@ -68,6 +68,12 @@
     return PLAY_BASE + encodeURIComponent(SHARE_TAGS + "&rackup_match=" + id);
   }
 
+  // The app's own scheme, which an iPhone opens from a tap (app 2.4.9 registers it there).
+  function appUrl(id) {
+    if (!isValidMatchId(id)) throw new Error("invalid match id");
+    return "rackup://match/" + id;
+  }
+
   // Chrome opens rackup://match/<id> in the app, or the fallback when it is not installed.
   function intentUrl(id) {
     return "intent://match/" + id + "#Intent;scheme=rackup;package=" + PACKAGE +
@@ -146,7 +152,7 @@
   }
 
   // Android's Chrome jumps to the app at once and keeps the button in case it wants a tap; an app's
-  // own browser gets only the buttons. Nothing moves on an iPhone or a computer.
+  // own browser gets only the buttons. An iPhone gets a button on the scheme; nothing moves there.
   function wire(doc, userAgent, search, halls, jump) {
     showStoreFor(doc, userAgent);
     var id = matchIdFrom(search);
@@ -162,6 +168,9 @@
       doc.getElementById("open-app").setAttribute("href", intent);
       doc.getElementById("android").hidden = false;
       if (jump && !isWebView(userAgent)) jump(intent);
+    } else if (isIos(userAgent)) {
+      doc.getElementById("open-ios").setAttribute("href", appUrl(id));
+      doc.getElementById("ios-open").hidden = false;
     }
   }
 
@@ -174,6 +183,7 @@
     isIos: isIos,
     isWebView: isWebView,
     playUrl: playUrl,
+    appUrl: appUrl,
     intentUrl: intentUrl,
     startFrom: startFrom,
     detailsFrom: detailsFrom,
