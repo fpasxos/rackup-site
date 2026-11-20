@@ -178,7 +178,26 @@ test("on Android a good link opens the invite in RackUp, and keeps the hall, the
 
 test("the iPhone's open button says to update first, as only app 2.4.9 registers the scheme", () => {
   const html = fs.readFileSync(path.join(ROOT, "f", "index.html"), "utf8");
-  assert.match(html, /<div id="ios-open" hidden>\s*<p><a id="open-ios" class="btn btn-ghost open-app"><span>Το έχεις ήδη; Άνοιξε την πρόσκληση<small lang="en">Already have it\? Open the invite<\/small><\/span><\/a><\/p>\s*<p class="note">Αν δεν ανοίξει, ενημέρωσε πρώτα το RackUp από το App Store\.<br>\s*<span lang="en">If it does not open, update RackUp from the App Store first\.<\/span><\/p>\s*<\/div>/);
+  assert.match(html, /<div id="ios-open" hidden>\s*<p><a id="open-ios" class="btn btn-ghost open-app"><span>Το έχεις ήδη; Άνοιξε την&nbsp;πρόσκληση<small lang="en">Already have it\? Open&nbsp;the&nbsp;invite<\/small><\/span><\/a><\/p>\s*<p class="note">Αν δεν ανοίξει, ενημέρωσε πρώτα το RackUp από το App Store\.<br>\s*<span lang="en">If it does not open, update RackUp from the App Store first\.<\/span><\/p>\s*<\/div>/);
+});
+
+// Every open button's label as [Greek, English]: the text before <small>, and the small's.
+function openLabels(page) {
+  return [...page.matchAll(/<a\b[^>]*\bclass="[^"]*\bopen-app\b[^"]*"[^>]*><span>([\s\S]*?)<small lang="en">([\s\S]*?)<\/small><\/span><\/a>/g)]
+    .map((m) => [m[1], m[2]]);
+}
+
+// A label's last line holds at least the words after its last ordinary space, so joining
+// them with no-break spaces leaves no word alone there. «πρόσκληση» sat alone on the
+// iPhone button from 360 to 414px and «RackUp» on Android's at 320, 390 and 414px.
+// «Άνοιξε την πρόσκληση» kept whole would not fit a 320px button, so only two words join.
+test("no open button on the invite page can end on a lone word", () => {
+  const labels = openLabels(html);
+  assert.deepEqual(labels, [
+    ["Άνοιξε την πρόσκληση στο&nbsp;RackUp", "Open the invite in&nbsp;RackUp"],
+    ["Το έχεις ήδη; Άνοιξε την&nbsp;πρόσκληση", "Already have it? Open&nbsp;the&nbsp;invite"]
+  ]);
+  for (const text of labels.flat()) assert.match(text.split(" ").pop(), /&nbsp;/, text);
 });
 
 test("on an iPhone the page offers the App Store, the app link and the code, and goes nowhere by itself", () => {
@@ -339,10 +358,10 @@ test("the page says what the approved design says, in Greek with the English bes
   const said = [
     "<h1>Πρόσκληση για μπιλιάρδο</h1>",
     '<p class="tag" lang="en">An invite to play billiards</p>',
-    "<span>Άνοιξε την πρόσκληση στο RackUp<small lang=\"en\">Open the invite in RackUp</small></span>",
+    "<span>Άνοιξε την πρόσκληση στο&nbsp;RackUp<small lang=\"en\">Open the invite in&nbsp;RackUp</small></span>",
     "Αν δεν έχεις την εφαρμογή, ανοίγει το Google Play και η πρόσκληση σε περιμένει μέσα.",
     '<span lang="en">No app yet? Google Play opens, and the invite waits for you inside.</span>',
-    "<span>Το έχεις ήδη; Άνοιξε την πρόσκληση<small lang=\"en\">Already have it? Open the invite</small></span>",
+    "<span>Το έχεις ήδη; Άνοιξε την&nbsp;πρόσκληση<small lang=\"en\">Already have it? Open&nbsp;the&nbsp;invite</small></span>",
     'Κωδικός πρόσκλησης · <span lang="en">Invite code</span>',
     "Μόλις κατεβάσεις το RackUp, πάτα ξανά τον σύνδεσμο στο μήνυμα, ή γράψε τον κωδικό στο «Έχω κωδικό πρόσκλησης».",
     '<span lang="en">Once you have RackUp, tap the link in the message again, or type the code under ' +

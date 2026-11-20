@@ -126,9 +126,68 @@ test("an iPhone gets an open button on the app's own scheme beside the App Store
   assert.equal(page.appUrl(AUTO_ID), `rackup://match/${AUTO_ID}`);
   assert.equal(el["app-store"].hidden, false);
   assert.equal(el.android.hidden, true);
+  assert.equal(el["note-ios"].hidden, true, "the button and its note take the older iPhone line's place");
   // Only app 2.4.9 registers the scheme on an iPhone: an older one gets Safari's "cannot open".
-  assert.match(html, /<div id="ios-open" hidden>\s*<p><a id="open-ios" class="btn btn-ghost open-app"><span>Το έχεις ήδη; Άνοιξε στο RackUp<small lang="en">Already have it\? Open in RackUp<\/small><\/span><\/a><\/p>\s*<p class="note">Αν δεν ανοίξει, ενημέρωσε πρώτα το RackUp από το App Store\.<br>\s*<span lang="en">If it does not open, update RackUp from the App Store first\.<\/span><\/p>\s*<\/div>/);
+  assert.match(html, /<div id="ios-open" hidden>\s*<p><a id="open-ios" class="btn btn-ghost open-app"><span>Το έχεις ήδη; Άνοιξε&nbsp;στο&nbsp;RackUp<small lang="en">Already have it\? Open&nbsp;in&nbsp;RackUp<\/small><\/span><\/a><\/p>\s*<p class="note">Αν δεν ανοίξει, ενημέρωσε πρώτα το RackUp από το App Store\.<br>\s*<span lang="en">If it does not open, update RackUp from the App Store first\.<\/span><\/p>\s*<\/div>/);
   assert.match(html, /<a id="open-ios"(?![^>]*href)[^>]*>/, "open-ios must have no href until the script sets one");
+});
+
+// The text of a block the script shows or hides, as the page holds it.
+function blockText(id) {
+  const m = html.match(new RegExp(`<(div|p)\\b[^>]*\\bid="${id}"[^>]*>([\\s\\S]*?)</\\1>`));
+  assert.ok(m, `no block with id ${id}`);
+  return m[2];
+}
+
+const NOTE_BLOCKS = ["android", "ios-open", "bad-link", "game-note", "stores-note", "note-android", "note-ios"];
+
+test("an iPhone with a game to open is asked «Το έχεις ήδη;» once, and still told to update an older app", () => {
+  for (const search of [`?id=${AUTO_ID}`, DETAILS]) {
+    const { el } = wired(IPHONE_UA, search);
+    const seen = NOTE_BLOCKS.filter((id) => !el[id].hidden).map(blockText).join("\n");
+    assert.equal(seen.split("Το έχεις ήδη;").length - 1, 1, seen);
+    assert.equal(seen.split("Already have it?").length - 1, 1, seen);
+    assert.match(seen, /Αν δεν ανοίξει, ενημέρωσε πρώτα το RackUp από το App Store\./);
+    assert.match(seen, /If it does not open, update RackUp from the App Store first\./);
+  }
+});
+
+test("an iPhone with a bad link keeps the older line, since no button asks first", () => {
+  const { el } = wired(IPHONE_UA, "?id=" + encodeURIComponent("a/../b"));
+  assert.equal(el["ios-open"].hidden, true);
+  assert.equal(el["note-ios"].hidden, false);
+  assert.match(blockText("note-ios"), /Το έχεις ήδη;/);
+});
+
+// At 390px «Το έχεις ήδη; Άνοιξε στο RackUp» left "RackUp" alone on a second line. The
+// no-break spaces keep the action whole, so a narrow phone breaks after the question.
+test("the iPhone button can only break after its question, in both languages", () => {
+  const label = html.match(/<a id="open-ios"[^>]*><span>([\s\S]*?)<\/span><\/a>/)[1];
+  const [greek, english] = label.split(/<small lang="en">/);
+  assert.equal(greek, "Το έχεις ήδη; Άνοιξε&nbsp;στο&nbsp;RackUp");
+  assert.equal(english, "Already have it? Open&nbsp;in&nbsp;RackUp</small>");
+  for (const text of [greek, english]) {
+    const breaks = text.replace(/<\/small>$/, "").split(" ");
+    assert.equal(breaks.length, 4, text);
+    assert.ok(breaks[3].includes("&nbsp;RackUp"), text);
+  }
+});
+
+// Every open button's label as [Greek, English]: the text before <small>, and the small's.
+function openLabels(page) {
+  return [...page.matchAll(/<a\b[^>]*\bclass="[^"]*\bopen-app\b[^"]*"[^>]*><span>([\s\S]*?)<small lang="en">([\s\S]*?)<\/small><\/span><\/a>/g)]
+    .map((m) => [m[1], m[2]]);
+}
+
+// A label's last line holds at least the words after its last ordinary space, so joining
+// them with no-break spaces leaves no word alone there. At 360px «RackUp» sat alone.
+test("no open button on the game page can end on a lone word", () => {
+  const labels = openLabels(html);
+  assert.deepEqual(labels, [
+    ["Άνοιξε το ματς στο&nbsp;RackUp", "Open the game in&nbsp;RackUp"],
+    ["Το έχεις ήδη; Άνοιξε&nbsp;στο&nbsp;RackUp", "Already have it? Open&nbsp;in&nbsp;RackUp"]
+  ]);
+  for (const text of labels.flat()) assert.match(text.split(" ").pop(), /&nbsp;/, text);
 });
 
 test("a bad link jumps nowhere and offers no game to open, on any phone", () => {
@@ -257,13 +316,14 @@ test("the page stays out of the sitemap, is published, and has no en or em dash"
 });
 
 test("a phone sees only its own store and one line; a desktop keeps both buttons", () => {
+  // An iPhone with a game to open reads its line under the open button instead (tested above).
   const cases = [
-    [ANDROID_UA, "app-store", "note-android"],
-    [IPHONE_UA, "google-play", "note-ios"]
+    [ANDROID_UA, `?id=${AUTO_ID}`, "app-store", "note-android"],
+    [IPHONE_UA, "?id=" + encodeURIComponent("a/../b"), "google-play", "note-ios"]
   ];
-  for (const [ua, hiddenStore, note] of cases) {
+  for (const [ua, search, hiddenStore, note] of cases) {
     const doc = fakeDocument();
-    page.wire(doc, ua, `?id=${AUTO_ID}`);
+    page.wire(doc, ua, search);
     assert.equal(doc.elements[hiddenStore].hidden, true, hiddenStore);
     assert.equal(doc.elements[note].hidden, false, note);
     assert.equal(doc.elements["stores-note"].hidden, true);

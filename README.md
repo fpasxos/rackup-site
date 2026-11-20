@@ -98,6 +98,11 @@ that way; `tools/test_site.py` fails on the old green and gold palette.
   the same two families through `unicode-range`. Both faces of a family must
   declare the same `font-weight` range, or Chrome never uses the Greek one.
   `python tools/make_fonts.py` rebuilds the subsets (needs `pip install fonttools brotli`).
+- **Open buttons.** On `/m/`, `/f/` and `/go/` the last words of every open button's
+  label, Greek and English, are joined by no-break spaces (`&nbsp;`), so a narrow phone
+  never leaves one word alone on the label's last line. Each page's tests pin where its
+  labels can break. Keep a joined run narrow enough for a 320px button: «Άνοιξε την
+  πρόσκληση» kept whole is too wide there.
 - **Images.** `python tools/make_images.py` rebuilds the WebP screenshots from the
   app repo's unframed iPhone captures, `store-assets/store-shots/raw/ios/` (not
   `1-venues.png`, its hall count goes stale; a screen with no capture keeps its WebP) and,
@@ -347,7 +352,10 @@ to the same Play link the page used before, once, with no loop.
 - **On an iPhone** (app 2.4.9; merged once iOS 2.4.9 is live) the game page adds
   **Already have it? Open in RackUp** on `rackup://match/<id>` beside the App Store, with
   the note to update first if it does not open: an older app answers with Safari's
-  "cannot open".
+  "cannot open". The button replaces the older iPhone line under the App Store, which
+  asked the same question; a bad link, with no button, still shows that line. No-break
+  spaces keep "Open in RackUp" whole, so a narrow phone breaks the label after its
+  question.
 
 ## Social profiles
 

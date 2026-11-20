@@ -171,6 +171,9 @@
     } else if (isIos(userAgent)) {
       doc.getElementById("open-ios").setAttribute("href", appUrl(id));
       doc.getElementById("ios-open").hidden = false;
+      // The button asks «Το έχεις ήδη;» and its note tells an older app to update, so the
+      // older iPhone line, which asks the same, goes; a bad link still gets it.
+      doc.getElementById("note-ios").hidden = true;
     }
   }
 
