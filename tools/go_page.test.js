@@ -938,9 +938,23 @@ test("the hall block starts hidden and says what the approved page says, around 
   assert.ok(get, "#hall-get must start hidden");
   assert.match(get[1], /<h1>Κατέβασε το RackUp<\/h1>/);
   assert.match(get[1], /<p class="tag" lang="en">Get RackUp<\/p>/);
-  assert.match(block, /<span>Άνοιξε την αίθουσα στο RackUp<small lang="en">Open the hall in RackUp<\/small><\/span>/);
+  assert.match(block, /<span>Άνοιξε την αίθουσα στο&nbsp;RackUp<small lang="en">Open the hall in&nbsp;RackUp<\/small><\/span>/);
   assert.match(block, /Αν δεν έχεις την εφαρμογή, ανοίγει το Google Play\./);
   assert.match(block, /<span lang="en">No app yet\? Google Play opens instead\.<\/span>/);
   assert.match(html, /<a id="open-app"(?![^>]*href)[^>]*>/, "open-app must have no href until the script sets one");
   for (const id of HALL_IDS) assert.equal((html.match(new RegExp(`id="${id}"`, "g")) || []).length, 1, id);
+});
+
+// Every open button's label as [Greek, English]: the text before <small>, and the small's.
+function openLabels(page) {
+  return [...page.matchAll(/<a\b[^>]*\bclass="[^"]*\bopen-app\b[^"]*"[^>]*><span>([\s\S]*?)<small lang="en">([\s\S]*?)<\/small><\/span><\/a>/g)]
+    .map((m) => [m[1], m[2]]);
+}
+
+// A label's last line holds at least the words after its last ordinary space, so joining
+// them with no-break spaces leaves no word alone there. At 360 and 390px «RackUp» sat alone.
+test("the hall button cannot end on a lone word", () => {
+  const labels = openLabels(html);
+  assert.deepEqual(labels, [["Άνοιξε την αίθουσα στο&nbsp;RackUp", "Open the hall in&nbsp;RackUp"]]);
+  for (const text of labels.flat()) assert.match(text.split(" ").pop(), /&nbsp;/, text);
 });

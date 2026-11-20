@@ -173,6 +173,23 @@ test("the iPhone button can only break after its question, in both languages", (
   }
 });
 
+// Every open button's label as [Greek, English]: the text before <small>, and the small's.
+function openLabels(page) {
+  return [...page.matchAll(/<a\b[^>]*\bclass="[^"]*\bopen-app\b[^"]*"[^>]*><span>([\s\S]*?)<small lang="en">([\s\S]*?)<\/small><\/span><\/a>/g)]
+    .map((m) => [m[1], m[2]]);
+}
+
+// A label's last line holds at least the words after its last ordinary space, so joining
+// them with no-break spaces leaves no word alone there. At 360px «RackUp» sat alone.
+test("no open button on the game page can end on a lone word", () => {
+  const labels = openLabels(html);
+  assert.deepEqual(labels, [
+    ["Άνοιξε το ματς στο&nbsp;RackUp", "Open the game in&nbsp;RackUp"],
+    ["Το έχεις ήδη; Άνοιξε&nbsp;στο&nbsp;RackUp", "Already have it? Open&nbsp;in&nbsp;RackUp"]
+  ]);
+  for (const text of labels.flat()) assert.match(text.split(" ").pop(), /&nbsp;/, text);
+});
+
 test("a bad link jumps nowhere and offers no game to open, on any phone", () => {
   for (const ua of [ANDROID_UA, WEBVIEW_UA, IPHONE_UA]) {
     const { el, jumps } = wired(ua, "?id=" + encodeURIComponent("a/../b"));
