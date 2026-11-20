@@ -347,7 +347,10 @@ to the same Play link the page used before, once, with no loop.
 - **On an iPhone** (app 2.4.9; merged once iOS 2.4.9 is live) the game page adds
   **Already have it? Open in RackUp** on `rackup://match/<id>` beside the App Store, with
   the note to update first if it does not open: an older app answers with Safari's
-  "cannot open".
+  "cannot open". The button replaces the older iPhone line under the App Store, which
+  asked the same question; a bad link, with no button, still shows that line. No-break
+  spaces keep "Open in RackUp" whole, so a narrow phone breaks the label after its
+  question.
 
 ## Social profiles
 
