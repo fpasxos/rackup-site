@@ -427,219 +427,220 @@ on its ladder, and hide from you the players you blocked. If you leave the ladde
 me in player search, our server takes you off the board within about an hour. Past seasons. Scores
 confirmed until 12:00 on the Tuesday after a season ends still count for it. Its board then becomes
 final and is kept as it is, with the players who were on the ladder when the season ended, until the
-following season ends. Leaving the ladder after a season ends, or turning off Show me in player
-search once its board is final, does not take you off that board; deleting your account does.
-Winners and badges. The winner of a season, or the winners if they finish level, get the badge Won
-the ladder, which their player card shows to every player with an account for 4 weeks. Our server
-keeps each badge in a separate record, with the hall, the season and when the badge ends, which any
-player with an account can read. It keeps a player's 5 most recent badges, and a badge that has
-ended stays there until they win another season or delete their account. A winner can share a card
-with their own name, the hall and the season's dates. Their phone draws it, with no other player's
-name, and hands it, with a link to the hall's page on our website, to the app they choose. We learn
-only that they opened the share sheet, as described under App usage analytics, never what they sent
-or to whom. What our server keeps to build the boards. For each hall's ladder, our server also keeps
-a record that no app can read: who joined it this season and the last, who was on it at its last
-count, which of each player's games counted, the place each player last held, so that a push can
-tell them they climbed, and who met the rules for winning last season. It keeps only this season and
-the last. Under your account, it keeps the times at which your joins and the changes to your player
-card made it update the boards, so that they do so at most 6 times a day; past that, the next hourly
-count shows the change. A time older than a day drops out when that record is next updated, and no
-app can read it. Deleting your account takes you out of all of these. What you post and write The
-app is a noticeboard, so a lot of what it stores is content you create on purpose: Match posts and
-open challenges: the venue, its city and country, the game type, date and time, and any free text
-note you write, together with your display name, skill category, photo and reliability figure copied
-onto the post. Every signed in player can read these. That is the point of the app. From version
-2.3.0 a guest sees your open posts too, from the copies described under Looking around as a guest,
-but never your note: the copies leave it out, and since 20 October 2026 our security rules let a
-guest session read no match or challenge record. Direct challenges: when you challenge one player by
-name, we store both players' user ids, display names, categories, photo links and verified badges,
-the game type, the hall (its id, name, city, country and time zone), the date and time you propose,
-any note you write (up to 500 characters), whether the challenge is waiting, accepted, declined,
-called off or expired, when it was sent, answered and due to expire, and, once accepted, the match
-it became. Only the two of you can read it, note included. If it is accepted, an ordinary match is
-created, which every signed in player can read, but the note is not copied onto it: it stays on the
-challenge, visible only to the two of you, and is deleted with the challenge, 30 days after its 24
-hour answer window ends. Games at the table: from version 2.4.7 of the apps, when you log a game you
-are already playing with another player at a hall, we store an invitation for them to confirm it,
-with both players' user ids, display names, categories, photo links and verified badges, the game
-and any race, the hall (its id, name, city, country and time zone) and when the game started, at
-most 2 hours before you log it. It also holds whether it is waiting, confirmed, declined, called off
-or ended, why it ended if no game came of it (no answer within 2 hours, the day's limit of games at
-the table, an app too old to confirm it, or a game we could not log), when it was sent, answered and
-due to end, and, once confirmed, the match it became. Only the two of you can read it. Once the
-other player confirms it, our server creates an ordinary match with both of you already in it,
-marked as logged at the table, which every player with an account can read, like any match. It is
-never announced to other players or copied for guests. It counts in both players' games played,
-results and history and in the players' list in Rankings, but not towards the verified badge or the
-reliability figure, nor in the counts of games that found an opponent or the halls' list in
-Rankings, and it cannot be rated. Two players can log at most 4 games at the table together on one
-day, and one player at most 8, by the hall's local time. An invitation already over a limit when you
-send it ends at once without telling the other player, and so does one whose other player has no app
-new enough to confirm it. Join requests: when you ask to join someone's match, your name, category
-and photo go to that host. Only you and the host can read the request. Quick messages: once a match
-is confirmed, its two players can send each other messages from a fixed list of eleven, such as "On
-my way" or "I'm at table 4". Nobody can type their own text. For each message we store the sender's
-and the recipient's user ids, which of the eleven it is, the table number from 1 to 40 for "I'm at
-table", and when it was sent. When you open the messages, we store a read mark for you, so the
-sender sees "Read" under the messages you have seen. Messages can be sent until two days after the
-match's start time, and never on a cancelled match. Only the two players can read them. Once a
-player has sent 30 messages in one match, our server adds a record to that match's messages saying
-that they reached the limit, with their user id and the time, so that they can send no more there.
-Only that player can read the record, and the apps do not show it. Results and disputes: the scores
-either player reports, whether the other player confirmed or contested them, no show reports, and
-whether a no show was contested. These sit on the match record and are readable by signed in
-players. Cancellations: the reason you pick and any note you add, on the match record. Post match
-ratings: a one to five star rating and fixed tags you give an opponent after a confirmed result. A
-rating is stored against the player it is about and only that player, and you, can read it. Venue
-check-ins: if you check in at a venue, we store your user id and the time. There is no coordinate
-and no location check, and since 27 August 2026 only you can read your own check-ins. A check-in
-counts for 3 hours, and our server deletes it within about two hours after that. Other players see
-only that someone is at the hall, never who. For each hall, our server keeps how many players are
-checked in there, the time each of their check-ins stops counting, rounded up to the minute, and
-when it last updated these, with no names and no user ids. Anyone using the app can read it, guests
-included, and the apps show it as the number of players at the hall now. A check-out takes your
-check-in out of that count at once, and one that stops counting leaves it the next time our server
-counts there, normally within about two hours. Players who starred the hall may also get a push that
-a player just checked in there, at most one an hour for each hall, which does not say who either.
-Your profile record keeps which hall you last checked in at, and when, until your next check-in or
-check-out. Check-in records written by older Android versions may still contain your display name.
-Looking for a game: if you say you are looking for a game, we store a post with the game, the day,
-the part of the day and either a hall or just your city, with its country, together with your
-display name, skill category and photo. Every signed in player can read it, and from version 2.3.0
-so can a guest. You can have one at a time. It is deleted when you withdraw it, and otherwise
-automatically, normally within two hours after that part of the day has ended. Players you follow:
-if you follow a player, we store whom you follow and when. Only you can read your list, and the
-player you follow is not told. When they post a new open match, you get an entry in your activity
-feed and a push. Saved searches, starred venues and your weekly schedule: private to you. A saved
-search and a schedule slot also hold the country of their city or hall; a saved search with neither
-holds the country on your profile. Note that an enabled schedule slot posts a public match on your
-behalf at the time you set. Free text you type into a name, a match note, a challenge note, a
-cancellation note or the feedback form is checked against a profanity list on your device before it
-is sent. Sharing a game. When you share a game, the app hands the app you choose a message and a
-link to our website. From version 2.4.8, a link to the game's own page there also carries the game
-type, any race or points, the date and time at the hall and the hall's id, so that the page can show
-them as they were when the link was sent, with the hall named from the public list of halls on our
-website. The link carries no name and no user id, and the page reads nothing from our database or
-our server. Inviting a friend. From version 2.4.9 you can invite a friend to play at a hall. An
-invite lasts 14 days, and we keep with it a random code, your user id, your display name, the hall,
-and when it was made. The link holds only the code and the hall, never your name or user id, and the
-page it opens reads nothing from our database. Anyone with an account who has the code can read the
-invite: your user id, your display name and the hall. When your friend joins with it, we record who
-joined and when, you follow each other, and we tell you with a notification. If the hall is in their
-own country, a friend with no usual hall yet gets it as their usual hall and as a starred hall,
-which brings them its notifications; one who has a usual hall keeps it. Right after joining, your
-friend can undo it from the hall's page, which deletes the join and takes back the follows, the
-usual hall and the star the invite made. Later, they can still unfollow you, change their usual hall
-and remove the star. We delete an invite, with its joins, 30 days after it expires, and all your
-invites and joins when you delete your account. Games that found an opponent. We count the games
-that found an opponent in each city and hall, and show everyone who uses the app, guests included,
-those counts, the hours with the most games, and the hall, game, race and time of recent ones. These
-summaries never hold a name or a user id. Beside a host's name on their posts we show how many games
-they have played with a confirmed score, from three on. A guest who opens a link to a game that has
-found an opponent is told so and at which hall, never who is playing. Quiet cities. Every 6 hours
-our server works out, for each city, whether three or fewer of the players whose home city it is
-opened RackUp in the last 7 days, judging by when their notification tokens were last updated. It
-leaves out automated test accounts and Apple's review account. For each city it keeps only that yes
-or no and when it was worked out, with no names and no counts, and only players with an account can
-read it. From version 2.4.7, when you post a match at a hall in a city where it is yes, the app
-suggests sending the match to a friend who plays, and, while the city stays quiet, so does the empty
-list of requests on your match. Safety: reports and blocks If you report a player, from a match or
-from their player card for example, we store your user id, their user id, the match or post in
-question if there is one, and what you wrote. Reports go into a collection that no app can ever read
-back. Only we can read them, in the Firebase console, and we do so to act on abuse. If you block a
-player, we store their user id in a private list of yours. Blocking is invisible to the person
-blocked. It hides their posts from your feed and keeps them out of your player search, and it hides
-their quick messages and direct challenges, which also stop notifying you. Feedback The feedback
-form in Settings sends us your user id, the category you pick, your message, the app version and
-build, and which platform you are on. Like reports, no app can read this back. Notifications We
-store a Firebase Cloud Messaging token for each of your devices, Android or iPhone, along with your
-language, the platform, the app version and build, and the time it was last updated, so we can send
-you push notifications about join requests, match updates, direct challenges, invitations to confirm
-a game at the table, quick messages, reminders, saved search alerts, new games from players you
-follow, from version 2.4.3 new games in your city, from version 2.5.0 the hall ladders you joined
-and, for halls you starred, new games and check-ins there. With the app version, that time also lets
-us count updates as totals, as described under Your account, and our server reads it to tell whether
-a player opened RackUp in the last 7 days, for quiet cities, as described under What you post and
-write. Our server also reads the app version stored with each token for your player card, as
-described under Your player card and player search, and, from version 2.5.0, to send a hall ladder's
-pushes only to a phone whose app can show the ladder. The iPhone app updates the token's record each
-time it starts. From version 2.4.4, the Android app updates it when it starts only if a day or more
-has passed since it last did, and whenever the token, your language or the app version changes. You
-control notifications with the switches in Settings and with your device's notification permission,
-with two exceptions to the switches: a no-show report against you reaches you even with Match
-updates off, because it affects your verified badge, and a starred hall's alerts follow the star.
-The Android app stores its token whether or not you allow notifications. The iPhone app asks for
-that permission once, after you sign in and finish the welcome tour, and stores a token only if you
-allow it, then keeps it until you sign out, even if you later turn notifications off in the iPhone's
-settings; its notifications are delivered through Apple's Push Notification service. Signing out
-removes the token for that device, and deleting your account removes all of them. A direct challenge
-adds an entry to the invited player's activity feed and sends them a push naming the sender, the
-hall and the time; the answer adds an entry and a push for the sender. A quick message comes only as
-a push, showing the sender's name and the message in your language, and adds nothing to your
-activity feed. The pushes for both follow the Match updates switch. An invitation to confirm a game
-at the table, described under What you post and write, adds an entry to the other player's activity
-feed and sends them a push, both naming the player who sent it and the hall. The push follows the
-Match updates switch, and none goes at night, from 23:00 to 09:00 at the hall's local time, or for
-24 hours after they declined an invitation from the same player. While one invitation between two
-players is waiting, a second from the same player notifies nobody, and an invitation from a player
-you blocked does not notify you at all and simply runs out. The answer sends no notification. So
-that one player's invitations reach others at most 10 times a day, our server keeps, under that
-player's account, the day and how many of their invitations it showed that day. No app can read that
-record, and deleting the account deletes it. From version 2.4.9, when a friend joins with your
-invite, described under What you post and write, you get an entry in your activity feed and a push,
-both naming your friend and the hall. The push follows the Match updates switch, and none goes at
-night, from 23:00 to 09:00 at the hall's local time, nor later. One invite acts on at most 10
-friends at a time and sends you at most 5 pushes. So that it keeps to that, our server keeps, under
-your account, each running invite's code, when it ends, the time of each join with it that has not
-been undone, and how many pushes it sent, and drops an invite from that record within about a day of
-its end. No app can read that record, and deleting your account deletes it. From version 2.4.3 of
-the apps, when someone posts an open match at a hall in the city on your profile, we may send you a
-city alert: a push naming the player who posted it, the hall and when the game is, in your language.
-From three games on, the alert also says how many games in your city found an opponent this week or
-in the last month: only the number, with no names. It comes only as a push and adds nothing to your
-activity feed. It is only for the games you play, as on your profile, or for pool if you have not
-picked any, and never for your own match or one posted by a player you blocked or who blocked you.
-Nor do you get it for a match that already reaches you through a hall you starred, a saved search,
-your looking-for-a-game post or a player you follow. You get at most one a day, and only from 10:00
-to 21:30 at the hall's local time. A match posted outside those hours waits until 10:00 and is
-announced then only if it is still open and has not started; while it waits, our server keeps only
-the match's id and when it was put on hold. The city alert is on until you turn off Games in my city
-in Settings. To keep to one a day, our server keeps, under your account, the day of the last city
-alert it sent you and the time it sent it, never which match it was about. No app can read that
-record, each new city alert replaces it, and deleting your account deletes it. Three more records
-like it, also under your account, keep other notifications to a few a day. When a match you post is
-announced to other players, through their starred halls, saved searches, follows, looking-for-a-game
-posts or the city alert, our server keeps the match's id and the time, and announces at most five of
-your matches in any 24 hours. When it sends another player a push about a direct challenge from you,
-it keeps the challenge's id, that player's user id and the time, so that in any 24 hours each player
-gets at most one such push from you, and at most 20 players get one. When a host has not answered
-your join request for a while, we may add a "No answer yet" entry to your activity feed and send you
-a push, which follows the Match updates switch, at most twice a day; for that our server keeps the
-day and how many it sent you that day. An entry older than a day drops out when its record is next
-updated. No app can read these records, and deleting your account deletes them. A join request also
-carries marks for the reminders and notices we send about it, with the time the host was last
-reminded about it, so that none goes twice; like the rest of the request, only you and the host can
-read them. A push about a new match at a hall you starred, about one that fits your saved search or
-your looking-for-a-game post, or about one posted by a player you follow, goes only from 09:00 to
-23:00 at the hall's local time. For a match posted outside those hours it waits until 09:00 and goes
-then only if the match is still open and has not started, and not at all if the match starts before
-09:00. The entry in your activity feed for a saved search, a looking-for-a-game post or a player you
-follow still comes at once. While such pushes wait, our server keeps only the match's id, when they
-were put on hold and which of them are waiting, with no names. No app can read that record, and it
-is deleted when the pushes are sent or dropped. A push about a check-in at a hall you starred is not
-sent from 23:00 to 09:00 at the hall's local time, and is not sent later either. If a player who
-joined a match withdraws, the host gets a push that says so and, when players are still waiting for
-that match, names the one waiting or counts them. It follows the Match updates switch. From 23:00 to
-09:00 at the hall's local time it waits until 09:00, unless the match starts within 3 hours. The
-players still waiting get one push that the place is free again, once per request, from 09:00 to
-23:00 at the hall's local time; it follows Match updates too. The players who starred the hall may
-get one push as well, once per match, at most one a day, only from 10:00 to 21:30 at the hall's
-local time and only while the match is at least 90 minutes away. It is not sent if the seat was held
-for less than 15 minutes, to the player who held the seat or anyone who asked to join the match, or
-to a player who blocked the host or was blocked by them, and a starred hall's alerts follow the
-star. A push due outside its hours waits for the morning and goes only if the match is still open
-and not too close. While it waits, our server keeps only the match's id, when it was put on hold and
-which of these pushes are waiting, with no names. To send them, our server also keeps, in a separate
+following season ends. Once final, that board also shows who won the season. Leaving the ladder
+after a season ends, or turning off Show me in player search once its board is final, does not take
+you off that board; deleting your account does. Winners and badges. The winner of a season, or the
+winners if they finish level, get the badge Won the ladder, which their player card shows to every
+player with an account for 4 weeks. Our server keeps each badge in a separate record, with the hall,
+the season and when the badge ends, which any player with an account can read. It keeps a player's 5
+most recent badges, and a badge that has ended stays there until they win another season or delete
+their account. A winner can share a card with their own name, the hall and the season's dates. Their
+phone draws it, with no other player's name, and hands it, with a link to the hall's page on our
+website, to the app they choose. We learn only that they opened the share sheet, as described under
+App usage analytics, never what they sent or to whom. What our server keeps to build the boards. For
+each hall's ladder, our server also keeps a record that no app can read: who joined it this season
+and the last, who was on it at its last count, which of each player's games counted, the place each
+player last held, so that a push can tell them they climbed, and who met the rules for winning last
+season. It keeps only this season and the last. Under your account, it keeps the times at which your
+joins and the changes to your player card made it update the boards, so that they do so at most 6
+times a day; past that, the next hourly count shows the change. A time older than a day drops out
+when that record is next updated, and no app can read it. Deleting your account takes you out of all
+of these. What you post and write The app is a noticeboard, so a lot of what it stores is content
+you create on purpose: Match posts and open challenges: the venue, its city and country, the game
+type, date and time, and any free text note you write, together with your display name, skill
+category, photo and reliability figure copied onto the post. Every signed in player can read these.
+That is the point of the app. From version 2.3.0 a guest sees your open posts too, from the copies
+described under Looking around as a guest, but never your note: the copies leave it out, and since
+20 October 2026 our security rules let a guest session read no match or challenge record. Direct
+challenges: when you challenge one player by name, we store both players' user ids, display names,
+categories, photo links and verified badges, the game type, the hall (its id, name, city, country
+and time zone), the date and time you propose, any note you write (up to 500 characters), whether
+the challenge is waiting, accepted, declined, called off or expired, when it was sent, answered and
+due to expire, and, once accepted, the match it became. Only the two of you can read it, note
+included. If it is accepted, an ordinary match is created, which every signed in player can read,
+but the note is not copied onto it: it stays on the challenge, visible only to the two of you, and
+is deleted with the challenge, 30 days after its 24 hour answer window ends. Games at the table:
+from version 2.4.7 of the apps, when you log a game you are already playing with another player at a
+hall, we store an invitation for them to confirm it, with both players' user ids, display names,
+categories, photo links and verified badges, the game and any race, the hall (its id, name, city,
+country and time zone) and when the game started, at most 2 hours before you log it. It also holds
+whether it is waiting, confirmed, declined, called off or ended, why it ended if no game came of it
+(no answer within 2 hours, the day's limit of games at the table, an app too old to confirm it, or a
+game we could not log), when it was sent, answered and due to end, and, once confirmed, the match it
+became. Only the two of you can read it. Once the other player confirms it, our server creates an
+ordinary match with both of you already in it, marked as logged at the table, which every player
+with an account can read, like any match. It is never announced to other players or copied for
+guests. It counts in both players' games played, results and history and in the players' list in
+Rankings, but not towards the verified badge or the reliability figure, nor in the counts of games
+that found an opponent or the halls' list in Rankings, and it cannot be rated. Two players can log
+at most 4 games at the table together on one day, and one player at most 8, by the hall's local
+time. An invitation already over a limit when you send it ends at once without telling the other
+player, and so does one whose other player has no app new enough to confirm it. Join requests: when
+you ask to join someone's match, your name, category and photo go to that host. Only you and the
+host can read the request. Quick messages: once a match is confirmed, its two players can send each
+other messages from a fixed list of eleven, such as "On my way" or "I'm at table 4". Nobody can type
+their own text. For each message we store the sender's and the recipient's user ids, which of the
+eleven it is, the table number from 1 to 40 for "I'm at table", and when it was sent. When you open
+the messages, we store a read mark for you, so the sender sees "Read" under the messages you have
+seen. Messages can be sent until two days after the match's start time, and never on a cancelled
+match. Only the two players can read them. Once a player has sent 30 messages in one match, our
+server adds a record to that match's messages saying that they reached the limit, with their user id
+and the time, so that they can send no more there. Only that player can read the record, and the
+apps do not show it. Results and disputes: the scores either player reports, whether the other
+player confirmed or contested them, no show reports, and whether a no show was contested. These sit
+on the match record and are readable by signed in players. Cancellations: the reason you pick and
+any note you add, on the match record. Post match ratings: a one to five star rating and fixed tags
+you give an opponent after a confirmed result. A rating is stored against the player it is about and
+only that player, and you, can read it. Venue check-ins: if you check in at a venue, we store your
+user id and the time. There is no coordinate and no location check, and since 27 August 2026 only
+you can read your own check-ins. A check-in counts for 3 hours, and our server deletes it within
+about two hours after that. Other players see only that someone is at the hall, never who. For each
+hall, our server keeps how many players are checked in there, the time each of their check-ins stops
+counting, rounded up to the minute, and when it last updated these, with no names and no user ids.
+Anyone using the app can read it, guests included, and the apps show it as the number of players at
+the hall now. A check-out takes your check-in out of that count at once, and one that stops counting
+leaves it the next time our server counts there, normally within about two hours. Players who
+starred the hall may also get a push that a player just checked in there, at most one an hour for
+each hall, which does not say who either. Your profile record keeps which hall you last checked in
+at, and when, until your next check-in or check-out. Check-in records written by older Android
+versions may still contain your display name. Looking for a game: if you say you are looking for a
+game, we store a post with the game, the day, the part of the day and either a hall or just your
+city, with its country, together with your display name, skill category and photo. Every signed in
+player can read it, and from version 2.3.0 so can a guest. You can have one at a time. It is deleted
+when you withdraw it, and otherwise automatically, normally within two hours after that part of the
+day has ended. Players you follow: if you follow a player, we store whom you follow and when. Only
+you can read your list, and the player you follow is not told. When they post a new open match, you
+get an entry in your activity feed and a push. Saved searches, starred venues and your weekly
+schedule: private to you. A saved search and a schedule slot also hold the country of their city or
+hall; a saved search with neither holds the country on your profile. Note that an enabled schedule
+slot posts a public match on your behalf at the time you set. Free text you type into a name, a
+match note, a challenge note, a cancellation note or the feedback form is checked against a
+profanity list on your device before it is sent. Sharing a game. When you share a game, the app
+hands the app you choose a message and a link to our website. From version 2.4.8, a link to the
+game's own page there also carries the game type, any race or points, the date and time at the hall
+and the hall's id, so that the page can show them as they were when the link was sent, with the hall
+named from the public list of halls on our website. The link carries no name and no user id, and the
+page reads nothing from our database or our server. Inviting a friend. From version 2.4.9 you can
+invite a friend to play at a hall. An invite lasts 14 days, and we keep with it a random code, your
+user id, your display name, the hall, and when it was made. The link holds only the code and the
+hall, never your name or user id, and the page it opens reads nothing from our database. Anyone with
+an account who has the code can read the invite: your user id, your display name and the hall. When
+your friend joins with it, we record who joined and when, you follow each other, and we tell you
+with a notification. If the hall is in their own country, a friend with no usual hall yet gets it as
+their usual hall and as a starred hall, which brings them its notifications; one who has a usual
+hall keeps it. Right after joining, your friend can undo it from the hall's page, which deletes the
+join and takes back the follows, the usual hall and the star the invite made. Later, they can still
+unfollow you, change their usual hall and remove the star. We delete an invite, with its joins, 30
+days after it expires, and all your invites and joins when you delete your account. Games that found
+an opponent. We count the games that found an opponent in each city and hall, and show everyone who
+uses the app, guests included, those counts, the hours with the most games, and the hall, game, race
+and time of recent ones. These summaries never hold a name or a user id. Beside a host's name on
+their posts we show how many games they have played with a confirmed score, from three on. A guest
+who opens a link to a game that has found an opponent is told so and at which hall, never who is
+playing. Quiet cities. Every 6 hours our server works out, for each city, whether three or fewer of
+the players whose home city it is opened RackUp in the last 7 days, judging by when their
+notification tokens were last updated. It leaves out automated test accounts and Apple's review
+account. For each city it keeps only that yes or no and when it was worked out, with no names and no
+counts, and only players with an account can read it. From version 2.4.7, when you post a match at a
+hall in a city where it is yes, the app suggests sending the match to a friend who plays, and, while
+the city stays quiet, so does the empty list of requests on your match. Safety: reports and blocks
+If you report a player, from a match or from their player card for example, we store your user id,
+their user id, the match or post in question if there is one, and what you wrote. Reports go into a
+collection that no app can ever read back. Only we can read them, in the Firebase console, and we do
+so to act on abuse. If you block a player, we store their user id in a private list of yours.
+Blocking is invisible to the person blocked. It hides their posts from your feed and keeps them out
+of your player search, and it hides their quick messages and direct challenges, which also stop
+notifying you. Feedback The feedback form in Settings sends us your user id, the category you pick,
+your message, the app version and build, and which platform you are on. Like reports, no app can
+read this back. Notifications We store a Firebase Cloud Messaging token for each of your devices,
+Android or iPhone, along with your language, the platform, the app version and build, and the time
+it was last updated, so we can send you push notifications about join requests, match updates,
+direct challenges, invitations to confirm a game at the table, quick messages, reminders, saved
+search alerts, new games from players you follow, from version 2.4.3 new games in your city, from
+version 2.5.0 the hall ladders you joined and, for halls you starred, new games and check-ins there.
+With the app version, that time also lets us count updates as totals, as described under Your
+account, and our server reads it to tell whether a player opened RackUp in the last 7 days, for
+quiet cities, as described under What you post and write. Our server also reads the app version
+stored with each token for your player card, as described under Your player card and player search,
+and, from version 2.5.0, to send a hall ladder's pushes only to a phone whose app can show the
+ladder. The iPhone app updates the token's record each time it starts. From version 2.4.4, the
+Android app updates it when it starts only if a day or more has passed since it last did, and
+whenever the token, your language or the app version changes. You control notifications with the
+switches in Settings and with your device's notification permission, with two exceptions to the
+switches: a no-show report against you reaches you even with Match updates off, because it affects
+your verified badge, and a starred hall's alerts follow the star. The Android app stores its token
+whether or not you allow notifications. The iPhone app asks for that permission once, after you sign
+in and finish the welcome tour, and stores a token only if you allow it, then keeps it until you
+sign out, even if you later turn notifications off in the iPhone's settings; its notifications are
+delivered through Apple's Push Notification service. Signing out removes the token for that device,
+and deleting your account removes all of them. A direct challenge adds an entry to the invited
+player's activity feed and sends them a push naming the sender, the hall and the time; the answer
+adds an entry and a push for the sender. A quick message comes only as a push, showing the sender's
+name and the message in your language, and adds nothing to your activity feed. The pushes for both
+follow the Match updates switch. An invitation to confirm a game at the table, described under What
+you post and write, adds an entry to the other player's activity feed and sends them a push, both
+naming the player who sent it and the hall. The push follows the Match updates switch, and none goes
+at night, from 23:00 to 09:00 at the hall's local time, or for 24 hours after they declined an
+invitation from the same player. While one invitation between two players is waiting, a second from
+the same player notifies nobody, and an invitation from a player you blocked does not notify you at
+all and simply runs out. The answer sends no notification. So that one player's invitations reach
+others at most 10 times a day, our server keeps, under that player's account, the day and how many
+of their invitations it showed that day. No app can read that record, and deleting the account
+deletes it. From version 2.4.9, when a friend joins with your invite, described under What you post
+and write, you get an entry in your activity feed and a push, both naming your friend and the hall.
+The push follows the Match updates switch, and none goes at night, from 23:00 to 09:00 at the hall's
+local time, nor later. One invite acts on at most 10 friends at a time and sends you at most 5
+pushes. So that it keeps to that, our server keeps, under your account, each running invite's code,
+when it ends, the time of each join with it that has not been undone, and how many pushes it sent,
+and drops an invite from that record within about a day of its end. No app can read that record, and
+deleting your account deletes it. From version 2.4.3 of the apps, when someone posts an open match
+at a hall in the city on your profile, we may send you a city alert: a push naming the player who
+posted it, the hall and when the game is, in your language. From three games on, the alert also says
+how many games in your city found an opponent this week or in the last month: only the number, with
+no names. It comes only as a push and adds nothing to your activity feed. It is only for the games
+you play, as on your profile, or for pool if you have not picked any, and never for your own match
+or one posted by a player you blocked or who blocked you. Nor do you get it for a match that already
+reaches you through a hall you starred, a saved search, your looking-for-a-game post or a player you
+follow. You get at most one a day, and only from 10:00 to 21:30 at the hall's local time. A match
+posted outside those hours waits until 10:00 and is announced then only if it is still open and has
+not started; while it waits, our server keeps only the match's id and when it was put on hold. The
+city alert is on until you turn off Games in my city in Settings. To keep to one a day, our server
+keeps, under your account, the day of the last city alert it sent you and the time it sent it, never
+which match it was about. No app can read that record, each new city alert replaces it, and deleting
+your account deletes it. Three more records like it, also under your account, keep other
+notifications to a few a day. When a match you post is announced to other players, through their
+starred halls, saved searches, follows, looking-for-a-game posts or the city alert, our server keeps
+the match's id and the time, and announces at most five of your matches in any 24 hours. When it
+sends another player a push about a direct challenge from you, it keeps the challenge's id, that
+player's user id and the time, so that in any 24 hours each player gets at most one such push from
+you, and at most 20 players get one. When a host has not answered your join request for a while, we
+may add a "No answer yet" entry to your activity feed and send you a push, which follows the Match
+updates switch, at most twice a day; for that our server keeps the day and how many it sent you that
+day. An entry older than a day drops out when its record is next updated. No app can read these
+records, and deleting your account deletes them. A join request also carries marks for the reminders
+and notices we send about it, with the time the host was last reminded about it, so that none goes
+twice; like the rest of the request, only you and the host can read them. A push about a new match
+at a hall you starred, about one that fits your saved search or your looking-for-a-game post, or
+about one posted by a player you follow, goes only from 09:00 to 23:00 at the hall's local time. For
+a match posted outside those hours it waits until 09:00 and goes then only if the match is still
+open and has not started, and not at all if the match starts before 09:00. The entry in your
+activity feed for a saved search, a looking-for-a-game post or a player you follow still comes at
+once. While such pushes wait, our server keeps only the match's id, when they were put on hold and
+which of them are waiting, with no names. No app can read that record, and it is deleted when the
+pushes are sent or dropped. A push about a check-in at a hall you starred is not sent from 23:00 to
+09:00 at the hall's local time, and is not sent later either. If a player who joined a match
+withdraws, the host gets a push that says so and, when players are still waiting for that match,
+names the one waiting or counts them. It follows the Match updates switch. From 23:00 to 09:00 at
+the hall's local time it waits until 09:00, unless the match starts within 3 hours. The players
+still waiting get one push that the place is free again, once per request, from 09:00 to 23:00 at
+the hall's local time; it follows Match updates too. The players who starred the hall may get one
+push as well, once per match, at most one a day, only from 10:00 to 21:30 at the hall's local time
+and only while the match is at least 90 minutes away. It is not sent if the seat was held for less
+than 15 minutes, to the player who held the seat or anyone who asked to join the match, or to a
+player who blocked the host or was blocked by them, and a starred hall's alerts follow the star. A
+push due outside its hours waits for the morning and goes only if the match is still open and not
+too close. While it waits, our server keeps only the match's id, when it was put on hold and which
+of these pushes are waiting, with no names. To send them, our server also keeps, in a separate
 record for each match, when its seat was last taken and when its hall was told; on the join request
 of the player the host accepted, the time of the acceptance; on each request still waiting, a mark
 that its player was told the place was free again; and, under your account, the day and time of the
@@ -1265,109 +1266,110 @@ email, κωδικό ή προφίλ. Ως επισκέπτης βλέπεις τ
 και όσοι έπαιξαν μαζί σου κρατούν τους βαθμούς τους. Τα σκορ μιας σεζόν μετράνε ως τις 12:00 της
 Τρίτης μετά το τέλος της. Τότε η σκάλα της γίνεται οριστική και μένει όπως είναι, με όσους ήταν μέσα
 στο τέλος της, ως το τέλος της επόμενης σεζόν, και από αυτήν σε βγάζει μόνο η διαγραφή του
-λογαριασμού σου, όχι η έξοδος από τη σκάλα ή το κλείσιμο της αναζήτησης. Όποιος κερδίσει μια σεζόν
-παίρνει για 4 εβδομάδες το σήμα «Κέρδισε τη σκάλα» στην κάρτα παίκτη του, που το βλέπουν όσοι έχουν
-λογαριασμό. Ο διακομιστής μας κρατά κάθε σήμα σε ξεχωριστή εγγραφή, με την αίθουσα, τη σεζόν και
-πότε λήγει, που μπορεί να τη διαβάσει όποιος έχει λογαριασμό. Κρατά έως 5 σήματα για κάθε παίκτη,
-και ένα σήμα που έληξε μένει εκεί ώσπου ο παίκτης να κερδίσει άλλη σεζόν ή να διαγράψει τον
-λογαριασμό του. Ο νικητής μπορεί να μοιραστεί μια κάρτα με το δικό του όνομα, την αίθουσα και τις
-ημερομηνίες της σεζόν, που τη φτιάχνει το τηλέφωνό του. Για κάθε σκάλα, ο διακομιστής μας κρατά
-επίσης, σε εγγραφή που δεν διαβάζει καμία εφαρμογή, ποιοι μπήκαν σε αυτήν την τρέχουσα και την
-προηγούμενη σεζόν, ποια ματς του καθενός μέτρησαν, την τελευταία θέση του καθενός και ποιοι
-πληρούσαν τους όρους για να κερδίσουν την προηγούμενη σεζόν, και δεν κρατά παλιότερες σεζόν. Ο
-λογαριασμός με τον οποίο η Apple ελέγχει την εφαρμογή και οι αυτόματοι λογαριασμοί δοκιμών δεν
-μπαίνουν ποτέ σε σκάλα. Αν είσαι σε σκάλα, μπορεί να σου στείλουμε ειδοποίηση push όταν ξεκινά η
-σεζόν, όταν ανεβαίνεις θέση, ποτέ όταν πέφτεις, όταν αρχίζει η τελευταία εβδομάδα και όταν τελειώνει
-μια σεζόν. Αυτή στο τέλος της σεζόν λέει στον νικητή ότι κέρδισε, και στους άλλους ποιος κέρδισε, με
-το όνομά του, εκτός αν ο ένας έχει αποκλείσει τον άλλον. Οι ειδοποιήσεις αυτές δεν προσθέτουν τίποτα
-στη ροή δραστηριότητάς σου, ακολουθούν τον διακόπτη «Ενημερώσεις ματς» και φτάνουν μόνο σε τηλέφωνο
-με την έκδοση 2.5.0 ή νεότερη, μόνο από τις 10:00 έως τις 21:30, τοπική ώρα της αίθουσας, και το
-πολύ μία την ημέρα και τρεις την εβδομάδα. Γι' αυτό ο διακομιστής μας κρατά στον λογαριασμό σου πότε
-σου έστειλε τέτοιες ειδοποιήσεις, και ό,τι είναι παλιότερο από 8 ημέρες βγαίνει από την εγγραφή όταν
-αυτή ενημερωθεί ξανά. Κρατά εκεί επίσης πότε οι συμμετοχές σου και οι αλλαγές στην κάρτα σου
-ενημέρωσαν τις σκάλες, ώστε να το κάνουν έως 6 φορές την ημέρα, και ό,τι είναι παλιότερο από μία
-ημέρα βγαίνει με τον ίδιο τρόπο. Καμία εφαρμογή δεν διαβάζει αυτές τις εγγραφές. Κοινοποίηση ματς.
-Όταν μοιράζεσαι ένα ματς, η εφαρμογή δίνει στην εφαρμογή που διαλέγεις ένα μήνυμα και έναν σύνδεσμο
-για την ιστοσελίδα μας. Από την έκδοση 2.4.8, ένας σύνδεσμος για τη σελίδα του ίδιου του ματς έχει
-επίσης το παιχνίδι, το race ή τους πόντους, αν υπάρχουν, την ημέρα και την ώρα στην αίθουσα και το
-αναγνωριστικό της αίθουσας, ώστε η σελίδα να τα δείχνει όπως ήταν όταν στάλθηκε, με το όνομα της
-αίθουσας από τη δημόσια λίστα αιθουσών της ιστοσελίδας μας. Ο σύνδεσμος δεν έχει όνομα ή
-αναγνωριστικό χρήστη, και η σελίδα δεν διαβάζει τίποτα από τη βάση δεδομένων ή τον διακομιστή μας.
-Πρόσκληση σε φίλο. Από την έκδοση 2.4.9 μπορείς να καλέσεις έναν φίλο να παίξετε σε μια αίθουσα. Μια
-πρόσκληση ισχύει 14 ημέρες, και μαζί της κρατάμε έναν τυχαίο κωδικό, το αναγνωριστικό χρήστη σου, το
-όνομά σου, την αίθουσα και πότε τη δημιούργησες. Ο σύνδεσμος έχει μόνο τον κωδικό και την αίθουσα,
-ποτέ το όνομα ή το αναγνωριστικό χρήστη σου, και η σελίδα που ανοίγει δεν διαβάζει τίποτα από τη
-βάση δεδομένων μας. Όποιος έχει λογαριασμό και τον κωδικό μπορεί να διαβάσει την πρόσκληση: το
-αναγνωριστικό χρήστη σου, το όνομά σου και την αίθουσα. Όταν ο φίλος σου μπει με την πρόσκληση,
-καταγράφουμε ποιος μπήκε και πότε, ακολουθείτε ο ένας τον άλλον και σε ενημερώνουμε με μια
-ειδοποίηση. Αν η αίθουσα είναι στη χώρα του, ένας φίλος που δεν έχει ακόμη λέσχη την παίρνει ως
-λέσχη του και στις αγαπημένες του, που του φέρνουν τις ειδοποιήσεις τους, ενώ όποιος έχει ήδη λέσχη
-την κρατά. Αμέσως μετά, ο φίλος σου μπορεί να το αναιρέσει από τη σελίδα της αίθουσας, οπότε
-σβήνουμε την καταγραφή και παίρνουμε πίσω ό,τι έκανε η πρόσκληση: το ότι ακολουθείτε ο ένας τον
-άλλον, τη λέσχη και την αγαπημένη αίθουσα. Αργότερα μπορεί ακόμη να σταματήσει να σε ακολουθεί, να
-αλλάξει λέσχη και να βγάλει την αίθουσα από τις αγαπημένες του. Μια πρόσκληση τη σβήνουμε 30 ημέρες
-αφού λήξει, μαζί με όσα καταγράψαμε για όσους μπήκαν με αυτήν, και όταν διαγράψεις τον λογαριασμό
-σου σβήνουμε όλες τις προσκλήσεις σου και ό,τι καταγράψαμε όταν μπήκες με πρόσκληση άλλου. Κάθε 6
-ώρες ο διακομιστής μας υπολογίζει για κάθε πόλη αν τρεις ή λιγότεροι από τους παίκτες που την έχουν
-πόλη τους άνοιξαν το RackUp τις τελευταίες 7 ημέρες, από το πότε ενημερώθηκαν τελευταία τα
-αναγνωριστικά ειδοποιήσεών τους, και κρατά μόνο αυτό το ναι ή όχι και πότε υπολογίστηκε, χωρίς
-ονόματα και χωρίς τον αριθμό των παικτών. Από την έκδοση 2.4.7, όταν ανεβάζεις ματς σε αίθουσα μιας
-τέτοιας πόλης, η εφαρμογή σού προτείνει να το στείλεις σε έναν φίλο που παίζει. Νομική βάση είναι το
-έννομο συμφέρον μας, και μπορείς να αντιταχθείς όποτε θέλεις. Μια προσωπική πρόκληση τη βλέπετε μόνο
-εσείς οι δύο, μαζί με τη σημείωσή της. Αν γίνει δεκτή, δημιουργείται κανονικό ματς, που το βλέπουν
-όλοι οι παίκτες, αλλά η σημείωση δεν περνάει σε αυτό: μένει στην πρόκληση και σβήνεται μαζί της.
-Όταν κλείσει ένα ματς, οι δύο παίκτες του μπορούν να ανταλλάσσουν μόνο έτοιμα γρήγορα μηνύματα,
-χωρίς πληκτρολόγηση. Τα βλέπετε μόνο εσείς οι δύο και σβήνονται 14 ημέρες μετά την έναρξη του ματς
-ή, όσα σταλούν αργότερα, 14 ημέρες μετά την αποστολή τους. Ένα ματς μπορεί να απέχει έως και έναν
-χρόνο, οπότε ένα μήνυμα που στέλνεται πολύ νωρίτερα μπορεί να μείνει πάνω από έναν χρόνο. Αν
-στείλεις 30 μηνύματα σε ένα ματς, ο διακομιστής μας προσθέτει στα μηνύματα του ματς μια εγγραφή ότι
-έφτασες το όριο, ώστε να μην μπορείς να στείλεις άλλα σε αυτό. Μόνο εσύ έχεις πρόσβαση σε αυτή την
-εγγραφή, και σβήνεται όπως ένα μήνυμα. Από την έκδοση 2.4.7, όταν καταγράφεις ένα παιχνίδι που ήδη
-παίζεις με άλλον παίκτη σε αίθουσα, κρατάμε μια πρόσκληση για να το επιβεβαιώσει, με τους δύο
-παίκτες (αναγνωριστικά, ονόματα, κατηγορίες, φωτογραφίες και σήματα επιβεβαίωσης), την αίθουσα, το
-παιχνίδι, την ώρα που ξεκίνησε, την απάντηση και, αν έληξε χωρίς παιχνίδι, τον λόγο. Τη βλέπετε μόνο
-εσείς οι δύο. Αν δεν απαντηθεί μέσα σε 2 ώρες λήγει, και κάθε πρόσκληση σβήνεται 30 ημέρες μετά τη
-λήξη των 2 ωρών της, ή αμέσως αν κάποιος από τους δύο διαγράψει τον λογαριασμό του. Αν ο άλλος
-παίκτης την επιβεβαιώσει, ο διακομιστής μας δημιουργεί ένα κανονικό ματς με τους δύο σας ήδη μέσα.
-Μετράει στα ματς, στο σκορ και στο ιστορικό του καθενός και στη λίστα των παικτών της Κατάταξης,
-αλλά δεν ανακοινώνεται σε άλλους παίκτες, δεν το βλέπουν οι επισκέπτες, δεν μετράει στις συνόψεις με
-τα ματς που βρήκαν αντίπαλο, στη λίστα των αιθουσών, στο σήμα επιβεβαίωσης ή στην αξιοπιστία, και
-δεν βαθμολογείται. Δύο παίκτες μπορούν να καταγράψουν έως 4 τέτοια παιχνίδια μαζί την ημέρα, και
-κάθε παίκτης έως 8. Μια πρόσκληση πάνω από αυτά τα όρια, ή προς παίκτη που η εφαρμογή του είναι πολύ
-παλιά για να την επιβεβαιώσει, λήγει αμέσως χωρίς να ειδοποιηθεί ο άλλος. Αλλιώς ο άλλος παίκτης τη
-βρίσκει στη ροή δραστηριότητάς του και παίρνει ειδοποίηση push, που ακολουθεί τον διακόπτη
-«Ενημερώσεις ματς», όχι όμως τη νύχτα, από τις 23:00 έως τις 09:00, ούτε για 24 ώρες αφού αρνήθηκε
-πρόσκληση του ίδιου παίκτη. Η κάρτα παίκτη σου λέει επίσης αν η εφαρμογή σου μπορεί να επιβεβαιώνει
-παιχνίδια στο τραπέζι: ο διακομιστής μας το κρίνει από την έκδοση της εφαρμογής στο προφίλ σου και
-στην εγγραφή κάθε αναγνωριστικού ειδοποιήσεών σου, και η κάρτα λέει ναι αν έστω μία είναι αρκετά
-νέα. Ο διακομιστής μας κρατά επίσης στον λογαριασμό σου πόσες τέτοιες προσκλήσεις σου έδειξε σε
-άλλους κάθε ημέρα, ως αριθμό, ώστε να μην ξεπερνούν τις 10 την ημέρα. Και οι δύο εφαρμογές
-περιλαμβάνουν Firebase Crashlytics (αναφορές σφαλμάτων) και Firebase Analytics (39 συμβάντα χρήσης
-από την έκδοση 2.5.0, 37 από την 2.4.9, 33 από την 2.4.8, 31 από την 2.4.7, 25 από την 2.4.5, 24 από
-την 2.3.0 και 23 στις προηγούμενες, όπως η δημοσίευση αγώνα ή το check-in σε αίθουσα). Αυτά τα δύο
-συμβάντα καταγράφουν και ποια αίθουσα αφορούν. Από την έκδοση 2.4.5 καταγράφουμε επίσης πότε
-ανοίγεις ένα ανοιχτό ματς άλλου παίκτη, από πού έφτασες εκεί, την αίθουσα και πόσο νωρίτερα από την
-έναρξη, χωρίς όνομα ή αναγνωριστικό χρήστη. Από την έκδοση 2.4.7 καταγράφουμε επίσης όταν ανοίγεις
-την κοινοποίηση ενός ματς, από πού, αν το ματς είναι δικό σου και πόσο νωρίτερα ξεκινά, όχι όμως αν
-το έστειλες ή σε ποιον, την απάντησή σου στην ερώτηση αν ισχύει το ματς σου (έρχομαι, ή δεν μπορώ
-και ελευθερώνεις τη θέση), όταν στέλνεις ένα παιχνίδι στο τραπέζι για επιβεβαίωση, από πού ξεκίνησες
-(τη φόρμα ανάρτησης, τα παιχνίδια σου, τη σελίδα μιας αίθουσας ή ένα άλλο παιχνίδι στο τραπέζι) και
-το είδος του παιχνιδιού, και όταν ανοίγεις την Κατάταξη, μια αίθουσα από εκεί ή την κοινοποίηση της
-κάρτας μιας αίθουσας ή, από την έκδοση 2.4.8, της κάρτας με τις αίθουσες στην κορυφή της λίστας, με
-τη λίστα, την αίθουσα (εκτός από την κάρτα με τις αίθουσες στην κορυφή) και το είδος της κάρτας,
-πάλι χωρίς όνομα ή αναγνωριστικό χρήστη. Από την έκδοση 2.4.8 καταγράφουμε επίσης ποια από τις
-οθόνες «Ανακάλυψη», «Παιχνίδια», «Κατάταξη», «Αίθουσες» και «Προφίλ» ανοίγεις, και το Firebase
-Analytics δεν το καταγράφει πια από μόνο του. Από την ίδια έκδοση καταγράφουμε ακόμη όταν ανοίγεις
-τη φόρμα για νέο ματς ή για νέα δήλωση ότι ψάχνεις παιχνίδι, για ποιο από τα δύο είναι και από πού
-την άνοιξες, και, όταν δημοσιεύεις ματς, από πού άνοιξες τη φόρμα και περίπου πόση ώρα ήταν ανοιχτή.
-Στην ίδια έκδοση, όταν ζητάς να μπεις σε ματς, καταγράφουμε από πού έφτασες στη σελίδα του, και όταν
-ανοίγεις ματς από τη λίστα της οθόνης «Ανακάλυψη», τη θέση του στη λίστα και πόσα ματς είχε, πάλι
-χωρίς όνομα ή αναγνωριστικό χρήστη. Από την ίδια έκδοση, η εφαρμογή στέλνει στο Firebase Analytics
-και τρεις ιδιότητες χρήστη. Η πρώτη είναι η χώρα του προφίλ σου, ή, σε ένα παλιότερο προφίλ χωρίς
-χώρα, η προεπιλεγμένη χώρα της εφαρμογής, και τη στέλνει μόνο όσο έχεις συνδεθεί με λογαριασμό. Η
-δεύτερη λέει αν έχεις λογαριασμό ή ρίχνεις μια ματιά ως επισκέπτης, και η τρίτη ποιο θέμα διάλεξες
-στις Ρυθμίσεις («Σκούρο», «Φωτεινό» ή «Προεπιλογή συστήματος») και, με την προεπιλογή συστήματος,
-ποιο από τα δύο δείχνει το τηλέφωνό σου. Όταν αποσυνδεθείς, η εφαρμογή σβήνει τις δύο πρώτες. Τις
+λογαριασμού σου, όχι η έξοδος από τη σκάλα ή το κλείσιμο της αναζήτησης. Η οριστική σκάλα δείχνει
+επίσης ποιος κέρδισε τη σεζόν. Όποιος κερδίσει μια σεζόν παίρνει για 4 εβδομάδες το σήμα «Κέρδισε τη
+σκάλα» στην κάρτα παίκτη του, που το βλέπουν όσοι έχουν λογαριασμό. Ο διακομιστής μας κρατά κάθε
+σήμα σε ξεχωριστή εγγραφή, με την αίθουσα, τη σεζόν και πότε λήγει, που μπορεί να τη διαβάσει όποιος
+έχει λογαριασμό. Κρατά έως 5 σήματα για κάθε παίκτη, και ένα σήμα που έληξε μένει εκεί ώσπου ο
+παίκτης να κερδίσει άλλη σεζόν ή να διαγράψει τον λογαριασμό του. Ο νικητής μπορεί να μοιραστεί μια
+κάρτα με το δικό του όνομα, την αίθουσα και τις ημερομηνίες της σεζόν, που τη φτιάχνει το τηλέφωνό
+του. Για κάθε σκάλα, ο διακομιστής μας κρατά επίσης, σε εγγραφή που δεν διαβάζει καμία εφαρμογή,
+ποιοι μπήκαν σε αυτήν την τρέχουσα και την προηγούμενη σεζόν, ποια ματς του καθενός μέτρησαν, την
+τελευταία θέση του καθενός και ποιοι πληρούσαν τους όρους για να κερδίσουν την προηγούμενη σεζόν,
+και δεν κρατά παλιότερες σεζόν. Ο λογαριασμός με τον οποίο η Apple ελέγχει την εφαρμογή και οι
+αυτόματοι λογαριασμοί δοκιμών δεν μπαίνουν ποτέ σε σκάλα. Αν είσαι σε σκάλα, μπορεί να σου στείλουμε
+ειδοποίηση push όταν ξεκινά η σεζόν, όταν ανεβαίνεις θέση, ποτέ όταν πέφτεις, όταν αρχίζει η
+τελευταία εβδομάδα και όταν τελειώνει μια σεζόν. Αυτή στο τέλος της σεζόν λέει στον νικητή ότι
+κέρδισε, και στους άλλους ποιος κέρδισε, με το όνομά του, εκτός αν ο ένας έχει αποκλείσει τον άλλον.
+Οι ειδοποιήσεις αυτές δεν προσθέτουν τίποτα στη ροή δραστηριότητάς σου, ακολουθούν τον διακόπτη
+«Ενημερώσεις ματς» και φτάνουν μόνο σε τηλέφωνο με την έκδοση 2.5.0 ή νεότερη, μόνο από τις 10:00
+έως τις 21:30, τοπική ώρα της αίθουσας, και το πολύ μία την ημέρα και τρεις την εβδομάδα. Γι' αυτό ο
+διακομιστής μας κρατά στον λογαριασμό σου πότε σου έστειλε τέτοιες ειδοποιήσεις, και ό,τι είναι
+παλιότερο από 8 ημέρες βγαίνει από την εγγραφή όταν αυτή ενημερωθεί ξανά. Κρατά εκεί επίσης πότε οι
+συμμετοχές σου και οι αλλαγές στην κάρτα σου ενημέρωσαν τις σκάλες, ώστε να το κάνουν έως 6 φορές
+την ημέρα, και ό,τι είναι παλιότερο από μία ημέρα βγαίνει με τον ίδιο τρόπο. Καμία εφαρμογή δεν
+διαβάζει αυτές τις εγγραφές. Κοινοποίηση ματς. Όταν μοιράζεσαι ένα ματς, η εφαρμογή δίνει στην
+εφαρμογή που διαλέγεις ένα μήνυμα και έναν σύνδεσμο για την ιστοσελίδα μας. Από την έκδοση 2.4.8,
+ένας σύνδεσμος για τη σελίδα του ίδιου του ματς έχει επίσης το παιχνίδι, το race ή τους πόντους, αν
+υπάρχουν, την ημέρα και την ώρα στην αίθουσα και το αναγνωριστικό της αίθουσας, ώστε η σελίδα να τα
+δείχνει όπως ήταν όταν στάλθηκε, με το όνομα της αίθουσας από τη δημόσια λίστα αιθουσών της
+ιστοσελίδας μας. Ο σύνδεσμος δεν έχει όνομα ή αναγνωριστικό χρήστη, και η σελίδα δεν διαβάζει τίποτα
+από τη βάση δεδομένων ή τον διακομιστή μας. Πρόσκληση σε φίλο. Από την έκδοση 2.4.9 μπορείς να
+καλέσεις έναν φίλο να παίξετε σε μια αίθουσα. Μια πρόσκληση ισχύει 14 ημέρες, και μαζί της κρατάμε
+έναν τυχαίο κωδικό, το αναγνωριστικό χρήστη σου, το όνομά σου, την αίθουσα και πότε τη δημιούργησες.
+Ο σύνδεσμος έχει μόνο τον κωδικό και την αίθουσα, ποτέ το όνομα ή το αναγνωριστικό χρήστη σου, και η
+σελίδα που ανοίγει δεν διαβάζει τίποτα από τη βάση δεδομένων μας. Όποιος έχει λογαριασμό και τον
+κωδικό μπορεί να διαβάσει την πρόσκληση: το αναγνωριστικό χρήστη σου, το όνομά σου και την αίθουσα.
+Όταν ο φίλος σου μπει με την πρόσκληση, καταγράφουμε ποιος μπήκε και πότε, ακολουθείτε ο ένας τον
+άλλον και σε ενημερώνουμε με μια ειδοποίηση. Αν η αίθουσα είναι στη χώρα του, ένας φίλος που δεν
+έχει ακόμη λέσχη την παίρνει ως λέσχη του και στις αγαπημένες του, που του φέρνουν τις ειδοποιήσεις
+τους, ενώ όποιος έχει ήδη λέσχη την κρατά. Αμέσως μετά, ο φίλος σου μπορεί να το αναιρέσει από τη
+σελίδα της αίθουσας, οπότε σβήνουμε την καταγραφή και παίρνουμε πίσω ό,τι έκανε η πρόσκληση: το ότι
+ακολουθείτε ο ένας τον άλλον, τη λέσχη και την αγαπημένη αίθουσα. Αργότερα μπορεί ακόμη να
+σταματήσει να σε ακολουθεί, να αλλάξει λέσχη και να βγάλει την αίθουσα από τις αγαπημένες του. Μια
+πρόσκληση τη σβήνουμε 30 ημέρες αφού λήξει, μαζί με όσα καταγράψαμε για όσους μπήκαν με αυτήν, και
+όταν διαγράψεις τον λογαριασμό σου σβήνουμε όλες τις προσκλήσεις σου και ό,τι καταγράψαμε όταν
+μπήκες με πρόσκληση άλλου. Κάθε 6 ώρες ο διακομιστής μας υπολογίζει για κάθε πόλη αν τρεις ή
+λιγότεροι από τους παίκτες που την έχουν πόλη τους άνοιξαν το RackUp τις τελευταίες 7 ημέρες, από το
+πότε ενημερώθηκαν τελευταία τα αναγνωριστικά ειδοποιήσεών τους, και κρατά μόνο αυτό το ναι ή όχι και
+πότε υπολογίστηκε, χωρίς ονόματα και χωρίς τον αριθμό των παικτών. Από την έκδοση 2.4.7, όταν
+ανεβάζεις ματς σε αίθουσα μιας τέτοιας πόλης, η εφαρμογή σού προτείνει να το στείλεις σε έναν φίλο
+που παίζει. Νομική βάση είναι το έννομο συμφέρον μας, και μπορείς να αντιταχθείς όποτε θέλεις. Μια
+προσωπική πρόκληση τη βλέπετε μόνο εσείς οι δύο, μαζί με τη σημείωσή της. Αν γίνει δεκτή,
+δημιουργείται κανονικό ματς, που το βλέπουν όλοι οι παίκτες, αλλά η σημείωση δεν περνάει σε αυτό:
+μένει στην πρόκληση και σβήνεται μαζί της. Όταν κλείσει ένα ματς, οι δύο παίκτες του μπορούν να
+ανταλλάσσουν μόνο έτοιμα γρήγορα μηνύματα, χωρίς πληκτρολόγηση. Τα βλέπετε μόνο εσείς οι δύο και
+σβήνονται 14 ημέρες μετά την έναρξη του ματς ή, όσα σταλούν αργότερα, 14 ημέρες μετά την αποστολή
+τους. Ένα ματς μπορεί να απέχει έως και έναν χρόνο, οπότε ένα μήνυμα που στέλνεται πολύ νωρίτερα
+μπορεί να μείνει πάνω από έναν χρόνο. Αν στείλεις 30 μηνύματα σε ένα ματς, ο διακομιστής μας
+προσθέτει στα μηνύματα του ματς μια εγγραφή ότι έφτασες το όριο, ώστε να μην μπορείς να στείλεις
+άλλα σε αυτό. Μόνο εσύ έχεις πρόσβαση σε αυτή την εγγραφή, και σβήνεται όπως ένα μήνυμα. Από την
+έκδοση 2.4.7, όταν καταγράφεις ένα παιχνίδι που ήδη παίζεις με άλλον παίκτη σε αίθουσα, κρατάμε μια
+πρόσκληση για να το επιβεβαιώσει, με τους δύο παίκτες (αναγνωριστικά, ονόματα, κατηγορίες,
+φωτογραφίες και σήματα επιβεβαίωσης), την αίθουσα, το παιχνίδι, την ώρα που ξεκίνησε, την απάντηση
+και, αν έληξε χωρίς παιχνίδι, τον λόγο. Τη βλέπετε μόνο εσείς οι δύο. Αν δεν απαντηθεί μέσα σε 2
+ώρες λήγει, και κάθε πρόσκληση σβήνεται 30 ημέρες μετά τη λήξη των 2 ωρών της, ή αμέσως αν κάποιος
+από τους δύο διαγράψει τον λογαριασμό του. Αν ο άλλος παίκτης την επιβεβαιώσει, ο διακομιστής μας
+δημιουργεί ένα κανονικό ματς με τους δύο σας ήδη μέσα. Μετράει στα ματς, στο σκορ και στο ιστορικό
+του καθενός και στη λίστα των παικτών της Κατάταξης, αλλά δεν ανακοινώνεται σε άλλους παίκτες, δεν
+το βλέπουν οι επισκέπτες, δεν μετράει στις συνόψεις με τα ματς που βρήκαν αντίπαλο, στη λίστα των
+αιθουσών, στο σήμα επιβεβαίωσης ή στην αξιοπιστία, και δεν βαθμολογείται. Δύο παίκτες μπορούν να
+καταγράψουν έως 4 τέτοια παιχνίδια μαζί την ημέρα, και κάθε παίκτης έως 8. Μια πρόσκληση πάνω από
+αυτά τα όρια, ή προς παίκτη που η εφαρμογή του είναι πολύ παλιά για να την επιβεβαιώσει, λήγει
+αμέσως χωρίς να ειδοποιηθεί ο άλλος. Αλλιώς ο άλλος παίκτης τη βρίσκει στη ροή δραστηριότητάς του
+και παίρνει ειδοποίηση push, που ακολουθεί τον διακόπτη «Ενημερώσεις ματς», όχι όμως τη νύχτα, από
+τις 23:00 έως τις 09:00, ούτε για 24 ώρες αφού αρνήθηκε πρόσκληση του ίδιου παίκτη. Η κάρτα παίκτη
+σου λέει επίσης αν η εφαρμογή σου μπορεί να επιβεβαιώνει παιχνίδια στο τραπέζι: ο διακομιστής μας το
+κρίνει από την έκδοση της εφαρμογής στο προφίλ σου και στην εγγραφή κάθε αναγνωριστικού ειδοποιήσεών
+σου, και η κάρτα λέει ναι αν έστω μία είναι αρκετά νέα. Ο διακομιστής μας κρατά επίσης στον
+λογαριασμό σου πόσες τέτοιες προσκλήσεις σου έδειξε σε άλλους κάθε ημέρα, ως αριθμό, ώστε να μην
+ξεπερνούν τις 10 την ημέρα. Και οι δύο εφαρμογές περιλαμβάνουν Firebase Crashlytics (αναφορές
+σφαλμάτων) και Firebase Analytics (39 συμβάντα χρήσης από την έκδοση 2.5.0, 37 από την 2.4.9, 33 από
+την 2.4.8, 31 από την 2.4.7, 25 από την 2.4.5, 24 από την 2.3.0 και 23 στις προηγούμενες, όπως η
+δημοσίευση αγώνα ή το check-in σε αίθουσα). Αυτά τα δύο συμβάντα καταγράφουν και ποια αίθουσα
+αφορούν. Από την έκδοση 2.4.5 καταγράφουμε επίσης πότε ανοίγεις ένα ανοιχτό ματς άλλου παίκτη, από
+πού έφτασες εκεί, την αίθουσα και πόσο νωρίτερα από την έναρξη, χωρίς όνομα ή αναγνωριστικό χρήστη.
+Από την έκδοση 2.4.7 καταγράφουμε επίσης όταν ανοίγεις την κοινοποίηση ενός ματς, από πού, αν το
+ματς είναι δικό σου και πόσο νωρίτερα ξεκινά, όχι όμως αν το έστειλες ή σε ποιον, την απάντησή σου
+στην ερώτηση αν ισχύει το ματς σου (έρχομαι, ή δεν μπορώ και ελευθερώνεις τη θέση), όταν στέλνεις
+ένα παιχνίδι στο τραπέζι για επιβεβαίωση, από πού ξεκίνησες (τη φόρμα ανάρτησης, τα παιχνίδια σου,
+τη σελίδα μιας αίθουσας ή ένα άλλο παιχνίδι στο τραπέζι) και το είδος του παιχνιδιού, και όταν
+ανοίγεις την Κατάταξη, μια αίθουσα από εκεί ή την κοινοποίηση της κάρτας μιας αίθουσας ή, από την
+έκδοση 2.4.8, της κάρτας με τις αίθουσες στην κορυφή της λίστας, με τη λίστα, την αίθουσα (εκτός από
+την κάρτα με τις αίθουσες στην κορυφή) και το είδος της κάρτας, πάλι χωρίς όνομα ή αναγνωριστικό
+χρήστη. Από την έκδοση 2.4.8 καταγράφουμε επίσης ποια από τις οθόνες «Ανακάλυψη», «Παιχνίδια»,
+«Κατάταξη», «Αίθουσες» και «Προφίλ» ανοίγεις, και το Firebase Analytics δεν το καταγράφει πια από
+μόνο του. Από την ίδια έκδοση καταγράφουμε ακόμη όταν ανοίγεις τη φόρμα για νέο ματς ή για νέα
+δήλωση ότι ψάχνεις παιχνίδι, για ποιο από τα δύο είναι και από πού την άνοιξες, και, όταν
+δημοσιεύεις ματς, από πού άνοιξες τη φόρμα και περίπου πόση ώρα ήταν ανοιχτή. Στην ίδια έκδοση, όταν
+ζητάς να μπεις σε ματς, καταγράφουμε από πού έφτασες στη σελίδα του, και όταν ανοίγεις ματς από τη
+λίστα της οθόνης «Ανακάλυψη», τη θέση του στη λίστα και πόσα ματς είχε, πάλι χωρίς όνομα ή
+αναγνωριστικό χρήστη. Από την ίδια έκδοση, η εφαρμογή στέλνει στο Firebase Analytics και τρεις
+ιδιότητες χρήστη. Η πρώτη είναι η χώρα του προφίλ σου, ή, σε ένα παλιότερο προφίλ χωρίς χώρα, η
+προεπιλεγμένη χώρα της εφαρμογής, και τη στέλνει μόνο όσο έχεις συνδεθεί με λογαριασμό. Η δεύτερη
+λέει αν έχεις λογαριασμό ή ρίχνεις μια ματιά ως επισκέπτης, και η τρίτη ποιο θέμα διάλεξες στις
+Ρυθμίσεις («Σκούρο», «Φωτεινό» ή «Προεπιλογή συστήματος») και, με την προεπιλογή συστήματος, ποιο
+από τα δύο δείχνει το τηλέφωνό σου. Όταν αποσυνδεθείς, η εφαρμογή σβήνει τις δύο πρώτες. Τις
 χρησιμοποιούμε μόνο για να συγκρίνουμε συνολικούς αριθμούς, και καμία δεν είναι όνομα ή
 αναγνωριστικό χρήστη. Από την έκδοση 2.4.9 καταγράφουμε επίσης όταν ανοίγεις την κοινοποίηση μιας
 πρόσκλησης για μια αίθουσα ή δείχνεις τον κωδικό QR της, με το ποιο από τα δύο έκανες και από πού

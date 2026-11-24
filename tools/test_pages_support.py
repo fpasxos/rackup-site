@@ -297,6 +297,7 @@ class HallLadderPolicyTest(unittest.TestCase):
                      "Only you can read your join and those numbers.",
                      "our server takes you off the board within about an hour",
                      "until the following season ends",
+                     "Once final, that board also shows who won the season.",
                      "does not take you off that board; deleting your account does",
                      "which their player card shows to every player with an account for 4 weeks",
                      "a badge that has ended stays there until they win another season or delete their account",
@@ -311,7 +312,8 @@ class HallLadderPolicyTest(unittest.TestCase):
         self.assertNotIn("αμέσως", greek)
         for said in ("μέσα σε περίπου μία ώρα", "Τη βλέπουν μόνο όσοι έχουν λογαριασμό, ποτέ οι επισκέπτες",
                      "Πόσα ματς σου μέτρησαν τη σεζόν και την εβδομάδα τα βλέπεις μόνο εσύ.",
-                     "για 4 εβδομάδες", "σε βγάζει μόνο η διαγραφή του λογαριασμού σου"):
+                     "για 4 εβδομάδες", "σε βγάζει μόνο η διαγραφή του λογαριασμού σου",
+                     "Η οριστική σκάλα δείχνει επίσης ποιος κέρδισε τη σεζόν."):
             self.assertIn(said, greek)
 
     def test_ladders_are_in_the_visibility_retention_and_deletion_parts(self):
