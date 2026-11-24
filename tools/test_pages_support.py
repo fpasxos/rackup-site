@@ -169,8 +169,8 @@ class InviteLinksPolicyTest(unittest.TestCase):
                 for fact in facts:
                     self.assertIn(fact, said[at[0] + 1])
 
-    def test_the_newest_note_says_what_changed(self):
-        newest = next(p for p in paragraphs(current("privacy.html")) if p.startswith("What changed on "))
+    def test_the_2_4_9_note_says_what_changed(self):
+        newest = next(p for p in paragraphs(current("privacy.html")) if p.startswith("What changed on 18 November 2026."))
         for fact in ("version 2.4.9", "invite a friend", "Google Play", "37 in all", "How long we keep it",
                      "What deletion removes", "of these tags only the hall, the invite's code and the game they name can reach us",
                      "a friend's invite or a shared game's page",
@@ -274,6 +274,66 @@ class GameLinksPolicyTest(unittest.TestCase):
             self.assertNotIn(old, text)
 
 
+def section(page, title):
+    """The visible text of an <h3> section, up to the next heading."""
+    found = re.search(r"<h3>%s</h3>(.*?)<h[23]\b" % re.escape(title), main_html(page), re.S)
+    if not found:
+        raise AssertionError(f"privacy.html has no {title} section")
+    return visible_text(found.group(1))
+
+
+class HallLadderPolicyTest(unittest.TestCase):
+    """2.5.0 hall ladders (rackup docs/LADDER.md): who sees a board, what stays private, how long it lasts."""
+
+    def test_the_section_follows_rankings_and_says_who_sees_what(self):
+        main = main_html(current("privacy.html"))
+        self.assertLess(main.index("<h3>Rankings</h3>"), main.index("<h3>Hall ladders</h3>"))
+        self.assertLess(main.index("<h3>Hall ladders</h3>"), main.index("<h3>What you post and write</h3>"))
+        text = section(current("privacy.html"), "Hall ladders")
+        for said in ("their user id, display name, photo link and category, as on their player card",
+                     "once one of their games has counted, their place and points",
+                     "It never holds a player's wins, how many games they played or their games this week.",
+                     "Only players with an account can read it, never guests",
+                     "Only you can read your join and those numbers.",
+                     "our server takes you off the board within about an hour",
+                     "until the following season ends",
+                     "Once final, that board also shows who won the season.",
+                     "does not take you off that board; deleting your account does",
+                     "which their player card shows to every player with an account for 4 weeks",
+                     "a badge that has ended stays there until they win another season or delete their account",
+                     "Apple's review account and automated test accounts are never on a board"):
+            self.assertIn(said, text)
+
+    def test_a_leave_or_a_hide_is_never_promised_at_once(self):
+        # Past a player's 6 rebuilds a day, a leave or a hidden card waits for the hourly run.
+        page = current("privacy.html")
+        self.assertNotIn("at once", section(page, "Hall ladders"))
+        (greek,) = [p for p in paragraphs(page) if p.startswith("Σκάλα της αίθουσας.")]
+        self.assertNotIn("αμέσως", greek)
+        for said in ("μέσα σε περίπου μία ώρα", "Τη βλέπουν μόνο όσοι έχουν λογαριασμό, ποτέ οι επισκέπτες",
+                     "Πόσα ματς σου μέτρησαν τη σεζόν και την εβδομάδα τα βλέπεις μόνο εσύ.",
+                     "για 4 εβδομάδες", "σε βγάζει μόνο η διαγραφή του λογαριασμού σου",
+                     "Η οριστική σκάλα δείχνει επίσης ποιος κέρδισε τη σεζόν."):
+            self.assertIn(said, greek)
+
+    def test_ladders_are_in_the_visibility_retention_and_deletion_parts(self):
+        main = main_html(current("privacy.html"))
+        lists = [visible_text(li) for li in re.findall(r"<li>(.*?)</li>", main, re.S)]
+        self.assertTrue(any(item.startswith("Hall ladders: your join, with how many of your games counted, until you "
+                                            "leave the ladder or delete your account.") for item in lists))
+        self.assertIn("your joins of hall ladders, with how many of your games counted, your place on every hall's "
+                      "ladder board, this season's and the last, your ladder badges, and every mention of you in our "
+                      "server's record for each ladder;", lists)
+        self.assertIn("the records that keep your ladder pushes to a few a week, and the board updates that your "
+                      "joins and player card start to 6 a day;", lists)
+        text = visible_text(main)
+        for said in ("your joins of hall ladders with how many of your games counted there",
+                     "for matches, challenges, player cards and hall ladders the rules also check for an account",
+                     "share_opened, ladder_joined and ladder_opened. A hall id names a billiard hall",
+                     "οι συμμετοχές σου στις σκάλες των αιθουσών"):
+            self.assertIn(said, text)
+
+
 class PolicyDateTest(unittest.TestCase):
 
     def test_the_policy_carries_one_real_date(self):
@@ -312,6 +372,7 @@ APP_EVENTS = {
     "match_shared", "seat_check_answered", "rankings_opened", "ranking_hall_opened", "share_opened",
     "table_game_logged", "screen_view", "post_started",
     "link_opened", "invite_shared", "invite_joined", "invite_undone",
+    "ladder_joined", "ladder_opened",
 }
 
 # The app's UserProperty names (core/presentation Analytics.kt, from 2.4.8).
