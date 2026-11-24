@@ -39,11 +39,27 @@
 <main id="main" class="container">
 <article class="prose">
   <h1>RackUp Privacy Policy</h1>
-  <p class="muted">Effective date: 18 November 2026 · Applies to the RackUp apps for Android
+  <p class="muted">Effective date: 30 November 2026 · Applies to the RackUp apps for Android
   and iPhone (<code>com.rackup.app</code>)</p>
   <p lang="el"><a href="#el">Στα Ελληνικά</a></p>
 
   <div class="card">
+    <p><strong>What changed on 30 November 2026.</strong> From version 2.5.0 of the apps, each hall
+    has a ladder: a competition in seasons of 4 weeks among the players who join it. Under
+    <em>Hall ladders</em>, a new section, we say what a hall's board shows: for each player who
+    joined, their user id, display name, photo link and category, as on their player card, and,
+    once a game of theirs counts, their place and points. Only players with an account can see a
+    board, never guests, and how many of your games counted is for you alone. We also say there
+    that leaving a ladder or turning off <em>Show me in player search</em> takes you off its board
+    within about an hour, how long the board of a finished season is kept, that a season's winner
+    gets a badge on their player card for 4 weeks, what our server keeps to build the boards, and
+    that Apple's review account and automated test accounts are never on one. Under
+    <em>Notifications</em> we describe the pushes a ladder sends and the records that keep them to
+    a few a week, and under <em>App usage analytics</em> two more events, 39 in all,
+    <code>ladder_joined</code> and <code>ladder_opened</code>, which carry the hall's id but no name
+    or user id, and the card a winner can share. We say so under <em>Who can see what</em>,
+    <em>How long we keep it</em> and <em>What deletion removes</em>, and in the summary in Greek
+    too.</p>
     <p><strong>What changed on 18 November 2026.</strong> From version 2.4.9 of the apps you can
     invite a friend to play at a hall, with a link or a QR code. Under <em>What you post and
     write</em> we say what an invite keeps, who can read it, what happens when your friend joins
@@ -403,10 +419,11 @@
   open games, looking-for-a-game posts, the halls, what is described under <em>What you post
   and write</em> about games that found an opponent, and settings and lists that hold no
   personal data, such as the countries and cities the app offers and the halls' list in
-  <em>Rankings</em>. You cannot open player cards, search for players or see the players' list in
-  <em>Rankings</em>. Posting, asking to join, following, blocking, starring
-  a hall, checking in, saving a search, challenging a player and notifications all need an
-  account, and the app asks you to create one instead. Our security rules also stop a guest
+  <em>Rankings</em>. You cannot open player cards, search for players, see the players' list in
+  <em>Rankings</em> or, from version 2.5.0, see who is on a hall's ladder. Posting, asking to join,
+  following, blocking, starring a hall, checking in, saving a search, challenging a player,
+  joining a hall's ladder and notifications all need an account, and the app asks you to create
+  one instead. Our security rules also stop a guest
   from creating a profile, uploading a photo, posting a match or a challenge, or checking
   in.</p>
   <p><strong>Copies of open games for guests.</strong> Our server keeps a copy of each open
@@ -474,15 +491,17 @@
   match late, less than two hours before its start or once it has started, and when a match that
   counts towards them is deleted, which happens to a host's matches when the host deletes their
   account. Like the rest of the card, only players with an account can read them, and they are
-  deleted with the card.</p>
+  deleted with the card. From version 2.5.0 the card screen also shows, for 4 weeks, each season
+  of a hall's ladder that the player won, as described under <em>Hall ladders</em>.</p>
   <p><strong>Player search</strong> is only for players with an account. It finds a player when
   what you type matches the start of any word of their name, in Greek or Greeklish, ignoring
   accents. You type at least 2 letters and see at most 20 players. Email addresses and cities are
   not searchable. Before you type, it suggests players you played with recently, taken from your
   own matches, and regulars at your usual hall. Players you blocked never appear.</p>
   <p>Being findable is on by default. To stop it, turn off <em>Show me in player search</em> in
-  Settings. That takes your name out of search, you out of the regulars at your hall and you off
-  the players' list in <em>Rankings</em>, described below. Your card itself stays readable:
+  Settings. That takes your name out of search, you out of the regulars at your hall, you off
+  the players' list in <em>Rankings</em> and, within about an hour, you off this season's board of
+  each hall ladder you joined, all described below. Your card itself stays readable:
   players you have played with can still open it, for example from their <em>Played with
   recently</em> list or from a match's quick messages, and you still appear on your matches and
   challenges, and on the monthly leaderboards that versions of the apps before 2.4.7 work out on
@@ -525,6 +544,56 @@
   the share sheet, as described under <em>App usage analytics</em>, never what you sent or to whom. On
   iPhone, saving the card to your photos asks your permission to add photos: the app adds only
   the card and never reads your photo library.</p>
+
+  <h3>Hall ladders</h3>
+  <p>From version 2.5.0 of the apps, each hall has a <strong>ladder</strong>: a competition among
+  the players who join it there, in seasons of 4 weeks, from Monday to Sunday at the hall's local
+  time. A game counts when it was played at that hall with a confirmed score that is not disputed,
+  between two players who both joined its ladder that season, with at most 3 games a week for
+  each player and 2 a week against the same opponent. A win is worth 3 points, a draw 2 and a
+  loss 1. Our server works out each hall's board every hour, and sooner when a player joins or
+  leaves, from the match records described under <em>What you post and write</em>, reading only who
+  played, where, when and the score, never a name or a note. Apple's review account and automated
+  test accounts are never on a board, never counted towards the 4 players a ladder needs to start,
+  and never sent a ladder push.</p>
+  <p><strong>Joining.</strong> You can join a hall's ladder only with an account, and only while
+  you appear in player search, because its board shows your name. You can be on at most 3 ladders
+  at a time. Your join holds only the hall and when you joined, and our server adds to it how many
+  of your games have counted this season and how many this week. <strong>Only you can read your
+  join and those numbers.</strong> You can leave a ladder whenever you want, which deletes your
+  join, and the games you played there keep counting for your opponents.</p>
+  <p><strong>The board.</strong> For each player who joined, a hall's board holds their user id,
+  display name, photo link and category, as on their player card, and, once one of their games
+  has counted, their place and points. It never holds a player's wins, how many games they played
+  or their games this week. It also holds how many players joined, the season's dates and whether
+  the ladder has started, which needs 4 players. <strong>Only players with an account can read
+  it, never guests</strong>, and no page on our website shows it. The apps show it on the hall's
+  page and on its ladder, and hide from you the players you blocked. If you leave the ladder or turn
+  off <em>Show me in player search</em>, our server takes you off the board within about an
+  hour.</p>
+  <p><strong>Past seasons.</strong> Scores confirmed until 12:00 on the Tuesday after a season
+  ends still count for it. Its board then becomes final and is kept as it is, with the players who
+  were on the ladder when the season ended, until the following season ends. Leaving the ladder
+  after a season ends, or turning off <em>Show me in player search</em> once its board is final,
+  does not take you off that board; deleting your account does.</p>
+  <p><strong>Winners and badges.</strong> The winner of a season, or the winners if they finish
+  level, get the badge <em>Won the ladder</em>, which their player card shows to every player with
+  an account for 4 weeks. Our server keeps each badge in a separate record, with the hall, the
+  season and when the badge ends, which any player with an account can read. It keeps a player's
+  5 most recent badges, and a badge that has ended stays there until they win another season or
+  delete their account. A winner can share a card with their own name, the hall and the season's
+  dates. Their phone draws it, with no other player's name, and hands it, with a link to the hall's
+  page on our website, to the app they choose. We learn only that they opened the share sheet, as
+  described under <em>App usage analytics</em>, never what they sent or to whom.</p>
+  <p><strong>What our server keeps to build the boards.</strong> For each hall's ladder, our
+  server also keeps a record that no app can read: who joined it this season and the last, who
+  was on it at its last count, which of each player's games counted, the place each player last
+  held, so that a push can tell them they climbed, and who met the rules for winning last season.
+  It keeps only this season and the last. Under your account, it keeps the times at which your
+  joins and the changes to your player card made it update the boards, so that they do so at most
+  6 times a day; past that, the next hourly count shows the change. A time older than a day drops
+  out when that record is next updated, and no app can read it. Deleting your account takes you out
+  of all of these.</p>
 
   <h3>What you post and write</h3>
   <p>The app is a noticeboard, so a lot of what it stores is content you create on purpose:</p>
@@ -674,13 +743,14 @@
   so we can send you push notifications about join
   requests, match updates, direct challenges, invitations to confirm a game at the table, quick
   messages, reminders, saved search alerts, new
-  games from players you follow, from version 2.4.3 new games in your city and, for halls you
-  starred, new games and check-ins there. With
+  games from players you follow, from version 2.4.3 new games in your city, from version 2.5.0
+  the hall ladders you joined and, for halls you starred, new games and check-ins there. With
   the app version, that time also lets us count updates as totals, as described under <em>Your
   account</em>, and our server reads it to tell whether a player opened RackUp in the last 7 days,
   for quiet cities, as described under <em>What you post and write</em>. Our server also reads the
   app version stored with each token for your player card, as described under <em>Your player card
-  and player search</em>. The iPhone app updates the token's record each time it starts. From
+  and player search</em>, and, from version 2.5.0, to send a hall ladder's pushes only to a phone
+  whose app can show the ladder. The iPhone app updates the token's record each time it starts. From
   version 2.4.4, the Android app updates it when it starts only if a day or more has passed since it last did, and whenever the token, your
   language or the app version changes. You control
   notifications with the switches in Settings and with your device's
@@ -795,6 +865,16 @@
   player and the host can read them, and they are deleted with it. From version 2.4.7, a player still waiting
   when a place opens again, as described above, also gets an entry in their activity feed, naming
   the host.</p>
+  <p>From version 2.5.0, if you joined a hall's ladder, described under <em>Hall ladders</em>, we
+  may send you a push when its season starts, when you climb a place but never when you drop, when
+  its last week begins, and when a season ends. The one at a season's end tells a winner that they
+  won. It tells everyone else who won, by name, unless one of them blocked the other, and their own
+  place or, if they finished first without winning, why. These pushes add nothing to your activity
+  feed. They follow the <em>Match updates</em> switch and go only to a phone with version 2.5.0 or
+  later, only from 10:00 to 21:30 at the hall's local time, and at most one a day and three a
+  week. So that they keep to that, our server keeps, under your account, the times of the ladder
+  pushes it sent you, and a time older than 8 days drops out when that record is next updated. No
+  app can read that record, and deleting your account deletes it.</p>
 
   <h3>Crash diagnostics (both apps)</h3>
   <p>Both apps include <strong>Firebase Crashlytics</strong>. When the app crashes or hits a
@@ -809,7 +889,8 @@
   <p>Both apps include <strong>Firebase Analytics</strong>, and it is on by default. The old
   version of this policy said the app had no analytics profiles. That was wrong, and correcting
   it was the main reason for the version dated 4 September 2026.</p>
-  <p>We log 37 events about how the app is used, the same on both apps, or 33 before version 2.4.9,
+  <p>We log 39 events about how the app is used, the same on both apps, or 37 before version 2.5.0,
+  which adds <code>ladder_joined</code> and <code>ladder_opened</code>, 33 before version 2.4.9,
   which adds <code>invite_shared</code>, <code>invite_joined</code>, <code>invite_undone</code> and
   <code>link_opened</code>, 31 before version 2.4.8,
   which adds <code>screen_view</code> and <code>post_started</code>, 25 before version 2.4.7,
@@ -876,10 +957,11 @@
         <code>ranking_hall_opened</code>, when you open a hall from Rankings, with the id of the
         hall and how it was listed there (on fire, among the other listed halls, as the hall of
         the week or to discover); and <code>share_opened</code>, when you open the share sheet
-        for a hall's card or, from version 2.4.8, for the card of the halls at the top of the
-        list, with the kind of card (busy, hall of the week, invitation or top of the list), its
-        format and, for one hall's card, the id of the hall, never whether you sent it, or to
-        whom.</li>
+        for a hall's card, from version 2.4.8 for the card of the halls at the top of the list
+        or, from version 2.5.0, for the card of a season of a hall's ladder that you won, with
+        the kind of card (busy, hall of the week, invitation, top of the list or a ladder win),
+        its format and, for one hall's card or a ladder win, the id of the hall, never whether
+        you sent it, or to whom.</li>
     <li><strong>Invites and links</strong>, from version 2.4.9: <code>invite_shared</code>, when you
         open your phone's share sheet with an invite to play at a hall, or show its QR code, with
         which of the two and where you started (a hall's page or <em>Discover</em>), never whether
@@ -890,14 +972,19 @@
         hall, an invite or a game, with which of the three and how it came: a hall from a link or
         from the tags Google Play passed on after an install, an invite from a link, from those tags
         or from an invite code you typed, and a game only from those tags.</li>
+    <li><strong>Hall ladders</strong>, from version 2.5.0: <code>ladder_joined</code>, when you
+        join a hall's ladder, with the id of the hall; and <code>ladder_opened</code>, when you
+        open a hall's whole ladder, with the id of the hall and where you opened it (the hall's
+        page or <em>Rankings</em>).</li>
     <li><strong>Everything else</strong>: <code>venue_checked_in</code>, with the id of the hall;
         <code>player_followed</code>; <code>saved_search_created</code>; and
         <code>notifications_opened</code> and <code>notification_row_tapped</code>, when you
         open your activity feed and when you tap one of its entries.</li>
   </ul>
   <p>The only ids any event carries are hall ids, on <code>match_posted</code>,
-  <code>match_viewed</code>, <code>venue_checked_in</code>, <code>ranking_hall_opened</code> and
-  <code>share_opened</code>. A hall id names a billiard hall
+  <code>match_viewed</code>, <code>venue_checked_in</code>, <code>ranking_hall_opened</code>,
+  <code>share_opened</code>, <code>ladder_joined</code> and <code>ladder_opened</code>. A hall id
+  names a billiard hall
   in our directory, not a person.
   No name, no email, no user id, no match id, no invite code and no free text is ever attached to
   an analytics event. Firebase Analytics also collects its own standard measurements, such as app opens and
@@ -976,9 +1063,9 @@
   above, and the weekly sign-up counts are taken by city. We count them as approximate location,
   linked to your account. We also keep the halls you name yourself: your usual hall, the halls
   you starred, which bring you their notifications (on Android by signing your device up with
-  Firebase Cloud Messaging, on iPhone through your account), your check-ins, and the hall or city
-  of your posts, challenges, looking-for-a-game posts, saved searches and schedule, each described
-  above.</p>
+  Firebase Cloud Messaging, on iPhone through your account), your check-ins, the halls whose
+  ladders you joined, and the hall or city of your posts, challenges, looking-for-a-game posts,
+  saved searches and schedule, each described above.</p>
 
   <h2>What we do not do</h2>
   <ul>
@@ -1004,8 +1091,9 @@
   <ul>
     <li><strong>Private to you</strong>: your email address, your profile record, your blocked
         list, your saved searches, your starred venues, your weekly schedule, your activity feed,
-        the ratings you have received, your venue check-ins and the list of players you follow.
-        A player you follow is not told.</li>
+        the ratings you have received, your venue check-ins, the list of players you follow, and
+        your joins of hall ladders with how many of your games counted there. A player you follow
+        is not told.</li>
     <li><strong>Private to you and one other player</strong>: a direct challenge or an
         invitation to a game at the table between the two of you, and the quick messages and
         read marks of a confirmed match between the two of you.</li>
@@ -1015,7 +1103,10 @@
         can also find
         you by name, players with the same usual hall see you among its regulars and, from
         version 2.4.7, if you are among the players who played the most in a country in the
-        last 30 days, they see you in its <em>Rankings</em>.</li>
+        last 30 days, they see you in its <em>Rankings</em>. From version 2.5.0, if you join a
+        hall's ladder, they see on its board your display name, profile photo and category and,
+        once a game of yours counts, your place and points, and your player card shows each
+        season you won there for 4 weeks.</li>
     <li><strong>Visible to every signed in player</strong>: your display name, your skill
         category, your profile photo, your reliability figure and verified badge, everything on
         the matches and open challenges you post or join, including your notes, scores, dispute
@@ -1040,8 +1131,9 @@
   </ul>
   <p>For most reading, our security rules check that a request is signed in, not that it comes
   from an account. A guest session, which the apps start from version 2.3.0, is signed in that
-  way, but for matches, challenges and player cards the rules also check for an account. So a
-  guest session cannot read a player card, and since 20 October 2026 it cannot read a match or
+  way, but for matches, challenges, player cards and hall ladders the rules also check for an
+  account. So a guest session cannot read a player card or a hall's ladder, and since 20 October
+  2026 it cannot read a match or
   challenge record either, so it gets no note, score or cancellation. It has never been able to
   read anything that is private to you or visible only to us. What it can read is listed under
   <em>Looking around as a guest</em>. No version of the apps shows a guest a note.</p>
@@ -1142,8 +1234,9 @@
   <h2>Our lawful basis (GDPR Article 6)</h2>
   <ul>
     <li><strong>Performance of a contract</strong> (Article 6(1)(b)): creating and running your
-        account, publishing your match posts, handling join requests, recording results, and
-        everything else you need for the app to do its job, including storing each device's
+        account, publishing your match posts, handling join requests, recording results, running
+        the hall ladders you join, and everything else you need for the app to do its job,
+        including storing each device's
         notification token and sending you the notifications you leave on in Settings, which
         your device's notification permission can also stop. From version 2.3.0, before you have
         an account, the same basis covers the guest identifier that lets you look around, which
@@ -1203,6 +1296,13 @@
         player stays on the players' list only while their games of the last 30 days keep them
         there, and leaves it at once on turning off <em>Show me in player search</em> or deleting
         their account.</li>
+    <li><strong>Hall ladders</strong>: your join, with how many of your games counted, until you
+        leave the ladder or delete your account. Our server updates each hall's board every hour,
+        so you stay on this season's board only while you are on its ladder and appear in player
+        search. The board of a finished season is kept as it was when it became final until the
+        following season ends, and our server's own record for each ladder keeps only this season
+        and the last. A winner's badge shows for 4 weeks, and then stays in their badge record,
+        which keeps at most 5, until they win another season or delete their account.</li>
     <li><strong>Abuse reports</strong>: reports about you are kept as a safety record even after
         you delete your account, because a moderation history that vanishes on request is not a
         moderation history.</li>
@@ -1240,6 +1340,9 @@
     <li>your profile record, and with it your name, email, category, country, city, usual hall,
         games, photo link and player search setting;</li>
     <li>your player card, and your place on the players' list in <em>Rankings</em>;</li>
+    <li>your joins of hall ladders, with how many of your games counted, your place on every hall's
+        ladder board, this season's and the last, your ladder badges, and every mention of you in
+        our server's record for each ladder;</li>
     <li>the guests' copies of the open games you posted;</li>
     <li>your profile photo file in Cloud Storage;</li>
     <li>your notification tokens, notification preferences, activity feed, saved searches,
@@ -1249,6 +1352,8 @@
     <li>the records that keep the notifications about your new matches, direct challenges and
         invitations to games at the table, and your "No answer yet" notices, to a few a day;</li>
     <li>the record that keeps each of your invites to at most 10 friends at a time and 5 pushes;</li>
+    <li>the records that keep your ladder pushes to a few a week, and the board updates that your
+        joins and player card start to 6 a day;</li>
     <li>the count of the games you have played with a confirmed score;</li>
     <li>your follows of other players, and other players' follows of you;</li>
     <li>the ratings other players gave you;</li>
@@ -1350,11 +1455,15 @@
 
   <h2>Changes to this policy</h2>
   <p>If this policy changes, the new version is published at this address with a new effective
-  date, and we say at the top what changed. This version, dated 18 November 2026, adds inviting a
+  date, and we say at the top what changed. This version, dated 30 November 2026, adds hall
+  ladders, from version 2.5.0 of the apps: what a hall's board shows and to whom, the numbers only
+  you see, how long boards and badges are kept, what our server keeps to build them, the ladder
+  pushes and the record that limits them, two analytics events and the card a winner can share,
+  and supersedes the version dated 18 November 2026, which added inviting a
   friend to play at a hall, how we tell you when a friend joins and the record of each running
   invite's joins and pushes, four analytics events, and the tags the Android app reads after an
   install from a hall's poster, a hall's share card, a friend's invite or a shared game's page,
-  from version 2.4.9 of the apps, and supersedes
+  from version 2.4.9 of the apps, and superseded
   the version dated 15 November 2026, which added the
   analytics events <code>screen_view</code> and <code>post_started</code>, what
   <code>match_posted</code>, <code>join_requested</code> and <code>match_viewed</code> also record,
@@ -1431,10 +1540,10 @@
   συνήθως,
   τι παίζεις, προαιρετική φωτογραφία προφίλ και όσα δημοσιεύεις ή στέλνεις μέσα στην εφαρμογή,
   δηλαδή ματς, προσωπικές προκλήσεις, σημειώσεις, σκορ, ακυρώσεις, δηλώσεις ότι ψάχνεις παιχνίδι,
-  ποιους ακολουθείς, γρήγορα μηνύματα, βαθμολογίες αντιπάλων, check-in σε αίθουσες, αναφορές και
-  σχόλια. Η χώρα είναι εκείνη της πόλης ή της αίθουσας που διαλέγεις, ή, σε μια αποθηκευμένη
-  αναζήτηση χωρίς πόλη ή αίθουσα, η χώρα του προφίλ σου. Σε ένα παλιότερο προφίλ χωρίς πόλη, η χώρα
-  είναι η
+  ποιους ακολουθείς, γρήγορα μηνύματα, βαθμολογίες αντιπάλων, check-in σε αίθουσες, τις σκάλες
+  αιθουσών στις οποίες μπαίνεις, αναφορές και σχόλια. Η χώρα είναι εκείνη της πόλης ή της
+  αίθουσας που διαλέγεις, ή, σε μια αποθηκευμένη αναζήτηση χωρίς πόλη ή αίθουσα, η χώρα του
+  προφίλ σου. Σε ένα παλιότερο προφίλ χωρίς πόλη, η χώρα είναι η
   προεπιλεγμένη της εφαρμογής. Τη γράφουμε επίσης στην κάρτα παίκτη σου, στα ματς, στις
   προκλήσεις, στις δηλώσεις ότι ψάχνεις παιχνίδι, στις αποθηκευμένες αναζητήσεις και στο
   εβδομαδιαίο πρόγραμμά σου, ώστε τα ματς, οι αίθουσες, οι κατατάξεις και οι περισσότερες
@@ -1562,6 +1671,47 @@
   τηλέφωνό σου χωρίς όνομα παίκτη και χωρίς να λένε πόσα ματς παίχτηκαν. Εμείς μαθαίνουμε μόνο
   ότι άνοιξες την κοινοποίηση, όχι τι έστειλες ή σε ποιον. Στο iPhone, για να σώσεις την κάρτα στις φωτογραφίες σου, το τηλέφωνο ζητά άδεια μόνο
   για να την προσθέσει, και η εφαρμογή δεν διαβάζει ποτέ τη βιβλιοθήκη σου.</p>
+  <p><strong>Σκάλα της αίθουσας.</strong> Από την έκδοση 2.5.0, κάθε αίθουσα έχει τη σκάλα της:
+  έναν διαγωνισμό ανάμεσα στους παίκτες που μπαίνουν σε αυτήν, σε σεζόν των 4 εβδομάδων, από
+  Δευτέρα έως Κυριακή, τοπική ώρα της αίθουσας. Μετράνε τα ματς που παίχτηκαν στην αίθουσα με
+  επιβεβαιωμένο σκορ ανάμεσα σε δύο παίκτες της σκάλας, έως 3 την εβδομάδα για κάθε παίκτη και
+  έως 2 με τον ίδιο αντίπαλο, και η νίκη δίνει 3 βαθμούς, η ισοπαλία 2 και η ήττα 1. Ο διακομιστής
+  μας υπολογίζει τις σκάλες κάθε ώρα, και νωρίτερα όταν μπαίνει ή βγαίνει κάποιος, από τα ματς,
+  διαβάζοντας μόνο ποιοι έπαιξαν, πού, πότε και το σκορ, ποτέ όνομα ή σημείωση. Στη σκάλα μπαίνεις
+  μόνο με λογαριασμό και μόνο όσο εμφανίζεσαι στην αναζήτηση, γιατί δείχνει το όνομά σου, και
+  μπορείς να είσαι σε έως 3 σκάλες ταυτόχρονα. Για κάθε παίκτη που μπήκε, η σκάλα κρατά το
+  αναγνωριστικό χρήστη, το όνομα, τη φωτογραφία και την κατηγορία του, όπως στην κάρτα παίκτη, και,
+  μόλις μετρήσει ένα ματς του, τη θέση και τους βαθμούς του, ποτέ τις νίκες του ή πόσα ματς έπαιξε.
+  Τη βλέπουν μόνο όσοι έχουν λογαριασμό, ποτέ οι επισκέπτες, και δεν τη δείχνει καμία σελίδα της
+  ιστοσελίδας μας. Πόσα ματς σου μέτρησαν τη σεζόν και την εβδομάδα τα βλέπεις μόνο εσύ. Αν βγεις
+  από τη σκάλα ή κλείσεις το «Να με βρίσκουν στην αναζήτηση», ο διακομιστής μας σε βγάζει από τη
+  σκάλα της τρέχουσας σεζόν μέσα σε περίπου μία ώρα, και όσοι έπαιξαν μαζί σου κρατούν τους βαθμούς
+  τους. Τα σκορ μιας σεζόν μετράνε ως τις 12:00 της Τρίτης μετά το τέλος της. Τότε η σκάλα της
+  γίνεται οριστική και μένει όπως είναι, με όσους ήταν μέσα στο τέλος της, ως το τέλος της
+  επόμενης σεζόν, και από αυτήν σε βγάζει μόνο η διαγραφή του λογαριασμού σου, όχι η έξοδος από τη
+  σκάλα ή το κλείσιμο της αναζήτησης. Όποιος κερδίσει μια σεζόν παίρνει για 4 εβδομάδες το σήμα
+  «Κέρδισε τη σκάλα» στην κάρτα παίκτη του, που το βλέπουν όσοι έχουν λογαριασμό. Ο διακομιστής μας
+  κρατά κάθε σήμα σε ξεχωριστή εγγραφή, με την αίθουσα, τη σεζόν και πότε λήγει, που μπορεί να τη
+  διαβάσει όποιος έχει λογαριασμό. Κρατά έως 5 σήματα για κάθε παίκτη, και ένα σήμα που έληξε
+  μένει εκεί ώσπου ο παίκτης να κερδίσει άλλη σεζόν ή να διαγράψει τον λογαριασμό του. Ο νικητής
+  μπορεί να μοιραστεί μια κάρτα με το δικό του όνομα, την αίθουσα και τις ημερομηνίες της σεζόν,
+  που τη φτιάχνει το τηλέφωνό του. Για κάθε σκάλα, ο διακομιστής μας κρατά επίσης, σε εγγραφή που
+  δεν διαβάζει καμία εφαρμογή, ποιοι μπήκαν σε αυτήν την τρέχουσα και την προηγούμενη σεζόν, ποια
+  ματς του καθενός μέτρησαν, την τελευταία θέση του καθενός και ποιοι πληρούσαν τους όρους για να
+  κερδίσουν την προηγούμενη σεζόν, και δεν κρατά παλιότερες σεζόν. Ο λογαριασμός με τον οποίο η
+  Apple ελέγχει την εφαρμογή και οι αυτόματοι λογαριασμοί δοκιμών δεν μπαίνουν ποτέ σε σκάλα. Αν
+  είσαι σε σκάλα, μπορεί να σου στείλουμε ειδοποίηση push όταν ξεκινά η σεζόν, όταν ανεβαίνεις
+  θέση, ποτέ όταν πέφτεις, όταν αρχίζει η τελευταία εβδομάδα και όταν τελειώνει μια σεζόν. Αυτή
+  στο τέλος της σεζόν λέει στον νικητή ότι κέρδισε, και στους άλλους ποιος κέρδισε, με το όνομά
+  του, εκτός αν ο ένας έχει αποκλείσει τον άλλον. Οι ειδοποιήσεις αυτές δεν προσθέτουν τίποτα στη
+  ροή δραστηριότητάς σου, ακολουθούν τον διακόπτη «Ενημερώσεις ματς» και φτάνουν μόνο σε τηλέφωνο
+  με την έκδοση 2.5.0 ή νεότερη, μόνο από τις 10:00 έως τις 21:30, τοπική ώρα της αίθουσας, και το
+  πολύ μία την ημέρα και τρεις την εβδομάδα. Γι' αυτό ο διακομιστής μας κρατά στον λογαριασμό σου
+  πότε σου έστειλε τέτοιες ειδοποιήσεις, και ό,τι είναι παλιότερο από 8 ημέρες βγαίνει από την
+  εγγραφή όταν αυτή ενημερωθεί ξανά. Κρατά εκεί επίσης πότε οι συμμετοχές σου και οι αλλαγές στην
+  κάρτα σου ενημέρωσαν τις σκάλες, ώστε να το κάνουν έως 6 φορές την ημέρα, και ό,τι είναι
+  παλιότερο από μία ημέρα βγαίνει με τον ίδιο τρόπο. Καμία εφαρμογή δεν διαβάζει αυτές τις
+  εγγραφές.</p>
   <p><strong>Κοινοποίηση ματς.</strong> Όταν μοιράζεσαι ένα ματς, η εφαρμογή δίνει στην εφαρμογή
   που διαλέγεις ένα μήνυμα και έναν σύνδεσμο για την ιστοσελίδα μας. Από την έκδοση 2.4.8, ένας
   σύνδεσμος για τη σελίδα του ίδιου του ματς έχει επίσης το παιχνίδι, το race ή τους πόντους, αν
@@ -1624,9 +1774,9 @@
   προσκλήσεις σου έδειξε σε άλλους κάθε ημέρα, ως αριθμό, ώστε να μην ξεπερνούν τις 10 την
   ημέρα.</p>
   <p>Και οι δύο εφαρμογές περιλαμβάνουν <strong>Firebase Crashlytics</strong> (αναφορές
-  σφαλμάτων) και <strong>Firebase Analytics</strong> (37 συμβάντα χρήσης από την έκδοση 2.4.9,
-  33 από την 2.4.8, 31 από την 2.4.7, 25 από την 2.4.5, 24 από την 2.3.0 και 23 στις προηγούμενες, όπως η
-  δημοσίευση αγώνα ή το check-in σε αίθουσα).
+  σφαλμάτων) και <strong>Firebase Analytics</strong> (39 συμβάντα χρήσης από την έκδοση 2.5.0,
+  37 από την 2.4.9, 33 από την 2.4.8, 31 από την 2.4.7, 25 από την 2.4.5, 24 από την 2.3.0 και 23
+  στις προηγούμενες, όπως η δημοσίευση αγώνα ή το check-in σε αίθουσα).
   Αυτά τα δύο συμβάντα καταγράφουν και ποια αίθουσα αφορούν. Από την έκδοση 2.4.5 καταγράφουμε
   επίσης πότε ανοίγεις ένα ανοιχτό ματς άλλου παίκτη, από πού έφτασες εκεί, την αίθουσα και πόσο
   νωρίτερα από την έναρξη, χωρίς όνομα ή αναγνωριστικό χρήστη. Από την έκδοση 2.4.7 καταγράφουμε
@@ -1664,6 +1814,10 @@
   ματς, με το ποιο από τα τρία ήταν και πώς ήρθε: μια αίθουσα από σύνδεσμο ή από τις ετικέτες του
   Google Play μετά από εγκατάσταση, μια πρόσκληση από σύνδεσμο, από αυτές τις ετικέτες ή από κωδικό
   πρόσκλησης που έγραψες, και ένα ματς μόνο από αυτές τις ετικέτες.
+  Από την έκδοση 2.5.0 καταγράφουμε επίσης όταν μπαίνεις στη σκάλα μιας αίθουσας, με την αίθουσα,
+  όταν ανοίγεις ολόκληρη τη σκάλα της, με την αίθουσα και από πού την άνοιξες (τη σελίδα της
+  αίθουσας ή την Κατάταξη), και όταν ανοίγεις την κοινοποίηση της κάρτας μιας σεζόν που κέρδισες,
+  με την αίθουσα, όχι όμως αν την έστειλες ή σε ποιον.
   Κανένα συμβάν δεν περιέχει όνομα, email, κωδικό πρόσκλησης ή κείμενο που έγραψες, και όσα συλλέγουν τα δύο
   εργαλεία δεν τα συνδέουμε ποτέ με τον λογαριασμό σου: η εφαρμογή δεν στέλνει ποτέ το
   αναγνωριστικό χρήστη σε αυτές τις υπηρεσίες.</p>
@@ -1827,9 +1981,11 @@
   κρατάμε την πόλη του φίλτρου της, ακόμη κι αν την πρότεινε η εφαρμογή από τη θέση σου.</p>
   <p>Διαγραφή λογαριασμού: μέσα από την εφαρμογή (Προφίλ → Ρυθμίσεις → Διαγραφή λογαριασμού) ή με
   email στο <a href="mailto:rackupbilliard@gmail.com">rackupbilliard@gmail.com</a>. Μαζί με τον
-  λογαριασμό σου διαγράφονται η κάρτα παίκτη σου και η θέση σου στην Κατάταξη, οι προσωπικές
-  προκλήσεις, οι προσκλήσεις για παιχνίδι στο τραπέζι και τα γρήγορα μηνύματα που έστειλες ή
-  έλαβες, οι προσκλήσεις σου σε φίλους και ό,τι καταγράψαμε όταν μπήκες με πρόσκληση άλλου, και
+  λογαριασμό σου διαγράφονται η κάρτα παίκτη σου και η θέση σου στην Κατάταξη, οι συμμετοχές σου
+  στις σκάλες των αιθουσών, η θέση σου σε αυτές, στην τρέχουσα και στην προηγούμενη σεζόν, τα
+  σήματά σου από τις σκάλες, οι προσωπικές προκλήσεις, οι προσκλήσεις για παιχνίδι στο τραπέζι
+  και τα γρήγορα μηνύματα που έστειλες ή έλαβες, οι προσκλήσεις σου σε φίλους και ό,τι
+  καταγράψαμε όταν μπήκες με πρόσκληση άλλου, και
   οι ειδοποιήσεις στη ροή δραστηριότητας άλλων παικτών που
   αναφέρουν το όνομά σου. Τα διαγραμμένα δεδομένα μπορεί να μείνουν έως 7 ημέρες στο ημερήσιο
   αντίγραφο ασφαλείας της βάσης δεδομένων μας και στη λειτουργία που επαναφέρει τη βάση όπως
