@@ -39,11 +39,39 @@
 <main id="main" class="container">
 <article class="prose">
   <h1>RackUp Privacy Policy</h1>
-  <p class="muted">Effective date: 30 November 2026 · Applies to the RackUp apps for Android
+  <p class="muted">Effective date: XX December 2026 · Applies to the RackUp apps for Android
   and iPhone (<code>com.rackup.app</code>)</p>
   <p lang="el"><a href="#el">Στα Ελληνικά</a></p>
 
   <div class="card">
+    <p><strong>What changed on XX December 2026.</strong> From version X.Y.Z of the apps you can
+    turn app usage analytics off, with a new <em>Usage analytics</em> switch: in Settings,
+    <em>Privacy policy</em> now opens <em>Privacy</em>, where it is. Under <em>App usage
+    analytics</em> we say what turning it off stops, that it is on until you turn it off, and that
+    it rests on our legitimate interest. That version also logs five more analytics events, 44 in
+    all, none of which carries a name, a user id or any id: <code>action_result</code>, whether
+    something you sent us went through, and, on Android only, <code>launch_ready</code>, how long
+    the app took to open, and <code>screen_frames</code>, whether a screen drew slowly or froze;
+    and, on Android only and only once we turn them on, <code>device_signals</code>, at most once a
+    day, signs of tampering with the phone or the app, such as root access or a modified build,
+    whether the phone uses a VPN or a proxy, where the app was installed from and a short
+    fingerprint of its signing certificate,
+    and <code>sensitive_screen_recorded</code>, when the screen is recorded while a sign-in or
+    account screen is open. One more, <code>profile_status</code>, is in the Android app but turned
+    off, and no version sends it. We also correct two things this policy left out: the iPhone
+    app's Firebase Analytics collects your iPhone's identifier for vendor, which version X.Y.Z
+    turns off, and a crash report also carries the analytics events the app logged shortly before
+    it. From version X.Y.Z, both apps tell Firebase Analytics that nothing it collects may be used
+    for advertising, and deleting your account also resets the analytics identifier on the phone
+    you delete it from. Under <em>Your account</em> we describe <em>Sign out on all devices</em>,
+    which signs your account out of every phone, and the record behind it; under <em>Safety:
+    reports and blocks</em> and <em>Feedback</em>, the daily limits on reports and feedback, the
+    records that keep them and the alert we get when several players report the same player;
+    under <em>Your rights</em>, the copy of your data we send you when you ask; and under
+    <em>Where your data is stored, and who processes it</em>, that the iPhone app also uses
+    Firebase App Check. We say so under <em>What we do not do</em>, <em>Who can see what</em>,
+    <em>Our lawful basis</em>, <em>How long we keep it</em> and <em>What deletion removes</em>, and
+    in the summary in Greek too.</p>
     <p><strong>What changed on 30 November 2026.</strong> From version 2.5.0 of the apps, each hall
     has a ladder: a competition in seasons of 4 weeks among the players who join it. Under
     <em>Hall ladders</em>, a new section, we say what a hall's board shows: for each player who
@@ -393,6 +421,15 @@
   entries that tell a player about a game that fits their post. We look only at those totals,
   never at a single player, to judge our social media posts and ads and to see whether games
   fill.</p>
+  <p><strong>Sign out on all devices.</strong> From version X.Y.Z, <em>Sign out on all
+  devices</em> in Settings signs your account out of every phone it is signed in on, this one
+  included. You can use it at most once a minute. When you do, the app writes the time you asked
+  to a record of its own, <code>sessionRevocations/&lt;your user id&gt;</code>, which only you can
+  read. Our server then ends every sign-in of your account in Firebase Authentication, deletes
+  the notification tokens of all your phones, described under <em>Notifications</em>, and writes
+  on that record when it did so, which your other phones read to sign themselves out. If you tell
+  us that someone else is using your account, we can do the same for you. Deleting your account
+  deletes the record.</p>
 
   <h3 id="guest">Looking around as a guest</h3>
   <p>From version 2.3.0 of the apps, you can look around either app before you create an
@@ -732,11 +769,23 @@
   their user id in a private list of yours. Blocking is invisible to the person blocked. It hides
   their posts from your feed and keeps them out of your player search, and it hides their quick
   messages and direct challenges, which also stop notifying you.</p>
+  <p>So that no one can flood us with reports, our server refuses more reports from an account,
+  or a guest, that sent 20 in the last 24 hours, until 24 hours have passed since the first of
+  them. To count them it keeps, under your user id, the id and time of each report you sent in
+  the last 24 hours, up to 20, and when the limit ends, and an older one drops out when that
+  record is next updated. No app can read that record, and it is deleted with your account or
+  your guest identifier. When three different players report the same player within 24 hours,
+  our server writes a line to its logs with that player's user id and how many players reported
+  them, never who, and we are alerted, so that we can read the reports sooner. That line changes
+  nothing for the player by itself.</p>
 
   <h3>Feedback</h3>
   <p>The feedback form in Settings sends us your user id, the category you pick, your message,
   the app version and build, and which platform you are on. Like reports, no app can read this
-  back.</p>
+  back. In the same way as for reports, our server refuses more feedback from an account, or a
+  guest, that sent 10 messages in the last 24 hours, until 24 hours have passed since the first
+  of them, and keeps the same kind of record of them, which no app can read and which is deleted
+  with your account or your guest identifier.</p>
 
   <h3>Notifications</h3>
   <p>We store a Firebase Cloud Messaging token for each of your devices, Android or iPhone, along
@@ -880,17 +929,21 @@
   <h3>Crash diagnostics (both apps)</h3>
   <p>Both apps include <strong>Firebase Crashlytics</strong>. When the app crashes or hits a
   handled error, Crashlytics sends Google a report containing the crash, your device model, your
-  operating system version and the app version. We use it to find and fix bugs. <strong>We never
+  operating system version, the app version and the analytics events, described below, that the
+  app logged shortly before it. We use it to find and fix bugs. <strong>We never
   attach your account to a crash report.</strong> The app never calls Crashlytics' user id
   function, so reports carry no user id, only random identifiers, such as Crashlytics' own
   installation identifier and the Firebase installation ID described under <em>Where your data
   is stored, and who processes it</em>. We do not match them to a person.</p>
 
   <h3>App usage analytics (both apps)</h3>
-  <p>Both apps include <strong>Firebase Analytics</strong>, and it is on by default. The old
+  <p>Both apps include <strong>Firebase Analytics</strong>, and it is on by default. From version
+  X.Y.Z you can turn it off, as described at the end of this section. The old
   version of this policy said the app had no analytics profiles. That was wrong, and correcting
   it was the main reason for the version dated 4 September 2026.</p>
-  <p>We log 39 events about how the app is used, the same on both apps, or 37 before version 2.5.0,
+  <p>We log 44 events about how the app is used, or 39 before version X.Y.Z, which adds
+  <code>action_result</code>, <code>launch_ready</code>, <code>screen_frames</code>,
+  <code>device_signals</code> and <code>sensitive_screen_recorded</code>, 37 before version 2.5.0,
   which adds <code>ladder_joined</code> and <code>ladder_opened</code>, 33 before version 2.4.9,
   which adds <code>invite_shared</code>, <code>invite_joined</code>, <code>invite_undone</code> and
   <code>link_opened</code>, 31 before version 2.4.8,
@@ -898,7 +951,9 @@
   which adds <code>match_shared</code>, <code>seat_check_answered</code>,
   <code>table_game_logged</code>, <code>rankings_opened</code>, <code>ranking_hall_opened</code> and
   <code>share_opened</code>, 24 before version 2.4.5, which adds <code>match_viewed</code>, and 23
-  before version 2.3.0, which adds <code>guest_browse_started</code>. Most of them record only that
+  before version 2.3.0, which adds <code>guest_browse_started</code>. Each is the same on both
+  apps, except four, from version X.Y.Z, that only the Android app logs, and two of those it logs
+  only once we turn them on, as described below. Most of them record only that
   something happened. Here they all are, with any detail an event carries:</p>
   <ul>
     <li><strong>Signing in and the first run</strong>: <code>sign_up</code> and
@@ -977,6 +1032,45 @@
         join a hall's ladder, with the id of the hall; and <code>ladder_opened</code>, when you
         open a hall's whole ladder, with the id of the hall and where you opened it (the hall's
         page or <em>Rankings</em>).</li>
+    <li><strong>How well the app works</strong>, from version X.Y.Z: <code>action_result</code>,
+        when something you sent us gets its answer, with which of these it was: signing up,
+        signing in, starting as a guest, verifying your email, saving your profile, posting a
+        match, a looking-for-a-game post or a game at the table, asking to join, accepting a
+        request, sending, accepting or claiming a challenge, checking in, or sending a quick
+        message; how it ended: it went through, you cancelled it, it was refused, for example
+        because the match was already taken or a password was wrong, our security rules refused
+        it, the phone was offline, the app stopped waiting, or another error; the name the app
+        gives that kind of error, from a fixed list, never an error message; for signing up and
+        signing in, the method (password, Google or Apple); and, on Android only, roughly how
+        long the answer took, in bands from under a quarter of a second to over 15 seconds, and
+        the kind of connection the phone had (none, Wi-Fi, mobile or other), never which network
+        or any address. On Android only, <code>launch_ready</code>, when the app, opened from
+        closed, has shown its first screen, with how it opened (signed in, on the copy of your
+        profile kept on the phone because our servers had not answered yet, signed in but before
+        your email is verified or your profile is finished, as a guest, or signed out) and
+        roughly how long that took, in bands from under 1 second to over 15 seconds; and
+        <code>screen_frames</code>, when you leave a screen, with which it was
+        (<em>Discover</em>, <em>Matches</em>, <em>Rankings</em>, <em>Venues</em>,
+        <em>Profile</em>, a match's page, the post form, a hall's page or any other) and two yes
+        or no answers: whether it drew slowly, with more than half of its frames taking longer
+        than 16 milliseconds, and whether it froze, with more than 1 in 1,000 taking longer than
+        0.7 seconds.</li>
+    <li><strong>Safety signals</strong>, from version X.Y.Z, on Android only and
+        <strong>only once we turn them on</strong>: until then the app sends neither.
+        <code>device_signals</code>, at most once a day, with which of these signs the phone
+        shows, if any: root access, a tool that hooks into apps, an emulator, a debugger attached
+        or awaited, a modified build of the app, an app-cloning container, developer options or
+        USB debugging turned on, a VPN or a proxy; where the app was installed from (Google Play,
+        a computer with Android's developer tools, a file, another app store, or unknown); and,
+        on Android 9 and later, the first 8 characters of the fingerprint of the certificate the
+        app is signed with, which is the same on every copy of RackUp from Google Play, so another
+        value means a rebuilt or re-signed copy. It never names another app, a network or an
+        address, and nothing in the app is blocked or changed because of a signal. And
+        <code>sensitive_screen_recorded</code>, on Android 15 and later, when the screen is being
+        recorded while the sign-in, create account, verify email or delete account screen is
+        open, or the password asked before a deletion, with which of those it was, at most once
+        each time one opens. The app does not stop the recording. We read both only as totals, to
+        measure tampering and abuse.</li>
     <li><strong>Everything else</strong>: <code>venue_checked_in</code>, with the id of the hall;
         <code>player_followed</code>; <code>saved_search_created</code>; and
         <code>notifications_opened</code> and <code>notification_row_tapped</code>, when you
@@ -986,9 +1080,13 @@
   <code>match_viewed</code>, <code>venue_checked_in</code>, <code>ranking_hall_opened</code>,
   <code>share_opened</code>, <code>ladder_joined</code> and <code>ladder_opened</code>. A hall id
   names a billiard hall
-  in our directory, not a person.
+  in our directory, not a person. The fingerprint that <code>device_signals</code> carries
+  belongs to the app's certificate, the same on every copy from Google Play, and names no phone or
+  person.
   No name, no email, no user id, no match id, no invite code and no free text is ever attached to
-  an analytics event. Firebase Analytics also collects its own standard measurements, such as app opens and
+  an analytics event. From version X.Y.Z, before an event leaves the phone, the apps also check
+  each detail it carries against a fixed list of the details that event may carry, and of how
+  each may look, and drop anything else. Firebase Analytics also collects its own standard measurements, such as app opens and
   sessions, and it derives approximate geography from a masked IP address.</p>
   <p><strong>User properties.</strong> From version 2.4.8, the apps also give Firebase Analytics
   three user properties, which it attaches to the events from that install of the app:
@@ -1025,8 +1123,37 @@
   <p><strong>Analytics is not linked to your account.</strong> The app never calls Analytics'
   user id function, so Analytics keys on its own per installation identifier. One practical
   consequence, stated honestly: because these records are not tied to your account, we cannot
-  pick out an individual person's analytics records, and there is no in-app switch to turn
-  analytics off. Uninstalling the app stops collection.</p>
+  pick out an individual person's analytics records. From version X.Y.Z, when you delete your
+  account, the app also resets that identifier on the phone you delete it from and clears what
+  Analytics still holds there, so that what the app logs on that phone afterwards is not tied to
+  what it logged before. What Analytics had already sent stays with Google, as described under
+  <em>How long we keep it</em>.</p>
+  <p><strong>Turning analytics off.</strong> From version X.Y.Z, in Settings, <em>Privacy
+  policy</em> opens <em>Privacy</em>, where you can turn off <em>Usage analytics</em>. From then
+  on the app sends Firebase Analytics nothing from that phone: no events, no user properties and
+  none of its standard measurements, so crash reports no longer carry analytics events either.
+  Turning it off also resets the per installation identifier and clears what Analytics still
+  holds on the phone, and turning it on again starts afresh, with a new identifier. Your choice
+  is kept on the phone, for that install of the app, and never with your account, so it does not
+  follow you to another phone, and it goes if you remove the app. It does not turn off crash
+  diagnostics. <em>Usage analytics</em> is on until you turn it off, because it rests on our
+  legitimate interest, described under <em>Our lawful basis</em>, and turning it off is the
+  simplest way to object to it. Before version X.Y.Z there is no such switch, and uninstalling
+  the app is the only way to stop collection.</p>
+  <p><strong>The identifier for vendor on iPhone.</strong> Before version X.Y.Z, the iPhone
+  app's Firebase Analytics also collects your iPhone's identifier for vendor (IDFV): an
+  identifier that iOS gives the apps of one developer on an iPhone, shared by all of them, which
+  stays the same until you remove all of that developer's apps. RackUp is our only app.
+  Analytics attaches it to the events from that iPhone. This policy did not say so before. From
+  version X.Y.Z, the iPhone app turns that collection off, so its events no longer carry it,
+  although the events sent before keep it. We never read it ourselves, and it is not the
+  advertising identifier, which the iPhone app does not read.</p>
+  <p><strong>Not sent yet.</strong> The Android app also contains one more event,
+  <code>profile_status</code>, which is turned off, so no version sends it. If we turn it on, in a
+  later version, this policy will list it above first. It would say, at most once for each
+  version of the app, whether Android has compiled the app on your phone with the profile that
+  helps it start faster, with Android's result code and two yes or no answers, whether it has
+  and whether it is waiting to, and nothing about you.</p>
 
   <h3>Location</h3>
   <p>Both apps can ask for your <strong>approximate</strong> location, never your precise one,
@@ -1074,7 +1201,11 @@
     <li><strong>No advertising identifier.</strong> The Android app strips the
         <code>AD_ID</code> permission that Firebase Analytics would otherwise pull in. The iPhone
         app links the version of Firebase Analytics built without advertising ID support, shows
-        no App Tracking Transparency prompt, and does not read the IDFA.</li>
+        no App Tracking Transparency prompt, and does not read the IDFA. From version X.Y.Z, both
+        apps also tell Firebase Analytics that nothing it collects may be used for advertising:
+        the three settings Google provides for this, for storing data for ads, using your data
+        for ads and personalising ads, are off, and the Android app also sets Firebase Analytics
+        never to collect the advertising ID.</li>
     <li><strong>No tracking across other companies' apps or websites.</strong> There is no
         attribution SDK, no data broker and no third-party analytics product beyond Google
         Firebase.</li>
@@ -1092,7 +1223,9 @@
   <ul>
     <li><strong>Private to you</strong>: your email address, your profile record, your blocked
         list, your saved searches, your starred venues, your weekly schedule, your activity feed,
-        the ratings you have received, your venue check-ins, the list of players you follow, and
+        the ratings you have received, your venue check-ins, the list of players you follow, from
+        version X.Y.Z the record of your last <em>Sign out on all devices</em>, any copy of your
+        data that our server built for you, and
         your joins of hall ladders with how many of your games counted there. A player you follow
         is not told.</li>
     <li><strong>Private to you and one other player</strong>: a direct challenge or an
@@ -1173,14 +1306,17 @@
         same region, starts the jobs that run on a timetable, and holds no personal data.</li>
     <li><strong>Cloud Logging</strong>: the logs our server-side jobs write, which can contain
         your user id. Google keeps them in its global location, which means they can be stored
-        in any of its data centres.</li>
+        in any of its data centres. We also use them to alert us to unusual activity, such as
+        many new profiles in a short time, an account reaching its daily limit of reports or
+        feedback, or one player reported by several others.</li>
     <li><strong>Firebase Crashlytics</strong>: crash and diagnostic reports.</li>
     <li><strong>Firebase Analytics</strong>: the app usage events described above.</li>
     <li><strong>Firebase Cloud Messaging</strong>: push notifications on both apps. On iPhone,
         Firebase passes them to Apple's Push Notification service, which delivers them, as
         described below.</li>
-    <li><strong>Firebase App Check</strong>: on Android, the app uses it, with Google Play, to
-        show our services that a request comes from our genuine app.</li>
+    <li><strong>Firebase App Check</strong>: on Android, the app uses it, with Google Play, and
+        from version X.Y.Z the iPhone app too, with Apple's App Attest service, to show our
+        services that a request comes from our genuine app.</li>
     <li><strong>Firebase Installations</strong>: it gives each install of the app a random
         <strong>Firebase installation ID</strong>, which identifies that install, not you: the
         app installed again, or another app on the same phone, gets a different one. Crashlytics
@@ -1236,7 +1372,8 @@
   <ul>
     <li><strong>Performance of a contract</strong> (Article 6(1)(b)): creating and running your
         account, publishing your match posts, handling join requests, recording results, running
-        the hall ladders you join, and everything else you need for the app to do its job,
+        the hall ladders you join, signing your account out of every phone when you ask, and
+        everything else you need for the app to do its job,
         including storing each device's
         notification token and sending you the notifications you leave on in Settings, which
         your device's notification permission can also stop. From version 2.3.0, before you have
@@ -1245,11 +1382,14 @@
     <li><strong>Legitimate interests</strong> (Article 6(1)(f)): keeping RackUp safe and working,
         and finding out which of our social media posts, ads and posters bring new players.
         This covers abuse reports, blocking, no show and dispute records, the profanity filter,
-        crash diagnostics, the app usage analytics described above, including where installs
+        the daily limits on reports and feedback and the alert when several players report the
+        same player, crash diagnostics, the app usage analytics described above, including how
+        well the app works, the safety signals once we turn them on and where installs
         come from, the weekly sign-up, update and fill counts described with your profile
         record, and the yes or no for quiet cities described under <em>What you post and
         write</em>. Our interest is in running a service that is safe for players and does not
-        crash, in knowing when enough players have updated to release a change, in seeing whether
+        crash or fail, in noticing abuse and tampered copies of the app early, in knowing when
+        enough players have updated to release a change, in seeing whether
         games fill, in helping new posts in quiet cities find a player, and in spending our
         advertising budget where it brings new players. We have
         kept the data to the minimum that serves it, and measuring our posts and ads collects
@@ -1258,7 +1398,11 @@
         is, and the counts come from those records and from your posts, join requests, challenge
         claims, direct challenges and activity feed, but as with install sources we look only at
         the totals, never at a single player. You can object to this processing at any time, at
-        the address below.</li>
+        the address below, and, from version X.Y.Z, to app usage analytics by turning off
+        <em>Usage analytics</em> in the app, as described under <em>App usage analytics</em>.</li>
+    <li><strong>Legal obligation</strong> (Article 6(1)(c)): answering the requests you make under
+        the GDPR, such as sending you a copy of your data, as described under <em>Your
+        rights</em>.</li>
     <li><strong>Consent</strong> (Article 6(1)(a)): the optional approximate location permission
         on both apps. You can withdraw it at any time in your device settings.</li>
   </ul>
@@ -1309,7 +1453,9 @@
         moderation history.</li>
     <li><strong>Crash and analytics records</strong>: held by Google under the Firebase project's
         own retention settings. They are not linked to your account, so they are not affected by
-        account deletion and we cannot single out an individual's records.</li>
+        account deletion and we cannot single out an individual's records. From version X.Y.Z,
+        deleting your account or turning off <em>Usage analytics</em> resets the analytics
+        identifier on that phone, but does not delete what was already sent.</li>
     <li><strong>Firebase installation IDs</strong>: kept by Google until they are deleted. We do
         not delete them, and deleting your account does not delete them either. Google deletes
         one once the app has not been used on that phone for 270 days, its current limit, and
@@ -1320,6 +1466,14 @@
         holding the user id, a status, timestamps and the names of the steps that ran. It holds
         no name, no email, no photo and no message text. It is our evidence that the erasure
         happened, and no app can read it.</li>
+    <li><strong>Your copy of your data</strong>: we delete our copy of a file we send you once it
+        is sent. A copy that our server builds in our database stays there, readable only by you,
+        until your next request replaces it or you delete your account.</li>
+    <li><strong>Sign out on all devices</strong>: the record of when you last asked, and of when
+        our server did it, until you delete your account.</li>
+    <li><strong>Daily limits on reports and feedback</strong>: the records of what you sent in the
+        last 24 hours, until your account or guest identifier is deleted. An entry older than 24
+        hours drops out when its record is next updated.</li>
   </ul>
 
   <h2 id="delete">Deleting your account</h2>
@@ -1355,6 +1509,9 @@
     <li>the record that keeps each of your invites to at most 10 friends at a time and 5 pushes;</li>
     <li>the records that keep your ladder pushes to a few a week, and the board updates that your
         joins and player card start to 6 a day;</li>
+    <li>the records that keep your reports and feedback to their daily limits;</li>
+    <li>the record of your last <em>Sign out on all devices</em>;</li>
+    <li>any copy of your data that our server built for you;</li>
     <li>the count of the games you have played with a confirmed score;</li>
     <li>your follows of other players, and other players' follows of you;</li>
     <li>the ratings other players gave you;</li>
@@ -1374,7 +1531,9 @@
     <li>the abuse reports you filed about other people.</li>
   </ul>
   <p>The job normally finishes within moments. If a step fails, a scheduled task retries the
-  remaining steps every six hours until they are done.</p>
+  remaining steps every six hours until they are done. From version X.Y.Z, the app on the phone
+  you delete your account from also resets that phone's analytics identifier, as described under
+  <em>App usage analytics</em>.</p>
 
   <h3>What survives deletion, and why</h3>
   <p>We would rather be exact here than reassuring, so please read this part.</p>
@@ -1420,7 +1579,9 @@
     <li><strong>Portability</strong>: receive your data in a structured, machine readable format,
         or have us send it to another controller where that is technically feasible.</li>
     <li><strong>Objection</strong>: object to processing we carry out on the basis of legitimate
-        interests, including the analytics and crash reporting described above.</li>
+        interests, including the analytics and crash reporting described above. From version
+        X.Y.Z you can also turn app usage analytics off yourself, with <em>Usage
+        analytics</em>.</li>
     <li><strong>Restriction</strong>: ask us to stop processing your data while a dispute about
         it is resolved.</li>
     <li><strong>Withdraw consent</strong>: turn off the location permission, on either app, at any
@@ -1430,6 +1591,24 @@
   <p>To exercise any of these, email
   <a href="mailto:rackupbilliard@gmail.com">rackupbilliard@gmail.com</a> from the address on your
   account. We reply within one month, as the GDPR requires. There is no charge.</p>
+  <p><strong>Your copy of your data.</strong> When you ask for a copy, we send you one file in
+  JSON, a structured, machine readable format. It holds your profile record and everything our
+  database keeps under it, such as your notification tokens, starred halls, schedule, blocked
+  list, activity feed, saved searches, follows, the ratings you received, your joins of hall
+  ladders and the records our server keeps to limit your notifications, reports and feedback;
+  your player card and the count of the games you played with a confirmed score; and every record
+  in our database that you posted, sent or wrote, or that names you as one of its players:
+  matches, open challenges and their claims, join requests, direct challenges, invitations to
+  games at the table, invites and your joins through them, the scores you reported, quick messages
+  and their read marks, check-ins, your looking-for-a-game post, your feedback, the reports you
+  filed, the ratings you wrote and the record of your last <em>Sign out on all devices</em>. Three
+  things in it are cut: each notification token shows only its last six characters, the ratings
+  other players gave you do not say who gave them, and of the players who follow you it gives
+  only how many. It leaves out what belongs to other players, such as who blocked you or their
+  activity feeds that name you, and your photo itself, whose link it has. We send it to the
+  address on your account, or another way you choose, and then delete our copy. Our server can
+  also build the same copy in our database, under your account, at most once a day, where only
+  you can read it; no version of the apps asks for one yet.</p>
   <p>If you are unhappy with how we have handled your data, you can complain to the supervisory
   authority in the EU country where you live.
   In Greece that is the Hellenic Data Protection Authority, at <a href="https://www.dpa.gr">dpa.gr</a>,
@@ -1448,19 +1627,26 @@
   write is enforced by Firebase security rules on the server, not by the app, so a modified app
   cannot reach data it is not entitled to. That includes a guest session: since 20 October 2026
   our rules let it read no match or challenge record, so it cannot reach a host's note even by
-  asking our database directly (see <em>Looking around as a guest</em>). The Android app
-  additionally verifies itself with
+  asking our database directly (see <em>Looking around as a guest</em>). The Android app, and
+  from version X.Y.Z the iPhone app too, additionally verify themselves with
   Firebase App Check. We are a small team and we do not pretend to be immune to every risk, but
   if a breach affects your personal data we will notify the Hellenic Data Protection Authority
   and, where the law requires it, you.</p>
 
   <h2>Changes to this policy</h2>
   <p>If this policy changes, the new version is published at this address with a new effective
-  date, and we say at the top what changed. This version, dated 30 November 2026, adds hall
+  date, and we say at the top what changed. This version, dated XX December 2026, adds, from
+  version X.Y.Z of the apps, the <em>Usage analytics</em> switch, five analytics events, two of
+  which stay off until we turn them on, the end of the iPhone's identifier for vendor in
+  analytics, the advertising settings, the analytics identifier reset after a deletion and
+  <em>Sign out on all devices</em>, and also the daily limits on reports and feedback, the alert
+  when several players report the same player, the copy of your data we send you and two
+  corrections, about the identifier for vendor and the analytics events in crash reports, and
+  supersedes the version dated 30 November 2026, which added hall
   ladders, from version 2.5.0 of the apps: what a hall's board shows and to whom, the numbers only
   you see, how long boards and badges are kept, what our server keeps to build them, the ladder
   pushes and the record that limits them, two analytics events and the card a winner can share,
-  and supersedes the version dated 18 November 2026, which added inviting a
+  and superseded the version dated 18 November 2026, which added inviting a
   friend to play at a hall, how we tell you when a friend joins and the record of each running
   invite's joins and pushes, four analytics events, and the tags the Android app reads after an
   install from a hall's poster, a hall's share card, a friend's invite or a shared game's page,
@@ -1561,11 +1747,14 @@
   επίσης τη διεύθυνση IP σου και το user agent της εφαρμογής σου, μια σύντομη περιγραφή του
   λογισμικού του τηλεφώνου, και κρατά τις διευθύνσεις IP που καταγράφει για λίγες εβδομάδες.
   Το Firebase Crashlytics, το Firebase Analytics, το Firebase Cloud Messaging, που στέλνει τις
-  ειδοποιήσεις push, και το Firebase App Check, με το οποίο η εφαρμογή Android επιβεβαιώνει,
-  μέσω του Google Play, ότι είναι η γνήσια εφαρμογή μας, είναι παγκόσμιες υπηρεσίες της Google.
+  ειδοποιήσεις push, και το Firebase App Check, με το οποίο η εφαρμογή Android, μέσω του Google
+  Play, και από την έκδοση X.Y.Z η εφαρμογή iPhone, μέσω της υπηρεσίας App Attest της Apple,
+  επιβεβαιώνουν ότι είναι η γνήσια εφαρμογή μας, είναι παγκόσμιες υπηρεσίες της Google.
   Τα αρχεία καταγραφής του διακομιστή μας (Cloud Logging), που μπορεί να περιέχουν το
   αναγνωριστικό χρήστη σου, η Google τα κρατά σε οποιοδήποτε από τα κέντρα δεδομένων της στον
-  κόσμο. Το Crashlytics, το Analytics και το Cloud Messaging χρησιμοποιούν επίσης το
+  κόσμο. Τα χρησιμοποιούμε και για να μας ειδοποιούν για ασυνήθιστη δραστηριότητα, όπως πολλά νέα
+  προφίλ σε λίγη ώρα, έναν λογαριασμό που έφτασε το ημερήσιο όριο αναφορών ή σχολίων, ή έναν
+  παίκτη που ανέφεραν πολλοί άλλοι. Το Crashlytics, το Analytics και το Cloud Messaging χρησιμοποιούν επίσης το
   αναγνωριστικό εγκατάστασης του Firebase (Firebase installation ID): ένα τυχαίο αναγνωριστικό
   που δίνει η υπηρεσία Firebase Installations σε κάθε εγκατάσταση της εφαρμογής και που
   ξεχωρίζει την εγκατάσταση, όχι εσένα. Εμείς δεν το χρησιμοποιούμε, αλλά το αναγνωριστικό
@@ -1776,8 +1965,8 @@
   προσκλήσεις σου έδειξε σε άλλους κάθε ημέρα, ως αριθμό, ώστε να μην ξεπερνούν τις 10 την
   ημέρα.</p>
   <p>Και οι δύο εφαρμογές περιλαμβάνουν <strong>Firebase Crashlytics</strong> (αναφορές
-  σφαλμάτων) και <strong>Firebase Analytics</strong> (39 συμβάντα χρήσης από την έκδοση 2.5.0,
-  37 από την 2.4.9, 33 από την 2.4.8, 31 από την 2.4.7, 25 από την 2.4.5, 24 από την 2.3.0 και 23
+  σφαλμάτων) και <strong>Firebase Analytics</strong> (44 συμβάντα χρήσης από την έκδοση X.Y.Z,
+  39 από την 2.5.0, 37 από την 2.4.9, 33 από την 2.4.8, 31 από την 2.4.7, 25 από την 2.4.5, 24 από την 2.3.0 και 23
   στις προηγούμενες, όπως η δημοσίευση αγώνα ή το check-in σε αίθουσα).
   Αυτά τα δύο συμβάντα καταγράφουν και ποια αίθουσα αφορούν. Από την έκδοση 2.4.5 καταγράφουμε
   επίσης πότε ανοίγεις ένα ανοιχτό ματς άλλου παίκτη, από πού έφτασες εκεί, την αίθουσα και πόσο
@@ -1820,9 +2009,45 @@
   όταν ανοίγεις ολόκληρη τη σκάλα της, με την αίθουσα και από πού την άνοιξες (τη σελίδα της
   αίθουσας ή την Κατάταξη), και όταν ανοίγεις την κοινοποίηση της κάρτας μιας σεζόν που κέρδισες,
   με την αίθουσα, όχι όμως αν την έστειλες ή σε ποιον.
+  Από την έκδοση X.Y.Z καταγράφουμε επίσης, και στις δύο εφαρμογές, πώς τελείωσε καθεμία από
+  αυτές τις ενέργειες (<code>action_result</code>): εγγραφή, σύνδεση, είσοδος ως επισκέπτης,
+  επιβεβαίωση email, αποθήκευση προφίλ, ανάρτηση ματς, δήλωσης ότι ψάχνεις παιχνίδι ή παιχνιδιού
+  στο τραπέζι, αίτημα συμμετοχής, αποδοχή αιτήματος, αποστολή, αποδοχή ή διεκδίκηση πρόκλησης,
+  check-in και γρήγορο μήνυμα. Καταγράφουμε αν πέρασε, αν την ακύρωσες, αν απορρίφθηκε, για
+  παράδειγμα επειδή το ματς είχε ήδη κλείσει ή ο κωδικός ήταν λάθος, αν την απέρριψαν οι κανόνες
+  ασφαλείας μας, αν δεν υπήρχε σύνδεση, αν η εφαρμογή σταμάτησε να περιμένει ή αν έγινε άλλο
+  σφάλμα, το όνομα του σφάλματος από μια σταθερή λίστα, ποτέ μήνυμα σφάλματος, και, στην εγγραφή
+  και τη σύνδεση, τον τρόπο (κωδικός, Google ή Apple). Μόνο στο Android καταγράφουμε επίσης
+  περίπου πόσο άργησε η απάντηση και τι σύνδεση είχε το τηλέφωνο (καμία, Wi-Fi, δίκτυο κινητής
+  τηλεφωνίας ή άλλη), ποτέ ποιο δίκτυο ή κάποια διεύθυνση, πώς άνοιξε η εφαρμογή όταν την
+  άνοιξες ενώ ήταν κλειστή (συνδεδεμένος, με το αντίγραφο του προφίλ σου στο τηλέφωνο επειδή οι διακομιστές
+  μας δεν είχαν απαντήσει ακόμη, συνδεδεμένος πριν επιβεβαιώσεις το email ή ολοκληρώσεις το
+  προφίλ σου, ως επισκέπτης ή αποσυνδεδεμένος) και περίπου πόση ώρα χρειάστηκε για να δείξει την
+  πρώτη οθόνη (<code>launch_ready</code>), και, όταν φεύγεις από μια οθόνη, ποια ήταν
+  («Ανακάλυψη», «Παιχνίδια», «Κατάταξη», «Αίθουσες», «Προφίλ», η σελίδα ενός ματς, η φόρμα
+  ανάρτησης, η σελίδα μιας αίθουσας ή άλλη) και αν σχεδιάστηκε αργά ή πάγωσε
+  (<code>screen_frames</code>). Μόνο στο Android, και μόνο όταν τα ενεργοποιήσουμε, γιατί αρχικά
+  είναι κλειστά, η εφαρμογή στέλνει και δύο ακόμη συμβάντα. Το <code>device_signals</code>, το
+  πολύ μία φορά την ημέρα, λέει αν το τηλέφωνο δείχνει σημάδια πρόσβασης root, εργαλείου που
+  παρεμβαίνει σε εφαρμογές, εξομοιωτή, συνδεδεμένου εργαλείου αποσφαλμάτωσης, τροποποιημένης
+  έκδοσης της εφαρμογής, περιβάλλοντος κλωνοποίησης εφαρμογών ή ενεργών επιλογών για
+  προγραμματιστές, αν χρησιμοποιεί VPN ή διακομιστή μεσολάβησης (proxy), από πού εγκαταστάθηκε η
+  εφαρμογή (Google Play, από υπολογιστή, από αρχείο, από άλλο κατάστημα ή άγνωστο) και, από το
+  Android 9, τους πρώτους 8 χαρακτήρες του αποτυπώματος του πιστοποιητικού με το οποίο είναι
+  υπογεγραμμένη, που είναι ίδιο σε κάθε αντίγραφο του RackUp από το Google Play. Δεν αναφέρει
+  ποτέ άλλη εφαρμογή, δίκτυο ή διεύθυνση, και η εφαρμογή δεν μπλοκάρει ούτε αλλάζει τίποτα
+  εξαιτίας του. Το <code>sensitive_screen_recorded</code>, στο Android 15 και νεότερο, λέει ότι η
+  οθόνη καταγράφεται ενώ είναι ανοιχτή η οθόνη σύνδεσης, δημιουργίας λογαριασμού, επιβεβαίωσης
+  email ή διαγραφής λογαριασμού, ή ο κωδικός που ζητάμε πριν από μια διαγραφή, και ποια από αυτές
+  ήταν, χωρίς να σταματά την καταγραφή. Και τα δύο τα διαβάζουμε μόνο ως συνολικούς αριθμούς, για
+  να μετράμε την παραποίηση και την κατάχρηση. Ένα ακόμη συμβάν, το <code>profile_status</code>, υπάρχει
+  στην εφαρμογή Android αλλά είναι κλειστό, και καμία έκδοση δεν το στέλνει. Από την έκδοση X.Y.Z,
+  πριν φύγει ένα συμβάν από το τηλέφωνο, οι εφαρμογές ελέγχουν κάθε στοιχείο του με μια σταθερή
+  λίστα όσων επιτρέπεται να έχει εκείνο το συμβάν, και αφαιρούν ό,τι άλλο.
   Κανένα συμβάν δεν περιέχει όνομα, email, κωδικό πρόσκλησης ή κείμενο που έγραψες, και όσα συλλέγουν τα δύο
   εργαλεία δεν τα συνδέουμε ποτέ με τον λογαριασμό σου: η εφαρμογή δεν στέλνει ποτέ το
-  αναγνωριστικό χρήστη σε αυτές τις υπηρεσίες.</p>
+  αναγνωριστικό χρήστη σε αυτές τις υπηρεσίες. Μια αναφορά σφάλματος περιέχει επίσης τα συμβάντα
+  χρήσης που κατέγραψε η εφαρμογή λίγο πριν από το σφάλμα.</p>
   <p>Στο Android, όταν εγκαθιστάς την εφαρμογή από σύνδεσμό μας, το Google Play δίνει στο Firebase
   Analytics τις ετικέτες του συνδέσμου και πότε τον πάτησες. Οι ετικέτες λένε την πηγή, το μέσο
   και την καμπάνια, ανάλογα με το πού ήταν ο σύνδεσμος: για παράδειγμα στην ιστοσελίδα μας, στη
@@ -1854,8 +2079,36 @@
   γράφουμε παραπάνω, και όταν το ματς είναι ανοιχτό ματς άλλου παίκτη, καταγράφει επίσης το
   <code>match_viewed</code>, με την αίθουσα του ματς, όπως για κάθε τέτοιο ματς που ανοίγεις. Στο
   iPhone η εφαρμογή δεν διαβάζει τίποτα τέτοιο.</p>
+  <p><strong>Στατιστικά χρήσης.</strong> Από την έκδοση X.Y.Z μπορείς να κλείσεις τα στατιστικά
+  χρήσης: στις Ρυθμίσεις, η «Πολιτική απορρήτου» ανοίγει το «Απόρρητο», όπου είναι ο διακόπτης
+  «Στατιστικά χρήσης». Από τη στιγμή που τον κλείνεις, η εφαρμογή δεν στέλνει τίποτα στο Firebase
+  Analytics από αυτό το τηλέφωνο, ούτε συμβάντα ούτε ιδιότητες χρήστη ούτε τις δικές του τυπικές
+  μετρήσεις, οπότε και οι αναφορές σφαλμάτων δεν περιέχουν πια συμβάντα χρήσης. Το κλείσιμο σβήνει
+  επίσης ό,τι κρατά ακόμη το Analytics στο τηλέφωνο και αλλάζει το αναγνωριστικό εγκατάστασής
+  του, και αν τον ανοίξεις ξανά, το Analytics ξεκινά από την αρχή με νέο αναγνωριστικό. Η επιλογή
+  σου μένει στο τηλέφωνο, για αυτή την εγκατάσταση της εφαρμογής, ποτέ στον λογαριασμό σου, και
+  δεν κλείνει τις αναφορές σφαλμάτων. Ο διακόπτης είναι ανοιχτός ώσπου να τον κλείσεις, γιατί
+  νομική βάση είναι το έννομο συμφέρον μας, και το κλείσιμό του είναι ο πιο απλός τρόπος να
+  αντιταχθείς. Από την ίδια έκδοση, όταν διαγράφεις τον λογαριασμό σου, η εφαρμογή σβήνει επίσης
+  ό,τι κρατά ακόμη το Analytics στο τηλέφωνο από το οποίο τον διέγραψες και αλλάζει το
+  αναγνωριστικό του, ώστε όσα καταγράφει μετά σε εκείνο το τηλέφωνο να μη συνδέονται με όσα
+  κατέγραψε πριν. Όσα έχει ήδη στείλει το Analytics μένουν στη Google.</p>
+  <p><strong>Το αναγνωριστικό προμηθευτή στο iPhone.</strong> Πριν από την έκδοση X.Y.Z, το
+  Firebase Analytics της εφαρμογής iPhone συλλέγει και το αναγνωριστικό προμηθευτή (identifier for
+  vendor, IDFV) του iPhone σου: ένα αναγνωριστικό που δίνει το iOS στις εφαρμογές ενός δημιουργού
+  σε ένα iPhone, κοινό για όλες, που μένει ίδιο ώσπου να αφαιρέσεις όλες τις εφαρμογές του. Το
+  RackUp είναι η μόνη μας εφαρμογή. Το Analytics το προσθέτει στα συμβάντα από εκείνο το iPhone.
+  Η πολιτική αυτή δεν το έλεγε πριν. Από την έκδοση X.Y.Z η εφαρμογή iPhone κλείνει αυτή τη
+  συλλογή, οπότε τα συμβάντα της δεν το περιέχουν πια, ενώ όσα στάλθηκαν πριν το κρατούν. Εμείς
+  δεν το διαβάζουμε ποτέ, και δεν είναι το διαφημιστικό αναγνωριστικό, που η εφαρμογή iPhone δεν
+  διαβάζει.</p>
   <p>Δεν υπάρχουν διαφημίσεις μέσα στις εφαρμογές, ούτε διαφημιστικά αναγνωριστικά, ούτε
-  παρακολούθηση σε εφαρμογές άλλων εταιρειών. Δεν πουλάμε δεδομένα. Από την έκδοση 2.1.0
+  παρακολούθηση σε εφαρμογές άλλων εταιρειών. Δεν πουλάμε δεδομένα. Από την έκδοση X.Y.Z, και οι
+  δύο εφαρμογές λένε επίσης στο Firebase Analytics ότι όσα συλλέγει δεν επιτρέπεται να
+  χρησιμοποιηθούν για διαφήμιση: οι τρεις ρυθμίσεις που δίνει η Google γι' αυτό, για αποθήκευση
+  δεδομένων για διαφημίσεις, χρήση των δεδομένων σου για διαφημίσεις και εξατομίκευση διαφημίσεων,
+  είναι κλειστές, και η εφαρμογή Android του ορίζει επίσης να μη συλλέγει ποτέ το διαφημιστικό
+  αναγνωριστικό. Από την έκδοση 2.1.0
   υπάρχουν ειδοποιήσεις push και στο iPhone: αν τις επιτρέψεις, κρατάμε στον λογαριασμό σου
   ένα αναγνωριστικό ειδοποιήσεων για τη συσκευή, για να σου τις στέλνουμε, και μπορείς να
   τις κλείσεις από τις Ρυθμίσεις της εφαρμογής ή του iPhone. Στο iPhone το αναγνωριστικό μένει
@@ -1981,13 +2234,36 @@
   την αίθουσα στα αγαπημένα μπορεί να πάρουν και ειδοποίηση ότι μόλις ήρθε ένας παίκτης, το πολύ
   μία την ώρα για κάθε αίθουσα, που επίσης δεν λέει ποιος. Αν αποθηκεύσεις μια αναζήτηση,
   κρατάμε την πόλη του φίλτρου της, ακόμη κι αν την πρότεινε η εφαρμογή από τη θέση σου.</p>
+  <p><strong>Αποσύνδεση από όλες τις συσκευές.</strong> Από την έκδοση X.Y.Z, η «Αποσύνδεση από
+  όλες τις συσκευές» στις Ρυθμίσεις αποσυνδέει τον λογαριασμό σου από κάθε τηλέφωνο όπου είναι
+  συνδεδεμένος, μαζί και από αυτό. Μπορείς να το ζητάς το πολύ μία φορά το λεπτό. Η εφαρμογή
+  γράφει πότε το ζήτησες σε μια δική της εγγραφή με το αναγνωριστικό χρήστη σου, που τη διαβάζεις
+  μόνο εσύ. Ο διακομιστής
+  μας τερματίζει τότε κάθε σύνδεση του λογαριασμού σου στο Firebase Authentication, σβήνει τα
+  αναγνωριστικά ειδοποιήσεων όλων των τηλεφώνων σου και γράφει στην ίδια εγγραφή πότε το έκανε,
+  ώστε τα άλλα τηλέφωνά σου να αποσυνδεθούν μόνα τους. Αν μας πεις ότι κάποιος άλλος
+  χρησιμοποιεί τον λογαριασμό σου, μπορούμε να το κάνουμε εμείς για σένα. Η εγγραφή σβήνεται όταν
+  διαγράψεις τον λογαριασμό σου.</p>
+  <p><strong>Όρια σε αναφορές και σχόλια.</strong> Για να μη μας κατακλύζει κανείς, ο διακομιστής
+  μας δεν δέχεται άλλες αναφορές από λογαριασμό ή επισκέπτη που έστειλε 20 τις τελευταίες 24
+  ώρες, ούτε άλλα σχόλια από όποιον έστειλε 10, ώσπου να περάσουν 24 ώρες από το πρώτο από αυτά.
+  Για να τα μετρά, κρατά στον λογαριασμό σου, ή στο αναγνωριστικό επισκέπτη σου, το αναγνωριστικό
+  και την ώρα καθενός που έστειλες τις τελευταίες 24 ώρες και πότε λήγει το όριο, και ό,τι είναι
+  παλιότερο βγαίνει από την εγγραφή όταν αυτή ενημερωθεί ξανά. Καμία εφαρμογή δεν διαβάζει αυτές
+  τις εγγραφές, και σβήνονται μαζί με τον λογαριασμό ή το αναγνωριστικό επισκέπτη σου. Όταν τρεις
+  διαφορετικοί παίκτες κάνουν αναφορά για τον ίδιο παίκτη μέσα σε 24 ώρες, ο διακομιστής μας γράφει
+  στα αρχεία καταγραφής του μια γραμμή με το αναγνωριστικό χρήστη εκείνου του παίκτη και πόσοι τον
+  ανέφεραν, ποτέ ποιοι, και μας ειδοποιεί, για να διαβάσουμε τις αναφορές νωρίτερα. Η γραμμή αυτή
+  από μόνη της δεν αλλάζει τίποτα για τον παίκτη.</p>
   <p>Διαγραφή λογαριασμού: μέσα από την εφαρμογή (Προφίλ → Ρυθμίσεις → Διαγραφή λογαριασμού) ή με
   email στο <a href="mailto:rackupbilliard@gmail.com">rackupbilliard@gmail.com</a>. Μαζί με τον
   λογαριασμό σου διαγράφονται η κάρτα παίκτη σου και η θέση σου στην Κατάταξη, οι συμμετοχές σου
   στις σκάλες των αιθουσών, η θέση σου σε αυτές, στην τρέχουσα και στην προηγούμενη σεζόν, τα
   σήματά σου από τις σκάλες, οι προσωπικές προκλήσεις, οι προσκλήσεις για παιχνίδι στο τραπέζι
   και τα γρήγορα μηνύματα που έστειλες ή έλαβες, οι προσκλήσεις σου σε φίλους και ό,τι
-  καταγράψαμε όταν μπήκες με πρόσκληση άλλου, και
+  καταγράψαμε όταν μπήκες με πρόσκληση άλλου, η εγγραφή της τελευταίας αποσύνδεσης από όλες τις
+  συσκευές, οι εγγραφές με τα όρια των αναφορών και των σχολίων σου, κάθε αντίγραφο των δεδομένων
+  σου που έφτιαξε ο διακομιστής μας, και
   οι ειδοποιήσεις στη ροή δραστηριότητας άλλων παικτών που
   αναφέρουν το όνομά σου. Τα διαγραμμένα δεδομένα μπορεί να μείνουν έως 7 ημέρες στο ημερήσιο
   αντίγραφο ασφαλείας της βάσης δεδομένων μας και στη λειτουργία που επαναφέρει τη βάση όπως
@@ -1997,6 +2273,19 @@
   σβήνονται. Η Google, από την πλευρά της, αφαιρεί τα στοιχεία σύνδεσης ενός διαγραμμένου
   λογαριασμού από τα δικά της αντίγραφα ασφαλείας μέσα σε 180 ημέρες. Διάβασε παραπάνω τι
   ακριβώς διαγράφεται και τι παραμένει.</p>
+  <p><strong>Αντίγραφο των δεδομένων σου.</strong> Αν μας ζητήσεις αντίγραφο των δεδομένων σου, σου
+  στέλνουμε ένα αρχείο JSON, μια δομημένη μορφή που διαβάζεται από υπολογιστή. Έχει την εγγραφή
+  του προφίλ σου και ό,τι κρατά η βάση μας κάτω από αυτήν, την κάρτα παίκτη σου, πόσα ματς έχεις
+  παίξει με επιβεβαιωμένο σκορ, και κάθε εγγραφή της βάσης μας που δημοσίευσες, έστειλες ή έγραψες
+  ή που σε αναφέρει ως έναν από τους παίκτες της. Από κάθε αναγνωριστικό ειδοποιήσεων δείχνει μόνο
+  τους τελευταίους έξι χαρακτήρες, οι βαθμολογίες που σου έδωσαν άλλοι δεν λένε ποιος τις έδωσε,
+  από όσους σε ακολουθούν δίνει μόνο πόσοι είναι, και δεν περιέχει ό,τι ανήκει σε άλλους παίκτες,
+  όπως ποιος σε έχει αποκλείσει, ούτε την ίδια τη φωτογραφία σου, μόνο τον σύνδεσμό της. Σου το
+  στέλνουμε στη διεύθυνση του λογαριασμού σου ή όπως αλλιώς διαλέξεις, και μετά σβήνουμε το δικό
+  μας αντίγραφο. Ο διακομιστής μας μπορεί να φτιάξει το ίδιο αντίγραφο και στη βάση μας, στον
+  λογαριασμό σου, το πολύ μία φορά την ημέρα, όπου το διαβάζεις μόνο εσύ, και το κρατά ώσπου να το
+  αντικαταστήσει το επόμενο αίτημά σου ή να διαγράψεις τον λογαριασμό σου. Καμία έκδοση της
+  εφαρμογής δεν το ζητά ακόμη.</p>
   <p>Έχεις δικαίωμα πρόσβασης, διόρθωσης, διαγραφής, φορητότητας, εναντίωσης και περιορισμού,
   δικαίωμα να ανακαλέσεις όποτε θέλεις τη συγκατάθεσή σου για την τοποθεσία, καθώς και δικαίωμα
   καταγγελίας στην εποπτική αρχή της χώρας της ΕΕ όπου μένεις.
