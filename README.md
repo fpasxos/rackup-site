@@ -12,6 +12,8 @@ path on `getrackup.com`, so links already in the app and on QR codes keep workin
 | `en/index.html` | English home page, served at `/en/` | hand, likewise |
 | `404.html` | Bilingual page GitHub Pages serves for any missing path (root-relative links only) | hand, except the store links |
 | `support.html`, `privacy.html` | Support and privacy policy (store listings link here, so keep the URLs) | hand, except the store links in `support.html` |
+| `security.html` | How to report a security weakness, served at `/security`, the `Policy` address of `security.txt` | hand |
+| `.well-known/security.txt` | The security contact in RFC 9116's format. `_config.yml` must keep `include: [".well-known"]`, or Jekyll drops the folder. Renew `Expires` about six months ahead: `tools/test_security_txt.py` fails once it has passed, and the app repo's weekly security watch fails 30 days before | hand |
 | `mpiliardo/` | Greek hall directory: index, one page per city and a hub page per country in `HUBS` (Cyprus: `kypros/`) | generator |
 | `en/billiards/` | The same directory in English | generator |
 | `galliko-mpiliardo/`, `en/carom-billiards/` | Carom page: every hall known to have carom tables, by city, with the count where known | generator |
