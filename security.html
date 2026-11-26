@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RackUp Security: report a weakness</title>
+<meta name="description" content="How to report a security weakness in the RackUp billiards app or getrackup.com privately, what happens next, what is in scope, and our safe harbour.">
+<link rel="canonical" href="https://getrackup.com/security.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RackUp">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="RackUp Security">
+<meta property="og:url" content="https://getrackup.com/security.html">
+<meta property="og:image" content="https://getrackup.com/assets/og-card-2026-11-12-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="RackUp: find an opponent. You say when and where.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0E1512">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container nav">
+    <a class="wordmark" href="en/"><svg class="mark" viewBox="0 0 80.4 73.808" aria-hidden="true" focusable="false"><path fill="#C6F24E" fill-rule="evenodd" d="M53.71 7.8L78.31 50.408A15.6 15.6 0 0 1 64.8 73.808L15.6 73.808A15.6 15.6 0 0 1 2.09 50.408L26.69 7.8A15.6 15.6 0 0 1 53.71 7.8ZM49.033 10.5A10.2 10.2 0 0 0 31.367 10.5L6.767 53.108A10.2 10.2 0 0 0 15.6 68.408L64.8 68.408A10.2 10.2 0 0 0 73.633 53.108Z"/><g fill="#EAF2ED"><circle cx="40.2" cy="15.6" r="7.2"/><circle cx="32" cy="29.803" r="7.2"/><circle cx="48.4" cy="29.803" r="7.2"/><circle cx="23.8" cy="44.006" r="7.2"/><circle cx="56.6" cy="44.006" r="7.2"/><circle cx="15.6" cy="58.208" r="7.2"/><circle cx="32" cy="58.208" r="7.2"/><circle cx="48.4" cy="58.208" r="7.2"/><circle cx="64.8" cy="58.208" r="7.2"/></g><circle cx="40.2" cy="44.006" r="7.2" fill="#C6F24E"/></svg><span class="wm">RACK<span>UP</span></span></a>
+    <nav class="nav-links" aria-label="Main">
+      <a class="nav-text" href="en/billiards/">Halls</a>
+      <a class="nav-text" href="en/#how">How it works</a>
+      <a class="nav-text" href="support.html">Help</a>
+      <a class="lang" href="#el" hreflang="el" lang="el">ΕΛ</a>
+      <a class="btn btn-primary btn-sm" href="en/#download">Get the app</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="container">
+<article class="prose">
+  <h1>RackUp Security</h1>
+  <p class="muted">How to report a security weakness in the RackUp apps for Android and iPhone, or
+  on this website</p>
+  <p lang="el"><a href="#el">Στα Ελληνικά</a></p>
+
+  <div class="card">
+    <p>Found a security weakness? Please tell us privately first.<br>Email us, with "Security" in
+    the subject:</p>
+    <p class="addr"><a href="mailto:rackupbilliard@gmail.com?subject=Security">rackupbilliard@gmail.com</a></p>
+  </div>
+
+  <p>RackUp is a free app for finding billiard opponents, on Android and iPhone, run by one
+  person. If you have found a weakness in it, thank you: please tell us privately first.</p>
+
+  <h2 id="report">How to report</h2>
+  <p>Email <a href="mailto:rackupbilliard@gmail.com?subject=Security">rackupbilliard@gmail.com</a>
+  with "Security" in the subject, in Greek or in English. Please include what you found, the steps
+  to reproduce it, the app version and device, and what an attacker could gain. Do not include
+  anyone else's personal data. If you saw some, say so and describe it instead.</p>
+
+  <h2>What happens next</h2>
+  <ul>
+    <li>We confirm we have it within <strong>2 working days</strong>.</li>
+    <li>We give a first assessment within <strong>7 days</strong>.</li>
+    <li>We fix it in production within these times from your report: <strong>Critical 7
+        days</strong>, <strong>High 30 days</strong>, <strong>Medium 90 days</strong>,
+        <strong>Low 180 days</strong>. An actively exploited weakness is contained within 24
+        hours.</li>
+    <li>We tell you when it is fixed and, if you wish, thank you by name in the release
+        notes.</li>
+  </ul>
+  <p>Please give us 90 days, or until the fix ships if that is sooner, before you publish
+  anything.</p>
+
+  <h2 id="scope">Scope</h2>
+  <p><strong>In scope:</strong> the RackUp apps (Android <code>com.rackup.app</code>, iPhone app id
+  <code>6800614202</code>), the backend they use (the Firebase project's security rules, Cloud
+  Functions and Storage) and getrackup.com.</p>
+  <p><strong>Out of scope:</strong> other people's accounts and data; denial of service, load or
+  volume testing; social engineering of players, halls or the developer; physical attacks; the
+  services of Google, Apple and Meta themselves; automated scanner output with no shown
+  impact.</p>
+
+  <h2 id="safe-harbour">Safe harbour</h2>
+  <p>Research in good faith that follows this policy is welcome. Use only accounts you own, stop
+  as soon as you reach someone else's data, keep nothing you find, and do not change or delete
+  data that is not yours. If you do that, we will not take legal action against you, and we will
+  work with you on the report.</p>
+
+  <h2>Supported versions</h2>
+  <p>The current release on each store. When a fix needs it, older versions are asked to update
+  before they open.</p>
+  <p>There is no bug bounty.</p>
+  <p>The same contact is in our <a href=".well-known/security.txt">security.txt</a>, in the format
+  of RFC 9116.</p>
+
+  <div lang="el">
+  <h2 id="el">Ασφάλεια στα Ελληνικά</h2>
+  <p>Το RackUp είναι μια δωρεάν εφαρμογή για να βρίσκεις αντίπαλο στο μπιλιάρδο, σε Android και
+  iPhone, που τη φτιάχνει και τη λειτουργεί ένας άνθρωπος. Αν βρήκες κάποια αδυναμία ασφαλείας
+  της, σε ευχαριστούμε: πες τη πρώτα σε εμάς, ιδιωτικά.</p>
+  <p><strong>Πώς να μας την αναφέρεις.</strong> Στείλε email στο
+  <a href="mailto:rackupbilliard@gmail.com?subject=Security">rackupbilliard@gmail.com</a> με τη λέξη
+  «Security» στο θέμα, στα Ελληνικά ή στα Αγγλικά. Γράψε τι βρήκες, τα βήματα για να το
+  αναπαράγουμε, την έκδοση της εφαρμογής και τη συσκευή, και τι θα μπορούσε να κερδίσει όποιος το
+  εκμεταλλευτεί. Μη μας στείλεις προσωπικά δεδομένα άλλων. Αν είδες τέτοια, πες μας το και
+  περίγραψέ τα.</p>
+  <p><strong>Τι γίνεται μετά.</strong> Σου επιβεβαιώνουμε ότι λάβαμε την αναφορά σου μέσα σε 2
+  εργάσιμες ημέρες και σου δίνουμε μια πρώτη εκτίμηση μέσα σε 7 ημέρες. Η διόρθωση φτάνει στις
+  εφαρμογές και στις υπηρεσίες μας, από τη μέρα της αναφοράς σου, μέσα σε 7 ημέρες για μια κρίσιμη
+  αδυναμία, 30 για μια υψηλή, 90 για μια μέτρια και 180 για μια χαμηλή. Μια αδυναμία που ήδη την
+  εκμεταλλεύεται κάποιος την περιορίζουμε μέσα σε 24 ώρες. Σου λέμε πότε διορθώθηκε και, αν θέλεις,
+  σε ευχαριστούμε ονομαστικά στις σημειώσεις της έκδοσης. Δώσε μας 90 ημέρες, ή μέχρι να βγει η
+  διόρθωση αν αυτό γίνει νωρίτερα, πριν δημοσιεύσεις οτιδήποτε.</p>
+  <p><strong>Τι καλύπτει.</strong> Τις εφαρμογές RackUp (Android <code>com.rackup.app</code>,
+  iPhone με αναγνωριστικό εφαρμογής <code>6800614202</code>), τις υπηρεσίες διακομιστή που
+  χρησιμοποιούν (τους κανόνες ασφαλείας, τις Cloud Functions και το Storage του έργου μας στο
+  Firebase) και το getrackup.com. Δεν καλύπτει λογαριασμούς και δεδομένα άλλων, επιθέσεις άρνησης
+  υπηρεσίας και δοκιμές φόρτου ή όγκου, κοινωνική μηχανική σε παίκτες, αίθουσες ή τον δημιουργό,
+  φυσικές επιθέσεις, τις ίδιες τις υπηρεσίες της Google, της Apple και της Meta, ούτε αποτελέσματα
+  αυτόματων σαρωτών χωρίς αποδεδειγμένη επίπτωση.</p>
+  <p><strong>Έρευνα καλής πίστης.</strong> Η έρευνα που γίνεται καλή τη πίστει και ακολουθεί αυτή
+  την πολιτική είναι ευπρόσδεκτη. Χρησιμοποίησε μόνο λογαριασμούς που σου ανήκουν, σταμάτα μόλις
+  φτάσεις σε δεδομένα άλλου, μην κρατήσεις τίποτα από όσα βρεις και μην αλλάξεις ή διαγράψεις
+  δεδομένα που δεν είναι δικά σου. Αν το κάνεις αυτό, δεν θα κινηθούμε νομικά εναντίον σου και θα
+  συνεργαστούμε μαζί σου για την αναφορά.</p>
+  <p><strong>Εκδόσεις.</strong> Καλύπτεται η τρέχουσα έκδοση σε κάθε κατάστημα. Όταν το χρειάζεται
+  μια διόρθωση, ζητάμε από τις παλιότερες εκδόσεις να ενημερωθούν πριν ανοίξουν. Δεν δίνουμε
+  αμοιβή για αναφορές (bug bounty).</p>
+  </div>
+
+  <p class="muted">RackUp · Ioannina · rackupbilliard@gmail.com<br>
+  <a href="support.html">Support</a> · <a href="privacy.html">Privacy Policy</a> · <a href="en/">Home</a></p>
+</article>
+</main>
+<footer class="site-footer">
+  <div class="container foot">
+    <div>
+      <a class="wordmark" href="en/"><svg class="mark" viewBox="0 0 80.4 73.808" aria-hidden="true" focusable="false"><path fill="#C6F24E" fill-rule="evenodd" d="M53.71 7.8L78.31 50.408A15.6 15.6 0 0 1 64.8 73.808L15.6 73.808A15.6 15.6 0 0 1 2.09 50.408L26.69 7.8A15.6 15.6 0 0 1 53.71 7.8ZM49.033 10.5A10.2 10.2 0 0 0 31.367 10.5L6.767 53.108A10.2 10.2 0 0 0 15.6 68.408L64.8 68.408A10.2 10.2 0 0 0 73.633 53.108Z"/><g fill="#EAF2ED"><circle cx="40.2" cy="15.6" r="7.2"/><circle cx="32" cy="29.803" r="7.2"/><circle cx="48.4" cy="29.803" r="7.2"/><circle cx="23.8" cy="44.006" r="7.2"/><circle cx="56.6" cy="44.006" r="7.2"/><circle cx="15.6" cy="58.208" r="7.2"/><circle cx="32" cy="58.208" r="7.2"/><circle cx="48.4" cy="58.208" r="7.2"/><circle cx="64.8" cy="58.208" r="7.2"/></g><circle cx="40.2" cy="44.006" r="7.2" fill="#C6F24E"/></svg><span class="wm">RACK<span>UP</span></span></a>
+      <p>Find a billiards opponent. Pool and carom, on real tables.</p>
+      <p>RackUp · Ioannina</p>
+    </div>
+    <nav aria-label="Links">
+      <a href="en/billiards/">Billiard halls</a>
+      <a href="en/billiards/kypros/">Billiards in Cyprus</a>
+      <a href="en/carom-billiards/">Carom billiards</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="https://www.instagram.com/rackupbilliard/" rel="noopener" aria-label="RackUp on Instagram">Instagram</a>
+      <a href="https://www.facebook.com/rackupbilliard" rel="noopener" aria-label="RackUp on Facebook">Facebook</a>
+      <a href="mailto:rackupbilliard@gmail.com">rackupbilliard@gmail.com</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

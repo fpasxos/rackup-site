@@ -1360,7 +1360,8 @@ def sitemap(cities, dates=None):
     """Every page. A directory page carries <lastmod>, the day its listing last changed; the hand-written
     pages carry none, as nothing here knows when their words changed."""
     dates = dates or {"cities": {}}
-    paths = [("", None), ("en/", None), ("support.html", None), ("privacy.html", None), ("press/", None),
+    paths = [("", None), ("en/", None), ("support.html", None), ("privacy.html", None), ("security.html", None),
+             ("press/", None),
              (f"{EL_ROOT}/", dates.get("directory")), (f"{EN_ROOT}/", dates.get("directory")),
              (f"{CAROM['el']}/", dates.get("carom")), (f"{CAROM['en']}/", dates.get("carom"))]
     for code, mine in by_country(cities).items():
