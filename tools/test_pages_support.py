@@ -391,7 +391,7 @@ class MeasurementAndSecurityPolicyTest(unittest.TestCase):
         main = main_html(page)
         (item,) = [visible_text(li) for li in re.findall(r"<li>(.*?)</li>", main, re.S)
                    if "No advertising use of analytics" in li]
-        for said in ("from version X.Y.Z", "nothing it collects may be used for advertising",
+        for said in ("No advertising use of analytics, from version", "nothing it collects may be used for advertising",
                      "the iPhone app also stops Firebase Analytics collecting the identifier for vendor",
                      "the Android app stops it collecting the advertising ID"):
             self.assertIn(said, item)
