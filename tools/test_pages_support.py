@@ -403,13 +403,14 @@ class MeasurementAndSecurityPolicyTest(unittest.TestCase):
                      "αλλάζει το αναγνωριστικό του, ώστε"):
             self.assertIn(said, greek)
 
-    def test_what_todays_apps_already_do_is_left_to_the_corrections_pr(self):
-        # The IDFV and ad ID today, the BigQuery copy, breadcrumbs, the phone and emails are #98's.
+    def test_what_todays_apps_already_do_is_said_once(self):
+        # #98 says what the live apps do (the IDFV and ad ID today, breadcrumbs); this page never repeats it.
         text = visible_text(main_html(current("privacy.html")))
-        for theirs in ("The identifier for vendor on iPhone.", "This policy did not say so before.",
-                       "that the app logged shortly before it", "Το αναγνωριστικό προμηθευτή στο iPhone.",
-                       "λίγο πριν από το σφάλμα"):
-            self.assertNotIn(theirs, text)
+        for theirs in ("identifier for vendor (IDFV)", "that the app logged shortly before it",
+                       "(identifier for vendor, IDFV)", "λίγο πριν από το σφάλμα"):
+            self.assertLessEqual(text.count(theirs), 1, theirs)
+        for gone in ("The identifier for vendor on iPhone.", "Το αναγνωριστικό προμηθευτή στο iPhone."):
+            self.assertNotIn(gone, text)
 
     def test_the_new_records_are_described_kept_and_deleted(self):
         main = main_html(current("privacy.html"))
