@@ -58,12 +58,11 @@
     fingerprint of its signing certificate,
     and <code>sensitive_screen_recorded</code>, when the screen is recorded while a sign-in or
     account screen is open. One more, <code>profile_status</code>, is in the Android app but turned
-    off, and no version sends it. We also correct two things this policy left out: the iPhone
-    app's Firebase Analytics collects your iPhone's identifier for vendor, which version X.Y.Z
-    turns off, and a crash report also carries the analytics events the app logged shortly before
-    it. From version X.Y.Z, both apps tell Firebase Analytics that nothing it collects may be used
-    for advertising, and deleting your account also resets the analytics identifier on the phone
-    you delete it from. Under <em>Your account</em> we describe <em>Sign out on all devices</em>,
+    off, and no version sends it. From version X.Y.Z, both apps also tell Firebase Analytics that
+    nothing it collects may be used for advertising, the iPhone app stops it collecting your
+    iPhone's identifier for vendor and the Android app stops it collecting the advertising ID, and
+    deleting your account also resets the analytics identifier on the phone you delete it
+    from. Under <em>Your account</em> we describe <em>Sign out on all devices</em>,
     which signs your account out of every phone, and the record behind it; under <em>Safety:
     reports and blocks</em> and <em>Feedback</em>, the daily limits on reports and feedback, the
     records that keep them and the alert we get when several players report the same player;
@@ -929,8 +928,7 @@
   <h3>Crash diagnostics (both apps)</h3>
   <p>Both apps include <strong>Firebase Crashlytics</strong>. When the app crashes or hits a
   handled error, Crashlytics sends Google a report containing the crash, your device model, your
-  operating system version, the app version and the analytics events, described below, that the
-  app logged shortly before it. We use it to find and fix bugs. <strong>We never
+  operating system version and the app version. We use it to find and fix bugs. <strong>We never
   attach your account to a crash report.</strong> The app never calls Crashlytics' user id
   function, so reports carry no user id, only random identifiers, such as Crashlytics' own
   installation identifier and the Firebase installation ID described under <em>Where your data
@@ -1140,14 +1138,6 @@
   legitimate interest, described under <em>Our lawful basis</em>, and turning it off is the
   simplest way to object to it. Before version X.Y.Z there is no such switch, and uninstalling
   the app is the only way to stop collection.</p>
-  <p><strong>The identifier for vendor on iPhone.</strong> Before version X.Y.Z, the iPhone
-  app's Firebase Analytics also collects your iPhone's identifier for vendor (IDFV): an
-  identifier that iOS gives the apps of one developer on an iPhone, shared by all of them, which
-  stays the same until you remove all of that developer's apps. RackUp is our only app.
-  Analytics attaches it to the events from that iPhone. This policy did not say so before. From
-  version X.Y.Z, the iPhone app turns that collection off, so its events no longer carry it,
-  although the events sent before keep it. We never read it ourselves, and it is not the
-  advertising identifier, which the iPhone app does not read.</p>
   <p><strong>Not sent yet.</strong> The Android app also contains one more event,
   <code>profile_status</code>, which is turned off, so no version sends it. If we turn it on, in a
   later version, this policy will list it above first. It would say, at most once for each
@@ -1201,16 +1191,18 @@
     <li><strong>No advertising identifier.</strong> The Android app strips the
         <code>AD_ID</code> permission that Firebase Analytics would otherwise pull in. The iPhone
         app links the version of Firebase Analytics built without advertising ID support, shows
-        no App Tracking Transparency prompt, and does not read the IDFA. From version X.Y.Z, both
-        apps also tell Firebase Analytics that nothing it collects may be used for advertising:
-        the three settings Google provides for this, for storing data for ads, using your data
-        for ads and personalising ads, are off, and the Android app also sets Firebase Analytics
-        never to collect the advertising ID.</li>
+        no App Tracking Transparency prompt, and does not read the IDFA.</li>
     <li><strong>No tracking across other companies' apps or websites.</strong> There is no
         attribution SDK, no data broker and no third-party analytics product beyond Google
         Firebase.</li>
     <li><strong>We do not sell your data</strong>, and we do not pass it to advertisers or data
         brokers.</li>
+    <li><strong>No advertising use of analytics</strong>, from version X.Y.Z. Both apps tell
+        Firebase Analytics that nothing it collects may be used for advertising: the three
+        settings Google provides for this, for storing data for ads, using your data for ads and
+        personalising ads, are off. From the same version the iPhone app also stops Firebase
+        Analytics collecting the identifier for vendor, and the Android app stops it collecting
+        the advertising ID.</li>
     <li><strong>No contacts, no health data, no payments.</strong> The app is free, has no
         in-app purchases and reads nothing from your address book.</li>
     <li><strong>No free text chat.</strong> Players cannot type messages to each other. The two players of
@@ -1637,11 +1629,10 @@
   <p>If this policy changes, the new version is published at this address with a new effective
   date, and we say at the top what changed. This version, dated XX December 2026, adds, from
   version X.Y.Z of the apps, the <em>Usage analytics</em> switch, five analytics events, two of
-  which stay off until we turn them on, the end of the iPhone's identifier for vendor in
-  analytics, the advertising settings, the analytics identifier reset after a deletion and
+  which stay off until we turn them on, the end of the identifier for vendor and the advertising
+  ID in analytics, the advertising settings, the analytics identifier reset after a deletion and
   <em>Sign out on all devices</em>, and also the daily limits on reports and feedback, the alert
-  when several players report the same player, the copy of your data we send you and two
-  corrections, about the identifier for vendor and the analytics events in crash reports, and
+  when several players report the same player and the copy of your data we send you, and
   supersedes the version dated 30 November 2026, which added hall
   ladders, from version 2.5.0 of the apps: what a hall's board shows and to whom, the numbers only
   you see, how long boards and badges are kept, what our server keeps to build them, the ladder
@@ -2046,8 +2037,26 @@
   λίστα όσων επιτρέπεται να έχει εκείνο το συμβάν, και αφαιρούν ό,τι άλλο.
   Κανένα συμβάν δεν περιέχει όνομα, email, κωδικό πρόσκλησης ή κείμενο που έγραψες, και όσα συλλέγουν τα δύο
   εργαλεία δεν τα συνδέουμε ποτέ με τον λογαριασμό σου: η εφαρμογή δεν στέλνει ποτέ το
-  αναγνωριστικό χρήστη σε αυτές τις υπηρεσίες. Μια αναφορά σφάλματος περιέχει επίσης τα συμβάντα
-  χρήσης που κατέγραψε η εφαρμογή λίγο πριν από το σφάλμα.</p>
+  αναγνωριστικό χρήστη σε αυτές τις υπηρεσίες.</p>
+  <p><strong>Στατιστικά χρήσης.</strong> Από την έκδοση X.Y.Z μπορείς να κλείσεις τα στατιστικά
+  χρήσης: στις Ρυθμίσεις, η «Πολιτική απορρήτου» ανοίγει το «Απόρρητο», όπου είναι ο διακόπτης
+  «Στατιστικά χρήσης». Από τη στιγμή που τον κλείνεις, η εφαρμογή δεν στέλνει τίποτα στο Firebase
+  Analytics από αυτό το τηλέφωνο, ούτε συμβάντα ούτε ιδιότητες χρήστη ούτε τις δικές του τυπικές
+  μετρήσεις, οπότε και οι αναφορές σφαλμάτων δεν περιέχουν πια συμβάντα χρήσης. Το κλείσιμο σβήνει
+  επίσης ό,τι κρατά ακόμη το Analytics στο τηλέφωνο και αλλάζει το αναγνωριστικό εγκατάστασής
+  του, και αν τον ανοίξεις ξανά, το Analytics ξεκινά από την αρχή με νέο αναγνωριστικό. Η επιλογή
+  σου μένει στο τηλέφωνο, για αυτή την εγκατάσταση της εφαρμογής, ποτέ στον λογαριασμό σου, και
+  δεν κλείνει τις αναφορές σφαλμάτων. Ο διακόπτης είναι ανοιχτός ώσπου να τον κλείσεις, γιατί
+  νομική βάση είναι το έννομο συμφέρον μας, και το κλείσιμό του είναι ο πιο απλός τρόπος να
+  αντιταχθείς. Από την ίδια έκδοση, όταν διαγράφεις τον λογαριασμό σου, η εφαρμογή σβήνει επίσης
+  ό,τι κρατά ακόμη το Analytics στο τηλέφωνο από το οποίο τον διέγραψες και αλλάζει το
+  αναγνωριστικό του, ώστε όσα καταγράφει μετά σε εκείνο το τηλέφωνο να μη συνδέονται με όσα
+  κατέγραψε πριν. Όσα έχει ήδη στείλει το Analytics μένουν στη Google. Από την ίδια έκδοση, και
+  οι δύο εφαρμογές λένε επίσης στο Firebase Analytics ότι όσα συλλέγει δεν επιτρέπεται να
+  χρησιμοποιηθούν για διαφήμιση: οι τρεις ρυθμίσεις που δίνει η Google γι' αυτό, για αποθήκευση
+  δεδομένων για διαφημίσεις, χρήση των δεδομένων σου για διαφημίσεις και εξατομίκευση διαφημίσεων,
+  είναι κλειστές. Η εφαρμογή iPhone του ορίζει επίσης να μη συλλέγει το αναγνωριστικό προμηθευτή,
+  και η εφαρμογή Android να μη συλλέγει το διαφημιστικό αναγνωριστικό.</p>
   <p>Στο Android, όταν εγκαθιστάς την εφαρμογή από σύνδεσμό μας, το Google Play δίνει στο Firebase
   Analytics τις ετικέτες του συνδέσμου και πότε τον πάτησες. Οι ετικέτες λένε την πηγή, το μέσο
   και την καμπάνια, ανάλογα με το πού ήταν ο σύνδεσμος: για παράδειγμα στην ιστοσελίδα μας, στη
@@ -2079,36 +2088,8 @@
   γράφουμε παραπάνω, και όταν το ματς είναι ανοιχτό ματς άλλου παίκτη, καταγράφει επίσης το
   <code>match_viewed</code>, με την αίθουσα του ματς, όπως για κάθε τέτοιο ματς που ανοίγεις. Στο
   iPhone η εφαρμογή δεν διαβάζει τίποτα τέτοιο.</p>
-  <p><strong>Στατιστικά χρήσης.</strong> Από την έκδοση X.Y.Z μπορείς να κλείσεις τα στατιστικά
-  χρήσης: στις Ρυθμίσεις, η «Πολιτική απορρήτου» ανοίγει το «Απόρρητο», όπου είναι ο διακόπτης
-  «Στατιστικά χρήσης». Από τη στιγμή που τον κλείνεις, η εφαρμογή δεν στέλνει τίποτα στο Firebase
-  Analytics από αυτό το τηλέφωνο, ούτε συμβάντα ούτε ιδιότητες χρήστη ούτε τις δικές του τυπικές
-  μετρήσεις, οπότε και οι αναφορές σφαλμάτων δεν περιέχουν πια συμβάντα χρήσης. Το κλείσιμο σβήνει
-  επίσης ό,τι κρατά ακόμη το Analytics στο τηλέφωνο και αλλάζει το αναγνωριστικό εγκατάστασής
-  του, και αν τον ανοίξεις ξανά, το Analytics ξεκινά από την αρχή με νέο αναγνωριστικό. Η επιλογή
-  σου μένει στο τηλέφωνο, για αυτή την εγκατάσταση της εφαρμογής, ποτέ στον λογαριασμό σου, και
-  δεν κλείνει τις αναφορές σφαλμάτων. Ο διακόπτης είναι ανοιχτός ώσπου να τον κλείσεις, γιατί
-  νομική βάση είναι το έννομο συμφέρον μας, και το κλείσιμό του είναι ο πιο απλός τρόπος να
-  αντιταχθείς. Από την ίδια έκδοση, όταν διαγράφεις τον λογαριασμό σου, η εφαρμογή σβήνει επίσης
-  ό,τι κρατά ακόμη το Analytics στο τηλέφωνο από το οποίο τον διέγραψες και αλλάζει το
-  αναγνωριστικό του, ώστε όσα καταγράφει μετά σε εκείνο το τηλέφωνο να μη συνδέονται με όσα
-  κατέγραψε πριν. Όσα έχει ήδη στείλει το Analytics μένουν στη Google.</p>
-  <p><strong>Το αναγνωριστικό προμηθευτή στο iPhone.</strong> Πριν από την έκδοση X.Y.Z, το
-  Firebase Analytics της εφαρμογής iPhone συλλέγει και το αναγνωριστικό προμηθευτή (identifier for
-  vendor, IDFV) του iPhone σου: ένα αναγνωριστικό που δίνει το iOS στις εφαρμογές ενός δημιουργού
-  σε ένα iPhone, κοινό για όλες, που μένει ίδιο ώσπου να αφαιρέσεις όλες τις εφαρμογές του. Το
-  RackUp είναι η μόνη μας εφαρμογή. Το Analytics το προσθέτει στα συμβάντα από εκείνο το iPhone.
-  Η πολιτική αυτή δεν το έλεγε πριν. Από την έκδοση X.Y.Z η εφαρμογή iPhone κλείνει αυτή τη
-  συλλογή, οπότε τα συμβάντα της δεν το περιέχουν πια, ενώ όσα στάλθηκαν πριν το κρατούν. Εμείς
-  δεν το διαβάζουμε ποτέ, και δεν είναι το διαφημιστικό αναγνωριστικό, που η εφαρμογή iPhone δεν
-  διαβάζει.</p>
   <p>Δεν υπάρχουν διαφημίσεις μέσα στις εφαρμογές, ούτε διαφημιστικά αναγνωριστικά, ούτε
-  παρακολούθηση σε εφαρμογές άλλων εταιρειών. Δεν πουλάμε δεδομένα. Από την έκδοση X.Y.Z, και οι
-  δύο εφαρμογές λένε επίσης στο Firebase Analytics ότι όσα συλλέγει δεν επιτρέπεται να
-  χρησιμοποιηθούν για διαφήμιση: οι τρεις ρυθμίσεις που δίνει η Google γι' αυτό, για αποθήκευση
-  δεδομένων για διαφημίσεις, χρήση των δεδομένων σου για διαφημίσεις και εξατομίκευση διαφημίσεων,
-  είναι κλειστές, και η εφαρμογή Android του ορίζει επίσης να μη συλλέγει ποτέ το διαφημιστικό
-  αναγνωριστικό. Από την έκδοση 2.1.0
+  παρακολούθηση σε εφαρμογές άλλων εταιρειών. Δεν πουλάμε δεδομένα. Από την έκδοση 2.1.0
   υπάρχουν ειδοποιήσεις push και στο iPhone: αν τις επιτρέψεις, κρατάμε στον λογαριασμό σου
   ένα αναγνωριστικό ειδοποιήσεων για τη συσκευή, για να σου τις στέλνουμε, και μπορείς να
   τις κλείσεις από τις Ρυθμίσεις της εφαρμογής ή του iPhone. Στο iPhone το αναγνωριστικό μένει

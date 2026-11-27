@@ -339,8 +339,8 @@ def greek_summary(page):
 
 
 class MeasurementAndSecurityPolicyTest(unittest.TestCase):
-    """rackup#745 and #746: five events, Usage analytics, the IDFV, the ad settings, the reset,
-    Sign out on all devices, the daily limits and the copy of your data, in both languages."""
+    """rackup#745 and #746: five events, Usage analytics, the ad settings, the IDFV and ad ID off,
+    the reset, Sign out on all devices, the daily limits and the copy of your data, in both languages."""
 
     def test_the_new_events_say_which_wait_until_we_turn_them_on(self):
         main = main_html(current("privacy.html"))
@@ -386,15 +386,30 @@ class MeasurementAndSecurityPolicyTest(unittest.TestCase):
                      "νομική βάση είναι το έννομο συμφέρον μας"):
             self.assertIn(said, greek)
 
-    def test_the_idfv_the_ad_settings_and_the_reset_after_a_deletion(self):
-        text = visible_text(main_html(current("privacy.html")))
-        for said in ("collects your iPhone's identifier for vendor (IDFV)", "This policy did not say so before.",
-                     "the iPhone app turns that collection off", "nothing it collects may be used for advertising",
-                     "the app also resets that identifier on the phone you delete it from",
-                     "αναγνωριστικό προμηθευτή (identifier for vendor, IDFV)",
-                     "όσα συλλέγει δεν επιτρέπεται να χρησιμοποιηθούν για διαφήμιση",
+    def test_the_ad_settings_the_two_identifiers_off_and_the_reset_after_a_deletion(self):
+        page = current("privacy.html")
+        main = main_html(page)
+        (item,) = [visible_text(li) for li in re.findall(r"<li>(.*?)</li>", main, re.S)
+                   if "No advertising use of analytics" in li]
+        for said in ("from version X.Y.Z", "nothing it collects may be used for advertising",
+                     "the iPhone app also stops Firebase Analytics collecting the identifier for vendor",
+                     "the Android app stops it collecting the advertising ID"):
+            self.assertIn(said, item)
+        text = visible_text(main)
+        self.assertIn("the app also resets that identifier on the phone you delete it from", text)
+        greek = [p for p in paragraphs(page) if p.startswith("Στατιστικά χρήσης.")][0]
+        for said in ("όσα συλλέγει δεν επιτρέπεται να χρησιμοποιηθούν για διαφήμιση",
+                     "να μη συλλέγει το αναγνωριστικό προμηθευτή", "να μη συλλέγει το διαφημιστικό αναγνωριστικό",
                      "αλλάζει το αναγνωριστικό του, ώστε"):
-            self.assertIn(said, text)
+            self.assertIn(said, greek)
+
+    def test_what_todays_apps_already_do_is_left_to_the_corrections_pr(self):
+        # The IDFV and ad ID today, the BigQuery copy, breadcrumbs, the phone and emails are #98's.
+        text = visible_text(main_html(current("privacy.html")))
+        for theirs in ("The identifier for vendor on iPhone.", "This policy did not say so before.",
+                       "that the app logged shortly before it", "Το αναγνωριστικό προμηθευτή στο iPhone.",
+                       "λίγο πριν από το σφάλμα"):
+            self.assertNotIn(theirs, text)
 
     def test_the_new_records_are_described_kept_and_deleted(self):
         main = main_html(current("privacy.html"))
