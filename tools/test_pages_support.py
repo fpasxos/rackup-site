@@ -334,6 +334,127 @@ class HallLadderPolicyTest(unittest.TestCase):
             self.assertIn(said, text)
 
 
+def greek_summary(page):
+    return visible_text(main_html(page).split('id="el"', 1)[1])
+
+
+class MeasurementAndSecurityPolicyTest(unittest.TestCase):
+    """rackup#745 and #746: five events, Usage analytics, the ad settings, the IDFV and ad ID off,
+    the reset, Sign out on all devices, the daily limits and the copy of your data, in both languages."""
+
+    def test_the_new_events_say_which_wait_until_we_turn_them_on(self):
+        main = main_html(current("privacy.html"))
+        items = [visible_text(li) for li in re.findall(r"<li>(.*?)</li>", main, re.S)]
+        (works,) = [i for i in items if i.startswith("How well the app works")]
+        for said in ("action_result", "never an error message", "on Android only, roughly how long the answer took",
+                     "never which network or any address", "On Android only, launch_ready", "screen_frames"):
+            self.assertIn(said, works)
+        (safety,) = [i for i in items if i.startswith("Safety signals")]
+        for said in ("on Android only and only once we turn them on: until then the app sends neither",
+                     "device_signals, at most once a day", "a VPN or a proxy",
+                     "the first 8 characters of the fingerprint of the certificate",
+                     "nothing in the app is blocked or changed because of a signal",
+                     "sensitive_screen_recorded, on Android 15 and later", "The app does not stop the recording."):
+            self.assertIn(said, safety)
+        greek = greek_summary(current("privacy.html"))
+        for said in ("action_result", "launch_ready", "screen_frames", "device_signals", "sensitive_screen_recorded",
+                     "Μόνο στο Android, και μόνο όταν τα ενεργοποιήσουμε, γιατί αρχικά είναι κλειστά",
+                     "χωρίς να σταματά την καταγραφή"):
+            self.assertIn(said, greek)
+
+    def test_profile_status_is_named_as_sent_by_no_version_and_kept_out_of_the_list(self):
+        page = current("privacy.html")
+        self.assertNotIn("profile_status", listed_events(page))
+        self.assertNotIn("profile_status", APP_EVENTS)
+        text = visible_text(main_html(page))
+        for said in ("profile_status, which is turned off, so no version sends it",
+                     "this policy will list it above first",
+                     "το profile_status, υπάρχει στην εφαρμογή Android αλλά είναι κλειστό, και καμία έκδοση δεν το στέλνει"):
+            self.assertIn(said, text)
+
+    def test_the_switch_replaces_the_line_that_there_is_none(self):
+        page = current("privacy.html")
+        self.assertNotIn("and there is no in-app switch to turn analytics off", visible_text(main_html(page)))
+        (switch,) = [p for p in paragraphs(page) if p.startswith("Turning analytics off.")]
+        for said in ("Privacy policy opens Privacy, where you can turn off Usage analytics",
+                     "no events, no user properties and none of its standard measurements",
+                     "never with your account", "It does not turn off crash diagnostics.",
+                     "because it rests on our legitimate interest"):
+            self.assertIn(said, switch)
+        (greek,) = [p for p in paragraphs(page) if p.startswith("Στατιστικά χρήσης.")]
+        for said in ("«Στατιστικά χρήσης»", "ποτέ στον λογαριασμό σου", "δεν κλείνει τις αναφορές σφαλμάτων",
+                     "νομική βάση είναι το έννομο συμφέρον μας"):
+            self.assertIn(said, greek)
+
+    def test_the_ad_settings_the_two_identifiers_off_and_the_reset_after_a_deletion(self):
+        page = current("privacy.html")
+        main = main_html(page)
+        (item,) = [visible_text(li) for li in re.findall(r"<li>(.*?)</li>", main, re.S)
+                   if "No advertising use of analytics" in li]
+        for said in ("No advertising use of analytics, from version", "nothing it collects may be used for advertising",
+                     "the iPhone app also stops Firebase Analytics collecting the identifier for vendor",
+                     "the Android app stops it collecting the advertising ID"):
+            self.assertIn(said, item)
+        text = visible_text(main)
+        self.assertIn("the app also resets that identifier on the phone you delete it from", text)
+        greek = [p for p in paragraphs(page) if p.startswith("Στατιστικά χρήσης.")][0]
+        for said in ("όσα συλλέγει δεν επιτρέπεται να χρησιμοποιηθούν για διαφήμιση",
+                     "να μη συλλέγει το αναγνωριστικό προμηθευτή", "να μη συλλέγει το διαφημιστικό αναγνωριστικό",
+                     "αλλάζει το αναγνωριστικό του, ώστε"):
+            self.assertIn(said, greek)
+
+    def test_what_todays_apps_already_do_is_said_once(self):
+        # #98 says what the live apps do (the IDFV and ad ID today, breadcrumbs); this page never repeats it.
+        text = visible_text(main_html(current("privacy.html")))
+        for theirs in ("identifier for vendor (IDFV)", "that the app logged shortly before it",
+                       "(identifier for vendor, IDFV)", "λίγο πριν από το σφάλμα"):
+            self.assertLessEqual(text.count(theirs), 1, theirs)
+        for gone in ("The identifier for vendor on iPhone.", "Το αναγνωριστικό προμηθευτή στο iPhone."):
+            self.assertNotIn(gone, text)
+
+    def test_the_new_records_are_described_kept_and_deleted(self):
+        main = main_html(current("privacy.html"))
+        text = visible_text(main)
+        lists = {visible_text(li) for li in re.findall(r"<li>(.*?)</li>", main, re.S)}
+        for item in ("the records that keep your reports and feedback to their daily limits;",
+                     "the record of your last Sign out on all devices;",
+                     "any copy of your data that our server built for you;"):
+            self.assertIn(item, lists)
+        for said in ("sessionRevocations/<your user id>", "at most once a minute",
+                     "refuses more reports from an account, or a guest, that sent 20 in the last 24 hours",
+                     "sent 10 messages in the last 24 hours",
+                     "with that player's user id and how many players reported them, never who",
+                     "Αποσύνδεση από όλες τις συσκευές.", "Όρια σε αναφορές και σχόλια.",
+                     "η εγγραφή της τελευταίας αποσύνδεσης από όλες τις συσκευές"):
+            self.assertIn(said, text)
+
+    def test_the_copy_of_your_data_says_what_is_cut_and_what_we_keep(self):
+        page = current("privacy.html")
+        (copy,) = [p for p in paragraphs(page) if p.startswith("Your copy of your data.")]
+        for said in ("one file in JSON", "only its last six characters", "do not say who gave them",
+                     "it gives only how many", "and then delete our copy", "no version of the apps asks for one yet"):
+            self.assertIn(said, copy)
+        (greek,) = [p for p in paragraphs(page) if p.startswith("Αντίγραφο των δεδομένων σου.")]
+        for said in ("αρχείο JSON", "τους τελευταίους έξι χαρακτήρες", "δεν λένε ποιος τις έδωσε",
+                     "μετά σβήνουμε το δικό μας αντίγραφο"):
+            self.assertIn(said, greek)
+
+
+def version_placeholders(page):
+    return re.findall(r"\bX\.Y\.Z\b", visible_text(main_html(page)))
+
+
+class VersionPlaceholderTest(unittest.TestCase):
+
+    def test_the_policy_names_the_release_that_carries_it(self):
+        # Merging publishes: the draft's X.Y.Z must be the release's version first.
+        self.assertEqual([], version_placeholders(current("privacy.html")), "set every placeholder version")
+
+    def test_the_version_check_rejects_a_placeholder(self):
+        self.assertEqual(["X.Y.Z"], version_placeholders("<main><p>From version X.Y.Z, not 2.5.0</p></main>"))
+        self.assertEqual([], version_placeholders("<main><p>From version 2.5.1 of the apps</p></main>"))
+
+
 class PolicyDateTest(unittest.TestCase):
 
     def test_the_policy_carries_one_real_date(self):
@@ -373,6 +494,8 @@ APP_EVENTS = {
     "table_game_logged", "screen_view", "post_started",
     "link_opened", "invite_shared", "invite_joined", "invite_undone",
     "ladder_joined", "ladder_opened",
+    # rackup#745 (measurement) and #746 (security). profile_status stays out: no version sends it.
+    "action_result", "launch_ready", "screen_frames", "device_signals", "sensitive_screen_recorded",
 }
 
 # The app's UserProperty names (core/presentation Analytics.kt, from 2.4.8).

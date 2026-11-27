@@ -1,33 +1,55 @@
-RackUp Privacy Policy Effective date: 30 November 2026 · Applies to the RackUp apps for Android and
-iPhone (com.rackup.app) What changed on 30 November 2026. From version 2.5.0 of the apps, each hall
-has a ladder: a competition in seasons of 4 weeks among the players who join it. Under Hall ladders,
-a new section, we say what a hall's board shows: for each player who joined, their user id, display
-name, photo link and category, as on their player card, and, once a game of theirs counts, their
-place and points. Only players with an account can see a board, never guests, and how many of your
-games counted is for you alone. We also say there that leaving a ladder or turning off Show me in
-player search takes you off its board within about an hour, how long the board of a finished season
-is kept, that a season's winner gets a badge on their player card for 4 weeks, what our server keeps
-to build the boards, and that Apple's review account and automated test accounts are never on one.
-Under Notifications we describe the pushes a ladder sends and the records that keep them to a few a
-week, and under App usage analytics two more events, 39 in all, ladder_joined and ladder_opened,
-which carry the hall's id but no name or user id, and the card a winner can share. We say so under
-Who can see what, How long we keep it and What deletion removes, and in the summary in Greek too.
-What changed on 18 November 2026. From version 2.4.9 of the apps you can invite a friend to play at
-a hall, with a link or a QR code. Under What you post and write we say what an invite keeps, who can
-read it, what happens when your friend joins with it, and when we delete it; under Notifications,
-how we tell you, and the record our server keeps of each running invite's joins and pushes; and
-under How long we keep it and What deletion removes, when invites go. Under App usage analytics we
-add that from the same version, on Android, the app reads once, on your phone, the tags Google Play
-passes on after an install from a hall's poster, a hall's share card, a friend's invite or a shared
-game's page, to open that hall, that invite or that game; that of these tags only the hall, the
-invite's code and the game they name can reach us, when the app loads them; and that the app logs
-that it opened one, as link_opened, and a game also as match_viewed when it is another player's open
-match. That version also logs four more analytics events, 37 in all: invite_shared, invite_joined,
-invite_undone and link_opened, none of which carries a name, a user id or an invite's code. We say
-so in the summary in Greek too. What changed on 15 November 2026. Version 2.4.8 of the apps logs two
-more analytics events, 33 in all: screen_view, when you open Discover, Matches, Rankings, Venues or
-Profile, and post_started, when you open the form for a new match or a new looking-for-a-game post.
-In that version, match_posted also says where you opened the form and about how long it was open,
+RackUp Privacy Policy Effective date: XX December 2026 · Applies to the RackUp apps for Android and
+iPhone (com.rackup.app) What changed on XX December 2026. From version X.Y.Z of the apps you can
+turn app usage analytics off, with a new Usage analytics switch: in Settings, Privacy policy now
+opens Privacy, where it is. Under App usage analytics we say what turning it off stops, that it is
+on until you turn it off, and that it rests on our legitimate interest. That version also logs five
+more analytics events, 44 in all, none of which carries a name, a user id or any id: action_result,
+whether something you sent us went through, and, on Android only, launch_ready, how long the app
+took to open, and screen_frames, whether a screen drew slowly or froze; and, on Android only and
+only once we turn them on, device_signals, at most once a day, signs of tampering with the phone or
+the app, such as root access or a modified build, whether the phone uses a VPN or a proxy, where the
+app was installed from and a short fingerprint of its signing certificate, and
+sensitive_screen_recorded, when the screen is recorded while a sign-in or account screen is open.
+One more, profile_status, is in the Android app but turned off, and no version sends it. From
+version X.Y.Z, both apps also tell Firebase Analytics that nothing it collects may be used for
+advertising, the iPhone app stops it collecting your iPhone's identifier for vendor and the Android
+app stops it collecting the advertising ID, and deleting your account also resets the analytics
+identifier on the phone you delete it from. Under Your account we describe Sign out on all devices,
+which signs your account out of every phone, and the record behind it; under Safety: reports and
+blocks and Feedback, the daily limits on reports and feedback, the records that keep them and the
+alert we get when several players report the same player; under Your rights, the copy of your data
+we send you when you ask; and under Where your data is stored, and who processes it, that the iPhone
+app also uses Firebase App Check. We say so under What we do not do, Who can see what, Our lawful
+basis, How long we keep it and What deletion removes, and in the summary in Greek too. What changed
+on 30 November 2026. From version 2.5.0 of the apps, each hall has a ladder: a competition in
+seasons of 4 weeks among the players who join it. Under Hall ladders, a new section, we say what a
+hall's board shows: for each player who joined, their user id, display name, photo link and
+category, as on their player card, and, once a game of theirs counts, their place and points. Only
+players with an account can see a board, never guests, and how many of your games counted is for you
+alone. We also say there that leaving a ladder or turning off Show me in player search takes you off
+its board within about an hour, how long the board of a finished season is kept, that a season's
+winner gets a badge on their player card for 4 weeks, what our server keeps to build the boards, and
+that Apple's review account and automated test accounts are never on one. Under Notifications we
+describe the pushes a ladder sends and the records that keep them to a few a week, and under App
+usage analytics two more events, 39 in all, ladder_joined and ladder_opened, which carry the hall's
+id but no name or user id, and the card a winner can share. We say so under Who can see what, How
+long we keep it and What deletion removes, and in the summary in Greek too. What changed on 18
+November 2026. From version 2.4.9 of the apps you can invite a friend to play at a hall, with a link
+or a QR code. Under What you post and write we say what an invite keeps, who can read it, what
+happens when your friend joins with it, and when we delete it; under Notifications, how we tell you,
+and the record our server keeps of each running invite's joins and pushes; and under How long we
+keep it and What deletion removes, when invites go. Under App usage analytics we add that from the
+same version, on Android, the app reads once, on your phone, the tags Google Play passes on after an
+install from a hall's poster, a hall's share card, a friend's invite or a shared game's page, to
+open that hall, that invite or that game; that of these tags only the hall, the invite's code and
+the game they name can reach us, when the app loads them; and that the app logs that it opened one,
+as link_opened, and a game also as match_viewed when it is another player's open match. That version
+also logs four more analytics events, 37 in all: invite_shared, invite_joined, invite_undone and
+link_opened, none of which carries a name, a user id or an invite's code. We say so in the summary
+in Greek too. What changed on 15 November 2026. Version 2.4.8 of the apps logs two more analytics
+events, 33 in all: screen_view, when you open Discover, Matches, Rankings, Venues or Profile, and
+post_started, when you open the form for a new match or a new looking-for-a-game post. In that
+version, match_posted also says where you opened the form and about how long it was open,
 join_requested says how you got to the match's page, and match_viewed, for a match opened from the
 board, says its place there and how many matches the board showed. None of them carries a name, a
 user id or a match id. That version also gives Firebase Analytics three user properties: the country
@@ -281,9 +303,16 @@ first week, posted a match or a challenge, asked to join a match, claimed or acc
 or said they were looking for a game. We also count how many games and looking-for-a-game posts find
 a player, from the posts, join requests and challenge claims, and from the activity feed entries
 that tell a player about a game that fits their post. We look only at those totals, never at a
-single player, to judge our social media posts and ads and to see whether games fill. Looking around
-as a guest From version 2.3.0 of the apps, you can look around either app before you create an
-account: tap Look around first on the welcome screen. The app then signs in to Firebase
+single player, to judge our social media posts and ads and to see whether games fill. Sign out on
+all devices. From version X.Y.Z, Sign out on all devices in Settings signs your account out of every
+phone it is signed in on, this one included. You can use it at most once a minute. When you do, the
+app writes the time you asked to a record of its own, sessionRevocations/<your user id>, which only
+you can read. Our server then ends every sign-in of your account in Firebase Authentication, deletes
+the notification tokens of all your phones, described under Notifications, and writes on that record
+when it did so, which your other phones read to sign themselves out. If you tell us that someone
+else is using your account, we can do the same for you. Deleting your account deletes the record.
+Looking around as a guest From version 2.3.0 of the apps, you can look around either app before you
+create an account: tap Look around first on the welcome screen. The app then signs in to Firebase
 Authentication without any details from you, which Firebase calls anonymous sign-in. That gives the
 app on your phone a random guest identifier: a user id with no name, no email address, no password
 and no profile. Firebase Authentication keeps it, with when it was created and when it was last
@@ -550,20 +579,31 @@ collection that no app can ever read back. Only we can read them, in the Firebas
 so to act on abuse. If you block a player, we store their user id in a private list of yours.
 Blocking is invisible to the person blocked. It hides their posts from your feed and keeps them out
 of your player search, and it hides their quick messages and direct challenges, which also stop
-notifying you. Feedback The feedback form in Settings sends us your user id, the category you pick,
-your message, the app version and build, and which platform you are on. Like reports, no app can
-read this back. Notifications We store a Firebase Cloud Messaging token for each of your devices,
-Android or iPhone, along with your language, the platform, the app version and build, and the time
-it was last updated, so we can send you push notifications about join requests, match updates,
-direct challenges, invitations to confirm a game at the table, quick messages, reminders, saved
-search alerts, new games from players you follow, from version 2.4.3 new games in your city, from
-version 2.5.0 the hall ladders you joined and, for halls you starred, new games and check-ins there.
-With the app version, that time also lets us count updates as totals, as described under Your
-account, and our server reads it to tell whether a player opened RackUp in the last 7 days, for
-quiet cities, as described under What you post and write. Our server also reads the app version
-stored with each token for your player card, as described under Your player card and player search,
-and, from version 2.5.0, to send a hall ladder's pushes only to a phone whose app can show the
-ladder. The iPhone app updates the token's record each time it starts. From version 2.4.4, the
+notifying you. So that no one can flood us with reports, our server refuses more reports from an
+account, or a guest, that sent 20 in the last 24 hours, until 24 hours have passed since the first
+of them. To count them it keeps, under your user id, the id and time of each report you sent in the
+last 24 hours, up to 20, and when the limit ends, and an older one drops out when that record is
+next updated. No app can read that record, and it is deleted with your account or your guest
+identifier. When three different players report the same player within 24 hours, our server writes a
+line to its logs with that player's user id and how many players reported them, never who, and we
+are alerted, so that we can read the reports sooner. That line changes nothing for the player by
+itself. Feedback The feedback form in Settings sends us your user id, the category you pick, your
+message, the app version and build, and which platform you are on. Like reports, no app can read
+this back. In the same way as for reports, our server refuses more feedback from an account, or a
+guest, that sent 10 messages in the last 24 hours, until 24 hours have passed since the first of
+them, and keeps the same kind of record of them, which no app can read and which is deleted with
+your account or your guest identifier. Notifications We store a Firebase Cloud Messaging token for
+each of your devices, Android or iPhone, along with your language, the platform, the app version and
+build, and the time it was last updated, so we can send you push notifications about join requests,
+match updates, direct challenges, invitations to confirm a game at the table, quick messages,
+reminders, saved search alerts, new games from players you follow, from version 2.4.3 new games in
+your city, from version 2.5.0 the hall ladders you joined and, for halls you starred, new games and
+check-ins there. With the app version, that time also lets us count updates as totals, as described
+under Your account, and our server reads it to tell whether a player opened RackUp in the last 7
+days, for quiet cities, as described under What you post and write. Our server also reads the app
+version stored with each token for your player card, as described under Your player card and player
+search, and, from version 2.5.0, to send a hall ladder's pushes only to a phone whose app can show
+the ladder. The iPhone app updates the token's record each time it starts. From version 2.4.4, the
 Android app updates it when it starts only if a day or more has passed since it last did, and
 whenever the token, your language or the app version changes. You control notifications with the
 switches in Settings and with your device's notification permission, with two exceptions to the
@@ -680,38 +720,41 @@ it to find and fix bugs. We never attach your account to a crash report. The app
 Crashlytics' user id function, so reports carry no user id, only random identifiers, such as
 Crashlytics' own installation identifier and the Firebase installation ID described under Where your
 data is stored, and who processes it. We do not match them to a person. App usage analytics (both
-apps) Both apps include Firebase Analytics, and it is on by default. The old version of this policy
-said the app had no analytics profiles. That was wrong, and correcting it was the main reason for
-the version dated 4 September 2026. We log 39 events about how the app is used, the same on both
-apps, or 37 before version 2.5.0, which adds ladder_joined and ladder_opened, 33 before version
-2.4.9, which adds invite_shared, invite_joined, invite_undone and link_opened, 31 before version
-2.4.8, which adds screen_view and post_started, 25 before version 2.4.7, which adds match_shared,
-seat_check_answered, table_game_logged, rankings_opened, ranking_hall_opened and share_opened, 24
-before version 2.4.5, which adds match_viewed, and 23 before version 2.3.0, which adds
-guest_browse_started. Most of them record only that something happened. Here they all are, with any
-detail an event carries: Signing in and the first run: sign_up and login, each with the sign-in
-method (password, Google or Apple); guest_browse_started, from version 2.3.0, when you choose to
-look around as a guest; email_verified; tutorial_complete, when you finish or skip the welcome tour;
-home_venue_set, when you pick a home hall, at its end or later, and, from version 2.4.9, when a
-friend's invite gives you one; and notification_permission_result, with whether you allowed
-notifications. Screens: screen_view, from version 2.4.8, when you open, or go back to, Discover,
-Matches, Rankings, Venues or Profile, with which of the five it is, as both its screen name and its
-screen class. Earlier versions let Firebase Analytics record screen views by itself, as one of its
-standard measurements; from version 2.4.8 the apps turn that off, so it records only these. Matches:
-match_viewed, when you open another player's open match, with how you got there (the board, a hall's
-page, a notification, a link, your activity feed or elsewhere in the app), the id of the hall and
-how far ahead the match starts (play now, under 6 hours, 6 to 24 hours, or a day or more), and, from
-version 2.4.8, for a match you opened from the board, its place among the matches there (1 to 20, or
-past the 20th) and how many matches the board showed (1, 2, 3 to 5, 6 to 10, or 11 or more);
-match_shared, when you open the share sheet for a match, with where you opened it (what the app
-shows after you post, the match page, the empty list of requests or the card of a game that found an
-opponent), whether the match is yours and how far ahead it starts, never whether you sent it, or to
-whom; post_started, from version 2.4.8, when you open the form for a new match or a new
-looking-for-a-game post, but not when you edit one, with which of the two it is and where you opened
-it (the + button, the shortcut on the Android app's icon, the board, the game an empty board
-suggests, a looking-for-a-game post, a hall's page, Rankings, the page of a game that found an
-opponent, a rematch or elsewhere in the app); match_posted, with the game type, whether it was a
-"play now" post, the id of the hall, how far ahead it starts and which of the times the app
+apps) Both apps include Firebase Analytics, and it is on by default. From version X.Y.Z you can turn
+it off, as described at the end of this section. The old version of this policy said the app had no
+analytics profiles. That was wrong, and correcting it was the main reason for the version dated 4
+September 2026. We log 44 events about how the app is used, or 39 before version X.Y.Z, which adds
+action_result, launch_ready, screen_frames, device_signals and sensitive_screen_recorded, 37 before
+version 2.5.0, which adds ladder_joined and ladder_opened, 33 before version 2.4.9, which adds
+invite_shared, invite_joined, invite_undone and link_opened, 31 before version 2.4.8, which adds
+screen_view and post_started, 25 before version 2.4.7, which adds match_shared, seat_check_answered,
+table_game_logged, rankings_opened, ranking_hall_opened and share_opened, 24 before version 2.4.5,
+which adds match_viewed, and 23 before version 2.3.0, which adds guest_browse_started. Each is the
+same on both apps, except four, from version X.Y.Z, that only the Android app logs, and two of those
+it logs only once we turn them on, as described below. Most of them record only that something
+happened. Here they all are, with any detail an event carries: Signing in and the first run: sign_up
+and login, each with the sign-in method (password, Google or Apple); guest_browse_started, from
+version 2.3.0, when you choose to look around as a guest; email_verified; tutorial_complete, when
+you finish or skip the welcome tour; home_venue_set, when you pick a home hall, at its end or later,
+and, from version 2.4.9, when a friend's invite gives you one; and notification_permission_result,
+with whether you allowed notifications. Screens: screen_view, from version 2.4.8, when you open, or
+go back to, Discover, Matches, Rankings, Venues or Profile, with which of the five it is, as both
+its screen name and its screen class. Earlier versions let Firebase Analytics record screen views by
+itself, as one of its standard measurements; from version 2.4.8 the apps turn that off, so it
+records only these. Matches: match_viewed, when you open another player's open match, with how you
+got there (the board, a hall's page, a notification, a link, your activity feed or elsewhere in the
+app), the id of the hall and how far ahead the match starts (play now, under 6 hours, 6 to 24 hours,
+or a day or more), and, from version 2.4.8, for a match you opened from the board, its place among
+the matches there (1 to 20, or past the 20th) and how many matches the board showed (1, 2, 3 to 5, 6
+to 10, or 11 or more); match_shared, when you open the share sheet for a match, with where you
+opened it (what the app shows after you post, the match page, the empty list of requests or the card
+of a game that found an opponent), whether the match is yours and how far ahead it starts, never
+whether you sent it, or to whom; post_started, from version 2.4.8, when you open the form for a new
+match or a new looking-for-a-game post, but not when you edit one, with which of the two it is and
+where you opened it (the + button, the shortcut on the Android app's icon, the board, the game an
+empty board suggests, a looking-for-a-game post, a hall's page, Rankings, the page of a game that
+found an opponent, a rematch or elsewhere in the app); match_posted, with the game type, whether it
+was a "play now" post, the id of the hall, how far ahead it starts and which of the times the app
 suggested you kept, if any, and, from version 2.4.8, where you opened the form and about how long it
 was open before you posted (under 30 seconds, 30 to 60 seconds, 1 to 2 minutes, 2 to 5 minutes, or
 longer); join_requested, from version 2.4.8 with how you got to the match's page, as for
@@ -744,114 +787,172 @@ tags Google Play passed on after an install, an invite from a link, from those t
 invite code you typed, and a game only from those tags. Hall ladders, from version 2.5.0:
 ladder_joined, when you join a hall's ladder, with the id of the hall; and ladder_opened, when you
 open a hall's whole ladder, with the id of the hall and where you opened it (the hall's page or
-Rankings). Everything else: venue_checked_in, with the id of the hall; player_followed;
+Rankings). How well the app works, from version X.Y.Z: action_result, when something you sent us
+gets its answer, with which of these it was: signing up, signing in, starting as a guest, verifying
+your email, saving your profile, posting a match, a looking-for-a-game post or a game at the table,
+asking to join, accepting a request, sending, accepting or claiming a challenge, checking in, or
+sending a quick message; how it ended: it went through, you cancelled it, it was refused, for
+example because the match was already taken or a password was wrong, our security rules refused it,
+the phone was offline, the app stopped waiting, or another error; the name the app gives that kind
+of error, from a fixed list, never an error message; for signing up and signing in, the method
+(password, Google or Apple); and, on Android only, roughly how long the answer took, in bands from
+under a quarter of a second to over 15 seconds, and the kind of connection the phone had (none,
+Wi-Fi, mobile or other), never which network or any address. On Android only, launch_ready, when the
+app, opened from closed, has shown its first screen, with how it opened (signed in, on the copy of
+your profile kept on the phone because our servers had not answered yet, signed in but before your
+email is verified or your profile is finished, as a guest, or signed out) and roughly how long that
+took, in bands from under 1 second to over 15 seconds; and screen_frames, when you leave a screen,
+with which it was (Discover, Matches, Rankings, Venues, Profile, a match's page, the post form, a
+hall's page or any other) and two yes or no answers: whether it drew slowly, with more than half of
+its frames taking longer than 16 milliseconds, and whether it froze, with more than 1 in 1,000
+taking longer than 0.7 seconds. Safety signals, from version X.Y.Z, on Android only and only once we
+turn them on: until then the app sends neither. device_signals, at most once a day, with which of
+these signs the phone shows, if any: root access, a tool that hooks into apps, an emulator, a
+debugger attached or awaited, a modified build of the app, an app-cloning container, developer
+options or USB debugging turned on, a VPN or a proxy; where the app was installed from (Google Play,
+a computer with Android's developer tools, a file, another app store, or unknown); and, on Android 9
+and later, the first 8 characters of the fingerprint of the certificate the app is signed with,
+which is the same on every copy of RackUp from Google Play, so another value means a rebuilt or
+re-signed copy. It never names another app, a network or an address, and nothing in the app is
+blocked or changed because of a signal. And sensitive_screen_recorded, on Android 15 and later, when
+the screen is being recorded while the sign-in, create account, verify email or delete account
+screen is open, or the password asked before a deletion, with which of those it was, at most once
+each time one opens. The app does not stop the recording. We read both only as totals, to measure
+tampering and abuse. Everything else: venue_checked_in, with the id of the hall; player_followed;
 saved_search_created; and notifications_opened and notification_row_tapped, when you open your
 activity feed and when you tap one of its entries. The only ids any event carries are hall ids, on
 match_posted, match_viewed, venue_checked_in, ranking_hall_opened, share_opened, ladder_joined and
-ladder_opened. A hall id names a billiard hall in our directory, not a person. No name, no email, no
-user id, no match id, no invite code and no free text is ever attached to an analytics event.
-Firebase Analytics also collects its own standard measurements, such as app opens and sessions, and
-it derives approximate geography from a masked IP address. User properties. From version 2.4.8, the
-apps also give Firebase Analytics three user properties, which it attaches to the events from that
-install of the app: home_country, the country on your profile, or the app's default one for an older
-profile that has none, only while you are signed in with an account; account, whether you are signed
-in with an account or looking around as a guest; and theme, which Theme you chose in Settings, Dark,
-Light or System default, and with System default, which of the two your phone shows. Signing out
-clears home_country and account. We use them only to compare totals, for example how the app is used
-by guests and by players, in each country and with each theme. None of them is a name or a user id,
-and the app still never gives Analytics your user id. Where new players come from. On Android,
-Google Play passes Firebase Analytics the tags of the link that led to an install, and when that
-link was tapped. The tags name a source, a medium and a campaign, and we choose them by where the
-link appears: for example our website, our Facebook Page, an Instagram link, an ad, a QR code on a
-poster or a match link another player shared. For our ads on Facebook and Instagram, the tags also
-say where the ad was shown, for example in the Facebook feed or in Instagram Reels. An install from
-a search in Google Play gets Play's own tag instead. We read these only as totals, never player by
-player: how many first opens of the app, and how many sign-ups, followed each kind of link. That
-shows us which of our social media posts, ads and posters bring new players. On iPhone the app
-collects nothing for this. Apple tells us only totals, such as how many downloads came from each of
-our campaign links, from our ads on the App Store, or from another app or website. Links from
-posters, invites and shared games. On Android, when you install RackUp from a hall's poster, a
-hall's share card, a friend's invite or a shared game's page, Google Play passes the app the same
-tags it passes Firebase Analytics. From version 2.4.9 the app reads them once, on your phone, to
-open that hall, that invite or that game. Of these tags, only the hall, the invite's code and the
-game they name can reach us, when the app loads that hall, that invite or that game. The app logs
-that it opened one this way as link_opened, described above, and when the game is another player's
-open match, opening it also logs match_viewed, with the game's hall, as opening any such match does.
-On iPhone the app reads nothing like this. Analytics is not linked to your account. The app never
-calls Analytics' user id function, so Analytics keys on its own per installation identifier. One
-practical consequence, stated honestly: because these records are not tied to your account, we
-cannot pick out an individual person's analytics records, and there is no in-app switch to turn
-analytics off. Uninstalling the app stops collection. Location Both apps can ask for your
-approximate location, never your precise one, to show the halls and games near you first. From
-version 2.4.2, if you have already allowed location and you are in another country where RackUp is
-open, the app may also use it on your phone to offer you a visit there, and for this your position
-still never leaves your phone. The app asks only after you tap the card at the top of the Venues tab
-that offers to show the venues closest to you first or, from version 2.3.0, choose the Nearest sort
-there, and it reads your location only while you are using it. The iPhone app asks from version
-2.2.0; the Android app, through its coarse location permission, has asked since its first versions.
-The app uses your position on your phone, against venue coordinates it already has. From the hall
-nearest to you, the app works out your city. It orders every list of halls and games with your
-starred halls first, then your city, then everything else, nearest first, and it opens Discover on
-that city. The app never sends your phone's position to us, and we never store it. On Android, if
-you allowed location, the Venues map opens on your area, so Google Maps loads the map around you.
-The city worked out from your position orders what you see and is never written to your profile or
-to any post. If you save a search from Discover without changing its city, the saved search keeps
-that city. If you say no, nothing else changes: the lists put the city on your profile first
-instead, and the app works normally. Checking in at a venue is on the honour system and is not
-verified against your location. From version 2.4.0 of the apps, to choose which country's games a
-guest sees and which country sign-up suggests, the Android app looks at the country of the mobile
-network the phone is on, else of its SIM card, else of the phone's language; the iPhone app uses
-your Region setting. From version 2.4.2, if you are signed in and your phone's region, read the same
-way, names another country where RackUp is open, the app may also use it, on your phone only, to ask
-you once whether you play there, so that you can visit that country or make it your country. None of
-this needs a permission. The app does not send us the network, SIM or language it reads: a guest's
-app only asks our database for that country's games, and your profile keeps only the country you
-confirm. The location linked to your account is what you give us. The city you choose for your
-profile, which sign-up asks for, and the country it is in are on your profile record and your player
-card, described above, and the weekly sign-up counts are taken by city. We count them as approximate
-location, linked to your account. We also keep the halls you name yourself: your usual hall, the
-halls you starred, which bring you their notifications (on Android by signing your device up with
-Firebase Cloud Messaging, on iPhone through your account), your check-ins, the halls whose ladders
-you joined, and the hall or city of your posts, challenges, looking-for-a-game posts, saved searches
-and schedule, each described above. What we do not do No advertising in the apps. There is no ad SDK
-of any kind in either app. No advertising identifier. The Android app strips the AD_ID permission
-that Firebase Analytics would otherwise pull in. The iPhone app links the version of Firebase
-Analytics built without advertising ID support, shows no App Tracking Transparency prompt, and does
-not read the IDFA. No tracking across other companies' apps or websites. There is no attribution
-SDK, no data broker and no third-party analytics product beyond Google Firebase. We do not sell your
-data, and we do not pass it to advertisers or data brokers. No contacts, no health data, no
-payments. The app is free, has no in-app purchases and reads nothing from your address book. No free
-text chat. Players cannot type messages to each other. The two players of a confirmed match can send
-only the fixed quick messages described above, and the only text you can write to a single player is
-the optional note on a direct challenge. No precise location on either platform. Who can see what
-Private to you: your email address, your profile record, your blocked list, your saved searches,
-your starred venues, your weekly schedule, your activity feed, the ratings you have received, your
-venue check-ins, the list of players you follow, and your joins of hall ladders with how many of
-your games counted there. A player you follow is not told. Private to you and one other player: a
-direct challenge or an invitation to a game at the table between the two of you, and the quick
-messages and read marks of a confirmed match between the two of you. Visible to every player with an
-account: your player card, described above, with your display name, skill category, country and
-city, usual hall, profile photo and the games you play. Unless you turn off Show me in player
-search, they can also find you by name, players with the same usual hall see you among its regulars
-and, from version 2.4.7, if you are among the players who played the most in a country in the last
-30 days, they see you in its Rankings. From version 2.5.0, if you join a hall's ladder, they see on
-its board your display name, profile photo and category and, once a game of yours counts, your place
-and points, and your player card shows each season you won there for 4 weeks. Visible to every
-signed in player: your display name, your skill category, your profile photo, your reliability
-figure and verified badge, everything on the matches and open challenges you post or join, including
-your notes, scores, dispute status and cancellation notes, and your looking-for-a-game post. From
-version 2.3.0, guests see part of this: what the copies of your open games hold, as described above,
-and your looking-for-a-game post, but never a note, a score, a result or a cancellation. A guest is
-someone looking around in the app without an account, as described above. Visible only to us: abuse
-reports and feedback messages. Nobody without a sign-in, with one exception. There is no public web
-profile. Looking around as a guest, from version 2.3.0, still signs in, anonymously, as described
-above. With no sign-in at all, our database lets nothing be read except a settings record that tells
-each app the oldest version we still support, the list of countries and cities the app offers, and
-the text the apps show on screen, in each language, which they read from our database from version
-2.4.8, so that we can correct a word without a new version. None of these holds personal data. The
-exception is your profile photo: its link carries its own access key, so anyone who has the link can
-open the photo without signing in. That link is copied onto your posts, which every signed in player
-can read, onto the copies of your open games and your looking-for-a-game post, which guests can read
+ladder_opened. A hall id names a billiard hall in our directory, not a person. The fingerprint that
+device_signals carries belongs to the app's certificate, the same on every copy from Google Play,
+and names no phone or person. No name, no email, no user id, no match id, no invite code and no free
+text is ever attached to an analytics event. From version X.Y.Z, before an event leaves the phone,
+the apps also check each detail it carries against a fixed list of the details that event may carry,
+and of how each may look, and drop anything else. Firebase Analytics also collects its own standard
+measurements, such as app opens and sessions, and it derives approximate geography from a masked IP
+address. User properties. From version 2.4.8, the apps also give Firebase Analytics three user
+properties, which it attaches to the events from that install of the app: home_country, the country
+on your profile, or the app's default one for an older profile that has none, only while you are
+signed in with an account; account, whether you are signed in with an account or looking around as a
+guest; and theme, which Theme you chose in Settings, Dark, Light or System default, and with System
+default, which of the two your phone shows. Signing out clears home_country and account. We use them
+only to compare totals, for example how the app is used by guests and by players, in each country
+and with each theme. None of them is a name or a user id, and the app still never gives Analytics
+your user id. Where new players come from. On Android, Google Play passes Firebase Analytics the
+tags of the link that led to an install, and when that link was tapped. The tags name a source, a
+medium and a campaign, and we choose them by where the link appears: for example our website, our
+Facebook Page, an Instagram link, an ad, a QR code on a poster or a match link another player
+shared. For our ads on Facebook and Instagram, the tags also say where the ad was shown, for example
+in the Facebook feed or in Instagram Reels. An install from a search in Google Play gets Play's own
+tag instead. We read these only as totals, never player by player: how many first opens of the app,
+and how many sign-ups, followed each kind of link. That shows us which of our social media posts,
+ads and posters bring new players. On iPhone the app collects nothing for this. Apple tells us only
+totals, such as how many downloads came from each of our campaign links, from our ads on the App
+Store, or from another app or website. Links from posters, invites and shared games. On Android,
+when you install RackUp from a hall's poster, a hall's share card, a friend's invite or a shared
+game's page, Google Play passes the app the same tags it passes Firebase Analytics. From version
+2.4.9 the app reads them once, on your phone, to open that hall, that invite or that game. Of these
+tags, only the hall, the invite's code and the game they name can reach us, when the app loads that
+hall, that invite or that game. The app logs that it opened one this way as link_opened, described
+above, and when the game is another player's open match, opening it also logs match_viewed, with the
+game's hall, as opening any such match does. On iPhone the app reads nothing like this. Analytics is
+not linked to your account. The app never calls Analytics' user id function, so Analytics keys on
+its own per installation identifier. One practical consequence, stated honestly: because these
+records are not tied to your account, we cannot pick out an individual person's analytics records.
+From version X.Y.Z, when you delete your account, the app also resets that identifier on the phone
+you delete it from and clears what Analytics still holds there, so that what the app logs on that
+phone afterwards is not tied to what it logged before. What Analytics had already sent stays with
+Google, as described under How long we keep it. Turning analytics off. From version X.Y.Z, in
+Settings, Privacy policy opens Privacy, where you can turn off Usage analytics. From then on the app
+sends Firebase Analytics nothing from that phone: no events, no user properties and none of its
+standard measurements, so crash reports no longer carry analytics events either. Turning it off also
+resets the per installation identifier and clears what Analytics still holds on the phone, and
+turning it on again starts afresh, with a new identifier. Your choice is kept on the phone, for that
+install of the app, and never with your account, so it does not follow you to another phone, and it
+goes if you remove the app. It does not turn off crash diagnostics. Usage analytics is on until you
+turn it off, because it rests on our legitimate interest, described under Our lawful basis, and
+turning it off is the simplest way to object to it. Before version X.Y.Z there is no such switch,
+and uninstalling the app is the only way to stop collection. Not sent yet. The Android app also
+contains one more event, profile_status, which is turned off, so no version sends it. If we turn it
+on, in a later version, this policy will list it above first. It would say, at most once for each
+version of the app, whether Android has compiled the app on your phone with the profile that helps
+it start faster, with Android's result code and two yes or no answers, whether it has and whether it
+is waiting to, and nothing about you. Location Both apps can ask for your approximate location,
+never your precise one, to show the halls and games near you first. From version 2.4.2, if you have
+already allowed location and you are in another country where RackUp is open, the app may also use
+it on your phone to offer you a visit there, and for this your position still never leaves your
+phone. The app asks only after you tap the card at the top of the Venues tab that offers to show the
+venues closest to you first or, from version 2.3.0, choose the Nearest sort there, and it reads your
+location only while you are using it. The iPhone app asks from version 2.2.0; the Android app,
+through its coarse location permission, has asked since its first versions. The app uses your
+position on your phone, against venue coordinates it already has. From the hall nearest to you, the
+app works out your city. It orders every list of halls and games with your starred halls first, then
+your city, then everything else, nearest first, and it opens Discover on that city. The app never
+sends your phone's position to us, and we never store it. On Android, if you allowed location, the
+Venues map opens on your area, so Google Maps loads the map around you. The city worked out from
+your position orders what you see and is never written to your profile or to any post. If you save a
+search from Discover without changing its city, the saved search keeps that city. If you say no,
+nothing else changes: the lists put the city on your profile first instead, and the app works
+normally. Checking in at a venue is on the honour system and is not verified against your location.
+From version 2.4.0 of the apps, to choose which country's games a guest sees and which country
+sign-up suggests, the Android app looks at the country of the mobile network the phone is on, else
+of its SIM card, else of the phone's language; the iPhone app uses your Region setting. From version
+2.4.2, if you are signed in and your phone's region, read the same way, names another country where
+RackUp is open, the app may also use it, on your phone only, to ask you once whether you play there,
+so that you can visit that country or make it your country. None of this needs a permission. The app
+does not send us the network, SIM or language it reads: a guest's app only asks our database for
+that country's games, and your profile keeps only the country you confirm. The location linked to
+your account is what you give us. The city you choose for your profile, which sign-up asks for, and
+the country it is in are on your profile record and your player card, described above, and the
+weekly sign-up counts are taken by city. We count them as approximate location, linked to your
+account. We also keep the halls you name yourself: your usual hall, the halls you starred, which
+bring you their notifications (on Android by signing your device up with Firebase Cloud Messaging,
+on iPhone through your account), your check-ins, the halls whose ladders you joined, and the hall or
+city of your posts, challenges, looking-for-a-game posts, saved searches and schedule, each
+described above. What we do not do No advertising in the apps. There is no ad SDK of any kind in
+either app. No advertising identifier. The Android app strips the AD_ID permission that Firebase
+Analytics would otherwise pull in. The iPhone app links the version of Firebase Analytics built
+without advertising ID support, shows no App Tracking Transparency prompt, and does not read the
+IDFA. No tracking across other companies' apps or websites. There is no attribution SDK, no data
+broker and no third-party analytics product beyond Google Firebase. We do not sell your data, and we
+do not pass it to advertisers or data brokers. No advertising use of analytics, from version X.Y.Z.
+Both apps tell Firebase Analytics that nothing it collects may be used for advertising: the three
+settings Google provides for this, for storing data for ads, using your data for ads and
+personalising ads, are off. From the same version the iPhone app also stops Firebase Analytics
+collecting the identifier for vendor, and the Android app stops it collecting the advertising ID. No
+contacts, no health data, no payments. The app is free, has no in-app purchases and reads nothing
+from your address book. No free text chat. Players cannot type messages to each other. The two
+players of a confirmed match can send only the fixed quick messages described above, and the only
+text you can write to a single player is the optional note on a direct challenge. No precise
+location on either platform. Who can see what Private to you: your email address, your profile
+record, your blocked list, your saved searches, your starred venues, your weekly schedule, your
+activity feed, the ratings you have received, your venue check-ins, the list of players you follow,
+from version X.Y.Z the record of your last Sign out on all devices, any copy of your data that our
+server built for you, and your joins of hall ladders with how many of your games counted there. A
+player you follow is not told. Private to you and one other player: a direct challenge or an
+invitation to a game at the table between the two of you, and the quick messages and read marks of a
+confirmed match between the two of you. Visible to every player with an account: your player card,
+described above, with your display name, skill category, country and city, usual hall, profile photo
+and the games you play. Unless you turn off Show me in player search, they can also find you by
+name, players with the same usual hall see you among its regulars and, from version 2.4.7, if you
+are among the players who played the most in a country in the last 30 days, they see you in its
+Rankings. From version 2.5.0, if you join a hall's ladder, they see on its board your display name,
+profile photo and category and, once a game of yours counts, your place and points, and your player
+card shows each season you won there for 4 weeks. Visible to every signed in player: your display
+name, your skill category, your profile photo, your reliability figure and verified badge,
+everything on the matches and open challenges you post or join, including your notes, scores,
+dispute status and cancellation notes, and your looking-for-a-game post. From version 2.3.0, guests
+see part of this: what the copies of your open games hold, as described above, and your
+looking-for-a-game post, but never a note, a score, a result or a cancellation. A guest is someone
+looking around in the app without an account, as described above. Visible only to us: abuse reports
+and feedback messages. Nobody without a sign-in, with one exception. There is no public web profile.
+Looking around as a guest, from version 2.3.0, still signs in, anonymously, as described above. With
+no sign-in at all, our database lets nothing be read except a settings record that tells each app
+the oldest version we still support, the list of countries and cities the app offers, and the text
+the apps show on screen, in each language, which they read from our database from version 2.4.8, so
+that we can correct a word without a new version. None of these holds personal data. The exception
+is your profile photo: its link carries its own access key, so anyone who has the link can open the
+photo without signing in. That link is copied onto your posts, which every signed in player can
+read, onto the copies of your open games and your looking-for-a-game post, which guests can read
 too, and onto your player card. For most reading, our security rules check that a request is signed
 in, not that it comes from an account. A guest session, which the apps start from version 2.3.0, is
 signed in that way, but for matches, challenges, player cards and hall ladders the rules also check
@@ -882,81 +983,90 @@ games for guests, giving what you post or save, and your profile, its country wh
 out, and the account erasure job. These run in Google's europe-west1 region, in Belgium. Cloud
 Scheduler, in the same region, starts the jobs that run on a timetable, and holds no personal data.
 Cloud Logging: the logs our server-side jobs write, which can contain your user id. Google keeps
-them in its global location, which means they can be stored in any of its data centres. Firebase
+them in its global location, which means they can be stored in any of its data centres. We also use
+them to alert us to unusual activity, such as many new profiles in a short time, an account reaching
+its daily limit of reports or feedback, or one player reported by several others. Firebase
 Crashlytics: crash and diagnostic reports. Firebase Analytics: the app usage events described above.
 Firebase Cloud Messaging: push notifications on both apps. On iPhone, Firebase passes them to
 Apple's Push Notification service, which delivers them, as described below. Firebase App Check: on
-Android, the app uses it, with Google Play, to show our services that a request comes from our
-genuine app. Firebase Installations: it gives each install of the app a random Firebase installation
-ID, which identifies that install, not you: the app installed again, or another app on the same
-phone, gets a different one. Crashlytics attaches it to crash reports, Cloud Messaging uses it to
-deliver notifications to the right phone, and Analytics may use it to measure how the app is used
-and where installs come from. We do not use it ourselves, but the notification token we keep under
-your account is issued for the same install and tied to it, so through that token the ID can be
-linked to your account. Firebase's privacy page names no location for this service. The Android
-app's map in the Venues tab is Google Maps. Opening it sends Google your device's IP address and the
-area you are looking at, which, if you allowed location, is the area around you. Google handles this
-under its own terms and privacy policy. So our database, our server-side jobs and your profile photo
-are in the European Union, but your sign-in details are in the United States. Crashlytics,
-Analytics, Cloud Messaging and App Check are global Google services and, like our server logs, what
-they handle may be processed or stored anywhere Google has facilities, including outside the
-European Economic Area. So may installation IDs: for a service that does not let us choose a
-location, Firebase's privacy page says that Firebase may process and store data anywhere Google or
-its agents maintain facilities. When your data is processed outside the European Economic Area, it
-is protected in one of two ways. In the United States, by the EU-U.S. Data Privacy Framework: the
-European Commission has decided that personal data sent to companies certified under it is
-adequately protected, and Google LLC is certified. In any other country whose protection the
-Commission has not found adequate, and in the United States should the framework stop applying, by
-the European Commission's standard contractual clauses, which are part of Google's data processing
-terms: the Cloud Data Processing Addendum for Authentication, Firestore, Cloud Storage, Cloud
-Functions, Cloud Logging and App Check, the Firebase Data Processing and Security Terms for
-Crashlytics and Cloud Messaging, and the Google Ads Data Processing Terms for Analytics. Google's
-documentation for all of this is at firebase.google.com/support/privacy. On iPhone, two of Apple's
-services also handle your data. If you choose Sign in with Apple, Apple signs you in with your Apple
-Account and gives us your name, if you share it, and your email address or a private relay address
-that forwards to it. Apple handles this under its own privacy policy, as its page Sign in with Apple
-& Privacy says. Apple's Push Notification service receives every notification we send to your
-iPhone, with what it says, and delivers it. Apple's terms for app developers say that Apple will not
-access or disclose a notification's content unless it believes in good faith that this is reasonably
-necessary, for example to comply with legal process or to deal with security, fraud or technical
-issues. Apple does not say in which country it runs either service. Its privacy policy says that
-personal data collected by Apple is generally stored by Apple Inc. in the United States, that
-personal data relating to people in the European Economic Area is controlled by Apple Distribution
-International Limited in Ireland, and that Apple's transfers of personal data collected in the
-European Economic Area are governed by standard contractual clauses. Data is encrypted in transit.
-Access from the apps is controlled by Firebase security rules that enforce exactly the visibility
-described in the section above. Our lawful basis (GDPR Article 6) Performance of a contract (Article
-6(1)(b)): creating and running your account, publishing your match posts, handling join requests,
-recording results, running the hall ladders you join, and everything else you need for the app to do
-its job, including storing each device's notification token and sending you the notifications you
-leave on in Settings, which your device's notification permission can also stop. From version 2.3.0,
-before you have an account, the same basis covers the guest identifier that lets you look around,
-which you ask for when you tap Look around first. Legitimate interests (Article 6(1)(f)): keeping
-RackUp safe and working, and finding out which of our social media posts, ads and posters bring new
-players. This covers abuse reports, blocking, no show and dispute records, the profanity filter,
-crash diagnostics, the app usage analytics described above, including where installs come from, the
-weekly sign-up, update and fill counts described with your profile record, and the yes or no for
-quiet cities described under What you post and write. Our interest is in running a service that is
-safe for players and does not crash, in knowing when enough players have updated to release a
-change, in seeing whether games fill, in helping new posts in quiet cities find a player, and in
-spending our advertising budget where it brings new players. We have kept the data to the minimum
-that serves it, and measuring our posts and ads collects nothing extra. We never tie anything that
-Firebase Analytics or Crashlytics collects to your account. The app version stored with your profile
-record and your notification tokens is, and the counts come from those records and from your posts,
-join requests, challenge claims, direct challenges and activity feed, but as with install sources we
-look only at the totals, never at a single player. You can object to this processing at any time, at
-the address below. Consent (Article 6(1)(a)): the optional approximate location permission on both
-apps. You can withdraw it at any time in your device settings. How long we keep it Your account and
-everything attached to it: for as long as your account exists. Delete your account and the erasure
-described below runs. Guest identifiers, from version 2.3.0: kept in Firebase Authentication until
-we delete them. We do not delete them automatically today, and creating an account does not delete
-yours. A guest identifier holds no name, email address or profile, only when it was created and last
-used. Because nothing in it names you, we cannot pick yours out from a request by email. Copies of
-open games for guests: deleted as soon as the game is taken, called off or deleted, or its host
-deletes their account, and otherwise within about an hour once a match is more than 2 hours past its
-start, or a challenge is 24 hours old or more than 2 hours past its time. Direct challenges: one
-that is not answered within 24 hours expires. Every direct challenge, answered or not, is deleted 30
-days after its 24 hours ran out. An accepted one has already become a match, which is kept like any
+Android, the app uses it, with Google Play, and from version X.Y.Z the iPhone app too, with Apple's
+App Attest service, to show our services that a request comes from our genuine app. Firebase
+Installations: it gives each install of the app a random Firebase installation ID, which identifies
+that install, not you: the app installed again, or another app on the same phone, gets a different
+one. Crashlytics attaches it to crash reports, Cloud Messaging uses it to deliver notifications to
+the right phone, and Analytics may use it to measure how the app is used and where installs come
+from. We do not use it ourselves, but the notification token we keep under your account is issued
+for the same install and tied to it, so through that token the ID can be linked to your account.
+Firebase's privacy page names no location for this service. The Android app's map in the Venues tab
+is Google Maps. Opening it sends Google your device's IP address and the area you are looking at,
+which, if you allowed location, is the area around you. Google handles this under its own terms and
+privacy policy. So our database, our server-side jobs and your profile photo are in the European
+Union, but your sign-in details are in the United States. Crashlytics, Analytics, Cloud Messaging
+and App Check are global Google services and, like our server logs, what they handle may be
+processed or stored anywhere Google has facilities, including outside the European Economic Area. So
+may installation IDs: for a service that does not let us choose a location, Firebase's privacy page
+says that Firebase may process and store data anywhere Google or its agents maintain facilities.
+When your data is processed outside the European Economic Area, it is protected in one of two ways.
+In the United States, by the EU-U.S. Data Privacy Framework: the European Commission has decided
+that personal data sent to companies certified under it is adequately protected, and Google LLC is
+certified. In any other country whose protection the Commission has not found adequate, and in the
+United States should the framework stop applying, by the European Commission's standard contractual
+clauses, which are part of Google's data processing terms: the Cloud Data Processing Addendum for
+Authentication, Firestore, Cloud Storage, Cloud Functions, Cloud Logging and App Check, the Firebase
+Data Processing and Security Terms for Crashlytics and Cloud Messaging, and the Google Ads Data
+Processing Terms for Analytics. Google's documentation for all of this is at
+firebase.google.com/support/privacy. On iPhone, two of Apple's services also handle your data. If
+you choose Sign in with Apple, Apple signs you in with your Apple Account and gives us your name, if
+you share it, and your email address or a private relay address that forwards to it. Apple handles
+this under its own privacy policy, as its page Sign in with Apple & Privacy says. Apple's Push
+Notification service receives every notification we send to your iPhone, with what it says, and
+delivers it. Apple's terms for app developers say that Apple will not access or disclose a
+notification's content unless it believes in good faith that this is reasonably necessary, for
+example to comply with legal process or to deal with security, fraud or technical issues. Apple does
+not say in which country it runs either service. Its privacy policy says that personal data
+collected by Apple is generally stored by Apple Inc. in the United States, that personal data
+relating to people in the European Economic Area is controlled by Apple Distribution International
+Limited in Ireland, and that Apple's transfers of personal data collected in the European Economic
+Area are governed by standard contractual clauses. Data is encrypted in transit. Access from the
+apps is controlled by Firebase security rules that enforce exactly the visibility described in the
+section above. Our lawful basis (GDPR Article 6) Performance of a contract (Article 6(1)(b)):
+creating and running your account, publishing your match posts, handling join requests, recording
+results, running the hall ladders you join, signing your account out of every phone when you ask,
+and everything else you need for the app to do its job, including storing each device's notification
+token and sending you the notifications you leave on in Settings, which your device's notification
+permission can also stop. From version 2.3.0, before you have an account, the same basis covers the
+guest identifier that lets you look around, which you ask for when you tap Look around first.
+Legitimate interests (Article 6(1)(f)): keeping RackUp safe and working, and finding out which of
+our social media posts, ads and posters bring new players. This covers abuse reports, blocking, no
+show and dispute records, the profanity filter, the daily limits on reports and feedback and the
+alert when several players report the same player, crash diagnostics, the app usage analytics
+described above, including how well the app works, the safety signals once we turn them on and where
+installs come from, the weekly sign-up, update and fill counts described with your profile record,
+and the yes or no for quiet cities described under What you post and write. Our interest is in
+running a service that is safe for players and does not crash or fail, in noticing abuse and
+tampered copies of the app early, in knowing when enough players have updated to release a change,
+in seeing whether games fill, in helping new posts in quiet cities find a player, and in spending
+our advertising budget where it brings new players. We have kept the data to the minimum that serves
+it, and measuring our posts and ads collects nothing extra. We never tie anything that Firebase
+Analytics or Crashlytics collects to your account. The app version stored with your profile record
+and your notification tokens is, and the counts come from those records and from your posts, join
+requests, challenge claims, direct challenges and activity feed, but as with install sources we look
+only at the totals, never at a single player. You can object to this processing at any time, at the
+address below, and, from version X.Y.Z, to app usage analytics by turning off Usage analytics in the
+app, as described under App usage analytics. Legal obligation (Article 6(1)(c)): answering the
+requests you make under the GDPR, such as sending you a copy of your data, as described under Your
+rights. Consent (Article 6(1)(a)): the optional approximate location permission on both apps. You
+can withdraw it at any time in your device settings. How long we keep it Your account and everything
+attached to it: for as long as your account exists. Delete your account and the erasure described
+below runs. Guest identifiers, from version 2.3.0: kept in Firebase Authentication until we delete
+them. We do not delete them automatically today, and creating an account does not delete yours. A
+guest identifier holds no name, email address or profile, only when it was created and last used.
+Because nothing in it names you, we cannot pick yours out from a request by email. Copies of open
+games for guests: deleted as soon as the game is taken, called off or deleted, or its host deletes
+their account, and otherwise within about an hour once a match is more than 2 hours past its start,
+or a challenge is 24 hours old or more than 2 hours past its time. Direct challenges: one that is
+not answered within 24 hours expires. Every direct challenge, answered or not, is deleted 30 days
+after its 24 hours ran out. An accepted one has already become a match, which is kept like any
 other, without the challenge's note. Quick messages: a daily job deletes each message once more than
 14 days have passed both since it was sent and since its match's start time, and each read mark at
 the same time as the newest message it marks. So messages sent before a match stay until 14 days
@@ -978,32 +1088,41 @@ they win another season or delete their account. Abuse reports: reports about yo
 safety record even after you delete your account, because a moderation history that vanishes on
 request is not a moderation history. Crash and analytics records: held by Google under the Firebase
 project's own retention settings. They are not linked to your account, so they are not affected by
-account deletion and we cannot single out an individual's records. Firebase installation IDs: kept
-by Google until they are deleted. We do not delete them, and deleting your account does not delete
-them either. Google deletes one once the app has not been used on that phone for 270 days, its
-current limit, and says that the data tied to a deleted ID is removed from its live and backup
-systems within 180 days. Crashlytics keeps the ones in crash reports for 90 days before it starts
-removing them. Erasure records: when an account is erased we keep one small record holding the user
-id, a status, timestamps and the names of the steps that ran. It holds no name, no email, no photo
-and no message text. It is our evidence that the erasure happened, and no app can read it. Deleting
-your account In the app: Profile → Settings → Delete account → Yes, delete everything. If it has
-been a while since you signed in, Firebase will ask you to sign out and sign back in first. If you
-signed in with Apple, the app also asks Apple to revoke RackUp's access to your Apple Account.
-Without the app: email rackupbilliard@gmail.com from your registered address with the subject
-"Account deletion request" and we will do it for you. What deletion removes Your sign-in account is
-deleted immediately. That automatically starts a server-side job which removes: your profile record,
-and with it your name, email, category, country, city, usual hall, games, photo link and player
-search setting; your player card, and your place on the players' list in Rankings; your joins of
-hall ladders, with how many of your games counted, your place on every hall's ladder board, this
-season's and the last, your ladder badges, and every mention of you in our server's record for each
-ladder; the guests' copies of the open games you posted; your profile photo file in Cloud Storage;
-your notification tokens, notification preferences, activity feed, saved searches, starred venues,
-weekly schedule and blocked list; the day and time of the last city alert we sent you, and of the
-last notice from a starred hall that a place is free again; the records that keep the notifications
-about your new matches, direct challenges and invitations to games at the table, and your "No answer
-yet" notices, to a few a day; the record that keeps each of your invites to at most 10 friends at a
-time and 5 pushes; the records that keep your ladder pushes to a few a week, and the board updates
-that your joins and player card start to 6 a day; the count of the games you have played with a
+account deletion and we cannot single out an individual's records. From version X.Y.Z, deleting your
+account or turning off Usage analytics resets the analytics identifier on that phone, but does not
+delete what was already sent. Firebase installation IDs: kept by Google until they are deleted. We
+do not delete them, and deleting your account does not delete them either. Google deletes one once
+the app has not been used on that phone for 270 days, its current limit, and says that the data tied
+to a deleted ID is removed from its live and backup systems within 180 days. Crashlytics keeps the
+ones in crash reports for 90 days before it starts removing them. Erasure records: when an account
+is erased we keep one small record holding the user id, a status, timestamps and the names of the
+steps that ran. It holds no name, no email, no photo and no message text. It is our evidence that
+the erasure happened, and no app can read it. Your copy of your data: we delete our copy of a file
+we send you once it is sent. A copy that our server builds in our database stays there, readable
+only by you, until your next request replaces it or you delete your account. Sign out on all
+devices: the record of when you last asked, and of when our server did it, until you delete your
+account. Daily limits on reports and feedback: the records of what you sent in the last 24 hours,
+until your account or guest identifier is deleted. An entry older than 24 hours drops out when its
+record is next updated. Deleting your account In the app: Profile → Settings → Delete account → Yes,
+delete everything. If it has been a while since you signed in, Firebase will ask you to sign out and
+sign back in first. If you signed in with Apple, the app also asks Apple to revoke RackUp's access
+to your Apple Account. Without the app: email rackupbilliard@gmail.com from your registered address
+with the subject "Account deletion request" and we will do it for you. What deletion removes Your
+sign-in account is deleted immediately. That automatically starts a server-side job which removes:
+your profile record, and with it your name, email, category, country, city, usual hall, games, photo
+link and player search setting; your player card, and your place on the players' list in Rankings;
+your joins of hall ladders, with how many of your games counted, your place on every hall's ladder
+board, this season's and the last, your ladder badges, and every mention of you in our server's
+record for each ladder; the guests' copies of the open games you posted; your profile photo file in
+Cloud Storage; your notification tokens, notification preferences, activity feed, saved searches,
+starred venues, weekly schedule and blocked list; the day and time of the last city alert we sent
+you, and of the last notice from a starred hall that a place is free again; the records that keep
+the notifications about your new matches, direct challenges and invitations to games at the table,
+and your "No answer yet" notices, to a few a day; the record that keeps each of your invites to at
+most 10 friends at a time and 5 pushes; the records that keep your ladder pushes to a few a week,
+and the board updates that your joins and player card start to 6 a day; the records that keep your
+reports and feedback to their daily limits; the record of your last Sign out on all devices; any
+copy of your data that our server built for you; the count of the games you have played with a
 confirmed score; your follows of other players, and other players' follows of you; the ratings other
 players gave you; every match you hosted and every open challenge you posted, along with the
 requests other players made to join them; every join request and challenge claim you made on someone
@@ -1014,281 +1133,308 @@ marks, and any record that you reached a match's limit of quick messages; the no
 players' activity feeds that name you, such as the one telling a host you asked to join their match;
 your venue check-ins; your feedback messages; the abuse reports you filed about other people. The
 job normally finishes within moments. If a step fails, a scheduled task retries the remaining steps
-every six hours until they are done. What survives deletion, and why We would rather be exact here
-than reassuring, so please read this part. Matches you only joined stay on the host's record. The
-post belongs to the other player, so we do not destroy it. It keeps the display name, category and
-user id you had at the time. Your photo file is deleted, so the picture stops loading. If you want
-your name removed from those records too, email us and we will do it. Ratings you wrote about other
-players stay, because they are the other player's reputation and that player did not ask for
-anything. We sever the link to you: the author field is overwritten with the fixed value [erased],
-which is the same value for everyone, so your ratings cannot be picked out or grouped afterwards.
-Open challenges you claimed but did not host stay, with your name and id cleared, and the slot
-reopens. Abuse reports filed about you stay, as a safety record. No app can read them. The erasure
-record described under retention stays. Backups keep your data for a while. Deleted data can remain
-for up to 7 days in the daily backup of our database and in its point-in-time recovery, which can
-restore the database as it was at any moment in the past 7 days. A deleted profile photo can also be
-restored for 7 days, and so can the copy in the United States that we delete after moving a photo.
-After that, those copies are gone. Separately, Google removes a deleted account's sign-in details
-from its own backup systems within 180 days. The Firebase installation ID of each phone you used the
-app on stays with Google until Google deletes it, as described under retention. The notification
-tokens we kept under your account, which were issued for the same installs, are deleted. Server logs
-may contain your user id for a bounded period. We do not claim that deleting your account erases
-every trace of you everywhere. The list above is what remains. Your rights (GDPR) If you are in the
-EU or the EEA you have the following rights over your personal data, and we will honour them all:
-Access: ask us for a copy of the personal data we hold about you. Rectification: have inaccurate
-data corrected. You can edit your name, category, city, the games you play and your photo in the app
-yourself, and change or remove your usual hall in Settings, under Your home venue. Erasure: have
-your data deleted, as described above. Portability: receive your data in a structured, machine
-readable format, or have us send it to another controller where that is technically feasible.
-Objection: object to processing we carry out on the basis of legitimate interests, including the
-analytics and crash reporting described above. Restriction: ask us to stop processing your data
-while a dispute about it is resolved. Withdraw consent: turn off the location permission, on either
-app, at any time, without affecting anything we did before you did so. You can also turn
-notifications off at any time, in Settings or in your device's settings. To exercise any of these,
-email rackupbilliard@gmail.com from the address on your account. We reply within one month, as the
-GDPR requires. There is no charge. If you are unhappy with how we have handled your data, you can
-complain to the supervisory authority in the EU country where you live. In Greece that is the
-Hellenic Data Protection Authority, at dpa.gr, and in Cyprus the Office of the Commissioner for
-Personal Data Protection, at gov.cy/dataprotection. Wherever you live, you can also complain to the
-Hellenic authority, which oversees RackUp. Children RackUp is not directed at children. The app
-arranges meetings between adults at billiard halls, and we do not knowingly collect data from
-children under 16. There is no age verification in the app. If you believe a child has created an
-account, email us and we will remove it. Security All traffic between the apps and Firebase is
-encrypted. What each account may read and write is enforced by Firebase security rules on the
-server, not by the app, so a modified app cannot reach data it is not entitled to. That includes a
-guest session: since 20 October 2026 our rules let it read no match or challenge record, so it
-cannot reach a host's note even by asking our database directly (see Looking around as a guest). The
-Android app additionally verifies itself with Firebase App Check. We are a small team and we do not
-pretend to be immune to every risk, but if a breach affects your personal data we will notify the
-Hellenic Data Protection Authority and, where the law requires it, you. Changes to this policy If
-this policy changes, the new version is published at this address with a new effective date, and we
-say at the top what changed. This version, dated 30 November 2026, adds hall ladders, from version
-2.5.0 of the apps: what a hall's board shows and to whom, the numbers only you see, how long boards
-and badges are kept, what our server keeps to build them, the ladder pushes and the record that
-limits them, two analytics events and the card a winner can share, and supersedes the version dated
-18 November 2026, which added inviting a friend to play at a hall, how we tell you when a friend
-joins and the record of each running invite's joins and pushes, four analytics events, and the tags
-the Android app reads after an install from a hall's poster, a hall's share card, a friend's invite
-or a shared game's page, from version 2.4.9 of the apps, and superseded the version dated 15
-November 2026, which added the analytics events screen_view and post_started, what match_posted,
-join_requested and match_viewed also record, three user properties, the card of the halls at the top
-of Rankings and what the link to a shared game carries, from version 2.4.8 of the apps, corrected
-how often the Android app updates its notification token's record, added that our server reads its
-time for quiet cities and its app version for your player card, added the text the apps show to what
-anyone can read without a sign-in, said that other players see only that someone has checked in at a
-hall, never who, and superseded the version dated 13 November 2026, which said that, for quiet
-cities, our server tells whether a player opened RackUp in the last 7 days only by when their
-notification tokens were last updated, and superseded the earlier version of 13 November 2026, which
-said that the pushes about new matches at a hall you starred, a saved search, a looking-for-a-game
-post or a player you follow wait until 09:00 at night, and that check-in pushes are not sent at
-night, and superseded the version dated 12 November 2026, which added Rankings, the question whether
-a match is still on, the yes or no for quiet cities, games at the table and six analytics events,
-and superseded the earlier versions of 12 November 2026. The second of those said that quick
-messages sent before a match are kept until 14 days after its start, added the record our server
-keeps once a player has sent 30 quick messages in one match, and superseded the first, which said
-that when a player who joined a match withdraws, the waiting players and the hall's fans may be told
-that the place is free again and the host's notification waits until 09:00 at night, and superseded
-the version dated 11 November 2026, which said that profile photos are kept in the European Union,
-in Belgium, and superseded the version dated 10 November 2026, which said that our server keeps each
-player's recent wins and losses, win rate, reliability figure and verified badge on their player
-card, and superseded the version dated 9 November 2026, which said where Apple handles your data for
-Sign in with Apple and iPhone notifications, described the Firebase installation ID, corrected what
-a guest session can read, and superseded an earlier version of the same day, which corrected where
-your profile photo is kept and where your sign-in details are processed, said where each service we
-use keeps or handles your data and how your data is protected outside the European Economic Area,
-what Firebase Authentication logs and how long backups keep deleted data, and dropped the item about
-your user id in another player's record of their challenge pushes, and superseded the version dated
-5 November 2026, which added the analytics event match_viewed, what match_posted, request_accepted
-and looking_for_game_converted also record from version 2.4.5 of the apps, the "No answer yet"
-notice and the records that keep some notifications to a few a day, and superseded the version dated
-4 November 2026, which added what the apps show from version 2.4.5 about games that found an
-opponent: nameless counts and recent games by city and hall, a host's count of games played, the
-status of a shared game and a count in the city alert, and superseded the version dated 28 October
-2026, which added the city alert, a push about a new match in the city on your profile from version
-2.4.3 of the apps, and the record of the last one that our server keeps so that it sends at most one
-a day, and superseded the version dated 27 October 2026, which added that from version 2.4.2 the app
-may also use location you have already allowed to offer you a visit to another country where RackUp
-is open, and your phone's region to ask whether you play there, and named the supervisory authority
-for players who live in Cyprus, and superseded the version dated 21 October 2026, which added how
-the apps pick the country whose games a guest sees and the country sign-up suggests, ahead of
-version 2.4.0, and superseded the version dated 20 October 2026, which added that the tags of our
-Facebook and Instagram ad links say where the ad was shown, and superseded the version dated 16
-October 2026, which added the country on your profile record, your player card and what you post or
-save, and the copies of open games kept for guests, ahead of version 2.3.3 of the apps, and
-superseded the version dated 15 October 2026, which said what the notification token's refresh time
-is also used for, that the city on your profile is approximate location, which halls we keep, that a
-saved search can keep a city suggested from your position, that the Android app stores its
-notification token whether or not notifications are allowed, that the token and your notifications
-rest on our contract with you, that the app version kept with your account is linked to it, that the
-Android map is Google Maps and that we count whether games fill, and superseded the version dated 7
-October 2026, which added looking around as a guest, from version 2.3.0 of the apps, and superseded
-the version dated 5 October 2026, which added how we measure which of our social media posts, ads
-and posters bring new players and superseded the version dated 2 October 2026. That one described
-version 2.2.0 of the apps and replaced an earlier version of the same day that held only the
-corrections described at the top. Both superseded the version dated 1 October 2026, which superseded
-the version dated 29 September 2026. That one superseded the version dated 4 September 2026, which
-superseded the version dated 7 July 2026 in full. Σύνοψη στα Ελληνικά Το RackUp αποθηκεύει: όνομα,
-email, κατηγορία παίκτη, χώρα και πόλη, αίθουσα όπου παίζεις συνήθως, τι παίζεις, προαιρετική
-φωτογραφία προφίλ και όσα δημοσιεύεις ή στέλνεις μέσα στην εφαρμογή, δηλαδή ματς, προσωπικές
-προκλήσεις, σημειώσεις, σκορ, ακυρώσεις, δηλώσεις ότι ψάχνεις παιχνίδι, ποιους ακολουθείς, γρήγορα
-μηνύματα, βαθμολογίες αντιπάλων, check-in σε αίθουσες, τις σκάλες αιθουσών στις οποίες μπαίνεις,
-αναφορές και σχόλια. Η χώρα είναι εκείνη της πόλης ή της αίθουσας που διαλέγεις, ή, σε μια
-αποθηκευμένη αναζήτηση χωρίς πόλη ή αίθουσα, η χώρα του προφίλ σου. Σε ένα παλιότερο προφίλ χωρίς
-πόλη, η χώρα είναι η προεπιλεγμένη της εφαρμογής. Τη γράφουμε επίσης στην κάρτα παίκτη σου, στα
-ματς, στις προκλήσεις, στις δηλώσεις ότι ψάχνεις παιχνίδι, στις αποθηκευμένες αναζητήσεις και στο
-εβδομαδιαίο πρόγραμμά σου, ώστε τα ματς, οι αίθουσες, οι κατατάξεις και οι περισσότερες ειδοποιήσεις
-κάθε χώρας να μένουν σε αυτήν. Όλα βρίσκονται στο Google Firebase. Πού βρίσκονται τα δεδομένα σου.
-Στην Ευρωπαϊκή Ένωση βρίσκονται η βάση δεδομένων μας (Cloud Firestore), στη Βαρσοβία της Πολωνίας, ο
-διακομιστής μας (Cloud Functions), που τρέχει στο Βέλγιο, και η φωτογραφία προφίλ σου (Cloud
-Storage), επίσης στο Βέλγιο. Μια φωτογραφία που ανεβαίνει από εφαρμογή παλιότερη της έκδοσης 2.4.6
-αποθηκεύεται πρώτα στις Ηνωμένες Πολιτείες και τη μεταφέρουμε στο Βέλγιο αργότερα. Όταν τη
-μεταφέρουμε, διαγράφουμε μετά από λίγες ημέρες το αντίγραφό της στις Ηνωμένες Πολιτείες. Μόνο σε
-κέντρα δεδομένων στις Ηνωμένες Πολιτείες επεξεργάζεται η Google τα στοιχεία σύνδεσής σου και τα
-αναγνωριστικά επισκεπτών (Firebase Authentication). Για να σε συνδέει και να αποτρέπει την
-κατάχρηση, το Firebase Authentication επεξεργάζεται επίσης τη διεύθυνση IP σου και το user agent της
-εφαρμογής σου, μια σύντομη περιγραφή του λογισμικού του τηλεφώνου, και κρατά τις διευθύνσεις IP που
-καταγράφει για λίγες εβδομάδες. Το Firebase Crashlytics, το Firebase Analytics, το Firebase Cloud
-Messaging, που στέλνει τις ειδοποιήσεις push, και το Firebase App Check, με το οποίο η εφαρμογή
-Android επιβεβαιώνει, μέσω του Google Play, ότι είναι η γνήσια εφαρμογή μας, είναι παγκόσμιες
-υπηρεσίες της Google. Τα αρχεία καταγραφής του διακομιστή μας (Cloud Logging), που μπορεί να
-περιέχουν το αναγνωριστικό χρήστη σου, η Google τα κρατά σε οποιοδήποτε από τα κέντρα δεδομένων της
-στον κόσμο. Το Crashlytics, το Analytics και το Cloud Messaging χρησιμοποιούν επίσης το
-αναγνωριστικό εγκατάστασης του Firebase (Firebase installation ID): ένα τυχαίο αναγνωριστικό που
-δίνει η υπηρεσία Firebase Installations σε κάθε εγκατάσταση της εφαρμογής και που ξεχωρίζει την
-εγκατάσταση, όχι εσένα. Εμείς δεν το χρησιμοποιούμε, αλλά το αναγνωριστικό ειδοποιήσεων που κρατάμε
-στον λογαριασμό σου εκδίδεται για την ίδια εγκατάσταση και είναι δεμένο με αυτό, οπότε μέσω αυτού το
-αναγνωριστικό εγκατάστασης μπορεί να συνδεθεί με τον λογαριασμό σου. Η σελίδα του Firebase για το
-απόρρητο δεν λέει πού το επεξεργάζεται η Google. Η Google το κρατά μέχρι να διαγραφεί: εμείς δεν το
-διαγράφουμε, ούτε όταν διαγράφεις τον λογαριασμό σου, ενώ η Google το διαγράφει όταν η εφαρμογή
-μείνει 270 ημέρες αχρησιμοποίητη στο τηλέφωνο και αφαιρεί μέσα σε 180 ημέρες τα δεδομένα που
-συνδέονται με αυτό. Έτσι, όσα χειρίζονται αυτές οι υπηρεσίες μπορεί να επεξεργαστούν και εκτός του
-Ευρωπαϊκού Οικονομικού Χώρου (ΕΟΧ). Στις Ηνωμένες Πολιτείες ισχύει το πλαίσιο ΕΕ-ΗΠΑ για την
-προστασία των δεδομένων (EU-U.S. Data Privacy Framework): η Ευρωπαϊκή Επιτροπή έχει κρίνει ότι τα
-δεδομένα που διαβιβάζονται σε εταιρείες πιστοποιημένες σε αυτό προστατεύονται επαρκώς, και η Google
-LLC είναι πιστοποιημένη. Σε κάθε άλλη χώρα εκτός ΕΟΧ για την οποία η Επιτροπή δεν έχει κρίνει ότι
-προστατεύει επαρκώς τα δεδομένα, και στις Ηνωμένες Πολιτείες αν το πλαίσιο πάψει να ισχύει, τα
-δεδομένα σου τα προστατεύουν οι τυποποιημένες συμβατικές ρήτρες της Ευρωπαϊκής Επιτροπής, που
-περιλαμβάνονται στους όρους επεξεργασίας δεδομένων της Google (Cloud Data Processing Addendum,
-Firebase Data Processing and Security Terms και, για το Analytics, Google Ads Data Processing
-Terms). Στο iPhone, δύο υπηρεσίες της Apple χειρίζονται επίσης δεδομένα σου. Αν συνδέεσαι με το Sign
-in with Apple, η Apple σε συνδέει με τον λογαριασμό Apple σου και μας δίνει το όνομά σου, αν το
-μοιραστείς, και το email σου ή, αν το κρύψεις, μια διεύθυνση της Apple που προωθεί τα μηνύματα σε
-αυτό. Αυτά η Apple τα χειρίζεται σύμφωνα με τη δική της πολιτική απορρήτου. Η υπηρεσία ειδοποιήσεων
-push της Apple (Apple Push Notification service) λαμβάνει κάθε ειδοποίηση που στέλνουμε στο iPhone
-σου, μαζί με το κείμενό της, και την παραδίδει. Οι όροι της Apple για τους προγραμματιστές εφαρμογών
-λένε ότι δεν διαβάζει ούτε αποκαλύπτει το περιεχόμενο μιας ειδοποίησης, εκτός αν κρίνει καλόπιστα
-ότι αυτό είναι εύλογα απαραίτητο, για παράδειγμα για να συμμορφωθεί με νομική διαδικασία ή για
-ζητήματα ασφαλείας, απάτης ή τεχνικά. Η Apple δεν λέει σε ποια χώρα λειτουργεί καμία από τις δύο
-υπηρεσίες. Η πολιτική απορρήτου της λέει ότι τα προσωπικά δεδομένα που συλλέγει τα αποθηκεύει γενικά
-η Apple Inc. στις Ηνωμένες Πολιτείες, ότι για τα προσωπικά δεδομένα όσων βρίσκονται στον ΕΟΧ
-υπεύθυνη επεξεργασίας είναι η Apple Distribution International Limited στην Ιρλανδία, και ότι η
-διαβίβασή τους εκτός ΕΟΧ διέπεται από τυποποιημένες συμβατικές ρήτρες. Το email σου είναι ιδιωτικό.
-Το όνομα, η κατηγορία και η φωτογραφία σου εμφανίζονται στα ματς που δημοσιεύεις ή στα οποία
-συμμετέχεις, όταν δηλώνεις ότι ψάχνεις παιχνίδι, και στην κάρτα παίκτη σου, μαζί με τη χώρα και την
-πόλη σου, την αίθουσα όπου παίζεις συνήθως και τι παίζεις. Την κάρτα σου τη βλέπουν όσοι έχουν
-λογαριασμό, και μπορούν να σε βρουν με το όνομά σου, εκτός αν κλείσεις το «Να με βρίσκουν στην
-αναζήτηση» στις Ρυθμίσεις. Την αίθουσα όπου παίζεις συνήθως την αλλάζεις ή τη βγάζεις από τις
-Ρυθμίσεις, στο «Η λέσχη σου». Όλα αυτά τα βλέπουν μόνο όσοι έχουν συνδεθεί στην εφαρμογή, με μία
-εξαίρεση: όποιος έχει τον σύνδεσμο της φωτογραφίας σου μπορεί να την ανοίξει και χωρίς σύνδεση. Από
-την έκδοση 2.3.0 της εφαρμογής, τα ανοιχτά ματς σου και τις δηλώσεις σου ότι ψάχνεις παιχνίδι, μαζί
-με το όνομα, την κατηγορία και τη φωτογραφία σου, τα βλέπουν και οι επισκέπτες, δηλαδή όσοι ρίχνουν
-μια ματιά στην εφαρμογή χωρίς λογαριασμό. Την κάρτα σου δεν τη βλέπουν, ούτε όσα γράφεις σε
-σημείωση: η εφαρμογή δείχνει τη σημείωση ενός ματς ή μιας πρόκλησης, και τη σημείωση μιας ακύρωσης,
-μόνο σε παίκτες με λογαριασμό. Οι εκδόσεις 2.3.0 έως 2.3.2 διάβαζαν τα ίδια τα ματς και τις
-προκλήσεις και έκρυβαν τη σημείωση στην οθόνη. Από την έκδοση 2.3.3, η εφαρμογή δείχνει στον
-επισκέπτη μόνο αντίγραφα των ανοιχτών ματς και προκλήσεων, που τα κρατά ο διακομιστής μας χωρίς
-σημείωση, σημείωση ακύρωσης, αντίπαλο, σκορ ή απουσία. Ένα αντίγραφο σβήνεται μόλις κάποιος πάρει το
-ματς ή την πρόκληση, μόλις ακυρωθεί ή διαγραφεί, και όταν ο διοργανωτής διαγράψει τον λογαριασμό
-του. Αλλιώς, το αντίγραφο ενός ματς σβήνεται μέσα σε περίπου μία ώρα αφού περάσουν δύο ώρες από την
-έναρξή του, και το αντίγραφο μιας πρόκλησης μέσα σε περίπου μία ώρα αφού συμπληρώσει 24 ώρες ή
-περάσουν δύο ώρες από την ώρα της. Από τις 20 Οκτωβρίου 2026, οι κανόνες ασφαλείας της βάσης μας δεν
-επιτρέπουν στον επισκέπτη να διαβάσει κανένα ματς και καμία πρόκληση, ούτε αν τα ζητήσει απευθείας
-από τη βάση, οπότε δεν φτάνει σε καμία σημείωση, και οι εκδόσεις 2.3.0 έως 2.3.2 δεν δείχνουν πια
-ματς στον επισκέπτη. Στη βάση μας, ο επισκέπτης μπορεί να διαβάσει μόνο τα αντίγραφα των ανοιχτών
-ματς και προκλήσεων, τις δηλώσεις ότι ψάχνει κάποιος παιχνίδι, τις αίθουσες, όσα γράφουμε παρακάτω
-για τα ματς που βρήκαν αντίπαλο, και ρυθμίσεις και λίστες χωρίς προσωπικά δεδομένα, όπως τις χώρες
-και τις πόλεις της εφαρμογής και τη λίστα των αιθουσών στην Κατάταξη. Από την έκδοση 2.3.0 της
-εφαρμογής, μπορείς να ρίξεις μια ματιά πριν φτιάξεις λογαριασμό, με το «Ρίξε πρώτα μια ματιά» στην
-πρώτη οθόνη. Οι προηγούμενες εκδόσεις δεν έχουν λειτουργία επισκέπτη. Τότε η εφαρμογή συνδέεται
-ανώνυμα στο Firebase Authentication και παίρνει ένα τυχαίο αναγνωριστικό επισκέπτη, χωρίς όνομα,
-email, κωδικό ή προφίλ. Ως επισκέπτης βλέπεις τα ανοιχτά ματς, τις σελίδες τους και τις αίθουσες,
-αλλά όχι τις σημειώσεις των διοργανωτών. Στη σελίδα ενός ματς, αντί για τη σημείωση, βλέπεις «Η
-σημείωση του διοργανωτή είναι για παίκτες με λογαριασμό». Για να δημοσιεύσεις, να ζητήσεις να μπεις
-σε ματς, να αποκλείσεις παίκτη ή να λαμβάνεις ειδοποιήσεις χρειάζεσαι λογαριασμό. Μπορείς όμως να
-κάνεις αναφορά για έναν παίκτη από τη σελίδα ενός ματς, από μια δήλωση ότι ψάχνει παιχνίδι ή από μια
-πρόκληση, και η αναφορά κρατά το αναγνωριστικό επισκέπτη στη θέση του αναγνωριστικού χρήστη. Μπορείς
-επίσης να μας στείλεις σχόλια από την εφαρμογή, που κρατούν κι αυτά το αναγνωριστικό επισκέπτη στη
-θέση του αναγνωριστικού χρήστη. Για τον επισκέπτη δεν κρατάμε προφίλ, κάρτα παίκτη ούτε
-αναγνωριστικό ειδοποιήσεων. Το Firebase Analytics καταγράφει ότι διάλεξες να ρίξεις μια ματιά, χωρίς
-καμία άλλη λεπτομέρεια. Όταν φτιάξεις λογαριασμό, αυτός έχει δικό του αναγνωριστικό. Το
-αναγνωριστικό επισκέπτη μένει στο Firebase Authentication μέχρι να το διαγράψουμε: προς το παρόν δεν
-σβήνεται αυτόματα, ούτε όταν φτιάξεις λογαριασμό. Ματς που βρήκαν αντίπαλο. Μετράμε τα ματς που
-βρήκαν αντίπαλο σε κάθε πόλη και αίθουσα, και δείχνουμε σε όλους όσοι χρησιμοποιούν την εφαρμογή,
-και στους επισκέπτες, αυτούς τους αριθμούς, τις ώρες με τα περισσότερα ματς, και την αίθουσα, το
-παιχνίδι, το race και την ώρα των πρόσφατων. Αυτές οι συνόψεις δεν περιέχουν ποτέ όνομα ή
-αναγνωριστικό χρήστη. Δίπλα στο όνομα του διοργανωτή στις δημοσιεύσεις του δείχνουμε πόσα ματς έχει
-παίξει με επιβεβαιωμένο σκορ, από τρία και πάνω. Όποιος ανοίγει ως επισκέπτης σύνδεσμο για ματς που
-βρήκε αντίπαλο βλέπει ότι έκλεισε και σε ποια αίθουσα, ποτέ ποιοι παίζουν. Κατάταξη. Από την έκδοση
-2.4.7, η Κατάταξη δείχνει, για μία χώρα τη φορά, τις αίθουσες όπου παίζει ο κόσμος και τους παίκτες
-που παίζουν περισσότερο, στη θέση των μηνιαίων κατατάξεων του Προφίλ. Ο διακομιστής μας υπολογίζει
-τις δύο λίστες κάθε ώρα από τα ματς και τις προκλήσεις, και ένα ματς μετράει στη χώρα της αίθουσάς
-του. Για τις αίθουσες μετράνε τα ματς που παίχτηκαν με επιβεβαιωμένο σκορ τις τελευταίες 60 ημέρες
-και τα ανοιχτά ματς και οι ανοιχτές προκλήσεις των επόμενων 7 ημερών, όχι τα check-in, τα ακυρωμένα
-ματς ή τα παιχνίδια στο τραπέζι. Η λίστα των αιθουσών δεν αναφέρει κανέναν παίκτη ούτε πόσα ματς
-παίχτηκαν, και τη βλέπουν όλοι, και οι επισκέπτες. Η λίστα των παικτών κατατάσσει, έως 20 παίκτες,
-όσους έπαιξαν τα περισσότερα ματς με επιβεβαιωμένο σκορ τις τελευταίες 30 ημέρες, έως δύο την
-εβδομάδα με τον ίδιο αντίπαλο, ποτέ με βάση τις νίκες. Για κάθε παίκτη κρατά το αναγνωριστικό
-χρήστη, το όνομα, τη φωτογραφία, την κατηγορία και την πόλη του, όπως στην κάρτα παίκτη, τη θέση
-του, αν έπαιξε τις τελευταίες 7 ημέρες και, από 3 και πάνω, πόσα ματς έπαιξε και με πόσους
-αντιπάλους. Μπαίνουν μόνο όσοι εμφανίζονται στην αναζήτηση, και τη βλέπουν μόνο όσοι έχουν
-λογαριασμό. Αν κλείσεις το «Να με βρίσκουν στην αναζήτηση» ή διαγράψεις τον λογαριασμό σου, ο
-διακομιστής μας σε βγάζει αμέσως από τη λίστα. Σε μια κάρτα που βλέπεις μόνο εσύ, η εφαρμογή σού
-δείχνει τη θέση σου και πόσα ματς και αντιπάλους είχες, όπως τα υπολογίζει το τηλέφωνό σου. Από τη
-λίστα των αιθουσών μπορείς να μοιραστείς μια κάρτα για μια αίθουσα και, από την έκδοση 2.4.8, μια
-κάρτα με έως τρεις αίθουσες στην κορυφή της λίστας, με τη θέση και τις φλόγες τους. Τις φτιάχνει το
-τηλέφωνό σου χωρίς όνομα παίκτη και χωρίς να λένε πόσα ματς παίχτηκαν. Εμείς μαθαίνουμε μόνο ότι
-άνοιξες την κοινοποίηση, όχι τι έστειλες ή σε ποιον. Στο iPhone, για να σώσεις την κάρτα στις
-φωτογραφίες σου, το τηλέφωνο ζητά άδεια μόνο για να την προσθέσει, και η εφαρμογή δεν διαβάζει ποτέ
-τη βιβλιοθήκη σου. Σκάλα της αίθουσας. Από την έκδοση 2.5.0, κάθε αίθουσα έχει τη σκάλα της: έναν
-διαγωνισμό ανάμεσα στους παίκτες που μπαίνουν σε αυτήν, σε σεζόν των 4 εβδομάδων, από Δευτέρα έως
-Κυριακή, τοπική ώρα της αίθουσας. Μετράνε τα ματς που παίχτηκαν στην αίθουσα με επιβεβαιωμένο σκορ
-ανάμεσα σε δύο παίκτες της σκάλας, έως 3 την εβδομάδα για κάθε παίκτη και έως 2 με τον ίδιο
-αντίπαλο, και η νίκη δίνει 3 βαθμούς, η ισοπαλία 2 και η ήττα 1. Ο διακομιστής μας υπολογίζει τις
-σκάλες κάθε ώρα, και νωρίτερα όταν μπαίνει ή βγαίνει κάποιος, από τα ματς, διαβάζοντας μόνο ποιοι
-έπαιξαν, πού, πότε και το σκορ, ποτέ όνομα ή σημείωση. Στη σκάλα μπαίνεις μόνο με λογαριασμό και
-μόνο όσο εμφανίζεσαι στην αναζήτηση, γιατί δείχνει το όνομά σου, και μπορείς να είσαι σε έως 3
-σκάλες ταυτόχρονα. Για κάθε παίκτη που μπήκε, η σκάλα κρατά το αναγνωριστικό χρήστη, το όνομα, τη
-φωτογραφία και την κατηγορία του, όπως στην κάρτα παίκτη, και, μόλις μετρήσει ένα ματς του, τη θέση
-και τους βαθμούς του, ποτέ τις νίκες του ή πόσα ματς έπαιξε. Τη βλέπουν μόνο όσοι έχουν λογαριασμό,
-ποτέ οι επισκέπτες, και δεν τη δείχνει καμία σελίδα της ιστοσελίδας μας. Πόσα ματς σου μέτρησαν τη
-σεζόν και την εβδομάδα τα βλέπεις μόνο εσύ. Αν βγεις από τη σκάλα ή κλείσεις το «Να με βρίσκουν στην
-αναζήτηση», ο διακομιστής μας σε βγάζει από τη σκάλα της τρέχουσας σεζόν μέσα σε περίπου μία ώρα,
-και όσοι έπαιξαν μαζί σου κρατούν τους βαθμούς τους. Τα σκορ μιας σεζόν μετράνε ως τις 12:00 της
-Τρίτης μετά το τέλος της. Τότε η σκάλα της γίνεται οριστική και μένει όπως είναι, με όσους ήταν μέσα
-στο τέλος της, ως το τέλος της επόμενης σεζόν, και από αυτήν σε βγάζει μόνο η διαγραφή του
-λογαριασμού σου, όχι η έξοδος από τη σκάλα ή το κλείσιμο της αναζήτησης. Η οριστική σκάλα δείχνει
-επίσης ποιος κέρδισε τη σεζόν. Όποιος κερδίσει μια σεζόν παίρνει για 4 εβδομάδες το σήμα «Κέρδισε τη
-σκάλα» στην κάρτα παίκτη του, που το βλέπουν όσοι έχουν λογαριασμό. Ο διακομιστής μας κρατά κάθε
-σήμα σε ξεχωριστή εγγραφή, με την αίθουσα, τη σεζόν και πότε λήγει, που μπορεί να τη διαβάσει όποιος
-έχει λογαριασμό. Κρατά έως 5 σήματα για κάθε παίκτη, και ένα σήμα που έληξε μένει εκεί ώσπου ο
-παίκτης να κερδίσει άλλη σεζόν ή να διαγράψει τον λογαριασμό του. Ο νικητής μπορεί να μοιραστεί μια
-κάρτα με το δικό του όνομα, την αίθουσα και τις ημερομηνίες της σεζόν, που τη φτιάχνει το τηλέφωνό
-του. Για κάθε σκάλα, ο διακομιστής μας κρατά επίσης, σε εγγραφή που δεν διαβάζει καμία εφαρμογή,
-ποιοι μπήκαν σε αυτήν την τρέχουσα και την προηγούμενη σεζόν, ποια ματς του καθενός μέτρησαν, την
-τελευταία θέση του καθενός και ποιοι πληρούσαν τους όρους για να κερδίσουν την προηγούμενη σεζόν,
-και δεν κρατά παλιότερες σεζόν. Ο λογαριασμός με τον οποίο η Apple ελέγχει την εφαρμογή και οι
-αυτόματοι λογαριασμοί δοκιμών δεν μπαίνουν ποτέ σε σκάλα. Αν είσαι σε σκάλα, μπορεί να σου στείλουμε
-ειδοποίηση push όταν ξεκινά η σεζόν, όταν ανεβαίνεις θέση, ποτέ όταν πέφτεις, όταν αρχίζει η
-τελευταία εβδομάδα και όταν τελειώνει μια σεζόν. Αυτή στο τέλος της σεζόν λέει στον νικητή ότι
-κέρδισε, και στους άλλους ποιος κέρδισε, με το όνομά του, εκτός αν ο ένας έχει αποκλείσει τον άλλον.
-Οι ειδοποιήσεις αυτές δεν προσθέτουν τίποτα στη ροή δραστηριότητάς σου, ακολουθούν τον διακόπτη
-«Ενημερώσεις ματς» και φτάνουν μόνο σε τηλέφωνο με την έκδοση 2.5.0 ή νεότερη, μόνο από τις 10:00
-έως τις 21:30, τοπική ώρα της αίθουσας, και το πολύ μία την ημέρα και τρεις την εβδομάδα. Γι' αυτό ο
-διακομιστής μας κρατά στον λογαριασμό σου πότε σου έστειλε τέτοιες ειδοποιήσεις, και ό,τι είναι
-παλιότερο από 8 ημέρες βγαίνει από την εγγραφή όταν αυτή ενημερωθεί ξανά. Κρατά εκεί επίσης πότε οι
-συμμετοχές σου και οι αλλαγές στην κάρτα σου ενημέρωσαν τις σκάλες, ώστε να το κάνουν έως 6 φορές
-την ημέρα, και ό,τι είναι παλιότερο από μία ημέρα βγαίνει με τον ίδιο τρόπο. Καμία εφαρμογή δεν
-διαβάζει αυτές τις εγγραφές. Κοινοποίηση ματς. Όταν μοιράζεσαι ένα ματς, η εφαρμογή δίνει στην
+every six hours until they are done. From version X.Y.Z, the app on the phone you delete your
+account from also resets that phone's analytics identifier, as described under App usage analytics.
+What survives deletion, and why We would rather be exact here than reassuring, so please read this
+part. Matches you only joined stay on the host's record. The post belongs to the other player, so we
+do not destroy it. It keeps the display name, category and user id you had at the time. Your photo
+file is deleted, so the picture stops loading. If you want your name removed from those records too,
+email us and we will do it. Ratings you wrote about other players stay, because they are the other
+player's reputation and that player did not ask for anything. We sever the link to you: the author
+field is overwritten with the fixed value [erased], which is the same value for everyone, so your
+ratings cannot be picked out or grouped afterwards. Open challenges you claimed but did not host
+stay, with your name and id cleared, and the slot reopens. Abuse reports filed about you stay, as a
+safety record. No app can read them. The erasure record described under retention stays. Backups
+keep your data for a while. Deleted data can remain for up to 7 days in the daily backup of our
+database and in its point-in-time recovery, which can restore the database as it was at any moment
+in the past 7 days. A deleted profile photo can also be restored for 7 days, and so can the copy in
+the United States that we delete after moving a photo. After that, those copies are gone.
+Separately, Google removes a deleted account's sign-in details from its own backup systems within
+180 days. The Firebase installation ID of each phone you used the app on stays with Google until
+Google deletes it, as described under retention. The notification tokens we kept under your account,
+which were issued for the same installs, are deleted. Server logs may contain your user id for a
+bounded period. We do not claim that deleting your account erases every trace of you everywhere. The
+list above is what remains. Your rights (GDPR) If you are in the EU or the EEA you have the
+following rights over your personal data, and we will honour them all: Access: ask us for a copy of
+the personal data we hold about you. Rectification: have inaccurate data corrected. You can edit
+your name, category, city, the games you play and your photo in the app yourself, and change or
+remove your usual hall in Settings, under Your home venue. Erasure: have your data deleted, as
+described above. Portability: receive your data in a structured, machine readable format, or have us
+send it to another controller where that is technically feasible. Objection: object to processing we
+carry out on the basis of legitimate interests, including the analytics and crash reporting
+described above. From version X.Y.Z you can also turn app usage analytics off yourself, with Usage
+analytics. Restriction: ask us to stop processing your data while a dispute about it is resolved.
+Withdraw consent: turn off the location permission, on either app, at any time, without affecting
+anything we did before you did so. You can also turn notifications off at any time, in Settings or
+in your device's settings. To exercise any of these, email rackupbilliard@gmail.com from the address
+on your account. We reply within one month, as the GDPR requires. There is no charge. Your copy of
+your data. When you ask for a copy, we send you one file in JSON, a structured, machine readable
+format. It holds your profile record and everything our database keeps under it, such as your
+notification tokens, starred halls, schedule, blocked list, activity feed, saved searches, follows,
+the ratings you received, your joins of hall ladders and the records our server keeps to limit your
+notifications, reports and feedback; your player card and the count of the games you played with a
+confirmed score; and every record in our database that you posted, sent or wrote, or that names you
+as one of its players: matches, open challenges and their claims, join requests, direct challenges,
+invitations to games at the table, invites and your joins through them, the scores you reported,
+quick messages and their read marks, check-ins, your looking-for-a-game post, your feedback, the
+reports you filed, the ratings you wrote and the record of your last Sign out on all devices. Three
+things in it are cut: each notification token shows only its last six characters, the ratings other
+players gave you do not say who gave them, and of the players who follow you it gives only how many.
+It leaves out what belongs to other players, such as who blocked you or their activity feeds that
+name you, and your photo itself, whose link it has. We send it to the address on your account, or
+another way you choose, and then delete our copy. Our server can also build the same copy in our
+database, under your account, at most once a day, where only you can read it; no version of the apps
+asks for one yet. If you are unhappy with how we have handled your data, you can complain to the
+supervisory authority in the EU country where you live. In Greece that is the Hellenic Data
+Protection Authority, at dpa.gr, and in Cyprus the Office of the Commissioner for Personal Data
+Protection, at gov.cy/dataprotection. Wherever you live, you can also complain to the Hellenic
+authority, which oversees RackUp. Children RackUp is not directed at children. The app arranges
+meetings between adults at billiard halls, and we do not knowingly collect data from children under
+16. There is no age verification in the app. If you believe a child has created an account, email us
+and we will remove it. Security All traffic between the apps and Firebase is encrypted. What each
+account may read and write is enforced by Firebase security rules on the server, not by the app, so
+a modified app cannot reach data it is not entitled to. That includes a guest session: since 20
+October 2026 our rules let it read no match or challenge record, so it cannot reach a host's note
+even by asking our database directly (see Looking around as a guest). The Android app, and from
+version X.Y.Z the iPhone app too, additionally verify themselves with Firebase App Check. We are a
+small team and we do not pretend to be immune to every risk, but if a breach affects your personal
+data we will notify the Hellenic Data Protection Authority and, where the law requires it, you.
+Changes to this policy If this policy changes, the new version is published at this address with a
+new effective date, and we say at the top what changed. This version, dated XX December 2026, adds,
+from version X.Y.Z of the apps, the Usage analytics switch, five analytics events, two of which stay
+off until we turn them on, the end of the identifier for vendor and the advertising ID in analytics,
+the advertising settings, the analytics identifier reset after a deletion and Sign out on all
+devices, and also the daily limits on reports and feedback, the alert when several players report
+the same player and the copy of your data we send you, and supersedes the version dated 30 November
+2026, which added hall ladders, from version 2.5.0 of the apps: what a hall's board shows and to
+whom, the numbers only you see, how long boards and badges are kept, what our server keeps to build
+them, the ladder pushes and the record that limits them, two analytics events and the card a winner
+can share, and superseded the version dated 18 November 2026, which added inviting a friend to play
+at a hall, how we tell you when a friend joins and the record of each running invite's joins and
+pushes, four analytics events, and the tags the Android app reads after an install from a hall's
+poster, a hall's share card, a friend's invite or a shared game's page, from version 2.4.9 of the
+apps, and superseded the version dated 15 November 2026, which added the analytics events
+screen_view and post_started, what match_posted, join_requested and match_viewed also record, three
+user properties, the card of the halls at the top of Rankings and what the link to a shared game
+carries, from version 2.4.8 of the apps, corrected how often the Android app updates its
+notification token's record, added that our server reads its time for quiet cities and its app
+version for your player card, added the text the apps show to what anyone can read without a
+sign-in, said that other players see only that someone has checked in at a hall, never who, and
+superseded the version dated 13 November 2026, which said that, for quiet cities, our server tells
+whether a player opened RackUp in the last 7 days only by when their notification tokens were last
+updated, and superseded the earlier version of 13 November 2026, which said that the pushes about
+new matches at a hall you starred, a saved search, a looking-for-a-game post or a player you follow
+wait until 09:00 at night, and that check-in pushes are not sent at night, and superseded the
+version dated 12 November 2026, which added Rankings, the question whether a match is still on, the
+yes or no for quiet cities, games at the table and six analytics events, and superseded the earlier
+versions of 12 November 2026. The second of those said that quick messages sent before a match are
+kept until 14 days after its start, added the record our server keeps once a player has sent 30
+quick messages in one match, and superseded the first, which said that when a player who joined a
+match withdraws, the waiting players and the hall's fans may be told that the place is free again
+and the host's notification waits until 09:00 at night, and superseded the version dated 11 November
+2026, which said that profile photos are kept in the European Union, in Belgium, and superseded the
+version dated 10 November 2026, which said that our server keeps each player's recent wins and
+losses, win rate, reliability figure and verified badge on their player card, and superseded the
+version dated 9 November 2026, which said where Apple handles your data for Sign in with Apple and
+iPhone notifications, described the Firebase installation ID, corrected what a guest session can
+read, and superseded an earlier version of the same day, which corrected where your profile photo is
+kept and where your sign-in details are processed, said where each service we use keeps or handles
+your data and how your data is protected outside the European Economic Area, what Firebase
+Authentication logs and how long backups keep deleted data, and dropped the item about your user id
+in another player's record of their challenge pushes, and superseded the version dated 5 November
+2026, which added the analytics event match_viewed, what match_posted, request_accepted and
+looking_for_game_converted also record from version 2.4.5 of the apps, the "No answer yet" notice
+and the records that keep some notifications to a few a day, and superseded the version dated 4
+November 2026, which added what the apps show from version 2.4.5 about games that found an opponent:
+nameless counts and recent games by city and hall, a host's count of games played, the status of a
+shared game and a count in the city alert, and superseded the version dated 28 October 2026, which
+added the city alert, a push about a new match in the city on your profile from version 2.4.3 of the
+apps, and the record of the last one that our server keeps so that it sends at most one a day, and
+superseded the version dated 27 October 2026, which added that from version 2.4.2 the app may also
+use location you have already allowed to offer you a visit to another country where RackUp is open,
+and your phone's region to ask whether you play there, and named the supervisory authority for
+players who live in Cyprus, and superseded the version dated 21 October 2026, which added how the
+apps pick the country whose games a guest sees and the country sign-up suggests, ahead of version
+2.4.0, and superseded the version dated 20 October 2026, which added that the tags of our Facebook
+and Instagram ad links say where the ad was shown, and superseded the version dated 16 October 2026,
+which added the country on your profile record, your player card and what you post or save, and the
+copies of open games kept for guests, ahead of version 2.3.3 of the apps, and superseded the version
+dated 15 October 2026, which said what the notification token's refresh time is also used for, that
+the city on your profile is approximate location, which halls we keep, that a saved search can keep
+a city suggested from your position, that the Android app stores its notification token whether or
+not notifications are allowed, that the token and your notifications rest on our contract with you,
+that the app version kept with your account is linked to it, that the Android map is Google Maps and
+that we count whether games fill, and superseded the version dated 7 October 2026, which added
+looking around as a guest, from version 2.3.0 of the apps, and superseded the version dated 5
+October 2026, which added how we measure which of our social media posts, ads and posters bring new
+players and superseded the version dated 2 October 2026. That one described version 2.2.0 of the
+apps and replaced an earlier version of the same day that held only the corrections described at the
+top. Both superseded the version dated 1 October 2026, which superseded the version dated 29
+September 2026. That one superseded the version dated 4 September 2026, which superseded the version
+dated 7 July 2026 in full. Σύνοψη στα Ελληνικά Το RackUp αποθηκεύει: όνομα, email, κατηγορία παίκτη,
+χώρα και πόλη, αίθουσα όπου παίζεις συνήθως, τι παίζεις, προαιρετική φωτογραφία προφίλ και όσα
+δημοσιεύεις ή στέλνεις μέσα στην εφαρμογή, δηλαδή ματς, προσωπικές προκλήσεις, σημειώσεις, σκορ,
+ακυρώσεις, δηλώσεις ότι ψάχνεις παιχνίδι, ποιους ακολουθείς, γρήγορα μηνύματα, βαθμολογίες
+αντιπάλων, check-in σε αίθουσες, τις σκάλες αιθουσών στις οποίες μπαίνεις, αναφορές και σχόλια. Η
+χώρα είναι εκείνη της πόλης ή της αίθουσας που διαλέγεις, ή, σε μια αποθηκευμένη αναζήτηση χωρίς
+πόλη ή αίθουσα, η χώρα του προφίλ σου. Σε ένα παλιότερο προφίλ χωρίς πόλη, η χώρα είναι η
+προεπιλεγμένη της εφαρμογής. Τη γράφουμε επίσης στην κάρτα παίκτη σου, στα ματς, στις προκλήσεις,
+στις δηλώσεις ότι ψάχνεις παιχνίδι, στις αποθηκευμένες αναζητήσεις και στο εβδομαδιαίο πρόγραμμά
+σου, ώστε τα ματς, οι αίθουσες, οι κατατάξεις και οι περισσότερες ειδοποιήσεις κάθε χώρας να μένουν
+σε αυτήν. Όλα βρίσκονται στο Google Firebase. Πού βρίσκονται τα δεδομένα σου. Στην Ευρωπαϊκή Ένωση
+βρίσκονται η βάση δεδομένων μας (Cloud Firestore), στη Βαρσοβία της Πολωνίας, ο διακομιστής μας
+(Cloud Functions), που τρέχει στο Βέλγιο, και η φωτογραφία προφίλ σου (Cloud Storage), επίσης στο
+Βέλγιο. Μια φωτογραφία που ανεβαίνει από εφαρμογή παλιότερη της έκδοσης 2.4.6 αποθηκεύεται πρώτα
+στις Ηνωμένες Πολιτείες και τη μεταφέρουμε στο Βέλγιο αργότερα. Όταν τη μεταφέρουμε, διαγράφουμε
+μετά από λίγες ημέρες το αντίγραφό της στις Ηνωμένες Πολιτείες. Μόνο σε κέντρα δεδομένων στις
+Ηνωμένες Πολιτείες επεξεργάζεται η Google τα στοιχεία σύνδεσής σου και τα αναγνωριστικά επισκεπτών
+(Firebase Authentication). Για να σε συνδέει και να αποτρέπει την κατάχρηση, το Firebase
+Authentication επεξεργάζεται επίσης τη διεύθυνση IP σου και το user agent της εφαρμογής σου, μια
+σύντομη περιγραφή του λογισμικού του τηλεφώνου, και κρατά τις διευθύνσεις IP που καταγράφει για
+λίγες εβδομάδες. Το Firebase Crashlytics, το Firebase Analytics, το Firebase Cloud Messaging, που
+στέλνει τις ειδοποιήσεις push, και το Firebase App Check, με το οποίο η εφαρμογή Android, μέσω του
+Google Play, και από την έκδοση X.Y.Z η εφαρμογή iPhone, μέσω της υπηρεσίας App Attest της Apple,
+επιβεβαιώνουν ότι είναι η γνήσια εφαρμογή μας, είναι παγκόσμιες υπηρεσίες της Google. Τα αρχεία
+καταγραφής του διακομιστή μας (Cloud Logging), που μπορεί να περιέχουν το αναγνωριστικό χρήστη σου,
+η Google τα κρατά σε οποιοδήποτε από τα κέντρα δεδομένων της στον κόσμο. Τα χρησιμοποιούμε και για
+να μας ειδοποιούν για ασυνήθιστη δραστηριότητα, όπως πολλά νέα προφίλ σε λίγη ώρα, έναν λογαριασμό
+που έφτασε το ημερήσιο όριο αναφορών ή σχολίων, ή έναν παίκτη που ανέφεραν πολλοί άλλοι. Το
+Crashlytics, το Analytics και το Cloud Messaging χρησιμοποιούν επίσης το αναγνωριστικό εγκατάστασης
+του Firebase (Firebase installation ID): ένα τυχαίο αναγνωριστικό που δίνει η υπηρεσία Firebase
+Installations σε κάθε εγκατάσταση της εφαρμογής και που ξεχωρίζει την εγκατάσταση, όχι εσένα. Εμείς
+δεν το χρησιμοποιούμε, αλλά το αναγνωριστικό ειδοποιήσεων που κρατάμε στον λογαριασμό σου εκδίδεται
+για την ίδια εγκατάσταση και είναι δεμένο με αυτό, οπότε μέσω αυτού το αναγνωριστικό εγκατάστασης
+μπορεί να συνδεθεί με τον λογαριασμό σου. Η σελίδα του Firebase για το απόρρητο δεν λέει πού το
+επεξεργάζεται η Google. Η Google το κρατά μέχρι να διαγραφεί: εμείς δεν το διαγράφουμε, ούτε όταν
+διαγράφεις τον λογαριασμό σου, ενώ η Google το διαγράφει όταν η εφαρμογή μείνει 270 ημέρες
+αχρησιμοποίητη στο τηλέφωνο και αφαιρεί μέσα σε 180 ημέρες τα δεδομένα που συνδέονται με αυτό. Έτσι,
+όσα χειρίζονται αυτές οι υπηρεσίες μπορεί να επεξεργαστούν και εκτός του Ευρωπαϊκού Οικονομικού
+Χώρου (ΕΟΧ). Στις Ηνωμένες Πολιτείες ισχύει το πλαίσιο ΕΕ-ΗΠΑ για την προστασία των δεδομένων
+(EU-U.S. Data Privacy Framework): η Ευρωπαϊκή Επιτροπή έχει κρίνει ότι τα δεδομένα που διαβιβάζονται
+σε εταιρείες πιστοποιημένες σε αυτό προστατεύονται επαρκώς, και η Google LLC είναι πιστοποιημένη. Σε
+κάθε άλλη χώρα εκτός ΕΟΧ για την οποία η Επιτροπή δεν έχει κρίνει ότι προστατεύει επαρκώς τα
+δεδομένα, και στις Ηνωμένες Πολιτείες αν το πλαίσιο πάψει να ισχύει, τα δεδομένα σου τα προστατεύουν
+οι τυποποιημένες συμβατικές ρήτρες της Ευρωπαϊκής Επιτροπής, που περιλαμβάνονται στους όρους
+επεξεργασίας δεδομένων της Google (Cloud Data Processing Addendum, Firebase Data Processing and
+Security Terms και, για το Analytics, Google Ads Data Processing Terms). Στο iPhone, δύο υπηρεσίες
+της Apple χειρίζονται επίσης δεδομένα σου. Αν συνδέεσαι με το Sign in with Apple, η Apple σε συνδέει
+με τον λογαριασμό Apple σου και μας δίνει το όνομά σου, αν το μοιραστείς, και το email σου ή, αν το
+κρύψεις, μια διεύθυνση της Apple που προωθεί τα μηνύματα σε αυτό. Αυτά η Apple τα χειρίζεται σύμφωνα
+με τη δική της πολιτική απορρήτου. Η υπηρεσία ειδοποιήσεων push της Apple (Apple Push Notification
+service) λαμβάνει κάθε ειδοποίηση που στέλνουμε στο iPhone σου, μαζί με το κείμενό της, και την
+παραδίδει. Οι όροι της Apple για τους προγραμματιστές εφαρμογών λένε ότι δεν διαβάζει ούτε
+αποκαλύπτει το περιεχόμενο μιας ειδοποίησης, εκτός αν κρίνει καλόπιστα ότι αυτό είναι εύλογα
+απαραίτητο, για παράδειγμα για να συμμορφωθεί με νομική διαδικασία ή για ζητήματα ασφαλείας, απάτης
+ή τεχνικά. Η Apple δεν λέει σε ποια χώρα λειτουργεί καμία από τις δύο υπηρεσίες. Η πολιτική
+απορρήτου της λέει ότι τα προσωπικά δεδομένα που συλλέγει τα αποθηκεύει γενικά η Apple Inc. στις
+Ηνωμένες Πολιτείες, ότι για τα προσωπικά δεδομένα όσων βρίσκονται στον ΕΟΧ υπεύθυνη επεξεργασίας
+είναι η Apple Distribution International Limited στην Ιρλανδία, και ότι η διαβίβασή τους εκτός ΕΟΧ
+διέπεται από τυποποιημένες συμβατικές ρήτρες. Το email σου είναι ιδιωτικό. Το όνομα, η κατηγορία και
+η φωτογραφία σου εμφανίζονται στα ματς που δημοσιεύεις ή στα οποία συμμετέχεις, όταν δηλώνεις ότι
+ψάχνεις παιχνίδι, και στην κάρτα παίκτη σου, μαζί με τη χώρα και την πόλη σου, την αίθουσα όπου
+παίζεις συνήθως και τι παίζεις. Την κάρτα σου τη βλέπουν όσοι έχουν λογαριασμό, και μπορούν να σε
+βρουν με το όνομά σου, εκτός αν κλείσεις το «Να με βρίσκουν στην αναζήτηση» στις Ρυθμίσεις. Την
+αίθουσα όπου παίζεις συνήθως την αλλάζεις ή τη βγάζεις από τις Ρυθμίσεις, στο «Η λέσχη σου». Όλα
+αυτά τα βλέπουν μόνο όσοι έχουν συνδεθεί στην εφαρμογή, με μία εξαίρεση: όποιος έχει τον σύνδεσμο
+της φωτογραφίας σου μπορεί να την ανοίξει και χωρίς σύνδεση. Από την έκδοση 2.3.0 της εφαρμογής, τα
+ανοιχτά ματς σου και τις δηλώσεις σου ότι ψάχνεις παιχνίδι, μαζί με το όνομα, την κατηγορία και τη
+φωτογραφία σου, τα βλέπουν και οι επισκέπτες, δηλαδή όσοι ρίχνουν μια ματιά στην εφαρμογή χωρίς
+λογαριασμό. Την κάρτα σου δεν τη βλέπουν, ούτε όσα γράφεις σε σημείωση: η εφαρμογή δείχνει τη
+σημείωση ενός ματς ή μιας πρόκλησης, και τη σημείωση μιας ακύρωσης, μόνο σε παίκτες με λογαριασμό.
+Οι εκδόσεις 2.3.0 έως 2.3.2 διάβαζαν τα ίδια τα ματς και τις προκλήσεις και έκρυβαν τη σημείωση στην
+οθόνη. Από την έκδοση 2.3.3, η εφαρμογή δείχνει στον επισκέπτη μόνο αντίγραφα των ανοιχτών ματς και
+προκλήσεων, που τα κρατά ο διακομιστής μας χωρίς σημείωση, σημείωση ακύρωσης, αντίπαλο, σκορ ή
+απουσία. Ένα αντίγραφο σβήνεται μόλις κάποιος πάρει το ματς ή την πρόκληση, μόλις ακυρωθεί ή
+διαγραφεί, και όταν ο διοργανωτής διαγράψει τον λογαριασμό του. Αλλιώς, το αντίγραφο ενός ματς
+σβήνεται μέσα σε περίπου μία ώρα αφού περάσουν δύο ώρες από την έναρξή του, και το αντίγραφο μιας
+πρόκλησης μέσα σε περίπου μία ώρα αφού συμπληρώσει 24 ώρες ή περάσουν δύο ώρες από την ώρα της. Από
+τις 20 Οκτωβρίου 2026, οι κανόνες ασφαλείας της βάσης μας δεν επιτρέπουν στον επισκέπτη να διαβάσει
+κανένα ματς και καμία πρόκληση, ούτε αν τα ζητήσει απευθείας από τη βάση, οπότε δεν φτάνει σε καμία
+σημείωση, και οι εκδόσεις 2.3.0 έως 2.3.2 δεν δείχνουν πια ματς στον επισκέπτη. Στη βάση μας, ο
+επισκέπτης μπορεί να διαβάσει μόνο τα αντίγραφα των ανοιχτών ματς και προκλήσεων, τις δηλώσεις ότι
+ψάχνει κάποιος παιχνίδι, τις αίθουσες, όσα γράφουμε παρακάτω για τα ματς που βρήκαν αντίπαλο, και
+ρυθμίσεις και λίστες χωρίς προσωπικά δεδομένα, όπως τις χώρες και τις πόλεις της εφαρμογής και τη
+λίστα των αιθουσών στην Κατάταξη. Από την έκδοση 2.3.0 της εφαρμογής, μπορείς να ρίξεις μια ματιά
+πριν φτιάξεις λογαριασμό, με το «Ρίξε πρώτα μια ματιά» στην πρώτη οθόνη. Οι προηγούμενες εκδόσεις
+δεν έχουν λειτουργία επισκέπτη. Τότε η εφαρμογή συνδέεται ανώνυμα στο Firebase Authentication και
+παίρνει ένα τυχαίο αναγνωριστικό επισκέπτη, χωρίς όνομα, email, κωδικό ή προφίλ. Ως επισκέπτης
+βλέπεις τα ανοιχτά ματς, τις σελίδες τους και τις αίθουσες, αλλά όχι τις σημειώσεις των διοργανωτών.
+Στη σελίδα ενός ματς, αντί για τη σημείωση, βλέπεις «Η σημείωση του διοργανωτή είναι για παίκτες με
+λογαριασμό». Για να δημοσιεύσεις, να ζητήσεις να μπεις σε ματς, να αποκλείσεις παίκτη ή να λαμβάνεις
+ειδοποιήσεις χρειάζεσαι λογαριασμό. Μπορείς όμως να κάνεις αναφορά για έναν παίκτη από τη σελίδα
+ενός ματς, από μια δήλωση ότι ψάχνει παιχνίδι ή από μια πρόκληση, και η αναφορά κρατά το
+αναγνωριστικό επισκέπτη στη θέση του αναγνωριστικού χρήστη. Μπορείς επίσης να μας στείλεις σχόλια
+από την εφαρμογή, που κρατούν κι αυτά το αναγνωριστικό επισκέπτη στη θέση του αναγνωριστικού χρήστη.
+Για τον επισκέπτη δεν κρατάμε προφίλ, κάρτα παίκτη ούτε αναγνωριστικό ειδοποιήσεων. Το Firebase
+Analytics καταγράφει ότι διάλεξες να ρίξεις μια ματιά, χωρίς καμία άλλη λεπτομέρεια. Όταν φτιάξεις
+λογαριασμό, αυτός έχει δικό του αναγνωριστικό. Το αναγνωριστικό επισκέπτη μένει στο Firebase
+Authentication μέχρι να το διαγράψουμε: προς το παρόν δεν σβήνεται αυτόματα, ούτε όταν φτιάξεις
+λογαριασμό. Ματς που βρήκαν αντίπαλο. Μετράμε τα ματς που βρήκαν αντίπαλο σε κάθε πόλη και αίθουσα,
+και δείχνουμε σε όλους όσοι χρησιμοποιούν την εφαρμογή, και στους επισκέπτες, αυτούς τους αριθμούς,
+τις ώρες με τα περισσότερα ματς, και την αίθουσα, το παιχνίδι, το race και την ώρα των πρόσφατων.
+Αυτές οι συνόψεις δεν περιέχουν ποτέ όνομα ή αναγνωριστικό χρήστη. Δίπλα στο όνομα του διοργανωτή
+στις δημοσιεύσεις του δείχνουμε πόσα ματς έχει παίξει με επιβεβαιωμένο σκορ, από τρία και πάνω.
+Όποιος ανοίγει ως επισκέπτης σύνδεσμο για ματς που βρήκε αντίπαλο βλέπει ότι έκλεισε και σε ποια
+αίθουσα, ποτέ ποιοι παίζουν. Κατάταξη. Από την έκδοση 2.4.7, η Κατάταξη δείχνει, για μία χώρα τη
+φορά, τις αίθουσες όπου παίζει ο κόσμος και τους παίκτες που παίζουν περισσότερο, στη θέση των
+μηνιαίων κατατάξεων του Προφίλ. Ο διακομιστής μας υπολογίζει τις δύο λίστες κάθε ώρα από τα ματς και
+τις προκλήσεις, και ένα ματς μετράει στη χώρα της αίθουσάς του. Για τις αίθουσες μετράνε τα ματς που
+παίχτηκαν με επιβεβαιωμένο σκορ τις τελευταίες 60 ημέρες και τα ανοιχτά ματς και οι ανοιχτές
+προκλήσεις των επόμενων 7 ημερών, όχι τα check-in, τα ακυρωμένα ματς ή τα παιχνίδια στο τραπέζι. Η
+λίστα των αιθουσών δεν αναφέρει κανέναν παίκτη ούτε πόσα ματς παίχτηκαν, και τη βλέπουν όλοι, και οι
+επισκέπτες. Η λίστα των παικτών κατατάσσει, έως 20 παίκτες, όσους έπαιξαν τα περισσότερα ματς με
+επιβεβαιωμένο σκορ τις τελευταίες 30 ημέρες, έως δύο την εβδομάδα με τον ίδιο αντίπαλο, ποτέ με βάση
+τις νίκες. Για κάθε παίκτη κρατά το αναγνωριστικό χρήστη, το όνομα, τη φωτογραφία, την κατηγορία και
+την πόλη του, όπως στην κάρτα παίκτη, τη θέση του, αν έπαιξε τις τελευταίες 7 ημέρες και, από 3 και
+πάνω, πόσα ματς έπαιξε και με πόσους αντιπάλους. Μπαίνουν μόνο όσοι εμφανίζονται στην αναζήτηση, και
+τη βλέπουν μόνο όσοι έχουν λογαριασμό. Αν κλείσεις το «Να με βρίσκουν στην αναζήτηση» ή διαγράψεις
+τον λογαριασμό σου, ο διακομιστής μας σε βγάζει αμέσως από τη λίστα. Σε μια κάρτα που βλέπεις μόνο
+εσύ, η εφαρμογή σού δείχνει τη θέση σου και πόσα ματς και αντιπάλους είχες, όπως τα υπολογίζει το
+τηλέφωνό σου. Από τη λίστα των αιθουσών μπορείς να μοιραστείς μια κάρτα για μια αίθουσα και, από την
+έκδοση 2.4.8, μια κάρτα με έως τρεις αίθουσες στην κορυφή της λίστας, με τη θέση και τις φλόγες
+τους. Τις φτιάχνει το τηλέφωνό σου χωρίς όνομα παίκτη και χωρίς να λένε πόσα ματς παίχτηκαν. Εμείς
+μαθαίνουμε μόνο ότι άνοιξες την κοινοποίηση, όχι τι έστειλες ή σε ποιον. Στο iPhone, για να σώσεις
+την κάρτα στις φωτογραφίες σου, το τηλέφωνο ζητά άδεια μόνο για να την προσθέσει, και η εφαρμογή δεν
+διαβάζει ποτέ τη βιβλιοθήκη σου. Σκάλα της αίθουσας. Από την έκδοση 2.5.0, κάθε αίθουσα έχει τη
+σκάλα της: έναν διαγωνισμό ανάμεσα στους παίκτες που μπαίνουν σε αυτήν, σε σεζόν των 4 εβδομάδων,
+από Δευτέρα έως Κυριακή, τοπική ώρα της αίθουσας. Μετράνε τα ματς που παίχτηκαν στην αίθουσα με
+επιβεβαιωμένο σκορ ανάμεσα σε δύο παίκτες της σκάλας, έως 3 την εβδομάδα για κάθε παίκτη και έως 2
+με τον ίδιο αντίπαλο, και η νίκη δίνει 3 βαθμούς, η ισοπαλία 2 και η ήττα 1. Ο διακομιστής μας
+υπολογίζει τις σκάλες κάθε ώρα, και νωρίτερα όταν μπαίνει ή βγαίνει κάποιος, από τα ματς,
+διαβάζοντας μόνο ποιοι έπαιξαν, πού, πότε και το σκορ, ποτέ όνομα ή σημείωση. Στη σκάλα μπαίνεις
+μόνο με λογαριασμό και μόνο όσο εμφανίζεσαι στην αναζήτηση, γιατί δείχνει το όνομά σου, και μπορείς
+να είσαι σε έως 3 σκάλες ταυτόχρονα. Για κάθε παίκτη που μπήκε, η σκάλα κρατά το αναγνωριστικό
+χρήστη, το όνομα, τη φωτογραφία και την κατηγορία του, όπως στην κάρτα παίκτη, και, μόλις μετρήσει
+ένα ματς του, τη θέση και τους βαθμούς του, ποτέ τις νίκες του ή πόσα ματς έπαιξε. Τη βλέπουν μόνο
+όσοι έχουν λογαριασμό, ποτέ οι επισκέπτες, και δεν τη δείχνει καμία σελίδα της ιστοσελίδας μας. Πόσα
+ματς σου μέτρησαν τη σεζόν και την εβδομάδα τα βλέπεις μόνο εσύ. Αν βγεις από τη σκάλα ή κλείσεις το
+«Να με βρίσκουν στην αναζήτηση», ο διακομιστής μας σε βγάζει από τη σκάλα της τρέχουσας σεζόν μέσα
+σε περίπου μία ώρα, και όσοι έπαιξαν μαζί σου κρατούν τους βαθμούς τους. Τα σκορ μιας σεζόν μετράνε
+ως τις 12:00 της Τρίτης μετά το τέλος της. Τότε η σκάλα της γίνεται οριστική και μένει όπως είναι,
+με όσους ήταν μέσα στο τέλος της, ως το τέλος της επόμενης σεζόν, και από αυτήν σε βγάζει μόνο η
+διαγραφή του λογαριασμού σου, όχι η έξοδος από τη σκάλα ή το κλείσιμο της αναζήτησης. Η οριστική
+σκάλα δείχνει επίσης ποιος κέρδισε τη σεζόν. Όποιος κερδίσει μια σεζόν παίρνει για 4 εβδομάδες το
+σήμα «Κέρδισε τη σκάλα» στην κάρτα παίκτη του, που το βλέπουν όσοι έχουν λογαριασμό. Ο διακομιστής
+μας κρατά κάθε σήμα σε ξεχωριστή εγγραφή, με την αίθουσα, τη σεζόν και πότε λήγει, που μπορεί να τη
+διαβάσει όποιος έχει λογαριασμό. Κρατά έως 5 σήματα για κάθε παίκτη, και ένα σήμα που έληξε μένει
+εκεί ώσπου ο παίκτης να κερδίσει άλλη σεζόν ή να διαγράψει τον λογαριασμό του. Ο νικητής μπορεί να
+μοιραστεί μια κάρτα με το δικό του όνομα, την αίθουσα και τις ημερομηνίες της σεζόν, που τη φτιάχνει
+το τηλέφωνό του. Για κάθε σκάλα, ο διακομιστής μας κρατά επίσης, σε εγγραφή που δεν διαβάζει καμία
+εφαρμογή, ποιοι μπήκαν σε αυτήν την τρέχουσα και την προηγούμενη σεζόν, ποια ματς του καθενός
+μέτρησαν, την τελευταία θέση του καθενός και ποιοι πληρούσαν τους όρους για να κερδίσουν την
+προηγούμενη σεζόν, και δεν κρατά παλιότερες σεζόν. Ο λογαριασμός με τον οποίο η Apple ελέγχει την
+εφαρμογή και οι αυτόματοι λογαριασμοί δοκιμών δεν μπαίνουν ποτέ σε σκάλα. Αν είσαι σε σκάλα, μπορεί
+να σου στείλουμε ειδοποίηση push όταν ξεκινά η σεζόν, όταν ανεβαίνεις θέση, ποτέ όταν πέφτεις, όταν
+αρχίζει η τελευταία εβδομάδα και όταν τελειώνει μια σεζόν. Αυτή στο τέλος της σεζόν λέει στον νικητή
+ότι κέρδισε, και στους άλλους ποιος κέρδισε, με το όνομά του, εκτός αν ο ένας έχει αποκλείσει τον
+άλλον. Οι ειδοποιήσεις αυτές δεν προσθέτουν τίποτα στη ροή δραστηριότητάς σου, ακολουθούν τον
+διακόπτη «Ενημερώσεις ματς» και φτάνουν μόνο σε τηλέφωνο με την έκδοση 2.5.0 ή νεότερη, μόνο από τις
+10:00 έως τις 21:30, τοπική ώρα της αίθουσας, και το πολύ μία την ημέρα και τρεις την εβδομάδα. Γι'
+αυτό ο διακομιστής μας κρατά στον λογαριασμό σου πότε σου έστειλε τέτοιες ειδοποιήσεις, και ό,τι
+είναι παλιότερο από 8 ημέρες βγαίνει από την εγγραφή όταν αυτή ενημερωθεί ξανά. Κρατά εκεί επίσης
+πότε οι συμμετοχές σου και οι αλλαγές στην κάρτα σου ενημέρωσαν τις σκάλες, ώστε να το κάνουν έως 6
+φορές την ημέρα, και ό,τι είναι παλιότερο από μία ημέρα βγαίνει με τον ίδιο τρόπο. Καμία εφαρμογή
+δεν διαβάζει αυτές τις εγγραφές. Κοινοποίηση ματς. Όταν μοιράζεσαι ένα ματς, η εφαρμογή δίνει στην
 εφαρμογή που διαλέγεις ένα μήνυμα και έναν σύνδεσμο για την ιστοσελίδα μας. Από την έκδοση 2.4.8,
 ένας σύνδεσμος για τη σελίδα του ίδιου του ματς έχει επίσης το παιχνίδι, το race ή τους πόντους, αν
 υπάρχουν, την ημέρα και την ώρα στην αίθουσα και το αναγνωριστικό της αίθουσας, ώστε η σελίδα να τα
@@ -1344,32 +1490,32 @@ email, κωδικό ή προφίλ. Ως επισκέπτης βλέπεις τ
 σου, και η κάρτα λέει ναι αν έστω μία είναι αρκετά νέα. Ο διακομιστής μας κρατά επίσης στον
 λογαριασμό σου πόσες τέτοιες προσκλήσεις σου έδειξε σε άλλους κάθε ημέρα, ως αριθμό, ώστε να μην
 ξεπερνούν τις 10 την ημέρα. Και οι δύο εφαρμογές περιλαμβάνουν Firebase Crashlytics (αναφορές
-σφαλμάτων) και Firebase Analytics (39 συμβάντα χρήσης από την έκδοση 2.5.0, 37 από την 2.4.9, 33 από
-την 2.4.8, 31 από την 2.4.7, 25 από την 2.4.5, 24 από την 2.3.0 και 23 στις προηγούμενες, όπως η
-δημοσίευση αγώνα ή το check-in σε αίθουσα). Αυτά τα δύο συμβάντα καταγράφουν και ποια αίθουσα
-αφορούν. Από την έκδοση 2.4.5 καταγράφουμε επίσης πότε ανοίγεις ένα ανοιχτό ματς άλλου παίκτη, από
-πού έφτασες εκεί, την αίθουσα και πόσο νωρίτερα από την έναρξη, χωρίς όνομα ή αναγνωριστικό χρήστη.
-Από την έκδοση 2.4.7 καταγράφουμε επίσης όταν ανοίγεις την κοινοποίηση ενός ματς, από πού, αν το
-ματς είναι δικό σου και πόσο νωρίτερα ξεκινά, όχι όμως αν το έστειλες ή σε ποιον, την απάντησή σου
-στην ερώτηση αν ισχύει το ματς σου (έρχομαι, ή δεν μπορώ και ελευθερώνεις τη θέση), όταν στέλνεις
-ένα παιχνίδι στο τραπέζι για επιβεβαίωση, από πού ξεκίνησες (τη φόρμα ανάρτησης, τα παιχνίδια σου,
-τη σελίδα μιας αίθουσας ή ένα άλλο παιχνίδι στο τραπέζι) και το είδος του παιχνιδιού, και όταν
-ανοίγεις την Κατάταξη, μια αίθουσα από εκεί ή την κοινοποίηση της κάρτας μιας αίθουσας ή, από την
-έκδοση 2.4.8, της κάρτας με τις αίθουσες στην κορυφή της λίστας, με τη λίστα, την αίθουσα (εκτός από
-την κάρτα με τις αίθουσες στην κορυφή) και το είδος της κάρτας, πάλι χωρίς όνομα ή αναγνωριστικό
-χρήστη. Από την έκδοση 2.4.8 καταγράφουμε επίσης ποια από τις οθόνες «Ανακάλυψη», «Παιχνίδια»,
-«Κατάταξη», «Αίθουσες» και «Προφίλ» ανοίγεις, και το Firebase Analytics δεν το καταγράφει πια από
-μόνο του. Από την ίδια έκδοση καταγράφουμε ακόμη όταν ανοίγεις τη φόρμα για νέο ματς ή για νέα
-δήλωση ότι ψάχνεις παιχνίδι, για ποιο από τα δύο είναι και από πού την άνοιξες, και, όταν
-δημοσιεύεις ματς, από πού άνοιξες τη φόρμα και περίπου πόση ώρα ήταν ανοιχτή. Στην ίδια έκδοση, όταν
-ζητάς να μπεις σε ματς, καταγράφουμε από πού έφτασες στη σελίδα του, και όταν ανοίγεις ματς από τη
-λίστα της οθόνης «Ανακάλυψη», τη θέση του στη λίστα και πόσα ματς είχε, πάλι χωρίς όνομα ή
-αναγνωριστικό χρήστη. Από την ίδια έκδοση, η εφαρμογή στέλνει στο Firebase Analytics και τρεις
-ιδιότητες χρήστη. Η πρώτη είναι η χώρα του προφίλ σου, ή, σε ένα παλιότερο προφίλ χωρίς χώρα, η
-προεπιλεγμένη χώρα της εφαρμογής, και τη στέλνει μόνο όσο έχεις συνδεθεί με λογαριασμό. Η δεύτερη
-λέει αν έχεις λογαριασμό ή ρίχνεις μια ματιά ως επισκέπτης, και η τρίτη ποιο θέμα διάλεξες στις
-Ρυθμίσεις («Σκούρο», «Φωτεινό» ή «Προεπιλογή συστήματος») και, με την προεπιλογή συστήματος, ποιο
-από τα δύο δείχνει το τηλέφωνό σου. Όταν αποσυνδεθείς, η εφαρμογή σβήνει τις δύο πρώτες. Τις
+σφαλμάτων) και Firebase Analytics (44 συμβάντα χρήσης από την έκδοση X.Y.Z, 39 από την 2.5.0, 37 από
+την 2.4.9, 33 από την 2.4.8, 31 από την 2.4.7, 25 από την 2.4.5, 24 από την 2.3.0 και 23 στις
+προηγούμενες, όπως η δημοσίευση αγώνα ή το check-in σε αίθουσα). Αυτά τα δύο συμβάντα καταγράφουν
+και ποια αίθουσα αφορούν. Από την έκδοση 2.4.5 καταγράφουμε επίσης πότε ανοίγεις ένα ανοιχτό ματς
+άλλου παίκτη, από πού έφτασες εκεί, την αίθουσα και πόσο νωρίτερα από την έναρξη, χωρίς όνομα ή
+αναγνωριστικό χρήστη. Από την έκδοση 2.4.7 καταγράφουμε επίσης όταν ανοίγεις την κοινοποίηση ενός
+ματς, από πού, αν το ματς είναι δικό σου και πόσο νωρίτερα ξεκινά, όχι όμως αν το έστειλες ή σε
+ποιον, την απάντησή σου στην ερώτηση αν ισχύει το ματς σου (έρχομαι, ή δεν μπορώ και ελευθερώνεις τη
+θέση), όταν στέλνεις ένα παιχνίδι στο τραπέζι για επιβεβαίωση, από πού ξεκίνησες (τη φόρμα
+ανάρτησης, τα παιχνίδια σου, τη σελίδα μιας αίθουσας ή ένα άλλο παιχνίδι στο τραπέζι) και το είδος
+του παιχνιδιού, και όταν ανοίγεις την Κατάταξη, μια αίθουσα από εκεί ή την κοινοποίηση της κάρτας
+μιας αίθουσας ή, από την έκδοση 2.4.8, της κάρτας με τις αίθουσες στην κορυφή της λίστας, με τη
+λίστα, την αίθουσα (εκτός από την κάρτα με τις αίθουσες στην κορυφή) και το είδος της κάρτας, πάλι
+χωρίς όνομα ή αναγνωριστικό χρήστη. Από την έκδοση 2.4.8 καταγράφουμε επίσης ποια από τις οθόνες
+«Ανακάλυψη», «Παιχνίδια», «Κατάταξη», «Αίθουσες» και «Προφίλ» ανοίγεις, και το Firebase Analytics
+δεν το καταγράφει πια από μόνο του. Από την ίδια έκδοση καταγράφουμε ακόμη όταν ανοίγεις τη φόρμα
+για νέο ματς ή για νέα δήλωση ότι ψάχνεις παιχνίδι, για ποιο από τα δύο είναι και από πού την
+άνοιξες, και, όταν δημοσιεύεις ματς, από πού άνοιξες τη φόρμα και περίπου πόση ώρα ήταν ανοιχτή.
+Στην ίδια έκδοση, όταν ζητάς να μπεις σε ματς, καταγράφουμε από πού έφτασες στη σελίδα του, και όταν
+ανοίγεις ματς από τη λίστα της οθόνης «Ανακάλυψη», τη θέση του στη λίστα και πόσα ματς είχε, πάλι
+χωρίς όνομα ή αναγνωριστικό χρήστη. Από την ίδια έκδοση, η εφαρμογή στέλνει στο Firebase Analytics
+και τρεις ιδιότητες χρήστη. Η πρώτη είναι η χώρα του προφίλ σου, ή, σε ένα παλιότερο προφίλ χωρίς
+χώρα, η προεπιλεγμένη χώρα της εφαρμογής, και τη στέλνει μόνο όσο έχεις συνδεθεί με λογαριασμό. Η
+δεύτερη λέει αν έχεις λογαριασμό ή ρίχνεις μια ματιά ως επισκέπτης, και η τρίτη ποιο θέμα διάλεξες
+στις Ρυθμίσεις («Σκούρο», «Φωτεινό» ή «Προεπιλογή συστήματος») και, με την προεπιλογή συστήματος,
+ποιο από τα δύο δείχνει το τηλέφωνό σου. Όταν αποσυνδεθείς, η εφαρμογή σβήνει τις δύο πρώτες. Τις
 χρησιμοποιούμε μόνο για να συγκρίνουμε συνολικούς αριθμούς, και καμία δεν είναι όνομα ή
 αναγνωριστικό χρήστη. Από την έκδοση 2.4.9 καταγράφουμε επίσης όταν ανοίγεις την κοινοποίηση μιας
 πρόσκλησης για μια αίθουσα ή δείχνεις τον κωδικό QR της, με το ποιο από τα δύο έκανες και από πού
@@ -1382,9 +1528,59 @@ email, κωδικό ή προφίλ. Ως επισκέπτης βλέπεις τ
 ετικέτες. Από την έκδοση 2.5.0 καταγράφουμε επίσης όταν μπαίνεις στη σκάλα μιας αίθουσας, με την
 αίθουσα, όταν ανοίγεις ολόκληρη τη σκάλα της, με την αίθουσα και από πού την άνοιξες (τη σελίδα της
 αίθουσας ή την Κατάταξη), και όταν ανοίγεις την κοινοποίηση της κάρτας μιας σεζόν που κέρδισες, με
-την αίθουσα, όχι όμως αν την έστειλες ή σε ποιον. Κανένα συμβάν δεν περιέχει όνομα, email, κωδικό
-πρόσκλησης ή κείμενο που έγραψες, και όσα συλλέγουν τα δύο εργαλεία δεν τα συνδέουμε ποτέ με τον
-λογαριασμό σου: η εφαρμογή δεν στέλνει ποτέ το αναγνωριστικό χρήστη σε αυτές τις υπηρεσίες. Στο
+την αίθουσα, όχι όμως αν την έστειλες ή σε ποιον. Από την έκδοση X.Y.Z καταγράφουμε επίσης, και στις
+δύο εφαρμογές, πώς τελείωσε καθεμία από αυτές τις ενέργειες (action_result): εγγραφή, σύνδεση,
+είσοδος ως επισκέπτης, επιβεβαίωση email, αποθήκευση προφίλ, ανάρτηση ματς, δήλωσης ότι ψάχνεις
+παιχνίδι ή παιχνιδιού στο τραπέζι, αίτημα συμμετοχής, αποδοχή αιτήματος, αποστολή, αποδοχή ή
+διεκδίκηση πρόκλησης, check-in και γρήγορο μήνυμα. Καταγράφουμε αν πέρασε, αν την ακύρωσες, αν
+απορρίφθηκε, για παράδειγμα επειδή το ματς είχε ήδη κλείσει ή ο κωδικός ήταν λάθος, αν την απέρριψαν
+οι κανόνες ασφαλείας μας, αν δεν υπήρχε σύνδεση, αν η εφαρμογή σταμάτησε να περιμένει ή αν έγινε
+άλλο σφάλμα, το όνομα του σφάλματος από μια σταθερή λίστα, ποτέ μήνυμα σφάλματος, και, στην εγγραφή
+και τη σύνδεση, τον τρόπο (κωδικός, Google ή Apple). Μόνο στο Android καταγράφουμε επίσης περίπου
+πόσο άργησε η απάντηση και τι σύνδεση είχε το τηλέφωνο (καμία, Wi-Fi, δίκτυο κινητής τηλεφωνίας ή
+άλλη), ποτέ ποιο δίκτυο ή κάποια διεύθυνση, πώς άνοιξε η εφαρμογή όταν την άνοιξες ενώ ήταν κλειστή
+(συνδεδεμένος, με το αντίγραφο του προφίλ σου στο τηλέφωνο επειδή οι διακομιστές μας δεν είχαν
+απαντήσει ακόμη, συνδεδεμένος πριν επιβεβαιώσεις το email ή ολοκληρώσεις το προφίλ σου, ως
+επισκέπτης ή αποσυνδεδεμένος) και περίπου πόση ώρα χρειάστηκε για να δείξει την πρώτη οθόνη
+(launch_ready), και, όταν φεύγεις από μια οθόνη, ποια ήταν («Ανακάλυψη», «Παιχνίδια», «Κατάταξη»,
+«Αίθουσες», «Προφίλ», η σελίδα ενός ματς, η φόρμα ανάρτησης, η σελίδα μιας αίθουσας ή άλλη) και αν
+σχεδιάστηκε αργά ή πάγωσε (screen_frames). Μόνο στο Android, και μόνο όταν τα ενεργοποιήσουμε, γιατί
+αρχικά είναι κλειστά, η εφαρμογή στέλνει και δύο ακόμη συμβάντα. Το device_signals, το πολύ μία φορά
+την ημέρα, λέει αν το τηλέφωνο δείχνει σημάδια πρόσβασης root, εργαλείου που παρεμβαίνει σε
+εφαρμογές, εξομοιωτή, συνδεδεμένου εργαλείου αποσφαλμάτωσης, τροποποιημένης έκδοσης της εφαρμογής,
+περιβάλλοντος κλωνοποίησης εφαρμογών ή ενεργών επιλογών για προγραμματιστές, αν χρησιμοποιεί VPN ή
+διακομιστή μεσολάβησης (proxy), από πού εγκαταστάθηκε η εφαρμογή (Google Play, από υπολογιστή, από
+αρχείο, από άλλο κατάστημα ή άγνωστο) και, από το Android 9, τους πρώτους 8 χαρακτήρες του
+αποτυπώματος του πιστοποιητικού με το οποίο είναι υπογεγραμμένη, που είναι ίδιο σε κάθε αντίγραφο
+του RackUp από το Google Play. Δεν αναφέρει ποτέ άλλη εφαρμογή, δίκτυο ή διεύθυνση, και η εφαρμογή
+δεν μπλοκάρει ούτε αλλάζει τίποτα εξαιτίας του. Το sensitive_screen_recorded, στο Android 15 και
+νεότερο, λέει ότι η οθόνη καταγράφεται ενώ είναι ανοιχτή η οθόνη σύνδεσης, δημιουργίας λογαριασμού,
+επιβεβαίωσης email ή διαγραφής λογαριασμού, ή ο κωδικός που ζητάμε πριν από μια διαγραφή, και ποια
+από αυτές ήταν, χωρίς να σταματά την καταγραφή. Και τα δύο τα διαβάζουμε μόνο ως συνολικούς
+αριθμούς, για να μετράμε την παραποίηση και την κατάχρηση. Ένα ακόμη συμβάν, το profile_status,
+υπάρχει στην εφαρμογή Android αλλά είναι κλειστό, και καμία έκδοση δεν το στέλνει. Από την έκδοση
+X.Y.Z, πριν φύγει ένα συμβάν από το τηλέφωνο, οι εφαρμογές ελέγχουν κάθε στοιχείο του με μια σταθερή
+λίστα όσων επιτρέπεται να έχει εκείνο το συμβάν, και αφαιρούν ό,τι άλλο. Κανένα συμβάν δεν περιέχει
+όνομα, email, κωδικό πρόσκλησης ή κείμενο που έγραψες, και όσα συλλέγουν τα δύο εργαλεία δεν τα
+συνδέουμε ποτέ με τον λογαριασμό σου: η εφαρμογή δεν στέλνει ποτέ το αναγνωριστικό χρήστη σε αυτές
+τις υπηρεσίες. Στατιστικά χρήσης. Από την έκδοση X.Y.Z μπορείς να κλείσεις τα στατιστικά χρήσης:
+στις Ρυθμίσεις, η «Πολιτική απορρήτου» ανοίγει το «Απόρρητο», όπου είναι ο διακόπτης «Στατιστικά
+χρήσης». Από τη στιγμή που τον κλείνεις, η εφαρμογή δεν στέλνει τίποτα στο Firebase Analytics από
+αυτό το τηλέφωνο, ούτε συμβάντα ούτε ιδιότητες χρήστη ούτε τις δικές του τυπικές μετρήσεις, οπότε
+και οι αναφορές σφαλμάτων δεν περιέχουν πια συμβάντα χρήσης. Το κλείσιμο σβήνει επίσης ό,τι κρατά
+ακόμη το Analytics στο τηλέφωνο και αλλάζει το αναγνωριστικό εγκατάστασής του, και αν τον ανοίξεις
+ξανά, το Analytics ξεκινά από την αρχή με νέο αναγνωριστικό. Η επιλογή σου μένει στο τηλέφωνο, για
+αυτή την εγκατάσταση της εφαρμογής, ποτέ στον λογαριασμό σου, και δεν κλείνει τις αναφορές
+σφαλμάτων. Ο διακόπτης είναι ανοιχτός ώσπου να τον κλείσεις, γιατί νομική βάση είναι το έννομο
+συμφέρον μας, και το κλείσιμό του είναι ο πιο απλός τρόπος να αντιταχθείς. Από την ίδια έκδοση, όταν
+διαγράφεις τον λογαριασμό σου, η εφαρμογή σβήνει επίσης ό,τι κρατά ακόμη το Analytics στο τηλέφωνο
+από το οποίο τον διέγραψες και αλλάζει το αναγνωριστικό του, ώστε όσα καταγράφει μετά σε εκείνο το
+τηλέφωνο να μη συνδέονται με όσα κατέγραψε πριν. Όσα έχει ήδη στείλει το Analytics μένουν στη
+Google. Από την ίδια έκδοση, και οι δύο εφαρμογές λένε επίσης στο Firebase Analytics ότι όσα
+συλλέγει δεν επιτρέπεται να χρησιμοποιηθούν για διαφήμιση: οι τρεις ρυθμίσεις που δίνει η Google γι'
+αυτό, για αποθήκευση δεδομένων για διαφημίσεις, χρήση των δεδομένων σου για διαφημίσεις και
+εξατομίκευση διαφημίσεων, είναι κλειστές. Η εφαρμογή iPhone του ορίζει επίσης να μη συλλέγει το
+αναγνωριστικό προμηθευτή, και η εφαρμογή Android να μη συλλέγει το διαφημιστικό αναγνωριστικό. Στο
 Android, όταν εγκαθιστάς την εφαρμογή από σύνδεσμό μας, το Google Play δίνει στο Firebase Analytics
 τις ετικέτες του συνδέσμου και πότε τον πάτησες. Οι ετικέτες λένε την πηγή, το μέσο και την
 καμπάνια, ανάλογα με το πού ήταν ο σύνδεσμος: για παράδειγμα στην ιστοσελίδα μας, στη σελίδα μας στο
@@ -1528,23 +1724,55 @@ check-in σου τα βλέπεις μόνο εσύ, και οι άλλοι πα
 διακομιστής μας μετράει σε εκείνη την αίθουσα, συνήθως μέσα σε περίπου δύο ώρες. Όσοι έχουν την
 αίθουσα στα αγαπημένα μπορεί να πάρουν και ειδοποίηση ότι μόλις ήρθε ένας παίκτης, το πολύ μία την
 ώρα για κάθε αίθουσα, που επίσης δεν λέει ποιος. Αν αποθηκεύσεις μια αναζήτηση, κρατάμε την πόλη του
-φίλτρου της, ακόμη κι αν την πρότεινε η εφαρμογή από τη θέση σου. Διαγραφή λογαριασμού: μέσα από την
-εφαρμογή (Προφίλ → Ρυθμίσεις → Διαγραφή λογαριασμού) ή με email στο rackupbilliard@gmail.com. Μαζί
-με τον λογαριασμό σου διαγράφονται η κάρτα παίκτη σου και η θέση σου στην Κατάταξη, οι συμμετοχές
-σου στις σκάλες των αιθουσών, η θέση σου σε αυτές, στην τρέχουσα και στην προηγούμενη σεζόν, τα
-σήματά σου από τις σκάλες, οι προσωπικές προκλήσεις, οι προσκλήσεις για παιχνίδι στο τραπέζι και τα
-γρήγορα μηνύματα που έστειλες ή έλαβες, οι προσκλήσεις σου σε φίλους και ό,τι καταγράψαμε όταν
-μπήκες με πρόσκληση άλλου, και οι ειδοποιήσεις στη ροή δραστηριότητας άλλων παικτών που αναφέρουν το
-όνομά σου. Τα διαγραμμένα δεδομένα μπορεί να μείνουν έως 7 ημέρες στο ημερήσιο αντίγραφο ασφαλείας
-της βάσης δεδομένων μας και στη λειτουργία που επαναφέρει τη βάση όπως ήταν οποιαδήποτε στιγμή των
-τελευταίων 7 ημερών (point-in-time recovery), και μια διαγραμμένη φωτογραφία προφίλ μπορεί να
-ανακτηθεί για 7 ημέρες, όπως και το αντίγραφο στις Ηνωμένες Πολιτείες που διαγράφουμε μετά τη
-μεταφορά μιας φωτογραφίας. Μετά από αυτό, τα αντίγραφα αυτά σβήνονται. Η Google, από την πλευρά της,
-αφαιρεί τα στοιχεία σύνδεσης ενός διαγραμμένου λογαριασμού από τα δικά της αντίγραφα ασφαλείας μέσα
-σε 180 ημέρες. Διάβασε παραπάνω τι ακριβώς διαγράφεται και τι παραμένει. Έχεις δικαίωμα πρόσβασης,
-διόρθωσης, διαγραφής, φορητότητας, εναντίωσης και περιορισμού, δικαίωμα να ανακαλέσεις όποτε θέλεις
-τη συγκατάθεσή σου για την τοποθεσία, καθώς και δικαίωμα καταγγελίας στην εποπτική αρχή της χώρας
-της ΕΕ όπου μένεις. Στην Ελλάδα είναι η Αρχή Προστασίας Δεδομένων Προσωπικού Χαρακτήρα (dpa.gr) και
-στην Κύπρο το Γραφείο Επιτρόπου Προστασίας Δεδομένων Προσωπικού Χαρακτήρα (gov.cy/dataprotection).
-Όπου κι αν μένεις, μπορείς να κάνεις καταγγελία και στην ελληνική Αρχή, που εποπτεύει το RackUp.
-RackUp · Ioannina, Greece · rackupbilliard@gmail.com Support · Home
+φίλτρου της, ακόμη κι αν την πρότεινε η εφαρμογή από τη θέση σου. Αποσύνδεση από όλες τις συσκευές.
+Από την έκδοση X.Y.Z, η «Αποσύνδεση από όλες τις συσκευές» στις Ρυθμίσεις αποσυνδέει τον λογαριασμό
+σου από κάθε τηλέφωνο όπου είναι συνδεδεμένος, μαζί και από αυτό. Μπορείς να το ζητάς το πολύ μία
+φορά το λεπτό. Η εφαρμογή γράφει πότε το ζήτησες σε μια δική της εγγραφή με το αναγνωριστικό χρήστη
+σου, που τη διαβάζεις μόνο εσύ. Ο διακομιστής μας τερματίζει τότε κάθε σύνδεση του λογαριασμού σου
+στο Firebase Authentication, σβήνει τα αναγνωριστικά ειδοποιήσεων όλων των τηλεφώνων σου και γράφει
+στην ίδια εγγραφή πότε το έκανε, ώστε τα άλλα τηλέφωνά σου να αποσυνδεθούν μόνα τους. Αν μας πεις
+ότι κάποιος άλλος χρησιμοποιεί τον λογαριασμό σου, μπορούμε να το κάνουμε εμείς για σένα. Η εγγραφή
+σβήνεται όταν διαγράψεις τον λογαριασμό σου. Όρια σε αναφορές και σχόλια. Για να μη μας κατακλύζει
+κανείς, ο διακομιστής μας δεν δέχεται άλλες αναφορές από λογαριασμό ή επισκέπτη που έστειλε 20 τις
+τελευταίες 24 ώρες, ούτε άλλα σχόλια από όποιον έστειλε 10, ώσπου να περάσουν 24 ώρες από το πρώτο
+από αυτά. Για να τα μετρά, κρατά στον λογαριασμό σου, ή στο αναγνωριστικό επισκέπτη σου, το
+αναγνωριστικό και την ώρα καθενός που έστειλες τις τελευταίες 24 ώρες και πότε λήγει το όριο, και
+ό,τι είναι παλιότερο βγαίνει από την εγγραφή όταν αυτή ενημερωθεί ξανά. Καμία εφαρμογή δεν διαβάζει
+αυτές τις εγγραφές, και σβήνονται μαζί με τον λογαριασμό ή το αναγνωριστικό επισκέπτη σου. Όταν
+τρεις διαφορετικοί παίκτες κάνουν αναφορά για τον ίδιο παίκτη μέσα σε 24 ώρες, ο διακομιστής μας
+γράφει στα αρχεία καταγραφής του μια γραμμή με το αναγνωριστικό χρήστη εκείνου του παίκτη και πόσοι
+τον ανέφεραν, ποτέ ποιοι, και μας ειδοποιεί, για να διαβάσουμε τις αναφορές νωρίτερα. Η γραμμή αυτή
+από μόνη της δεν αλλάζει τίποτα για τον παίκτη. Διαγραφή λογαριασμού: μέσα από την εφαρμογή (Προφίλ
+→ Ρυθμίσεις → Διαγραφή λογαριασμού) ή με email στο rackupbilliard@gmail.com. Μαζί με τον λογαριασμό
+σου διαγράφονται η κάρτα παίκτη σου και η θέση σου στην Κατάταξη, οι συμμετοχές σου στις σκάλες των
+αιθουσών, η θέση σου σε αυτές, στην τρέχουσα και στην προηγούμενη σεζόν, τα σήματά σου από τις
+σκάλες, οι προσωπικές προκλήσεις, οι προσκλήσεις για παιχνίδι στο τραπέζι και τα γρήγορα μηνύματα
+που έστειλες ή έλαβες, οι προσκλήσεις σου σε φίλους και ό,τι καταγράψαμε όταν μπήκες με πρόσκληση
+άλλου, η εγγραφή της τελευταίας αποσύνδεσης από όλες τις συσκευές, οι εγγραφές με τα όρια των
+αναφορών και των σχολίων σου, κάθε αντίγραφο των δεδομένων σου που έφτιαξε ο διακομιστής μας, και οι
+ειδοποιήσεις στη ροή δραστηριότητας άλλων παικτών που αναφέρουν το όνομά σου. Τα διαγραμμένα
+δεδομένα μπορεί να μείνουν έως 7 ημέρες στο ημερήσιο αντίγραφο ασφαλείας της βάσης δεδομένων μας και
+στη λειτουργία που επαναφέρει τη βάση όπως ήταν οποιαδήποτε στιγμή των τελευταίων 7 ημερών
+(point-in-time recovery), και μια διαγραμμένη φωτογραφία προφίλ μπορεί να ανακτηθεί για 7 ημέρες,
+όπως και το αντίγραφο στις Ηνωμένες Πολιτείες που διαγράφουμε μετά τη μεταφορά μιας φωτογραφίας.
+Μετά από αυτό, τα αντίγραφα αυτά σβήνονται. Η Google, από την πλευρά της, αφαιρεί τα στοιχεία
+σύνδεσης ενός διαγραμμένου λογαριασμού από τα δικά της αντίγραφα ασφαλείας μέσα σε 180 ημέρες.
+Διάβασε παραπάνω τι ακριβώς διαγράφεται και τι παραμένει. Αντίγραφο των δεδομένων σου. Αν μας
+ζητήσεις αντίγραφο των δεδομένων σου, σου στέλνουμε ένα αρχείο JSON, μια δομημένη μορφή που
+διαβάζεται από υπολογιστή. Έχει την εγγραφή του προφίλ σου και ό,τι κρατά η βάση μας κάτω από αυτήν,
+την κάρτα παίκτη σου, πόσα ματς έχεις παίξει με επιβεβαιωμένο σκορ, και κάθε εγγραφή της βάσης μας
+που δημοσίευσες, έστειλες ή έγραψες ή που σε αναφέρει ως έναν από τους παίκτες της. Από κάθε
+αναγνωριστικό ειδοποιήσεων δείχνει μόνο τους τελευταίους έξι χαρακτήρες, οι βαθμολογίες που σου
+έδωσαν άλλοι δεν λένε ποιος τις έδωσε, από όσους σε ακολουθούν δίνει μόνο πόσοι είναι, και δεν
+περιέχει ό,τι ανήκει σε άλλους παίκτες, όπως ποιος σε έχει αποκλείσει, ούτε την ίδια τη φωτογραφία
+σου, μόνο τον σύνδεσμό της. Σου το στέλνουμε στη διεύθυνση του λογαριασμού σου ή όπως αλλιώς
+διαλέξεις, και μετά σβήνουμε το δικό μας αντίγραφο. Ο διακομιστής μας μπορεί να φτιάξει το ίδιο
+αντίγραφο και στη βάση μας, στον λογαριασμό σου, το πολύ μία φορά την ημέρα, όπου το διαβάζεις μόνο
+εσύ, και το κρατά ώσπου να το αντικαταστήσει το επόμενο αίτημά σου ή να διαγράψεις τον λογαριασμό
+σου. Καμία έκδοση της εφαρμογής δεν το ζητά ακόμη. Έχεις δικαίωμα πρόσβασης, διόρθωσης, διαγραφής,
+φορητότητας, εναντίωσης και περιορισμού, δικαίωμα να ανακαλέσεις όποτε θέλεις τη συγκατάθεσή σου για
+την τοποθεσία, καθώς και δικαίωμα καταγγελίας στην εποπτική αρχή της χώρας της ΕΕ όπου μένεις. Στην
+Ελλάδα είναι η Αρχή Προστασίας Δεδομένων Προσωπικού Χαρακτήρα (dpa.gr) και στην Κύπρο το Γραφείο
+Επιτρόπου Προστασίας Δεδομένων Προσωπικού Χαρακτήρα (gov.cy/dataprotection). Όπου κι αν μένεις,
+μπορείς να κάνεις καταγγελία και στην ελληνική Αρχή, που εποπτεύει το RackUp. RackUp · Ioannina,
+Greece · rackupbilliard@gmail.com Support · Home
