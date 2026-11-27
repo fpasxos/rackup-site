@@ -39,11 +39,25 @@
 <main id="main" class="container">
 <article class="prose">
   <h1>RackUp Privacy Policy</h1>
-  <p class="muted">Effective date: 18 November 2026 · Applies to the RackUp apps for Android
+  <p class="muted">Effective date: XX November 2026 · Applies to the RackUp apps for Android
   and iPhone (<code>com.rackup.app</code>)</p>
   <p lang="el"><a href="#el">Στα Ελληνικά</a></p>
 
   <div class="card">
+    <p><strong>What changed on XX November 2026.</strong> The apps did not change and collect
+    nothing new, but this policy left out five things they already do. First, under <em>App usage
+    analytics</em>: the iPhone app's Firebase Analytics collects your iPhone's identifier for
+    vendor, and on Android 12 and older nothing in the app stops Firebase Analytics from reading
+    your phone's advertising ID, although we have found none in what it has sent us. We correct
+    <em>What we do not do</em> to match. Second, under <em>Where your data is stored, and who
+    processes it</em>: since 9 November 2026 Firebase Analytics also sends a daily copy of its
+    events to BigQuery, Google's data warehouse, into a dataset of ours in the European Union,
+    which we keep until we delete it. Third, under <em>Crash diagnostics</em>: a crash report also
+    carries the analytics events the app logged shortly before it, and how much memory and storage
+    the phone was using. Fourth, in the same section as the second: what the app keeps on your
+    phone, and that signing out leaves most of it there. Fifth, there too: the emails you send us,
+    which we keep in our Gmail mailbox. We say so under <em>How long we keep it</em> and <em>What
+    survives deletion</em>, and in the summary in Greek too.</p>
     <p><strong>What changed on 18 November 2026.</strong> From version 2.4.9 of the apps you can
     invite a friend to play at a hall, with a link or a QR code. Under <em>What you post and
     write</em> we say what an invite keeps, who can read it, what happens when your friend joins
@@ -799,7 +813,9 @@
   <h3>Crash diagnostics (both apps)</h3>
   <p>Both apps include <strong>Firebase Crashlytics</strong>. When the app crashes or hits a
   handled error, Crashlytics sends Google a report containing the crash, your device model, your
-  operating system version and the app version. We use it to find and fix bugs. <strong>We never
+  operating system version, the app version, how much memory and storage the phone was using, and
+  the analytics events, described below, that the app logged shortly before it. We use it to find
+  and fix bugs. <strong>We never
   attach your account to a crash report.</strong> The app never calls Crashlytics' user id
   function, so reports carry no user id, only random identifiers, such as Crashlytics' own
   installation identifier and the Firebase installation ID described under <em>Where your data
@@ -934,6 +950,17 @@
   described above, and when the game is another player's open match, opening it also logs
   <code>match_viewed</code>, with the game's hall, as opening any such match does. On iPhone the app
   reads nothing like this.</p>
+  <p><strong>Device identifiers.</strong> On iPhone, Firebase Analytics also collects your
+  iPhone's identifier for vendor (IDFV): an identifier that iOS gives the apps of one developer on
+  an iPhone, shared by all of them, which stays the same until you remove all of that developer's
+  apps. RackUp is our only app. Analytics attaches it to every event from that iPhone. On Android,
+  the app removes the permission that lets an app read your phone's advertising ID, so on Android
+  13 and later Google Play services gives Firebase Analytics none. On Android 12 and older, Google
+  Play services gives the advertising ID to apps without that permission, and the app does not
+  tell Firebase Analytics not to collect it, so Analytics may read it there. We have found none in
+  the events Analytics has sent since 9 November 2026, when the copy described under <em>Where
+  your data is stored, and who processes it</em> begins, but we cannot rule it out. We never read
+  either identifier ourselves, and this policy did not mention either before.</p>
   <p><strong>Analytics is not linked to your account.</strong> The app never calls Analytics'
   user id function, so Analytics keys on its own per installation identifier. One practical
   consequence, stated honestly: because these records are not tied to your account, we cannot
@@ -983,8 +1010,11 @@
   <h2>What we do not do</h2>
   <ul>
     <li><strong>No advertising in the apps.</strong> There is no ad SDK of any kind in either app.</li>
-    <li><strong>No advertising identifier.</strong> The Android app strips the
-        <code>AD_ID</code> permission that Firebase Analytics would otherwise pull in. The iPhone
+    <li><strong>No advertising identifier of our own.</strong> We never read your phone's
+        advertising identifier, and nothing in RackUp uses one. The Android app strips the
+        <code>AD_ID</code> permission that Firebase Analytics would otherwise pull in, so on
+        Android 13 and later Firebase Analytics gets none; on Android 12 and older that permission
+        is not needed, as described under <em>App usage analytics</em>. The iPhone
         app links the version of Firebase Analytics built without advertising ID support, shows
         no App Tracking Transparency prompt, and does not read the IDFA.</li>
     <li><strong>No tracking across other companies' apps or websites.</strong> There is no
@@ -1082,7 +1112,15 @@
         your user id. Google keeps them in its global location, which means they can be stored
         in any of its data centres.</li>
     <li><strong>Firebase Crashlytics</strong>: crash and diagnostic reports.</li>
-    <li><strong>Firebase Analytics</strong>: the app usage events described above.</li>
+    <li><strong>Firebase Analytics</strong>: the app usage events described above. Since
+        9 November 2026, Analytics also sends a copy of them once a day to
+        <strong>BigQuery</strong>, Google's data warehouse, into a dataset of our own, which
+        Google keeps in its <code>EU</code> multi-region, in the European Union. The copy holds
+        each event with its details, the user properties and Analytics' per installation
+        identifier, the identifier for vendor from iPhones, the phone's model, operating system,
+        language and time zone, where the install came from, and the approximate area, down to a
+        city, that Analytics works out from the IP address. It holds no user id, name or email
+        address. Only we can read it, and we read it only as totals.</li>
     <li><strong>Firebase Cloud Messaging</strong>: push notifications on both apps. On iPhone,
         Firebase passes them to Apple's Push Notification service, which delivers them, as
         described below.</li>
@@ -1102,7 +1140,31 @@
   Google your device's IP address and the area you are looking at, which, if you allowed location,
   is the area around you. Google handles this under its own terms and
   <a href="https://policies.google.com/privacy">privacy policy</a>.</p>
-  <p>So our database, our server-side jobs and your profile photo are in the European Union, but
+  <p><strong>On your phone.</strong> To open quickly and work without a connection, the app keeps
+  some data in its own storage on your phone: a copy of the records it has read from our
+  database, such as your profile, matches, activity feed and quick messages, up to 100 MB; your
+  settings and small notes of what it has already shown you, such as the welcome tour; the last
+  invite you made for each hall; the profile photos it has loaded; and, on Android, the cards from
+  <em>Rankings</em> that you shared. Firebase's own libraries also keep what they need there, such
+  as your sign-in until you sign out. Signing out deletes that phone's notification token and ends
+  a visit to another country, but it leaves the copy of our records, the photos, the cards and
+  your invites on the phone, and notifications already shown stay until you clear them. All of it
+  goes when you clear the app's data or remove the app, with one exception on iPhone: the sign-in
+  that Firebase keeps in the iPhone's keychain can outlast removing the app, so the app can open
+  signed in again after you install it again. On Android none of this goes into your phone's
+  backups or to a new phone; on iPhone, the copy of our records and your settings are part of the
+  iPhone's own backups.</p>
+  <p><strong>Emails to us.</strong> When you email us, at
+  <a href="mailto:rackupbilliard@gmail.com">rackupbilliard@gmail.com</a>, we keep your message,
+  your email address, anything you attach and our replies in that mailbox, which is a Gmail
+  account, so Google stores them under its own terms and
+  <a href="https://policies.google.com/privacy">privacy policy</a>, on its servers around the
+  world. We use them only to answer you and to keep a record of what we did, for example after a
+  request about your rights. We have not set a fixed period for them: they stay until we delete
+  them, and deleting your account does not delete them, so tell us if you want them deleted
+  too.</p>
+  <p>So our database, our server-side jobs, your profile photo and the copy of the analytics events
+  in BigQuery are in the European Union, but
   your sign-in details are in the United States. Crashlytics, Analytics, Cloud
   Messaging and App Check are global Google services and, like our server logs, what they handle
   may be processed or stored anywhere Google has facilities, including outside the European
@@ -1116,7 +1178,7 @@
   Commission has not found adequate, and in the United States should the framework stop
   applying, by the European Commission's <strong>standard contractual clauses</strong>, which
   are part of Google's data processing terms: the Cloud Data Processing Addendum for
-  Authentication, Firestore, Cloud Storage, Cloud Functions, Cloud Logging and App Check, the
+  Authentication, Firestore, Cloud Storage, Cloud Functions, Cloud Logging, App Check and BigQuery, the
   Firebase Data Processing and Security Terms for Crashlytics and Cloud Messaging, and the
   Google Ads Data Processing Terms for Analytics. Google's documentation for all of this is at
   <a href="https://firebase.google.com/support/privacy">firebase.google.com/support/privacy</a>.</p>
@@ -1215,6 +1277,14 @@
         says that the data tied to a deleted ID is removed from its live and backup systems
         within 180 days. Crashlytics keeps the ones in crash reports for 90 days before it starts
         removing them.</li>
+    <li><strong>The copy of analytics events in BigQuery</strong>: kept until we delete it. We have
+        set no expiry for it, and after we delete something there, BigQuery can still restore it
+        for up to 14 days. Like the events themselves, it is not linked to your account, so
+        deleting your account does not delete your events there.</li>
+    <li><strong>What the app keeps on your phone</strong>: until you clear the app's data or
+        remove the app, as described under <em>Where your data is stored, and who processes
+        it</em>.</li>
+    <li><strong>Emails to us</strong>: until we delete them. There is no fixed period yet.</li>
     <li><strong>Erasure records</strong>: when an account is erased we keep one small record
         holding the user id, a status, timestamps and the names of the steps that ran. It holds
         no name, no email, no photo and no message text. It is our evidence that the erasure
@@ -1298,6 +1368,11 @@
         tokens we kept under your account, which were issued for the same installs, are
         deleted.</li>
     <li>Server logs may contain your user id for a bounded period.</li>
+    <li><strong>Emails you sent us</strong> stay in our mailbox until we delete them, as described
+        under <em>Where your data is stored, and who processes it</em>. Tell us if you want them
+        deleted too.</li>
+    <li><strong>What the app keeps on your phone</strong> stays there until you clear the app's
+        data or remove the app.</li>
   </ul>
   <p>We do not claim that deleting your account erases every trace of you everywhere. The list
   above is what remains.</p>
@@ -1350,11 +1425,15 @@
 
   <h2>Changes to this policy</h2>
   <p>If this policy changes, the new version is published at this address with a new effective
-  date, and we say at the top what changed. This version, dated 18 November 2026, adds inviting a
+  date, and we say at the top what changed. This version, dated XX November 2026, adds five
+  things the apps already do: the identifier for vendor that Firebase Analytics collects on
+  iPhone and the advertising ID it may read on Android 12 and older, the daily copy of analytics
+  events in BigQuery, what a crash report carries, what the app keeps on your phone and the emails
+  you send us, and supersedes the version dated 18 November 2026, which added inviting a
   friend to play at a hall, how we tell you when a friend joins and the record of each running
   invite's joins and pushes, four analytics events, and the tags the Android app reads after an
   install from a hall's poster, a hall's share card, a friend's invite or a shared game's page,
-  from version 2.4.9 of the apps, and supersedes
+  from version 2.4.9 of the apps, and superseded
   the version dated 15 November 2026, which added the
   analytics events <code>screen_view</code> and <code>post_started</code>, what
   <code>match_posted</code>, <code>join_requested</code> and <code>match_viewed</code> also record,
@@ -1441,8 +1520,9 @@
   ειδοποιήσεις κάθε χώρας να μένουν σε αυτήν. Όλα βρίσκονται στο Google Firebase.</p>
   <p><strong>Πού βρίσκονται τα δεδομένα σου.</strong> Στην Ευρωπαϊκή Ένωση βρίσκονται η βάση
   δεδομένων μας (Cloud Firestore), στη Βαρσοβία της Πολωνίας, ο διακομιστής μας (Cloud
-  Functions), που τρέχει στο Βέλγιο, και η φωτογραφία προφίλ σου (Cloud Storage), επίσης στο
-  Βέλγιο. Μια φωτογραφία που ανεβαίνει από εφαρμογή παλιότερη της έκδοσης 2.4.6 αποθηκεύεται
+  Functions), που τρέχει στο Βέλγιο, η φωτογραφία προφίλ σου (Cloud Storage), επίσης στο
+  Βέλγιο, και το ημερήσιο αντίγραφο των συμβάντων χρήσης στο BigQuery, που περιγράφουμε
+  παρακάτω. Μια φωτογραφία που ανεβαίνει από εφαρμογή παλιότερη της έκδοσης 2.4.6 αποθηκεύεται
   πρώτα στις Ηνωμένες Πολιτείες και τη μεταφέρουμε στο Βέλγιο αργότερα. Όταν τη μεταφέρουμε,
   διαγράφουμε μετά από λίγες ημέρες το αντίγραφό της στις Ηνωμένες Πολιτείες. Μόνο σε κέντρα
   δεδομένων στις Ηνωμένες Πολιτείες επεξεργάζεται η Google τα στοιχεία σύνδεσής σου και τα
@@ -1489,6 +1569,43 @@
   στις Ηνωμένες Πολιτείες, ότι για τα προσωπικά δεδομένα όσων βρίσκονται στον ΕΟΧ υπεύθυνη
   επεξεργασίας είναι η Apple Distribution International Limited στην Ιρλανδία, και ότι η
   διαβίβασή τους εκτός ΕΟΧ διέπεται από τυποποιημένες συμβατικές ρήτρες.</p>
+  <p><strong>Αντίγραφο των συμβάντων στο BigQuery.</strong> Από τις 9 Νοεμβρίου 2026, το Firebase
+  Analytics στέλνει επίσης μία φορά την ημέρα ένα αντίγραφο των συμβάντων χρήσης στο BigQuery, την
+  αποθήκη δεδομένων της Google, σε ένα δικό μας σύνολο δεδομένων που η Google κρατά στην περιοχή
+  EU, μέσα στην Ευρωπαϊκή Ένωση. Το αντίγραφο έχει κάθε συμβάν με τα στοιχεία του, τις ιδιότητες
+  χρήστη, το αναγνωριστικό εγκατάστασης του Analytics, το αναγνωριστικό προμηθευτή από τα iPhone,
+  το μοντέλο, το λειτουργικό σύστημα, τη γλώσσα και τη ζώνη ώρας του τηλεφώνου, από πού ήρθε η
+  εγκατάσταση και την κατά προσέγγιση περιοχή, έως την πόλη, που βγάζει το Analytics από τη
+  διεύθυνση IP. Δεν έχει αναγνωριστικό χρήστη, όνομα ή email. Το διαβάζουμε μόνο εμείς, και μόνο ως
+  συνολικούς αριθμούς. Το κρατάμε ώσπου να το διαγράψουμε, χωρίς ορισμένη λήξη, και αφού
+  διαγράψουμε κάτι εκεί, το BigQuery μπορεί να το επαναφέρει για έως 14 ημέρες. Όπως και τα ίδια
+  τα συμβάντα, δεν συνδέεται με τον λογαριασμό σου, οπότε η διαγραφή του λογαριασμού σου δεν σβήνει
+  τα συμβάντα σου εκεί.</p>
+  <p><strong>Στο τηλέφωνό σου.</strong> Για να ανοίγει γρήγορα και να δουλεύει και χωρίς σύνδεση,
+  η εφαρμογή κρατά μερικά δεδομένα στον δικό της χώρο στο τηλέφωνό σου: ένα αντίγραφο των εγγραφών
+  που έχει διαβάσει από τη βάση μας, όπως το προφίλ σου, τα ματς, τη ροή δραστηριότητας και τα
+  γρήγορα μηνύματα, έως 100 MB, τις ρυθμίσεις σου και μικρές σημειώσεις για όσα σου έχει ήδη
+  δείξει, όπως τις οθόνες γνωριμίας της πρώτης εκκίνησης, την τελευταία πρόσκληση που έφτιαξες για
+  κάθε αίθουσα, τις φωτογραφίες προφίλ που έχει φορτώσει και, στο Android, τις κάρτες της Κατάταξης
+  που μοιράστηκες. Οι βιβλιοθήκες του Firebase κρατούν επίσης εκεί όσα χρειάζονται, όπως τη σύνδεσή
+  σου ώσπου να αποσυνδεθείς. Η αποσύνδεση σβήνει το αναγνωριστικό ειδοποιήσεων του τηλεφώνου και
+  τελειώνει μια επίσκεψη σε άλλη χώρα, αλλά αφήνει στο τηλέφωνο το αντίγραφο των εγγραφών μας, τις
+  φωτογραφίες, τις κάρτες και τις προσκλήσεις σου, και οι ειδοποιήσεις που έχουν ήδη εμφανιστεί
+  μένουν ώσπου να τις καθαρίσεις. Όλα αυτά φεύγουν όταν σβήσεις τα δεδομένα της εφαρμογής ή την
+  αφαιρέσεις, με μία εξαίρεση στο iPhone: η σύνδεση που κρατά το Firebase στην κλειδοθήκη
+  (keychain) του iPhone μπορεί να μείνει και μετά την αφαίρεση της εφαρμογής, οπότε η εφαρμογή
+  μπορεί να ανοίξει ξανά συνδεδεμένη όταν την εγκαταστήσεις πάλι. Στο Android τίποτα από αυτά δεν
+  μπαίνει στα αντίγραφα ασφαλείας του τηλεφώνου ούτε περνά σε νέο τηλέφωνο. Στο iPhone, το
+  αντίγραφο των εγγραφών μας και οι ρυθμίσεις σου μπαίνουν στα αντίγραφα ασφαλείας του ίδιου του
+  iPhone.</p>
+  <p><strong>Τα email σου προς εμάς.</strong> Όταν μας στέλνεις email στο
+  <a href="mailto:rackupbilliard@gmail.com">rackupbilliard@gmail.com</a>, κρατάμε το μήνυμά σου, τη
+  διεύθυνσή σου, ό,τι επισυνάπτεις και τις απαντήσεις μας σε αυτό το γραμματοκιβώτιο, που είναι
+  λογαριασμός Gmail, οπότε η Google τα αποθηκεύει σύμφωνα με τους δικούς της όρους και την πολιτική
+  απορρήτου της, στους διακομιστές της σε όλο τον κόσμο. Τα χρησιμοποιούμε μόνο για να σου
+  απαντήσουμε και για να έχουμε καταγραφή του τι κάναμε, για παράδειγμα μετά από ένα αίτημα για τα
+  δικαιώματά σου. Δεν έχουμε ορίσει συγκεκριμένο διάστημα: μένουν ώσπου να τα διαγράψουμε, και η
+  διαγραφή του λογαριασμού σου δεν τα σβήνει, οπότε πες μας αν θέλεις να σβηστούν κι αυτά.</p>
   <p>Το email σου είναι ιδιωτικό. Το όνομα, η κατηγορία και η φωτογραφία σου εμφανίζονται στα
   ματς που δημοσιεύεις ή στα οποία συμμετέχεις, όταν δηλώνεις ότι ψάχνεις παιχνίδι, και στην
   κάρτα παίκτη σου, μαζί με τη χώρα και την πόλη σου, την αίθουσα όπου παίζεις συνήθως και τι
@@ -1698,8 +1815,23 @@
   γράφουμε παραπάνω, και όταν το ματς είναι ανοιχτό ματς άλλου παίκτη, καταγράφει επίσης το
   <code>match_viewed</code>, με την αίθουσα του ματς, όπως για κάθε τέτοιο ματς που ανοίγεις. Στο
   iPhone η εφαρμογή δεν διαβάζει τίποτα τέτοιο.</p>
-  <p>Δεν υπάρχουν διαφημίσεις μέσα στις εφαρμογές, ούτε διαφημιστικά αναγνωριστικά, ούτε
-  παρακολούθηση σε εφαρμογές άλλων εταιρειών. Δεν πουλάμε δεδομένα. Από την έκδοση 2.1.0
+  <p><strong>Αναγνωριστικά συσκευής και αναφορές σφαλμάτων.</strong> Στο iPhone, το Firebase
+  Analytics συλλέγει και το αναγνωριστικό προμηθευτή (identifier for vendor, IDFV) του iPhone σου:
+  ένα αναγνωριστικό που δίνει το iOS στις εφαρμογές ενός δημιουργού σε ένα iPhone, κοινό για όλες,
+  που μένει ίδιο ώσπου να αφαιρέσεις όλες τις εφαρμογές του. Το RackUp είναι η μόνη μας εφαρμογή.
+  Το Analytics το προσθέτει σε κάθε συμβάν από εκείνο το iPhone. Στο Android, η εφαρμογή αφαιρεί
+  την άδεια που επιτρέπει σε μια εφαρμογή να διαβάσει το διαφημιστικό αναγνωριστικό του τηλεφώνου,
+  οπότε στο Android 13 και νεότερο οι υπηρεσίες Google Play δεν το δίνουν στο Firebase Analytics.
+  Στο Android 12 και παλιότερο, οι υπηρεσίες Google Play το δίνουν σε εφαρμογές και χωρίς αυτή την
+  άδεια, και η εφαρμογή δεν λέει στο Firebase Analytics να μην το συλλέγει, οπότε το Analytics
+  μπορεί να το διαβάσει εκεί. Στα συμβάντα που έχει στείλει από τις 9 Νοεμβρίου 2026, όταν ξεκινά
+  το αντίγραφο στο BigQuery, δεν βρήκαμε κανένα, αλλά δεν μπορούμε να το αποκλείσουμε. Εμείς δεν
+  διαβάζουμε ποτέ κανένα από τα δύο. Μια αναφορά σφάλματος περιέχει επίσης τα συμβάντα χρήσης που
+  κατέγραψε η εφαρμογή λίγο πριν από το σφάλμα, και πόση μνήμη και πόσο χώρο αποθήκευσης
+  χρησιμοποιούσε το τηλέφωνο. Η πολιτική αυτή δεν τα έλεγε πριν.</p>
+  <p>Δεν υπάρχουν διαφημίσεις μέσα στις εφαρμογές ούτε παρακολούθηση σε εφαρμογές άλλων εταιρειών,
+  και εμείς δεν διαβάζουμε ούτε χρησιμοποιούμε κανένα διαφημιστικό αναγνωριστικό. Δεν πουλάμε
+  δεδομένα. Από την έκδοση 2.1.0
   υπάρχουν ειδοποιήσεις push και στο iPhone: αν τις επιτρέψεις, κρατάμε στον λογαριασμό σου
   ένα αναγνωριστικό ειδοποιήσεων για τη συσκευή, για να σου τις στέλνουμε, και μπορείς να
   τις κλείσεις από τις Ρυθμίσεις της εφαρμογής ή του iPhone. Στο iPhone το αναγνωριστικό μένει

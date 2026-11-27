@@ -169,8 +169,8 @@ class InviteLinksPolicyTest(unittest.TestCase):
                 for fact in facts:
                     self.assertIn(fact, said[at[0] + 1])
 
-    def test_the_newest_note_says_what_changed(self):
-        newest = next(p for p in paragraphs(current("privacy.html")) if p.startswith("What changed on "))
+    def test_the_2_4_9_note_says_what_changed(self):
+        newest = next(p for p in paragraphs(current("privacy.html")) if p.startswith("What changed on 18 November 2026."))
         for fact in ("version 2.4.9", "invite a friend", "Google Play", "37 in all", "How long we keep it",
                      "What deletion removes", "of these tags only the hall, the invite's code and the game they name can reach us",
                      "a friend's invite or a shared game's page",
@@ -356,6 +356,77 @@ class AnalyticsCountTest(unittest.TestCase):
                 '<p><strong>User properties.</strong> <code>account</code> and <code>home_country</code>.</p>'
                 '<p><code>theme</code></p></main>')
         self.assertEqual({"account", "home_country"}, named_user_properties(page))
+
+
+def one_paragraph(page, opening):
+    (found,) = [p for p in paragraphs(page) if p.startswith(opening)]
+    return found
+
+
+class LiveAppCorrectionsTest(unittest.TestCase):
+    """What today's apps already do and the page left out, read from the live data on 27 Nov 2026:
+    the IDFV and the advertising ID, the BigQuery copy, crash breadcrumbs, the phone, emails."""
+
+    def test_device_identifiers_say_what_analytics_collects_today(self):
+        page = current("privacy.html")
+        english = one_paragraph(page, "Device identifiers.")
+        for said in ("identifier for vendor (IDFV)", "Analytics attaches it to every event from that iPhone",
+                     "on Android 13 and later Google Play services gives Firebase Analytics none",
+                     "On Android 12 and older", "the app does not tell Firebase Analytics not to collect it",
+                     "We have found none", "but we cannot rule it out"):
+            self.assertIn(said, english)
+        greek = one_paragraph(page, "Αναγνωριστικά συσκευής και αναφορές σφαλμάτων.")
+        for said in ("αναγνωριστικό προμηθευτή (identifier for vendor, IDFV)", "σε κάθε συμβάν",
+                     "Στο Android 12 και παλιότερο", "δεν μπορούμε να το αποκλείσουμε",
+                     "τα συμβάντα χρήσης που κατέγραψε η εφαρμογή λίγο πριν από το σφάλμα"):
+            self.assertIn(said, greek)
+
+    def test_no_line_says_there_is_no_advertising_identifier_at_all(self):
+        page = current("privacy.html")
+        main = main_html(page)
+        self.assertNotIn("<strong>No advertising identifier.</strong>", main)
+        self.assertNotIn("ούτε διαφημιστικά αναγνωριστικά", visible_text(main))
+        (item,) = [visible_text(li) for li in re.findall(r"<li>(.*?)</li>", main, re.S)
+                   if "No advertising identifier of our own." in li]
+        self.assertIn("on Android 12 and older that permission is not needed", item)
+
+    def test_the_bigquery_copy_is_placed_described_and_kept(self):
+        main = main_html(current("privacy.html"))
+        items = [visible_text(li) for li in re.findall(r"<li>(.*?)</li>", main, re.S)]
+        (where,) = [i for i in items if i.startswith("Firebase Analytics: the app usage events described above.")]
+        for said in ("Since 9 November 2026", "BigQuery", "EU multi-region", "It holds no user id, name or email address."):
+            self.assertIn(said, where)
+        (kept,) = [i for i in items if i.startswith("The copy of analytics events in BigQuery:")]
+        for said in ("kept until we delete it", "We have set no expiry for it", "up to 14 days"):
+            self.assertIn(said, kept)
+        text = visible_text(main)
+        for said in ("your profile photo and the copy of the analytics events in BigQuery are in the European Union",
+                     "Cloud Logging, App Check and BigQuery", "Αντίγραφο των συμβάντων στο BigQuery.",
+                     "χωρίς ορισμένη λήξη", "και το ημερήσιο αντίγραφο των συμβάντων χρήσης στο BigQuery"):
+            self.assertIn(said, text)
+
+    def test_crash_reports_name_their_breadcrumbs(self):
+        text = visible_text(main_html(current("privacy.html")))
+        self.assertIn("how much memory and storage the phone was using, and the analytics events, described below, "
+                      "that the app logged shortly before it", text)
+
+    def test_the_phone_and_emails_say_what_stays(self):
+        page = current("privacy.html")
+        phone = one_paragraph(page, "On your phone.")
+        for said in ("up to 100 MB", "the last invite you made for each hall", "Signing out deletes",
+                     "but it leaves the copy of our records", "keychain can outlast removing the app",
+                     "On Android none of this goes into your phone's backups"):
+            self.assertIn(said, phone)
+        emails = one_paragraph(page, "Emails to us.")
+        for said in ("which is a Gmail account", "We have not set a fixed period for them",
+                     "deleting your account does not delete them"):
+            self.assertIn(said, emails)
+        items = {visible_text(li) for li in re.findall(r"<li>(.*?)</li>", main_html(page), re.S)}
+        self.assertIn("Emails to us: until we delete them. There is no fixed period yet.", items)
+        for opening in ("Στο τηλέφωνό σου.", "Τα email σου προς εμάς."):
+            self.assertTrue(one_paragraph(page, opening))
+        self.assertIn("κλειδοθήκη (keychain)", one_paragraph(page, "Στο τηλέφωνό σου."))
+        self.assertIn("η διαγραφή του λογαριασμού σου δεν τα σβήνει", one_paragraph(page, "Τα email σου προς εμάς."))
 
 
 if __name__ == "__main__":
